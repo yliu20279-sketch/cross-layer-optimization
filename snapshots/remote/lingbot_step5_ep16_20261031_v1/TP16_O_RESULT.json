@@ -1,0 +1,54 @@
+{
+  "status": "PASS_LIMITED_O_TP16_SERIAL_CARRY_SAME_INPUT",
+  "rows": [
+    {
+      "branch": "cond",
+      "path": "source_full",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 0,
+      "FP32_source_accumulator_mismatches": 0
+    },
+    {
+      "branch": "cond",
+      "path": "TP16_independent_partial_F32_sum",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 130,
+      "FP32_source_accumulator_mismatches": 130580
+    },
+    {
+      "branch": "cond",
+      "path": "TP16_serial_FDA_carry",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 0,
+      "FP32_source_accumulator_mismatches": 0
+    },
+    {
+      "branch": "uncond",
+      "path": "source_full",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 0,
+      "FP32_source_accumulator_mismatches": 0
+    },
+    {
+      "branch": "uncond",
+      "path": "TP16_independent_partial_F32_sum",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 106,
+      "FP32_source_accumulator_mismatches": 130533
+    },
+    {
+      "branch": "uncond",
+      "path": "TP16_serial_FDA_carry",
+      "elements": 131072,
+      "BF16_GPU_bit_mismatches": 0,
+      "FP32_source_accumulator_mismatches": 0
+    }
+  ],
+  "target_GPU_count": 0,
+  "elapsed_seconds": 9.315584182739258,
+  "source": "original external GPU core used only as same-input O projection diagnostic; not autonomous full TP16 layer",
+  "bias": "added once after rank15 FP32 accumulator, then BF16",
+  "contract": "head h owns contiguous K128, serial original FDA16 accumulator passed rank0..15; not independent partial allreduce",
+  "native_NPU_runs": 0,
+  "scope": "CPU numerical diagnostic only, NoC and full TP lowering pending"
+}

@@ -1,0 +1,14 @@
+{
+  "global_time_unit_ns": 1.0,
+  "domains": {
+    "cpu": {"frequency_ghz": 2.5, "cycle_ns": 0.4, "to_global_time": "cpu_cycle*0.4"},
+    "npu": {"frequency_ghz": 1.0, "cycle_ns": 1.0, "to_global_time": "npu_cycle"},
+    "noc": {"frequency_ghz": 1.0, "cycle_ns": 1.0, "to_global_time": "noc_cycle"},
+    "hb": {"frequency_ghz": 1.0, "cycle_ns": 1.0, "to_global_time": "hb_cycle"},
+    "dram": {"frequency_ghz": 0.8, "cycle_ns": 1.25, "to_global_time": "dram_cycle*1.25"}
+  },
+  "ramulator_wrapper_cycle_scale": 1.25,
+  "double_scaling_forbidden": true,
+  "legosim_process_clock_rate_policy": "all InterChiplet timestamps are emitted in global 1 ns units; YAML clock_rate remains 1.0"
+}
+

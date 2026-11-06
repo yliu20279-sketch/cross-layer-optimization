@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "total_cycles": 320,
+  "operations": 2,
+  "dma_operations": 0,
+  "page_misses": 0,
+  "hic_overlap_npu_cycles": 0,
+  "hic_overlap_capacity_fraction": 0.0,
+  "checks": [
+    "all operations completed",
+    "all DAG dependencies respected",
+    "directional PCIe service conserved",
+    "page fetch-evict-commit order respected",
+    "HB callbacks precede operation completion",
+    "represented memory bytes conserved"
+  ],
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack full-operation Bank timing disabled",
+    "analytical graph compute timing only",
+    "owner propagation only; not yet a strict contention metric"
+  ],
+  "simulation_wall_seconds": 0.06634859181940556
+}

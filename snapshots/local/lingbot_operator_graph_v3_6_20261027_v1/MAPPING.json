@@ -1,0 +1,68 @@
+{
+  "status": "PROPOSED_NOT_EXECUTED",
+  "canonical_architecture": "../whisper_operator_inventory/target_architecture_v3_6/target_architecture_v3_6.yaml",
+  "hardware": {
+    "NPUs": 16,
+    "mesh": "4x4 + gateway",
+    "HB_GiB": 8,
+    "CH_MiB": 512,
+    "SRAM_MiB_per_NPU": 4,
+    "SRAM_banks": 8,
+    "logical_projected_DRAM_banks": 4,
+    "decoded_DRAM_banks": 16,
+    "transaction_B": 32,
+    "HB_GBps_per_pair": 25.6
+  },
+  "reference_contract": "TP16 attention + EP16 routed experts, sequential CFG; alternative CP/DP separate",
+  "attention": {
+    "type": "MHA not GQA in DiT",
+    "head_owner": "head h -> N_h, all 16 heads partitioned once",
+    "qkv_columns_per_rank": 128,
+    "hidden": "replicated/tiled Sx2048 after collective; footprint and liveness need proof",
+    "O": "row shard partial -> sum collective, bias exactly once after sum",
+    "norm": "FP32 RMS source boundary, Q/K scale [128] shared across heads",
+    "communication": "QKV weights TP shards; O partial allreduce via reduce-scatter/allgather lowering; cannot add source CP all-to-alls simultaneously"
+  },
+  "expert": {
+    "owner": "p_l(e)=e mod16 baseline; 8 experts per rank/layer",
+    "token_origin": "o(t)=global joint-token index mod16",
+    "router": "one FP32 decision per token at unique origin; replicated 1MiB router weight/rank candidate",
+    "dispatch": "send unique assignment only after actual route known; local assignment has no NoC payload",
+    "combine": "return owner output to token origin, restore actual Top8 slot order, FP32 multiply/sum then BF16 cast",
+    "shared": "replicate 9MiB shared weights per rank/layer; execute each token only at unique origin, not16 times",
+    "next_layer": "allgather combined joint hidden for TP attention; no allgather before completion",
+    "source_EP": false
+  },
+  "source_CP": {
+    "type": "Ulysses-style sequence/head all-to-all; 3 QKV exchanges plus1 output exchange",
+    "candidate_degree": "4 or16 head divisors with explicit sequence padding; not selected",
+    "relation_to_TP": "alternative mutually exclusive contraction, not extra traffic added to TP16"
+  },
+  "source_DP": {
+    "type": "whole independent image/prompt samples only",
+    "limitation": "cannot rebatch arbitrary video tokens as independent attention sequences; total token budget and output identity preserved"
+  },
+  "memory": {
+    "host_backing": "capacity overlay candidate128GiB; not authorized/selected here",
+    "read_only_weights": true,
+    "dirty_weight_eviction_D2H": false,
+    "completion": "host read -> PCIe/gateway -> HB install -> validity -> SRAM DMA -> compute; no offline additive latency",
+    "weights": "whole model is not resident in8GiBHB; per-layer paging and tile reuse mandatory"
+  },
+  "precision": {
+    "BF16": "not certified by FP16 array",
+    "FP32_router": "vector/software MAC or separately calibrated path",
+    "special_functions": "exp/sigmoid/tanh/rsqrt/complexRoPE/TopK/scatter require semantics and timing gates"
+  },
+  "HiBand": {
+    "type": "independent reference integration, not author artifact reproduction",
+    "phases": "local/global bytes classify; static baseline first; dynamic drain/setup/switch buffers on completion paths",
+    "scope": "partition modes and HB/NoC arbitration; not bandwidth*4 logical banks"
+  },
+  "SemMoE": {
+    "type": "port model/data co-scheduling contract; existing alternating co-clustering is approximate",
+    "profile_key": "sample/scene + step band + CFG branch + layer + joint token type/position embedding; unseen content correspondence unproven",
+    "causality": "freeze placement and predictor before heldout; current realized router output usable after router only; future steps unknown",
+    "gate": "no affinity predictor quality -> no online Sem-MoE gain claim; oracle separate"
+  }
+}

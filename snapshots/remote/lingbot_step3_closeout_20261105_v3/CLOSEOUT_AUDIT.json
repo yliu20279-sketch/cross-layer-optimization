@@ -1,0 +1,136 @@
+{
+  "state": "PASS_LIMITED_INDEPENDENT_CFG_FEEDBACK_REPLAY",
+  "branches": [
+    {
+      "branch": "cond",
+      "passes": [
+        {
+          "pass_number": 1,
+          "feedback_rows": 14,
+          "feedback_applied": false,
+          "input_sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6",
+          "bench_sha256": "60047d21156e34e77ca4e6d105d80b959e105a332d49734f976f5ba8d08c89be",
+          "delay_sha256": "2adfbd2c7e8b32909b87a1768c3b900a4d2f28f6cee7c14c730bbd6eb9e9c381",
+          "feedback_sha256": "1d31deb75202244dd7390e520231c90d6b4c619e46a7983c4dbe4483c3c32c0f",
+          "gate": {
+            "identity": {
+              "request": "example_4",
+              "cfg": "cond",
+              "step": 0,
+              "layer": 0,
+              "token": 0,
+              "version": 1
+            },
+            "completed": {
+              "cpu_return": 14018298,
+              "dma_poll_complete": 14019376,
+              "dirty_writeback_callback": 14019806,
+              "noc_receive_tail": 14019806
+            },
+            "ready_ns": 14019806,
+            "consumer_start_ns": 14019806,
+            "consumer_done_ns": 14020487
+          }
+        },
+        {
+          "pass_number": 2,
+          "feedback_rows": 14,
+          "feedback_applied": true,
+          "input_sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6",
+          "bench_sha256": "6de413a7a86ee006fda7435d6fe5843fb0eb1c58464f878a541a9a8527984865",
+          "delay_sha256": "f05598687b14368dd53df4f86f85220f4acb201be4392480fc36645b49450590",
+          "feedback_sha256": "1d721ca18a17679464650d03007fe1e5762835495671b7162b26a29e059f6850",
+          "gate": {
+            "identity": {
+              "request": "example_4",
+              "cfg": "cond",
+              "step": 0,
+              "layer": 0,
+              "token": 0,
+              "version": 1
+            },
+            "completed": {
+              "cpu_return": 13957616,
+              "dma_poll_complete": 13958677,
+              "dirty_writeback_callback": 13959129,
+              "noc_receive_tail": 13959129
+            },
+            "ready_ns": 13959129,
+            "consumer_start_ns": 13959129,
+            "consumer_done_ns": 13959810
+          }
+        }
+      ],
+      "numeric_and_runtime_receipt_audit": "84c01e09b1f22ce6c1f5953e42c428183c43484b9e4bfc3b9287a6ef60a0cdb8"
+    },
+    {
+      "branch": "uncond",
+      "passes": [
+        {
+          "pass_number": 1,
+          "feedback_rows": 14,
+          "feedback_applied": false,
+          "input_sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6",
+          "bench_sha256": "661bf1c59e7155ee604bf868bdca5f499a3f4ce67de131dd1c03bb4397f3e233",
+          "delay_sha256": "6e696d4bc344a7ab44b101376ed747394bac048aa6cf7f8d147ad792542f573a",
+          "feedback_sha256": "f91e78198b8e4869732ab1179263d439c92a4e85f4e37540706f560eee90cd8f",
+          "gate": {
+            "identity": {
+              "request": "example_4",
+              "cfg": "uncond",
+              "step": 0,
+              "layer": 0,
+              "token": 0,
+              "version": 1
+            },
+            "completed": {
+              "cpu_return": 14014806,
+              "dma_poll_complete": 14015958,
+              "dirty_writeback_callback": 14016375,
+              "noc_receive_tail": 14016375
+            },
+            "ready_ns": 14016375,
+            "consumer_start_ns": 14016375,
+            "consumer_done_ns": 14017056
+          }
+        },
+        {
+          "pass_number": 2,
+          "feedback_rows": 14,
+          "feedback_applied": true,
+          "input_sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6",
+          "bench_sha256": "3afd1d9bf09445b395c244fa77258141e83dce19efa2651d4b4e223bd43429df",
+          "delay_sha256": "71c6d248c59847c54e52ca25171a692a8a0c0723b10a10549f19ad6a30b36629",
+          "feedback_sha256": "596bfa678b29032d74fbb17649830adc60dd430113c5af0f5a1d12c848973581",
+          "gate": {
+            "identity": {
+              "request": "example_4",
+              "cfg": "uncond",
+              "step": 0,
+              "layer": 0,
+              "token": 0,
+              "version": 1
+            },
+            "completed": {
+              "cpu_return": 13952179,
+              "dma_poll_complete": 13953183,
+              "dirty_writeback_callback": 13953629,
+              "noc_receive_tail": 13953629
+            },
+            "ready_ns": 13953629,
+            "consumer_start_ns": 13953629,
+            "consumer_done_ns": 13954310
+          }
+        }
+      ],
+      "numeric_and_runtime_receipt_audit": "a90465f9bbfea6e470b99c57f8d0a49daca1bce012e9ea93e3350a638aefe674"
+    }
+  ],
+  "same_branch_first_pass_profile_second_pass_consumption": true,
+  "limits": [
+    "single K projection per CFG, two feedback passes",
+    "parameterized PCIe serialized queue0 model",
+    "CPU and writeback times conservatively observed at receiver",
+    "no feedback convergence or full-layer-cost claim"
+  ]
+}

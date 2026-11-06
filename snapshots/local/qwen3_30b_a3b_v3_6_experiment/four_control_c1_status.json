@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "scope": "diagnostic only; no formal SOTA claim",
+  "cases": [
+    {
+      "scheme": "baseline_ep",
+      "validation": {
+        "status": "PASS",
+        "total_cycles": 39248003,
+        "operations": 12786,
+        "dma_operations": 644,
+        "page_misses": 322,
+        "checks": [
+          "all operations completed",
+          "all DAG dependencies respected",
+          "directional PCIe service conserved",
+          "page fetch-evict-commit order respected",
+          "HB callbacks precede operation completion",
+          "represented memory bytes conserved"
+        ],
+        "limitations": [
+          "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+          "DeepStack operator timing disabled; analytical graph timing only",
+          "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+          "analytical peak-MAC compute proxy, not profiled operator timing",
+          "aggregated ring collective proxy, not chunk-accurate overlap",
+          "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+          "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+          "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+          "host memory service and staging SRAM bandwidth not yet modeled",
+          "embedding/LM head/router/vector execution omitted from diagnostic graph"
+        ],
+        "simulation_wall_seconds": 27.295282970182598
+      },
+      "graph": {
+        "operations": 12786,
+        "hits": 446,
+        "misses": 322,
+        "scheme": "baseline_ep"
+      },
+      "hic_overlap_cycles": null,
+      "fixed_mode": true
+    },
+    {
+      "scheme": "hiband",
+      "validation": {
+        "status": "PASS",
+        "total_cycles": 39256773,
+        "operations": 12786,
+        "dma_operations": 644,
+        "page_misses": 322,
+        "checks": [
+          "all operations completed",
+          "all DAG dependencies respected",
+          "directional PCIe service conserved",
+          "page fetch-evict-commit order respected",
+          "HB callbacks precede operation completion",
+          "represented memory bytes conserved"
+        ],
+        "limitations": [
+          "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+          "DeepStack operator timing disabled; analytical graph timing only",
+          "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+          "analytical peak-MAC compute proxy, not profiled operator timing",
+          "aggregated ring collective proxy, not chunk-accurate overlap",
+          "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+          "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+          "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+          "host memory service and staging SRAM bandwidth not yet modeled",
+          "embedding/LM head/router/vector execution omitted from diagnostic graph"
+        ],
+        "simulation_wall_seconds": 27.29593691881746
+      },
+      "graph": {
+        "operations": 12786,
+        "hits": 446,
+        "misses": 322,
+        "scheme": "hiband_baseline_ep"
+      },
+      "hic_overlap_cycles": null,
+      "fixed_mode": false
+    },
+    {
+      "scheme": "sem_moe",
+      "validation": {
+        "status": "PASS",
+        "total_cycles": 43978694,
+        "operations": 12464,
+        "dma_operations": 652,
+        "page_misses": 326,
+        "checks": [
+          "all operations completed",
+          "all DAG dependencies respected",
+          "directional PCIe service conserved",
+          "page fetch-evict-commit order respected",
+          "HB callbacks precede operation completion",
+          "represented memory bytes conserved"
+        ],
+        "limitations": [
+          "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+          "DeepStack operator timing disabled; analytical graph timing only",
+          "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+          "analytical peak-MAC compute proxy, not profiled operator timing",
+          "aggregated ring collective proxy, not chunk-accurate overlap",
+          "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+          "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+          "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+          "host memory service and staging SRAM bandwidth not yet modeled",
+          "embedding/LM head/router/vector execution omitted from diagnostic graph"
+        ],
+        "simulation_wall_seconds": 29.9590374995023
+      },
+      "graph": {
+        "operations": 12464,
+        "hits": 442,
+        "misses": 326,
+        "scheme": "sem_moe"
+      },
+      "hic_overlap_cycles": null,
+      "fixed_mode": true
+    },
+    {
+      "scheme": "hiband_sem_moe",
+      "validation": {
+        "status": "PASS",
+        "total_cycles": 43987728,
+        "operations": 12464,
+        "dma_operations": 652,
+        "page_misses": 326,
+        "checks": [
+          "all operations completed",
+          "all DAG dependencies respected",
+          "directional PCIe service conserved",
+          "page fetch-evict-commit order respected",
+          "HB callbacks precede operation completion",
+          "represented memory bytes conserved"
+        ],
+        "limitations": [
+          "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+          "DeepStack operator timing disabled; analytical graph timing only",
+          "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+          "analytical peak-MAC compute proxy, not profiled operator timing",
+          "aggregated ring collective proxy, not chunk-accurate overlap",
+          "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+          "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+          "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+          "host memory service and staging SRAM bandwidth not yet modeled",
+          "embedding/LM head/router/vector execution omitted from diagnostic graph"
+        ],
+        "simulation_wall_seconds": 30.20719559583813
+      },
+      "graph": {
+        "operations": 12464,
+        "hits": 442,
+        "misses": 326,
+        "scheme": "hiband_sem_moe"
+      },
+      "hic_overlap_cycles": null,
+      "fixed_mode": false
+    }
+  ]
+}

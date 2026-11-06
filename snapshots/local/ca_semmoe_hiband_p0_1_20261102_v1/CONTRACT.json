@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-02 Asia/Shanghai",
+  "status": "P0_1_AUDIT_COMPLETE_BASELINE_NOT_READY",
+  "scope": "local read-only source/configuration audit plus isolated document snapshots; no imports or execution of experiment code; no SSH",
+  "models": [
+    "Qwen/Qwen3-30B-A3B",
+    "Qwen/Qwen1.5-MoE-A2.7B"
+  ],
+  "ca_reference": {
+    "id": "CA4_STRUCTURAL_STAGE2_REFERENCE_20261102",
+    "source": "page_management_stage2_natural_v2/experiment.py",
+    "page_bytes": 4096,
+    "placement": "partition-local movable FP16 weights excluding router; fixed non-weight objects",
+    "profile": "historical N_DEV DAG depth; tensor pairs at equal depth and aligned page offsets; not actual time overlap",
+    "objective": "lexicographic (same-bank coaccess cost, squared frequency-weighted bank loads)",
+    "search": {
+      "seeds": [
+        2026102301,
+        2026102302,
+        2026102303
+      ],
+      "max_evaluations_per_seed": 20000,
+      "max_search_seconds_per_seed": 60,
+      "move_fraction_from_start": 0.1
+    },
+    "bank_function": "((frame >> 2) & 3) * 4 + ((frame >> 4) & 3)",
+    "starting_layout": {
+      "qwen3": "PHASE4",
+      "qwen15": "XOR4"
+    },
+    "usage": "frozen historical reference, not silently selected as final time-aware CA; cannot mix with BF16 continuous-layer timing"
+  },
+  "baseline": {
+    "qwen3": "historical reproduction/proxy; evaluation request assignment uses actual eval expert counts; online 2-gram absent",
+    "qwen15": "analytical EP4/TP4/PP4; profile/eval fallback overlaps; aggregate single-peer traffic; analytical cycles; smoke fixes GLOBAL_BIAS for every case",
+    "author_equivalence": false,
+    "formal_performance_ready": false
+  },
+  "unresolved": [
+    "final time-aware CA algorithm and profile event definition",
+    "no-future-information online Sem-MoE integration for both models",
+    "checkpoint revision/tokenizer/precision/placement unified per-model contract",
+    "runtime binary/library/configuration/input identity under one selected execution path",
+    "HiBand mechanism coverage and calibrated parameter provenance",
+    "query/install/migration/cache/version and CPU costs"
+  ],
+  "historical_code_freeze_checks": {
+    "EXECUTION_PROTOCOL.json": {
+      "expected": "4850dd70265e3ba027a438be3821c4df2158369ac8e6c7a01c26d2bdb85184f0",
+      "actual": "4850dd70265e3ba027a438be3821c4df2158369ac8e6c7a01c26d2bdb85184f0",
+      "matches": true
+    },
+    "experiment.py": {
+      "expected": "4953a1aae66b17a3fdf66e15244873d5124f3b427bb0031c94518a2ad9cdb5b7",
+      "actual": "4953a1aae66b17a3fdf66e15244873d5124f3b427bb0031c94518a2ad9cdb5b7",
+      "matches": true
+    },
+    "README.md": {
+      "expected": "31c0bd3f551cb9922d11dc08e20a57e2da521323fc38d62b65391d5aa6979707",
+      "actual": "31c0bd3f551cb9922d11dc08e20a57e2da521323fc38d62b65391d5aa6979707",
+      "matches": true
+    }
+  },
+  "new_experiments": 0,
+  "source_count": 36
+}

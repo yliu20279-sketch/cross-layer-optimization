@@ -1,0 +1,254 @@
+[
+  {
+    "command": "git reset --hard b40a0f4e33823e6d0f341f7e8684e359a99060d1 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793090764.9852543,
+    "start_monotonic": 7766711.924726715,
+    "result": {
+      "output": "HEAD is now at b40a0f4e Merge branch '2.x-line' into dev\nb40a0f4e33823e6d0f341f7e8684e359a99060d1\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766712.285228547,
+    "seconds": 0.3605028698220849
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793090765.6113422,
+    "start_monotonic": 7766712.550813892,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766712.863648711,
+    "seconds": 0.3128350852057338
+  },
+  {
+    "command": "sed -i 's/self.container._bind_to_schema(field_name, self)/self.container._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793091388.3718238,
+    "start_monotonic": 7767335.311296016,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767335.584350886,
+    "seconds": 0.27305513713508844
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793091618.6197925,
+    "start_monotonic": 7767565.559264416,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767565.858929169,
+    "seconds": 0.29966503009200096
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/fields.py\"]'",
+    "start_utc": 1793091619.7179294,
+    "start_monotonic": 7767566.657401231,
+    "result": {
+      "output": "CONTROLLER_SYNTAX_OK\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767567.018527835,
+    "seconds": 0.36112697795033455
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+    "start_utc": 1793091620.4249628,
+    "start_monotonic": 7767567.36443458,
+    "result": {
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.9.21, pytest-8.3.5, pluggy-1.5.0\nrootdir: /testbed\nconfigfile: setup.cfg\ncollected 911 items\n\ntests/test_decorators.py ....................................            [  3%]\ntests/test_deserialization.py .......................................... [  8%]\n........................................................................ [ 16%]\n........................................................................ [ 24%]\n..................................................................       [ 31%]\ntests/test_error_store.py .............................                  [ 34%]\ntests/test_exceptions.py .....                                           [ 35%]\ntests/test_fields.py ............F...................................... [ 40%]\n.........................                                                [ 43%]\ntests/test_options.py ...............                                    [ 45%]\ntests/test_registry.py ..........                                        [ 46%]\ntests/test_schema.py ................................................... [ 52%]\n........................................................................ [ 59%]\n........................................................................ [ 67%]\n..............................                                           [ 71%]\ntests/test_serialization.py ............................................ [ 75%]\n.........................................................                [ 82%]\ntests/test_utils.py ................................                     [ 85%]\ntests/test_validate.py ................................................. [ 91%]\n........................................................................ [ 99%]\n.........                                                                [100%]\n\n=================================== FAILURES ===================================\n___________ TestParentAndName.test_list_field_inner_parent_and_name ____________\ntests/test_fields.py:125: in test_list_field_inner_parent_and_name\n    assert schema.fields[\"bar\"].inner.parent == schema.fields[\"bar\"]\nE   AssertionError: assert <MySchema(many=False)> == <fields.List(default=<marshmallow.missing>, attribute=None, validate=None, required=False, load_only=False, dump_only=...ired field.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid list.'})>\nE    +  where <MySchema(many=False)> = <fields.String(default=<marshmallow.missing>, attribute=None, validate=None, required=False, load_only=False, dump_onl... 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid string.', 'invalid_utf8': 'Not a valid utf-8 string.'})>.parent\nE    +    where <fields.String(default=<marshmallow.missing>, attribute=None, validate=None, required=False, load_only=False, dump_onl... 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid string.', 'invalid_utf8': 'Not a valid utf-8 string.'})> = <fields.List(default=<marshmallow.missing>, attribute=None, validate=None, required=False, load_only=False, dump_only=...ired field.', 'null': 'Field may not be null.', 'validator_failed': 'Invalid value.', 'invalid': 'Not a valid list.'})>.inner\n=============================== warnings summary ===============================\nsrc/marshmallow/__init__.py:17\n  /testbed/src/marshmallow/__init__.py:17: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    __version_info__ = tuple(LooseVersion(__version__).version)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED tests/test_fields.py::TestParentAndName::test_list_field_inner_parent_and_name\n=================== 1 failed, 910 passed, 1 warning in 2.67s ===================\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767570.771865233,
+    "seconds": 3.4074319191277027
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793092315.5708363,
+    "start_monotonic": 7768262.510307972,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768262.810762076,
+    "seconds": 0.30045441538095474
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793092707.0041897,
+    "start_monotonic": 7768653.943657889,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768654.216230511,
+    "seconds": 0.2725729076191783
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793092933.3835077,
+    "start_monotonic": 7768880.32298004,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768880.628077838,
+    "seconds": 0.3050985224545002
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793093179.3236058,
+    "start_monotonic": 7769126.263074766,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769126.562214498,
+    "seconds": 0.29914002027362585
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793093434.8355336,
+    "start_monotonic": 7769381.775003894,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769382.077386451,
+    "seconds": 0.3023828575387597
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793093601.9180455,
+    "start_monotonic": 7769548.857514719,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769549.144566887,
+    "seconds": 0.2870524572208524
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793093927.6213605,
+    "start_monotonic": 7769874.560832564,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769874.862155805,
+    "seconds": 0.3013235442340374
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793094142.468248,
+    "start_monotonic": 7770089.407719647,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7770089.69444254,
+    "seconds": 0.28672317042946815
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793094422.059926,
+    "start_monotonic": 7770368.999394851,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7770369.296909818,
+    "seconds": 0.29751524701714516
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793094667.1542666,
+    "start_monotonic": 7770614.093738852,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7770614.392605455,
+    "seconds": 0.2988669192418456
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793094917.408212,
+    "start_monotonic": 7770864.347680945,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7770864.596554366,
+    "seconds": 0.24887373019009829
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793095213.6127987,
+    "start_monotonic": 7771160.552267456,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7771160.821234207,
+    "seconds": 0.268967030569911
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793095539.0868132,
+    "start_monotonic": 7771486.026284935,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7771486.297450394,
+    "seconds": 0.2711657490581274
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner.parent = self\\n        self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793095834.0803468,
+    "start_monotonic": 7771781.019818463,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7771781.312787988,
+    "seconds": 0.2929698098450899
+  },
+  {
+    "command": "sed -i '/def _bind_to_schema(self, field_name, schema):/,/self.inner._bind_to_schema(field_name, self)/ s/self.inner._bind_to_schema(field_name, self)/self.inner._bind_to_schema(field_name, schema)/' src/marshmallow/fields.py",
+    "start_utc": 1793096074.962294,
+    "start_monotonic": 7772021.901765956,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7772022.133405514,
+    "seconds": 0.2316398350521922
+  }
+]

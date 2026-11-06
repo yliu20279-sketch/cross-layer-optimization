@@ -1,0 +1,7 @@
+{
+  "state": "PRE_RUN_CPU_RESIDUAL",
+  "selection": "same R0002 prefill token0 layer0; previously committed fixed-dispatch M1 MoE2048 BF16",
+  "source": "residual=BF16(decoder_input+attention_output), thenBF16(residual+MoE); normalized moe_input is not residual",
+  "precision": "original BF16 boundaries; independent FP32+RNE check; no tolerance",
+  "limits": "captured GPU diagnostic retained; batch and softmax FP32 differences unchanged; no new GPU/agent/holdout"
+}

@@ -1,0 +1,270 @@
+{
+  "schema_version": "3.6",
+  "status": "EXPERIMENTAL_TRACE_CONTRACT",
+  "scope": "workload-independent architecture contract; Qwen3-8B mapping candidate",
+  "tile_semantics": {
+    "generic_requirement": [
+      "core",
+      "l1",
+      "l2_bank",
+      "router",
+      "ni"
+    ],
+    "npu_equivalence": {
+      "core": "mac_array_plus_vector_reduce",
+      "l1": {
+        "component": "operand_and_pipeline_local_buffer",
+        "capacity_bytes": null,
+        "status": "not_separately_parameterized"
+      },
+      "l2_bank": {
+        "component": "cluster_sram_spm",
+        "capacity_bytes_per_tile": 4194304,
+        "banks_per_tile": 8
+      },
+      "router": "dedicated_local_router",
+      "ni": [
+        "cluster_to_router_adapter",
+        "cluster_to_hb_adapter"
+      ]
+    }
+  },
+  "vertical_pairs": [
+    {
+      "partition": "CH0",
+      "banks": [
+        "B0",
+        "B1",
+        "B2",
+        "B3"
+      ],
+      "memory_controller": "MC0",
+      "tile": "N0",
+      "router": 0
+    },
+    {
+      "partition": "CH1",
+      "banks": [
+        "B4",
+        "B5",
+        "B6",
+        "B7"
+      ],
+      "memory_controller": "MC1",
+      "tile": "N1",
+      "router": 1
+    },
+    {
+      "partition": "CH2",
+      "banks": [
+        "B8",
+        "B9",
+        "B10",
+        "B11"
+      ],
+      "memory_controller": "MC2",
+      "tile": "N2",
+      "router": 2
+    },
+    {
+      "partition": "CH3",
+      "banks": [
+        "B12",
+        "B13",
+        "B14",
+        "B15"
+      ],
+      "memory_controller": "MC3",
+      "tile": "N3",
+      "router": 3
+    },
+    {
+      "partition": "CH4",
+      "banks": [
+        "B16",
+        "B17",
+        "B18",
+        "B19"
+      ],
+      "memory_controller": "MC4",
+      "tile": "N4",
+      "router": 4
+    },
+    {
+      "partition": "CH5",
+      "banks": [
+        "B20",
+        "B21",
+        "B22",
+        "B23"
+      ],
+      "memory_controller": "MC5",
+      "tile": "N5",
+      "router": 5
+    },
+    {
+      "partition": "CH6",
+      "banks": [
+        "B24",
+        "B25",
+        "B26",
+        "B27"
+      ],
+      "memory_controller": "MC6",
+      "tile": "N6",
+      "router": 6
+    },
+    {
+      "partition": "CH7",
+      "banks": [
+        "B28",
+        "B29",
+        "B30",
+        "B31"
+      ],
+      "memory_controller": "MC7",
+      "tile": "N7",
+      "router": 7
+    },
+    {
+      "partition": "CH8",
+      "banks": [
+        "B32",
+        "B33",
+        "B34",
+        "B35"
+      ],
+      "memory_controller": "MC8",
+      "tile": "N8",
+      "router": 8
+    },
+    {
+      "partition": "CH9",
+      "banks": [
+        "B36",
+        "B37",
+        "B38",
+        "B39"
+      ],
+      "memory_controller": "MC9",
+      "tile": "N9",
+      "router": 9
+    },
+    {
+      "partition": "CH10",
+      "banks": [
+        "B40",
+        "B41",
+        "B42",
+        "B43"
+      ],
+      "memory_controller": "MC10",
+      "tile": "N10",
+      "router": 10
+    },
+    {
+      "partition": "CH11",
+      "banks": [
+        "B44",
+        "B45",
+        "B46",
+        "B47"
+      ],
+      "memory_controller": "MC11",
+      "tile": "N11",
+      "router": 11
+    },
+    {
+      "partition": "CH12",
+      "banks": [
+        "B48",
+        "B49",
+        "B50",
+        "B51"
+      ],
+      "memory_controller": "MC12",
+      "tile": "N12",
+      "router": 12
+    },
+    {
+      "partition": "CH13",
+      "banks": [
+        "B52",
+        "B53",
+        "B54",
+        "B55"
+      ],
+      "memory_controller": "MC13",
+      "tile": "N13",
+      "router": 13
+    },
+    {
+      "partition": "CH14",
+      "banks": [
+        "B56",
+        "B57",
+        "B58",
+        "B59"
+      ],
+      "memory_controller": "MC14",
+      "tile": "N14",
+      "router": 14
+    },
+    {
+      "partition": "CH15",
+      "banks": [
+        "B60",
+        "B61",
+        "B62",
+        "B63"
+      ],
+      "memory_controller": "MC15",
+      "tile": "N15",
+      "router": 15
+    }
+  ],
+  "gateway": {
+    "id": "SYS_GW",
+    "router": 16,
+    "attached_to_router": 0
+  },
+  "traffic_classes": {
+    "memory_to_core": {
+      "id": 0,
+      "members": [
+        "dram_read",
+        "dram_write",
+        "weight_fetch",
+        "activation_spill_fill",
+        "kv_cache"
+      ],
+      "path": "HB vertical path for local partition; horizontal NoC only for non-local delivery or gateway traffic"
+    },
+    "core_to_core": {
+      "id": 1,
+      "members": [
+        "activation_transfer",
+        "partial_sum",
+        "collective",
+        "synchronization",
+        "task_dependency"
+      ],
+      "path": "4x4 horizontal PopNet mesh"
+    },
+    "control": {
+      "id": 2,
+      "members": [
+        "dma_descriptor",
+        "completion",
+        "scheduler_command"
+      ],
+      "path": "gateway and horizontal PopNet mesh"
+    }
+  },
+  "bank_address_mapping": {
+    "partition_selection": "address[32:29]",
+    "bank_selection": null,
+    "status": "V3.6_static_mapping_updated_runtime_verification_pending",
+    "prohibition": "Do not claim hardware-real bank hotspots until the runtime mapping is captured."
+  }
+}

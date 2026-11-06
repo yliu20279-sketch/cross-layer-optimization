@@ -1,0 +1,55 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_cross_request_v1/build_stratified_v1/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/microtests/bank_oracle_v2_owner_shadow/different_owner_different_partition/normal/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/microtests/bank_oracle_v2_owner_shadow/different_owner_different_partition/normal",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/microtests/strict_v2/graphs/different_owner_different_partition",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/microtests/bank_oracle_v2_owner_shadow/different_owner_different_partition/normal",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270",
+    "HB_FIXED_MODE": "GLOBAL_BIAS"
+  },
+  "binary_sha256": "737653b9e1f65c62aa12dac160b4bcea58432db04c462bf8924c6ffc1c8310ff",
+  "graph_hashes": {
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "cd020f4617647434c92a90f0207c1defc88d75cfac40669d3493046ffa130757",
+    "graph_manifest.json": "930d45dd956f244a14eaa2ba6fc8ebf7899c30fce22850b485a087c63f6b087c",
+    "ops.csv": "e309d9140d8ceab0447c6f8933ad592c8e4a9eabb6c58742b578b5373875b09c"
+  },
+  "deepstack_timing_sha256": null,
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack full-operation Bank timing disabled",
+    "analytical graph compute timing only"
+  ]
+}

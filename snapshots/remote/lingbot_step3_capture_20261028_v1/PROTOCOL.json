@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-28",
+  "step_numbering": "step3 of seven-step summary: real route/fixture capture; target functional adaptation remains step4",
+  "status": "FROZEN_BEFORE_CAPTURE",
+  "target_GPU_count": 0,
+  "target_simulator_runs": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "source_commit": "dd5c231e793406c6a8893e9e4307008a9c2adfe4",
+  "weight_revision": "f2e538f64afe00cc4ae674db2aeb52e2945edfd5",
+  "reference_cache": "lingbot_steps1_2_20261027_v1/conditions.pt",
+  "sample": "official TI2V example_4",
+  "seed": 42,
+  "frames": 121,
+  "height": 480,
+  "width": 832,
+  "guidance": 3,
+  "shift": 3,
+  "refiner": false,
+  "precision": "original BF16/F32; no substitution",
+  "backend": "same Torch2.6cu124/source expert-loop fallback/native_flash/chunked_scatter128 as prior reference",
+  "runs": [
+    {
+      "name": "probe_off",
+      "steps": 1,
+      "capture": false
+    },
+    {
+      "name": "probe_on",
+      "steps": 1,
+      "capture": true
+    },
+    {
+      "name": "full_on",
+      "steps": 40,
+      "capture": true
+    }
+  ],
+  "expected_route_records": 3936,
+  "full_only_route_records": 3840,
+  "expected_shared_calls": 3936,
+  "route_payload": "uint16 actual expert IDs and uint16 raw BF16 bits; raw/dispatch equality aliases only when exact",
+  "token_identity": "actual source joint order plus captured position IDs; first48360 video, rest real text; rank0/CP1/EP not present in source",
+  "fixture": "full_on step0 layer0 both CFG branches: full block boundaries, attention output/norm, actual FFN input/output, router logits/scores/choice, shared output, full rotary, exact temb6 or lossless constant-row encoding",
+  "full_logits_policy": "only the two registered layer0 fixtures; not all3840 calls",
+  "storage_budget_bytes": 25769803776,
+  "worker_count": 1,
+  "deadline_seconds": 5400,
+  "route_structure_gates": [
+    "ID0..127",
+    "Top8 distinct",
+    "finite nonnegative weights",
+    "per-token sum2.5 absolute tolerance0.02, BF16 rounding allowance",
+    "all sequence/mask/CFG/layer/rank counts complete",
+    "actual router IDs match actual dispatch IDs",
+    "actual stable pack permutation hash reproducible"
+  ],
+  "noninterference_gate": "probe_on raw latent SHA equals same-process probe_off; full_on SHA compared with prior source40step; any difference preserved, not hidden",
+  "CPU_replay": "diagnostic consistency against captured FP32 scores; never replace actual IDs/weights; any numerical/tie mismatch separate from capture integrity",
+  "not_authorized_by_this_step": "no target NPU execution or strategy matrix"
+}

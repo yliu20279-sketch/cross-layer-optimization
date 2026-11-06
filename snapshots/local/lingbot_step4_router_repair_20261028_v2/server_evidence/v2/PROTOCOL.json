@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-28",
+  "scope": "DiT layer0 functional host fallback adapter, no GPU target; source GPU Golden reuse",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "source_commit": "dd5c231e793406c6a8893e9e4307008a9c2adfe4",
+  "weight_revision": "f2e538f64afe00cc4ae674db2aeb52e2945edfd5",
+  "precision": "canonical BF16/F32 preserved; BF16 linear operands decoded exactly to FP32, FP32 accumulation then original BF16 cast; specials on host CPU",
+  "branches": [
+    "cond",
+    "uncond"
+  ],
+  "full_sequence_ops": [
+    "post_attention RMSNorm",
+    "post_ffn RMSNorm",
+    "residual/modulation to FFN input",
+    "router FP32 GEMM/sigmoid/bias/group Top8 on full real FFN inputs",
+    "same captured scores selection diagnostic"
+  ],
+  "selected_rows": "first32 video + last32 conditioning rows, predetermined by step3 review; full context attention keys/values retained",
+  "comparisons": [
+    "raw bitwise and numeric exact, maxabs/RMSE/mismatch counts; no posthoc promotion tolerance",
+    "source CPU same-op functional consistency separate from GPU Golden",
+    "route replay ONLY isolated downstream diagnostic; free-router comparison separate"
+  ],
+  "negative_controls": [
+    "FP16 rejected",
+    "GPU rejected by adapter",
+    "wrong mixed weight dtype rejected",
+    "wrong ID range/duplicate rejected",
+    "missing route slot rejected",
+    "route weight corruption changes digest",
+    "changed token position changes RoPE",
+    "expert-order FP32 commit alternative measured"
+  ],
+  "cpu_threads": 8,
+  "worker_count": 1,
+  "timeout_seconds": 2400,
+  "memory_limit_GiB": 24,
+  "storage_budget_GiB": 4,
+  "target_simulator_runs": 0,
+  "physical_NPU_runs": 0,
+  "not_certified": [
+    "full48layers/40steps target functional execution",
+    "VLM/VAE/scheduler end-to-end target",
+    "CP16 EP16 communication",
+    "pager SRAM/HB liveness",
+    "target timing or strategies"
+  ],
+  "revision": "v2 isolated router correction; old v1 outputs immutable",
+  "changed": "source-derived threshold gather unsorted IDs; adjacent-pair FP32 sum8; independent finite BF16 RNE",
+  "not_changed": "matrix/activation/norm/attention candidates, host128/HB8, mixed BF16/F32, exact gates",
+  "source_urls": [
+    "https://github.com/pytorch/pytorch/blob/v2.6.0/aten/src/ATen/native/cuda/TensorTopK.cpp",
+    "https://github.com/pytorch/pytorch/blob/v2.6.0/aten/src/ATen/native/cuda/TensorTopK.cu",
+    "https://github.com/pytorch/pytorch/blob/v2.6.0/aten/src/ATen/native/cuda/Reduce.cuh"
+  ]
+}

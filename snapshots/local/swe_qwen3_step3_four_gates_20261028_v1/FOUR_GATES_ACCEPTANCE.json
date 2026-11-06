@@ -1,0 +1,15 @@
+{
+  "state": "PASS_LIMITED_FOUR_GATE_FUNCTIONAL_BRIDGE",
+  "gates": [
+    "front-half 68 strict stage comparisons",
+    "batch 258 groups / 645120 elements exact",
+    "two layers prefill19 + cached decode1: 12 strict output/KV checks exact",
+    "continuous HB handoff and generated KV dependency audit"
+  ],
+  "scope": [
+    "original GPU prefill output 4249 / route 10 differences",
+    "softmax FP32 differences retained",
+    "772 host fallbacks with CPU costs null",
+    "N0 serial only; TP/EP and full timing not certified"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "PASS_LIMITED_AUTONOMOUS_ROUTER_FULL_SEQUENCE",
+  "rows": [
+    {
+      "branch": "cond",
+      "rows": 49883,
+      "FP32_elements": 6385024,
+      "logit_bit_mismatches": 0,
+      "score_bit_mismatches": 0,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 0,
+      "source_internal_Golden_injected": false
+    },
+    {
+      "branch": "uncond",
+      "rows": 48986,
+      "FP32_elements": 6270208,
+      "logit_bit_mismatches": 0,
+      "score_bit_mismatches": 0,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 0,
+      "source_internal_Golden_injected": false
+    }
+  ],
+  "target_GPU_count": 0,
+  "CUDA_initialized": false,
+  "wall_seconds": 9.79265570640564,
+  "recipe": "5 partitions; partition p visits K tiles p*8 + 40*i; FMA within tile; ordered FP32 sum p=0..4",
+  "identification": "same seen development sequences; not independent holdout",
+  "whole_layer_pass": false
+}

@@ -1,0 +1,14 @@
+{
+  "state": "PRE_RUN_FIXED_REAL_FIXTURE_CPU_PROTOCOL",
+  "selection": [
+    {"root": "swe_qwen3_step3_gpu_20261026_v1", "request": "R0002"},
+    {"root": "swe_qwen3_step3_development_20261026_v6", "request": "R0001"}
+  ],
+  "norm_attention_router": "all captured prefill chunks and first decode of both fixed requests",
+  "expert_moe": "short request prefill/decode and development first decode only; recorded dispatch injected explicitly",
+  "comparison": "strict exact for same CPU source; exact and raw errors for GPU references, no tolerance promotion",
+  "topk": "report non-tied, internal-tie, boundary-tie separately; no invented tie-break and no recorded ID injection in autonomous router",
+  "resources": "CPU one thread, CUDA_VISIBLE_DEVICES empty, no full model, no agent, no new holdout",
+  "target": {"host_GiB": 128, "HB_GiB": 8, "precision": "original BF16", "NPU_runs": 0, "cycles": null},
+  "out": "attempt1, new directory required; failures retained"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS_SCOPED_TRANSPORT_RETURN_ORDER",
+  "events": [
+    {
+      "src": 0,
+      "dst": 4,
+      "token": [
+        0
+      ],
+      "stage": "PP_boundary_layer_6",
+      "bytes": 4096,
+      "payload_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18",
+      "start": 259378504,
+      "complete": 259381348,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 4,
+      "token": [
+        1
+      ],
+      "stage": "PP_boundary_layer_6",
+      "bytes": 4096,
+      "payload_sha256": "f11c3d0abdcf000ca94419daedd92a08961e6d068c8a7df1d60ac8ef8e3cb5cc",
+      "start": 754554310,
+      "complete": 754557191,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    }
+  ],
+  "payload_equality": "mandatory guard in CoupledTransport.send; successful target exit",
+  "limitations": "no persisted layer5 output and layer6 input snapshots; final destination write callback not yet individually matched",
+  "step3_B": "PARTIAL_NOT_FROZEN"
+}

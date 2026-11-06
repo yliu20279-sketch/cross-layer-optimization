@@ -1,0 +1,7 @@
+graph cpu_npu_dram_3 {
+    // 三芯粒 phase2 拓扑：0=CPU，1=NPU，2=DRAM chiplet。
+    // 在 PopNet graph-topology 模式中，weight 的单位是链路延迟 cycle。
+    edge[weight=10]
+    node[pipeline_stage_delay=1]
+    0--1--2
+}

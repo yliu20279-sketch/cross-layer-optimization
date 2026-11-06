@@ -1,0 +1,247 @@
+{
+  "source_manifest": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/SOURCES.json",
+  "source_manifest_sha256": "be5a553763e1e39a7f06cb5dc633f001b6986f5976e9cd26aaf82dc8d2664815",
+  "records": [
+    {
+      "source_index": 73380,
+      "request_id": "f0f717c9fc0a70d3",
+      "content_sha256": "f0f717c9fc0a70d3a342a7675ea04492ba8e20ada561534d4ce440200c0e1ac3",
+      "group": "N_DEV",
+      "token_sha256": {
+        "qwen3": "7c1cdf0e9c1f0503523533eb8e20b85c47beb4afd17546210f2f4072135ed14b",
+        "qwen15": "5f64e91f86346c368b82cb0962a9d0f54cd63b059e8717f80752ed1a5ee78e8c"
+      }
+    },
+    {
+      "source_index": 47420,
+      "request_id": "cd28ec0e4005e91b",
+      "content_sha256": "cd28ec0e4005e91b514c6f43e3e08ca9bd26fafeef44672091c3c2ad1b0978e5",
+      "group": "N_DEV",
+      "token_sha256": {
+        "qwen3": "325ff5196f428f2a0e75245ad6f23554cd979aa09319666b1d7e5dbbcf45beb9",
+        "qwen15": "aebde4b4cad3e1037b354389b75e5c849d4c5e521d1cccbc3b019c2efd8fcbdf"
+      }
+    },
+    {
+      "source_index": 25902,
+      "request_id": "f62005368999f9fe",
+      "content_sha256": "f62005368999f9feb3bc3024cfc42cd5910d841194ea8938fe4d0154de756b51",
+      "group": "N_DEV",
+      "token_sha256": {
+        "qwen3": "7646e04364aa0e12252fea7fcbffb2bb4505edaf92461c3f030f1d9048ff0c5c",
+        "qwen15": "df25af1b3511c558b45855572b3ace617a89c42d3aee9e9775f0b6f2671f4487"
+      }
+    },
+    {
+      "source_index": 20100,
+      "request_id": "228a9365e80165ed",
+      "content_sha256": "228a9365e80165ed264998d75737c6a2fa227052a4dee7bbd4afb2c6fbb21b09",
+      "group": "N_DEV",
+      "token_sha256": {
+        "qwen3": "fdaa45bc855f28f9e7528e90588ba0c10eaa7c3f7dc29b39a5ae2d41e913eb91",
+        "qwen15": "f882b74f9f2862bc2115617754ce549e07cfed56c69be371217d85eb83ac5df5"
+      }
+    },
+    {
+      "source_index": 88885,
+      "request_id": "90bc1da542984377",
+      "content_sha256": "90bc1da54298437791ebf1de0b432108ab3cbb4f76bdb4ccb6d2f40c6d658953",
+      "group": "N_TEST",
+      "token_sha256": {
+        "qwen3": "1b07e2a95d031d681dbe92dfd9ba3b7e35e4ec3c17487e26b5fc25f9a912888a",
+        "qwen15": "0e2d3561f72ab2551e8547692aa848aa9316ed07d2aad77d87b5268f6e9e6d76"
+      }
+    },
+    {
+      "source_index": 56910,
+      "request_id": "680a20301257d28a",
+      "content_sha256": "680a20301257d28a0c32b038a1853c7daca3e8cc69f0b4c5fdef19ee2ff08038",
+      "group": "N_TEST",
+      "token_sha256": {
+        "qwen3": "4cbd6df811113010771d0f03572094e48d145b139bd12323e36c4a9922b9f5fc",
+        "qwen15": "e351a70d500f96e7d53baf7a607a02b4f0e590b385648c221760c05e88d79167"
+      }
+    },
+    {
+      "source_index": 49107,
+      "request_id": "bc474f6557500e96",
+      "content_sha256": "bc474f6557500e96406a866ade171891d7db0f34d0eecfbb370f9a5034a9838e",
+      "group": "N_TEST",
+      "token_sha256": {
+        "qwen3": "bc5b32621dccc476d01543f20939910c5bf9f07d11da0ebed6884bd267558d3e",
+        "qwen15": "a40039d8701bce1a115c4d4b9a003d8c9187aa7a65f7cf6cf7643b31aeed624e"
+      }
+    },
+    {
+      "source_index": 25724,
+      "request_id": "f4f6fa85039415dd",
+      "content_sha256": "f4f6fa85039415ddbb63f747b4e87d08fbce64cf638325f5c68a7c98b2bccdd8",
+      "group": "N_TEST",
+      "token_sha256": {
+        "qwen3": "b2ef5369ee94323609fcf3bb8ba9e48f5eee44b145c56c66f97e3e30b17221d2",
+        "qwen15": "a02dd7c7c98b0d305a5652f6f5446ee790ab9ea6e6cf4350858ec1ea4eaeb83e"
+      }
+    }
+  ],
+  "cases": {
+    "qwen15_l12_N_TEST": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix/qwen15/layer_12/N_TEST",
+      "protocol_sha256": "6138fb1089e5c4a1834c9f2cd26785e8979b653180e0fc9402021ec247556895",
+      "protocol": {
+        "model": "qwen15",
+        "layer": 12,
+        "group": "N_TEST",
+        "request_source_slots": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "before_numeric": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "resident_set": "this layer only; independently reset"
+      }
+    },
+    "qwen3_l24_N_DEV": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix_target_fp16/qwen3/layer_24/N_DEV",
+      "protocol_sha256": "cd1cbca12256bb8908314a47b5d16152913eda71cb5e40534de2c935cece7232",
+      "protocol": {
+        "model": "qwen3",
+        "layer": 24,
+        "group": "N_DEV",
+        "source_slots": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "before_any_case_reference": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "numerical_gate": "target implementation reference pass; original BF16 fidelity remains separate/failed",
+        "independent_layer_reset": true
+      }
+    },
+    "qwen15_l00_N_DEV": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix/qwen15/layer_00/N_DEV",
+      "protocol_sha256": "f7f73769ebd7052351678ab25f2ef7740153188dc60495e91b76bdef4ebae0be",
+      "protocol": {
+        "model": "qwen15",
+        "layer": 0,
+        "group": "N_DEV",
+        "request_source_slots": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "before_numeric": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "resident_set": "this layer only; independently reset"
+      }
+    },
+    "qwen15_l00_N_TEST": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix/qwen15/layer_00/N_TEST",
+      "protocol_sha256": "4391c39e805c59daedeca68ce771b8a654ef38cdbe09c3fa0eab29ae70548dd6",
+      "protocol": {
+        "model": "qwen15",
+        "layer": 0,
+        "group": "N_TEST",
+        "request_source_slots": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "before_numeric": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "resident_set": "this layer only; independently reset"
+      }
+    },
+    "qwen3_l00_N_TEST": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix_target_fp16/qwen3/layer_00/N_TEST",
+      "protocol_sha256": "7327e326c0a7cadbd3d5796f2aa083883f66b55f5170aa8ef8e9f88b784596a4",
+      "protocol": {
+        "model": "qwen3",
+        "layer": 0,
+        "group": "N_TEST",
+        "source_slots": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "before_any_case_reference": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "numerical_gate": "target implementation reference pass; original BF16 fidelity remains separate/failed",
+        "independent_layer_reset": true
+      }
+    },
+    "qwen3_l00_N_DEV": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix_target_fp16/qwen3/layer_00/N_DEV",
+      "protocol_sha256": "69d86273123fbb08e3ca98221e011dfe4f132d943b3b0bd7fd084df8d84dbf3b",
+      "protocol": {
+        "model": "qwen3",
+        "layer": 0,
+        "group": "N_DEV",
+        "source_slots": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "before_any_case_reference": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "numerical_gate": "target implementation reference pass; original BF16 fidelity remains separate/failed",
+        "independent_layer_reset": true
+      }
+    },
+    "qwen3_l24_N_TEST": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix_target_fp16/qwen3/layer_24/N_TEST",
+      "protocol_sha256": "a9999649d7d63600ac88d11a160f406c6cb30877edd1004b5e031cdc43fff8df",
+      "protocol": {
+        "model": "qwen3",
+        "layer": 24,
+        "group": "N_TEST",
+        "source_slots": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "before_any_case_reference": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "numerical_gate": "target implementation reference pass; original BF16 fidelity remains separate/failed",
+        "independent_layer_reset": true
+      }
+    },
+    "qwen15_l12_N_DEV": {
+      "source_case": "/mnt/sda1/h3240101068/selector_all_moe_formula_20261022_v1/matrix/qwen15/layer_12/N_DEV",
+      "protocol_sha256": "c7ce04a5d3dd5c709db0adeac97d7c468ff9754576ae26757428582e8d297302",
+      "protocol": {
+        "model": "qwen15",
+        "layer": 12,
+        "group": "N_DEV",
+        "request_source_slots": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "before_numeric": true,
+        "rtol": 0.002,
+        "atol": 0.002,
+        "resident_set": "this layer only; independently reset"
+      }
+    }
+  },
+  "previously_seen_development_sources": true,
+  "new_sources_captured_this_experiment": 0,
+  "no_prompt_text_or_token_arrays_copied": true
+}

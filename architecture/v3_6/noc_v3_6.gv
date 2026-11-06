@@ -1,0 +1,37 @@
+graph qwen3_v3_6_noc
+{
+  // PopNet interprets weight as link delay in cycles, not physical length.
+  edge[weight=2]
+  node[pipeline_stage_delay=1]
+
+  // 16 homogeneous NPU cluster routers: N0--N15, 4x4 mesh.
+  0 -- 1
+  1 -- 2
+  2 -- 3
+  4 -- 5
+  5 -- 6
+  6 -- 7
+  8 -- 9
+  9 -- 10
+  10 -- 11
+  12 -- 13
+  13 -- 14
+  14 -- 15
+
+  0 -- 4
+  4 -- 8
+  8 -- 12
+  1 -- 5
+  5 -- 9
+  9 -- 13
+  2 -- 6
+  6 -- 10
+  10 -- 14
+  3 -- 7
+  7 -- 11
+  11 -- 15
+
+  // Independent CPU/system chip enters the accelerator mesh at N0.
+  16 -- 0
+}
+

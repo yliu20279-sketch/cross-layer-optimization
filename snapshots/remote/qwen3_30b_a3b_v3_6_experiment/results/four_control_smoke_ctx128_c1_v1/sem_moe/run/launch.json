@@ -1,0 +1,55 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_paging_src/build_paging_v1/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/four_control_smoke_ctx128_c1_v1/sem_moe/run/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "HB_PROGRESS_WATCHDOG_CYCLES": "1000000",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/four_control_smoke_ctx128_c1_v1/sem_moe/run",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/four_control_smoke_ctx128_c1_v1/sem_moe/graph",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/four_control_smoke_ctx128_c1_v1/sem_moe/run",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270",
+    "HB_FIXED_MODE": "GLOBAL_BIAS"
+  },
+  "binary_sha256": "b4c4e55407db4d607731056a3f2d11d3a9b86b4105e79eb24b2c19587940da45",
+  "graph_hashes": {
+    "address_manifest.csv": "0a69e745123a71723849e77f11b165a35e346a3cb47c9f92e50e969da4e90347",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "0d7dac751008f0fd833daeaaddc45ee516a6d49127eee56b91474c593cb87240",
+    "graph_manifest.json": "be99659be07ff8176ce9394e067142f28c0197b32a68e37ebde996368ac54214",
+    "ops.csv": "424b47c10ff75ae6dcf605656ad7b8494ed4f8ecbdc6ab95fb57237e94aeac0c"
+  },
+  "limitations": [
+    "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+    "DeepStack operator timing disabled; analytical graph timing only"
+  ]
+}

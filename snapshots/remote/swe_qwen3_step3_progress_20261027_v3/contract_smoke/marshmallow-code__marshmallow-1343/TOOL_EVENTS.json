@@ -1,0 +1,74 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793080409.9426293,
+    "start_monotonic": 7756356.882100658,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756357.240567051,
+    "seconds": 0.3584666755050421
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793080410.5582006,
+    "start_monotonic": 7756357.497671802,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756357.81142922,
+    "seconds": 0.31375784054398537
+  },
+  {
+    "command": "cat src/marshmallow/__init__.py | head -5",
+    "start_utc": 1793080411.552918,
+    "start_monotonic": 7756358.492388468,
+    "result": {
+      "output": "# -*- coding: utf-8 -*-\nfrom __future__ import absolute_import\n\nfrom marshmallow.schema import (\n    Schema,\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756358.796268252,
+    "seconds": 0.30388004146516323
+  },
+  {
+    "command": "printf 'reproduction only\n' > /tmp/controller_repro.txt",
+    "start_utc": 1793080413.055473,
+    "start_monotonic": 7756359.994943772,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756360.289435854,
+    "seconds": 0.2944924496114254
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py')\np.write_text(p.read_text()+'\\n# controller contract marker\\n')\nPY",
+    "start_utc": 1793080414.3772578,
+    "start_monotonic": 7756361.316728419,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756361.658580629,
+    "seconds": 0.34185266587883234
+  },
+  {
+    "command": "false",
+    "start_utc": 1793080415.657018,
+    "start_monotonic": 7756362.596488539,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756362.895210817,
+    "seconds": 0.2987227067351341
+  }
+]

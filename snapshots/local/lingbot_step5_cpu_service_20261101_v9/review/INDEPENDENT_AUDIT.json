@@ -1,0 +1,32 @@
+{
+  "state": "PASS_LIMITED_ACTUAL_CPU_TO_NPU_SERVICE_TWO_ROUNDS",
+  "rounds": [
+    {
+      "round": 1,
+      "clock_observations": 516,
+      "domain_records": 217,
+      "horizontal_messages": 41,
+      "all_previous_feedback_applied": false,
+      "CPU_raw_and_BF16_elements": 2304,
+      "NPU_consumer_after_actual_CPU_return": true
+    },
+    {
+      "round": 2,
+      "clock_observations": 516,
+      "domain_records": 217,
+      "horizontal_messages": 41,
+      "all_previous_feedback_applied": true,
+      "CPU_raw_and_BF16_elements": 2304,
+      "NPU_consumer_after_actual_CPU_return": true
+    }
+  ],
+  "all10children_zero": true,
+  "target_GPU_count": 0,
+  "full_step5": false,
+  "limits": [
+    "one query K/V and Ocarry only",
+    "initial input placement and full model not executed",
+    "CPU cache coherence/cache-maintenance timing not certified",
+    "not full-layer cost replacement"
+  ]
+}

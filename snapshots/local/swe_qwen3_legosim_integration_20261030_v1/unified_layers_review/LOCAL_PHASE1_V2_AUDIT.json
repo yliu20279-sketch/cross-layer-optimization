@@ -1,0 +1,20 @@
+{
+  "state": "PASS_LIMITED_PHASE1_TWO_LAYER_CPU_RECEIPTS_VERIFIED",
+  "strict_checks": 12,
+  "stage_files": 56,
+  "nodes": 2998,
+  "weight_versions": 759,
+  "negative_controls": [
+    "overlapping_HB_allocations",
+    "reader_before_ready",
+    "noncausal_parent",
+    "HB_capacity_overrun",
+    "weight_payload_length_corruption",
+    "static_SRAM_bound_overrun",
+    "weight_overwrite_before_last_reader"
+  ],
+  "CPU_missing_results": [],
+  "CPU_PASS": true,
+  "full_steps_1_7": false,
+  "scope": "FIFO v2 CPU prefill/decode receipts verified; phase2 remains pending. Immutable retained buffers avoid reuse; this does not certify an eviction allocator or native SRAM residency."
+}

@@ -1,0 +1,24 @@
+{
+  "status": "CAPACITY_VIOLATION",
+  "policy": "static round-robin by sorted page index within partition",
+  "partition_capacity_bytes": 536870912,
+  "per_bank_page_capacity": 14,
+  "resident_pages_per_partition": 187,
+  "page_operations": 711,
+  "peak_resident_pages_in_any_bank": 16,
+  "first_violation": {
+    "event_index": 206,
+    "rank": 4,
+    "bank": 2,
+    "resident_pages": 15,
+    "incoming_page": [
+      30,
+      85
+    ],
+    "victim": [
+      1,
+      125
+    ]
+  },
+  "limit": "The original global-LRU victim schedule is replayed; a different pager could alter occupancy."
+}

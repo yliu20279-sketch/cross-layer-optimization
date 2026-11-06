@@ -1,0 +1,9 @@
+"""External original BF16 SiLU instruction-domain probe, no model inputs."""
+import os
+os.environ['CUDA_VISIBLE_DEVICES']='1'
+import pathlib,json,time,torch,numpy as np,ctypes,hashlib
+P=pathlib.Path('/mnt/sda1/h3240101068/lingbot_step4_bitexact_20261029_v4');D=P/'silu_domain_probe';D.mkdir(exist_ok=False);torch.set_num_threads(1);torch.set_grad_enabled(False)
+bits=torch.arange(65536,dtype=torch.int32).to(torch.uint16);x=bits.view(torch.bfloat16);out=torch.nn.functional.silu(x.cuda()).cpu();torch.cuda.synchronize();raw=out.view(torch.uint16).numpy().astype('<u2');raw.tofile(D/'silu_all_bf16.raw')
+lib=ctypes.CDLL(str(P/'libprofile_math.so'));lib.profile_math_open.argtypes=[ctypes.c_char_p];assert lib.profile_math_open(str(P/'sfu_profile').encode())==0;lib.profile_silu.argtypes=[ctypes.c_void_p]*2+[ctypes.c_size_t]
+x=x.float().numpy().copy();candidate=np.empty_like(x);lib.profile_silu(x.ctypes.data,candidate.ctypes.data,len(x));cb=torch.from_numpy(candidate).to(torch.bfloat16).view(torch.uint16).numpy();finite=np.isfinite(x);bad=np.where(finite&(cb!=raw))[0];model=np.isfinite(x)&(np.abs(x)<=64);bad_model=np.where(model&(cb!=raw))[0]
+r=dict(status='ARCHITECTURE_DOMAIN_OBSERVATION',source='torch2.6 BF16 F.silu',all_BF16_inputs=65536,finite_mismatches=len(bad),within_abs64_mismatches=len(bad_model),within_abs64_input_bits=bad_model.tolist(),within_abs64_input_values=x[bad_model].tolist(),reference_output_bits=raw[bad_model].tolist(),CPU_output_bits=cb[bad_model].tolist(),profile_bytes=raw.nbytes,profile_sha256=hashlib.sha256(raw.tobytes()).hexdigest(),target_GPU_count=0,external_GPU_reference_jobs=1,full_model_calls=0,model_input_read=False,peak_GPU_bytes=torch.cuda.max_memory_allocated());(P/'SILU_DOMAIN_RESULT.json').write_text(json.dumps(r,indent=2));print(json.dumps(r),flush=True)

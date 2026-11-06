@@ -1,0 +1,64 @@
+{
+  "state": "PASS_TWO_HOST_SEMANTIC_NEGATIVE_CONTROLS",
+  "cases": [
+    {
+      "name": "underflow_creates_probability_ties",
+      "probabilities_exact_to_CPU_softmax": true,
+      "route_IDs": [
+        [
+          0,
+          2,
+          4,
+          7,
+          3,
+          1,
+          5,
+          6
+        ]
+      ],
+      "logit_Top8_IDs": [
+        [
+          0,
+          127,
+          125,
+          126,
+          124,
+          123,
+          121,
+          122
+        ]
+      ],
+      "sets_differ": true
+    },
+    {
+      "name": "FP32_exp_rounding_creates_probability_ties",
+      "probabilities_exact_to_CPU_softmax": true,
+      "route_IDs": [
+        [
+          7,
+          6,
+          4,
+          5,
+          1,
+          0,
+          2,
+          3
+        ]
+      ],
+      "logit_Top8_IDs": [
+        [
+          127,
+          87,
+          81,
+          86,
+          85,
+          82,
+          95,
+          84
+        ]
+      ],
+      "sets_differ": true
+    }
+  ],
+  "scope": "CPU synthetic; no new GPU oracle, not additional real samples"
+}

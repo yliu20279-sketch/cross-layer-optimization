@@ -1,0 +1,12 @@
+{
+  "state": "PRE_RUN_SOURCE_DERIVED_M1_RULE",
+  "contract": "M1 actual BF16 GEMV AVX2 registration; CPU overall AVX512 not sufficient; larger batch unimplemented",
+  "algorithm": "64 FP32 lanes, K-stride64, register offsets32/16/8 then lane4/2/1, BF16 RNE",
+  "sources": [
+    "https://raw.githubusercontent.com/pytorch/pytorch/v2.6.0/aten/src/ATen/native/cpu/ReducedPrecisionFloatGemvFastPathKernel.cpp",
+    "https://raw.githubusercontent.com/pytorch/pytorch/v2.6.0/aten/src/ATen/cpu/vec/functional_base.h"
+  ],
+  "validation": "all160 existing short dispatch assignments and20 expert49 control rows, individual M1 source comparisons; batch differences explicitly retained; no output-specific fixes",
+  "up_gate": "only after zero differences across all M1 gate checks; no new GPU/SWE/holdout",
+  "amendment": "128lane AVX512 candidate failed7; binary AVX512 dispatch pointer resides zero-initialized BSS, inspect pointer independently; AVX2 pointer nonzero"
+}

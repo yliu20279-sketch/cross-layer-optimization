@@ -1,0 +1,118 @@
+{
+  "inputs": [
+    {
+      "file": "K_F32_reference.bin",
+      "bytes": 512,
+      "sha256": "e56d91978b337dc2f089b632ff756a56e2e251cd02c5645dd781c9eeb7dd51de"
+    },
+    {
+      "file": "K_GPU.bin",
+      "bytes": 256,
+      "sha256": "e4a879a5e7b8c6ff2ecdfadbfec77a71ebb3184088e3a071e11b24eb47f81709"
+    },
+    {
+      "file": "K_w.bin",
+      "bytes": 524288,
+      "sha256": "25de129c55425562398e894de18a599ef99eafd3ddd6846dd68ab2c2be3aa699"
+    },
+    {
+      "file": "K_x.bin",
+      "bytes": 4096,
+      "sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6"
+    },
+    {
+      "file": "Ocarry_F32_reference.bin",
+      "bytes": 8192,
+      "sha256": "37619fec4da379def9e66cccbaa77e6e35f0e507ff21fb8d9d020c0161046775"
+    },
+    {
+      "file": "Ocarry_GPU.bin",
+      "bytes": 4096,
+      "sha256": "aa6258e4ba3021e19a13642b7ac68d72a1f9877b089c42ed705b0242eb9d7946"
+    },
+    {
+      "file": "Ocarry_bias.bin",
+      "bytes": 4096,
+      "sha256": "2c876ab45ae146889bb932ef4729eba76085b20941d5d85eaa49371c761d096e"
+    },
+    {
+      "file": "Ocarry_initial.bin",
+      "bytes": 8192,
+      "sha256": "52e9f89d4d46ddc61755ff76cd9fae17d35a7a8d7b4829cdea05dfbc5e37fb05"
+    },
+    {
+      "file": "Ocarry_w.bin",
+      "bytes": 524288,
+      "sha256": "d21df9627ec94a045852e0439d1fb14131aba9bd7d03545534b42d59cd9b6832"
+    },
+    {
+      "file": "Ocarry_x.bin",
+      "bytes": 256,
+      "sha256": "b5782bb4b818b6cbd02c0fc175914181ab16def4905a31fbfe578c795cd18684"
+    },
+    {
+      "file": "V_F32_reference.bin",
+      "bytes": 512,
+      "sha256": "f206c6044c0e364cb0078e8e9f93e3867a91eb4e1814f944d5030d5ee065e610"
+    },
+    {
+      "file": "V_GPU.bin",
+      "bytes": 256,
+      "sha256": "8323eaf8fa0161983cf4050eed3149e8a9eb58343cadc4b4e958bf393238de82"
+    },
+    {
+      "file": "V_w.bin",
+      "bytes": 524288,
+      "sha256": "646e7edec521f9cacfc3b3cd5c2c76ff2c3fbabe2108ce0d668f606ea41b8e47"
+    },
+    {
+      "file": "V_x.bin",
+      "bytes": 4096,
+      "sha256": "b7e4030935e335078ed7b7e344d0014f9a1f075a4582e8ab09c14be9273da4a6"
+    },
+    {
+      "file": "kernel.cpp",
+      "bytes": 3868,
+      "sha256": "b36b67a8e2e8b3f1381fcf538c37f051e74ef7fbd013beff3192ac7fbeb1a52b"
+    },
+    {
+      "file": "portable.c",
+      "bytes": 14559,
+      "sha256": "178c10247705035efd7bfa39926987d1ead03613f4b0e6abc311231fda1b9f59"
+    }
+  ],
+  "commands": [
+    [
+      "gcc",
+      "-O2",
+      "-march=nehalem",
+      "-mno-avx",
+      "-mno-fma",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-c",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_fda_20261101_v8/portable.c",
+      "-o",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_fda_20261101_v8/portable.o"
+    ],
+    [
+      "g++",
+      "-O2",
+      "-march=nehalem",
+      "-mno-avx",
+      "-mno-fma",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-std=c++17",
+      "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim/include",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_fda_20261101_v8/kernel.cpp",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_fda_20261101_v8/portable.o",
+      "-lm",
+      "-o",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_fda_20261101_v8/kernel"
+    ]
+  ],
+  "source": "fresh CPU norm/mod input matches stored GPU input; original weights; actual prior native head14 carry and head15 core",
+  "reference": "raw FP32 SIMD software profile and original GPU BF16 outputs",
+  "full_target_timing": false
+}

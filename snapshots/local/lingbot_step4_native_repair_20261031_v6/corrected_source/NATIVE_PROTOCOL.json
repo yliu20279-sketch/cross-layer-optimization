@@ -1,0 +1,12 @@
+{
+  "scope": "one original cond step0 layer0 row0 router; CPU software FMA numeric payload after native event completion",
+  "recipe": "5 interleaved partitions, K8 at 8p+40i, fmaf within partition, ordered FP32 sum",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "timeout_seconds": 300,
+  "CPU_threads": 1,
+  "physical_NPU_runs": 0,
+  "acceptance": "128 FP32 logits bitwise versus original GPU and independent scalar reference; independent events/transactions/lifetime audit",
+  "uncertified": "host codec/link, software FMA actual target cost, full layer native, physical performance"
+}

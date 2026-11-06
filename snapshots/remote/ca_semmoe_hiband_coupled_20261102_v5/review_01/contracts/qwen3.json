@@ -1,0 +1,243 @@
+{
+  "schema": "ca-composite-contract-2",
+  "state": "PARTIAL_NOT_READY",
+  "model_id": "Qwen/Qwen3-30B-A3B",
+  "spec": {
+    "id": "Qwen/Qwen3-30B-A3B",
+    "layers": 48,
+    "experts": 128,
+    "ep": 16,
+    "tp": 16,
+    "pp": 1,
+    "topk": 8,
+    "hidden": 2048,
+    "layers_per_stage": 48,
+    "shared_expert": false
+  },
+  "precision": {
+    "weights": "BF16",
+    "activations": "BF16",
+    "accumulation": "per-op FP32 candidate; native operation order unverified",
+    "source_gpu_differences": "retained, no tolerance relaxation",
+    "v5_candidate": {
+      "norm_topk_prob": true,
+      "expert_accumulation": "ascending expert id",
+      "matrix": "preserved BF16 FDA64",
+      "attention_O_partials": "F32 then F32 SRS and BF16",
+      "host_special_functions": "explicit NumPy/microprogram services; CPU/PCIe time unverified",
+      "original_model_bit_exact_verified": false
+    }
+  },
+  "precision_sha256": "2bf7faf6f6443e4fad8dc67163e6790894ca1329311f7683eb63e803d8c6ba78",
+  "checkpoint_content_sha256": "65ed1e6dad7467f2d9e620c79f9b639b9eeae2b42579d6795224707cc077b859",
+  "content_fingerprint_definition": "SHA256 canonical filename/size/full-file-SHA256 manifest",
+  "revision": null,
+  "upstream_revision_verified": false,
+  "content_snapshot_id": "sha256:65ed1e6dad7467f2d9e620c79f9b639b9eeae2b42579d6795224707cc077b859",
+  "tokenizer_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+  "source_config_sha256": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+  "capacity_candidate": {
+    "host_bytes": 137438953472,
+    "hb_partitions": 16,
+    "hb_partition_bytes": 536870912
+  },
+  "capacity_verified": false,
+  "costs_verified": false,
+  "runtime": {
+    "binary": {
+      "path": "/mnt/sda1/h3240101068/ca_semmoe_hiband_coupled_20261102_v5/build_04/coupled_backend",
+      "sha256": "fe5c47ff083c6b3168217156caaead8e1ef2e1e7d4f4b2f2cacf17681364d9ba"
+    },
+    "libraries": [
+      {
+        "path": "/lib/x86_64-linux-gnu/libboost_graph.so.1.71.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libboost_graph.so.1.71.0",
+        "bytes": 321712,
+        "sha256": "f05e5a38e10de6eaaef673a863748bfc7359bb2a0eab997a9a544435f39a9f2c"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/libramulator.so",
+        "resolved": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/libramulator.so",
+        "bytes": 2520784,
+        "sha256": "8cdb6a6a84a0339fb07df2e61431e8846517a19834189487c9533e3332dc7e1a"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.32",
+        "bytes": 2526680,
+        "sha256": "fffbe6d8bad58795568e1ad15ba95f5862c3e98af7a43efa7f8cf594be913b5f"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libm.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+        "bytes": 1369384,
+        "sha256": "a0e70f48f02a399e8dd37f861a99e226c285a9daf50a25d19fff7ccf18b97f9c"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "bytes": 146000,
+        "sha256": "1785fc8cd9a2ba72f773b0b60b20e58ff79bf30ce2fd8e241c8b31303dcea17e"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libc.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "bytes": 2029592,
+        "sha256": "53b909551f8e581120ddc2d24cfb5df76c52e3c2e2a5dac0d202b25638b3e902"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0",
+        "bytes": 1044552,
+        "sha256": "8ba016f96cf59ea484eb77a800bdaa2020e6a3dde60b1d320b2cf807a4aedaf2"
+      },
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+        "bytes": 191504,
+        "sha256": "cfd44e4341767033532d1483c8250d200ad4cdf535d0abc19064ae34cdc51ca0"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicui18n.so.66",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libicui18n.so.66.1",
+        "bytes": 3132040,
+        "sha256": "e6b2f6fdf6f473bd529526a06b1e1bb6dab4a9998da941346711f1805dd42816"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicuuc.so.66",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libicuuc.so.66.1",
+        "bytes": 1976648,
+        "sha256": "d41e9287614412b6e95f809773a5f0f86ee3763a7d5f0db4856e79f64f7c8dab"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libpthread.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+        "bytes": 157224,
+        "sha256": "af27ed906f6185e0143b9c0d0da287788efa7eb6b2639e44d48fb2939415fdc5"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicudata.so.66",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libicudata.so.66.1",
+        "bytes": 28046896,
+        "sha256": "50b039da86ab40fed973954892aa52b0b833127b94103ec62b71c1e0891ce5ed"
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libdl.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so",
+        "bytes": 18848,
+        "sha256": "e0d0cace80b627e50ca3f7b621b64917677c27c74077080854d57cf4e548edc6"
+      }
+    ],
+    "source_build_identity_sha256": "f46707a7a8680b1ed9463e66b10d7f8d587c34e076c147ca96213a85e720b053",
+    "scope": "serial diagnostic live-layer candidate, not parallel SOTA/performance admission"
+  },
+  "capabilities": {
+    "native_sem_moe_schedule": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "native_srs_sag": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_operator_lowering": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "actual_bf16_memory_io": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_capacity_lifetimes": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cpu_costs": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cache_version_services": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "hiband_controls_and_timing": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "ca_native_address_binding": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    }
+  },
+  "software_reference": {
+    "split_fallback": "rejected",
+    "causal_token_scheduler": true,
+    "two_gram": false,
+    "collectives": "semantic reference only",
+    "opcode_lowering": false,
+    "costs": "missing costs rejected"
+  },
+  "native_runs": 0,
+  "author_equivalence": false,
+  "blocker_notes": [
+    "driver is serial, not native concurrent Sem-MoE scheduling",
+    "CPU/PCIe/cache-control costs incomplete; raw architecture transaction256 not unified with existing32-byte candidate",
+    "single layer / one active request / two diagnostic phases only; not complete PP4 model or natural workload",
+    "official CPU comparison has residual differences; no numerical/performance promotion"
+  ],
+  "p0_1b_status": "PARTIAL_WITH_LIVE_LAYER_AND_PHYSICAL_MAPPING",
+  "p0_1c_status": "COMPLETE_IDENTITY_GATED_DISPOSITIONS_ONLY",
+  "tested_candidates": {
+    "cpu_payload": {
+      "binary": "/mnt/sda1/h3240101068/ca_semmoe_hiband_native_20261102_v4/runtime/build_02/libpayload.so",
+      "sha256": "898e7d47c1348749a3da7f8305880ef2b922afa6256ad4c94d47571f0c33902f",
+      "scope": "normalized-input MoE CPU function, not original model numerical certification or target timing"
+    },
+    "memory_network_controls": {
+      "binary": "/mnt/sda1/h3240101068/ca_semmoe_hiband_native_20261102_v4/runtime/build_02/native_live",
+      "sha256": "460749da38cffbbab487deda68eef9ccc5a3d44303308bd6d11e1e601816b588",
+      "scope": "three-transaction real backend probe; analytical compute; not full layer"
+    }
+  },
+  "full_layer_payload_timing_coupling_verified": false,
+  "formal_performance_started": false,
+  "bf16_byte_service": {
+    "manifest_sha256": "26a9bd601e0cde051d79b0850959eb7fef7d5941c7ec4243753c4004097f45d5",
+    "objects": 18867,
+    "sampled_spans": 426,
+    "sampled_objects": 142,
+    "sampled_shards": 16,
+    "all_payload_bytes_rehashed_this_round": false
+  },
+  "target_weight_dtype": "BF16",
+  "v5_evidence_metrics": {
+    "TP": 16,
+    "EP": 16,
+    "transactions": 5531540,
+    "packets": 952,
+    "allocations": 4217,
+    "releases": 4217,
+    "KV_prefix_payloads": 32,
+    "primitive_jobs": 662,
+    "HB_peak_reserved_bytes": 28340224,
+    "reference": [
+      {
+        "phase": "prefill",
+        "elements": 2048,
+        "different_elements": 0,
+        "maxabs": 0.0,
+        "selected_set_equal": true
+      },
+      {
+        "phase": "decode",
+        "elements": 2048,
+        "different_elements": 111,
+        "maxabs": 0.0009765625,
+        "selected_set_equal": true
+      }
+    ],
+    "raw_event_sha256": "8707a39563f0267468b0464af698c0b9d1ca8e4c8bb02f8bf36bf1a0d0157bc6",
+    "raw_event_bytes": 878719171
+  }
+}

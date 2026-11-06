@@ -1,0 +1,22 @@
+{
+  "state": "PARTIAL_SOFTMAX_FP32_GPU_NOT_EXACT_WITH_TOP8_AND_HOST_OUTPUT_PASS_LIMITED",
+  "real_token_rows": 759,
+  "unique_source_requests": 2,
+  "captured_probability_Top8_ID_slot_BF16_weight_identity": "PASS_LIMITED_759_OF_759",
+  "new_softmax_final_ID_slot_BF16_weight_identity": "PASS_LIMITED_759_OF_759",
+  "GPU_FP32_probability_identity": "FAILED_RETAINED_7_PHASES",
+  "max_GPU_FP32_probability_abs_error": 1.4901161193847656e-7,
+  "host_CPU_Sniper_output": "PASS_LIMITED_759_OF_759",
+  "placement": "explicit host x86 software fallback, not native NPU exp/TopK",
+  "precision": "original BF16 with FP32 probability/renormalization and int64 metadata",
+  "host_GiB_overlay": 128,
+  "HB_GiB": 8,
+  "new_Sniper_ROI_runs": 1,
+  "new_NPUSim_fragment_runs": 0,
+  "physical_NPU_runs": 0,
+  "new_GPU_agent_runs": 0,
+  "new_holdout_bodies_read": false,
+  "native_NPUSim_total_this_workload": 3,
+  "Sniper_ROI_total_this_workload": 3,
+  "next": "Connect the validated host route output interface to metadata completion gates; keep GPU FP32 softmax difference separate, no SWE prerequisite or full-model promotion."
+}

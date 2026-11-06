@@ -1,0 +1,32 @@
+{
+  "status": "STATIC_ADMISSION_CANDIDATE_NOT_LIVENESS_CERTIFIED",
+  "real_source_joint_tokens_max": 49883,
+  "candidate": "source-style sequence CP16 + EP16; replaces fully replicated TP16 residency for this admission ledger only",
+  "target_GPU_count": 0,
+  "per_rank_local_sequence_upper_bound": 3118,
+  "CP_padding_tokens": 5,
+  "HB_activation_pool_bytes": 134217728,
+  "phase_attention_buffers": {
+    "two_local_hidden_BF16_bytes": 25542656,
+    "QKV_local_send_BF16_bytes": 38313984,
+    "QKV_global_head_receive_BF16_bytes": 38313984,
+    "time_modulation_stream_tile64_FP32_bytes": 3145728,
+    "attention_vector_tile_reserve_bytes": 8388608
+  },
+  "weight_cache_pool_bytes": 335544320,
+  "per_layer_owned_routed_experts_BF16_bytes": 75497472,
+  "replicated_shared_BF16_bytes": 9437184,
+  "attention_QKVO_full_BF16_bytes": 33554432,
+  "router_FP32_bytes": 1048576,
+  "FFN": "host-owned route permutation/slot metadata; stream expert-assignment tiles; no all-S*8*H unsorted HB allocation",
+  "time_modulation": "tile generation/read with actual source cast/order gate; no whole temb6 in per-CH activation pool",
+  "global_combine": "restore source Top8-slot FP32 sum at unique origin; not rank-first sum",
+  "not_proven": [
+    "actual live interval overlap and per-bank arbitration",
+    "target BF16/FP32 sum kernel equivalence",
+    "whole conditioning and VAE target lowering",
+    "calibrated CPU/PCIe/gateway timings"
+  ],
+  "attention_reserved_bytes": 113704960,
+  "attention_static_fits": true
+}

@@ -1,0 +1,8 @@
+{
+  "state": "PRE_RUN_CPU_TAIL",
+  "precision": "original BF16 at SiLU/product/down boundaries; FP32 expression and64lane source tree; no tolerance",
+  "cases": "same existing180 M1 short dispatch/control calls as prior gate/up, no new holdout",
+  "silu": "numpy FP32 x/(1+exp(-x)), all65280 finiteBF16 values separately checked, CPU software function not target exp",
+  "down": "generic64lane FP32 source GEMV tree K768, BF16 RNE",
+  "profile": "host128/HB8 no GPU/Sniper/SWE"
+}

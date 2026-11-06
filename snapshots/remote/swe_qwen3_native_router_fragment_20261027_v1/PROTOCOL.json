@@ -1,0 +1,12 @@
+{
+  "state": "PRE_RUN_NATIVE_FP32_FRAGMENT_PROTOCOL",
+  "input": "existing short R0002 layer0 first decode moe_input [1,2048] and same checkpoint mlp.gate.weight [128,2048]",
+  "model_precision": "original BF16, no checkpoint mutation",
+  "scope": "N0/CH0 FP32-expanded software workspace, CPU numerical payload plus original NPUSim vector and Ramulator completion callbacks",
+  "arithmetic": "separate FP32 vector multiply and add, K ascending 0..2047, output BF16 encoding on host after export",
+  "tiling": {"M": 1, "N": 64, "K": 64},
+  "target": {"host_GiB_overlay":128,"HB_GiB":8,"CH0_MiB":512,"SRAM_MiB":4,"transaction_bytes":32,"vector_ops_per_cycle":16},
+  "checks": ["exact BF16 logits to recorded GPU", "exact FP32 output to sequential CPU reference", "no MAC/FP16 events", "native missing dependency rejected", "early consumer rejected", "SRAM overflow rejected", "all transaction and SRAM lifetime accounting"],
+  "unmodeled": ["BF16 decode and encode target CPU/ISA cycles", "PCIe and gateway service", "SRAM Bank arbitration", "NoC and TP16/EP16", "pager and complete layer", "physical hardware latency"],
+  "limits": "CPU single thread, max300s, new attempt1 only, no GPU/agent/new holdout"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793084354.9001832,
+    "start_monotonic": 7760301.8396538,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760302.185208145,
+    "seconds": 0.34555474948138
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793084355.503835,
+    "start_monotonic": 7760302.443306411,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760302.759821346,
+    "seconds": 0.31651529390364885
+  },
+  {
+    "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text()+'\\ndef controller_marker(\\n')\nPY",
+    "start_utc": 1793084356.5164294,
+    "start_monotonic": 7760303.455899709,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760303.800508677,
+    "seconds": 0.3446096461266279
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+    "start_utc": 1793084357.6694338,
+    "start_monotonic": 7760304.60890509,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/__init__.py\", line 38\n    def controller_marker(\n                          ^\nSyntaxError: unexpected EOF while parsing\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760304.947311273,
+    "seconds": 0.33840670995414257
+  },
+  {
+    "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text().replace('\\ndef controller_marker(\\n','')+'\\nraise RuntimeError(\"controller_import_probe\")\\n')\nPY",
+    "start_utc": 1793084359.2410135,
+    "start_monotonic": 7760306.180483741,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760306.517799997,
+    "seconds": 0.3373165978118777
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+    "start_utc": 1793084360.3394825,
+    "start_monotonic": 7760307.278952796,
+    "result": {
+      "output": "CONTROLLER_SYNTAX_OK\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760307.61713164,
+    "seconds": 0.33817943558096886
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+    "start_utc": 1793084361.0236044,
+    "start_monotonic": 7760307.963075237,
+    "result": {
+      "output": "ERROR: while parsing the following warning configuration:\n\n  ignore::marshmallow.warnings.ChangedInMarshmallow3Warning\n\nThis error occurred:\n\nTraceback (most recent call last):\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1918, in parse_warning_filter\n    category: type[Warning] = _resolve_warning_category(category_)\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1956, in _resolve_warning_category\n    m = __import__(module, None, None, [klass])\n  File \"/testbed/src/marshmallow/__init__.py\", line 38, in <module>\n    raise RuntimeError(\"controller_import_probe\")\nRuntimeError: controller_import_probe\n\n\n",
+      "returncode": 4,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760308.692562918,
+    "seconds": 0.7294881911948323
+  },
+  {
+    "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text().replace('\\nraise RuntimeError(\"controller_import_probe\")\\n','')+'\\n# controller marker\\n')\nPY",
+    "start_utc": 1793084362.9728866,
+    "start_monotonic": 7760309.91235711,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760310.250421194,
+    "seconds": 0.3380644768476486
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+    "start_utc": 1793084364.0871332,
+    "start_monotonic": 7760311.026604836,
+    "result": {
+      "output": "CONTROLLER_SYNTAX_OK\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760311.365949193,
+    "seconds": 0.3393447147682309
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+    "start_utc": 1793084364.7776287,
+    "start_monotonic": 7760311.71710044,
+    "result": {
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.9.21, pytest-8.3.5, pluggy-1.5.0\nrootdir: /testbed\nconfigfile: setup.cfg\ncollected 779 items\n\ntests/test_decorators.py .......................                         [  2%]\ntests/test_deserialization.py .......................................... [  8%]\n........................................................................ [ 17%]\n.................................................................        [ 25%]\ntests/test_exceptions.py .....                                           [ 26%]\ntests/test_fields.py .................................                   [ 30%]\ntests/test_marshalling.py ........................                       [ 33%]\ntests/test_options.py ..................                                 [ 36%]\ntests/test_py3/test_utils.py .                                           [ 36%]\ntests/test_registry.py .........                                         [ 37%]\ntests/test_schema.py ................................................... [ 44%]\n........................................................................ [ 53%]\n........................................................................ [ 62%]\n........................                                                 [ 65%]\ntests/test_serialization.py ............................................ [ 71%]\n..........................................................               [ 78%]\ntests/test_utils.py .......................................              [ 83%]\ntests/test_validate.py ................................................. [ 89%]\n........................................................................ [ 99%]\n......                                                                   [100%]\n\n=============================== warnings summary ===============================\nsrc/marshmallow/__init__.py:19\n  /testbed/src/marshmallow/__init__.py:19: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    __version_info__ = tuple(LooseVersion(__version__).version)\n\ntests/test_decorators.py::test_decorated_processors\n  /testbed/src/marshmallow/marshalling.py:253: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working\n    if not isinstance(data, collections.Mapping):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n======================= 779 passed, 2 warnings in 2.39s ========================\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7760314.882395123,
+    "seconds": 3.165294916369021
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-01",
+  "scope": "full 98869 queries TP16 attention/O and exact-checkpoint composition with completed native MoE, two feedback rounds",
+  "source_KV": "previous autonomous full K/V projections from step4; new norm/RoPE/Q/full-context per-head attention",
+  "MoE": "completed full native EP two-round output, only consumed after all newly generated FFN inputs match full frozen original inputs",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original mixed BF16/FP32",
+  "tile_queries": 64,
+  "CPU_threads_per_rank": 1,
+  "nice": 10,
+  "timeout_seconds": 86400,
+  "independent_audit_timeout": 1800,
+  "NoC_O_accumulator": "FP32 original FDA16 carry; O result BF16 wire, bias once at rank15",
+  "not_continuous_full_layer_timing": true,
+  "not_certified": [
+    "new K/V GEMM target execution",
+    "full CPU/host/PCIe/software-op memory/ISA costs",
+    "continuous combined TP+EP virtual time and pager state",
+    "HiBand/SemMoE policy gain"
+  ],
+  "failures": "first numerical/child/timeout stops, retains all checkpoints; no relaxed threshold or automatic retry"
+}

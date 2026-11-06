@@ -1,0 +1,12 @@
+{
+  "state": "PRE_RUN_NATIVE_TAIL_AND_RETURN",
+  "selection": "existing expert49 row0 slot0 owner1 origin0; restore verified parent gate/up BF16 artifacts at parent completion boundary, not same continuous context",
+  "precision": "original BF16 at gate/up/silu/product/down/return; explicit FP32 temporary workspaces; generic64lane source GEMV K768",
+  "silu": "numpy FP32 host software,65280 finiteBF16 bitwise checked; targetCPU timing null, no NPU-exp claim",
+  "dependencies": "region planned readers gate->SiLU,up/silu->decode->mul,product->BF16->down,32 down tiles,down->return snapshot,TX tail,RX HB commit,source weighted commit still pending",
+  "return_path": "native PopNet owner1 to origin0,128B header+4096B body,33packets; numerical payload copy only after certified tails",
+  "gate": "all180 M1 CPU silu/product/down comparisons exact; native stage comparisons exact or stop; no tolerance relaxation",
+  "capacity": "host128GiB/HB8GiB overlay;512MiB CH/4MiB SRAM; parent conservative allocations retained in budget",
+  "budget": "one bounded native attempt <=300s, no GPU/Sniper/agent/SWE/newholdout",
+  "retained": "batch21/projection differences and softmax FP32 mismatch unchanged; no weighted MoE commit, full performance or benefits"
+}

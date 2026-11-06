@@ -1,0 +1,12 @@
+# v7日志修订及v11交叠核查
+状态 PARTIAL。
+
+原诊断进程4042961到4042964已退出。v7原日志首差是36169087号ACK完成时间被RESPONSE日志插入，原正则接受了时间前缀，导致监控主动终止运行。原始记录不修补、不晋级。
+
+隔离software_maintenance_tracker.h要求MAINT_EVENT_LOG专用文件，持锁生成完整记录并用一次O_APPEND write提交，失败明确拒绝。strict_parser.py要求整行匹配，保留编号洞、重复、时间及drain约束。并发4000 ACK及一次drain通过，四个拒绝控制通过。使用真实追踪器头文件、替身时间类型进行编译，尚未编译或替换生产Sniper，也未接回CPU transport时钟交叉审计。新头文件仅为隔离候选。
+
+复跑命令为sh run_regression.sh，输出文件已存在时拒绝覆盖，需先选择新的隔离目录。该脚本保留并发正例，四项负例首次执行结果见REGRESSION.json。
+
+KV_OVERLAP_AUDIT.json根据原始KV_BATCH记录和十进制舍入界重算。Qwen3有17/64批正重叠可从时间戳确认，47批精度不足，Qwen1.5为16批精度不足。原代码两请求均被Ramulator接受后才tick，完成由实际回调产生，支持同时在途。内部Bank服务重叠没有命令级证据。高精度日志候选coupled_backend_precision_candidate.cpp改为17位有效数字，尚未构建和运行。
+
+原始来源位于同一服务器swe_qwen3_continuous_portable_20261101_v7以及ca_p0_1b_native_20261103_v11。所有本轮新增证据留本目录。未启动完整矩阵。

@@ -1,0 +1,250 @@
+diff --git a/src/marshmallow/schema.py b/src/marshmallow/schema.py
+index 085c509b..f444fc9b 100644
+--- a/src/marshmallow/schema.py
++++ b/src/marshmallow/schema.py
+@@ -156,6 +156,12 @@ class SchemaMeta(type):
+             # declaring class.
+             for parent in mro:
+                 try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                     attr = parent.__dict__[attr_name]
+                 except KeyError:
+                     continue
+@@ -168,6 +174,12 @@ class SchemaMeta(type):
+                 continue
+ 
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 processor_tags = attr.__marshmallow_tags__
+             except AttributeError:
+                 continue
+@@ -490,6 +502,12 @@ class BaseSchema(base.SchemaABC):
+ 
+         if self._has_processors:
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 processed_obj = self._invoke_dump_processors(
+                     PRE_DUMP,
+                     obj,
+@@ -510,6 +528,12 @@ class BaseSchema(base.SchemaABC):
+                         self._types_seen.add(obj_type)
+ 
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 preresult = marshal(
+                     processed_obj,
+                     self.fields,
+@@ -528,6 +552,12 @@ class BaseSchema(base.SchemaABC):
+ 
+         if not errors and self._has_processors:
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 result = self._invoke_dump_processors(
+                     POST_DUMP,
+                     result,
+@@ -651,6 +681,12 @@ class BaseSchema(base.SchemaABC):
+         if partial is None:
+             partial = self.partial
+         try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+             processed_data = self._invoke_load_processors(
+                 PRE_LOAD,
+                 data,
+@@ -661,6 +697,12 @@ class BaseSchema(base.SchemaABC):
+             result = None
+         if not errors:
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 result = unmarshal(
+                     processed_data,
+                     self.fields,
+@@ -676,11 +718,23 @@ class BaseSchema(base.SchemaABC):
+             field_errors = bool(errors)
+             # Run schema-level migration
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 self._invoke_validators(unmarshal, pass_many=True, data=result, original_data=data,
+                                         many=many, field_errors=field_errors)
+             except ValidationError as err:
+                 errors.update(err.messages)
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 self._invoke_validators(unmarshal, pass_many=False, data=result, original_data=data,
+                                         many=many, field_errors=field_errors)
+             except ValidationError as err:
+@@ -688,6 +742,12 @@ class BaseSchema(base.SchemaABC):
+         # Run post processors
+         if not errors and postprocess:
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 result = self._invoke_load_processors(
+                     POST_LOAD,
+                     result,
+@@ -787,6 +847,12 @@ class BaseSchema(base.SchemaABC):
+         """
+         for field_name, field_obj in iteritems(fields_dict):
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 if field_name in self.load_only:
+                     field_obj.load_only = True
+                 if field_name in self.dump_only:
+@@ -815,6 +881,12 @@ class BaseSchema(base.SchemaABC):
+         """
+         if obj and many:
+             try:  # list
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 obj = obj[0]
+             except IndexError:  # Nothing to serialize
+                 return dict((k, v) for k, v in self.declared_fields.items() if k in field_names)
+@@ -826,6 +898,12 @@ class BaseSchema(base.SchemaABC):
+                 if obj:
+                     attribute_type = None
+                     try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                         if isinstance(obj, Mapping):
+                             attribute_type = type(obj[key])
+                         else:
+@@ -867,6 +945,12 @@ class BaseSchema(base.SchemaABC):
+             field_name = validator_kwargs['field_name']
+ 
+             try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                 field_obj = self.fields[field_name]
+             except KeyError:
+                 if field_name in self.declared_fields:
+@@ -876,6 +960,12 @@ class BaseSchema(base.SchemaABC):
+             if many:
+                 for idx, item in enumerate(data):
+                     try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                         value = item[field_obj.attribute or field_name]
+                     except KeyError:
+                         pass
+@@ -891,6 +981,26 @@ class BaseSchema(base.SchemaABC):
+                             data[idx].pop(field_name, None)
+             else:
+                 try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++if data is None:
++    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                    if data is None:
++                        continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                     value = data[field_obj.attribute or field_name]
+                 except KeyError:
+                     pass
+@@ -921,6 +1031,12 @@ class BaseSchema(base.SchemaABC):
+             if many and not pass_many:
+                 for idx, item in enumerate(data):
+                     try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                         unmarshal.run_validator(validator,
+                                                 item, original_data, self.fields, many=many,
+                                                 index=idx, pass_original=pass_original)
+@@ -928,6 +1044,12 @@ class BaseSchema(base.SchemaABC):
+                         errors.update(err.messages)
+             else:
+                 try:
++                if data is None:
++                    continue
++                if data is None:
++                    continue
++                if data is None:
++                    continue
+                     unmarshal.run_validator(validator,
+                                             data, original_data, self.fields, many=many,
+                                             pass_original=pass_original)

@@ -1,0 +1,10186 @@
+{
+  "status": "DIAGNOSTIC_GRAPH_READY",
+  "operations": 28024,
+  "dependencies": 41000,
+  "context": 512,
+  "batch": 4,
+  "steps": 1,
+  "layer_start": 0,
+  "layers": 48,
+  "microbatch_size": 1,
+  "microbatches": 4,
+  "sample_bytes_cap": null,
+  "full_memory_trace": true,
+  "cohort_policy": "exploratory_low_skew",
+  "cohort_repeat": 4,
+  "partition_capacity_mib": 512,
+  "capacity_class": "frozen_v3_6",
+  "compute_timing": "scalesim_shape_profile",
+  "request_ids": [
+    "2b6a4ed6c86006c5",
+    "83ab03f6af946b0f",
+    "8ba76e7b99a328dc",
+    "8ee0f92aa8441c34"
+  ],
+  "inference_request_id_map": {
+    "2b6a4ed6c86006c5": 0,
+    "83ab03f6af946b0f": 1,
+    "8ba76e7b99a328dc": 2,
+    "8ee0f92aa8441c34": 3
+  },
+  "bank_contention_owner_valid": true,
+  "scheme": "hiband_sem_moe",
+  "budget": {
+    "context": 512,
+    "batch": 4,
+    "kv_bytes": 207618048,
+    "pinned_W4_bytes": 770651136,
+    "expert_page_bytes": 2359296,
+    "cache_slots_per_partition": 187,
+    "partition_peak_bytes": 535884608,
+    "HB_capacity_bytes": 8589934592,
+    "host_capacity_bytes": 8589934592,
+    "total_W4_bytes": 15266165760,
+    "combined_minimum_bytes": 16010654720,
+    "combined_capacity_possible": true,
+    "full_host_backing_fits": false
+  },
+  "initial_host_bytes": 7436500992,
+  "hits": 863,
+  "misses": 673,
+  "evictions": 673,
+  "page_operations": [
+    {
+      "fetch": 12227,
+      "evict": 12229,
+      "commit": 12230,
+      "page": [
+        23,
+        50
+      ],
+      "victim": [
+        1,
+        98
+      ],
+      "rank": 14,
+      "slot": 13
+    },
+    {
+      "fetch": 12234,
+      "evict": 12236,
+      "commit": 12237,
+      "page": [
+        23,
+        72
+      ],
+      "victim": [
+        1,
+        67
+      ],
+      "rank": 13,
+      "slot": 13
+    },
+    {
+      "fetch": 12241,
+      "evict": 12243,
+      "commit": 12244,
+      "page": [
+        23,
+        79
+      ],
+      "victim": [
+        1,
+        101
+      ],
+      "rank": 0,
+      "slot": 13
+    },
+    {
+      "fetch": 12248,
+      "evict": 12250,
+      "commit": 12251,
+      "page": [
+        23,
+        85
+      ],
+      "victim": [
+        1,
+        69
+      ],
+      "rank": 5,
+      "slot": 13
+    },
+    {
+      "fetch": 12255,
+      "evict": 12257,
+      "commit": 12258,
+      "page": [
+        23,
+        92
+      ],
+      "victim": [
+        1,
+        92
+      ],
+      "rank": 12,
+      "slot": 14
+    },
+    {
+      "fetch": 12262,
+      "evict": 12264,
+      "commit": 12265,
+      "page": [
+        23,
+        96
+      ],
+      "victim": [
+        3,
+        84
+      ],
+      "rank": 2,
+      "slot": 29
+    },
+    {
+      "fetch": 12269,
+      "evict": 12271,
+      "commit": 12272,
+      "page": [
+        23,
+        107
+      ],
+      "victim": [
+        3,
+        121
+      ],
+      "rank": 14,
+      "slot": 31
+    },
+    {
+      "fetch": 12398,
+      "evict": 12400,
+      "commit": 12401,
+      "page": [
+        23,
+        64
+      ],
+      "victim": [
+        1,
+        77
+      ],
+      "rank": 1,
+      "slot": 14
+    },
+    {
+      "fetch": 12405,
+      "evict": 12407,
+      "commit": 12408,
+      "page": [
+        23,
+        69
+      ],
+      "victim": [
+        1,
+        58
+      ],
+      "rank": 2,
+      "slot": 12
+    },
+    {
+      "fetch": 12412,
+      "evict": 12414,
+      "commit": 12415,
+      "page": [
+        23,
+        78
+      ],
+      "victim": [
+        1,
+        64
+      ],
+      "rank": 3,
+      "slot": 13
+    },
+    {
+      "fetch": 12419,
+      "evict": 12421,
+      "commit": 12422,
+      "page": [
+        23,
+        89
+      ],
+      "victim": [
+        1,
+        102
+      ],
+      "rank": 3,
+      "slot": 14
+    },
+    {
+      "fetch": 12542,
+      "evict": 12544,
+      "commit": 12545,
+      "page": [
+        23,
+        42
+      ],
+      "victim": [
+        5,
+        81
+      ],
+      "rank": 1,
+      "slot": 44
+    },
+    {
+      "fetch": 12555,
+      "evict": 12557,
+      "commit": 12558,
+      "page": [
+        23,
+        97
+      ],
+      "victim": [
+        1,
+        94
+      ],
+      "rank": 12,
+      "slot": 15
+    },
+    {
+      "fetch": 12562,
+      "evict": 12564,
+      "commit": 12565,
+      "page": [
+        23,
+        105
+      ],
+      "victim": [
+        1,
+        87
+      ],
+      "rank": 9,
+      "slot": 14
+    },
+    {
+      "fetch": 12569,
+      "evict": 12571,
+      "commit": 12572,
+      "page": [
+        23,
+        116
+      ],
+      "victim": [
+        1,
+        123
+      ],
+      "rank": 0,
+      "slot": 14
+    },
+    {
+      "fetch": 12697,
+      "evict": 12699,
+      "commit": 12700,
+      "page": [
+        23,
+        54
+      ],
+      "victim": [
+        1,
+        44
+      ],
+      "rank": 2,
+      "slot": 11
+    },
+    {
+      "fetch": 12704,
+      "evict": 12706,
+      "commit": 12707,
+      "page": [
+        23,
+        56
+      ],
+      "victim": [
+        1,
+        39
+      ],
+      "rank": 13,
+      "slot": 11
+    },
+    {
+      "fetch": 12711,
+      "evict": 12713,
+      "commit": 12714,
+      "page": [
+        23,
+        90
+      ],
+      "victim": [
+        1,
+        84
+      ],
+      "rank": 7,
+      "slot": 13
+    },
+    {
+      "fetch": 12718,
+      "evict": 12720,
+      "commit": 12721,
+      "page": [
+        23,
+        99
+      ],
+      "victim": [
+        1,
+        114
+      ],
+      "rank": 13,
+      "slot": 15
+    },
+    {
+      "fetch": 12833,
+      "evict": 12835,
+      "commit": 12836,
+      "page": [
+        24,
+        32
+      ],
+      "victim": [
+        2,
+        3
+      ],
+      "rank": 4,
+      "slot": 17
+    },
+    {
+      "fetch": 12840,
+      "evict": 12842,
+      "commit": 12843,
+      "page": [
+        24,
+        46
+      ],
+      "victim": [
+        2,
+        57
+      ],
+      "rank": 0,
+      "slot": 19
+    },
+    {
+      "fetch": 12847,
+      "evict": 12849,
+      "commit": 12850,
+      "page": [
+        24,
+        50
+      ],
+      "victim": [
+        2,
+        59
+      ],
+      "rank": 0,
+      "slot": 20
+    },
+    {
+      "fetch": 12854,
+      "evict": 12856,
+      "commit": 12857,
+      "page": [
+        24,
+        52
+      ],
+      "victim": [
+        0,
+        74
+      ],
+      "rank": 4,
+      "slot": 3
+    },
+    {
+      "fetch": 12861,
+      "evict": 12863,
+      "commit": 12864,
+      "page": [
+        24,
+        64
+      ],
+      "victim": [
+        0,
+        35
+      ],
+      "rank": 10,
+      "slot": 3
+    },
+    {
+      "fetch": 12868,
+      "evict": 12870,
+      "commit": 12871,
+      "page": [
+        24,
+        85
+      ],
+      "victim": [
+        0,
+        56
+      ],
+      "rank": 12,
+      "slot": 4
+    },
+    {
+      "fetch": 12875,
+      "evict": 12877,
+      "commit": 12878,
+      "page": [
+        24,
+        95
+      ],
+      "victim": [
+        0,
+        66
+      ],
+      "rank": 13,
+      "slot": 5
+    },
+    {
+      "fetch": 12882,
+      "evict": 12884,
+      "commit": 12885,
+      "page": [
+        24,
+        127
+      ],
+      "victim": [
+        0,
+        124
+      ],
+      "rank": 10,
+      "slot": 7
+    },
+    {
+      "fetch": 12998,
+      "evict": 13000,
+      "commit": 13001,
+      "page": [
+        24,
+        23
+      ],
+      "victim": [
+        0,
+        30
+      ],
+      "rank": 0,
+      "slot": 1
+    },
+    {
+      "fetch": 13005,
+      "evict": 13007,
+      "commit": 13008,
+      "page": [
+        24,
+        30
+      ],
+      "victim": [
+        0,
+        50
+      ],
+      "rank": 8,
+      "slot": 2
+    },
+    {
+      "fetch": 13012,
+      "evict": 13014,
+      "commit": 13015,
+      "page": [
+        24,
+        53
+      ],
+      "victim": [
+        2,
+        31
+      ],
+      "rank": 4,
+      "slot": 20
+    },
+    {
+      "fetch": 13019,
+      "evict": 13021,
+      "commit": 13022,
+      "page": [
+        24,
+        79
+      ],
+      "victim": [
+        0,
+        60
+      ],
+      "rank": 7,
+      "slot": 3
+    },
+    {
+      "fetch": 13026,
+      "evict": 13028,
+      "commit": 13029,
+      "page": [
+        24,
+        104
+      ],
+      "victim": [
+        0,
+        115
+      ],
+      "rank": 12,
+      "slot": 7
+    },
+    {
+      "fetch": 13033,
+      "evict": 13035,
+      "commit": 13036,
+      "page": [
+        24,
+        107
+      ],
+      "victim": [
+        0,
+        82
+      ],
+      "rank": 1,
+      "slot": 7
+    },
+    {
+      "fetch": 13040,
+      "evict": 13042,
+      "commit": 13043,
+      "page": [
+        24,
+        116
+      ],
+      "victim": [
+        0,
+        102
+      ],
+      "rank": 5,
+      "slot": 5
+    },
+    {
+      "fetch": 13047,
+      "evict": 13049,
+      "commit": 13050,
+      "page": [
+        24,
+        118
+      ],
+      "victim": [
+        0,
+        108
+      ],
+      "rank": 5,
+      "slot": 6
+    },
+    {
+      "fetch": 13165,
+      "evict": 13167,
+      "commit": 13168,
+      "page": [
+        24,
+        14
+      ],
+      "victim": [
+        4,
+        20
+      ],
+      "rank": 0,
+      "slot": 32
+    },
+    {
+      "fetch": 13172,
+      "evict": 13174,
+      "commit": 13175,
+      "page": [
+        24,
+        17
+      ],
+      "victim": [
+        0,
+        20
+      ],
+      "rank": 13,
+      "slot": 1
+    },
+    {
+      "fetch": 13179,
+      "evict": 13181,
+      "commit": 13182,
+      "page": [
+        24,
+        25
+      ],
+      "victim": [
+        0,
+        39
+      ],
+      "rank": 13,
+      "slot": 2
+    },
+    {
+      "fetch": 13186,
+      "evict": 13188,
+      "commit": 13189,
+      "page": [
+        24,
+        62
+      ],
+      "victim": [
+        0,
+        47
+      ],
+      "rank": 11,
+      "slot": 5
+    },
+    {
+      "fetch": 13193,
+      "evict": 13195,
+      "commit": 13196,
+      "page": [
+        24,
+        76
+      ],
+      "victim": [
+        0,
+        123
+      ],
+      "rank": 4,
+      "slot": 6
+    },
+    {
+      "fetch": 13203,
+      "evict": 13205,
+      "commit": 13206,
+      "page": [
+        24,
+        102
+      ],
+      "victim": [
+        0,
+        79
+      ],
+      "rank": 1,
+      "slot": 6
+    },
+    {
+      "fetch": 13210,
+      "evict": 13212,
+      "commit": 13213,
+      "page": [
+        24,
+        103
+      ],
+      "victim": [
+        0,
+        86
+      ],
+      "rank": 7,
+      "slot": 5
+    },
+    {
+      "fetch": 13325,
+      "evict": 13327,
+      "commit": 13328,
+      "page": [
+        24,
+        2
+      ],
+      "victim": [
+        0,
+        11
+      ],
+      "rank": 10,
+      "slot": 0
+    },
+    {
+      "fetch": 13335,
+      "evict": 13337,
+      "commit": 13338,
+      "page": [
+        24,
+        27
+      ],
+      "victim": [
+        0,
+        33
+      ],
+      "rank": 10,
+      "slot": 2
+    },
+    {
+      "fetch": 13345,
+      "evict": 13347,
+      "commit": 13348,
+      "page": [
+        24,
+        84
+      ],
+      "victim": [
+        0,
+        99
+      ],
+      "rank": 5,
+      "slot": 4
+    },
+    {
+      "fetch": 13352,
+      "evict": 13354,
+      "commit": 13355,
+      "page": [
+        24,
+        89
+      ],
+      "victim": [
+        0,
+        36
+      ],
+      "rank": 10,
+      "slot": 4
+    },
+    {
+      "fetch": 13359,
+      "evict": 13361,
+      "commit": 13362,
+      "page": [
+        24,
+        112
+      ],
+      "victim": [
+        0,
+        119
+      ],
+      "rank": 3,
+      "slot": 7
+    },
+    {
+      "fetch": 13474,
+      "evict": 13476,
+      "commit": 13477,
+      "page": [
+        25,
+        8
+      ],
+      "victim": [
+        1,
+        12
+      ],
+      "rank": 5,
+      "slot": 9
+    },
+    {
+      "fetch": 13481,
+      "evict": 13483,
+      "commit": 13484,
+      "page": [
+        25,
+        12
+      ],
+      "victim": [
+        3,
+        10
+      ],
+      "rank": 6,
+      "slot": 24
+    },
+    {
+      "fetch": 13488,
+      "evict": 13490,
+      "commit": 13491,
+      "page": [
+        25,
+        45
+      ],
+      "victim": [
+        3,
+        40
+      ],
+      "rank": 5,
+      "slot": 26
+    },
+    {
+      "fetch": 13495,
+      "evict": 13497,
+      "commit": 13498,
+      "page": [
+        25,
+        67
+      ],
+      "victim": [
+        1,
+        54
+      ],
+      "rank": 5,
+      "slot": 12
+    },
+    {
+      "fetch": 13502,
+      "evict": 13504,
+      "commit": 13505,
+      "page": [
+        25,
+        73
+      ],
+      "victim": [
+        1,
+        43
+      ],
+      "rank": 1,
+      "slot": 11
+    },
+    {
+      "fetch": 13509,
+      "evict": 13511,
+      "commit": 13512,
+      "page": [
+        25,
+        92
+      ],
+      "victim": [
+        3,
+        91
+      ],
+      "rank": 5,
+      "slot": 29
+    },
+    {
+      "fetch": 13516,
+      "evict": 13518,
+      "commit": 13519,
+      "page": [
+        25,
+        104
+      ],
+      "victim": [
+        1,
+        95
+      ],
+      "rank": 2,
+      "slot": 15
+    },
+    {
+      "fetch": 13523,
+      "evict": 13525,
+      "commit": 13526,
+      "page": [
+        25,
+        117
+      ],
+      "victim": [
+        1,
+        124
+      ],
+      "rank": 5,
+      "slot": 15
+    },
+    {
+      "fetch": 13637,
+      "evict": 13639,
+      "commit": 13640,
+      "page": [
+        25,
+        6
+      ],
+      "victim": [
+        1,
+        16
+      ],
+      "rank": 2,
+      "slot": 9
+    },
+    {
+      "fetch": 13644,
+      "evict": 13646,
+      "commit": 13647,
+      "page": [
+        25,
+        16
+      ],
+      "victim": [
+        1,
+        73
+      ],
+      "rank": 8,
+      "slot": 9
+    },
+    {
+      "fetch": 13651,
+      "evict": 13653,
+      "commit": 13654,
+      "page": [
+        25,
+        21
+      ],
+      "victim": [
+        3,
+        3
+      ],
+      "rank": 11,
+      "slot": 24
+    },
+    {
+      "fetch": 13658,
+      "evict": 13660,
+      "commit": 13661,
+      "page": [
+        25,
+        44
+      ],
+      "victim": [
+        3,
+        41
+      ],
+      "rank": 14,
+      "slot": 26
+    },
+    {
+      "fetch": 13665,
+      "evict": 13667,
+      "commit": 13668,
+      "page": [
+        25,
+        75
+      ],
+      "victim": [
+        7,
+        68
+      ],
+      "rank": 1,
+      "slot": 60
+    },
+    {
+      "fetch": 13672,
+      "evict": 13674,
+      "commit": 13675,
+      "page": [
+        25,
+        91
+      ],
+      "victim": [
+        5,
+        118
+      ],
+      "rank": 1,
+      "slot": 46
+    },
+    {
+      "fetch": 13679,
+      "evict": 13681,
+      "commit": 13682,
+      "page": [
+        25,
+        98
+      ],
+      "victim": [
+        1,
+        80
+      ],
+      "rank": 11,
+      "slot": 12
+    },
+    {
+      "fetch": 13686,
+      "evict": 13688,
+      "commit": 13689,
+      "page": [
+        25,
+        118
+      ],
+      "victim": [
+        1,
+        106
+      ],
+      "rank": 7,
+      "slot": 14
+    },
+    {
+      "fetch": 13802,
+      "evict": 13804,
+      "commit": 13805,
+      "page": [
+        25,
+        2
+      ],
+      "victim": [
+        3,
+        2
+      ],
+      "rank": 2,
+      "slot": 24
+    },
+    {
+      "fetch": 13809,
+      "evict": 13811,
+      "commit": 13812,
+      "page": [
+        25,
+        14
+      ],
+      "victim": [
+        1,
+        13
+      ],
+      "rank": 12,
+      "slot": 8
+    },
+    {
+      "fetch": 13816,
+      "evict": 13818,
+      "commit": 13819,
+      "page": [
+        25,
+        18
+      ],
+      "victim": [
+        1,
+        51
+      ],
+      "rank": 7,
+      "slot": 8
+    },
+    {
+      "fetch": 13823,
+      "evict": 13825,
+      "commit": 13826,
+      "page": [
+        25,
+        89
+      ],
+      "victim": [
+        1,
+        127
+      ],
+      "rank": 6,
+      "slot": 15
+    },
+    {
+      "fetch": 13833,
+      "evict": 13835,
+      "commit": 13836,
+      "page": [
+        25,
+        99
+      ],
+      "victim": [
+        1,
+        72
+      ],
+      "rank": 7,
+      "slot": 11
+    },
+    {
+      "fetch": 13840,
+      "evict": 13842,
+      "commit": 13843,
+      "page": [
+        25,
+        101
+      ],
+      "victim": [
+        3,
+        87
+      ],
+      "rank": 11,
+      "slot": 29
+    },
+    {
+      "fetch": 13847,
+      "evict": 13849,
+      "commit": 13850,
+      "page": [
+        25,
+        127
+      ],
+      "victim": [
+        1,
+        112
+      ],
+      "rank": 7,
+      "slot": 15
+    },
+    {
+      "fetch": 13964,
+      "evict": 13966,
+      "commit": 13967,
+      "page": [
+        25,
+        33
+      ],
+      "victim": [
+        3,
+        28
+      ],
+      "rank": 1,
+      "slot": 24
+    },
+    {
+      "fetch": 13971,
+      "evict": 13973,
+      "commit": 13974,
+      "page": [
+        25,
+        61
+      ],
+      "victim": [
+        1,
+        70
+      ],
+      "rank": 15,
+      "slot": 11
+    },
+    {
+      "fetch": 13978,
+      "evict": 13980,
+      "commit": 13981,
+      "page": [
+        25,
+        83
+      ],
+      "victim": [
+        5,
+        84
+      ],
+      "rank": 11,
+      "slot": 43
+    },
+    {
+      "fetch": 13988,
+      "evict": 13990,
+      "commit": 13991,
+      "page": [
+        25,
+        93
+      ],
+      "victim": [
+        3,
+        83
+      ],
+      "rank": 13,
+      "slot": 28
+    },
+    {
+      "fetch": 13995,
+      "evict": 13997,
+      "commit": 13998,
+      "page": [
+        25,
+        106
+      ],
+      "victim": [
+        1,
+        79
+      ],
+      "rank": 7,
+      "slot": 12
+    },
+    {
+      "fetch": 14002,
+      "evict": 14004,
+      "commit": 14005,
+      "page": [
+        25,
+        119
+      ],
+      "victim": [
+        3,
+        111
+      ],
+      "rank": 13,
+      "slot": 31
+    },
+    {
+      "fetch": 14009,
+      "evict": 14011,
+      "commit": 14012,
+      "page": [
+        25,
+        120
+      ],
+      "victim": [
+        1,
+        126
+      ],
+      "rank": 0,
+      "slot": 15
+    },
+    {
+      "fetch": 14127,
+      "evict": 14129,
+      "commit": 14130,
+      "page": [
+        26,
+        6
+      ],
+      "victim": [
+        2,
+        35
+      ],
+      "rank": 15,
+      "slot": 16
+    },
+    {
+      "fetch": 14134,
+      "evict": 14136,
+      "commit": 14137,
+      "page": [
+        26,
+        36
+      ],
+      "victim": [
+        4,
+        45
+      ],
+      "rank": 8,
+      "slot": 34
+    },
+    {
+      "fetch": 14141,
+      "evict": 14143,
+      "commit": 14144,
+      "page": [
+        26,
+        53
+      ],
+      "victim": [
+        0,
+        106
+      ],
+      "rank": 6,
+      "slot": 6
+    },
+    {
+      "fetch": 14148,
+      "evict": 14150,
+      "commit": 14151,
+      "page": [
+        26,
+        68
+      ],
+      "victim": [
+        4,
+        68
+      ],
+      "rank": 4,
+      "slot": 36
+    },
+    {
+      "fetch": 14155,
+      "evict": 14157,
+      "commit": 14158,
+      "page": [
+        26,
+        92
+      ],
+      "victim": [
+        0,
+        104
+      ],
+      "rank": 2,
+      "slot": 6
+    },
+    {
+      "fetch": 14162,
+      "evict": 14164,
+      "commit": 14165,
+      "page": [
+        26,
+        99
+      ],
+      "victim": [
+        2,
+        102
+      ],
+      "rank": 14,
+      "slot": 22
+    },
+    {
+      "fetch": 14169,
+      "evict": 14171,
+      "commit": 14172,
+      "page": [
+        26,
+        107
+      ],
+      "victim": [
+        4,
+        105
+      ],
+      "rank": 3,
+      "slot": 38
+    },
+    {
+      "fetch": 14176,
+      "evict": 14178,
+      "commit": 14179,
+      "page": [
+        26,
+        119
+      ],
+      "victim": [
+        2,
+        94
+      ],
+      "rank": 4,
+      "slot": 22
+    },
+    {
+      "fetch": 14293,
+      "evict": 14295,
+      "commit": 14296,
+      "page": [
+        26,
+        8
+      ],
+      "victim": [
+        0,
+        64
+      ],
+      "rank": 1,
+      "slot": 0
+    },
+    {
+      "fetch": 14300,
+      "evict": 14302,
+      "commit": 14303,
+      "page": [
+        26,
+        10
+      ],
+      "victim": [
+        2,
+        26
+      ],
+      "rank": 6,
+      "slot": 17
+    },
+    {
+      "fetch": 14307,
+      "evict": 14309,
+      "commit": 14310,
+      "page": [
+        26,
+        11
+      ],
+      "victim": [
+        0,
+        28
+      ],
+      "rank": 14,
+      "slot": 0
+    },
+    {
+      "fetch": 14314,
+      "evict": 14316,
+      "commit": 14317,
+      "page": [
+        26,
+        28
+      ],
+      "victim": [
+        2,
+        37
+      ],
+      "rank": 13,
+      "slot": 17
+    },
+    {
+      "fetch": 14321,
+      "evict": 14323,
+      "commit": 14324,
+      "page": [
+        26,
+        75
+      ],
+      "victim": [
+        0,
+        45
+      ],
+      "rank": 7,
+      "slot": 2
+    },
+    {
+      "fetch": 14328,
+      "evict": 14330,
+      "commit": 14331,
+      "page": [
+        26,
+        79
+      ],
+      "victim": [
+        0,
+        101
+      ],
+      "rank": 15,
+      "slot": 5
+    },
+    {
+      "fetch": 14335,
+      "evict": 14337,
+      "commit": 14338,
+      "page": [
+        26,
+        80
+      ],
+      "victim": [
+        4,
+        18
+      ],
+      "rank": 7,
+      "slot": 35
+    },
+    {
+      "fetch": 14342,
+      "evict": 14344,
+      "commit": 14345,
+      "page": [
+        26,
+        88
+      ],
+      "victim": [
+        2,
+        72
+      ],
+      "rank": 7,
+      "slot": 22
+    },
+    {
+      "fetch": 14460,
+      "evict": 14462,
+      "commit": 14463,
+      "page": [
+        26,
+        7
+      ],
+      "victim": [
+        4,
+        33
+      ],
+      "rank": 8,
+      "slot": 32
+    },
+    {
+      "fetch": 14467,
+      "evict": 14469,
+      "commit": 14470,
+      "page": [
+        26,
+        19
+      ],
+      "victim": [
+        0,
+        5
+      ],
+      "rank": 13,
+      "slot": 0
+    },
+    {
+      "fetch": 14474,
+      "evict": 14476,
+      "commit": 14477,
+      "page": [
+        26,
+        29
+      ],
+      "victim": [
+        0,
+        40
+      ],
+      "rank": 12,
+      "slot": 2
+    },
+    {
+      "fetch": 14484,
+      "evict": 14486,
+      "commit": 14487,
+      "page": [
+        26,
+        44
+      ],
+      "victim": [
+        4,
+        54
+      ],
+      "rank": 13,
+      "slot": 34
+    },
+    {
+      "fetch": 14494,
+      "evict": 14496,
+      "commit": 14497,
+      "page": [
+        26,
+        102
+      ],
+      "victim": [
+        0,
+        59
+      ],
+      "rank": 13,
+      "slot": 4
+    },
+    {
+      "fetch": 14607,
+      "evict": 14609,
+      "commit": 14610,
+      "page": [
+        26,
+        14
+      ],
+      "victim": [
+        6,
+        31
+      ],
+      "rank": 0,
+      "slot": 48
+    },
+    {
+      "fetch": 14614,
+      "evict": 14616,
+      "commit": 14617,
+      "page": [
+        26,
+        33
+      ],
+      "victim": [
+        0,
+        19
+      ],
+      "rank": 2,
+      "slot": 2
+    },
+    {
+      "fetch": 14621,
+      "evict": 14623,
+      "commit": 14624,
+      "page": [
+        26,
+        38
+      ],
+      "victim": [
+        0,
+        61
+      ],
+      "rank": 2,
+      "slot": 3
+    },
+    {
+      "fetch": 14628,
+      "evict": 14630,
+      "commit": 14631,
+      "page": [
+        26,
+        61
+      ],
+      "victim": [
+        2,
+        73
+      ],
+      "rank": 8,
+      "slot": 20
+    },
+    {
+      "fetch": 14635,
+      "evict": 14637,
+      "commit": 14638,
+      "page": [
+        26,
+        63
+      ],
+      "victim": [
+        6,
+        36
+      ],
+      "rank": 0,
+      "slot": 51
+    },
+    {
+      "fetch": 14642,
+      "evict": 14644,
+      "commit": 14645,
+      "page": [
+        26,
+        66
+      ],
+      "victim": [
+        2,
+        53
+      ],
+      "rank": 9,
+      "slot": 19
+    },
+    {
+      "fetch": 14649,
+      "evict": 14651,
+      "commit": 14652,
+      "page": [
+        26,
+        73
+      ],
+      "victim": [
+        0,
+        81
+      ],
+      "rank": 2,
+      "slot": 5
+    },
+    {
+      "fetch": 14766,
+      "evict": 14768,
+      "commit": 14769,
+      "page": [
+        27,
+        29
+      ],
+      "victim": [
+        1,
+        23
+      ],
+      "rank": 1,
+      "slot": 10
+    },
+    {
+      "fetch": 14773,
+      "evict": 14775,
+      "commit": 14776,
+      "page": [
+        27,
+        30
+      ],
+      "victim": [
+        1,
+        33
+      ],
+      "rank": 9,
+      "slot": 9
+    },
+    {
+      "fetch": 14780,
+      "evict": 14782,
+      "commit": 14783,
+      "page": [
+        27,
+        59
+      ],
+      "victim": [
+        3,
+        71
+      ],
+      "rank": 11,
+      "slot": 28
+    },
+    {
+      "fetch": 14787,
+      "evict": 14789,
+      "commit": 14790,
+      "page": [
+        27,
+        71
+      ],
+      "victim": [
+        1,
+        47
+      ],
+      "rank": 6,
+      "slot": 12
+    },
+    {
+      "fetch": 14794,
+      "evict": 14796,
+      "commit": 14797,
+      "page": [
+        27,
+        89
+      ],
+      "victim": [
+        1,
+        116
+      ],
+      "rank": 1,
+      "slot": 15
+    },
+    {
+      "fetch": 14801,
+      "evict": 14803,
+      "commit": 14804,
+      "page": [
+        27,
+        91
+      ],
+      "victim": [
+        1,
+        110
+      ],
+      "rank": 8,
+      "slot": 13
+    },
+    {
+      "fetch": 14808,
+      "evict": 14810,
+      "commit": 14811,
+      "page": [
+        27,
+        100
+      ],
+      "victim": [
+        1,
+        50
+      ],
+      "rank": 12,
+      "slot": 13
+    },
+    {
+      "fetch": 14815,
+      "evict": 14817,
+      "commit": 14818,
+      "page": [
+        27,
+        120
+      ],
+      "victim": [
+        3,
+        118
+      ],
+      "rank": 12,
+      "slot": 31
+    },
+    {
+      "fetch": 14931,
+      "evict": 14933,
+      "commit": 14934,
+      "page": [
+        27,
+        4
+      ],
+      "victim": [
+        1,
+        22
+      ],
+      "rank": 3,
+      "slot": 8
+    },
+    {
+      "fetch": 14938,
+      "evict": 14940,
+      "commit": 14941,
+      "page": [
+        27,
+        10
+      ],
+      "victim": [
+        1,
+        11
+      ],
+      "rank": 10,
+      "slot": 8
+    },
+    {
+      "fetch": 14945,
+      "evict": 14947,
+      "commit": 14948,
+      "page": [
+        27,
+        16
+      ],
+      "victim": [
+        1,
+        56
+      ],
+      "rank": 7,
+      "slot": 10
+    },
+    {
+      "fetch": 14952,
+      "evict": 14954,
+      "commit": 14955,
+      "page": [
+        27,
+        23
+      ],
+      "victim": [
+        7,
+        83
+      ],
+      "rank": 7,
+      "slot": 59
+    },
+    {
+      "fetch": 14959,
+      "evict": 14961,
+      "commit": 14962,
+      "page": [
+        27,
+        56
+      ],
+      "victim": [
+        1,
+        85
+      ],
+      "rank": 8,
+      "slot": 11
+    },
+    {
+      "fetch": 14966,
+      "evict": 14968,
+      "commit": 14969,
+      "page": [
+        27,
+        60
+      ],
+      "victim": [
+        1,
+        46
+      ],
+      "rank": 10,
+      "slot": 10
+    },
+    {
+      "fetch": 14973,
+      "evict": 14975,
+      "commit": 14976,
+      "page": [
+        27,
+        86
+      ],
+      "victim": [
+        3,
+        64
+      ],
+      "rank": 2,
+      "slot": 28
+    },
+    {
+      "fetch": 15090,
+      "evict": 15092,
+      "commit": 15093,
+      "page": [
+        27,
+        8
+      ],
+      "victim": [
+        1,
+        35
+      ],
+      "rank": 8,
+      "slot": 8
+    },
+    {
+      "fetch": 15097,
+      "evict": 15099,
+      "commit": 15100,
+      "page": [
+        27,
+        31
+      ],
+      "victim": [
+        3,
+        36
+      ],
+      "rank": 8,
+      "slot": 25
+    },
+    {
+      "fetch": 15104,
+      "evict": 15106,
+      "commit": 15107,
+      "page": [
+        27,
+        77
+      ],
+      "victim": [
+        1,
+        100
+      ],
+      "rank": 8,
+      "slot": 12
+    },
+    {
+      "fetch": 15111,
+      "evict": 15113,
+      "commit": 15114,
+      "page": [
+        27,
+        82
+      ],
+      "victim": [
+        1,
+        40
+      ],
+      "rank": 12,
+      "slot": 12
+    },
+    {
+      "fetch": 15118,
+      "evict": 15120,
+      "commit": 15121,
+      "page": [
+        27,
+        84
+      ],
+      "victim": [
+        1,
+        99
+      ],
+      "rank": 10,
+      "slot": 13
+    },
+    {
+      "fetch": 15131,
+      "evict": 15133,
+      "commit": 15134,
+      "page": [
+        27,
+        121
+      ],
+      "victim": [
+        5,
+        123
+      ],
+      "rank": 2,
+      "slot": 47
+    },
+    {
+      "fetch": 15243,
+      "evict": 15245,
+      "commit": 15246,
+      "page": [
+        27,
+        0
+      ],
+      "victim": [
+        5,
+        11
+      ],
+      "rank": 1,
+      "slot": 40
+    },
+    {
+      "fetch": 15250,
+      "evict": 15252,
+      "commit": 15253,
+      "page": [
+        27,
+        25
+      ],
+      "victim": [
+        3,
+        21
+      ],
+      "rank": 13,
+      "slot": 25
+    },
+    {
+      "fetch": 15257,
+      "evict": 15259,
+      "commit": 15260,
+      "page": [
+        27,
+        32
+      ],
+      "victim": [
+        5,
+        45
+      ],
+      "rank": 1,
+      "slot": 43
+    },
+    {
+      "fetch": 15264,
+      "evict": 15266,
+      "commit": 15267,
+      "page": [
+        27,
+        40
+      ],
+      "victim": [
+        1,
+        26
+      ],
+      "rank": 12,
+      "slot": 11
+    },
+    {
+      "fetch": 15271,
+      "evict": 15273,
+      "commit": 15274,
+      "page": [
+        27,
+        49
+      ],
+      "victim": [
+        3,
+        78
+      ],
+      "rank": 7,
+      "slot": 28
+    },
+    {
+      "fetch": 15278,
+      "evict": 15280,
+      "commit": 15281,
+      "page": [
+        27,
+        80
+      ],
+      "victim": [
+        1,
+        76
+      ],
+      "rank": 1,
+      "slot": 13
+    },
+    {
+      "fetch": 15288,
+      "evict": 15290,
+      "commit": 15291,
+      "page": [
+        27,
+        127
+      ],
+      "victim": [
+        3,
+        120
+      ],
+      "rank": 7,
+      "slot": 31
+    },
+    {
+      "fetch": 15401,
+      "evict": 15403,
+      "commit": 15404,
+      "page": [
+        28,
+        0
+      ],
+      "victim": [
+        0,
+        1
+      ],
+      "rank": 12,
+      "slot": 0
+    },
+    {
+      "fetch": 15408,
+      "evict": 15410,
+      "commit": 15411,
+      "page": [
+        28,
+        18
+      ],
+      "victim": [
+        0,
+        57
+      ],
+      "rank": 4,
+      "slot": 2
+    },
+    {
+      "fetch": 15415,
+      "evict": 15417,
+      "commit": 15418,
+      "page": [
+        28,
+        30
+      ],
+      "victim": [
+        0,
+        54
+      ],
+      "rank": 12,
+      "slot": 3
+    },
+    {
+      "fetch": 15422,
+      "evict": 15424,
+      "commit": 15425,
+      "page": [
+        28,
+        57
+      ],
+      "victim": [
+        8,
+        60
+      ],
+      "rank": 4,
+      "slot": 68
+    },
+    {
+      "fetch": 15429,
+      "evict": 15431,
+      "commit": 15432,
+      "page": [
+        28,
+        80
+      ],
+      "victim": [
+        0,
+        100
+      ],
+      "rank": 0,
+      "slot": 5
+    },
+    {
+      "fetch": 15436,
+      "evict": 15438,
+      "commit": 15439,
+      "page": [
+        28,
+        83
+      ],
+      "victim": [
+        2,
+        66
+      ],
+      "rank": 7,
+      "slot": 21
+    },
+    {
+      "fetch": 15443,
+      "evict": 15445,
+      "commit": 15446,
+      "page": [
+        28,
+        90
+      ],
+      "victim": [
+        0,
+        84
+      ],
+      "rank": 12,
+      "slot": 5
+    },
+    {
+      "fetch": 15450,
+      "evict": 15452,
+      "commit": 15453,
+      "page": [
+        28,
+        101
+      ],
+      "victim": [
+        0,
+        48
+      ],
+      "rank": 11,
+      "slot": 6
+    },
+    {
+      "fetch": 15565,
+      "evict": 15567,
+      "commit": 15568,
+      "page": [
+        28,
+        7
+      ],
+      "victim": [
+        0,
+        8
+      ],
+      "rank": 3,
+      "slot": 0
+    },
+    {
+      "fetch": 15572,
+      "evict": 15574,
+      "commit": 15575,
+      "page": [
+        28,
+        8
+      ],
+      "victim": [
+        0,
+        25
+      ],
+      "rank": 4,
+      "slot": 0
+    },
+    {
+      "fetch": 15579,
+      "evict": 15581,
+      "commit": 15582,
+      "page": [
+        28,
+        9
+      ],
+      "victim": [
+        0,
+        7
+      ],
+      "rank": 12,
+      "slot": 1
+    },
+    {
+      "fetch": 15586,
+      "evict": 15588,
+      "commit": 15589,
+      "page": [
+        28,
+        15
+      ],
+      "victim": [
+        0,
+        17
+      ],
+      "rank": 3,
+      "slot": 2
+    },
+    {
+      "fetch": 15593,
+      "evict": 15595,
+      "commit": 15596,
+      "page": [
+        28,
+        60
+      ],
+      "victim": [
+        6,
+        103
+      ],
+      "rank": 3,
+      "slot": 54
+    },
+    {
+      "fetch": 15606,
+      "evict": 15608,
+      "commit": 15609,
+      "page": [
+        28,
+        84
+      ],
+      "victim": [
+        2,
+        82
+      ],
+      "rank": 11,
+      "slot": 20
+    },
+    {
+      "fetch": 15720,
+      "evict": 15722,
+      "commit": 15723,
+      "page": [
+        28,
+        11
+      ],
+      "victim": [
+        4,
+        43
+      ],
+      "rank": 4,
+      "slot": 33
+    },
+    {
+      "fetch": 15727,
+      "evict": 15729,
+      "commit": 15730,
+      "page": [
+        28,
+        13
+      ],
+      "victim": [
+        0,
+        4
+      ],
+      "rank": 11,
+      "slot": 0
+    },
+    {
+      "fetch": 15737,
+      "evict": 15739,
+      "commit": 15740,
+      "page": [
+        28,
+        24
+      ],
+      "victim": [
+        2,
+        16
+      ],
+      "rank": 0,
+      "slot": 17
+    },
+    {
+      "fetch": 15744,
+      "evict": 15746,
+      "commit": 15747,
+      "page": [
+        28,
+        50
+      ],
+      "victim": [
+        2,
+        21
+      ],
+      "rank": 4,
+      "slot": 19
+    },
+    {
+      "fetch": 15757,
+      "evict": 15759,
+      "commit": 15760,
+      "page": [
+        28,
+        100
+      ],
+      "victim": [
+        2,
+        86
+      ],
+      "rank": 11,
+      "slot": 21
+    },
+    {
+      "fetch": 15877,
+      "evict": 15879,
+      "commit": 15880,
+      "page": [
+        28,
+        35
+      ],
+      "victim": [
+        6,
+        60
+      ],
+      "rank": 8,
+      "slot": 50
+    },
+    {
+      "fetch": 15884,
+      "evict": 15886,
+      "commit": 15887,
+      "page": [
+        28,
+        48
+      ],
+      "victim": [
+        4,
+        24
+      ],
+      "rank": 13,
+      "slot": 33
+    },
+    {
+      "fetch": 15891,
+      "evict": 15893,
+      "commit": 15894,
+      "page": [
+        28,
+        76
+      ],
+      "victim": [
+        2,
+        52
+      ],
+      "rank": 12,
+      "slot": 20
+    },
+    {
+      "fetch": 15898,
+      "evict": 15900,
+      "commit": 15901,
+      "page": [
+        28,
+        93
+      ],
+      "victim": [
+        0,
+        113
+      ],
+      "rank": 10,
+      "slot": 6
+    },
+    {
+      "fetch": 15908,
+      "evict": 15910,
+      "commit": 15911,
+      "page": [
+        28,
+        105
+      ],
+      "victim": [
+        0,
+        98
+      ],
+      "rank": 12,
+      "slot": 6
+    },
+    {
+      "fetch": 16023,
+      "evict": 16025,
+      "commit": 16026,
+      "page": [
+        29,
+        5
+      ],
+      "victim": [
+        5,
+        0
+      ],
+      "rank": 11,
+      "slot": 40
+    },
+    {
+      "fetch": 16030,
+      "evict": 16032,
+      "commit": 16033,
+      "page": [
+        29,
+        44
+      ],
+      "victim": [
+        1,
+        34
+      ],
+      "rank": 13,
+      "slot": 10
+    },
+    {
+      "fetch": 16037,
+      "evict": 16039,
+      "commit": 16040,
+      "page": [
+        29,
+        57
+      ],
+      "victim": [
+        3,
+        117
+      ],
+      "rank": 9,
+      "slot": 30
+    },
+    {
+      "fetch": 16044,
+      "evict": 16046,
+      "commit": 16047,
+      "page": [
+        29,
+        66
+      ],
+      "victim": [
+        5,
+        12
+      ],
+      "rank": 5,
+      "slot": 41
+    },
+    {
+      "fetch": 16051,
+      "evict": 16053,
+      "commit": 16054,
+      "page": [
+        29,
+        77
+      ],
+      "victim": [
+        3,
+        96
+      ],
+      "rank": 13,
+      "slot": 29
+    },
+    {
+      "fetch": 16058,
+      "evict": 16060,
+      "commit": 16061,
+      "page": [
+        29,
+        82
+      ],
+      "victim": [
+        5,
+        71
+      ],
+      "rank": 13,
+      "slot": 47
+    },
+    {
+      "fetch": 16065,
+      "evict": 16067,
+      "commit": 16068,
+      "page": [
+        29,
+        83
+      ],
+      "victim": [
+        3,
+        113
+      ],
+      "rank": 10,
+      "slot": 30
+    },
+    {
+      "fetch": 16072,
+      "evict": 16074,
+      "commit": 16075,
+      "page": [
+        29,
+        92
+      ],
+      "victim": [
+        7,
+        109
+      ],
+      "rank": 5,
+      "slot": 61
+    },
+    {
+      "fetch": 16187,
+      "evict": 16189,
+      "commit": 16190,
+      "page": [
+        29,
+        15
+      ],
+      "victim": [
+        3,
+        31
+      ],
+      "rank": 8,
+      "slot": 24
+    },
+    {
+      "fetch": 16194,
+      "evict": 16196,
+      "commit": 16197,
+      "page": [
+        29,
+        46
+      ],
+      "victim": [
+        1,
+        38
+      ],
+      "rank": 9,
+      "slot": 11
+    },
+    {
+      "fetch": 16201,
+      "evict": 16203,
+      "commit": 16204,
+      "page": [
+        29,
+        52
+      ],
+      "victim": [
+        5,
+        20
+      ],
+      "rank": 8,
+      "slot": 41
+    },
+    {
+      "fetch": 16208,
+      "evict": 16210,
+      "commit": 16211,
+      "page": [
+        29,
+        78
+      ],
+      "victim": [
+        3,
+        108
+      ],
+      "rank": 15,
+      "slot": 29
+    },
+    {
+      "fetch": 16218,
+      "evict": 16220,
+      "commit": 16221,
+      "page": [
+        29,
+        86
+      ],
+      "victim": [
+        5,
+        104
+      ],
+      "rank": 11,
+      "slot": 45
+    },
+    {
+      "fetch": 16225,
+      "evict": 16227,
+      "commit": 16228,
+      "page": [
+        29,
+        103
+      ],
+      "victim": [
+        3,
+        119
+      ],
+      "rank": 5,
+      "slot": 31
+    },
+    {
+      "fetch": 16232,
+      "evict": 16234,
+      "commit": 16235,
+      "page": [
+        29,
+        120
+      ],
+      "victim": [
+        1,
+        113
+      ],
+      "rank": 10,
+      "slot": 15
+    },
+    {
+      "fetch": 16346,
+      "evict": 16348,
+      "commit": 16349,
+      "page": [
+        29,
+        9
+      ],
+      "victim": [
+        3,
+        23
+      ],
+      "rank": 3,
+      "slot": 24
+    },
+    {
+      "fetch": 16353,
+      "evict": 16355,
+      "commit": 16356,
+      "page": [
+        29,
+        58
+      ],
+      "victim": [
+        7,
+        15
+      ],
+      "rank": 11,
+      "slot": 59
+    },
+    {
+      "fetch": 16369,
+      "evict": 16371,
+      "commit": 16372,
+      "page": [
+        29,
+        102
+      ],
+      "victim": [
+        3,
+        65
+      ],
+      "rank": 3,
+      "slot": 29
+    },
+    {
+      "fetch": 16376,
+      "evict": 16378,
+      "commit": 16379,
+      "page": [
+        29,
+        112
+      ],
+      "victim": [
+        3,
+        76
+      ],
+      "rank": 3,
+      "slot": 30
+    },
+    {
+      "fetch": 16493,
+      "evict": 16495,
+      "commit": 16496,
+      "page": [
+        29,
+        1
+      ],
+      "victim": [
+        3,
+        15
+      ],
+      "rank": 15,
+      "slot": 24
+    },
+    {
+      "fetch": 16500,
+      "evict": 16502,
+      "commit": 16503,
+      "page": [
+        29,
+        26
+      ],
+      "victim": [
+        1,
+        5
+      ],
+      "rank": 4,
+      "slot": 8
+    },
+    {
+      "fetch": 16507,
+      "evict": 16509,
+      "commit": 16510,
+      "page": [
+        29,
+        49
+      ],
+      "victim": [
+        1,
+        91
+      ],
+      "rank": 0,
+      "slot": 12
+    },
+    {
+      "fetch": 16514,
+      "evict": 16516,
+      "commit": 16517,
+      "page": [
+        29,
+        80
+      ],
+      "victim": [
+        1,
+        68
+      ],
+      "rank": 13,
+      "slot": 14
+    },
+    {
+      "fetch": 16524,
+      "evict": 16526,
+      "commit": 16527,
+      "page": [
+        29,
+        99
+      ],
+      "victim": [
+        1,
+        125
+      ],
+      "rank": 4,
+      "slot": 15
+    },
+    {
+      "fetch": 16531,
+      "evict": 16533,
+      "commit": 16534,
+      "page": [
+        29,
+        114
+      ],
+      "victim": [
+        3,
+        86
+      ],
+      "rank": 1,
+      "slot": 31
+    },
+    {
+      "fetch": 16538,
+      "evict": 16540,
+      "commit": 16541,
+      "page": [
+        29,
+        122
+      ],
+      "victim": [
+        3,
+        127
+      ],
+      "rank": 6,
+      "slot": 31
+    },
+    {
+      "fetch": 16654,
+      "evict": 16656,
+      "commit": 16657,
+      "page": [
+        30,
+        25
+      ],
+      "victim": [
+        0,
+        18
+      ],
+      "rank": 10,
+      "slot": 1
+    },
+    {
+      "fetch": 16661,
+      "evict": 16663,
+      "commit": 16664,
+      "page": [
+        30,
+        26
+      ],
+      "victim": [
+        4,
+        5
+      ],
+      "rank": 10,
+      "slot": 34
+    },
+    {
+      "fetch": 16668,
+      "evict": 16670,
+      "commit": 16671,
+      "page": [
+        30,
+        63
+      ],
+      "victim": [
+        2,
+        89
+      ],
+      "rank": 10,
+      "slot": 20
+    },
+    {
+      "fetch": 16675,
+      "evict": 16677,
+      "commit": 16678,
+      "page": [
+        30,
+        67
+      ],
+      "victim": [
+        4,
+        41
+      ],
+      "rank": 5,
+      "slot": 36
+    },
+    {
+      "fetch": 16682,
+      "evict": 16684,
+      "commit": 16685,
+      "page": [
+        30,
+        70
+      ],
+      "victim": [
+        0,
+        68
+      ],
+      "rank": 9,
+      "slot": 5
+    },
+    {
+      "fetch": 16689,
+      "evict": 16691,
+      "commit": 16692,
+      "page": [
+        30,
+        75
+      ],
+      "victim": [
+        4,
+        90
+      ],
+      "rank": 14,
+      "slot": 38
+    },
+    {
+      "fetch": 16696,
+      "evict": 16698,
+      "commit": 16699,
+      "page": [
+        30,
+        94
+      ],
+      "victim": [
+        0,
+        94
+      ],
+      "rank": 3,
+      "slot": 5
+    },
+    {
+      "fetch": 16703,
+      "evict": 16705,
+      "commit": 16706,
+      "page": [
+        30,
+        110
+      ],
+      "victim": [
+        4,
+        112
+      ],
+      "rank": 4,
+      "slot": 38
+    },
+    {
+      "fetch": 16819,
+      "evict": 16821,
+      "commit": 16822,
+      "page": [
+        30,
+        8
+      ],
+      "victim": [
+        0,
+        14
+      ],
+      "rank": 2,
+      "slot": 0
+    },
+    {
+      "fetch": 16826,
+      "evict": 16828,
+      "commit": 16829,
+      "page": [
+        30,
+        30
+      ],
+      "victim": [
+        2,
+        69
+      ],
+      "rank": 2,
+      "slot": 18
+    },
+    {
+      "fetch": 16833,
+      "evict": 16835,
+      "commit": 16836,
+      "page": [
+        30,
+        31
+      ],
+      "victim": [
+        4,
+        40
+      ],
+      "rank": 12,
+      "slot": 33
+    },
+    {
+      "fetch": 16840,
+      "evict": 16842,
+      "commit": 16843,
+      "page": [
+        30,
+        34
+      ],
+      "victim": [
+        6,
+        9
+      ],
+      "rank": 8,
+      "slot": 48
+    },
+    {
+      "fetch": 16847,
+      "evict": 16849,
+      "commit": 16850,
+      "page": [
+        30,
+        46
+      ],
+      "victim": [
+        2,
+        48
+      ],
+      "rank": 9,
+      "slot": 18
+    },
+    {
+      "fetch": 16854,
+      "evict": 16856,
+      "commit": 16857,
+      "page": [
+        30,
+        56
+      ],
+      "victim": [
+        4,
+        76
+      ],
+      "rank": 2,
+      "slot": 37
+    },
+    {
+      "fetch": 16861,
+      "evict": 16863,
+      "commit": 16864,
+      "page": [
+        30,
+        64
+      ],
+      "victim": [
+        6,
+        38
+      ],
+      "rank": 4,
+      "slot": 49
+    },
+    {
+      "fetch": 16868,
+      "evict": 16870,
+      "commit": 16871,
+      "page": [
+        30,
+        116
+      ],
+      "victim": [
+        2,
+        124
+      ],
+      "rank": 10,
+      "slot": 23
+    },
+    {
+      "fetch": 16986,
+      "evict": 16988,
+      "commit": 16989,
+      "page": [
+        30,
+        38
+      ],
+      "victim": [
+        0,
+        69
+      ],
+      "rank": 14,
+      "slot": 3
+    },
+    {
+      "fetch": 16993,
+      "evict": 16995,
+      "commit": 16996,
+      "page": [
+        30,
+        44
+      ],
+      "victim": [
+        0,
+        43
+      ],
+      "rank": 6,
+      "slot": 2
+    },
+    {
+      "fetch": 17012,
+      "evict": 17014,
+      "commit": 17015,
+      "page": [
+        30,
+        127
+      ],
+      "victim": [
+        0,
+        127
+      ],
+      "rank": 4,
+      "slot": 7
+    },
+    {
+      "fetch": 17127,
+      "evict": 17129,
+      "commit": 17130,
+      "page": [
+        30,
+        22
+      ],
+      "victim": [
+        2,
+        24
+      ],
+      "rank": 0,
+      "slot": 18
+    },
+    {
+      "fetch": 17134,
+      "evict": 17136,
+      "commit": 17137,
+      "page": [
+        30,
+        37
+      ],
+      "victim": [
+        2,
+        95
+      ],
+      "rank": 0,
+      "slot": 21
+    },
+    {
+      "fetch": 17141,
+      "evict": 17143,
+      "commit": 17144,
+      "page": [
+        30,
+        87
+      ],
+      "victim": [
+        2,
+        96
+      ],
+      "rank": 15,
+      "slot": 21
+    },
+    {
+      "fetch": 17148,
+      "evict": 17150,
+      "commit": 17151,
+      "page": [
+        30,
+        91
+      ],
+      "victim": [
+        0,
+        85
+      ],
+      "rank": 7,
+      "slot": 4
+    },
+    {
+      "fetch": 17155,
+      "evict": 17157,
+      "commit": 17158,
+      "page": [
+        30,
+        107
+      ],
+      "victim": [
+        2,
+        126
+      ],
+      "rank": 15,
+      "slot": 23
+    },
+    {
+      "fetch": 17162,
+      "evict": 17164,
+      "commit": 17165,
+      "page": [
+        30,
+        122
+      ],
+      "victim": [
+        2,
+        121
+      ],
+      "rank": 3,
+      "slot": 23
+    },
+    {
+      "fetch": 17169,
+      "evict": 17171,
+      "commit": 17172,
+      "page": [
+        30,
+        124
+      ],
+      "victim": [
+        2,
+        93
+      ],
+      "rank": 11,
+      "slot": 23
+    },
+    {
+      "fetch": 17176,
+      "evict": 17178,
+      "commit": 17179,
+      "page": [
+        30,
+        126
+      ],
+      "victim": [
+        0,
+        116
+      ],
+      "rank": 8,
+      "slot": 7
+    },
+    {
+      "fetch": 17292,
+      "evict": 17294,
+      "commit": 17295,
+      "page": [
+        31,
+        6
+      ],
+      "victim": [
+        1,
+        21
+      ],
+      "rank": 9,
+      "slot": 8
+    },
+    {
+      "fetch": 17299,
+      "evict": 17301,
+      "commit": 17302,
+      "page": [
+        31,
+        9
+      ],
+      "victim": [
+        3,
+        9
+      ],
+      "rank": 14,
+      "slot": 25
+    },
+    {
+      "fetch": 17306,
+      "evict": 17308,
+      "commit": 17309,
+      "page": [
+        31,
+        30
+      ],
+      "victim": [
+        7,
+        11
+      ],
+      "rank": 11,
+      "slot": 56
+    },
+    {
+      "fetch": 17313,
+      "evict": 17315,
+      "commit": 17316,
+      "page": [
+        31,
+        41
+      ],
+      "victim": [
+        1,
+        19
+      ],
+      "rank": 12,
+      "slot": 10
+    },
+    {
+      "fetch": 17320,
+      "evict": 17322,
+      "commit": 17323,
+      "page": [
+        31,
+        73
+      ],
+      "victim": [
+        5,
+        91
+      ],
+      "rank": 1,
+      "slot": 45
+    },
+    {
+      "fetch": 17327,
+      "evict": 17329,
+      "commit": 17330,
+      "page": [
+        31,
+        106
+      ],
+      "victim": [
+        5,
+        65
+      ],
+      "rank": 0,
+      "slot": 44
+    },
+    {
+      "fetch": 17334,
+      "evict": 17336,
+      "commit": 17337,
+      "page": [
+        31,
+        110
+      ],
+      "victim": [
+        5,
+        124
+      ],
+      "rank": 1,
+      "slot": 47
+    },
+    {
+      "fetch": 17341,
+      "evict": 17343,
+      "commit": 17344,
+      "page": [
+        31,
+        125
+      ],
+      "victim": [
+        1,
+        103
+      ],
+      "rank": 14,
+      "slot": 14
+    },
+    {
+      "fetch": 17456,
+      "evict": 17458,
+      "commit": 17459,
+      "page": [
+        31,
+        3
+      ],
+      "victim": [
+        5,
+        9
+      ],
+      "rank": 3,
+      "slot": 40
+    },
+    {
+      "fetch": 17466,
+      "evict": 17468,
+      "commit": 17469,
+      "page": [
+        31,
+        34
+      ],
+      "victim": [
+        3,
+        99
+      ],
+      "rank": 15,
+      "slot": 27
+    },
+    {
+      "fetch": 17473,
+      "evict": 17475,
+      "commit": 17476,
+      "page": [
+        31,
+        36
+      ],
+      "victim": [
+        1,
+        10
+      ],
+      "rank": 4,
+      "slot": 9
+    },
+    {
+      "fetch": 17480,
+      "evict": 17482,
+      "commit": 17483,
+      "page": [
+        31,
+        51
+      ],
+      "victim": [
+        3,
+        27
+      ],
+      "rank": 0,
+      "slot": 25
+    },
+    {
+      "fetch": 17487,
+      "evict": 17489,
+      "commit": 17490,
+      "page": [
+        31,
+        66
+      ],
+      "victim": [
+        1,
+        82
+      ],
+      "rank": 4,
+      "slot": 11
+    },
+    {
+      "fetch": 17494,
+      "evict": 17496,
+      "commit": 17497,
+      "page": [
+        31,
+        94
+      ],
+      "victim": [
+        1,
+        119
+      ],
+      "rank": 4,
+      "slot": 13
+    },
+    {
+      "fetch": 17501,
+      "evict": 17503,
+      "commit": 17504,
+      "page": [
+        31,
+        95
+      ],
+      "victim": [
+        1,
+        115
+      ],
+      "rank": 15,
+      "slot": 15
+    },
+    {
+      "fetch": 17615,
+      "evict": 17617,
+      "commit": 17618,
+      "page": [
+        31,
+        2
+      ],
+      "victim": [
+        1,
+        0
+      ],
+      "rank": 5,
+      "slot": 8
+    },
+    {
+      "fetch": 17628,
+      "evict": 17630,
+      "commit": 17631,
+      "page": [
+        31,
+        21
+      ],
+      "victim": [
+        3,
+        18
+      ],
+      "rank": 4,
+      "slot": 24
+    },
+    {
+      "fetch": 17635,
+      "evict": 17637,
+      "commit": 17638,
+      "page": [
+        31,
+        33
+      ],
+      "victim": [
+        1,
+        66
+      ],
+      "rank": 14,
+      "slot": 11
+    },
+    {
+      "fetch": 17760,
+      "evict": 17762,
+      "commit": 17763,
+      "page": [
+        31,
+        19
+      ],
+      "victim": [
+        5,
+        35
+      ],
+      "rank": 13,
+      "slot": 44
+    },
+    {
+      "fetch": 17767,
+      "evict": 17769,
+      "commit": 17770,
+      "page": [
+        31,
+        24
+      ],
+      "victim": [
+        5,
+        17
+      ],
+      "rank": 6,
+      "slot": 40
+    },
+    {
+      "fetch": 17774,
+      "evict": 17776,
+      "commit": 17777,
+      "page": [
+        31,
+        32
+      ],
+      "victim": [
+        5,
+        32
+      ],
+      "rank": 1,
+      "slot": 41
+    },
+    {
+      "fetch": 17784,
+      "evict": 17786,
+      "commit": 17787,
+      "page": [
+        31,
+        44
+      ],
+      "victim": [
+        1,
+        36
+      ],
+      "rank": 3,
+      "slot": 10
+    },
+    {
+      "fetch": 17791,
+      "evict": 17793,
+      "commit": 17794,
+      "page": [
+        31,
+        56
+      ],
+      "victim": [
+        3,
+        33
+      ],
+      "rank": 10,
+      "slot": 26
+    },
+    {
+      "fetch": 17798,
+      "evict": 17800,
+      "commit": 17801,
+      "page": [
+        31,
+        84
+      ],
+      "victim": [
+        1,
+        57
+      ],
+      "rank": 9,
+      "slot": 12
+    },
+    {
+      "fetch": 17805,
+      "evict": 17807,
+      "commit": 17808,
+      "page": [
+        31,
+        88
+      ],
+      "victim": [
+        3,
+        110
+      ],
+      "rank": 10,
+      "slot": 29
+    },
+    {
+      "fetch": 17921,
+      "evict": 17923,
+      "commit": 17924,
+      "page": [
+        32,
+        3
+      ],
+      "victim": [
+        0,
+        9
+      ],
+      "rank": 5,
+      "slot": 0
+    },
+    {
+      "fetch": 17928,
+      "evict": 17930,
+      "commit": 17931,
+      "page": [
+        32,
+        37
+      ],
+      "victim": [
+        8,
+        71
+      ],
+      "rank": 0,
+      "slot": 67
+    },
+    {
+      "fetch": 17935,
+      "evict": 17937,
+      "commit": 17938,
+      "page": [
+        32,
+        46
+      ],
+      "victim": [
+        4,
+        65
+      ],
+      "rank": 4,
+      "slot": 35
+    },
+    {
+      "fetch": 17942,
+      "evict": 17944,
+      "commit": 17945,
+      "page": [
+        32,
+        77
+      ],
+      "victim": [
+        0,
+        67
+      ],
+      "rank": 1,
+      "slot": 2
+    },
+    {
+      "fetch": 17949,
+      "evict": 17951,
+      "commit": 17952,
+      "page": [
+        32,
+        79
+      ],
+      "victim": [
+        2,
+        99
+      ],
+      "rank": 0,
+      "slot": 22
+    },
+    {
+      "fetch": 17956,
+      "evict": 17958,
+      "commit": 17959,
+      "page": [
+        32,
+        83
+      ],
+      "victim": [
+        2,
+        74
+      ],
+      "rank": 3,
+      "slot": 21
+    },
+    {
+      "fetch": 17963,
+      "evict": 17965,
+      "commit": 17966,
+      "page": [
+        32,
+        86
+      ],
+      "victim": [
+        0,
+        114
+      ],
+      "rank": 5,
+      "slot": 7
+    },
+    {
+      "fetch": 17970,
+      "evict": 17972,
+      "commit": 17973,
+      "page": [
+        32,
+        87
+      ],
+      "victim": [
+        2,
+        97
+      ],
+      "rank": 1,
+      "slot": 19
+    },
+    {
+      "fetch": 18084,
+      "evict": 18086,
+      "commit": 18087,
+      "page": [
+        32,
+        36
+      ],
+      "victim": [
+        6,
+        57
+      ],
+      "rank": 13,
+      "slot": 49
+    },
+    {
+      "fetch": 18091,
+      "evict": 18093,
+      "commit": 18094,
+      "page": [
+        32,
+        43
+      ],
+      "victim": [
+        2,
+        13
+      ],
+      "rank": 4,
+      "slot": 18
+    },
+    {
+      "fetch": 18098,
+      "evict": 18100,
+      "commit": 18101,
+      "page": [
+        32,
+        82
+      ],
+      "victim": [
+        0,
+        80
+      ],
+      "rank": 15,
+      "slot": 3
+    },
+    {
+      "fetch": 18105,
+      "evict": 18107,
+      "commit": 18108,
+      "page": [
+        32,
+        91
+      ],
+      "victim": [
+        2,
+        98
+      ],
+      "rank": 1,
+      "slot": 20
+    },
+    {
+      "fetch": 18112,
+      "evict": 18114,
+      "commit": 18115,
+      "page": [
+        32,
+        101
+      ],
+      "victim": [
+        0,
+        87
+      ],
+      "rank": 14,
+      "slot": 4
+    },
+    {
+      "fetch": 18119,
+      "evict": 18121,
+      "commit": 18122,
+      "page": [
+        32,
+        106
+      ],
+      "victim": [
+        0,
+        107
+      ],
+      "rank": 15,
+      "slot": 6
+    },
+    {
+      "fetch": 18126,
+      "evict": 18128,
+      "commit": 18129,
+      "page": [
+        32,
+        111
+      ],
+      "victim": [
+        0,
+        96
+      ],
+      "rank": 4,
+      "slot": 5
+    },
+    {
+      "fetch": 18133,
+      "evict": 18135,
+      "commit": 18136,
+      "page": [
+        32,
+        116
+      ],
+      "victim": [
+        6,
+        86
+      ],
+      "rank": 4,
+      "slot": 54
+    },
+    {
+      "fetch": 18246,
+      "evict": 18248,
+      "commit": 18249,
+      "page": [
+        32,
+        4
+      ],
+      "victim": [
+        0,
+        23
+      ],
+      "rank": 6,
+      "slot": 0
+    },
+    {
+      "fetch": 18253,
+      "evict": 18255,
+      "commit": 18256,
+      "page": [
+        32,
+        14
+      ],
+      "victim": [
+        0,
+        10
+      ],
+      "rank": 5,
+      "slot": 1
+    },
+    {
+      "fetch": 18260,
+      "evict": 18262,
+      "commit": 18263,
+      "page": [
+        32,
+        18
+      ],
+      "victim": [
+        2,
+        39
+      ],
+      "rank": 7,
+      "slot": 18
+    },
+    {
+      "fetch": 18267,
+      "evict": 18269,
+      "commit": 18270,
+      "page": [
+        32,
+        45
+      ],
+      "victim": [
+        2,
+        68
+      ],
+      "rank": 5,
+      "slot": 21
+    },
+    {
+      "fetch": 18274,
+      "evict": 18276,
+      "commit": 18277,
+      "page": [
+        32,
+        61
+      ],
+      "victim": [
+        0,
+        13
+      ],
+      "rank": 15,
+      "slot": 1
+    },
+    {
+      "fetch": 18281,
+      "evict": 18283,
+      "commit": 18284,
+      "page": [
+        32,
+        80
+      ],
+      "victim": [
+        2,
+        70
+      ],
+      "rank": 5,
+      "slot": 22
+    },
+    {
+      "fetch": 18399,
+      "evict": 18401,
+      "commit": 18402,
+      "page": [
+        32,
+        22
+      ],
+      "victim": [
+        0,
+        12
+      ],
+      "rank": 3,
+      "slot": 1
+    },
+    {
+      "fetch": 18406,
+      "evict": 18408,
+      "commit": 18409,
+      "page": [
+        32,
+        32
+      ],
+      "victim": [
+        2,
+        1
+      ],
+      "rank": 1,
+      "slot": 16
+    },
+    {
+      "fetch": 18413,
+      "evict": 18415,
+      "commit": 18416,
+      "page": [
+        32,
+        50
+      ],
+      "victim": [
+        4,
+        55
+      ],
+      "rank": 9,
+      "slot": 35
+    },
+    {
+      "fetch": 18420,
+      "evict": 18422,
+      "commit": 18423,
+      "page": [
+        32,
+        53
+      ],
+      "victim": [
+        0,
+        29
+      ],
+      "rank": 3,
+      "slot": 3
+    },
+    {
+      "fetch": 18427,
+      "evict": 18429,
+      "commit": 18430,
+      "page": [
+        32,
+        98
+      ],
+      "victim": [
+        4,
+        122
+      ],
+      "rank": 3,
+      "slot": 39
+    },
+    {
+      "fetch": 18434,
+      "evict": 18436,
+      "commit": 18437,
+      "page": [
+        32,
+        100
+      ],
+      "victim": [
+        0,
+        77
+      ],
+      "rank": 1,
+      "slot": 5
+    },
+    {
+      "fetch": 18441,
+      "evict": 18443,
+      "commit": 18444,
+      "page": [
+        32,
+        104
+      ],
+      "victim": [
+        6,
+        41
+      ],
+      "rank": 15,
+      "slot": 53
+    },
+    {
+      "fetch": 18448,
+      "evict": 18450,
+      "commit": 18451,
+      "page": [
+        32,
+        114
+      ],
+      "victim": [
+        2,
+        110
+      ],
+      "rank": 1,
+      "slot": 23
+    },
+    {
+      "fetch": 18562,
+      "evict": 18564,
+      "commit": 18565,
+      "page": [
+        33,
+        49
+      ],
+      "victim": [
+        3,
+        58
+      ],
+      "rank": 0,
+      "slot": 27
+    },
+    {
+      "fetch": 18569,
+      "evict": 18571,
+      "commit": 18572,
+      "page": [
+        33,
+        53
+      ],
+      "victim": [
+        1,
+        29
+      ],
+      "rank": 15,
+      "slot": 10
+    },
+    {
+      "fetch": 18576,
+      "evict": 18578,
+      "commit": 18579,
+      "page": [
+        33,
+        68
+      ],
+      "victim": [
+        3,
+        82
+      ],
+      "rank": 8,
+      "slot": 28
+    },
+    {
+      "fetch": 18583,
+      "evict": 18585,
+      "commit": 18586,
+      "page": [
+        33,
+        80
+      ],
+      "victim": [
+        5,
+        109
+      ],
+      "rank": 2,
+      "slot": 45
+    },
+    {
+      "fetch": 18590,
+      "evict": 18592,
+      "commit": 18593,
+      "page": [
+        33,
+        82
+      ],
+      "victim": [
+        5,
+        66
+      ],
+      "rank": 13,
+      "slot": 45
+    },
+    {
+      "fetch": 18597,
+      "evict": 18599,
+      "commit": 18600,
+      "page": [
+        33,
+        100
+      ],
+      "victim": [
+        7,
+        122
+      ],
+      "rank": 13,
+      "slot": 63
+    },
+    {
+      "fetch": 18604,
+      "evict": 18606,
+      "commit": 18607,
+      "page": [
+        33,
+        113
+      ],
+      "victim": [
+        1,
+        120
+      ],
+      "rank": 8,
+      "slot": 15
+    },
+    {
+      "fetch": 18611,
+      "evict": 18613,
+      "commit": 18614,
+      "page": [
+        33,
+        116
+      ],
+      "victim": [
+        7,
+        99
+      ],
+      "rank": 11,
+      "slot": 63
+    },
+    {
+      "fetch": 18726,
+      "evict": 18728,
+      "commit": 18729,
+      "page": [
+        33,
+        45
+      ],
+      "victim": [
+        3,
+        66
+      ],
+      "rank": 15,
+      "slot": 25
+    },
+    {
+      "fetch": 18736,
+      "evict": 18738,
+      "commit": 18739,
+      "page": [
+        33,
+        57
+      ],
+      "victim": [
+        5,
+        56
+      ],
+      "rank": 15,
+      "slot": 43
+    },
+    {
+      "fetch": 18743,
+      "evict": 18745,
+      "commit": 18746,
+      "page": [
+        33,
+        94
+      ],
+      "victim": [
+        3,
+        102
+      ],
+      "rank": 0,
+      "slot": 30
+    },
+    {
+      "fetch": 18750,
+      "evict": 18752,
+      "commit": 18753,
+      "page": [
+        33,
+        96
+      ],
+      "victim": [
+        7,
+        114
+      ],
+      "rank": 3,
+      "slot": 61
+    },
+    {
+      "fetch": 18757,
+      "evict": 18759,
+      "commit": 18760,
+      "page": [
+        33,
+        98
+      ],
+      "victim": [
+        1,
+        93
+      ],
+      "rank": 4,
+      "slot": 12
+    },
+    {
+      "fetch": 18764,
+      "evict": 18766,
+      "commit": 18767,
+      "page": [
+        33,
+        114
+      ],
+      "victim": [
+        3,
+        97
+      ],
+      "rank": 7,
+      "slot": 30
+    },
+    {
+      "fetch": 18771,
+      "evict": 18773,
+      "commit": 18774,
+      "page": [
+        33,
+        118
+      ],
+      "victim": [
+        1,
+        111
+      ],
+      "rank": 3,
+      "slot": 15
+    },
+    {
+      "fetch": 18888,
+      "evict": 18890,
+      "commit": 18891,
+      "page": [
+        33,
+        24
+      ],
+      "victim": [
+        3,
+        30
+      ],
+      "rank": 4,
+      "slot": 25
+    },
+    {
+      "fetch": 18895,
+      "evict": 18897,
+      "commit": 18898,
+      "page": [
+        33,
+        25
+      ],
+      "victim": [
+        1,
+        81
+      ],
+      "rank": 8,
+      "slot": 10
+    },
+    {
+      "fetch": 18902,
+      "evict": 18904,
+      "commit": 18905,
+      "page": [
+        33,
+        35
+      ],
+      "victim": [
+        11,
+        2
+      ],
+      "rank": 3,
+      "slot": 88
+    },
+    {
+      "fetch": 18909,
+      "evict": 18911,
+      "commit": 18912,
+      "page": [
+        33,
+        40
+      ],
+      "victim": [
+        7,
+        54
+      ],
+      "rank": 1,
+      "slot": 59
+    },
+    {
+      "fetch": 19037,
+      "evict": 19039,
+      "commit": 19040,
+      "page": [
+        33,
+        0
+      ],
+      "victim": [
+        1,
+        8
+      ],
+      "rank": 13,
+      "slot": 8
+    },
+    {
+      "fetch": 19044,
+      "evict": 19046,
+      "commit": 19047,
+      "page": [
+        33,
+        7
+      ],
+      "victim": [
+        7,
+        10
+      ],
+      "rank": 8,
+      "slot": 57
+    },
+    {
+      "fetch": 19051,
+      "evict": 19053,
+      "commit": 19054,
+      "page": [
+        33,
+        13
+      ],
+      "victim": [
+        5,
+        30
+      ],
+      "rank": 2,
+      "slot": 41
+    },
+    {
+      "fetch": 19058,
+      "evict": 19060,
+      "commit": 19061,
+      "page": [
+        33,
+        17
+      ],
+      "victim": [
+        3,
+        53
+      ],
+      "rank": 13,
+      "slot": 26
+    },
+    {
+      "fetch": 19065,
+      "evict": 19067,
+      "commit": 19068,
+      "page": [
+        33,
+        31
+      ],
+      "victim": [
+        1,
+        49
+      ],
+      "rank": 5,
+      "slot": 11
+    },
+    {
+      "fetch": 19072,
+      "evict": 19074,
+      "commit": 19075,
+      "page": [
+        33,
+        47
+      ],
+      "victim": [
+        3,
+        72
+      ],
+      "rank": 5,
+      "slot": 28
+    },
+    {
+      "fetch": 19082,
+      "evict": 19084,
+      "commit": 19085,
+      "page": [
+        33,
+        85
+      ],
+      "victim": [
+        3,
+        98
+      ],
+      "rank": 13,
+      "slot": 30
+    },
+    {
+      "fetch": 19196,
+      "evict": 19198,
+      "commit": 19199,
+      "page": [
+        34,
+        4
+      ],
+      "victim": [
+        2,
+        20
+      ],
+      "rank": 10,
+      "slot": 16
+    },
+    {
+      "fetch": 19203,
+      "evict": 19205,
+      "commit": 19206,
+      "page": [
+        34,
+        16
+      ],
+      "victim": [
+        0,
+        15
+      ],
+      "rank": 5,
+      "slot": 2
+    },
+    {
+      "fetch": 19210,
+      "evict": 19212,
+      "commit": 19213,
+      "page": [
+        34,
+        27
+      ],
+      "victim": [
+        2,
+        77
+      ],
+      "rank": 10,
+      "slot": 19
+    },
+    {
+      "fetch": 19217,
+      "evict": 19219,
+      "commit": 19220,
+      "page": [
+        34,
+        30
+      ],
+      "victim": [
+        4,
+        15
+      ],
+      "rank": 7,
+      "slot": 34
+    },
+    {
+      "fetch": 19224,
+      "evict": 19226,
+      "commit": 19227,
+      "page": [
+        34,
+        40
+      ],
+      "victim": [
+        2,
+        49
+      ],
+      "rank": 12,
+      "slot": 19
+    },
+    {
+      "fetch": 19231,
+      "evict": 19233,
+      "commit": 19234,
+      "page": [
+        34,
+        63
+      ],
+      "victim": [
+        4,
+        79
+      ],
+      "rank": 10,
+      "slot": 38
+    },
+    {
+      "fetch": 19238,
+      "evict": 19240,
+      "commit": 19241,
+      "page": [
+        34,
+        69
+      ],
+      "victim": [
+        2,
+        22
+      ],
+      "rank": 3,
+      "slot": 19
+    },
+    {
+      "fetch": 19245,
+      "evict": 19247,
+      "commit": 19248,
+      "page": [
+        34,
+        99
+      ],
+      "victim": [
+        2,
+        78
+      ],
+      "rank": 13,
+      "slot": 21
+    },
+    {
+      "fetch": 19362,
+      "evict": 19364,
+      "commit": 19365,
+      "page": [
+        34,
+        62
+      ],
+      "victim": [
+        2,
+        15
+      ],
+      "rank": 14,
+      "slot": 16
+    },
+    {
+      "fetch": 19369,
+      "evict": 19371,
+      "commit": 19372,
+      "page": [
+        34,
+        73
+      ],
+      "victim": [
+        0,
+        83
+      ],
+      "rank": 6,
+      "slot": 4
+    },
+    {
+      "fetch": 19376,
+      "evict": 19378,
+      "commit": 19379,
+      "page": [
+        34,
+        74
+      ],
+      "victim": [
+        4,
+        75
+      ],
+      "rank": 1,
+      "slot": 36
+    },
+    {
+      "fetch": 19383,
+      "evict": 19385,
+      "commit": 19386,
+      "page": [
+        34,
+        83
+      ],
+      "victim": [
+        0,
+        31
+      ],
+      "rank": 14,
+      "slot": 1
+    },
+    {
+      "fetch": 19390,
+      "evict": 19392,
+      "commit": 19393,
+      "page": [
+        34,
+        86
+      ],
+      "victim": [
+        4,
+        94
+      ],
+      "rank": 1,
+      "slot": 37
+    },
+    {
+      "fetch": 19397,
+      "evict": 19399,
+      "commit": 19400,
+      "page": [
+        34,
+        108
+      ],
+      "victim": [
+        0,
+        126
+      ],
+      "rank": 7,
+      "slot": 7
+    },
+    {
+      "fetch": 19404,
+      "evict": 19406,
+      "commit": 19407,
+      "page": [
+        34,
+        113
+      ],
+      "victim": [
+        4,
+        125
+      ],
+      "rank": 1,
+      "slot": 39
+    },
+    {
+      "fetch": 19520,
+      "evict": 19522,
+      "commit": 19523,
+      "page": [
+        34,
+        23
+      ],
+      "victim": [
+        4,
+        48
+      ],
+      "rank": 12,
+      "slot": 34
+    },
+    {
+      "fetch": 19530,
+      "evict": 19532,
+      "commit": 19533,
+      "page": [
+        34,
+        33
+      ],
+      "victim": [
+        0,
+        24
+      ],
+      "rank": 11,
+      "slot": 2
+    },
+    {
+      "fetch": 19537,
+      "evict": 19539,
+      "commit": 19540,
+      "page": [
+        34,
+        41
+      ],
+      "victim": [
+        0,
+        65
+      ],
+      "rank": 1,
+      "slot": 1
+    },
+    {
+      "fetch": 19544,
+      "evict": 19546,
+      "commit": 19547,
+      "page": [
+        34,
+        43
+      ],
+      "victim": [
+        6,
+        84
+      ],
+      "rank": 5,
+      "slot": 52
+    },
+    {
+      "fetch": 19551,
+      "evict": 19553,
+      "commit": 19554,
+      "page": [
+        34,
+        85
+      ],
+      "victim": [
+        0,
+        44
+      ],
+      "rank": 14,
+      "slot": 2
+    },
+    {
+      "fetch": 19558,
+      "evict": 19560,
+      "commit": 19561,
+      "page": [
+        34,
+        110
+      ],
+      "victim": [
+        8,
+        68
+      ],
+      "rank": 3,
+      "slot": 70
+    },
+    {
+      "fetch": 19565,
+      "evict": 19567,
+      "commit": 19568,
+      "page": [
+        34,
+        124
+      ],
+      "victim": [
+        2,
+        113
+      ],
+      "rank": 6,
+      "slot": 23
+    },
+    {
+      "fetch": 19684,
+      "evict": 19686,
+      "commit": 19687,
+      "page": [
+        34,
+        31
+      ],
+      "victim": [
+        2,
+        56
+      ],
+      "rank": 15,
+      "slot": 17
+    },
+    {
+      "fetch": 19691,
+      "evict": 19693,
+      "commit": 19694,
+      "page": [
+        34,
+        36
+      ],
+      "victim": [
+        0,
+        38
+      ],
+      "rank": 11,
+      "slot": 3
+    },
+    {
+      "fetch": 19701,
+      "evict": 19703,
+      "commit": 19704,
+      "page": [
+        34,
+        55
+      ],
+      "victim": [
+        4,
+        35
+      ],
+      "rank": 10,
+      "slot": 36
+    },
+    {
+      "fetch": 19708,
+      "evict": 19710,
+      "commit": 19711,
+      "page": [
+        34,
+        71
+      ],
+      "victim": [
+        4,
+        66
+      ],
+      "rank": 8,
+      "slot": 36
+    },
+    {
+      "fetch": 19715,
+      "evict": 19717,
+      "commit": 19718,
+      "page": [
+        34,
+        91
+      ],
+      "victim": [
+        2,
+        90
+      ],
+      "rank": 14,
+      "slot": 20
+    },
+    {
+      "fetch": 19722,
+      "evict": 19724,
+      "commit": 19725,
+      "page": [
+        34,
+        94
+      ],
+      "victim": [
+        4,
+        86
+      ],
+      "rank": 10,
+      "slot": 39
+    },
+    {
+      "fetch": 19729,
+      "evict": 19731,
+      "commit": 19732,
+      "page": [
+        34,
+        126
+      ],
+      "victim": [
+        0,
+        103
+      ],
+      "rank": 9,
+      "slot": 6
+    },
+    {
+      "fetch": 19846,
+      "evict": 19848,
+      "commit": 19849,
+      "page": [
+        35,
+        30
+      ],
+      "victim": [
+        9,
+        20
+      ],
+      "rank": 2,
+      "slot": 73
+    },
+    {
+      "fetch": 19853,
+      "evict": 19855,
+      "commit": 19856,
+      "page": [
+        35,
+        45
+      ],
+      "victim": [
+        5,
+        3
+      ],
+      "rank": 8,
+      "slot": 40
+    },
+    {
+      "fetch": 19860,
+      "evict": 19862,
+      "commit": 19863,
+      "page": [
+        35,
+        50
+      ],
+      "victim": [
+        3,
+        56
+      ],
+      "rank": 13,
+      "slot": 27
+    },
+    {
+      "fetch": 19867,
+      "evict": 19869,
+      "commit": 19870,
+      "page": [
+        35,
+        59
+      ],
+      "victim": [
+        1,
+        55
+      ],
+      "rank": 7,
+      "slot": 9
+    },
+    {
+      "fetch": 19874,
+      "evict": 19876,
+      "commit": 19877,
+      "page": [
+        35,
+        72
+      ],
+      "victim": [
+        3,
+        59
+      ],
+      "rank": 7,
+      "slot": 26
+    },
+    {
+      "fetch": 19881,
+      "evict": 19883,
+      "commit": 19884,
+      "page": [
+        35,
+        78
+      ],
+      "victim": [
+        1,
+        60
+      ],
+      "rank": 10,
+      "slot": 11
+    },
+    {
+      "fetch": 19888,
+      "evict": 19890,
+      "commit": 19891,
+      "page": [
+        35,
+        85
+      ],
+      "victim": [
+        7,
+        101
+      ],
+      "rank": 13,
+      "slot": 61
+    },
+    {
+      "fetch": 19895,
+      "evict": 19897,
+      "commit": 19898,
+      "page": [
+        35,
+        96
+      ],
+      "victim": [
+        1,
+        108
+      ],
+      "rank": 15,
+      "slot": 14
+    },
+    {
+      "fetch": 20009,
+      "evict": 20011,
+      "commit": 20012,
+      "page": [
+        35,
+        8
+      ],
+      "victim": [
+        5,
+        19
+      ],
+      "rank": 4,
+      "slot": 40
+    },
+    {
+      "fetch": 20016,
+      "evict": 20018,
+      "commit": 20019,
+      "page": [
+        35,
+        26
+      ],
+      "victim": [
+        1,
+        83
+      ],
+      "rank": 0,
+      "slot": 10
+    },
+    {
+      "fetch": 20023,
+      "evict": 20025,
+      "commit": 20026,
+      "page": [
+        35,
+        64
+      ],
+      "victim": [
+        3,
+        63
+      ],
+      "rank": 4,
+      "slot": 29
+    },
+    {
+      "fetch": 20030,
+      "evict": 20032,
+      "commit": 20033,
+      "page": [
+        35,
+        67
+      ],
+      "victim": [
+        7,
+        49
+      ],
+      "rank": 0,
+      "slot": 59
+    },
+    {
+      "fetch": 20037,
+      "evict": 20039,
+      "commit": 20040,
+      "page": [
+        35,
+        69
+      ],
+      "victim": [
+        11,
+        21
+      ],
+      "rank": 15,
+      "slot": 91
+    },
+    {
+      "fetch": 20047,
+      "evict": 20049,
+      "commit": 20050,
+      "page": [
+        35,
+        89
+      ],
+      "victim": [
+        1,
+        121
+      ],
+      "rank": 4,
+      "slot": 14
+    },
+    {
+      "fetch": 20054,
+      "evict": 20056,
+      "commit": 20057,
+      "page": [
+        35,
+        115
+      ],
+      "victim": [
+        3,
+        126
+      ],
+      "rank": 10,
+      "slot": 31
+    },
+    {
+      "fetch": 20168,
+      "evict": 20170,
+      "commit": 20171,
+      "page": [
+        35,
+        0
+      ],
+      "victim": [
+        3,
+        22
+      ],
+      "rank": 0,
+      "slot": 24
+    },
+    {
+      "fetch": 20175,
+      "evict": 20177,
+      "commit": 20178,
+      "page": [
+        35,
+        18
+      ],
+      "victim": [
+        5,
+        7
+      ],
+      "rank": 2,
+      "slot": 40
+    },
+    {
+      "fetch": 20182,
+      "evict": 20184,
+      "commit": 20185,
+      "page": [
+        35,
+        22
+      ],
+      "victim": [
+        1,
+        30
+      ],
+      "rank": 6,
+      "slot": 11
+    },
+    {
+      "fetch": 20189,
+      "evict": 20191,
+      "commit": 20192,
+      "page": [
+        35,
+        68
+      ],
+      "victim": [
+        7,
+        103
+      ],
+      "rank": 1,
+      "slot": 61
+    },
+    {
+      "fetch": 20199,
+      "evict": 20201,
+      "commit": 20202,
+      "page": [
+        35,
+        79
+      ],
+      "victim": [
+        7,
+        111
+      ],
+      "rank": 1,
+      "slot": 62
+    },
+    {
+      "fetch": 20209,
+      "evict": 20211,
+      "commit": 20212,
+      "page": [
+        35,
+        116
+      ],
+      "victim": [
+        3,
+        116
+      ],
+      "rank": 0,
+      "slot": 31
+    },
+    {
+      "fetch": 20325,
+      "evict": 20327,
+      "commit": 20328,
+      "page": [
+        35,
+        14
+      ],
+      "victim": [
+        1,
+        37
+      ],
+      "rank": 9,
+      "slot": 10
+    },
+    {
+      "fetch": 20332,
+      "evict": 20334,
+      "commit": 20335,
+      "page": [
+        35,
+        25
+      ],
+      "victim": [
+        1,
+        41
+      ],
+      "rank": 10,
+      "slot": 9
+    },
+    {
+      "fetch": 20339,
+      "evict": 20341,
+      "commit": 20342,
+      "page": [
+        35,
+        48
+      ],
+      "victim": [
+        5,
+        72
+      ],
+      "rank": 12,
+      "slot": 43
+    },
+    {
+      "fetch": 20346,
+      "evict": 20348,
+      "commit": 20349,
+      "page": [
+        35,
+        54
+      ],
+      "victim": [
+        7,
+        85
+      ],
+      "rank": 13,
+      "slot": 60
+    },
+    {
+      "fetch": 20353,
+      "evict": 20355,
+      "commit": 20356,
+      "page": [
+        35,
+        56
+      ],
+      "victim": [
+        3,
+        7
+      ],
+      "rank": 7,
+      "slot": 24
+    },
+    {
+      "fetch": 20360,
+      "evict": 20362,
+      "commit": 20363,
+      "page": [
+        35,
+        63
+      ],
+      "victim": [
+        1,
+        61
+      ],
+      "rank": 3,
+      "slot": 12
+    },
+    {
+      "fetch": 20367,
+      "evict": 20369,
+      "commit": 20370,
+      "page": [
+        35,
+        90
+      ],
+      "victim": [
+        9,
+        53
+      ],
+      "rank": 7,
+      "slot": 76
+    },
+    {
+      "fetch": 20374,
+      "evict": 20376,
+      "commit": 20377,
+      "page": [
+        35,
+        99
+      ],
+      "victim": [
+        7,
+        118
+      ],
+      "rank": 7,
+      "slot": 62
+    },
+    {
+      "fetch": 20490,
+      "evict": 20492,
+      "commit": 20493,
+      "page": [
+        36,
+        36
+      ],
+      "victim": [
+        4,
+        70
+      ],
+      "rank": 9,
+      "slot": 36
+    },
+    {
+      "fetch": 20497,
+      "evict": 20499,
+      "commit": 20500,
+      "page": [
+        36,
+        42
+      ],
+      "victim": [
+        2,
+        32
+      ],
+      "rank": 14,
+      "slot": 17
+    },
+    {
+      "fetch": 20504,
+      "evict": 20506,
+      "commit": 20507,
+      "page": [
+        36,
+        50
+      ],
+      "victim": [
+        10,
+        73
+      ],
+      "rank": 5,
+      "slot": 84
+    },
+    {
+      "fetch": 20511,
+      "evict": 20513,
+      "commit": 20514,
+      "page": [
+        36,
+        64
+      ],
+      "victim": [
+        4,
+        52
+      ],
+      "rank": 2,
+      "slot": 35
+    },
+    {
+      "fetch": 20518,
+      "evict": 20520,
+      "commit": 20521,
+      "page": [
+        36,
+        73
+      ],
+      "victim": [
+        2,
+        83
+      ],
+      "rank": 6,
+      "slot": 21
+    },
+    {
+      "fetch": 20525,
+      "evict": 20527,
+      "commit": 20528,
+      "page": [
+        36,
+        95
+      ],
+      "victim": [
+        2,
+        108
+      ],
+      "rank": 6,
+      "slot": 22
+    },
+    {
+      "fetch": 20532,
+      "evict": 20534,
+      "commit": 20535,
+      "page": [
+        36,
+        117
+      ],
+      "victim": [
+        12,
+        98
+      ],
+      "rank": 3,
+      "slot": 102
+    },
+    {
+      "fetch": 20539,
+      "evict": 20541,
+      "commit": 20542,
+      "page": [
+        36,
+        127
+      ],
+      "victim": [
+        0,
+        110
+      ],
+      "rank": 2,
+      "slot": 7
+    },
+    {
+      "fetch": 20655,
+      "evict": 20657,
+      "commit": 20658,
+      "page": [
+        36,
+        26
+      ],
+      "victim": [
+        2,
+        40
+      ],
+      "rank": 8,
+      "slot": 17
+    },
+    {
+      "fetch": 20662,
+      "evict": 20664,
+      "commit": 20665,
+      "page": [
+        36,
+        30
+      ],
+      "victim": [
+        4,
+        47
+      ],
+      "rank": 9,
+      "slot": 34
+    },
+    {
+      "fetch": 20669,
+      "evict": 20671,
+      "commit": 20672,
+      "page": [
+        36,
+        53
+      ],
+      "victim": [
+        2,
+        71
+      ],
+      "rank": 14,
+      "slot": 19
+    },
+    {
+      "fetch": 20676,
+      "evict": 20678,
+      "commit": 20679,
+      "page": [
+        36,
+        79
+      ],
+      "victim": [
+        0,
+        55
+      ],
+      "rank": 13,
+      "slot": 3
+    },
+    {
+      "fetch": 20683,
+      "evict": 20685,
+      "commit": 20686,
+      "page": [
+        36,
+        104
+      ],
+      "victim": [
+        8,
+        72
+      ],
+      "rank": 10,
+      "slot": 68
+    },
+    {
+      "fetch": 20690,
+      "evict": 20692,
+      "commit": 20693,
+      "page": [
+        36,
+        107
+      ],
+      "victim": [
+        6,
+        72
+      ],
+      "rank": 0,
+      "slot": 54
+    },
+    {
+      "fetch": 20697,
+      "evict": 20699,
+      "commit": 20700,
+      "page": [
+        36,
+        116
+      ],
+      "victim": [
+        2,
+        119
+      ],
+      "rank": 8,
+      "slot": 23
+    },
+    {
+      "fetch": 20704,
+      "evict": 20706,
+      "commit": 20707,
+      "page": [
+        36,
+        118
+      ],
+      "victim": [
+        2,
+        115
+      ],
+      "rank": 14,
+      "slot": 23
+    },
+    {
+      "fetch": 20820,
+      "evict": 20822,
+      "commit": 20823,
+      "page": [
+        36,
+        14
+      ],
+      "victim": [
+        8,
+        31
+      ],
+      "rank": 0,
+      "slot": 64
+    },
+    {
+      "fetch": 20827,
+      "evict": 20829,
+      "commit": 20830,
+      "page": [
+        36,
+        17
+      ],
+      "victim": [
+        2,
+        11
+      ],
+      "rank": 11,
+      "slot": 16
+    },
+    {
+      "fetch": 20834,
+      "evict": 20836,
+      "commit": 20837,
+      "page": [
+        36,
+        25
+      ],
+      "victim": [
+        0,
+        22
+      ],
+      "rank": 11,
+      "slot": 1
+    },
+    {
+      "fetch": 20847,
+      "evict": 20849,
+      "commit": 20850,
+      "page": [
+        36,
+        102
+      ],
+      "victim": [
+        4,
+        111
+      ],
+      "rank": 0,
+      "slot": 37
+    },
+    {
+      "fetch": 20854,
+      "evict": 20856,
+      "commit": 20857,
+      "page": [
+        36,
+        103
+      ],
+      "victim": [
+        6,
+        119
+      ],
+      "rank": 14,
+      "slot": 54
+    },
+    {
+      "fetch": 20861,
+      "evict": 20863,
+      "commit": 20864,
+      "page": [
+        36,
+        115
+      ],
+      "victim": [
+        6,
+        109
+      ],
+      "rank": 12,
+      "slot": 55
+    },
+    {
+      "fetch": 20976,
+      "evict": 20978,
+      "commit": 20979,
+      "page": [
+        36,
+        20
+      ],
+      "victim": [
+        0,
+        34
+      ],
+      "rank": 9,
+      "slot": 1
+    },
+    {
+      "fetch": 20983,
+      "evict": 20985,
+      "commit": 20986,
+      "page": [
+        36,
+        21
+      ],
+      "victim": [
+        0,
+        16
+      ],
+      "rank": 2,
+      "slot": 1
+    },
+    {
+      "fetch": 20990,
+      "evict": 20992,
+      "commit": 20993,
+      "page": [
+        36,
+        23
+      ],
+      "victim": [
+        8,
+        30
+      ],
+      "rank": 13,
+      "slot": 65
+    },
+    {
+      "fetch": 20997,
+      "evict": 20999,
+      "commit": 21000,
+      "page": [
+        36,
+        27
+      ],
+      "victim": [
+        4,
+        39
+      ],
+      "rank": 0,
+      "slot": 33
+    },
+    {
+      "fetch": 21010,
+      "evict": 21012,
+      "commit": 21013,
+      "page": [
+        36,
+        89
+      ],
+      "victim": [
+        6,
+        79
+      ],
+      "rank": 2,
+      "slot": 53
+    },
+    {
+      "fetch": 21128,
+      "evict": 21130,
+      "commit": 21131,
+      "page": [
+        37,
+        0
+      ],
+      "victim": [
+        5,
+        5
+      ],
+      "rank": 7,
+      "slot": 40
+    },
+    {
+      "fetch": 21135,
+      "evict": 21137,
+      "commit": 21138,
+      "page": [
+        37,
+        4
+      ],
+      "victim": [
+        1,
+        7
+      ],
+      "rank": 6,
+      "slot": 9
+    },
+    {
+      "fetch": 21142,
+      "evict": 21144,
+      "commit": 21145,
+      "page": [
+        37,
+        8
+      ],
+      "victim": [
+        3,
+        11
+      ],
+      "rank": 7,
+      "slot": 25
+    },
+    {
+      "fetch": 21149,
+      "evict": 21151,
+      "commit": 21152,
+      "page": [
+        37,
+        12
+      ],
+      "victim": [
+        3,
+        14
+      ],
+      "rank": 13,
+      "slot": 24
+    },
+    {
+      "fetch": 21156,
+      "evict": 21158,
+      "commit": 21159,
+      "page": [
+        37,
+        45
+      ],
+      "victim": [
+        3,
+        51
+      ],
+      "rank": 9,
+      "slot": 26
+    },
+    {
+      "fetch": 21163,
+      "evict": 21165,
+      "commit": 21166,
+      "page": [
+        37,
+        47
+      ],
+      "victim": [
+        5,
+        58
+      ],
+      "rank": 5,
+      "slot": 43
+    },
+    {
+      "fetch": 21170,
+      "evict": 21172,
+      "commit": 21173,
+      "page": [
+        37,
+        67
+      ],
+      "victim": [
+        9,
+        51
+      ],
+      "rank": 7,
+      "slot": 75
+    },
+    {
+      "fetch": 21177,
+      "evict": 21179,
+      "commit": 21180,
+      "page": [
+        37,
+        120
+      ],
+      "victim": [
+        1,
+        88
+      ],
+      "rank": 2,
+      "slot": 14
+    },
+    {
+      "fetch": 21290,
+      "evict": 21292,
+      "commit": 21293,
+      "page": [
+        37,
+        2
+      ],
+      "victim": [
+        3,
+        0
+      ],
+      "rank": 12,
+      "slot": 24
+    },
+    {
+      "fetch": 21297,
+      "evict": 21299,
+      "commit": 21300,
+      "page": [
+        37,
+        16
+      ],
+      "victim": [
+        7,
+        5
+      ],
+      "rank": 15,
+      "slot": 56
+    },
+    {
+      "fetch": 21304,
+      "evict": 21306,
+      "commit": 21307,
+      "page": [
+        37,
+        21
+      ],
+      "victim": [
+        5,
+        48
+      ],
+      "rank": 15,
+      "slot": 41
+    },
+    {
+      "fetch": 21311,
+      "evict": 21313,
+      "commit": 21314,
+      "page": [
+        37,
+        44
+      ],
+      "victim": [
+        3,
+        52
+      ],
+      "rank": 12,
+      "slot": 28
+    },
+    {
+      "fetch": 21318,
+      "evict": 21320,
+      "commit": 21321,
+      "page": [
+        37,
+        75
+      ],
+      "victim": [
+        3,
+        67
+      ],
+      "rank": 12,
+      "slot": 29
+    },
+    {
+      "fetch": 21325,
+      "evict": 21327,
+      "commit": 21328,
+      "page": [
+        37,
+        76
+      ],
+      "victim": [
+        1,
+        78
+      ],
+      "rank": 15,
+      "slot": 12
+    },
+    {
+      "fetch": 21332,
+      "evict": 21334,
+      "commit": 21335,
+      "page": [
+        37,
+        98
+      ],
+      "victim": [
+        3,
+        69
+      ],
+      "rank": 12,
+      "slot": 30
+    },
+    {
+      "fetch": 21339,
+      "evict": 21341,
+      "commit": 21342,
+      "page": [
+        37,
+        102
+      ],
+      "victim": [
+        3,
+        88
+      ],
+      "rank": 4,
+      "slot": 30
+    },
+    {
+      "fetch": 21454,
+      "evict": 21456,
+      "commit": 21457,
+      "page": [
+        37,
+        14
+      ],
+      "victim": [
+        1,
+        14
+      ],
+      "rank": 12,
+      "slot": 9
+    },
+    {
+      "fetch": 21461,
+      "evict": 21463,
+      "commit": 21464,
+      "page": [
+        37,
+        18
+      ],
+      "victim": [
+        3,
+        5
+      ],
+      "rank": 11,
+      "slot": 25
+    },
+    {
+      "fetch": 21471,
+      "evict": 21473,
+      "commit": 21474,
+      "page": [
+        37,
+        89
+      ],
+      "victim": [
+        7,
+        91
+      ],
+      "rank": 2,
+      "slot": 61
+    },
+    {
+      "fetch": 21478,
+      "evict": 21480,
+      "commit": 21481,
+      "page": [
+        37,
+        91
+      ],
+      "victim": [
+        9,
+        85
+      ],
+      "rank": 13,
+      "slot": 76
+    },
+    {
+      "fetch": 21488,
+      "evict": 21490,
+      "commit": 21491,
+      "page": [
+        37,
+        127
+      ],
+      "victim": [
+        9,
+        108
+      ],
+      "rank": 13,
+      "slot": 79
+    },
+    {
+      "fetch": 21603,
+      "evict": 21605,
+      "commit": 21606,
+      "page": [
+        37,
+        33
+      ],
+      "victim": [
+        7,
+        63
+      ],
+      "rank": 7,
+      "slot": 58
+    },
+    {
+      "fetch": 21610,
+      "evict": 21612,
+      "commit": 21613,
+      "page": [
+        37,
+        61
+      ],
+      "victim": [
+        5,
+        23
+      ],
+      "rank": 13,
+      "slot": 42
+    },
+    {
+      "fetch": 21617,
+      "evict": 21619,
+      "commit": 21620,
+      "page": [
+        37,
+        83
+      ],
+      "victim": [
+        11,
+        65
+      ],
+      "rank": 1,
+      "slot": 92
+    },
+    {
+      "fetch": 21624,
+      "evict": 21626,
+      "commit": 21627,
+      "page": [
+        37,
+        92
+      ],
+      "victim": [
+        11,
+        74
+      ],
+      "rank": 7,
+      "slot": 92
+    },
+    {
+      "fetch": 21631,
+      "evict": 21633,
+      "commit": 21634,
+      "page": [
+        37,
+        93
+      ],
+      "victim": [
+        7,
+        100
+      ],
+      "rank": 7,
+      "slot": 61
+    },
+    {
+      "fetch": 21638,
+      "evict": 21640,
+      "commit": 21641,
+      "page": [
+        37,
+        110
+      ],
+      "victim": [
+        1,
+        117
+      ],
+      "rank": 5,
+      "slot": 14
+    },
+    {
+      "fetch": 21645,
+      "evict": 21647,
+      "commit": 21648,
+      "page": [
+        37,
+        118
+      ],
+      "victim": [
+        5,
+        97
+      ],
+      "rank": 3,
+      "slot": 46
+    },
+    {
+      "fetch": 21652,
+      "evict": 21654,
+      "commit": 21655,
+      "page": [
+        37,
+        119
+      ],
+      "victim": [
+        5,
+        102
+      ],
+      "rank": 14,
+      "slot": 46
+    },
+    {
+      "fetch": 21768,
+      "evict": 21770,
+      "commit": 21771,
+      "page": [
+        38,
+        1
+      ],
+      "victim": [
+        4,
+        3
+      ],
+      "rank": 1,
+      "slot": 32
+    },
+    {
+      "fetch": 21775,
+      "evict": 21777,
+      "commit": 21778,
+      "page": [
+        38,
+        6
+      ],
+      "victim": [
+        4,
+        21
+      ],
+      "rank": 6,
+      "slot": 32
+    },
+    {
+      "fetch": 21782,
+      "evict": 21784,
+      "commit": 21785,
+      "page": [
+        38,
+        36
+      ],
+      "victim": [
+        6,
+        4
+      ],
+      "rank": 15,
+      "slot": 49
+    },
+    {
+      "fetch": 21789,
+      "evict": 21791,
+      "commit": 21792,
+      "page": [
+        38,
+        53
+      ],
+      "victim": [
+        10,
+        39
+      ],
+      "rank": 10,
+      "slot": 82
+    },
+    {
+      "fetch": 21796,
+      "evict": 21798,
+      "commit": 21799,
+      "page": [
+        38,
+        55
+      ],
+      "victim": [
+        4,
+        8
+      ],
+      "rank": 14,
+      "slot": 32
+    },
+    {
+      "fetch": 21803,
+      "evict": 21805,
+      "commit": 21806,
+      "page": [
+        38,
+        66
+      ],
+      "victim": [
+        0,
+        89
+      ],
+      "rank": 5,
+      "slot": 3
+    },
+    {
+      "fetch": 21810,
+      "evict": 21812,
+      "commit": 21813,
+      "page": [
+        38,
+        68
+      ],
+      "victim": [
+        10,
+        90
+      ],
+      "rank": 10,
+      "slot": 84
+    },
+    {
+      "fetch": 21817,
+      "evict": 21819,
+      "commit": 21820,
+      "page": [
+        38,
+        119
+      ],
+      "victim": [
+        6,
+        114
+      ],
+      "rank": 5,
+      "slot": 54
+    },
+    {
+      "fetch": 21932,
+      "evict": 21934,
+      "commit": 21935,
+      "page": [
+        38,
+        8
+      ],
+      "victim": [
+        4,
+        42
+      ],
+      "rank": 8,
+      "slot": 33
+    },
+    {
+      "fetch": 21945,
+      "evict": 21947,
+      "commit": 21948,
+      "page": [
+        38,
+        75
+      ],
+      "victim": [
+        4,
+        81
+      ],
+      "rank": 6,
+      "slot": 37
+    },
+    {
+      "fetch": 21952,
+      "evict": 21954,
+      "commit": 21955,
+      "page": [
+        38,
+        79
+      ],
+      "victim": [
+        6,
+        90
+      ],
+      "rank": 14,
+      "slot": 52
+    },
+    {
+      "fetch": 21959,
+      "evict": 21961,
+      "commit": 21962,
+      "page": [
+        38,
+        80
+      ],
+      "victim": [
+        0,
+        93
+      ],
+      "rank": 14,
+      "slot": 5
+    },
+    {
+      "fetch": 21966,
+      "evict": 21968,
+      "commit": 21969,
+      "page": [
+        38,
+        88
+      ],
+      "victim": [
+        6,
+        94
+      ],
+      "rank": 11,
+      "slot": 52
+    },
+    {
+      "fetch": 21973,
+      "evict": 21975,
+      "commit": 21976,
+      "page": [
+        38,
+        112
+      ],
+      "victim": [
+        2,
+        87
+      ],
+      "rank": 11,
+      "slot": 22
+    },
+    {
+      "fetch": 22091,
+      "evict": 22093,
+      "commit": 22094,
+      "page": [
+        38,
+        49
+      ],
+      "victim": [
+        2,
+        63
+      ],
+      "rank": 3,
+      "slot": 20
+    },
+    {
+      "fetch": 22101,
+      "evict": 22103,
+      "commit": 22104,
+      "page": [
+        38,
+        64
+      ],
+      "victim": [
+        4,
+        27
+      ],
+      "rank": 10,
+      "slot": 35
+    },
+    {
+      "fetch": 22108,
+      "evict": 22110,
+      "commit": 22111,
+      "page": [
+        38,
+        73
+      ],
+      "victim": [
+        0,
+        42
+      ],
+      "rank": 10,
+      "slot": 5
+    },
+    {
+      "fetch": 22118,
+      "evict": 22120,
+      "commit": 22121,
+      "page": [
+        38,
+        87
+      ],
+      "victim": [
+        4,
+        106
+      ],
+      "rank": 0,
+      "slot": 36
+    },
+    {
+      "fetch": 22125,
+      "evict": 22127,
+      "commit": 22128,
+      "page": [
+        38,
+        102
+      ],
+      "victim": [
+        4,
+        123
+      ],
+      "rank": 6,
+      "slot": 39
+    },
+    {
+      "fetch": 22242,
+      "evict": 22244,
+      "commit": 22245,
+      "page": [
+        38,
+        33
+      ],
+      "victim": [
+        2,
+        42
+      ],
+      "rank": 1,
+      "slot": 18
+    },
+    {
+      "fetch": 22249,
+      "evict": 22251,
+      "commit": 22252,
+      "page": [
+        38,
+        38
+      ],
+      "victim": [
+        2,
+        55
+      ],
+      "rank": 5,
+      "slot": 18
+    },
+    {
+      "fetch": 22256,
+      "evict": 22258,
+      "commit": 22259,
+      "page": [
+        38,
+        61
+      ],
+      "victim": [
+        6,
+        14
+      ],
+      "rank": 14,
+      "slot": 49
+    },
+    {
+      "fetch": 22266,
+      "evict": 22268,
+      "commit": 22269,
+      "page": [
+        38,
+        67
+      ],
+      "victim": [
+        4,
+        49
+      ],
+      "rank": 1,
+      "slot": 35
+    },
+    {
+      "fetch": 22276,
+      "evict": 22278,
+      "commit": 22279,
+      "page": [
+        38,
+        92
+      ],
+      "victim": [
+        10,
+        86
+      ],
+      "rank": 1,
+      "slot": 85
+    },
+    {
+      "fetch": 22390,
+      "evict": 22392,
+      "commit": 22393,
+      "page": [
+        39,
+        28
+      ],
+      "victim": [
+        9,
+        9
+      ],
+      "rank": 15,
+      "slot": 72
+    },
+    {
+      "fetch": 22397,
+      "evict": 22399,
+      "commit": 22400,
+      "page": [
+        39,
+        29
+      ],
+      "victim": [
+        13,
+        15
+      ],
+      "rank": 15,
+      "slot": 105
+    },
+    {
+      "fetch": 22404,
+      "evict": 22406,
+      "commit": 22407,
+      "page": [
+        39,
+        30
+      ],
+      "victim": [
+        9,
+        26
+      ],
+      "rank": 7,
+      "slot": 74
+    },
+    {
+      "fetch": 22411,
+      "evict": 22413,
+      "commit": 22414,
+      "page": [
+        39,
+        37
+      ],
+      "victim": [
+        1,
+        52
+      ],
+      "rank": 11,
+      "slot": 10
+    },
+    {
+      "fetch": 22418,
+      "evict": 22420,
+      "commit": 22421,
+      "page": [
+        39,
+        45
+      ],
+      "victim": [
+        3,
+        68
+      ],
+      "rank": 15,
+      "slot": 26
+    },
+    {
+      "fetch": 22425,
+      "evict": 22427,
+      "commit": 22428,
+      "page": [
+        39,
+        71
+      ],
+      "victim": [
+        3,
+        57
+      ],
+      "rank": 8,
+      "slot": 27
+    },
+    {
+      "fetch": 22432,
+      "evict": 22434,
+      "commit": 22435,
+      "page": [
+        39,
+        100
+      ],
+      "victim": [
+        1,
+        75
+      ],
+      "rank": 6,
+      "slot": 14
+    },
+    {
+      "fetch": 22439,
+      "evict": 22441,
+      "commit": 22442,
+      "page": [
+        39,
+        120
+      ],
+      "victim": [
+        1,
+        104
+      ],
+      "rank": 9,
+      "slot": 15
+    },
+    {
+      "fetch": 22555,
+      "evict": 22557,
+      "commit": 22558,
+      "page": [
+        39,
+        10
+      ],
+      "victim": [
+        9,
+        36
+      ],
+      "rank": 14,
+      "slot": 73
+    },
+    {
+      "fetch": 22562,
+      "evict": 22564,
+      "commit": 22565,
+      "page": [
+        39,
+        56
+      ],
+      "victim": [
+        1,
+        74
+      ],
+      "rank": 10,
+      "slot": 12
+    },
+    {
+      "fetch": 22569,
+      "evict": 22571,
+      "commit": 22572,
+      "page": [
+        39,
+        60
+      ],
+      "victim": [
+        3,
+        80
+      ],
+      "rank": 6,
+      "slot": 27
+    },
+    {
+      "fetch": 22576,
+      "evict": 22578,
+      "commit": 22579,
+      "page": [
+        39,
+        76
+      ],
+      "victim": [
+        3,
+        62
+      ],
+      "rank": 14,
+      "slot": 28
+    },
+    {
+      "fetch": 22583,
+      "evict": 22585,
+      "commit": 22586,
+      "page": [
+        39,
+        78
+      ],
+      "victim": [
+        3,
+        77
+      ],
+      "rank": 14,
+      "slot": 29
+    },
+    {
+      "fetch": 22590,
+      "evict": 22592,
+      "commit": 22593,
+      "page": [
+        39,
+        86
+      ],
+      "victim": [
+        7,
+        86
+      ],
+      "rank": 0,
+      "slot": 60
+    },
+    {
+      "fetch": 22597,
+      "evict": 22599,
+      "commit": 22600,
+      "page": [
+        39,
+        87
+      ],
+      "victim": [
+        5,
+        86
+      ],
+      "rank": 12,
+      "slot": 44
+    },
+    {
+      "fetch": 22716,
+      "evict": 22718,
+      "commit": 22719,
+      "page": [
+        39,
+        46
+      ],
+      "victim": [
+        9,
+        67
+      ],
+      "rank": 11,
+      "slot": 75
+    },
+    {
+      "fetch": 22723,
+      "evict": 22725,
+      "commit": 22726,
+      "page": [
+        39,
+        77
+      ],
+      "victim": [
+        9,
+        71
+      ],
+      "rank": 10,
+      "slot": 77
+    },
+    {
+      "fetch": 22730,
+      "evict": 22732,
+      "commit": 22733,
+      "page": [
+        39,
+        82
+      ],
+      "victim": [
+        9,
+        84
+      ],
+      "rank": 5,
+      "slot": 77
+    },
+    {
+      "fetch": 22740,
+      "evict": 22742,
+      "commit": 22743,
+      "page": [
+        39,
+        89
+      ],
+      "victim": [
+        5,
+        83
+      ],
+      "rank": 15,
+      "slot": 46
+    },
+    {
+      "fetch": 22747,
+      "evict": 22749,
+      "commit": 22750,
+      "page": [
+        39,
+        98
+      ],
+      "victim": [
+        3,
+        75
+      ],
+      "rank": 0,
+      "slot": 29
+    },
+    {
+      "fetch": 22757,
+      "evict": 22759,
+      "commit": 22760,
+      "page": [
+        39,
+        125
+      ],
+      "victim": [
+        11,
+        114
+      ],
+      "rank": 15,
+      "slot": 95
+    },
+    {
+      "fetch": 22873,
+      "evict": 22875,
+      "commit": 22876,
+      "page": [
+        39,
+        0
+      ],
+      "victim": [
+        13,
+        9
+      ],
+      "rank": 2,
+      "slot": 104
+    },
+    {
+      "fetch": 22880,
+      "evict": 22882,
+      "commit": 22883,
+      "page": [
+        39,
+        25
+      ],
+      "victim": [
+        1,
+        17
+      ],
+      "rank": 2,
+      "slot": 10
+    },
+    {
+      "fetch": 22887,
+      "evict": 22889,
+      "commit": 22890,
+      "page": [
+        39,
+        40
+      ],
+      "victim": [
+        3,
+        79
+      ],
+      "rank": 9,
+      "slot": 27
+    },
+    {
+      "fetch": 22894,
+      "evict": 22896,
+      "commit": 22897,
+      "page": [
+        39,
+        58
+      ],
+      "victim": [
+        7,
+        69
+      ],
+      "rank": 12,
+      "slot": 59
+    },
+    {
+      "fetch": 22901,
+      "evict": 22903,
+      "commit": 22904,
+      "page": [
+        39,
+        80
+      ],
+      "victim": [
+        3,
+        46
+      ],
+      "rank": 3,
+      "slot": 28
+    },
+    {
+      "fetch": 22914,
+      "evict": 22916,
+      "commit": 22917,
+      "page": [
+        39,
+        127
+      ],
+      "victim": [
+        9,
+        127
+      ],
+      "rank": 11,
+      "slot": 79
+    },
+    {
+      "fetch": 23028,
+      "evict": 23030,
+      "commit": 23031,
+      "page": [
+        40,
+        0
+      ],
+      "victim": [
+        2,
+        6
+      ],
+      "rank": 3,
+      "slot": 16
+    },
+    {
+      "fetch": 23035,
+      "evict": 23037,
+      "commit": 23038,
+      "page": [
+        40,
+        30
+      ],
+      "victim": [
+        4,
+        67
+      ],
+      "rank": 3,
+      "slot": 35
+    },
+    {
+      "fetch": 23042,
+      "evict": 23044,
+      "commit": 23045,
+      "page": [
+        40,
+        57
+      ],
+      "victim": [
+        2,
+        91
+      ],
+      "rank": 15,
+      "slot": 20
+    },
+    {
+      "fetch": 23049,
+      "evict": 23051,
+      "commit": 23052,
+      "page": [
+        40,
+        80
+      ],
+      "victim": [
+        2,
+        30
+      ],
+      "rank": 6,
+      "slot": 18
+    },
+    {
+      "fetch": 23056,
+      "evict": 23058,
+      "commit": 23059,
+      "page": [
+        40,
+        84
+      ],
+      "victim": [
+        8,
+        95
+      ],
+      "rank": 15,
+      "slot": 69
+    },
+    {
+      "fetch": 23063,
+      "evict": 23065,
+      "commit": 23066,
+      "page": [
+        40,
+        90
+      ],
+      "victim": [
+        14,
+        119
+      ],
+      "rank": 3,
+      "slot": 118
+    },
+    {
+      "fetch": 23070,
+      "evict": 23072,
+      "commit": 23073,
+      "page": [
+        40,
+        101
+      ],
+      "victim": [
+        8,
+        90
+      ],
+      "rank": 6,
+      "slot": 69
+    },
+    {
+      "fetch": 23077,
+      "evict": 23079,
+      "commit": 23080,
+      "page": [
+        40,
+        115
+      ],
+      "victim": [
+        8,
+        99
+      ],
+      "rank": 4,
+      "slot": 70
+    },
+    {
+      "fetch": 23189,
+      "evict": 23191,
+      "commit": 23192,
+      "page": [
+        40,
+        7
+      ],
+      "victim": [
+        6,
+        42
+      ],
+      "rank": 2,
+      "slot": 49
+    },
+    {
+      "fetch": 23196,
+      "evict": 23198,
+      "commit": 23199,
+      "page": [
+        40,
+        15
+      ],
+      "victim": [
+        0,
+        3
+      ],
+      "rank": 7,
+      "slot": 0
+    },
+    {
+      "fetch": 23203,
+      "evict": 23205,
+      "commit": 23206,
+      "page": [
+        40,
+        18
+      ],
+      "victim": [
+        8,
+        8
+      ],
+      "rank": 15,
+      "slot": 65
+    },
+    {
+      "fetch": 23210,
+      "evict": 23212,
+      "commit": 23213,
+      "page": [
+        40,
+        55
+      ],
+      "victim": [
+        8,
+        41
+      ],
+      "rank": 7,
+      "slot": 67
+    },
+    {
+      "fetch": 23217,
+      "evict": 23219,
+      "commit": 23220,
+      "page": [
+        40,
+        59
+      ],
+      "victim": [
+        2,
+        47
+      ],
+      "rank": 7,
+      "slot": 20
+    },
+    {
+      "fetch": 23224,
+      "evict": 23226,
+      "commit": 23227,
+      "page": [
+        40,
+        60
+      ],
+      "victim": [
+        0,
+        71
+      ],
+      "rank": 2,
+      "slot": 4
+    },
+    {
+      "fetch": 23231,
+      "evict": 23233,
+      "commit": 23234,
+      "page": [
+        40,
+        83
+      ],
+      "victim": [
+        2,
+        33
+      ],
+      "rank": 4,
+      "slot": 21
+    },
+    {
+      "fetch": 23348,
+      "evict": 23350,
+      "commit": 23351,
+      "page": [
+        40,
+        11
+      ],
+      "victim": [
+        4,
+        16
+      ],
+      "rank": 15,
+      "slot": 32
+    },
+    {
+      "fetch": 23355,
+      "evict": 23357,
+      "commit": 23358,
+      "page": [
+        40,
+        13
+      ],
+      "victim": [
+        4,
+        36
+      ],
+      "rank": 6,
+      "slot": 33
+    },
+    {
+      "fetch": 23368,
+      "evict": 23370,
+      "commit": 23371,
+      "page": [
+        40,
+        94
+      ],
+      "victim": [
+        12,
+        114
+      ],
+      "rank": 1,
+      "slot": 101
+    },
+    {
+      "fetch": 23375,
+      "evict": 23377,
+      "commit": 23378,
+      "page": [
+        40,
+        100
+      ],
+      "victim": [
+        2,
+        105
+      ],
+      "rank": 13,
+      "slot": 22
+    },
+    {
+      "fetch": 23382,
+      "evict": 23384,
+      "commit": 23385,
+      "page": [
+        40,
+        109
+      ],
+      "victim": [
+        6,
+        51
+      ],
+      "rank": 9,
+      "slot": 52
+    },
+    {
+      "fetch": 23500,
+      "evict": 23502,
+      "commit": 23503,
+      "page": [
+        40,
+        24
+      ],
+      "victim": [
+        4,
+        2
+      ],
+      "rank": 11,
+      "slot": 32
+    },
+    {
+      "fetch": 23510,
+      "evict": 23512,
+      "commit": 23513,
+      "page": [
+        40,
+        35
+      ],
+      "victim": [
+        2,
+        61
+      ],
+      "rank": 13,
+      "slot": 19
+    },
+    {
+      "fetch": 23517,
+      "evict": 23519,
+      "commit": 23520,
+      "page": [
+        40,
+        48
+      ],
+      "victim": [
+        10,
+        32
+      ],
+      "rank": 0,
+      "slot": 83
+    },
+    {
+      "fetch": 23524,
+      "evict": 23526,
+      "commit": 23527,
+      "page": [
+        40,
+        63
+      ],
+      "victim": [
+        6,
+        67
+      ],
+      "rank": 0,
+      "slot": 53
+    },
+    {
+      "fetch": 23531,
+      "evict": 23533,
+      "commit": 23534,
+      "page": [
+        40,
+        76
+      ],
+      "victim": [
+        6,
+        81
+      ],
+      "rank": 3,
+      "slot": 53
+    },
+    {
+      "fetch": 23538,
+      "evict": 23540,
+      "commit": 23541,
+      "page": [
+        40,
+        82
+      ],
+      "victim": [
+        0,
+        49
+      ],
+      "rank": 6,
+      "slot": 3
+    },
+    {
+      "fetch": 23545,
+      "evict": 23547,
+      "commit": 23548,
+      "page": [
+        40,
+        93
+      ],
+      "victim": [
+        6,
+        82
+      ],
+      "rank": 13,
+      "slot": 53
+    },
+    {
+      "fetch": 23658,
+      "evict": 23660,
+      "commit": 23661,
+      "page": [
+        41,
+        5
+      ],
+      "victim": [
+        9,
+        8
+      ],
+      "rank": 7,
+      "slot": 72
+    },
+    {
+      "fetch": 23665,
+      "evict": 23667,
+      "commit": 23668,
+      "page": [
+        41,
+        7
+      ],
+      "victim": [
+        5,
+        31
+      ],
+      "rank": 7,
+      "slot": 41
+    },
+    {
+      "fetch": 23672,
+      "evict": 23674,
+      "commit": 23675,
+      "page": [
+        41,
+        11
+      ],
+      "victim": [
+        9,
+        28
+      ],
+      "rank": 8,
+      "slot": 73
+    },
+    {
+      "fetch": 23679,
+      "evict": 23681,
+      "commit": 23682,
+      "page": [
+        41,
+        22
+      ],
+      "victim": [
+        7,
+        35
+      ],
+      "rank": 6,
+      "slot": 56
+    },
+    {
+      "fetch": 23686,
+      "evict": 23688,
+      "commit": 23689,
+      "page": [
+        41,
+        44
+      ],
+      "victim": [
+        11,
+        34
+      ],
+      "rank": 7,
+      "slot": 90
+    },
+    {
+      "fetch": 23693,
+      "evict": 23695,
+      "commit": 23696,
+      "page": [
+        41,
+        57
+      ],
+      "victim": [
+        13,
+        57
+      ],
+      "rank": 7,
+      "slot": 108
+    },
+    {
+      "fetch": 23700,
+      "evict": 23702,
+      "commit": 23703,
+      "page": [
+        41,
+        77
+      ],
+      "victim": [
+        9,
+        78
+      ],
+      "rank": 7,
+      "slot": 77
+    },
+    {
+      "fetch": 23707,
+      "evict": 23709,
+      "commit": 23710,
+      "page": [
+        41,
+        126
+      ],
+      "victim": [
+        5,
+        113
+      ],
+      "rank": 2,
+      "slot": 46
+    },
+    {
+      "fetch": 23820,
+      "evict": 23822,
+      "commit": 23823,
+      "page": [
+        41,
+        15
+      ],
+      "victim": [
+        5,
+        38
+      ],
+      "rank": 11,
+      "slot": 41
+    },
+    {
+      "fetch": 23827,
+      "evict": 23829,
+      "commit": 23830,
+      "page": [
+        41,
+        17
+      ],
+      "victim": [
+        5,
+        25
+      ],
+      "rank": 3,
+      "slot": 41
+    },
+    {
+      "fetch": 23834,
+      "evict": 23836,
+      "commit": 23837,
+      "page": [
+        41,
+        46
+      ],
+      "victim": [
+        13,
+        33
+      ],
+      "rank": 15,
+      "slot": 107
+    },
+    {
+      "fetch": 23841,
+      "evict": 23843,
+      "commit": 23844,
+      "page": [
+        41,
+        52
+      ],
+      "victim": [
+        7,
+        79
+      ],
+      "rank": 15,
+      "slot": 61
+    },
+    {
+      "fetch": 23848,
+      "evict": 23850,
+      "commit": 23851,
+      "page": [
+        41,
+        83
+      ],
+      "victim": [
+        11,
+        83
+      ],
+      "rank": 1,
+      "slot": 94
+    },
+    {
+      "fetch": 23855,
+      "evict": 23857,
+      "commit": 23858,
+      "page": [
+        41,
+        103
+      ],
+      "victim": [
+        5,
+        95
+      ],
+      "rank": 4,
+      "slot": 45
+    },
+    {
+      "fetch": 23862,
+      "evict": 23864,
+      "commit": 23865,
+      "page": [
+        41,
+        113
+      ],
+      "victim": [
+        15,
+        84
+      ],
+      "rank": 15,
+      "slot": 127
+    },
+    {
+      "fetch": 23869,
+      "evict": 23871,
+      "commit": 23872,
+      "page": [
+        41,
+        117
+      ],
+      "victim": [
+        11,
+        103
+      ],
+      "rank": 11,
+      "slot": 95
+    },
+    {
+      "fetch": 23983,
+      "evict": 23985,
+      "commit": 23986,
+      "page": [
+        41,
+        9
+      ],
+      "victim": [
+        13,
+        0
+      ],
+      "rank": 3,
+      "slot": 104
+    },
+    {
+      "fetch": 23990,
+      "evict": 23992,
+      "commit": 23993,
+      "page": [
+        41,
+        58
+      ],
+      "victim": [
+        11,
+        38
+      ],
+      "rank": 1,
+      "slot": 91
+    },
+    {
+      "fetch": 23997,
+      "evict": 23999,
+      "commit": 24000,
+      "page": [
+        41,
+        81
+      ],
+      "victim": [
+        5,
+        89
+      ],
+      "rank": 8,
+      "slot": 45
+    },
+    {
+      "fetch": 24007,
+      "evict": 24009,
+      "commit": 24010,
+      "page": [
+        41,
+        92
+      ],
+      "victim": [
+        1,
+        118
+      ],
+      "rank": 8,
+      "slot": 14
+    },
+    {
+      "fetch": 24014,
+      "evict": 24016,
+      "commit": 24017,
+      "page": [
+        41,
+        102
+      ],
+      "victim": [
+        7,
+        119
+      ],
+      "rank": 3,
+      "slot": 62
+    },
+    {
+      "fetch": 24021,
+      "evict": 24023,
+      "commit": 24024,
+      "page": [
+        41,
+        120
+      ],
+      "victim": [
+        5,
+        111
+      ],
+      "rank": 10,
+      "slot": 47
+    },
+    {
+      "fetch": 24028,
+      "evict": 24030,
+      "commit": 24031,
+      "page": [
+        41,
+        122
+      ],
+      "victim": [
+        3,
+        95
+      ],
+      "rank": 4,
+      "slot": 31
+    },
+    {
+      "fetch": 24142,
+      "evict": 24144,
+      "commit": 24145,
+      "page": [
+        41,
+        18
+      ],
+      "victim": [
+        15,
+        20
+      ],
+      "rank": 15,
+      "slot": 121
+    },
+    {
+      "fetch": 24149,
+      "evict": 24151,
+      "commit": 24152,
+      "page": [
+        41,
+        26
+      ],
+      "victim": [
+        7,
+        29
+      ],
+      "rank": 5,
+      "slot": 57
+    },
+    {
+      "fetch": 24156,
+      "evict": 24158,
+      "commit": 24159,
+      "page": [
+        41,
+        49
+      ],
+      "victim": [
+        1,
+        15
+      ],
+      "rank": 4,
+      "slot": 10
+    },
+    {
+      "fetch": 24163,
+      "evict": 24165,
+      "commit": 24166,
+      "page": [
+        41,
+        55
+      ],
+      "victim": [
+        11,
+        68
+      ],
+      "rank": 5,
+      "slot": 93
+    },
+    {
+      "fetch": 24170,
+      "evict": 24172,
+      "commit": 24173,
+      "page": [
+        41,
+        80
+      ],
+      "victim": [
+        11,
+        104
+      ],
+      "rank": 7,
+      "slot": 94
+    },
+    {
+      "fetch": 24180,
+      "evict": 24182,
+      "commit": 24183,
+      "page": [
+        41,
+        82
+      ],
+      "victim": [
+        7,
+        127
+      ],
+      "rank": 7,
+      "slot": 63
+    },
+    {
+      "fetch": 24187,
+      "evict": 24189,
+      "commit": 24190,
+      "page": [
+        41,
+        99
+      ],
+      "victim": [
+        3,
+        115
+      ],
+      "rank": 8,
+      "slot": 31
+    },
+    {
+      "fetch": 24303,
+      "evict": 24305,
+      "commit": 24306,
+      "page": [
+        42,
+        9
+      ],
+      "victim": [
+        0,
+        0
+      ],
+      "rank": 9,
+      "slot": 0
+    },
+    {
+      "fetch": 24310,
+      "evict": 24312,
+      "commit": 24313,
+      "page": [
+        42,
+        12
+      ],
+      "victim": [
+        4,
+        1
+      ],
+      "rank": 10,
+      "slot": 32
+    },
+    {
+      "fetch": 24317,
+      "evict": 24319,
+      "commit": 24320,
+      "page": [
+        42,
+        14
+      ],
+      "victim": [
+        2,
+        9
+      ],
+      "rank": 2,
+      "slot": 16
+    },
+    {
+      "fetch": 24324,
+      "evict": 24326,
+      "commit": 24327,
+      "page": [
+        42,
+        16
+      ],
+      "victim": [
+        10,
+        11
+      ],
+      "rank": 15,
+      "slot": 81
+    },
+    {
+      "fetch": 24331,
+      "evict": 24333,
+      "commit": 24334,
+      "page": [
+        42,
+        58
+      ],
+      "victim": [
+        8,
+        62
+      ],
+      "rank": 9,
+      "slot": 68
+    },
+    {
+      "fetch": 24338,
+      "evict": 24340,
+      "commit": 24341,
+      "page": [
+        42,
+        86
+      ],
+      "victim": [
+        4,
+        110
+      ],
+      "rank": 13,
+      "slot": 38
+    },
+    {
+      "fetch": 24345,
+      "evict": 24347,
+      "commit": 24348,
+      "page": [
+        42,
+        98
+      ],
+      "victim": [
+        8,
+        87
+      ],
+      "rank": 14,
+      "slot": 68
+    },
+    {
+      "fetch": 24352,
+      "evict": 24354,
+      "commit": 24355,
+      "page": [
+        42,
+        108
+      ],
+      "victim": [
+        4,
+        99
+      ],
+      "rank": 11,
+      "slot": 37
+    },
+    {
+      "fetch": 24467,
+      "evict": 24469,
+      "commit": 24470,
+      "page": [
+        42,
+        7
+      ],
+      "victim": [
+        2,
+        7
+      ],
+      "rank": 7,
+      "slot": 16
+    },
+    {
+      "fetch": 24474,
+      "evict": 24476,
+      "commit": 24477,
+      "page": [
+        42,
+        22
+      ],
+      "victim": [
+        0,
+        26
+      ],
+      "rank": 7,
+      "slot": 1
+    },
+    {
+      "fetch": 24481,
+      "evict": 24483,
+      "commit": 24484,
+      "page": [
+        42,
+        24
+      ],
+      "victim": [
+        6,
+        69
+      ],
+      "rank": 13,
+      "slot": 50
+    },
+    {
+      "fetch": 24488,
+      "evict": 24490,
+      "commit": 24491,
+      "page": [
+        42,
+        36
+      ],
+      "victim": [
+        2,
+        36
+      ],
+      "rank": 14,
+      "slot": 18
+    },
+    {
+      "fetch": 24495,
+      "evict": 24497,
+      "commit": 24498,
+      "page": [
+        42,
+        37
+      ],
+      "victim": [
+        10,
+        62
+      ],
+      "rank": 7,
+      "slot": 83
+    },
+    {
+      "fetch": 24502,
+      "evict": 24504,
+      "commit": 24505,
+      "page": [
+        42,
+        73
+      ],
+      "victim": [
+        4,
+        108
+      ],
+      "rank": 7,
+      "slot": 38
+    },
+    {
+      "fetch": 24509,
+      "evict": 24511,
+      "commit": 24512,
+      "page": [
+        42,
+        74
+      ],
+      "victim": [
+        10,
+        87
+      ],
+      "rank": 15,
+      "slot": 85
+    },
+    {
+      "fetch": 24516,
+      "evict": 24518,
+      "commit": 24519,
+      "page": [
+        42,
+        125
+      ],
+      "victim": [
+        2,
+        122
+      ],
+      "rank": 7,
+      "slot": 23
+    },
+    {
+      "fetch": 24628,
+      "evict": 24630,
+      "commit": 24631,
+      "page": [
+        42,
+        5
+      ],
+      "victim": [
+        6,
+        13
+      ],
+      "rank": 14,
+      "slot": 48
+    },
+    {
+      "fetch": 24635,
+      "evict": 24637,
+      "commit": 24638,
+      "page": [
+        42,
+        8
+      ],
+      "victim": [
+        2,
+        19
+      ],
+      "rank": 13,
+      "slot": 16
+    },
+    {
+      "fetch": 24645,
+      "evict": 24647,
+      "commit": 24648,
+      "page": [
+        42,
+        18
+      ],
+      "victim": [
+        10,
+        16
+      ],
+      "rank": 13,
+      "slot": 81
+    },
+    {
+      "fetch": 24655,
+      "evict": 24657,
+      "commit": 24658,
+      "page": [
+        42,
+        66
+      ],
+      "victim": [
+        2,
+        75
+      ],
+      "rank": 13,
+      "slot": 20
+    },
+    {
+      "fetch": 24665,
+      "evict": 24667,
+      "commit": 24668,
+      "page": [
+        42,
+        106
+      ],
+      "victim": [
+        10,
+        84
+      ],
+      "rank": 5,
+      "slot": 86
+    },
+    {
+      "fetch": 24782,
+      "evict": 24784,
+      "commit": 24785,
+      "page": [
+        42,
+        17
+      ],
+      "victim": [
+        2,
+        34
+      ],
+      "rank": 10,
+      "slot": 17
+    },
+    {
+      "fetch": 24789,
+      "evict": 24791,
+      "commit": 24792,
+      "page": [
+        42,
+        50
+      ],
+      "victim": [
+        6,
+        43
+      ],
+      "rank": 9,
+      "slot": 51
+    },
+    {
+      "fetch": 24799,
+      "evict": 24801,
+      "commit": 24802,
+      "page": [
+        42,
+        92
+      ],
+      "victim": [
+        4,
+        77
+      ],
+      "rank": 9,
+      "slot": 37
+    },
+    {
+      "fetch": 24806,
+      "evict": 24808,
+      "commit": 24809,
+      "page": [
+        42,
+        99
+      ],
+      "victim": [
+        4,
+        107
+      ],
+      "rank": 9,
+      "slot": 38
+    },
+    {
+      "fetch": 24813,
+      "evict": 24815,
+      "commit": 24816,
+      "page": [
+        42,
+        112
+      ],
+      "victim": [
+        4,
+        126
+      ],
+      "rank": 14,
+      "slot": 39
+    },
+    {
+      "fetch": 24820,
+      "evict": 24822,
+      "commit": 24823,
+      "page": [
+        42,
+        116
+      ],
+      "victim": [
+        6,
+        117
+      ],
+      "rank": 11,
+      "slot": 54
+    },
+    {
+      "fetch": 24934,
+      "evict": 24936,
+      "commit": 24937,
+      "page": [
+        43,
+        0
+      ],
+      "victim": [
+        5,
+        4
+      ],
+      "rank": 5,
+      "slot": 40
+    },
+    {
+      "fetch": 24941,
+      "evict": 24943,
+      "commit": 24944,
+      "page": [
+        43,
+        42
+      ],
+      "victim": [
+        3,
+        45
+      ],
+      "rank": 1,
+      "slot": 26
+    },
+    {
+      "fetch": 24948,
+      "evict": 24950,
+      "commit": 24951,
+      "page": [
+        43,
+        52
+      ],
+      "victim": [
+        7,
+        53
+      ],
+      "rank": 7,
+      "slot": 57
+    },
+    {
+      "fetch": 24955,
+      "evict": 24957,
+      "commit": 24958,
+      "page": [
+        43,
+        58
+      ],
+      "victim": [
+        7,
+        65
+      ],
+      "rank": 5,
+      "slot": 59
+    },
+    {
+      "fetch": 24962,
+      "evict": 24964,
+      "commit": 24965,
+      "page": [
+        43,
+        66
+      ],
+      "victim": [
+        5,
+        76
+      ],
+      "rank": 5,
+      "slot": 44
+    },
+    {
+      "fetch": 24969,
+      "evict": 24971,
+      "commit": 24972,
+      "page": [
+        43,
+        104
+      ],
+      "victim": [
+        5,
+        120
+      ],
+      "rank": 4,
+      "slot": 47
+    },
+    {
+      "fetch": 24976,
+      "evict": 24978,
+      "commit": 24979,
+      "page": [
+        43,
+        112
+      ],
+      "victim": [
+        11,
+        84
+      ],
+      "rank": 7,
+      "slot": 93
+    },
+    {
+      "fetch": 24983,
+      "evict": 24985,
+      "commit": 24986,
+      "page": [
+        43,
+        123
+      ],
+      "victim": [
+        5,
+        125
+      ],
+      "rank": 5,
+      "slot": 47
+    },
+    {
+      "fetch": 25094,
+      "evict": 25096,
+      "commit": 25097,
+      "page": [
+        43,
+        12
+      ],
+      "victim": [
+        9,
+        3
+      ],
+      "rank": 6,
+      "slot": 72
+    },
+    {
+      "fetch": 25101,
+      "evict": 25103,
+      "commit": 25104,
+      "page": [
+        43,
+        19
+      ],
+      "victim": [
+        3,
+        29
+      ],
+      "rank": 6,
+      "slot": 25
+    },
+    {
+      "fetch": 25108,
+      "evict": 25110,
+      "commit": 25111,
+      "page": [
+        43,
+        43
+      ],
+      "victim": [
+        11,
+        5
+      ],
+      "rank": 7,
+      "slot": 88
+    },
+    {
+      "fetch": 25115,
+      "evict": 25117,
+      "commit": 25118,
+      "page": [
+        43,
+        49
+      ],
+      "victim": [
+        3,
+        109
+      ],
+      "rank": 6,
+      "slot": 29
+    },
+    {
+      "fetch": 25122,
+      "evict": 25124,
+      "commit": 25125,
+      "page": [
+        43,
+        57
+      ],
+      "victim": [
+        11,
+        55
+      ],
+      "rank": 12,
+      "slot": 91
+    },
+    {
+      "fetch": 25129,
+      "evict": 25131,
+      "commit": 25132,
+      "page": [
+        43,
+        78
+      ],
+      "victim": [
+        5,
+        126
+      ],
+      "rank": 6,
+      "slot": 47
+    },
+    {
+      "fetch": 25139,
+      "evict": 25141,
+      "commit": 25142,
+      "page": [
+        43,
+        127
+      ],
+      "victim": [
+        9,
+        95
+      ],
+      "rank": 7,
+      "slot": 79
+    },
+    {
+      "fetch": 25250,
+      "evict": 25252,
+      "commit": 25253,
+      "page": [
+        43,
+        16
+      ],
+      "victim": [
+        3,
+        34
+      ],
+      "rank": 4,
+      "slot": 26
+    },
+    {
+      "fetch": 25257,
+      "evict": 25259,
+      "commit": 25260,
+      "page": [
+        43,
+        41
+      ],
+      "victim": [
+        5,
+        15
+      ],
+      "rank": 0,
+      "slot": 41
+    },
+    {
+      "fetch": 25267,
+      "evict": 25269,
+      "commit": 25270,
+      "page": [
+        43,
+        56
+      ],
+      "victim": [
+        13,
+        41
+      ],
+      "rank": 7,
+      "slot": 106
+    },
+    {
+      "fetch": 25277,
+      "evict": 25279,
+      "commit": 25280,
+      "page": [
+        43,
+        80
+      ],
+      "victim": [
+        9,
+        21
+      ],
+      "rank": 0,
+      "slot": 76
+    },
+    {
+      "fetch": 25396,
+      "evict": 25398,
+      "commit": 25399,
+      "page": [
+        43,
+        5
+      ],
+      "victim": [
+        5,
+        6
+      ],
+      "rank": 0,
+      "slot": 40
+    },
+    {
+      "fetch": 25403,
+      "evict": 25405,
+      "commit": 25406,
+      "page": [
+        43,
+        37
+      ],
+      "victim": [
+        3,
+        8
+      ],
+      "rank": 10,
+      "slot": 24
+    },
+    {
+      "fetch": 25413,
+      "evict": 25415,
+      "commit": 25416,
+      "page": [
+        43,
+        46
+      ],
+      "victim": [
+        3,
+        37
+      ],
+      "rank": 0,
+      "slot": 26
+    },
+    {
+      "fetch": 25420,
+      "evict": 25422,
+      "commit": 25423,
+      "page": [
+        43,
+        68
+      ],
+      "victim": [
+        13,
+        55
+      ],
+      "rank": 5,
+      "slot": 109
+    },
+    {
+      "fetch": 25427,
+      "evict": 25429,
+      "commit": 25430,
+      "page": [
+        43,
+        72
+      ],
+      "victim": [
+        3,
+        107
+      ],
+      "rank": 8,
+      "slot": 30
+    },
+    {
+      "fetch": 25434,
+      "evict": 25436,
+      "commit": 25437,
+      "page": [
+        43,
+        82
+      ],
+      "victim": [
+        5,
+        69
+      ],
+      "rank": 0,
+      "slot": 45
+    },
+    {
+      "fetch": 25441,
+      "evict": 25443,
+      "commit": 25444,
+      "page": [
+        43,
+        120
+      ],
+      "victim": [
+        13,
+        109
+      ],
+      "rank": 7,
+      "slot": 110
+    },
+    {
+      "fetch": 25554,
+      "evict": 25556,
+      "commit": 25557,
+      "page": [
+        44,
+        3
+      ],
+      "victim": [
+        2,
+        29
+      ],
+      "rank": 9,
+      "slot": 17
+    },
+    {
+      "fetch": 25561,
+      "evict": 25563,
+      "commit": 25564,
+      "page": [
+        44,
+        6
+      ],
+      "victim": [
+        4,
+        6
+      ],
+      "rank": 7,
+      "slot": 32
+    },
+    {
+      "fetch": 25568,
+      "evict": 25570,
+      "commit": 25571,
+      "page": [
+        44,
+        16
+      ],
+      "victim": [
+        4,
+        17
+      ],
+      "rank": 5,
+      "slot": 33
+    },
+    {
+      "fetch": 25575,
+      "evict": 25577,
+      "commit": 25578,
+      "page": [
+        44,
+        58
+      ],
+      "victim": [
+        12,
+        31
+      ],
+      "rank": 0,
+      "slot": 99
+    },
+    {
+      "fetch": 25582,
+      "evict": 25584,
+      "commit": 25585,
+      "page": [
+        44,
+        72
+      ],
+      "victim": [
+        4,
+        85
+      ],
+      "rank": 7,
+      "slot": 37
+    },
+    {
+      "fetch": 25589,
+      "evict": 25591,
+      "commit": 25592,
+      "page": [
+        44,
+        105
+      ],
+      "victim": [
+        8,
+        115
+      ],
+      "rank": 0,
+      "slot": 70
+    },
+    {
+      "fetch": 25596,
+      "evict": 25598,
+      "commit": 25599,
+      "page": [
+        44,
+        111
+      ],
+      "victim": [
+        2,
+        123
+      ],
+      "rank": 0,
+      "slot": 23
+    },
+    {
+      "fetch": 25603,
+      "evict": 25605,
+      "commit": 25606,
+      "page": [
+        44,
+        121
+      ],
+      "victim": [
+        0,
+        118
+      ],
+      "rank": 9,
+      "slot": 7
+    },
+    {
+      "fetch": 25714,
+      "evict": 25716,
+      "commit": 25717,
+      "page": [
+        44,
+        0
+      ],
+      "victim": [
+        2,
+        27
+      ],
+      "rank": 9,
+      "slot": 16
+    },
+    {
+      "fetch": 25721,
+      "evict": 25723,
+      "commit": 25724,
+      "page": [
+        44,
+        37
+      ],
+      "victim": [
+        8,
+        26
+      ],
+      "rank": 7,
+      "slot": 66
+    },
+    {
+      "fetch": 25728,
+      "evict": 25730,
+      "commit": 25731,
+      "page": [
+        44,
+        38
+      ],
+      "victim": [
+        8,
+        55
+      ],
+      "rank": 6,
+      "slot": 65
+    },
+    {
+      "fetch": 25735,
+      "evict": 25737,
+      "commit": 25738,
+      "page": [
+        44,
+        45
+      ],
+      "victim": [
+        6,
+        30
+      ],
+      "rank": 9,
+      "slot": 50
+    },
+    {
+      "fetch": 25742,
+      "evict": 25744,
+      "commit": 25745,
+      "page": [
+        44,
+        83
+      ],
+      "victim": [
+        4,
+        115
+      ],
+      "rank": 6,
+      "slot": 38
+    },
+    {
+      "fetch": 25749,
+      "evict": 25751,
+      "commit": 25752,
+      "page": [
+        44,
+        88
+      ],
+      "victim": [
+        10,
+        69
+      ],
+      "rank": 9,
+      "slot": 84
+    },
+    {
+      "fetch": 25756,
+      "evict": 25758,
+      "commit": 25759,
+      "page": [
+        44,
+        98
+      ],
+      "victim": [
+        6,
+        122
+      ],
+      "rank": 6,
+      "slot": 55
+    },
+    {
+      "fetch": 25763,
+      "evict": 25765,
+      "commit": 25766,
+      "page": [
+        44,
+        99
+      ],
+      "victim": [
+        6,
+        80
+      ],
+      "rank": 9,
+      "slot": 53
+    },
+    {
+      "fetch": 25877,
+      "evict": 25879,
+      "commit": 25880,
+      "page": [
+        44,
+        11
+      ],
+      "victim": [
+        6,
+        2
+      ],
+      "rank": 15,
+      "slot": 48
+    },
+    {
+      "fetch": 25884,
+      "evict": 25886,
+      "commit": 25887,
+      "page": [
+        44,
+        22
+      ],
+      "victim": [
+        6,
+        11
+      ],
+      "rank": 1,
+      "slot": 48
+    },
+    {
+      "fetch": 25891,
+      "evict": 25893,
+      "commit": 25894,
+      "page": [
+        44,
+        23
+      ],
+      "victim": [
+        2,
+        79
+      ],
+      "rank": 15,
+      "slot": 19
+    },
+    {
+      "fetch": 25904,
+      "evict": 25906,
+      "commit": 25907,
+      "page": [
+        44,
+        81
+      ],
+      "victim": [
+        10,
+        63
+      ],
+      "rank": 6,
+      "slot": 85
+    },
+    {
+      "fetch": 26022,
+      "evict": 26024,
+      "commit": 26025,
+      "page": [
+        44,
+        9
+      ],
+      "victim": [
+        2,
+        2
+      ],
+      "rank": 4,
+      "slot": 16
+    },
+    {
+      "fetch": 26032,
+      "evict": 26034,
+      "commit": 26035,
+      "page": [
+        44,
+        19
+      ],
+      "victim": [
+        6,
+        58
+      ],
+      "rank": 11,
+      "slot": 48
+    },
+    {
+      "fetch": 26042,
+      "evict": 26044,
+      "commit": 26045,
+      "page": [
+        44,
+        47
+      ],
+      "victim": [
+        4,
+        19
+      ],
+      "rank": 5,
+      "slot": 34
+    },
+    {
+      "fetch": 26049,
+      "evict": 26051,
+      "commit": 26052,
+      "page": [
+        44,
+        62
+      ],
+      "victim": [
+        8,
+        57
+      ],
+      "rank": 7,
+      "slot": 68
+    },
+    {
+      "fetch": 26056,
+      "evict": 26058,
+      "commit": 26059,
+      "page": [
+        44,
+        64
+      ],
+      "victim": [
+        2,
+        62
+      ],
+      "rank": 5,
+      "slot": 19
+    },
+    {
+      "fetch": 26063,
+      "evict": 26065,
+      "commit": 26066,
+      "page": [
+        44,
+        69
+      ],
+      "victim": [
+        10,
+        81
+      ],
+      "rank": 0,
+      "slot": 85
+    },
+    {
+      "fetch": 26178,
+      "evict": 26180,
+      "commit": 26181,
+      "page": [
+        45,
+        20
+      ],
+      "victim": [
+        7,
+        39
+      ],
+      "rank": 1,
+      "slot": 57
+    },
+    {
+      "fetch": 26185,
+      "evict": 26187,
+      "commit": 26188,
+      "page": [
+        45,
+        22
+      ],
+      "victim": [
+        5,
+        39
+      ],
+      "rank": 1,
+      "slot": 42
+    },
+    {
+      "fetch": 26192,
+      "evict": 26194,
+      "commit": 26195,
+      "page": [
+        45,
+        50
+      ],
+      "victim": [
+        11,
+        60
+      ],
+      "rank": 11,
+      "slot": 91
+    },
+    {
+      "fetch": 26199,
+      "evict": 26201,
+      "commit": 26202,
+      "page": [
+        45,
+        53
+      ],
+      "victim": [
+        5,
+        50
+      ],
+      "rank": 9,
+      "slot": 43
+    },
+    {
+      "fetch": 26206,
+      "evict": 26208,
+      "commit": 26209,
+      "page": [
+        45,
+        64
+      ],
+      "victim": [
+        3,
+        43
+      ],
+      "rank": 10,
+      "slot": 27
+    },
+    {
+      "fetch": 26213,
+      "evict": 26215,
+      "commit": 26216,
+      "page": [
+        45,
+        85
+      ],
+      "victim": [
+        5,
+        105
+      ],
+      "rank": 10,
+      "slot": 46
+    },
+    {
+      "fetch": 26220,
+      "evict": 26222,
+      "commit": 26223,
+      "page": [
+        45,
+        95
+      ],
+      "victim": [
+        1,
+        97
+      ],
+      "rank": 11,
+      "slot": 14
+    },
+    {
+      "fetch": 26227,
+      "evict": 26229,
+      "commit": 26230,
+      "page": [
+        45,
+        99
+      ],
+      "victim": [
+        13,
+        121
+      ],
+      "rank": 11,
+      "slot": 111
+    },
+    {
+      "fetch": 26338,
+      "evict": 26340,
+      "commit": 26341,
+      "page": [
+        45,
+        17
+      ],
+      "victim": [
+        7,
+        71
+      ],
+      "rank": 13,
+      "slot": 58
+    },
+    {
+      "fetch": 26348,
+      "evict": 26350,
+      "commit": 26351,
+      "page": [
+        45,
+        30
+      ],
+      "victim": [
+        13,
+        80
+      ],
+      "rank": 1,
+      "slot": 108
+    },
+    {
+      "fetch": 26355,
+      "evict": 26357,
+      "commit": 26358,
+      "page": [
+        45,
+        35
+      ],
+      "victim": [
+        5,
+        16
+      ],
+      "rank": 5,
+      "slot": 42
+    },
+    {
+      "fetch": 26362,
+      "evict": 26364,
+      "commit": 26365,
+      "page": [
+        45,
+        46
+      ],
+      "victim": [
+        5,
+        27
+      ],
+      "rank": 13,
+      "slot": 43
+    },
+    {
+      "fetch": 26369,
+      "evict": 26371,
+      "commit": 26372,
+      "page": [
+        45,
+        58
+      ],
+      "victim": [
+        9,
+        90
+      ],
+      "rank": 13,
+      "slot": 77
+    },
+    {
+      "fetch": 26376,
+      "evict": 26378,
+      "commit": 26379,
+      "page": [
+        45,
+        84
+      ],
+      "victim": [
+        7,
+        74
+      ],
+      "rank": 5,
+      "slot": 60
+    },
+    {
+      "fetch": 26383,
+      "evict": 26385,
+      "commit": 26386,
+      "page": [
+        45,
+        112
+      ],
+      "victim": [
+        13,
+        117
+      ],
+      "rank": 13,
+      "slot": 111
+    },
+    {
+      "fetch": 26494,
+      "evict": 26496,
+      "commit": 26497,
+      "page": [
+        45,
+        10
+      ],
+      "victim": [
+        7,
+        30
+      ],
+      "rank": 1,
+      "slot": 56
+    },
+    {
+      "fetch": 26504,
+      "evict": 26506,
+      "commit": 26507,
+      "page": [
+        45,
+        26
+      ],
+      "victim": [
+        11,
+        24
+      ],
+      "rank": 5,
+      "slot": 89
+    },
+    {
+      "fetch": 26514,
+      "evict": 26516,
+      "commit": 26517,
+      "page": [
+        45,
+        37
+      ],
+      "victim": [
+        11,
+        81
+      ],
+      "rank": 1,
+      "slot": 93
+    },
+    {
+      "fetch": 26521,
+      "evict": 26523,
+      "commit": 26524,
+      "page": [
+        45,
+        76
+      ],
+      "victim": [
+        3,
+        100
+      ],
+      "rank": 15,
+      "slot": 28
+    },
+    {
+      "fetch": 26528,
+      "evict": 26530,
+      "commit": 26531,
+      "page": [
+        45,
+        103
+      ],
+      "victim": [
+        7,
+        126
+      ],
+      "rank": 1,
+      "slot": 63
+    },
+    {
+      "fetch": 26535,
+      "evict": 26537,
+      "commit": 26538,
+      "page": [
+        45,
+        104
+      ],
+      "victim": [
+        5,
+        36
+      ],
+      "rank": 8,
+      "slot": 43
+    },
+    {
+      "fetch": 26648,
+      "evict": 26650,
+      "commit": 26651,
+      "page": [
+        45,
+        4
+      ],
+      "victim": [
+        7,
+        1
+      ],
+      "rank": 8,
+      "slot": 56
+    },
+    {
+      "fetch": 26658,
+      "evict": 26660,
+      "commit": 26661,
+      "page": [
+        45,
+        18
+      ],
+      "victim": [
+        9,
+        1
+      ],
+      "rank": 11,
+      "slot": 72
+    },
+    {
+      "fetch": 26665,
+      "evict": 26667,
+      "commit": 26668,
+      "page": [
+        45,
+        24
+      ],
+      "victim": [
+        3,
+        19
+      ],
+      "rank": 11,
+      "slot": 26
+    },
+    {
+      "fetch": 26672,
+      "evict": 26674,
+      "commit": 26675,
+      "page": [
+        45,
+        29
+      ],
+      "victim": [
+        11,
+        41
+      ],
+      "rank": 14,
+      "slot": 89
+    },
+    {
+      "fetch": 26682,
+      "evict": 26684,
+      "commit": 26685,
+      "page": [
+        45,
+        48
+      ],
+      "victim": [
+        3,
+        12
+      ],
+      "rank": 12,
+      "slot": 25
+    },
+    {
+      "fetch": 26689,
+      "evict": 26691,
+      "commit": 26692,
+      "page": [
+        45,
+        88
+      ],
+      "victim": [
+        5,
+        88
+      ],
+      "rank": 14,
+      "slot": 45
+    },
+    {
+      "fetch": 26804,
+      "evict": 26806,
+      "commit": 26807,
+      "page": [
+        46,
+        5
+      ],
+      "victim": [
+        4,
+        14
+      ],
+      "rank": 13,
+      "slot": 32
+    },
+    {
+      "fetch": 26811,
+      "evict": 26813,
+      "commit": 26814,
+      "page": [
+        46,
+        27
+      ],
+      "victim": [
+        0,
+        21
+      ],
+      "rank": 15,
+      "slot": 2
+    },
+    {
+      "fetch": 26818,
+      "evict": 26820,
+      "commit": 26821,
+      "page": [
+        46,
+        32
+      ],
+      "victim": [
+        6,
+        16
+      ],
+      "rank": 15,
+      "slot": 51
+    },
+    {
+      "fetch": 26825,
+      "evict": 26827,
+      "commit": 26828,
+      "page": [
+        46,
+        51
+      ],
+      "victim": [
+        6,
+        29
+      ],
+      "rank": 14,
+      "slot": 51
+    },
+    {
+      "fetch": 26832,
+      "evict": 26834,
+      "commit": 26835,
+      "page": [
+        46,
+        52
+      ],
+      "victim": [
+        6,
+        40
+      ],
+      "rank": 12,
+      "slot": 50
+    },
+    {
+      "fetch": 26839,
+      "evict": 26841,
+      "commit": 26842,
+      "page": [
+        46,
+        68
+      ],
+      "victim": [
+        12,
+        89
+      ],
+      "rank": 5,
+      "slot": 100
+    },
+    {
+      "fetch": 26846,
+      "evict": 26848,
+      "commit": 26849,
+      "page": [
+        46,
+        94
+      ],
+      "victim": [
+        2,
+        114
+      ],
+      "rank": 15,
+      "slot": 22
+    },
+    {
+      "fetch": 26853,
+      "evict": 26855,
+      "commit": 26856,
+      "page": [
+        46,
+        98
+      ],
+      "victim": [
+        8,
+        73
+      ],
+      "rank": 7,
+      "slot": 70
+    },
+    {
+      "fetch": 26967,
+      "evict": 26969,
+      "commit": 26970,
+      "page": [
+        46,
+        29
+      ],
+      "victim": [
+        6,
+        17
+      ],
+      "rank": 6,
+      "slot": 48
+    },
+    {
+      "fetch": 26974,
+      "evict": 26976,
+      "commit": 26977,
+      "page": [
+        46,
+        30
+      ],
+      "victim": [
+        14,
+        20
+      ],
+      "rank": 6,
+      "slot": 113
+    },
+    {
+      "fetch": 26981,
+      "evict": 26983,
+      "commit": 26984,
+      "page": [
+        46,
+        39
+      ],
+      "victim": [
+        12,
+        63
+      ],
+      "rank": 7,
+      "slot": 99
+    },
+    {
+      "fetch": 26988,
+      "evict": 26990,
+      "commit": 26991,
+      "page": [
+        46,
+        75
+      ],
+      "victim": [
+        2,
+        58
+      ],
+      "rank": 6,
+      "slot": 20
+    },
+    {
+      "fetch": 26995,
+      "evict": 26997,
+      "commit": 26998,
+      "page": [
+        46,
+        80
+      ],
+      "victim": [
+        2,
+        81
+      ],
+      "rank": 12,
+      "slot": 21
+    },
+    {
+      "fetch": 27002,
+      "evict": 27004,
+      "commit": 27005,
+      "page": [
+        46,
+        81
+      ],
+      "victim": [
+        2,
+        92
+      ],
+      "rank": 14,
+      "slot": 21
+    },
+    {
+      "fetch": 27009,
+      "evict": 27011,
+      "commit": 27012,
+      "page": [
+        46,
+        84
+      ],
+      "victim": [
+        6,
+        111
+      ],
+      "rank": 7,
+      "slot": 53
+    },
+    {
+      "fetch": 27016,
+      "evict": 27018,
+      "commit": 27019,
+      "page": [
+        46,
+        105
+      ],
+      "victim": [
+        6,
+        107
+      ],
+      "rank": 6,
+      "slot": 54
+    },
+    {
+      "fetch": 27129,
+      "evict": 27131,
+      "commit": 27132,
+      "page": [
+        46,
+        36
+      ],
+      "victim": [
+        2,
+        23
+      ],
+      "rank": 7,
+      "slot": 17
+    },
+    {
+      "fetch": 27139,
+      "evict": 27141,
+      "commit": 27142,
+      "page": [
+        46,
+        60
+      ],
+      "victim": [
+        10,
+        83
+      ],
+      "rank": 7,
+      "slot": 84
+    },
+    {
+      "fetch": 27149,
+      "evict": 27151,
+      "commit": 27152,
+      "page": [
+        46,
+        96
+      ],
+      "victim": [
+        4,
+        117
+      ],
+      "rank": 5,
+      "slot": 39
+    },
+    {
+      "fetch": 27159,
+      "evict": 27161,
+      "commit": 27162,
+      "page": [
+        46,
+        116
+      ],
+      "victim": [
+        4,
+        118
+      ],
+      "rank": 15,
+      "slot": 39
+    },
+    {
+      "fetch": 27166,
+      "evict": 27168,
+      "commit": 27169,
+      "page": [
+        46,
+        127
+      ],
+      "victim": [
+        4,
+        120
+      ],
+      "rank": 7,
+      "slot": 39
+    },
+    {
+      "fetch": 27280,
+      "evict": 27282,
+      "commit": 27283,
+      "page": [
+        46,
+        3
+      ],
+      "victim": [
+        8,
+        5
+      ],
+      "rank": 15,
+      "slot": 64
+    },
+    {
+      "fetch": 27287,
+      "evict": 27289,
+      "commit": 27290,
+      "page": [
+        46,
+        26
+      ],
+      "victim": [
+        12,
+        67
+      ],
+      "rank": 13,
+      "slot": 97
+    },
+    {
+      "fetch": 27294,
+      "evict": 27296,
+      "commit": 27297,
+      "page": [
+        46,
+        43
+      ],
+      "victim": [
+        4,
+        28
+      ],
+      "rank": 14,
+      "slot": 34
+    },
+    {
+      "fetch": 27301,
+      "evict": 27303,
+      "commit": 27304,
+      "page": [
+        46,
+        54
+      ],
+      "victim": [
+        4,
+        93
+      ],
+      "rank": 13,
+      "slot": 36
+    },
+    {
+      "fetch": 27311,
+      "evict": 27313,
+      "commit": 27314,
+      "page": [
+        46,
+        64
+      ],
+      "victim": [
+        6,
+        88
+      ],
+      "rank": 13,
+      "slot": 54
+    },
+    {
+      "fetch": 27318,
+      "evict": 27320,
+      "commit": 27321,
+      "page": [
+        46,
+        104
+      ],
+      "victim": [
+        6,
+        91
+      ],
+      "rank": 8,
+      "slot": 52
+    },
+    {
+      "fetch": 27435,
+      "evict": 27437,
+      "commit": 27438,
+      "page": [
+        47,
+        4
+      ],
+      "victim": [
+        11,
+        49
+      ],
+      "rank": 2,
+      "slot": 89
+    },
+    {
+      "fetch": 27442,
+      "evict": 27444,
+      "commit": 27445,
+      "page": [
+        47,
+        15
+      ],
+      "victim": [
+        7,
+        16
+      ],
+      "rank": 5,
+      "slot": 56
+    },
+    {
+      "fetch": 27449,
+      "evict": 27451,
+      "commit": 27452,
+      "page": [
+        47,
+        21
+      ],
+      "victim": [
+        9,
+        47
+      ],
+      "rank": 13,
+      "slot": 74
+    },
+    {
+      "fetch": 27456,
+      "evict": 27458,
+      "commit": 27459,
+      "page": [
+        47,
+        26
+      ],
+      "victim": [
+        7,
+        46
+      ],
+      "rank": 5,
+      "slot": 58
+    },
+    {
+      "fetch": 27463,
+      "evict": 27465,
+      "commit": 27466,
+      "page": [
+        47,
+        53
+      ],
+      "victim": [
+        3,
+        38
+      ],
+      "rank": 2,
+      "slot": 27
+    },
+    {
+      "fetch": 27470,
+      "evict": 27472,
+      "commit": 27473,
+      "page": [
+        47,
+        72
+      ],
+      "victim": [
+        7,
+        56
+      ],
+      "rank": 8,
+      "slot": 61
+    },
+    {
+      "fetch": 27477,
+      "evict": 27479,
+      "commit": 27480,
+      "page": [
+        47,
+        98
+      ],
+      "victim": [
+        15,
+        105
+      ],
+      "rank": 1,
+      "slot": 126
+    },
+    {
+      "fetch": 27484,
+      "evict": 27486,
+      "commit": 27487,
+      "page": [
+        47,
+        107
+      ],
+      "victim": [
+        7,
+        115
+      ],
+      "rank": 2,
+      "slot": 63
+    },
+    {
+      "fetch": 27613,
+      "evict": 27615,
+      "commit": 27616,
+      "page": [
+        47,
+        6
+      ],
+      "victim": [
+        7,
+        14
+      ],
+      "rank": 4,
+      "slot": 56
+    },
+    {
+      "fetch": 27620,
+      "evict": 27622,
+      "commit": 27623,
+      "page": [
+        47,
+        35
+      ],
+      "victim": [
+        5,
+        24
+      ],
+      "rank": 4,
+      "slot": 41
+    },
+    {
+      "fetch": 27627,
+      "evict": 27629,
+      "commit": 27630,
+      "page": [
+        47,
+        52
+      ],
+      "victim": [
+        7,
+        59
+      ],
+      "rank": 4,
+      "slot": 58
+    },
+    {
+      "fetch": 27634,
+      "evict": 27636,
+      "commit": 27637,
+      "page": [
+        47,
+        59
+      ],
+      "victim": [
+        9,
+        19
+      ],
+      "rank": 0,
+      "slot": 75
+    },
+    {
+      "fetch": 27641,
+      "evict": 27643,
+      "commit": 27644,
+      "page": [
+        47,
+        71
+      ],
+      "victim": [
+        3,
+        42
+      ],
+      "rank": 4,
+      "slot": 27
+    },
+    {
+      "fetch": 27648,
+      "evict": 27650,
+      "commit": 27651,
+      "page": [
+        47,
+        95
+      ],
+      "victim": [
+        7,
+        82
+      ],
+      "rank": 4,
+      "slot": 61
+    },
+    {
+      "fetch": 27655,
+      "evict": 27657,
+      "commit": 27658,
+      "page": [
+        47,
+        108
+      ],
+      "victim": [
+        5,
+        73
+      ],
+      "rank": 9,
+      "slot": 46
+    },
+    {
+      "fetch": 27662,
+      "evict": 27664,
+      "commit": 27665,
+      "page": [
+        47,
+        111
+      ],
+      "victim": [
+        9,
+        122
+      ],
+      "rank": 4,
+      "slot": 79
+    },
+    {
+      "fetch": 27800,
+      "evict": 27802,
+      "commit": 27803,
+      "page": [
+        47,
+        30
+      ],
+      "victim": [
+        3,
+        47
+      ],
+      "rank": 8,
+      "slot": 26
+    },
+    {
+      "fetch": 27807,
+      "evict": 27809,
+      "commit": 27810,
+      "page": [
+        47,
+        38
+      ],
+      "victim": [
+        5,
+        60
+      ],
+      "rank": 8,
+      "slot": 44
+    },
+    {
+      "fetch": 27817,
+      "evict": 27819,
+      "commit": 27820,
+      "page": [
+        47,
+        114
+      ],
+      "victim": [
+        7,
+        92
+      ],
+      "rank": 6,
+      "slot": 61
+    },
+    {
+      "fetch": 27824,
+      "evict": 27826,
+      "commit": 27827,
+      "page": [
+        47,
+        121
+      ],
+      "victim": [
+        11,
+        82
+      ],
+      "rank": 13,
+      "slot": 93
+    },
+    {
+      "fetch": 27953,
+      "evict": 27955,
+      "commit": 27956,
+      "page": [
+        47,
+        8
+      ],
+      "victim": [
+        11,
+        3
+      ],
+      "rank": 15,
+      "slot": 88
+    },
+    {
+      "fetch": 27960,
+      "evict": 27962,
+      "commit": 27963,
+      "page": [
+        47,
+        17
+      ],
+      "victim": [
+        15,
+        33
+      ],
+      "rank": 5,
+      "slot": 121
+    },
+    {
+      "fetch": 27967,
+      "evict": 27969,
+      "commit": 27970,
+      "page": [
+        47,
+        23
+      ],
+      "victim": [
+        17,
+        28
+      ],
+      "rank": 15,
+      "slot": 137
+    },
+    {
+      "fetch": 27974,
+      "evict": 27976,
+      "commit": 27977,
+      "page": [
+        47,
+        39
+      ],
+      "victim": [
+        5,
+        49
+      ],
+      "rank": 15,
+      "slot": 42
+    },
+    {
+      "fetch": 27981,
+      "evict": 27983,
+      "commit": 27984,
+      "page": [
+        47,
+        42
+      ],
+      "victim": [
+        15,
+        62
+      ],
+      "rank": 15,
+      "slot": 123
+    },
+    {
+      "fetch": 27991,
+      "evict": 27993,
+      "commit": 27994,
+      "page": [
+        47,
+        58
+      ],
+      "victim": [
+        11,
+        63
+      ],
+      "rank": 5,
+      "slot": 92
+    },
+    {
+      "fetch": 27998,
+      "evict": 28000,
+      "commit": 28001,
+      "page": [
+        47,
+        124
+      ],
+      "victim": [
+        7,
+        121
+      ],
+      "rank": 5,
+      "slot": 63
+    }
+  ],
+  "bank_aware_pager": true,
+  "per_bank_page_capacity": 14,
+  "peak_resident_pages_per_bank": 12,
+  "limitations": [
+    "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+    "microbatch page-replacement order is a fixed deterministic schedule, not an optimized online policy",
+    "aggregated ring collective proxy, not chunk-accurate overlap",
+    "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+    "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+    "full memory transaction trace",
+    "host memory service and staging SRAM bandwidth not yet modeled",
+    "embedding and elementwise/vector execution omitted from diagnostic graph",
+    "decode microbatch is one token per request",
+    "QKV column partition uses N=(8192+1024+1024)/16=640",
+    "output projection uses row partition K=2048/16=128 and N=2048",
+    "two query heads per TP16 rank; KV head replication/ownership is abstracted",
+    "router column partition uses N=128/16=8",
+    "each routed expert executes locally without tensor parallelism",
+    "gate and up projections are fused as N=1536; down is K=768,N=2048",
+    "ScaleSim report labels this toolchain configuration, not a paper hardware configuration",
+    "elementwise layernorm, rotary, softmax, activation, residual and quantization kernels are not timed",
+    "synthetic memory-stress transform: no expert-memory lane serialization and 0.25x compute; not a natural serving workload"
+  ],
+  "memory_stress": {
+    "label": "Qwen3-30B-A3B controlled memory stress",
+    "expert_memory_lanes_per_request": 0,
+    "compute_cycle_multiplier": 0.25,
+    "full_memory_trace_preserved": true,
+    "sample_bytes_unchanged": true,
+    "represented_bytes_unchanged": true,
+    "addresses_unchanged": true,
+    "routing_unchanged": true,
+    "placement_unchanged": true,
+    "original_compute_cycles": 879060928,
+    "stress_compute_cycles": 219766784,
+    "added_serialization_edges": 0
+  }
+}

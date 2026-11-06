@@ -1,0 +1,109 @@
+[
+  {
+    "turn": 1,
+    "request": "SCRIPTED1",
+    "actions": [
+      {
+        "command": "cat src/marshmallow/__init__.py | head -5",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged_library_actions": 1
+  },
+  {
+    "turn": 2,
+    "request": "SCRIPTED2",
+    "actions": [
+      {
+        "command": "cat src/marshmallow/__init__.py | head -5",
+        "cached": true,
+        "returncode": 79
+      }
+    ],
+    "library_state": {
+      "paths": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged_library_actions": 2
+  },
+  {
+    "turn": 3,
+    "request": "SCRIPTED3",
+    "actions": [
+      {
+        "command": "printf 'reproduction only\n' > /tmp/controller_repro.txt",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged_library_actions": 3
+  },
+  {
+    "turn": 4,
+    "request": "SCRIPTED4",
+    "actions": [],
+    "library_state": {
+      "paths": [],
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "unchanged_library_actions": 4
+  },
+  {
+    "turn": 5,
+    "request": "SCRIPTED5",
+    "actions": [
+      {
+        "command": "/opt/miniconda3/envs/testbed/bin/python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py')\np.write_text(p.read_text()+'\\n# controller contract marker\\n')\nPY",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "415c13d86c09f697943c5623dc60a8054f7a07e76e64242078619ecfbd079e5a"
+    },
+    "unchanged_library_actions": 0
+  },
+  {
+    "turn": 6,
+    "request": "SCRIPTED6",
+    "actions": [
+      {
+        "command": "false",
+        "cached": false,
+        "returncode": 1
+      }
+    ],
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "415c13d86c09f697943c5623dc60a8054f7a07e76e64242078619ecfbd079e5a"
+    },
+    "unchanged_library_actions": 1
+  },
+  {
+    "turn": 7,
+    "request": "SCRIPTED7",
+    "actions": [],
+    "submit": true,
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "415c13d86c09f697943c5623dc60a8054f7a07e76e64242078619ecfbd079e5a"
+    },
+    "unchanged_library_actions": 2
+  }
+]

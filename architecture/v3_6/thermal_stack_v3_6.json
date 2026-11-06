@@ -1,0 +1,105 @@
+{
+  "schema_version": "3.6-thermal-1.0",
+  "status": "INTERFACE_RC_AND_GEOMETRY_PENDING",
+  "architecture": {
+    "stacking": "DRAM_on_NPU_logic",
+    "projected_footprint_mm": [
+      16.0,
+      16.0
+    ],
+    "primary_cooling_side": "DRAM_tier_top",
+    "layer_order_bottom_to_top": [
+      "logic_die",
+      "hybrid_bond_interface",
+      "dram_die"
+    ]
+  },
+  "die_layers": {
+    "logic_die": {
+      "role": "powered_NPU_logic_lower_tier",
+      "thickness_um": 50.0,
+      "thermal_conductivity_w_mk": 100.0,
+      "volumetric_heat_capacity_j_m3k": 1750000.0,
+      "parameter_status": "carried_from_v3_4"
+    },
+    "dram_die": {
+      "role": "powered_HB_DRAM_upper_tier",
+      "thickness_um": 50.0,
+      "thermal_conductivity_w_mk": 100.0,
+      "volumetric_heat_capacity_j_m3k": 1750000.0,
+      "parameter_status": "carried_from_v3_4"
+    }
+  },
+  "hybrid_bond_interface": {
+    "model": "parallel_Cu_and_dielectric_area_paths_each_with_series_bulk_and_interface_resistance",
+    "pitch_um": 3.0,
+    "pitch_source": "H2-LLM_ISCA_2025",
+    "pad_diameter_um": null,
+    "physical_thickness_um": null,
+    "cu_area_fraction": null,
+    "dielectric_identity": null,
+    "geometry_status": "unresolved_do_not_generate_homogenized_layer",
+    "materials": {
+      "Cu_pad": {
+        "through_plane_thermal_conductivity_w_mk": null,
+        "measured_in_plane_thermal_conductivity_range_w_mk": [
+          160.0,
+          220.0
+        ],
+        "sensitivity_midpoint_w_mk": 190.0,
+        "volumetric_heat_capacity_j_m3k": 3450000.0,
+        "conductivity_source": "Lu_et_al_Applied_Thermal_Engineering_2026",
+        "source_url": "https://doi.org/10.1016/j.applthermaleng.2026.130339",
+        "heat_capacity_source": "del-Pino-Lopez_et_al_Energies_2021_Table_2",
+        "heat_capacity_source_url": "https://doi.org/10.3390/en14133897",
+        "applicability_note": "The 160-220 range is an in-plane measurement on 5 um radius damascene pads. It is sensitivity evidence only and must not be assigned to through-plane conductivity without validation. Heat capacity is a bulk-Cu material proxy, not an HB-pad measurement."
+      },
+      "SiOx_candidate_not_H2LLM_confirmed": {
+        "thermal_conductivity_w_mk": 1.38,
+        "thermal_conductivity_status": "derived_from_150_MW_m2K_times_9_2_nm_equivalence",
+        "volumetric_heat_capacity_j_m3k": 1790000.0,
+        "heat_capacity_status": "derived_proxy_from_NIST_SiO2_specific_heat_at_340_3K_and_assumed_2200_kg_m3_density",
+        "heat_capacity_source": "Chase_1998_NIST_JANAF_and_NIST_SRD30",
+        "heat_capacity_source_url": "https://srdata.nist.gov/CeramicDataPortal/Scd/Z00778",
+        "parameter_status": "public_material_proxy_not_bonded_interface_measurement"
+      }
+    },
+    "bonded_SiOx_interface_candidate": {
+      "thermal_boundary_conductance_lower_bound_mw_m2k": 150.0,
+      "area_normalized_thermal_resistance_upper_bound_m2k_w": 6.666666666666667e-09,
+      "source": "Zhang_et_al_2026_TDTR_measurement",
+      "source_url": "https://arxiv.org/abs/2601.03106"
+    },
+    "complete_hybrid_interface_evidence": {
+      "absolute_area_normalized_thermal_resistance_m2k_w": null,
+      "relative_result": "approximately_5x_lower_bonding_layer_thermal_resistance_than_standard_die_to_wafer_microbumps_and_underfill",
+      "source": "Oprins_et_al_ITherm_2020",
+      "source_url": "https://doi.org/10.1109/ITherm45881.2020.9190392",
+      "applicability_note": "This is a complete Cu/dielectric W2W interface measurement, but the accessible abstract gives only a relative comparison. It cannot calibrate V3.6 without the paper's absolute value and matching geometry."
+    },
+    "Cu_Cu_interface": {
+      "thermal_boundary_conductance_w_m2k": null,
+      "area_normalized_thermal_resistance_m2k_w": null,
+      "status": "unresolved"
+    },
+    "homogenization": {
+      "area_conductance_formula": "G_eff_per_area = f_Cu/(t_Cu/k_Cu_z + Rpp_CuCu) + (1-f_Cu)/(t_diel/k_diel_z + Rpp_dieldiel)",
+      "equivalent_conductivity_formula": "k_eff_z = t_effective * G_eff_per_area; only meaningful after t_effective is defined",
+      "volumetric_heat_capacity_formula": "phi_Cu*Cv_Cu + (1-phi_Cu)*Cv_dielectric; phi is volume fraction, not automatically area fraction",
+      "execution_status": "blocked_until_material_identity_geometry_Cu_z_conductivity_and_both_interface_resistances_are_resolved"
+    }
+  },
+  "boundary_conditions": {
+    "status": "not_inherited_and_not_yet_frozen",
+    "ambient_k": null,
+    "heat_spreader": null,
+    "heat_sink": null,
+    "top_interface_material": null
+  },
+  "provenance_policy": {
+    "pre_v3_4_architecture_data_allowed": false,
+    "generic_TIM_substitution_allowed": false,
+    "pdk_calibrated": false,
+    "absolute_temperature_claim_allowed": false
+  }
+}

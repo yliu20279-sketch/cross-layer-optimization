@@ -1,0 +1,8 @@
+{
+  "state": "PRE_RUN_TWO_LAYER_CPU_REFERENCE",
+  "selection": "existing shortR0002 prefill19 thencacheddecode1, original layer0 andlayer1 weights",
+  "reference": "unmodified fixedTransformers source and separate BF16 adapter, independent KV objects and layer1 receives computed layer0 output",
+  "precision": "original BF16 mixedFP32 internals, strict bitwise sourceCPU; originalGPU discrepancies diagnostic retained",
+  "provenance": "official model shard SHA plus fixturemanifest, layer1 reference newly reconstructedCPU not GPU",
+  "budget": "oneCPU thread <=180s, no newGPU/agent/SWE/holdout"
+}

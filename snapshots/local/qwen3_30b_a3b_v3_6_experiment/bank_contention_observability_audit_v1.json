@@ -1,0 +1,36 @@
+{
+  "status": "BLOCKED_FOR_STRICT_METRIC_UNTIL_INSTRUMENTED",
+  "definition_file": "bank_contention_definition_v1.json",
+  "available": {
+    "events.csv": ["op_id", "task", "kind", "partition/NPU", "ready", "start", "memory_service_start", "modeled_gate", "done", "DeepStack ideal cycles", "DeepStack mapping/row penalty"],
+    "bank_requests.csv": ["transaction_id", "parent op_id", "submit/callback cycle", "controller arrive", "first/final issue", "depart", "controller queue ticks", "row command ticks", "completion ticks", "row_status", "channel/rank/bankgroup/bank/row/column", "request type"],
+    "source_locations": [
+      "toolchain/popnet_paging_src/coupled_main.cc:72-82",
+      "toolchain/popnet_paging_src/coupled_main.cc:139",
+      "toolchain/popnet_paging_src/coupled_main.cc:162-166"
+    ]
+  },
+  "missing": [
+    "inference_request_id on each atomic DRAM request",
+    "token_id/microbatch_id/expert_id as structured request-owner fields",
+    "bank_eligible_cycle after non-Bank constraints are satisfied",
+    "bank_grant_cycle distinguished from generic first command issue",
+    "blocking transaction and blocking inference request",
+    "blocking reason separated into cross-request Bank, same-request Bank, data bus, controller and dependency",
+    "Bank queue length or concurrent distinct request owners over time",
+    "Bank busy interval ownership"
+  ],
+  "non_recoverable_from_existing_logs": [
+    "strict cross-request same-Bank waiting",
+    "same-request versus cross-request queue delay",
+    "causal Bank-only wait separated from controller/data-bus delay"
+  ],
+  "aggregation_blocker": "Current expert-weight memory operations may represent tokens from multiple inference requests; their atomic Ramulator transactions inherit only the aggregate op_id and cannot be assigned to an inference_request_id.",
+  "figure1_decision": "Retain only with the label Bank-related mapping/row/queue penalty. It cannot be renamed Bank-conflict time.",
+  "required_changes": [
+    "propagate inference_request_id to atomic memory requests or split aggregated memory operations by request owner",
+    "instrument Bank eligibility, grant and Bank-busy owner intervals inside the memory scheduler",
+    "log causal blocking reason and owner",
+    "add a paired no-cross-request-same-Bank-contention counterfactual while preserving all non-Bank resources"
+  ]
+}

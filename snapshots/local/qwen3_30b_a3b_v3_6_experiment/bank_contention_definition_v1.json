@@ -1,0 +1,34 @@
+{
+  "schema_version": "cross-request-bank-contention-1.0",
+  "status": "FROZEN_BEFORE_INSTRUMENTATION",
+  "definition": "Bank-conflict overhead is the causal pre-service delay of a memory request during intervals in which the request is eligible for Bank service but the same decoded physical Bank is occupied by one or more memory requests belonging to different inference requests.",
+  "decoded_bank_identity": ["channel", "rank", "bank_group", "bank"],
+  "request_interval": "[bank_eligible_cycle, bank_grant_cycle)",
+  "owner_identity": "inference_request_id",
+  "included": [
+    "waiting while the decoded physical Bank is occupied by another inference request",
+    "cross-request Bank arbitration or serialization delay",
+    "the cross-request waiting portion caused by row switching on the occupied Bank"
+  ],
+  "excluded": [
+    "the request's own normal DRAM service",
+    "same-inference-request Bank contention",
+    "NoC, compute, PCIe/DMA, dependency and barrier delay",
+    "controller or data-bus delay while the decoded Bank is available",
+    "row miss or row conflict without cross-request temporal overlap",
+    "Bank access imbalance without temporal overlap"
+  ],
+  "per_request_metric": "integral over the eligible-to-grant interval of the indicator that the decoded Bank is occupied by a different inference request",
+  "end_to_end_counterfactual": "normal makespan minus a paired run that removes only cross-request same-Bank blocking while preserving own service, same-request contention and all non-Bank resources",
+  "claim_gate": [
+    "instrumentation microtests pass",
+    "critical-path attribution conserves total runtime",
+    "paired no-cross-request-contention run reduces end-to-end runtime",
+    "the effect is stable across pre-registered cohorts or is explicitly labeled exploratory"
+  ],
+  "forbidden_aliases": [
+    "row_status==2 is Bank conflict",
+    "actual_cycles minus ideal_cycles is pure Bank-conflict time",
+    "Bank traffic imbalance alone proves contention"
+  ]
+}

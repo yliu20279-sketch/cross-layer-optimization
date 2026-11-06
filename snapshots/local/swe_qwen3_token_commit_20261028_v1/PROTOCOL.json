@@ -1,0 +1,21 @@
+{
+  "state": "PRE_RUN_TOKEN_TOP8_NATIVE",
+  "selection": "same captured token row0; reuse certified expert49 return; compute other7 M1 experts on actual owner ranks",
+  "arithmetic": "generic64lane source tree; independent lane mul/add batched as64x64 pointwise ops, same per-lane K order and tree; gate/up/silu/product/down exact BF16",
+  "source_order": [
+    16,
+    19,
+    29,
+    49,
+    53,
+    58,
+    70,
+    116
+  ],
+  "commit": "BF16 expert result*BF16 routeweight thenBF16 round; per-expert BF16 index_add and HB committed prefix before next expert; metadata and8returns gate",
+  "last_readers": "perHB plannedreaders, arithmetic SRAM batches, TX tail,RX HB commit, returned inbox through weightedcommit, metadata through8commits, finaloutput retained",
+  "return_path": "6 new remote4224B messages nativeNoC plus1 localcopy, prior expert49 return restored with certified boundary; numerical bytes only copied after native tails, RX reservation serializes admission",
+  "profile": "originalBF16 host128/HB8 overlay; totalCH512MiB/SRAM4MiB limits; prior conservative residency counted",
+  "budget": "one seven-owner composed native run <=600s, CPU one thread; no GPU/Sniper/agent/SWE/holdout",
+  "limits": "recorded routing only; M1 only; batch21 and softmaxFP32 differences retained; hostSiLU/codec/control timing null, no fullmodel/layer/timing/benefit promotion"
+}

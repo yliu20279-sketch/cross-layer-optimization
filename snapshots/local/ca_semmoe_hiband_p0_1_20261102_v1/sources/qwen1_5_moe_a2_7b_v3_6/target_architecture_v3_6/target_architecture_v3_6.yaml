@@ -1,0 +1,382 @@
+schema_version: 3.6
+status: CONFIGURATION_READY_EXECUTION_NOT_VALIDATED
+execution_ready: false
+execution_candidate_ready: true
+execution_scope: QWEN3_8B_W4A16_capacity_enabled_NoC_plus_DeepStack_DRAM_without_absolute_thermal_claims
+execution_validation:
+  status: NOT_RUN
+  source_validation: V3.5 results are provenance only and are not V3.6 execution evidence
+  required:
+  - static configuration self-check
+  - Ramulator2 512 MiB per-partition address coverage
+  - NPUSim external-memory boundary test
+  - Qwen3 operator-graph byte conservation
+  - HB and NoC bandwidth sensitivity
+out_of_scope_blockers:
+- HB pad diameter and physical bond-layer thickness are not available from H2-LLM
+- HB fixed electrical link latency is not publicly specified
+- H2-LLM does not identify the bonding dielectric; SiOx is only a public candidate
+  scenario
+- Cu-Cu and dielectric-dielectric interface resistances plus geometry are required
+  for a complete HB thermal model
+provenance:
+  architecture_baseline: target_architecture_v3_5
+  v3_4_architecture_parameters_reused: true
+  pre_v3_4_data_reused: false
+  forbidden_predecessor_scope: all_architecture_data_predating_v3_4
+  architecture_source: H2-LLM ISCA 2025
+  architecture_source_url: https://chenzhangsjtu.github.io/files/2025-H2_LLM_ISCA25.pdf
+  thermal_interface_source: Zhang et al., Thermal conductance across bonded SiOx-SiOx
+    interfaces in hybrid bonding process, 2026
+  thermal_interface_source_url: https://arxiv.org/abs/2601.03106
+  copper_pad_source: Lu et al., Applied Thermal Engineering 2026
+  copper_pad_source_url: https://doi.org/10.1016/j.applthermaleng.2026.130339
+  v3_5_architecture_parameters_reused: true
+  v3_6_delta: HB-DRAM capacity doubled from 4 GiB to 8 GiB by doubling per-partition
+    row depth
+package:
+  stacking: face_to_face_hybrid_bonding
+  tiers: 2
+  layer_order_bottom_to_top:
+  - npu_logic_die
+  - hybrid_bond_interface
+  - hb_dram_die
+  upper_tier: HB_DRAM
+  lower_tier: NPU_logic
+  global_time_unit_ns: 1.0
+  projected_die_width_mm: 16.0
+  projected_die_height_mm: 16.0
+cpu:
+  package: independent
+  isa: x86_64
+  cores: 4
+  frequency_ghz: 2.5
+  l1i_kib_per_core: 32
+  l1d_kib_per_core: 32
+  l2_kib_per_core: 256
+  llc_mib_shared: 8
+  host_dram_gib: 8
+  simulator: Sniper
+host_link:
+  technology: PCIe_5.0_x16
+  signaling_gtps_per_lane: 32
+  lanes: 16
+  raw_bandwidth_GBps_per_direction: 64
+  payload_efficiency: 0.86
+  effective_bandwidth_GBps_per_direction: 55.04
+  fixed_one_way_latency_ns: 250
+  max_payload_bytes: 256
+  dma_queues: 4
+  dma_outstanding_per_queue: 16
+  coherence: false
+  completion: polling
+npu:
+  physical_tier: lower
+  clusters: 16
+  layout: 4x4
+  cluster_ids:
+  - N0
+  - N1
+  - N2
+  - N3
+  - N4
+  - N5
+  - N6
+  - N7
+  - N8
+  - N9
+  - N10
+  - N11
+  - N12
+  - N13
+  - N14
+  - N15
+  frequency_ghz: 1.0
+  process_nm: 5
+  mac_array_rows: 64
+  mac_array_cols: 64
+  int8_mac_per_cycle_per_cluster: 4096
+  fp16_mac_per_cycle_per_cluster: 2048
+  accumulation:
+    int8_path: INT32
+    fp16_path: FP32
+  vector_lanes_per_cluster: 16
+  vector_datatype: FP32
+  vector_ops_per_cycle_per_cluster: 16
+  reduce_ops_per_cycle_per_cluster: 16
+  local_sram_mib_per_cluster: 4
+  local_sram_banks_per_cluster: 8
+  local_sram_bandwidth_bytes_per_cycle: 256
+  pipeline_depth_cycles: 16
+  tile:
+    m: 64
+    n: 64
+    k: 64
+  simulator: NPUSim
+hb_dram:
+  physical_tier: upper
+  physical_name: HB-DRAM
+  total_capacity_mib: 8192
+  partitions: 16
+  capacity_mib_per_partition: 512
+  logical_banks_per_partition: 4
+  total_logical_banks: 64
+  partition_ids:
+  - CH0
+  - CH1
+  - CH2
+  - CH3
+  - CH4
+  - CH5
+  - CH6
+  - CH7
+  - CH8
+  - CH9
+  - CH10
+  - CH11
+  - CH12
+  - CH13
+  - CH14
+  - CH15
+  transaction_bytes: 32
+  request_mode_granularity: partition
+  normal_nmp_mutually_exclusive_per_partition: true
+  timing_proxy:
+    simulator: Ramulator2
+    commit: b30320bc9385b708e86b67ebb9f48858cc66d798
+    command_timing_source: LPDDR5_6400
+    status: proxy_not_physical_HB_timing
+    tck_ns: 1.25
+    scheduler: FRFCFS
+    row_policy: Open
+    refresh: AllBank
+    cross_logical_request_multi_outstanding: true
+    ramulator_transaction_bytes: 32
+    deepstack_oracle_sector_bytes: 256
+    bandwidth_floor_policy: per_partition_serialized_service_reservation_with_overlapping_ramulator_requests
+  ramulator_instances: 16
+  capacity_change_from_v3_5:
+    old_total_mib: 4096
+    old_per_partition_mib: 256
+    new_total_mib: 8192
+    new_per_partition_mib: 512
+    changed_dimension: row_depth_only
+    logical_banks_per_partition_unchanged: true
+    bandwidth_unchanged: true
+hybrid_bonding:
+  links: 16
+  vertical_mapping: Ni_to_CHi_one_to_one
+  bandwidth_scope: per_PE
+  pins_per_pe: 512
+  pin_data_rate_Gbit_per_s: 0.4
+  hb_io_bandwidth_GBps_per_pe: 25.6
+  bandwidth_rational_bytes_per_npu_cycles:
+    bytes: 128
+    cycles: 5
+  hb_io_energy_pJ_per_bit: 0.88
+  hybrid_bond_pitch_um: 3.0
+  connection_density_per_mm2: 110000
+  hb_controller_area_percent_per_pe: 19.7
+  parameter_source: H2-LLM_ISCA_2025
+  aggregate_vertical_bandwidth_GBps: 409.6
+  aggregate_vertical_bandwidth_status: derived_16_links_times_25_6_GBps
+  fixed_link_latency_ns: null
+  fixed_link_latency_status: unavailable_not_assumed
+  latency_sensitivity_ns: null
+  bandwidth_service_time_ns_per_32B: 1.25
+  bandwidth_service_time_status: derived_throughput_occupancy_not_physical_link_latency
+  pad_diameter_um: null
+  physical_bond_layer_thickness_um: null
+  traffic_trace_separate_from_horizontal_popnet: true
+noc:
+  topology: 4x4_mesh_plus_gateway
+  npu_routers: 16
+  gateway_router: 16
+  routing: XY
+  link_width_bits: 256
+  frequency_ghz: 1.0
+  virtual_channels: 3
+  input_buffer_flits_per_vc: 8
+  output_buffer_flits_per_vc: 8
+  flit_size_64bit_words: 4
+  link_length_um: 2000
+  link_latency_cycles: 2
+  link_latency_status: experimental_baseline
+  random_seed: 1
+  simulation_cycle_limit: 1000000000
+  simulator: PopNet
+diagram_coordinates:
+  cpu:
+  - 3
+  - 0
+  gateway:
+  - 2
+  - 0
+  npu:
+    N0:
+    - 0
+    - 0
+    N1:
+    - 1
+    - 0
+    N2:
+    - 2
+    - 0
+    N3:
+    - 3
+    - 0
+    N4:
+    - 0
+    - 1
+    N5:
+    - 1
+    - 1
+    N6:
+    - 2
+    - 1
+    N7:
+    - 3
+    - 1
+    N8:
+    - 0
+    - 2
+    N9:
+    - 1
+    - 2
+    N10:
+    - 2
+    - 2
+    N11:
+    - 3
+    - 2
+    N12:
+    - 0
+    - 3
+    N13:
+    - 1
+    - 3
+    N14:
+    - 2
+    - 3
+    N15:
+    - 3
+    - 3
+  dram:
+    CH0:
+    - 0
+    - 4
+    CH1:
+    - 1
+    - 4
+    CH2:
+    - 2
+    - 4
+    CH3:
+    - 3
+    - 4
+    CH4:
+    - 0
+    - 5
+    CH5:
+    - 1
+    - 5
+    CH6:
+    - 2
+    - 5
+    CH7:
+    - 3
+    - 5
+    CH8:
+    - 0
+    - 6
+    CH9:
+    - 1
+    - 6
+    CH10:
+    - 2
+    - 6
+    CH11:
+    - 3
+    - 6
+    CH12:
+    - 0
+    - 7
+    CH13:
+    - 1
+    - 7
+    CH14:
+    - 2
+    - 7
+    CH15:
+    - 3
+    - 7
+physical_floorplan:
+  coordinate_system: aligned_3d_tiers
+  npu_grid_xy:
+    N0:
+    - 0
+    - 0
+    N1:
+    - 1
+    - 0
+    N2:
+    - 2
+    - 0
+    N3:
+    - 3
+    - 0
+    N4:
+    - 0
+    - 1
+    N5:
+    - 1
+    - 1
+    N6:
+    - 2
+    - 1
+    N7:
+    - 3
+    - 1
+    N8:
+    - 0
+    - 2
+    N9:
+    - 1
+    - 2
+    N10:
+    - 2
+    - 2
+    N11:
+    - 3
+    - 2
+    N12:
+    - 0
+    - 3
+    N13:
+    - 1
+    - 3
+    N14:
+    - 2
+    - 3
+    N15:
+    - 3
+    - 3
+  vertical_pair_rule: CHi_has_same_xy_as_Ni
+  npu_tier_z: 0
+  dram_tier_z: 1
+clock_policy:
+  representation: global_nanoseconds
+  legosim_clock_rate_field_ghz: 1.0
+  npu_cycle_ns: 1.0
+  noc_cycle_ns: 1.0
+  dram_cycle_ns: 1.25
+  ramulator_to_global_cycle_scale: 1.25
+thermal_stack:
+  canonical_file: thermal_stack_v3_6.json
+  status: INTERFACE_RC_AND_GEOMETRY_PENDING
+  executable_hotspot_lcf_ready: false
+  primary_cooling_side: DRAM_tier_top
+  layer_order_bottom_to_top:
+  - logic_die
+  - hybrid_bond_interface
+  - dram_die

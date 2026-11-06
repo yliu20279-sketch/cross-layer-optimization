@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-27",
+  "scope": "bounded development comparison, then gate before new holdout",
+  "model": "original Qwen3-30B-A3B BF16 ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+  "target": {"host_GiB":128,"HB_GiB":8,"NPU_runs":0},
+  "development": "same two registered Marshmallow dev instances, one attempt each per arm",
+  "arms": ["progress policy + nonthinking 0.7/0.8/20", "progress policy + thinking 0.6/0.95/20"],
+  "causal_scope": "compare mode with recommended sampling as a package; not isolated thinking effect",
+  "shared_budget": {"calls":32,"new_tokens_total":16384,"new_tokens_call":4096,"wall_seconds_between_turns":5400},
+  "capture": "off in development; full original capture in post-selection acceptance, separately costed",
+  "history": "final answers and tool observations only; reasoning kept in raw inference records; no truncation",
+  "recovery": "review every four turns and after three unchanged actions; no task-specific solution injection",
+  "selection": "require 2/2 official dev resolved, preserved existing tests and no infrastructure failures; rank passing arms by resolved then generation tokens then fixed nonthinking tie break",
+  "holdout": "if development gate passes, freeze all actor/evaluator files, deterministically register two unused test IDs by identity-only SHA256 order; exclude all four used instances; access bodies after freeze only; gold never read, hidden tests evaluator only",
+  "failure": "if neither arm passes do not run new holdout; diagnose dev and report unmet gate, never promote by lowering criteria",
+  "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B"
+}

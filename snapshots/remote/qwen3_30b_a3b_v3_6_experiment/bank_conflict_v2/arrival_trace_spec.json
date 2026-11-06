@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "time_unit": "simulator_cycle",
+  "synthetic_only": true,
+  "request_count": 128,
+  "calibration": {
+    "source": "ctx128-c8-high-skew normal events.csv",
+    "request_lifetime_median_cycles": 475034142,
+    "request_lifetime_min_cycles": 471270580,
+    "request_lifetime_max_cycles": 490860419,
+    "method": "initial interarrival = median request lifetime / target concurrency; achieved concurrency must be measured later"
+  },
+  "target_concurrency": [2, 4, 8, 16],
+  "modes": {
+    "steady": {
+      "seeds": [0],
+      "interarrival_cycles_by_concurrency": {
+        "2": 237517071,
+        "4": 118758536,
+        "8": 59379268,
+        "16": 29689634
+      }
+    },
+    "poisson": {
+      "seeds": [1101, 1102, 1103, 1104, 1105],
+      "mean_interarrival_cycles_by_concurrency": {
+        "2": 237517071,
+        "4": 118758536,
+        "8": 59379268,
+        "16": 29689634
+      }
+    },
+    "bursty": {
+      "seeds": [1101, 1102, 1103, 1104, 1105],
+      "base_interarrival_cycles_by_concurrency": {
+        "2": 158344714,
+        "4": 79172357,
+        "8": 39586179,
+        "16": 19793089
+      },
+      "burst_interarrival_multiplier": 0.25,
+      "idle_interarrival_multiplier": 4.0,
+      "burst_to_idle_probability": 0.125,
+      "idle_to_burst_probability": 0.25
+    }
+  },
+  "notes": [
+    "Intervals are calibrated screening parameters, not claims about production traffic.",
+    "The bursty base interval compensates for the stationary-state weighted multiplier of 1.5 so its long-run mean arrival rate matches steady and Poisson.",
+    "Calibrate intervals after measuring request lifetime so achieved concurrency matches the target.",
+    "Arrival traces may release requests only; they must not alter per-request DAGs or routing."
+  ]
+}

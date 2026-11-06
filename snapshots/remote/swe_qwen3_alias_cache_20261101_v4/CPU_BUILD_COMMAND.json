@@ -1,0 +1,20 @@
+[
+  "g++",
+  "-march=nehalem",
+  "-mno-avx",
+  "-mno-fma",
+  "-fopt-info-vec-optimized=/mnt/sda1/h3240101068/swe_qwen3_continuous_lowering_20261031_v2/CPU_VECTORIZATION.log",
+  "-I/mnt/sda1/h3240101068/olmoearth_v3_6_integration_20261025_v1/source/NPUSim",
+  "-ffp-contract=off",
+  "-fno-fast-math",
+  "-O3",
+  "-std=c++17",
+  "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet/includes",
+  "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim/include",
+  "/mnt/sda1/h3240101068/swe_qwen3_continuous_lowering_20261031_v2/host.cpp",
+  "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet_host/lib/libinterchiplet_c.a",
+  "-pthread",
+  "/mnt/sda1/h3240101068/swe_qwen3_norm_20261029_v1/norm_kernel.cpp",
+  "-o",
+  "/mnt/sda1/h3240101068/swe_qwen3_continuous_lowering_20261031_v2/host"
+]

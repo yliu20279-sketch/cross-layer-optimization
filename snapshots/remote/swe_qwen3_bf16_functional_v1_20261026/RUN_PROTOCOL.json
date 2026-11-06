@@ -1,0 +1,29 @@
+{
+  "scope": "steps1_2 CPU-only synthetic operator/subchain acceptance; no checkpoint, GPU or timing",
+  "comparison": "exact finite equality on same source CPU backend; special values classified; no tolerance relaxation",
+  "cpu_threads": 1,
+  "timeout_seconds": 180,
+  "inputs": "deterministic synthetic seed20261026; real-dimension single operators and tiny MoE composition",
+  "files": [
+    {
+      "path": "bf16_adapter.py",
+      "sha256": "9d55ad77120540dfd21a00e7b9742324ccc5aac5aead164262b4374224c596ee"
+    },
+    {
+      "path": "test_adapter.py",
+      "sha256": "e4eaf84ed86e08de8ed408ef6968e2b0260c777e636878add8e8ced1a8b67feb"
+    },
+    {
+      "path": "codec_bridge.cpp",
+      "sha256": "376fd9e04e2c365381d8bcac0efaff89c6ab5bb3a56aa3e555c298ddc149e7c2"
+    },
+    {
+      "path": "NUMERIC_CONTRACT.md",
+      "sha256": "4789e6aa893b143654555457a1a458f5164ca43dd0bf0ec2f673c0c819ae01cb"
+    },
+    {
+      "path": "PREVIOUS_CPU_PROBE_RESULT.json",
+      "sha256": "4bfbc6b68cfd1f864dbcd7905a039164d5616fdd1f52553aafe6e2946d29b3ce"
+    }
+  ]
+}

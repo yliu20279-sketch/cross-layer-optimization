@@ -1,0 +1,30 @@
+{
+  "status": "DEVELOPMENT_ORIGINAL_BIAS_EPILOGUE",
+  "rows": [
+    {
+      "branch": "cond",
+      "epilogue": "FP32_add_bias_then_BF16",
+      "elements": 131072,
+      "BF16_bit_mismatches": 0
+    },
+    {
+      "branch": "cond",
+      "epilogue": "BF16_GEMM_then_bias_then_BF16",
+      "elements": 131072,
+      "BF16_bit_mismatches": 32940
+    },
+    {
+      "branch": "uncond",
+      "epilogue": "FP32_add_bias_then_BF16",
+      "elements": 131072,
+      "BF16_bit_mismatches": 0
+    },
+    {
+      "branch": "uncond",
+      "epilogue": "BF16_GEMM_then_bias_then_BF16",
+      "elements": 131072,
+      "BF16_bit_mismatches": 34251
+    }
+  ],
+  "target_GPU_count": 0
+}

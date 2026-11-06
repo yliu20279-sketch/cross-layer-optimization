@@ -1,0 +1,179 @@
+{
+  "state": "DIAGNOSIS_COMPLETE_DIFFERENCES_RETAINED",
+  "first_difference": {
+    "name": "input_norm.variance",
+    "scope": "free_running_CPU_vs_GPU",
+    "shape": [
+      1,
+      19,
+      1
+    ],
+    "dtype": "torch.float32",
+    "different": 9,
+    "exact": false,
+    "max_abs": 2.9103830456733704e-11,
+    "first_indices": [
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        11,
+        0
+      ],
+      [
+        0,
+        13,
+        0
+      ],
+      [
+        0,
+        14,
+        0
+      ],
+      [
+        0,
+        16,
+        0
+      ],
+      [
+        0,
+        18,
+        0
+      ]
+    ]
+  },
+  "capture_identity": [
+    {
+      "name": "GPU_attention_vs_original_capture",
+      "scope": "capture_identity",
+      "shape": [
+        1,
+        19,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0,
+      "first_indices": []
+    },
+    {
+      "name": "GPU_moe_input_vs_original_capture",
+      "scope": "capture_identity",
+      "shape": [
+        19,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0,
+      "first_indices": []
+    },
+    {
+      "name": "GPU_logits_vs_original_capture",
+      "scope": "capture_identity",
+      "shape": [
+        19,
+        128
+      ],
+      "dtype": "torch.bfloat16",
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0,
+      "first_indices": []
+    },
+    {
+      "name": "GPU_IDs_vs_original_capture",
+      "scope": "capture_identity",
+      "shape": [
+        19,
+        8
+      ],
+      "dtype": "torch.int64",
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0,
+      "first_indices": []
+    }
+  ],
+  "CPU_IDs_vs_original": {
+    "name": "CPU_IDs_vs_original_capture",
+    "scope": "original_route_difference",
+    "shape": [
+      19,
+      8
+    ],
+    "dtype": "torch.int64",
+    "different": 10,
+    "exact": false,
+    "max_abs": 74.0,
+    "first_indices": [
+      [
+        1,
+        5
+      ],
+      [
+        1,
+        6
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        12,
+        5
+      ],
+      [
+        12,
+        6
+      ],
+      [
+        12,
+        7
+      ],
+      [
+        14,
+        7
+      ],
+      [
+        15,
+        6
+      ],
+      [
+        15,
+        7
+      ]
+    ]
+  },
+  "GPU_reference_runs": 1,
+  "target_native_runs": 0,
+  "physical_NPU_runs": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original BF16 with source FP32 boundaries",
+  "softmax_FP32": "RETAINED"
+}

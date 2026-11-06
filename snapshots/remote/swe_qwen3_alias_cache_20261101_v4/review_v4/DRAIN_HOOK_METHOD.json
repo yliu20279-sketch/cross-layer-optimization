@@ -1,0 +1,21 @@
+{
+  "state": "CANDIDATE_NOT_CERTIFIED",
+  "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim",
+  "candidate": "/mnt/sda1/h3240101068/swe_qwen3_alias_cache_20261101_v4/sniper_drain_candidate",
+  "original_sha256": {
+    "common/system/magic_server.cc": "06feeff4d75cea7e15f00bb033b70acae0e7ea439c46d4abfab31a5faadbbc67",
+    "common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.h": "358acf8b977d500d6eb9c81e88cff171da6564771f102f98426616ae854d02a6",
+    "common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc": "44f22ca97d9af7fbb91d13d2e2a98bc1e19137de7714e91078c771c4c31ec590"
+  },
+  "changed_sha256": {
+    "common/system/magic_server.cc": "41af483bebbec5dcc4a9c9ac9c56f85c13b21b458bd6a288bdead8385041f01c",
+    "common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.h": "34490276cf2feccc7e01c9b2fbff47998b07f6a1b67f8a194e7e6dff1c72c434",
+    "common/core/memory_subsystem/parametric_dram_directory_msi/memory_manager.cc": "787eaff3326175e2d48cb758e5d6bae30f48d34251a5e8f02d045b6082288d02"
+  },
+  "method": "explicit software LRU eviction then existing queue getBarrierCompletionTime(now,zero), CPU synchronization to actual queued completion; no fixed latency",
+  "limits": [
+    "CPU0 only, other cores idle",
+    "must validate queue drained and time gate before native full layers",
+    "not native CLFLUSH or physical cache certification"
+  ]
+}

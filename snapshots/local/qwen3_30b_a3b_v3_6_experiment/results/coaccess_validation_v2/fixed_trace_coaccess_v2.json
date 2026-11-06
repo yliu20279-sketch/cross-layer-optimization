@@ -1,0 +1,72 @@
+{
+  "interpretation": "Fixed observed timeline; overlap proxy only, not Bank wait or end-to-end cycles",
+  "trace_label": "coaccess",
+  "profile_reads": 1536,
+  "evaluation_reads": 1536,
+  "profile_overlap_edges": 347,
+  "evaluation_overlap_edges": 311,
+  "profile_to_evaluation_edge_coverage": {
+    "matched_edges": 6,
+    "evaluation_edge_fraction": 0.01929260450160772,
+    "evaluation_overlap_weight_fraction": 0.018191845987982305
+  },
+  "changed_pages_coaccess_vs_heat": 31,
+  "evaluation_overlap_edges_touching_changed_pages": 2,
+  "evaluation_overlap_weight_touching_changed_pages": 426602.0,
+  "evaluation_edges_whose_same_bank_status_changes": 0,
+  "evaluation_overlap_weight_whose_same_bank_status_changes": 0,
+  "profile_scores": {
+    "heat": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 10290669.0,
+      "same_bank_fraction": 0.029005221761762866
+    },
+    "coaccess": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "round_robin": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 183429.0,
+      "same_bank_fraction": 0.0005170119476720513
+    }
+  },
+  "heldout_fixed_timeline_scores": {
+    "heat": {
+      "total_overlap": 82345574.0,
+      "same_bank_overlap": 21363343.0,
+      "same_bank_fraction": 0.25943523084798703
+    },
+    "coaccess": {
+      "total_overlap": 82345574.0,
+      "same_bank_overlap": 21363343.0,
+      "same_bank_fraction": 0.25943523084798703
+    },
+    "round_robin": {
+      "total_overlap": 82345574.0,
+      "same_bank_overlap": 328932.0,
+      "same_bank_fraction": 0.003994531630807504
+    }
+  },
+  "diagnostic_oracle_using_evaluation_overlap_not_deployable": {
+    "score": {
+      "total_overlap": 82345574.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "changed_pages_vs_heat": 5492
+  },
+  "shuffled_profile_edge_null": {
+    "caveat": "NOT a matched 31-page ablation; shuffled construction may change many cold-page assignments",
+    "count": 0,
+    "seed": 20261011,
+    "same_bank_overlap_mean": null,
+    "same_bank_overlap_min": null,
+    "same_bank_overlap_max": null,
+    "fraction_null_at_least_as_good_as_coaccess": null,
+    "changed_pages_mean": null,
+    "changed_pages_min": null,
+    "changed_pages_max": null
+  }
+}

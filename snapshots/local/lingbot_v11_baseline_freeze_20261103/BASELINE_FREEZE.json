@@ -1,0 +1,39 @@
+{
+  "scope": "example_4 dual CFG continuous single layer, not whole step5 or end-to-end B",
+  "verified_payloads": 497,
+  "remote_raw_index_entries": 1127,
+  "archive": {
+    "state": "COMPLETE_ALL_RECEIPTS_COMPACT_RAW_SHA_INDEX",
+    "sha256": "e8cf47b8980e9faf99b40cd5590516141c5442ae8c8a07f32607eeaf79ca5b12",
+    "bytes": 101094995,
+    "payloads": 497,
+    "raw_index_members": 1127,
+    "full_numeric_arrays_local": false,
+    "whole_step5": false
+  },
+  "receipts": {
+    "STATUS": "PASS_LIMITED_FRESH_TP_EP_CONTINUOUS_DOMAIN",
+    "DAG_AUDIT": "PASS_LIMITED_FULL_TP_NATIVE_COMPLETION_DAG_TWO_ROUND",
+    "FEEDBACK_AUDIT": "PASS_LIMITED_ALL_HORIZONTAL_FEEDBACK_AND_DOMAIN_ORDER",
+    "SRAM_INDEPENDENT_AUDIT": "PASS_LIMITED_ACTUAL_HB_SRAM_STAGING_BANK_ACCOUNTING",
+    "INDEPENDENT_AUDIT": "PASS_LIMITED_NEW_KV_TP_EP_CONTINUOUS_PAYLOAD"
+  },
+  "protocol": {
+    "target_GPU_count": 0,
+    "precision": "mixed BF16/FP32 unchanged",
+    "host_GiB": 128,
+    "HB_GiB": 8,
+    "ranks": 16,
+    "CPU_threads_per_rank": 1,
+    "nice": 10,
+    "timeout_seconds": 129600,
+    "scope": "new K/V+Q/full attention/ordered O/free router/all selected expert recompute/residual in same live domain; two rounds",
+    "complete_CPU_opcode_timing": false,
+    "complete_per_MAC_SRAM": false,
+    "whole_step5": false,
+    "reference_only": [
+      "prior K/V and routes, original GPU stage fixtures"
+    ],
+    "no_intermediate_checkpoint_input": true
+  }
+}

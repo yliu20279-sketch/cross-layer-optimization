@@ -1,0 +1,331 @@
+{
+  "status": "DIAGNOSTIC_GRAPH_READY",
+  "operations": 598,
+  "dependencies": 740,
+  "context": 512,
+  "batch": 4,
+  "steps": 1,
+  "layer_start": 23,
+  "layers": 1,
+  "microbatch_size": 1,
+  "microbatches": 4,
+  "sample_bytes_cap": null,
+  "full_memory_trace": true,
+  "cohort_policy": "exploratory_low_skew",
+  "cohort_repeat": 1,
+  "partition_capacity_mib": 512,
+  "capacity_class": "frozen_v3_6",
+  "compute_timing": "scalesim_shape_profile",
+  "request_ids": [
+    "fd65cbe7eb0419a8",
+    "f1a2fdfcb624ef89",
+    "abf8f6346574938f",
+    "d99c82abdeb32e50"
+  ],
+  "inference_request_id_map": {
+    "fd65cbe7eb0419a8": 0,
+    "f1a2fdfcb624ef89": 1,
+    "abf8f6346574938f": 2,
+    "d99c82abdeb32e50": 3
+  },
+  "bank_contention_owner_valid": true,
+  "scheme": "hiband_sem_moe",
+  "budget": {
+    "context": 512,
+    "batch": 4,
+    "kv_bytes": 207618048,
+    "pinned_W4_bytes": 770651136,
+    "expert_page_bytes": 2359296,
+    "cache_slots_per_partition": 187,
+    "partition_peak_bytes": 535884608,
+    "HB_capacity_bytes": 8589934592,
+    "host_capacity_bytes": 8589934592,
+    "total_W4_bytes": 15266165760,
+    "combined_minimum_bytes": 16010654720,
+    "combined_capacity_possible": true,
+    "full_host_backing_fits": false
+  },
+  "initial_host_bytes": 7436500992,
+  "hits": 16,
+  "misses": 16,
+  "evictions": 16,
+  "page_operations": [
+    {
+      "fetch": 114,
+      "evict": 116,
+      "commit": 117,
+      "page": [
+        23,
+        94
+      ],
+      "victim": [
+        1,
+        106
+      ],
+      "rank": 7,
+      "slot": 14
+    },
+    {
+      "fetch": 121,
+      "evict": 123,
+      "commit": 124,
+      "page": [
+        23,
+        96
+      ],
+      "victim": [
+        1,
+        86
+      ],
+      "rank": 2,
+      "slot": 13
+    },
+    {
+      "fetch": 128,
+      "evict": 130,
+      "commit": 131,
+      "page": [
+        23,
+        99
+      ],
+      "victim": [
+        1,
+        114
+      ],
+      "rank": 13,
+      "slot": 15
+    },
+    {
+      "fetch": 135,
+      "evict": 137,
+      "commit": 138,
+      "page": [
+        23,
+        109
+      ],
+      "victim": [
+        1,
+        99
+      ],
+      "rank": 10,
+      "slot": 13
+    },
+    {
+      "fetch": 142,
+      "evict": 144,
+      "commit": 145,
+      "page": [
+        23,
+        126
+      ],
+      "victim": [
+        1,
+        116
+      ],
+      "rank": 1,
+      "slot": 15
+    },
+    {
+      "fetch": 268,
+      "evict": 270,
+      "commit": 271,
+      "page": [
+        23,
+        42
+      ],
+      "victim": [
+        1,
+        53
+      ],
+      "rank": 1,
+      "slot": 12
+    },
+    {
+      "fetch": 275,
+      "evict": 277,
+      "commit": 278,
+      "page": [
+        23,
+        64
+      ],
+      "victim": [
+        1,
+        77
+      ],
+      "rank": 1,
+      "slot": 14
+    },
+    {
+      "fetch": 282,
+      "evict": 284,
+      "commit": 285,
+      "page": [
+        23,
+        89
+      ],
+      "victim": [
+        1,
+        102
+      ],
+      "rank": 3,
+      "slot": 14
+    },
+    {
+      "fetch": 292,
+      "evict": 294,
+      "commit": 295,
+      "page": [
+        23,
+        111
+      ],
+      "victim": [
+        1,
+        107
+      ],
+      "rank": 10,
+      "slot": 14
+    },
+    {
+      "fetch": 417,
+      "evict": 419,
+      "commit": 420,
+      "page": [
+        23,
+        69
+      ],
+      "victim": [
+        1,
+        58
+      ],
+      "rank": 2,
+      "slot": 12
+    },
+    {
+      "fetch": 424,
+      "evict": 426,
+      "commit": 427,
+      "page": [
+        23,
+        79
+      ],
+      "victim": [
+        1,
+        101
+      ],
+      "rank": 0,
+      "slot": 13
+    },
+    {
+      "fetch": 431,
+      "evict": 433,
+      "commit": 434,
+      "page": [
+        23,
+        86
+      ],
+      "victim": [
+        1,
+        57
+      ],
+      "rank": 9,
+      "slot": 12
+    },
+    {
+      "fetch": 438,
+      "evict": 440,
+      "commit": 441,
+      "page": [
+        23,
+        98
+      ],
+      "victim": [
+        1,
+        71
+      ],
+      "rank": 9,
+      "slot": 13
+    },
+    {
+      "fetch": 445,
+      "evict": 447,
+      "commit": 448,
+      "page": [
+        23,
+        122
+      ],
+      "victim": [
+        1,
+        104
+      ],
+      "rank": 9,
+      "slot": 15
+    },
+    {
+      "fetch": 576,
+      "evict": 578,
+      "commit": 579,
+      "page": [
+        23,
+        49
+      ],
+      "victim": [
+        1,
+        59
+      ],
+      "rank": 3,
+      "slot": 11
+    },
+    {
+      "fetch": 583,
+      "evict": 585,
+      "commit": 586,
+      "page": [
+        23,
+        61
+      ],
+      "victim": [
+        1,
+        38
+      ],
+      "rank": 9,
+      "slot": 11
+    }
+  ],
+  "bank_aware_pager": true,
+  "per_bank_page_capacity": 14,
+  "peak_resident_pages_per_bank": 12,
+  "limitations": [
+    "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+    "microbatch page-replacement order is a fixed deterministic schedule, not an optimized online policy",
+    "aggregated ring collective proxy, not chunk-accurate overlap",
+    "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+    "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+    "full memory transaction trace",
+    "host memory service and staging SRAM bandwidth not yet modeled",
+    "embedding and elementwise/vector execution omitted from diagnostic graph",
+    "decode microbatch is one token per request",
+    "QKV column partition uses N=(8192+1024+1024)/16=640",
+    "output projection uses row partition K=2048/16=128 and N=2048",
+    "two query heads per TP16 rank; KV head replication/ownership is abstracted",
+    "router column partition uses N=128/16=8",
+    "each routed expert executes locally without tensor parallelism",
+    "gate and up projections are fused as N=1536; down is K=768,N=2048",
+    "ScaleSim report labels this toolchain configuration, not a paper hardware configuration",
+    "elementwise layernorm, rotary, softmax, activation, residual and quantization kernels are not timed",
+    "synthetic memory-stress transform: no expert-memory lane serialization and 0.25x compute; not a natural serving workload"
+  ],
+  "memory_stress": {
+    "label": "Qwen3-30B-A3B controlled memory stress",
+    "expert_memory_lanes_per_request": 0,
+    "compute_cycle_multiplier": 0.25,
+    "full_memory_trace_preserved": true,
+    "sample_bytes_unchanged": true,
+    "represented_bytes_unchanged": true,
+    "addresses_unchanged": true,
+    "routing_unchanged": true,
+    "placement_unchanged": true,
+    "original_compute_cycles": 16699008,
+    "stress_compute_cycles": 4174784,
+    "added_serialization_edges": 0
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_paging_src/build_paging_v1/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/diagnostic_screen_v1/ctx128_c1_s2/run/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/diagnostic_screen_v1/ctx128_c1_s2/run",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/diagnostic_screen_v1/ctx128_c1_s2/graph",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/diagnostic_screen_v1/ctx128_c1_s2/run",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270",
+    "HB_FIXED_MODE": "GLOBAL_BIAS"
+  },
+  "binary_sha256": "b5e26c471769349cb3ddc472d47f90431e9110c3c4ef5e4f3ca9afbdfcae660c",
+  "graph_hashes": {
+    "address_manifest.csv": "d09e88720ca46c3c1bb946e380b5abd8274269e110761a1efe4c2f030bc3312c",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "94ca93fe2fbb4a28dc2e9dea6a552f94baa241c70d2bae710fe413cc2c2420c4",
+    "graph_manifest.json": "90412d8d14e95983b5d33dbc890db30014e9ee371b2f280489901fb6129b89ee",
+    "ops.csv": "97c8ce202cbf684ee092e2de808835eac0e59dcebbd67e9aa3381420047356ca"
+  },
+  "limitations": [
+    "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+    "DeepStack operator timing disabled; analytical graph timing only"
+  ]
+}

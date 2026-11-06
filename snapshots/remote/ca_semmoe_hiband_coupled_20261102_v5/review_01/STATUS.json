@@ -1,0 +1,84 @@
+{
+  "status": "PARTIAL_P0_1B_LIVE_LAYER_AND_PHYSICAL_MAPPING_SCOPED",
+  "directory_started": "2026-11-02",
+  "review_updated": "2026-11-03 Asia/Shanghai",
+  "models": {
+    "qwen3": {
+      "TP": 16,
+      "EP": 16,
+      "transactions": 5531540,
+      "packets": 952,
+      "allocations": 4217,
+      "releases": 4217,
+      "KV_prefix_payloads": 32,
+      "primitive_jobs": 662,
+      "HB_peak_reserved_bytes": 28340224,
+      "reference": [
+        {
+          "phase": "prefill",
+          "elements": 2048,
+          "different_elements": 0,
+          "maxabs": 0.0,
+          "selected_set_equal": true
+        },
+        {
+          "phase": "decode",
+          "elements": 2048,
+          "different_elements": 111,
+          "maxabs": 0.0009765625,
+          "selected_set_equal": true
+        }
+      ],
+      "raw_event_sha256": "8707a39563f0267468b0464af698c0b9d1ca8e4c8bb02f8bf36bf1a0d0157bc6",
+      "raw_event_bytes": 878719171
+    },
+    "qwen15": {
+      "TP": 4,
+      "EP": 4,
+      "transactions": 7501408,
+      "packets": 296,
+      "allocations": 1673,
+      "releases": 1673,
+      "KV_prefix_payloads": 8,
+      "primitive_jobs": 266,
+      "HB_peak_reserved_bytes": 89161728,
+      "reference": [
+        {
+          "phase": "prefill",
+          "elements": 2048,
+          "different_elements": 1035,
+          "maxabs": 0.00048828125,
+          "selected_set_equal": true
+        },
+        {
+          "phase": "decode",
+          "elements": 2048,
+          "different_elements": 543,
+          "maxabs": 0.00048828125,
+          "selected_set_equal": true
+        }
+      ],
+      "raw_event_sha256": "c092a0db69233145a9756fb00216facda78d781c1cab6690678d82267f71b7b7",
+      "raw_event_bytes": 1196037327
+    }
+  },
+  "remote_software_tests": 32,
+  "mapping_negative_controls": 4,
+  "p0_1c_previous_dispositions_retained": true,
+  "old_cycles_promoted": 0,
+  "formal_performance_runs": 0,
+  "complete_model_forwards": 0,
+  "GPU_runs": 0,
+  "physical_NPU_runs": 0,
+  "full_layer_diagnostic_contexts": 4,
+  "independent_CPU_reference_layer_calls": 8,
+  "p0_1b_complete": false,
+  "performance_ready": false,
+  "remaining": [
+    "native concurrent TP/EP and multi-request scheduling",
+    "target CPU/PCIe/cache-maintenance costs and common timing/transaction contract",
+    "full PP4 decoder execution, broader numerical correctness and general paging/lifetime coverage",
+    "trained CA layout and matched identity/B+CA numerical admission; no natural performance claims"
+  ],
+  "scope": "one layer, prefill1/cached decode1; final runs include fixed diagnostic page swap, not learned CA"
+}

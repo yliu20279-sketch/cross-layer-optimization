@@ -1,0 +1,8 @@
+{
+  "initial_audit": "audit_gate_initial.py retained",
+  "failure": "asserted all SRAM frees occur after dispatch release, including the deliberate4B startup early-consumer negative-control buffer freed atcycle0",
+  "correction": "retain full allocation ledger and peak accounting; apply dispatch last-consumer condition to metadata_SRAM, require other allocation to be the named injected_early_consumer negative control atcycle0",
+  "executed_gate_or_protocol_modified": false,
+  "new_native_runs": 0,
+  "scope": "auditor classification fix, not relaxed metadata dependency or numeric acceptance"
+}

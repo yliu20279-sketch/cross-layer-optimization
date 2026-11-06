@@ -1,0 +1,164 @@
+{
+  "schema": "ca-composite-contract-2",
+  "state": "PARTIAL_NOT_READY",
+  "model_id": "Qwen/Qwen3-30B-A3B",
+  "spec": {
+    "id": "Qwen/Qwen3-30B-A3B",
+    "layers": 48,
+    "experts": 128,
+    "ep": 16,
+    "tp": 16,
+    "pp": 1,
+    "topk": 8,
+    "hidden": 2048,
+    "layers_per_stage": 48,
+    "shared_expert": false
+  },
+  "precision": {
+    "weights": "BF16",
+    "activations": "BF16",
+    "accumulation": "per-op FP32 candidate; native operation order unverified",
+    "source_gpu_differences": "retained, no tolerance relaxation"
+  },
+  "precision_sha256": "907908d533d491fe7af94d6d2efc386fe773ac874e18105e32091ae1265772e6",
+  "checkpoint_content_sha256": "65ed1e6dad7467f2d9e620c79f9b639b9eeae2b42579d6795224707cc077b859",
+  "content_fingerprint_definition": "SHA256 canonical filename/size/full-file-SHA256 manifest",
+  "revision": null,
+  "upstream_revision_verified": false,
+  "content_snapshot_id": "sha256:65ed1e6dad7467f2d9e620c79f9b639b9eeae2b42579d6795224707cc077b859",
+  "tokenizer_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+  "source_config_sha256": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+  "capacity_candidate": {
+    "host_bytes": 137438953472,
+    "hb_partitions": 16,
+    "hb_partition_bytes": 536870912
+  },
+  "capacity_verified": false,
+  "costs_verified": false,
+  "runtime": {
+    "binary": {
+      "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/host",
+      "sha256": "54cc4e36f83b5c7d83a5b87013dd7c733651da48640fa3160d034b0d2485d6e6"
+    },
+    "libraries": [
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/libfull.so",
+        "sha256": "5fc14573c365373e99b68455aa23c08b34ca66c51c4818169f94cc6d659223a4"
+      }
+    ],
+    "source_build_identity_sha256": "140d1a1b7b360bb683412b1bc4f3597c2ee2476a958fba30dd9c19a499a40487",
+    "required_components": [
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/host",
+        "sha256": "54cc4e36f83b5c7d83a5b87013dd7c733651da48640fa3160d034b0d2485d6e6"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/gateway",
+        "sha256": "2d8d1e41f7352ca3aee8909437af39f370be13d5a78c52222451cf043e819e53"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/libfull.so",
+        "sha256": "5fc14573c365373e99b68455aa23c08b34ca66c51c4818169f94cc6d659223a4"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/host.cpp",
+        "sha256": "d7a8300da8f092bb2cf518916e5275825af1d84d7645816f0be2fbfc6092572a"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/gateway.cpp",
+        "sha256": "cdb5025b166041ce65a3ec8855367120354509bea6c8094dfea599b3f40e14d0"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/bridge_full.cpp",
+        "sha256": "7c52ae2bbc9e1e379afcd1e2e13cf2ca082a855f2b3d600648fcc2845c362f8c"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/cpu_services.h",
+        "sha256": "f502f09dbd4c17f4f33c38a2ccfaca0eb9c303f5aaf0444a95023c55c621aee9"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/sram_matrix.h",
+        "sha256": "b5a61f2e6ea37e725da23185f69006ff608c3a385602cbf45ab349b81d2bf0de"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/PROTOCOL.json",
+        "sha256": "90eb1079941c99fe72462f252b46f672598052b62f2c64036173d796fd280471"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/PARAMETERS.json",
+        "sha256": "45529dd96e18941c2d14e956b76d61d78d800cd4c3e1cd085638c113e3166550"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/HOST_BACKING.json",
+        "sha256": "8b842c1b1484782cefba17f3ec19b4e2a26f4ad72f7f399705db1a8682f1505d"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/CPU_BUILD_COMMAND.json",
+        "sha256": "194fdb8548f7cd5ce33bf9aced45f4680ae38d362b17b4ad16d3fb371eecbd44"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/BRIDGE_BUILD_COMMAND.json",
+        "sha256": "65304951ada26da3fc5f4a7d6caa212c58ec05f32ffe79b86cfd08d6ce853b0e"
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/swe_qwen3_lifetime_owned_20261102_v8/EXTERNAL_DEPENDENCIES.json",
+        "sha256": "4cb06ab0f751e9cea771448f115ef502af1628c849420acfe00cd3f50a77ebb3"
+      }
+    ],
+    "scope": "existing BF16 host/gateway/primitive-service candidate, not new composite execution",
+    "candidate_executed_here": false
+  },
+  "capabilities": {
+    "native_sem_moe_schedule": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "native_srs_sag": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_operator_lowering": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "actual_bf16_memory_io": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_capacity_lifetimes": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cpu_costs": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cache_version_services": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "hiband_controls_and_timing": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "ca_native_address_binding": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    }
+  },
+  "software_reference": {
+    "split_fallback": "rejected",
+    "causal_token_scheduler": true,
+    "two_gram": false,
+    "collectives": "semantic reference only",
+    "opcode_lowering": false,
+    "costs": "missing costs rejected"
+  },
+  "native_runs": 0,
+  "author_equivalence": false,
+  "blocker_notes": [
+    "content snapshot fixed; upstream revision remains unverified",
+    "native causal scheduler/collectives integration and full costs remain pending"
+  ]
+}

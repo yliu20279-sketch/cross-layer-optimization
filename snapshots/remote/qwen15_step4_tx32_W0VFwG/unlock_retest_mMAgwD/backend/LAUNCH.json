@@ -1,0 +1,21 @@
+{
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "30",
+    "/mnt/sda1/h3240101068/qwen15_step4_tx32_W0VFwG/build_04/coupled_backend",
+    "/mnt/sda1/h3240101068/qwen15_step4_tx32_W0VFwG/unlock_retest_mMAgwD/backend",
+    "/mnt/sda1/h3240101068/qwen15_step4_tx32_W0VFwG/ramulator32.yaml",
+    "project_dynamic"
+  ],
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen15_step4_tx32_W0VFwG/unlock_retest_mMAgwD/backend",
+    "POPNET_STATS_WINDOW_CYCLES": "100000"
+  },
+  "binary_sha256": "21673c8e028f7b1345d6ae38da271118b3174c0faf1433c81100238428dfe4c6",
+  "scope": "bounded coupled functional check",
+  "cpu_pcie_costs_verified": false,
+  "formal_performance": false
+}

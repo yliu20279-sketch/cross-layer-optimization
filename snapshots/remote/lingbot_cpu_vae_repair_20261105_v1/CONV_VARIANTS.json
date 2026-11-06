@@ -1,0 +1,58 @@
+{
+  "variants": [
+    {
+      "name": "(True, 'contiguous', False)",
+      "different_elements": 1990711,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(True, 'contiguous', True)",
+      "different_elements": 1929624,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(True, 'channels_last_3d', False)",
+      "different_elements": 1990711,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(True, 'channels_last_3d', True)",
+      "different_elements": 1929624,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(False, 'contiguous', False)",
+      "different_elements": 1990711,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(False, 'contiguous', True)",
+      "different_elements": 1929624,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(False, 'channels_last_3d', False)",
+      "different_elements": 1990711,
+      "max_abs_diff": 1.430511474609375e-06
+    },
+    {
+      "name": "(False, 'channels_last_3d', True)",
+      "different_elements": 1929624,
+      "max_abs_diff": 1.430511474609375e-06
+    }
+  ],
+  "kernels": [
+    "Memcpy HtoD (Pageable -> Device)",
+    "Memset (Device)",
+    "sm80_xmma_fprop_implicit_gemm_f32f32_f32f32_f32_nchwkcrs_nchw_tilesize64x64x8_stage3_warpsize1x4x1_g1_ffma_aligna4_alignc4_execute_kernel__5x_cudnn",
+    "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::CUDAFunctor_add<float> >(at::TensorIteratorBase&, at::native::CUDAFunctor_add<float> const&)::{lambda(int)#1})",
+    "void at::native::elementwise_kernel<128, 2, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int)#1})",
+    "void cudnn::engines_precompiled::nchwToNhwcKernel<float, float, float, false, true, (cudnnKernelDataType_t)0>(cudnn::engines_precompiled::nchw2nhwc_params_t<float>, float const*, float*)",
+    "void cudnn::engines_precompiled::nhwcToNchwKernel<float, float, float, true, false, (cudnnKernelDataType_t)0>(cudnn::engines_precompiled::nhwc2nchw_params_t<float>, float const*, float*)"
+  ],
+  "gpu_same_input": {
+    "name": "GPU_repeat",
+    "different_elements": 0,
+    "max_abs_diff": 0.0
+  }
+}

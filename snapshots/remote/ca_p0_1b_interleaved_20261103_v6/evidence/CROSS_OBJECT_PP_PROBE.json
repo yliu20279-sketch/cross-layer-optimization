@@ -1,0 +1,80 @@
+{
+  "status": "PASS_CROSS_OBJECT_PHYSICAL_LIFETIME_AND_PP4_PAYLOAD_PROBE_ONLY",
+  "summary": {
+    "status": "PASS_LIVE_COUPLED_SUBGRAPH_ONLY",
+    "clock_ns": 7534,
+    "transactions": 1376,
+    "callbacks": 1376,
+    "packets": 24,
+    "packet_callbacks": 24,
+    "jobs": 0,
+    "primitive_events": 0,
+    "link_switches": 1,
+    "mapping_installs": 1,
+    "migration_write_bytes": 8192,
+    "primitive_trace_sampling_interval": 10000,
+    "cpu_pcie_costs_verified": false,
+    "formal_performance": false,
+    "HB_peak_reserved": [
+      266240,
+      0,
+      0,
+      0,
+      4096,
+      0,
+      0,
+      0,
+      4096,
+      0,
+      0,
+      0,
+      4096,
+      0,
+      0,
+      0
+    ]
+  },
+  "cross_object_weight_swap_valid_bytes": 8192,
+  "fixed_router_unchanged": true,
+  "new_workspace_did_not_alias_remapped_weight": true,
+  "PP_boundaries": [
+    {
+      "src": 0,
+      "dst": 4,
+      "token": 0,
+      "stage": "PP4_payload_boundary_probe",
+      "bytes": 4096,
+      "payload_sha256": "3166ab8180cc4a9e8d8b9ba11bcd42ede3d6d5579a6f4f31610fe0ea3f2d6ddb",
+      "start": 5833,
+      "complete": 6401,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 4,
+      "dst": 8,
+      "token": 0,
+      "stage": "PP4_payload_boundary_probe",
+      "bytes": 4096,
+      "payload_sha256": "3166ab8180cc4a9e8d8b9ba11bcd42ede3d6d5579a6f4f31610fe0ea3f2d6ddb",
+      "start": 6401,
+      "complete": 6968,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 8,
+      "dst": 12,
+      "token": 0,
+      "stage": "PP4_payload_boundary_probe",
+      "bytes": 4096,
+      "payload_sha256": "3166ab8180cc4a9e8d8b9ba11bcd42ede3d6d5579a6f4f31610fe0ea3f2d6ddb",
+      "start": 6968,
+      "complete": 7534,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    }
+  ],
+  "full_24_layer_PP_model_verified": false,
+  "formal_performance_runs": 0
+}

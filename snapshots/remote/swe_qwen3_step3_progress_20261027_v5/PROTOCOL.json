@@ -1,0 +1,17 @@
+{
+ "date":"2026-10-27",
+ "scope":"single two-dev correction of observed v4 semantic-failure guard/context defects, independent available GPU1; v4 stays untouched on GPU0, no stopping/moving/PID operations",
+ "model":"original BF16 Qwen3-30B-A3B ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+ "target":{"host_GiB":128,"HB_GiB":8,"NPU_runs":0},
+ "prompt_and_sampling":"same as v3: thinking0.6/top_p0.95/top_k20, per-request seeds reset per task; no task-specific repair answer",
+ "development":"same two already used dev instances, one bounded attempt each; not new independent cases",
+ "budget":{"model_calls":32,"total_new_tokens":32768,"max_call_new_tokens":8192,"wall_seconds_between_calls_and_blocks":5400,"shell_seconds":120,"idle_container_fallback_minutes":240},
+ "new_gate":"v4 machine verification retained; actual SyntaxError context and indentation columns supplied without changing source. Failed validation associates failure with original mutating action despite raw exit0, so identical invalid edit is blocked before repetition. Progress is validation-stage improvement, not any source-hash change.",
+ "test_scope":"default full pytest only for the two exact dev images whose original full suites passed CPU preflight. Other tasks require standalone model-selected focused test invocation with selectors verified against original tracked test files. Support pytest, Django native tests/runtests.py test_sqlite parallel1, and unittest; no hidden tests used.",
+ "selection":"both official dev resolved plus real submission validation, preserved existing tests and no infrastructure/patch collection errors",
+ "holdout":"wait v4 official dev gate; if v4 passes it has priority and this branch skips holdout. If v4 fails and this branch passes, wait v4 package ready, require acceptance root absent then freeze before access to still-unread registered bodies. No competing or duplicated holdout access.",
+ "isolation":"each branch separate actor containers and host roots; no host artifacts mounted or cross-branch grade feedback. Hidden tests read only after that branch all generation exits; formal selection waits both dev grades. Gold never read.",
+ "reference_resources":"GPU1 >=72GiB free at load gate, one worker; verified free81GiB and host available233GiB before setup; no preemption. Shared-host wall times are not controlled performance comparisons.",
+ "stop":"no new holdout on development gate failure; preserve and report outcome, no automatic unbounded prompt search",
+ "evidence":"raw model/actions, controller checks and feedback separately labelled; CPU scripted checks are not Qwen repair success"
+}

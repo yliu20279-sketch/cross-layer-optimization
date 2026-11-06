@@ -1,0 +1,458 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793085324.8258438,
+    "start_monotonic": 7761271.765315212,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7761272.105320999,
+    "seconds": 0.3400063468143344
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793085325.4204218,
+    "start_monotonic": 7761272.359893727,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7761272.64685081,
+    "seconds": 0.28695769887417555
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i if data is None:\\n    continue' schema.py",
+    "start_utc": 1793085778.613198,
+    "start_monotonic": 7761725.552667857,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7761725.80591839,
+    "seconds": 0.253250939771533
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793085779.6412513,
+    "start_monotonic": 7761726.580721955,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7761726.923189781,
+    "seconds": 0.34246823098510504
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793086255.1582925,
+    "start_monotonic": 7762202.097761572,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762202.411949694,
+    "seconds": 0.3141887653619051
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793086256.270623,
+    "start_monotonic": 7762203.210093771,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762203.564840098,
+    "seconds": 0.35474773310124874
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793086530.6206126,
+    "start_monotonic": 7762477.560081923,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762477.857868821,
+    "seconds": 0.2977873394265771
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793086531.6945236,
+    "start_monotonic": 7762478.633993938,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762478.970213912,
+    "seconds": 0.3362216344103217
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793086665.9007509,
+    "start_monotonic": 7762612.840222074,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762613.149623759,
+    "seconds": 0.3094019200652838
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793086667.0170302,
+    "start_monotonic": 7762613.95650207,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762614.307097406,
+    "seconds": 0.3505957443267107
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793086827.1543865,
+    "start_monotonic": 7762774.093858373,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762774.399478361,
+    "seconds": 0.30562026146799326
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793086828.2456465,
+    "start_monotonic": 7762775.185117743,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762775.53654807,
+    "seconds": 0.351430737413466
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793087039.1920846,
+    "start_monotonic": 7762986.131556323,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762986.430652757,
+    "seconds": 0.2990967184305191
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793087040.2547855,
+    "start_monotonic": 7762987.194257496,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7762987.548749049,
+    "seconds": 0.3544918457046151
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793087358.2736216,
+    "start_monotonic": 7763305.213093275,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763305.512160827,
+    "seconds": 0.2990678194910288
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793087359.3746243,
+    "start_monotonic": 7763306.314096067,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763306.659764667,
+    "seconds": 0.34566886723041534
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793087651.6471453,
+    "start_monotonic": 7763598.586617035,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763598.847558699,
+    "seconds": 0.26094194408506155
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793087652.6641095,
+    "start_monotonic": 7763599.603581882,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763599.948141806,
+    "seconds": 0.3445601975545287
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793087870.9300995,
+    "start_monotonic": 7763817.869571493,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763818.17596809,
+    "seconds": 0.30639686342328787
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793087872.036945,
+    "start_monotonic": 7763818.976416899,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763819.324405408,
+    "seconds": 0.34798863995820284
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793088126.753402,
+    "start_monotonic": 7764073.692873851,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764073.988748045,
+    "seconds": 0.29587446339428425
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088127.837764,
+    "start_monotonic": 7764074.777235714,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764075.131744509,
+    "seconds": 0.3545105792582035
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\if data is None:\\n    continue\" schema.py",
+    "start_utc": 1793088312.7167065,
+    "start_monotonic": 7764259.656177246,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764259.961194702,
+    "seconds": 0.3050177302211523
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088313.8422413,
+    "start_monotonic": 7764260.781712979,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764261.132468706,
+    "seconds": 0.35075596906244755
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\nif data is None:\\n    continue' schema.py",
+    "start_utc": 1793088606.6555161,
+    "start_monotonic": 7764553.594987892,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764553.897716691,
+    "seconds": 0.30272908601909876
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088607.7417312,
+    "start_monotonic": 7764554.681202827,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764555.032232623,
+    "seconds": 0.35103016160428524
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793088888.3167384,
+    "start_monotonic": 7764835.256209951,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764835.552749227,
+    "seconds": 0.29653981048613787
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088889.4226468,
+    "start_monotonic": 7764836.362118594,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764836.717121286,
+    "seconds": 0.355004258453846
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793089261.2673028,
+    "start_monotonic": 7765208.206771854,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765208.505188671,
+    "seconds": 0.2984170587733388
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793089262.3461385,
+    "start_monotonic": 7765209.285610412,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765209.635572741,
+    "seconds": 0.3499638754874468
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793089549.2936487,
+    "start_monotonic": 7765496.233121059,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765496.537499449,
+    "seconds": 0.3043786259368062
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793089550.391988,
+    "start_monotonic": 7765497.331459604,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765497.689839951,
+    "seconds": 0.3583806147798896
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793090015.3580809,
+    "start_monotonic": 7765962.297552334,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765962.600989357,
+    "seconds": 0.3034373139962554
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090016.4535012,
+    "start_monotonic": 7765963.392972987,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765963.744512722,
+    "seconds": 0.35154007468372583
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793090359.4295032,
+    "start_monotonic": 7766306.368974885,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766306.671546121,
+    "seconds": 0.30257149413228035
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090360.5043664,
+    "start_monotonic": 7766307.443838461,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766307.787769822,
+    "seconds": 0.34393162559717894
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/value = data/ i\\\nif data is None:\\n    continue\" schema.py",
+    "start_utc": 1793090542.123792,
+    "start_monotonic": 7766489.063263378,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766489.370612959,
+    "seconds": 0.3073498494923115
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090543.2194753,
+    "start_monotonic": 7766490.158947147,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766490.511385932,
+    "seconds": 0.35244001168757677
+  }
+]

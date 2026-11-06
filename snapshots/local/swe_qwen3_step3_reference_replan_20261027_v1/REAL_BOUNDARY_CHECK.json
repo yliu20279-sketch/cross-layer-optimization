@@ -1,0 +1,89 @@
+{
+  "state": "REAL_CPU_BOUNDARY_CHECK_NOT_NPU",
+  "checks": [
+    {
+      "root": "swe_qwen3_step3_gpu_20261026_v1",
+      "request": "R0002",
+      "phase": "prefill",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 38912,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    },
+    {
+      "root": "swe_qwen3_step3_gpu_20261026_v1",
+      "request": "R0002",
+      "phase": "decode",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 2048,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/0",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 524288,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/1",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": false,
+      "max_abs": 0.0009765625,
+      "unequal": 16,
+      "elements": 524288,
+      "classification": "CROSS_BACKEND_DIFFERENCE_NOT_ACCEPTED"
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/2",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 460800,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/3",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 2048,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "decode",
+      "op": "residual_add_then_post_attention_RMSNorm",
+      "exact": true,
+      "max_abs": 0.0,
+      "unequal": 0,
+      "elements": 2048,
+      "classification": "EXACT_REAL_CPU_SUBCHAIN"
+    }
+  ],
+  "weight_key": "model.layers.0.post_attention_layernorm.weight",
+  "shard": "model-00001-of-00016.safetensors",
+  "adapter_sha256": "9d55ad77120540dfd21a00e7b9742324ccc5aac5aead164262b4374224c596ee",
+  "codec_sha256": "d84abb1f46167f32e92380428df83f2a121b432cfe8caf19bd8a79d73305f6f5",
+  "acceptance": "exact comparison; differences retained, no retrospective tolerance",
+  "cuda_initialized": false,
+  "NPU_runs": 0
+}

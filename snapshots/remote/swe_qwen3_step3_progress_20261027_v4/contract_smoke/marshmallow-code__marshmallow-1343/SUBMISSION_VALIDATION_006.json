@@ -1,0 +1,17 @@
+{
+  "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+  "syntax": {
+    "output": "CONTROLLER_SYNTAX_OK\n",
+    "returncode": 0,
+    "exception_info": ""
+  },
+  "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+  "tests": {
+    "output": "============================= test session starts ==============================\nplatform linux -- Python 3.9.21, pytest-8.3.5, pluggy-1.5.0\nrootdir: /testbed\nconfigfile: setup.cfg\ncollected 779 items\n\ntests/test_decorators.py .......................                         [  2%]\ntests/test_deserialization.py .......................................... [  8%]\n........................................................................ [ 17%]\n.................................................................        [ 25%]\ntests/test_exceptions.py .....                                           [ 26%]\ntests/test_fields.py .................................                   [ 30%]\ntests/test_marshalling.py ........................                       [ 33%]\ntests/test_options.py ..................                                 [ 36%]\ntests/test_py3/test_utils.py .                                           [ 36%]\ntests/test_registry.py .........                                         [ 37%]\ntests/test_schema.py ................................................... [ 44%]\n........................................................................ [ 53%]\n........................................................................ [ 62%]\n........................                                                 [ 65%]\ntests/test_serialization.py ............................................ [ 71%]\n..........................................................               [ 78%]\ntests/test_utils.py .......................................              [ 83%]\ntests/test_validate.py ................................................. [ 89%]\n........................................................................ [ 99%]\n......                                                                   [100%]\n\n=============================== warnings summary ===============================\nsrc/marshmallow/__init__.py:19\n  /testbed/src/marshmallow/__init__.py:19: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    __version_info__ = tuple(LooseVersion(__version__).version)\n\ntests/test_decorators.py::test_decorated_processors\n  /testbed/src/marshmallow/marshalling.py:253: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working\n    if not isinstance(data, collections.Mapping):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n======================= 779 passed, 2 warnings in 2.39s ========================\n",
+    "returncode": 0,
+    "exception_info": ""
+  },
+  "source_modified_by_controller": false,
+  "hidden_tests_used": false,
+  "source_unchanged_through_validation": true
+}

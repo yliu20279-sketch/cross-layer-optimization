@@ -1,0 +1,5285 @@
+[
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      1
+    ],
+    "input_ready_ns": 99625,
+    "publication_end_ns": 177297,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      5
+    ],
+    "input_ready_ns": 256635,
+    "publication_end_ns": 295907,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      1,
+      "HOST:model.layers.0.input_layernorm.weight"
+    ],
+    "input_ready_ns": 79177,
+    "publication_end_ns": 433210,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      12
+    ],
+    "input_ready_ns": 37332942,
+    "publication_end_ns": 37488415,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      16
+    ],
+    "input_ready_ns": 37646490,
+    "publication_end_ns": 37723882,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      11,
+      "HOST:model.layers.0.self_attn.q_norm.weight"
+    ],
+    "input_ready_ns": 37255025,
+    "publication_end_ns": 37996733,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      23
+    ],
+    "input_ready_ns": 42649956,
+    "publication_end_ns": 42669725,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      27
+    ],
+    "input_ready_ns": 42691229,
+    "publication_end_ns": 42701180,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      22,
+      "HOST:model.layers.0.self_attn.k_norm.weight"
+    ],
+    "input_ready_ns": 42639850,
+    "publication_end_ns": 42736196,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      40,
+      50
+    ],
+    "input_ready_ns": 48258625,
+    "publication_end_ns": 48771001,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      86
+    ],
+    "input_ready_ns": 48818546,
+    "publication_end_ns": 48842036,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      87
+    ],
+    "input_ready_ns": 48854134,
+    "publication_end_ns": 48865917,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      88,
+      89
+    ],
+    "input_ready_ns": 48950075,
+    "publication_end_ns": 49552058,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      127
+    ],
+    "input_ready_ns": 86409787,
+    "publication_end_ns": 86487499,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      131
+    ],
+    "input_ready_ns": 86567309,
+    "publication_end_ns": 86606973,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      126,
+      "HOST:model.layers.0.post_attention_layernorm.weight"
+    ],
+    "input_ready_ns": 86370638,
+    "publication_end_ns": 86744597,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      137
+    ],
+    "input_ready_ns": 87945134,
+    "publication_end_ns": 87950280,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "CPU_source_topk",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      138
+    ],
+    "input_ready_ns": 87953008,
+    "publication_end_ns": 87955315,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      141
+    ],
+    "input_ready_ns": 87956851,
+    "publication_end_ns": 87957788,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      143
+    ],
+    "input_ready_ns": 87978947,
+    "publication_end_ns": 87989438,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      152,
+      153,
+      151
+    ],
+    "input_ready_ns": 96257931,
+    "publication_end_ns": 96297302,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      155
+    ],
+    "input_ready_ns": 96318438,
+    "publication_end_ns": 96321014,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      154,
+      164,
+      163
+    ],
+    "input_ready_ns": 101000141,
+    "publication_end_ns": 101039503,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      166
+    ],
+    "input_ready_ns": 101060646,
+    "publication_end_ns": 101063221,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      165,
+      175,
+      174
+    ],
+    "input_ready_ns": 105741210,
+    "publication_end_ns": 105780402,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      177
+    ],
+    "input_ready_ns": 105801525,
+    "publication_end_ns": 105806238,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      176,
+      186,
+      185
+    ],
+    "input_ready_ns": 111342810,
+    "publication_end_ns": 111381998,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      188
+    ],
+    "input_ready_ns": 111403152,
+    "publication_end_ns": 111405727,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      187,
+      197,
+      196
+    ],
+    "input_ready_ns": 116083304,
+    "publication_end_ns": 116122810,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      199
+    ],
+    "input_ready_ns": 116143980,
+    "publication_end_ns": 116156633,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      198,
+      208,
+      207
+    ],
+    "input_ready_ns": 125310468,
+    "publication_end_ns": 125349910,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      210
+    ],
+    "input_ready_ns": 125371029,
+    "publication_end_ns": 125373632,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      209,
+      219,
+      218
+    ],
+    "input_ready_ns": 130051344,
+    "publication_end_ns": 130090765,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      221
+    ],
+    "input_ready_ns": 130111903,
+    "publication_end_ns": 130116688,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      220,
+      230,
+      229
+    ],
+    "input_ready_ns": 135651955,
+    "publication_end_ns": 135691110,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      232
+    ],
+    "input_ready_ns": 135712265,
+    "publication_end_ns": 135718992,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      231,
+      241,
+      240
+    ],
+    "input_ready_ns": 142159068,
+    "publication_end_ns": 142198330,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      243
+    ],
+    "input_ready_ns": 142219469,
+    "publication_end_ns": 142222130,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      242,
+      252,
+      251
+    ],
+    "input_ready_ns": 146900420,
+    "publication_end_ns": 146939950,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      254
+    ],
+    "input_ready_ns": 146961093,
+    "publication_end_ns": 146963776,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      253,
+      263,
+      262
+    ],
+    "input_ready_ns": 151641975,
+    "publication_end_ns": 151681561,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      265
+    ],
+    "input_ready_ns": 151702701,
+    "publication_end_ns": 151705404,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      264,
+      274,
+      273
+    ],
+    "input_ready_ns": 156384280,
+    "publication_end_ns": 156423817,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      276
+    ],
+    "input_ready_ns": 156444971,
+    "publication_end_ns": 156447670,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      275,
+      285,
+      284
+    ],
+    "input_ready_ns": 161127134,
+    "publication_end_ns": 161166743,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      287
+    ],
+    "input_ready_ns": 161188148,
+    "publication_end_ns": 161192940,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      286,
+      296,
+      295
+    ],
+    "input_ready_ns": 166728633,
+    "publication_end_ns": 166768180,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      298
+    ],
+    "input_ready_ns": 166789323,
+    "publication_end_ns": 166791982,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      297,
+      307,
+      306
+    ],
+    "input_ready_ns": 171470290,
+    "publication_end_ns": 171509783,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      309
+    ],
+    "input_ready_ns": 171530906,
+    "publication_end_ns": 171533545,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      308,
+      318,
+      317
+    ],
+    "input_ready_ns": 176211977,
+    "publication_end_ns": 176251698,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      320
+    ],
+    "input_ready_ns": 176272818,
+    "publication_end_ns": 176275559,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      319,
+      329,
+      328
+    ],
+    "input_ready_ns": 180953834,
+    "publication_end_ns": 180993532,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      331
+    ],
+    "input_ready_ns": 181014658,
+    "publication_end_ns": 181019211,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      330,
+      340,
+      339
+    ],
+    "input_ready_ns": 186555201,
+    "publication_end_ns": 186594566,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      342
+    ],
+    "input_ready_ns": 186615719,
+    "publication_end_ns": 186618570,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      341,
+      351,
+      350
+    ],
+    "input_ready_ns": 191297077,
+    "publication_end_ns": 191336442,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      353
+    ],
+    "input_ready_ns": 191357564,
+    "publication_end_ns": 191362338,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      352,
+      362,
+      361
+    ],
+    "input_ready_ns": 196898146,
+    "publication_end_ns": 196937311,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      364
+    ],
+    "input_ready_ns": 196958467,
+    "publication_end_ns": 196965125,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      363,
+      373,
+      372
+    ],
+    "input_ready_ns": 203405079,
+    "publication_end_ns": 203444257,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      375
+    ],
+    "input_ready_ns": 203465462,
+    "publication_end_ns": 203468037,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      374,
+      384,
+      383
+    ],
+    "input_ready_ns": 208145846,
+    "publication_end_ns": 208185302,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      386
+    ],
+    "input_ready_ns": 208206451,
+    "publication_end_ns": 208209127,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      385,
+      395,
+      394
+    ],
+    "input_ready_ns": 212886916,
+    "publication_end_ns": 212926286,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      397
+    ],
+    "input_ready_ns": 212947406,
+    "publication_end_ns": 212949981,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      396,
+      406,
+      405
+    ],
+    "input_ready_ns": 217627941,
+    "publication_end_ns": 217667146,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      408
+    ],
+    "input_ready_ns": 217688299,
+    "publication_end_ns": 217690875,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      407,
+      417,
+      416
+    ],
+    "input_ready_ns": 222367796,
+    "publication_end_ns": 222407196,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      419
+    ],
+    "input_ready_ns": 222428332,
+    "publication_end_ns": 222431196,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      418,
+      428,
+      427
+    ],
+    "input_ready_ns": 227109981,
+    "publication_end_ns": 227149381,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      430
+    ],
+    "input_ready_ns": 227170519,
+    "publication_end_ns": 227175271,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      429,
+      439,
+      438
+    ],
+    "input_ready_ns": 232710665,
+    "publication_end_ns": 232749806,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      441
+    ],
+    "input_ready_ns": 232770959,
+    "publication_end_ns": 232773535,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      440,
+      450,
+      449
+    ],
+    "input_ready_ns": 237453319,
+    "publication_end_ns": 237492691,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      452
+    ],
+    "input_ready_ns": 237513813,
+    "publication_end_ns": 237516389,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      451,
+      461,
+      460
+    ],
+    "input_ready_ns": 242195009,
+    "publication_end_ns": 242234147,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      463
+    ],
+    "input_ready_ns": 242255267,
+    "publication_end_ns": 242257842,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      462,
+      472,
+      471
+    ],
+    "input_ready_ns": 246937694,
+    "publication_end_ns": 246977062,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      474
+    ],
+    "input_ready_ns": 246998185,
+    "publication_end_ns": 247004805,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      473,
+      483,
+      482
+    ],
+    "input_ready_ns": 253444139,
+    "publication_end_ns": 253483315,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      485
+    ],
+    "input_ready_ns": 253504539,
+    "publication_end_ns": 253519399,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      484,
+      494,
+      493
+    ],
+    "input_ready_ns": 263579510,
+    "publication_end_ns": 263618893,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      496
+    ],
+    "input_ready_ns": 263640042,
+    "publication_end_ns": 263642721,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      495,
+      505,
+      504
+    ],
+    "input_ready_ns": 268319335,
+    "publication_end_ns": 268358527,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      507
+    ],
+    "input_ready_ns": 268379649,
+    "publication_end_ns": 268382225,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      506,
+      516,
+      515
+    ],
+    "input_ready_ns": 273059140,
+    "publication_end_ns": 273098508,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      518
+    ],
+    "input_ready_ns": 273119659,
+    "publication_end_ns": 273124415,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      517,
+      527,
+      526
+    ],
+    "input_ready_ns": 278659811,
+    "publication_end_ns": 278698958,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      529
+    ],
+    "input_ready_ns": 278720119,
+    "publication_end_ns": 278732559,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      528,
+      538,
+      537
+    ],
+    "input_ready_ns": 287886389,
+    "publication_end_ns": 287925503,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      540
+    ],
+    "input_ready_ns": 287946629,
+    "publication_end_ns": 287953315,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      539,
+      549,
+      548
+    ],
+    "input_ready_ns": 294393298,
+    "publication_end_ns": 294432492,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      551
+    ],
+    "input_ready_ns": 294453744,
+    "publication_end_ns": 294458237,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      550,
+      560,
+      559
+    ],
+    "input_ready_ns": 299993325,
+    "publication_end_ns": 300033052,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      562
+    ],
+    "input_ready_ns": 300054188,
+    "publication_end_ns": 300056832,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      561,
+      571,
+      570
+    ],
+    "input_ready_ns": 304734936,
+    "publication_end_ns": 304774673,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      573
+    ],
+    "input_ready_ns": 304795809,
+    "publication_end_ns": 304798764,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      572,
+      582,
+      581
+    ],
+    "input_ready_ns": 309477142,
+    "publication_end_ns": 309516931,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      584
+    ],
+    "input_ready_ns": 309538073,
+    "publication_end_ns": 309541032,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      583,
+      593,
+      592
+    ],
+    "input_ready_ns": 314219807,
+    "publication_end_ns": 314259663,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      595
+    ],
+    "input_ready_ns": 314280800,
+    "publication_end_ns": 314285376,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      594,
+      604,
+      603
+    ],
+    "input_ready_ns": 319822937,
+    "publication_end_ns": 319862261,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      606
+    ],
+    "input_ready_ns": 319883432,
+    "publication_end_ns": 319888242,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      605,
+      615,
+      614
+    ],
+    "input_ready_ns": 325422023,
+    "publication_end_ns": 325461502,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      617
+    ],
+    "input_ready_ns": 325482651,
+    "publication_end_ns": 325485567,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      616,
+      626,
+      625
+    ],
+    "input_ready_ns": 330163896,
+    "publication_end_ns": 330203118,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      628
+    ],
+    "input_ready_ns": 330224253,
+    "publication_end_ns": 330226894,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      627,
+      637,
+      636
+    ],
+    "input_ready_ns": 334905189,
+    "publication_end_ns": 334944433,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      639
+    ],
+    "input_ready_ns": 334965582,
+    "publication_end_ns": 334968202,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      638,
+      648,
+      647
+    ],
+    "input_ready_ns": 339645140,
+    "publication_end_ns": 339684872,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      650
+    ],
+    "input_ready_ns": 339706010,
+    "publication_end_ns": 339710633,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      649,
+      659,
+      658
+    ],
+    "input_ready_ns": 345245653,
+    "publication_end_ns": 345284817,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      661
+    ],
+    "input_ready_ns": 345305953,
+    "publication_end_ns": 345308536,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      660,
+      670,
+      669
+    ],
+    "input_ready_ns": 349986344,
+    "publication_end_ns": 350025803,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      672
+    ],
+    "input_ready_ns": 350046942,
+    "publication_end_ns": 350053592,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      671,
+      681,
+      680
+    ],
+    "input_ready_ns": 356494899,
+    "publication_end_ns": 356534077,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      683
+    ],
+    "input_ready_ns": 356555307,
+    "publication_end_ns": 356561979,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      682,
+      692,
+      691
+    ],
+    "input_ready_ns": 363002734,
+    "publication_end_ns": 363041906,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      694
+    ],
+    "input_ready_ns": 363063118,
+    "publication_end_ns": 363065694,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      693,
+      703,
+      702
+    ],
+    "input_ready_ns": 367742766,
+    "publication_end_ns": 367782133,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      705
+    ],
+    "input_ready_ns": 367803253,
+    "publication_end_ns": 367806101,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      704,
+      714,
+      713
+    ],
+    "input_ready_ns": 372484107,
+    "publication_end_ns": 372523273,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      716
+    ],
+    "input_ready_ns": 372544405,
+    "publication_end_ns": 372555142,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      715,
+      725,
+      724
+    ],
+    "input_ready_ns": 380804690,
+    "publication_end_ns": 380843836,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      727
+    ],
+    "input_ready_ns": 380864862,
+    "publication_end_ns": 380875592,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      726,
+      736,
+      735
+    ],
+    "input_ready_ns": 389124967,
+    "publication_end_ns": 389164090,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      738
+    ],
+    "input_ready_ns": 389185160,
+    "publication_end_ns": 389189932,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      737,
+      747,
+      746
+    ],
+    "input_ready_ns": 394723665,
+    "publication_end_ns": 394763358,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      749
+    ],
+    "input_ready_ns": 394784478,
+    "publication_end_ns": 394787252,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      748,
+      758,
+      757
+    ],
+    "input_ready_ns": 399465909,
+    "publication_end_ns": 399505607,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      760
+    ],
+    "input_ready_ns": 399526751,
+    "publication_end_ns": 399529440,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      759,
+      769,
+      768
+    ],
+    "input_ready_ns": 404206771,
+    "publication_end_ns": 404245948,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      771
+    ],
+    "input_ready_ns": 404267084,
+    "publication_end_ns": 404269660,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      770,
+      780,
+      779
+    ],
+    "input_ready_ns": 408949621,
+    "publication_end_ns": 408989001,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      782
+    ],
+    "input_ready_ns": 409010139,
+    "publication_end_ns": 409012986,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      781,
+      791,
+      790
+    ],
+    "input_ready_ns": 413690051,
+    "publication_end_ns": 413729372,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      793
+    ],
+    "input_ready_ns": 413750619,
+    "publication_end_ns": 413755078,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      792,
+      802,
+      801
+    ],
+    "input_ready_ns": 419290071,
+    "publication_end_ns": 419329763,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      804
+    ],
+    "input_ready_ns": 419350888,
+    "publication_end_ns": 419355366,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      803,
+      813,
+      812
+    ],
+    "input_ready_ns": 424889900,
+    "publication_end_ns": 424929053,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      815
+    ],
+    "input_ready_ns": 424950189,
+    "publication_end_ns": 424952765,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      814,
+      824,
+      823
+    ],
+    "input_ready_ns": 429629466,
+    "publication_end_ns": 429668831,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      826
+    ],
+    "input_ready_ns": 429689989,
+    "publication_end_ns": 429698525,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      825,
+      835,
+      834
+    ],
+    "input_ready_ns": 437042646,
+    "publication_end_ns": 437081793,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      837
+    ],
+    "input_ready_ns": 437102947,
+    "publication_end_ns": 437105522,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      836,
+      846,
+      845
+    ],
+    "input_ready_ns": 441786262,
+    "publication_end_ns": 441825961,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      848
+    ],
+    "input_ready_ns": 441847080,
+    "publication_end_ns": 441853673,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      847,
+      857,
+      856
+    ],
+    "input_ready_ns": 448295648,
+    "publication_end_ns": 448334772,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      859
+    ],
+    "input_ready_ns": 448356088,
+    "publication_end_ns": 448360551,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      858,
+      868,
+      867
+    ],
+    "input_ready_ns": 453896457,
+    "publication_end_ns": 453935888,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      870
+    ],
+    "input_ready_ns": 453957044,
+    "publication_end_ns": 453961520,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      869,
+      879,
+      878
+    ],
+    "input_ready_ns": 459497235,
+    "publication_end_ns": 459536966,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      881
+    ],
+    "input_ready_ns": 459558104,
+    "publication_end_ns": 459562600,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      880,
+      890,
+      889
+    ],
+    "input_ready_ns": 465097400,
+    "publication_end_ns": 465136578,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      892
+    ],
+    "input_ready_ns": 465157714,
+    "publication_end_ns": 465160355,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      891,
+      901,
+      900
+    ],
+    "input_ready_ns": 469838737,
+    "publication_end_ns": 469877995,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      903
+    ],
+    "input_ready_ns": 469899151,
+    "publication_end_ns": 469914127,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      902,
+      912,
+      911
+    ],
+    "input_ready_ns": 479974087,
+    "publication_end_ns": 480013600,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      914
+    ],
+    "input_ready_ns": 480034748,
+    "publication_end_ns": 480043451,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      913,
+      923,
+      922
+    ],
+    "input_ready_ns": 487390264,
+    "publication_end_ns": 487429547,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      925
+    ],
+    "input_ready_ns": 487450685,
+    "publication_end_ns": 487455550,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      924,
+      934,
+      933
+    ],
+    "input_ready_ns": 492991293,
+    "publication_end_ns": 493030612,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      936
+    ],
+    "input_ready_ns": 493051748,
+    "publication_end_ns": 493054409,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      935,
+      945,
+      944
+    ],
+    "input_ready_ns": 497733101,
+    "publication_end_ns": 497772398,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      947
+    ],
+    "input_ready_ns": 497793588,
+    "publication_end_ns": 497800324,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      946,
+      956,
+      955
+    ],
+    "input_ready_ns": 504241124,
+    "publication_end_ns": 504280402,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      958
+    ],
+    "input_ready_ns": 504301524,
+    "publication_end_ns": 504304145,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      957,
+      967,
+      966
+    ],
+    "input_ready_ns": 508981534,
+    "publication_end_ns": 509021255,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      969
+    ],
+    "input_ready_ns": 509042410,
+    "publication_end_ns": 509046905,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      968,
+      978,
+      977
+    ],
+    "input_ready_ns": 514583123,
+    "publication_end_ns": 514622855,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      135,
+      980
+    ],
+    "input_ready_ns": 514643991,
+    "publication_end_ns": 514646635,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 0,
+    "parents": [
+      979,
+      989,
+      988
+    ],
+    "input_ready_ns": 519324310,
+    "publication_end_ns": 519363683,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      993
+    ],
+    "input_ready_ns": 519521742,
+    "publication_end_ns": 519599235,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      997
+    ],
+    "input_ready_ns": 519678513,
+    "publication_end_ns": 519717695,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      992,
+      "HOST:model.layers.1.input_layernorm.weight"
+    ],
+    "input_ready_ns": 519482296,
+    "publication_end_ns": 519854890,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1004
+    ],
+    "input_ready_ns": 556754785,
+    "publication_end_ns": 556910223,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1008
+    ],
+    "input_ready_ns": 557068372,
+    "publication_end_ns": 557145829,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1003,
+      "HOST:model.layers.1.self_attn.q_norm.weight"
+    ],
+    "input_ready_ns": 556676440,
+    "publication_end_ns": 557418620,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1015
+    ],
+    "input_ready_ns": 562071054,
+    "publication_end_ns": 562090820,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1019
+    ],
+    "input_ready_ns": 562112421,
+    "publication_end_ns": 562122503,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1014,
+      "HOST:model.layers.1.self_attn.k_norm.weight"
+    ],
+    "input_ready_ns": 562060993,
+    "publication_end_ns": 562158220,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1032,
+      1042
+    ],
+    "input_ready_ns": 567680609,
+    "publication_end_ns": 568192922,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1078
+    ],
+    "input_ready_ns": 568240280,
+    "publication_end_ns": 568263825,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1079
+    ],
+    "input_ready_ns": 568275965,
+    "publication_end_ns": 568287767,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1080,
+      1081
+    ],
+    "input_ready_ns": 568372027,
+    "publication_end_ns": 568975287,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1118
+    ],
+    "input_ready_ns": 605792107,
+    "publication_end_ns": 605869840,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1122
+    ],
+    "input_ready_ns": 605949687,
+    "publication_end_ns": 605989018,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1117,
+      "HOST:model.layers.1.post_attention_layernorm.weight"
+    ],
+    "input_ready_ns": 605752915,
+    "publication_end_ns": 606126805,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1128
+    ],
+    "input_ready_ns": 607327184,
+    "publication_end_ns": 607332328,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "CPU_source_topk",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1129
+    ],
+    "input_ready_ns": 607335057,
+    "publication_end_ns": 607337310,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1132
+    ],
+    "input_ready_ns": 607338846,
+    "publication_end_ns": 607339717,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1134
+    ],
+    "input_ready_ns": 607360871,
+    "publication_end_ns": 607363451,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1143,
+      1144,
+      1142
+    ],
+    "input_ready_ns": 612061312,
+    "publication_end_ns": 612100452,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1146
+    ],
+    "input_ready_ns": 612121713,
+    "publication_end_ns": 612126176,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1145,
+      1155,
+      1154
+    ],
+    "input_ready_ns": 617659836,
+    "publication_end_ns": 617698952,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1157
+    ],
+    "input_ready_ns": 617720111,
+    "publication_end_ns": 617732604,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1156,
+      1166,
+      1165
+    ],
+    "input_ready_ns": 626886412,
+    "publication_end_ns": 626925587,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1168
+    ],
+    "input_ready_ns": 626946746,
+    "publication_end_ns": 626955568,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1167,
+      1177,
+      1176
+    ],
+    "input_ready_ns": 634300540,
+    "publication_end_ns": 634339762,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1179
+    ],
+    "input_ready_ns": 634360900,
+    "publication_end_ns": 634367642,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1178,
+      1188,
+      1187
+    ],
+    "input_ready_ns": 640807583,
+    "publication_end_ns": 640846865,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1190
+    ],
+    "input_ready_ns": 640867990,
+    "publication_end_ns": 640872797,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1189,
+      1199,
+      1198
+    ],
+    "input_ready_ns": 646406768,
+    "publication_end_ns": 646446563,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1201
+    ],
+    "input_ready_ns": 646467699,
+    "publication_end_ns": 646470697,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1200,
+      1210,
+      1209
+    ],
+    "input_ready_ns": 651149155,
+    "publication_end_ns": 651188965,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1212
+    ],
+    "input_ready_ns": 651210087,
+    "publication_end_ns": 651213060,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1211,
+      1221,
+      1220
+    ],
+    "input_ready_ns": 655892045,
+    "publication_end_ns": 655931602,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1223
+    ],
+    "input_ready_ns": 655952738,
+    "publication_end_ns": 655955417,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1222,
+      1232,
+      1231
+    ],
+    "input_ready_ns": 660633870,
+    "publication_end_ns": 660673678,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1234
+    ],
+    "input_ready_ns": 660694795,
+    "publication_end_ns": 660699330,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1233,
+      1243,
+      1242
+    ],
+    "input_ready_ns": 666233902,
+    "publication_end_ns": 666273141,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1245
+    ],
+    "input_ready_ns": 666294279,
+    "publication_end_ns": 666299066,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1244,
+      1254,
+      1253
+    ],
+    "input_ready_ns": 671833237,
+    "publication_end_ns": 671872870,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1256
+    ],
+    "input_ready_ns": 671894028,
+    "publication_end_ns": 671902643,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1255,
+      1265,
+      1264
+    ],
+    "input_ready_ns": 679248875,
+    "publication_end_ns": 679288093,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1267
+    ],
+    "input_ready_ns": 679309215,
+    "publication_end_ns": 679313675,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1266,
+      1276,
+      1275
+    ],
+    "input_ready_ns": 684849752,
+    "publication_end_ns": 684889217,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1278
+    ],
+    "input_ready_ns": 684910357,
+    "publication_end_ns": 684912951,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1277,
+      1287,
+      1286
+    ],
+    "input_ready_ns": 689590216,
+    "publication_end_ns": 689629546,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1289
+    ],
+    "input_ready_ns": 689650699,
+    "publication_end_ns": 689653546,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1288,
+      1298,
+      1297
+    ],
+    "input_ready_ns": 694332277,
+    "publication_end_ns": 694371656,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1300
+    ],
+    "input_ready_ns": 694392778,
+    "publication_end_ns": 694395614,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1299,
+      1309,
+      1308
+    ],
+    "input_ready_ns": 699073862,
+    "publication_end_ns": 699113036,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1311
+    ],
+    "input_ready_ns": 699134189,
+    "publication_end_ns": 699136765,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1310,
+      1320,
+      1319
+    ],
+    "input_ready_ns": 703816626,
+    "publication_end_ns": 703855997,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1322
+    ],
+    "input_ready_ns": 703877151,
+    "publication_end_ns": 703879980,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1321,
+      1331,
+      1330
+    ],
+    "input_ready_ns": 708558287,
+    "publication_end_ns": 708597422,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1333
+    ],
+    "input_ready_ns": 708618576,
+    "publication_end_ns": 708621151,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1332,
+      1342,
+      1341
+    ],
+    "input_ready_ns": 713301021,
+    "publication_end_ns": 713340392,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1344
+    ],
+    "input_ready_ns": 713361514,
+    "publication_end_ns": 713364344,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1343,
+      1353,
+      1352
+    ],
+    "input_ready_ns": 718042759,
+    "publication_end_ns": 718081871,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1355
+    ],
+    "input_ready_ns": 718102993,
+    "publication_end_ns": 718105569,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1354,
+      1364,
+      1363
+    ],
+    "input_ready_ns": 722785285,
+    "publication_end_ns": 722824636,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1366
+    ],
+    "input_ready_ns": 722845772,
+    "publication_end_ns": 722848347,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1365,
+      1375,
+      1374
+    ],
+    "input_ready_ns": 727526826,
+    "publication_end_ns": 727565977,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1377
+    ],
+    "input_ready_ns": 727587142,
+    "publication_end_ns": 727597860,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1376,
+      1386,
+      1385
+    ],
+    "input_ready_ns": 735850732,
+    "publication_end_ns": 735889945,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1388
+    ],
+    "input_ready_ns": 735911063,
+    "publication_end_ns": 735915793,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1387,
+      1397,
+      1396
+    ],
+    "input_ready_ns": 741451432,
+    "publication_end_ns": 741490892,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1399
+    ],
+    "input_ready_ns": 741512014,
+    "publication_end_ns": 741514609,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1398,
+      1408,
+      1407
+    ],
+    "input_ready_ns": 746192757,
+    "publication_end_ns": 746232187,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1410
+    ],
+    "input_ready_ns": 746253343,
+    "publication_end_ns": 746257821,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1409,
+      1419,
+      1418
+    ],
+    "input_ready_ns": 751792696,
+    "publication_end_ns": 751831836,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1421
+    ],
+    "input_ready_ns": 751852984,
+    "publication_end_ns": 751855560,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1420,
+      1430,
+      1429
+    ],
+    "input_ready_ns": 756533821,
+    "publication_end_ns": 756573118,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1432
+    ],
+    "input_ready_ns": 756594368,
+    "publication_end_ns": 756596944,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1431,
+      1441,
+      1440
+    ],
+    "input_ready_ns": 761273862,
+    "publication_end_ns": 761313241,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1443
+    ],
+    "input_ready_ns": 761334377,
+    "publication_end_ns": 761337204,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1442,
+      1452,
+      1451
+    ],
+    "input_ready_ns": 766014299,
+    "publication_end_ns": 766053588,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1454
+    ],
+    "input_ready_ns": 766074837,
+    "publication_end_ns": 766077412,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1453,
+      1463,
+      1462
+    ],
+    "input_ready_ns": 770754344,
+    "publication_end_ns": 770793718,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1465
+    ],
+    "input_ready_ns": 770814855,
+    "publication_end_ns": 770819606,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1464,
+      1474,
+      1473
+    ],
+    "input_ready_ns": 776354007,
+    "publication_end_ns": 776393442,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1476
+    ],
+    "input_ready_ns": 776414681,
+    "publication_end_ns": 776417271,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1475,
+      1485,
+      1484
+    ],
+    "input_ready_ns": 781094489,
+    "publication_end_ns": 781134146,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1487
+    ],
+    "input_ready_ns": 781155282,
+    "publication_end_ns": 781158172,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1486,
+      1496,
+      1495
+    ],
+    "input_ready_ns": 785835714,
+    "publication_end_ns": 785874882,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1498
+    ],
+    "input_ready_ns": 785896028,
+    "publication_end_ns": 785912601,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1497,
+      1507,
+      1506
+    ],
+    "input_ready_ns": 796879084,
+    "publication_end_ns": 796918555,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1509
+    ],
+    "input_ready_ns": 796939708,
+    "publication_end_ns": 796942622,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1508,
+      1518,
+      1517
+    ],
+    "input_ready_ns": 801620175,
+    "publication_end_ns": 801659461,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1520
+    ],
+    "input_ready_ns": 801680615,
+    "publication_end_ns": 801685440,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1519,
+      1529,
+      1528
+    ],
+    "input_ready_ns": 807220690,
+    "publication_end_ns": 807260257,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1531
+    ],
+    "input_ready_ns": 807281395,
+    "publication_end_ns": 807285971,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1530,
+      1540,
+      1539
+    ],
+    "input_ready_ns": 812823595,
+    "publication_end_ns": 812862906,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1542
+    ],
+    "input_ready_ns": 812884045,
+    "publication_end_ns": 812890824,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1541,
+      1551,
+      1550
+    ],
+    "input_ready_ns": 819331414,
+    "publication_end_ns": 819370697,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1553
+    ],
+    "input_ready_ns": 819391815,
+    "publication_end_ns": 819396642,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1552,
+      1562,
+      1561
+    ],
+    "input_ready_ns": 824932843,
+    "publication_end_ns": 824972132,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1564
+    ],
+    "input_ready_ns": 824993302,
+    "publication_end_ns": 825004060,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1563,
+      1573,
+      1572
+    ],
+    "input_ready_ns": 833257162,
+    "publication_end_ns": 833296347,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1575
+    ],
+    "input_ready_ns": 833317501,
+    "publication_end_ns": 833320101,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1574,
+      1584,
+      1583
+    ],
+    "input_ready_ns": 837997516,
+    "publication_end_ns": 838036958,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1586
+    ],
+    "input_ready_ns": 838058075,
+    "publication_end_ns": 838062553,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1585,
+      1595,
+      1594
+    ],
+    "input_ready_ns": 843597301,
+    "publication_end_ns": 843636441,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1597
+    ],
+    "input_ready_ns": 843657579,
+    "publication_end_ns": 843662345,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1596,
+      1606,
+      1605
+    ],
+    "input_ready_ns": 849198278,
+    "publication_end_ns": 849237486,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1608
+    ],
+    "input_ready_ns": 849258639,
+    "publication_end_ns": 849261215,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1607,
+      1617,
+      1616
+    ],
+    "input_ready_ns": 853939120,
+    "publication_end_ns": 853978507,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1619
+    ],
+    "input_ready_ns": 853999661,
+    "publication_end_ns": 854008271,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1618,
+      1628,
+      1627
+    ],
+    "input_ready_ns": 861354325,
+    "publication_end_ns": 861393523,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1630
+    ],
+    "input_ready_ns": 861414682,
+    "publication_end_ns": 861421354,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1629,
+      1639,
+      1638
+    ],
+    "input_ready_ns": 867862104,
+    "publication_end_ns": 867901310,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1641
+    ],
+    "input_ready_ns": 867922493,
+    "publication_end_ns": 867925069,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1640,
+      1650,
+      1649
+    ],
+    "input_ready_ns": 872602617,
+    "publication_end_ns": 872642311,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1652
+    ],
+    "input_ready_ns": 872663464,
+    "publication_end_ns": 872666159,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1651,
+      1661,
+      1660
+    ],
+    "input_ready_ns": 877344126,
+    "publication_end_ns": 877383506,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1663
+    ],
+    "input_ready_ns": 877404642,
+    "publication_end_ns": 877407489,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1662,
+      1672,
+      1671
+    ],
+    "input_ready_ns": 882085651,
+    "publication_end_ns": 882124787,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1674
+    ],
+    "input_ready_ns": 882145910,
+    "publication_end_ns": 882150676,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1673,
+      1683,
+      1682
+    ],
+    "input_ready_ns": 887685785,
+    "publication_end_ns": 887725246,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1685
+    ],
+    "input_ready_ns": 887746399,
+    "publication_end_ns": 887748994,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1684,
+      1694,
+      1693
+    ],
+    "input_ready_ns": 892426836,
+    "publication_end_ns": 892466535,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1696
+    ],
+    "input_ready_ns": 892487655,
+    "publication_end_ns": 892492133,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1695,
+      1705,
+      1704
+    ],
+    "input_ready_ns": 898027816,
+    "publication_end_ns": 898067168,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1707
+    ],
+    "input_ready_ns": 898088304,
+    "publication_end_ns": 898091151,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1706,
+      1716,
+      1715
+    ],
+    "input_ready_ns": 902769652,
+    "publication_end_ns": 902809051,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1718
+    ],
+    "input_ready_ns": 902830187,
+    "publication_end_ns": 902832762,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1717,
+      1727,
+      1726
+    ],
+    "input_ready_ns": 907511541,
+    "publication_end_ns": 907550667,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1729
+    ],
+    "input_ready_ns": 907571787,
+    "publication_end_ns": 907574362,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1728,
+      1738,
+      1737
+    ],
+    "input_ready_ns": 912253377,
+    "publication_end_ns": 912292536,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1740
+    ],
+    "input_ready_ns": 912313680,
+    "publication_end_ns": 912318428,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1739,
+      1749,
+      1748
+    ],
+    "input_ready_ns": 917851461,
+    "publication_end_ns": 917890588,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1751
+    ],
+    "input_ready_ns": 917911727,
+    "publication_end_ns": 917914302,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1750,
+      1760,
+      1759
+    ],
+    "input_ready_ns": 922593924,
+    "publication_end_ns": 922633323,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1762
+    ],
+    "input_ready_ns": 922654471,
+    "publication_end_ns": 922663088,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1761,
+      1771,
+      1770
+    ],
+    "input_ready_ns": 930007621,
+    "publication_end_ns": 930046753,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1773
+    ],
+    "input_ready_ns": 930067907,
+    "publication_end_ns": 930070482,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1772,
+      1782,
+      1781
+    ],
+    "input_ready_ns": 934750146,
+    "publication_end_ns": 934789546,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1784
+    ],
+    "input_ready_ns": 934810682,
+    "publication_end_ns": 934813257,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1783,
+      1793,
+      1792
+    ],
+    "input_ready_ns": 939492321,
+    "publication_end_ns": 939531716,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1795
+    ],
+    "input_ready_ns": 939552854,
+    "publication_end_ns": 939557623,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1794,
+      1804,
+      1803
+    ],
+    "input_ready_ns": 945092415,
+    "publication_end_ns": 945131647,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1806
+    ],
+    "input_ready_ns": 945152962,
+    "publication_end_ns": 945155552,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1805,
+      1815,
+      1814
+    ],
+    "input_ready_ns": 949832529,
+    "publication_end_ns": 949871866,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1817
+    ],
+    "input_ready_ns": 949893036,
+    "publication_end_ns": 949913783,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1816,
+      1826,
+      1825
+    ],
+    "input_ready_ns": 962686658,
+    "publication_end_ns": 962725888,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1828
+    ],
+    "input_ready_ns": 962747007,
+    "publication_end_ns": 962753784,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1827,
+      1837,
+      1836
+    ],
+    "input_ready_ns": 969194245,
+    "publication_end_ns": 969233537,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1839
+    ],
+    "input_ready_ns": 969254697,
+    "publication_end_ns": 969269712,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1838,
+      1848,
+      1847
+    ],
+    "input_ready_ns": 979329624,
+    "publication_end_ns": 979369180,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1850
+    ],
+    "input_ready_ns": 979390323,
+    "publication_end_ns": 979393022,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1849,
+      1859,
+      1858
+    ],
+    "input_ready_ns": 984071700,
+    "publication_end_ns": 984111253,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1861
+    ],
+    "input_ready_ns": 984132392,
+    "publication_end_ns": 984139097,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1860,
+      1870,
+      1869
+    ],
+    "input_ready_ns": 990581009,
+    "publication_end_ns": 990620268,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1126,
+      1872
+    ],
+    "input_ready_ns": 990641446,
+    "publication_end_ns": 990664035,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "prefill",
+    "layer": 1,
+    "parents": [
+      1871,
+      1881,
+      1880
+    ],
+    "input_ready_ns": 1004343838,
+    "publication_end_ns": 1004383236,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1886
+    ],
+    "input_ready_ns": 1004488182,
+    "publication_end_ns": 1004492666,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1890
+    ],
+    "input_ready_ns": 1004498916,
+    "publication_end_ns": 1004501787,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1886,
+      "HOST:model.layers.0.input_layernorm.weight"
+    ],
+    "input_ready_ns": 1004486866,
+    "publication_end_ns": 1004510241,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1897
+    ],
+    "input_ready_ns": 1012730405,
+    "publication_end_ns": 1012739039,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1901
+    ],
+    "input_ready_ns": 1012749144,
+    "publication_end_ns": 1012753622,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1896,
+      "HOST:model.layers.0.self_attn.q_norm.weight"
+    ],
+    "input_ready_ns": 1012725927,
+    "publication_end_ns": 1012769211,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1908
+    ],
+    "input_ready_ns": 1013801564,
+    "publication_end_ns": 1013803202,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1912
+    ],
+    "input_ready_ns": 1013806308,
+    "publication_end_ns": 1013807541,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1907,
+      "HOST:model.layers.0.self_attn.k_norm.weight"
+    ],
+    "input_ready_ns": 1013800174,
+    "publication_end_ns": 1013811171,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1924,
+      1933
+    ],
+    "input_ready_ns": 1014998503,
+    "publication_end_ns": 1015145819,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1969
+    ],
+    "input_ready_ns": 1015150757,
+    "publication_end_ns": 1015152640,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1970
+    ],
+    "input_ready_ns": 1015153604,
+    "publication_end_ns": 1015154969,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      1971,
+      1972
+    ],
+    "input_ready_ns": 1015237490,
+    "publication_end_ns": 1015435266,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2010
+    ],
+    "input_ready_ns": 1023625215,
+    "publication_end_ns": 1023629693,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2014
+    ],
+    "input_ready_ns": 1023635928,
+    "publication_end_ns": 1023638800,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2009,
+      "HOST:model.layers.0.post_attention_layernorm.weight"
+    ],
+    "input_ready_ns": 1023622640,
+    "publication_end_ns": 1023647246,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2020
+    ],
+    "input_ready_ns": 1023908861,
+    "publication_end_ns": 1023909832,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "CPU_source_topk",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2021
+    ],
+    "input_ready_ns": 1023910318,
+    "publication_end_ns": 1023911807,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2024
+    ],
+    "input_ready_ns": 1023912898,
+    "publication_end_ns": 1023913622,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2026
+    ],
+    "input_ready_ns": 1023915984,
+    "publication_end_ns": 1023918560,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2035,
+      2036,
+      2034
+    ],
+    "input_ready_ns": 1028580384,
+    "publication_end_ns": 1028583217,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2038
+    ],
+    "input_ready_ns": 1028585307,
+    "publication_end_ns": 1028588034,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2037,
+      2047,
+      2046
+    ],
+    "input_ready_ns": 1033247662,
+    "publication_end_ns": 1033250237,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2049
+    ],
+    "input_ready_ns": 1033252346,
+    "publication_end_ns": 1033255232,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2048,
+      2058,
+      2057
+    ],
+    "input_ready_ns": 1037913861,
+    "publication_end_ns": 1037916455,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2060
+    ],
+    "input_ready_ns": 1037918606,
+    "publication_end_ns": 1037921181,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2059,
+      2069,
+      2068
+    ],
+    "input_ready_ns": 1042579429,
+    "publication_end_ns": 1042582005,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2071
+    ],
+    "input_ready_ns": 1042584359,
+    "publication_end_ns": 1042587206,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2070,
+      2080,
+      2079
+    ],
+    "input_ready_ns": 1047246709,
+    "publication_end_ns": 1047249304,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2082
+    ],
+    "input_ready_ns": 1047251413,
+    "publication_end_ns": 1047253989,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2081,
+      2091,
+      2090
+    ],
+    "input_ready_ns": 1051915162,
+    "publication_end_ns": 1051917737,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2093
+    ],
+    "input_ready_ns": 1051920099,
+    "publication_end_ns": 1051922949,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2092,
+      2102,
+      2101
+    ],
+    "input_ready_ns": 1056581830,
+    "publication_end_ns": 1056584424,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2018,
+      2104
+    ],
+    "input_ready_ns": 1056586574,
+    "publication_end_ns": 1056589150,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 0,
+    "parents": [
+      2103,
+      2113,
+      2112
+    ],
+    "input_ready_ns": 1061247722,
+    "publication_end_ns": 1061250297,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2117
+    ],
+    "input_ready_ns": 1061260675,
+    "publication_end_ns": 1061265305,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2121
+    ],
+    "input_ready_ns": 1061271732,
+    "publication_end_ns": 1061274561,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2116,
+      "HOST:model.layers.1.input_layernorm.weight"
+    ],
+    "input_ready_ns": 1061258081,
+    "publication_end_ns": 1061283346,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2128
+    ],
+    "input_ready_ns": 1069503908,
+    "publication_end_ns": 1069512553,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2132
+    ],
+    "input_ready_ns": 1069522661,
+    "publication_end_ns": 1069527156,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2127,
+      "HOST:model.layers.1.self_attn.q_norm.weight"
+    ],
+    "input_ready_ns": 1069499430,
+    "publication_end_ns": 1069542666,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2139
+    ],
+    "input_ready_ns": 1070575162,
+    "publication_end_ns": 1070576849,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2143
+    ],
+    "input_ready_ns": 1070580007,
+    "publication_end_ns": 1070581189,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2138,
+      "HOST:model.layers.1.self_attn.k_norm.weight"
+    ],
+    "input_ready_ns": 1070573637,
+    "publication_end_ns": 1070584814,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2155,
+      2164
+    ],
+    "input_ready_ns": 1071772943,
+    "publication_end_ns": 1071920803,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2200
+    ],
+    "input_ready_ns": 1071925381,
+    "publication_end_ns": 1071927350,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2201
+    ],
+    "input_ready_ns": 1071928316,
+    "publication_end_ns": 1071929559,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "attention_layout_inputs",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2202,
+      2203
+    ],
+    "input_ready_ns": 1072012595,
+    "publication_end_ns": 1072208652,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2240
+    ],
+    "input_ready_ns": 1080395999,
+    "publication_end_ns": 1080400765,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2244
+    ],
+    "input_ready_ns": 1080406687,
+    "publication_end_ns": 1080409281,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "rmsnorm",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2239,
+      "HOST:model.layers.1.post_attention_layernorm.weight"
+    ],
+    "input_ready_ns": 1080393134,
+    "publication_end_ns": 1080418266,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "FP32_softmax",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2250
+    ],
+    "input_ready_ns": 1080680986,
+    "publication_end_ns": 1080681957,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "CPU_source_topk",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2251
+    ],
+    "input_ready_ns": 1080682443,
+    "publication_end_ns": 1080683913,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "cast",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2254
+    ],
+    "input_ready_ns": 1080685023,
+    "publication_end_ns": 1080685747,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2256
+    ],
+    "input_ready_ns": 1080687856,
+    "publication_end_ns": 1080690555,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2265,
+      2266,
+      2264
+    ],
+    "input_ready_ns": 1085350471,
+    "publication_end_ns": 1085353435,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2268
+    ],
+    "input_ready_ns": 1085355524,
+    "publication_end_ns": 1085358204,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2267,
+      2277,
+      2276
+    ],
+    "input_ready_ns": 1090017650,
+    "publication_end_ns": 1090020300,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2279
+    ],
+    "input_ready_ns": 1090022408,
+    "publication_end_ns": 1090025362,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2278,
+      2288,
+      2287
+    ],
+    "input_ready_ns": 1094684781,
+    "publication_end_ns": 1094687411,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2290
+    ],
+    "input_ready_ns": 1094689792,
+    "publication_end_ns": 1094692669,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2289,
+      2299,
+      2298
+    ],
+    "input_ready_ns": 1099351670,
+    "publication_end_ns": 1099354299,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2301
+    ],
+    "input_ready_ns": 1099356408,
+    "publication_end_ns": 1099359009,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2300,
+      2310,
+      2309
+    ],
+    "input_ready_ns": 1104017255,
+    "publication_end_ns": 1104019845,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2312
+    ],
+    "input_ready_ns": 1104021953,
+    "publication_end_ns": 1104024814,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2311,
+      2321,
+      2320
+    ],
+    "input_ready_ns": 1108683837,
+    "publication_end_ns": 1108686434,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2323
+    ],
+    "input_ready_ns": 1108688543,
+    "publication_end_ns": 1108691119,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2322,
+      2332,
+      2331
+    ],
+    "input_ready_ns": 1113349207,
+    "publication_end_ns": 1113351782,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "gather",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2248,
+      2334
+    ],
+    "input_ready_ns": 1113353898,
+    "publication_end_ns": 1113356745,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  },
+  {
+    "name": "index_add",
+    "phase": "decode",
+    "layer": 1,
+    "parents": [
+      2333,
+      2343,
+      2342
+    ],
+    "input_ready_ns": 1118014900,
+    "publication_end_ns": 1118017721,
+    "CPU_cost": null,
+    "scope": "actual host source semantic fallback, not NPU arithmetic"
+  }
+]

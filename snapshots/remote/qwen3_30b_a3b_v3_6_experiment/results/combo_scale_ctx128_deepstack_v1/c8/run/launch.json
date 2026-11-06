@@ -1,0 +1,56 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_paging_src/build_paging_v1/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/combo_scale_ctx128_deepstack_v1/c8/run/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/combo_scale_ctx128_deepstack_v1/c8/run",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/combo_scale_ctx128_deepstack_v1/c8/graph",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/combo_scale_ctx128_deepstack_v1/c8/run",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_DEEPSTACK_TIMING": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/combo_scale_ctx128_deepstack_v1/c8/deepstack_op_timing.csv",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270"
+  },
+  "binary_sha256": "b4c4e55407db4d607731056a3f2d11d3a9b86b4105e79eb24b2c19587940da45",
+  "graph_hashes": {
+    "address_manifest.csv": "4ad040607111d3332c5b4c6516c5bc55e11e7add0be64c2bb314b7e1eda767ae",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "27d5c71823f4c44a5bb5c3ef16e593bbe3d656823a9f7a139fb65d965530cf08",
+    "graph_manifest.json": "844ab5b05f16a51c46da2ab9d68c4de401661ed6f9b32ce57928f35f7597f009",
+    "ops.csv": "8226a4f292166921a498340ac1cb77eae8fcc3beae31862410421103299898bf"
+  },
+  "deepstack_timing_sha256": "91f382a66faa94afa4f5195a8bf12196bb66b426259cbcf455d01571c4e91296",
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack per-operation Bank timing enabled",
+    "ScaleSim shape-level compute timing"
+  ]
+}

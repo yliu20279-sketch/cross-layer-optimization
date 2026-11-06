@@ -1,0 +1,32 @@
+{
+  "status": "FROZEN",
+  "classification": "controlled soft Bank-hotspot address-mapping stress; not a natural Qwen3 workload",
+  "model": "Qwen3-30B-A3B",
+  "layers": 48,
+  "context": 512,
+  "concurrency": 4,
+  "compute_multiplier": 0.25,
+  "max_outstanding_per_memory_op": 1,
+  "arrival": "simultaneous",
+  "cases": [
+    "soft-hot-50",
+    "soft-hot-70",
+    "soft-hot-85"
+  ],
+  "global_bank_coverage_requirement": "all decoded Bank IDs 0-15 must have nonzero transactions; each cold Bank target >=0.5%",
+  "partition_coverage_requirement": "all 16 partitions must have nonzero transactions",
+  "paired_oracle": "only cross-request same-Bank timing blockers removed; global row state preserved",
+  "fixed_hot_banks": [
+    0,
+    4,
+    12,
+    14
+  ],
+  "mapping_note": "owner-independent deterministic mapping from accepted original address; only decoded Bank changes; physical address, Row, Column, partition, DAG, transactions, bytes, Compute and NoC remain unchanged",
+  "binary_sha256": "ee4d25161dbb57a478bdb768b2117f59fc4f874661a593388e62d240122baa8b",
+  "ramulator_sha256": "328e4f3c2cc477b53cb088321f0752f3fc5397d9467c31e1955a4dd277081541",
+  "limitations": [
+    "single deterministic captured cohort (n=1)",
+    "address-mapping stress"
+  ]
+}

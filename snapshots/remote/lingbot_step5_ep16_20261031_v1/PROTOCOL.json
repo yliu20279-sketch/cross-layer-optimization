@@ -1,0 +1,26 @@
+{
+  "scope": "step5 fixed EP16 communication slice, same seen layer0 step0 dualCFG full real routes; original CPU attention unchanged",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original mixed BF16/FP32",
+  "expert_owner": "e mod16",
+  "token_origin": "joint index mod16",
+  "shared": "one per token at origin, reuse step4 output once",
+  "dispatch_record_bytes": 4112,
+  "metadata_bytes": 16,
+  "BF16_vector_bytes": 4096,
+  "route_known_only_after_router": true,
+  "full_functional_rows": 98869,
+  "PopNet_subset": "first32 video + last32 condition, each branch, actual unscaled remote dispatch/return",
+  "CPU_timeout_seconds": 1800,
+  "PopNet_timeout_seconds": 600,
+  "not_certified": [
+    "AttentionTP16 O reduction",
+    "coupled NoC payload completion DAG",
+    "full stream SRAM/HB pager/host services",
+    "full queries NoC timing",
+    "HiBand/SemMoE gain"
+  ],
+  "failures": "stop, preserve, no tolerance relaxation"
+}

@@ -1,0 +1,359 @@
+{
+  "status": "PASS_NATIVE_SOURCE_COMPILE_AND_EVENT_ABI_ONLY",
+  "native_binary": "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_fp16_hook",
+  "native_sha256": "2196a049bd156659e2cecac416c3ed8f51fde0d230d64dc6ff3ee6c5d9d8cc1e",
+  "source_sha256": "96b5d78f967898fbfb7a40a5c6bb2d4a1562ce2b98778dcb291fdbd6472c37ba",
+  "compile": [
+    "/usr/bin/c++",
+    "-DBOOST_ALL_NO_LIB",
+    "-DBOOST_GRAPH_DYN_LINK",
+    "-DBOOST_REGEX_DYN_LINK",
+    "-I/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/orion_power_beta_mar2003/power",
+    "-I/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/orion_power_beta_mar2003/library",
+    "-I/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/graph_lib",
+    "-I/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/src",
+    "-DS_OUT_DEBUG",
+    "-Wno-deprecated",
+    "-g",
+    "-DPOWER_TEST",
+    "-O3",
+    "-DNDEBUG",
+    "-std=gnu++17",
+    "-I/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout",
+    "-I/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime",
+    "-std=c++17",
+    "-c",
+    "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_main_fp16_hook.cc",
+    "-o",
+    "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_main_fp16_hook.o"
+  ],
+  "link": [
+    "/usr/bin/c++",
+    "-DS_OUT_DEBUG",
+    "-Wno-deprecated",
+    "-g",
+    "-DPOWER_TEST",
+    "-O3",
+    "-DNDEBUG",
+    "-rdynamic",
+    "CMakeFiles/popnet.dir/SString.cc.o",
+    "CMakeFiles/popnet.dir/SStd.cc.o",
+    "CMakeFiles/popnet.dir/SRGen.cc.o",
+    "CMakeFiles/popnet.dir/configuration.cc.o",
+    "CMakeFiles/popnet.dir/flit.cc.o",
+    "CMakeFiles/popnet.dir/sim_router.cc.o",
+    "CMakeFiles/popnet.dir/sim_routing.cc.o",
+    "CMakeFiles/popnet.dir/sim_vcarb.cc.o",
+    "CMakeFiles/popnet.dir/mess_event.cc.o",
+    "CMakeFiles/popnet.dir/sim_foundation.cc.o",
+    "CMakeFiles/popnet.dir/sim_protoengine.cc.o",
+    "CMakeFiles/popnet.dir/mess_queue.cc.o",
+    "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_main_fp16_hook.o",
+    "CMakeFiles/popnet.dir/changes/global.cpp.o",
+    "CMakeFiles/popnet.dir/changes/reconfigurable_topo.cpp.o",
+    "CMakeFiles/popnet.dir/changes/router.cpp.o",
+    "CMakeFiles/popnet.dir/changes/shortest_path_routing.cpp.o",
+    "-o",
+    "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_fp16_hook",
+    "-L/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/orion_power_beta_mar2003/power",
+    "-Wl,-rpath,/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout:/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/orion_power_beta_mar2003/power",
+    "orion_power_beta_mar2003/power/liborion_power.a",
+    "graph_lib/libmygraph.a",
+    "/usr/lib/x86_64-linux-gnu/libboost_graph.so.1.71.0",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/libramulator.so",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/thermal_bridge.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/microchannel.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/materials.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/RCutil.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/package.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature_block.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature_grid.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/flp.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/flp_desc.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/npe.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/shape.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/util.o",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/wire.o",
+    "-lm",
+    "/usr/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0"
+  ],
+  "backend_checks": [
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/SString.cc.o",
+      "expected": "08de3cab7e5b50c3c61e25a808e11dda50a94629d310b588b29d9fbeeb972500",
+      "actual": "08de3cab7e5b50c3c61e25a808e11dda50a94629d310b588b29d9fbeeb972500",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/SStd.cc.o",
+      "expected": "34d19956b11a3181ae75912182e9c71192336232149b42f7cc9817316fdd608a",
+      "actual": "34d19956b11a3181ae75912182e9c71192336232149b42f7cc9817316fdd608a",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/SRGen.cc.o",
+      "expected": "5c36cd46a843a6430d69361454eb540f7ee4be49d09225c3c81e73a8780c9038",
+      "actual": "5c36cd46a843a6430d69361454eb540f7ee4be49d09225c3c81e73a8780c9038",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/configuration.cc.o",
+      "expected": "20bf3bcaaf7b905ab06307591a2fe1cea1515fd6efe114eacd9b1bc87798d7cf",
+      "actual": "20bf3bcaaf7b905ab06307591a2fe1cea1515fd6efe114eacd9b1bc87798d7cf",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/flit.cc.o",
+      "expected": "ef0c23c9a863fdff9f39901a785809814dc36690bfd601781d5e8ea5f6308cc7",
+      "actual": "ef0c23c9a863fdff9f39901a785809814dc36690bfd601781d5e8ea5f6308cc7",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/sim_router.cc.o",
+      "expected": "55b4c7b1a568b0d80251a30309559aafbd011706e2ab058f2dc028164de32f5d",
+      "actual": "55b4c7b1a568b0d80251a30309559aafbd011706e2ab058f2dc028164de32f5d",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/sim_routing.cc.o",
+      "expected": "9f72f858c35e30979a15bbaa3466cdf655df97428051a1fc09c85fce72c77d9b",
+      "actual": "9f72f858c35e30979a15bbaa3466cdf655df97428051a1fc09c85fce72c77d9b",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/sim_vcarb.cc.o",
+      "expected": "87f10b9d46db8e1c3db3cf091e3783af68ded5939e55f672b8b99733a70880f5",
+      "actual": "87f10b9d46db8e1c3db3cf091e3783af68ded5939e55f672b8b99733a70880f5",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/mess_event.cc.o",
+      "expected": "8afa3c7e5d6bff0e9296510960191dd5fcaba79f52f8e782314392cab53e5c30",
+      "actual": "8afa3c7e5d6bff0e9296510960191dd5fcaba79f52f8e782314392cab53e5c30",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/sim_foundation.cc.o",
+      "expected": "424c3d9a98d8c01dbd716d290ffb50a55ffbd9c85a02d295d564a04f617ed013",
+      "actual": "424c3d9a98d8c01dbd716d290ffb50a55ffbd9c85a02d295d564a04f617ed013",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/sim_protoengine.cc.o",
+      "expected": "f87d699ddd3e63e6549a54ac88249d801d8cee9e0f747f10ac2993c6bef8838f",
+      "actual": "f87d699ddd3e63e6549a54ac88249d801d8cee9e0f747f10ac2993c6bef8838f",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/mess_queue.cc.o",
+      "expected": "9d5bcaf813e660932aaf90732f45b778ef89e5a380cd23a0fae65aa3a3038915",
+      "actual": "9d5bcaf813e660932aaf90732f45b778ef89e5a380cd23a0fae65aa3a3038915",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/changes/global.cpp.o",
+      "expected": "c2e56995cba43e87dda6523a9ce6708b66715a113df241ad6052156e852927f7",
+      "actual": "c2e56995cba43e87dda6523a9ce6708b66715a113df241ad6052156e852927f7",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/changes/reconfigurable_topo.cpp.o",
+      "expected": "4a880aa8f9fff4666b1db2e346aff46f23ce647502b3bc3c4ca804ebaa928873",
+      "actual": "4a880aa8f9fff4666b1db2e346aff46f23ce647502b3bc3c4ca804ebaa928873",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/changes/router.cpp.o",
+      "expected": "2982763ea3f745dae05cc2e0ac7f4e9243f164354b4b635e5849f0678cb70336",
+      "actual": "2982763ea3f745dae05cc2e0ac7f4e9243f164354b4b635e5849f0678cb70336",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/CMakeFiles/popnet.dir/changes/shortest_path_routing.cpp.o",
+      "expected": "ab5c09445cedc048df9d89f8dd0b9b888b2717adf424e2ad1a42288afd988a4d",
+      "actual": "ab5c09445cedc048df9d89f8dd0b9b888b2717adf424e2ad1a42288afd988a4d",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/orion_power_beta_mar2003/power/liborion_power.a",
+      "expected": "b3a6ec032d6fa6a28c72f47c25b1d838e0a6b6c67907208dd5ddef08da80d829",
+      "actual": "b3a6ec032d6fa6a28c72f47c25b1d838e0a6b6c67907208dd5ddef08da80d829",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/popnet_layout/build_page/graph_lib/libmygraph.a",
+      "expected": "dd358089c9e044a397e97b53b2cd158ebffd7fc370b67a831fc8b94db09f7762",
+      "actual": "dd358089c9e044a397e97b53b2cd158ebffd7fc370b67a831fc8b94db09f7762",
+      "match": true
+    },
+    {
+      "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/libramulator.so",
+      "expected": "8cdb6a6a84a0339fb07df2e61431e8846517a19834189487c9533e3332dc7e1a",
+      "actual": "8cdb6a6a84a0339fb07df2e61431e8846517a19834189487c9533e3332dc7e1a",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/thermal_bridge.o",
+      "expected": "6c733100f7f146356db9385a19153009efcdedf0409f0c0a15060d1f0a104675",
+      "actual": "6c733100f7f146356db9385a19153009efcdedf0409f0c0a15060d1f0a104675",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/microchannel.o",
+      "expected": "f7553b54053e13f8595adb4b58f039c31a466242ceb8d960d02258825ac30a1c",
+      "actual": "f7553b54053e13f8595adb4b58f039c31a466242ceb8d960d02258825ac30a1c",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/materials.o",
+      "expected": "6244875d1fe1b6ec67123b30677b21ee4b797b453e739b2fd1460c33037896de",
+      "actual": "6244875d1fe1b6ec67123b30677b21ee4b797b453e739b2fd1460c33037896de",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature.o",
+      "expected": "399c8ddd3a94e9e2197814bcd7c633bc71e6129e921d853738bc2ef50cbbd6b0",
+      "actual": "399c8ddd3a94e9e2197814bcd7c633bc71e6129e921d853738bc2ef50cbbd6b0",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/RCutil.o",
+      "expected": "b232d0739cd8df97c06712eade39e05d42a782e86219a96bb99a9f0b1a86ee5b",
+      "actual": "b232d0739cd8df97c06712eade39e05d42a782e86219a96bb99a9f0b1a86ee5b",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/package.o",
+      "expected": "c02bdbb891c288c08790cfe43d35745d390ef5236c800f9e42cffcbd8630d354",
+      "actual": "c02bdbb891c288c08790cfe43d35745d390ef5236c800f9e42cffcbd8630d354",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature_block.o",
+      "expected": "5ff9897f51bedd180ad064c649f1177d4848edff07128f4e3d2ba588286d4c5a",
+      "actual": "5ff9897f51bedd180ad064c649f1177d4848edff07128f4e3d2ba588286d4c5a",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/temperature_grid.o",
+      "expected": "ee799f4e7ab5729b4aad9c17fbb9163664c9e59a794a6419894ed1efcfc43e55",
+      "actual": "ee799f4e7ab5729b4aad9c17fbb9163664c9e59a794a6419894ed1efcfc43e55",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/flp.o",
+      "expected": "62f2e38955af47dcb383a0f37d118fe6bb8182320a3c52f5e8df66c097f995c6",
+      "actual": "62f2e38955af47dcb383a0f37d118fe6bb8182320a3c52f5e8df66c097f995c6",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/flp_desc.o",
+      "expected": "3664edfe02e50d6eb788a2e15cc856cfa4cef513d90a59fcb7e5ed5979db6d52",
+      "actual": "3664edfe02e50d6eb788a2e15cc856cfa4cef513d90a59fcb7e5ed5979db6d52",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/npe.o",
+      "expected": "46be739b4f90edc3d77f7562a23afd6f89e32cc26035eb5614ee2735a7a52f59",
+      "actual": "46be739b4f90edc3d77f7562a23afd6f89e32cc26035eb5614ee2735a7a52f59",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/shape.o",
+      "expected": "e3fcfbbfa9f02ccee5a975c23ad13f5aa6a8672bfb54e6a5088996237d26896c",
+      "actual": "e3fcfbbfa9f02ccee5a975c23ad13f5aa6a8672bfb54e6a5088996237d26896c",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/util.o",
+      "expected": "cbbdb3e44abf36a5b7d3e437e2f9d49ad1c579fcc43d90fbe958419038dd9426",
+      "actual": "cbbdb3e44abf36a5b7d3e437e2f9d49ad1c579fcc43d90fbe958419038dd9426",
+      "match": true
+    },
+    {
+      "path": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/whisper_operator_inventory/hiband_whisper_migration/step7_closure_cmd006/hotspot_src/wire.o",
+      "expected": "a50b02e6a4cd8eefc33fd46d785dd32e656c6c9ec059e7762f274f9b0a45a452",
+      "actual": "a50b02e6a4cd8eefc33fd46d785dd32e656c6c9ec059e7762f274f9b0a45a452",
+      "match": true
+    }
+  ],
+  "probe": {
+    "status": "PASS_CPP_EVENT_ABI_PROBE",
+    "rejected": 6,
+    "native_simulations": 0
+  },
+  "probe_events": [
+    {
+      "event": "accept",
+      "split": "profile",
+      "time": 0,
+      "request_id": "profile_0",
+      "owner": 0,
+      "partition": 0,
+      "object_id": "object_0",
+      "generation": 0,
+      "op_id": 7,
+      "transaction_id": 1,
+      "offset": 4090,
+      "bytes": 20,
+      "object_bytes": 8192,
+      "role": "weight",
+      "router": false
+    },
+    {
+      "event": "accept",
+      "split": "profile",
+      "time": 1,
+      "request_id": "profile_1",
+      "owner": 1,
+      "partition": 0,
+      "object_id": "object_0",
+      "generation": 0,
+      "op_id": 8,
+      "transaction_id": 1,
+      "offset": 4104,
+      "bytes": 16,
+      "object_bytes": 8192,
+      "role": "weight",
+      "router": false
+    },
+    {
+      "event": "callback",
+      "split": "profile",
+      "time": 3,
+      "request_id": "profile_1",
+      "owner": 1,
+      "partition": 0,
+      "object_id": "object_0",
+      "generation": 0,
+      "op_id": 8,
+      "transaction_id": 1,
+      "offset": 4104,
+      "bytes": 16,
+      "object_bytes": 8192,
+      "role": "weight",
+      "router": false
+    },
+    {
+      "event": "callback",
+      "split": "profile",
+      "time": 4,
+      "request_id": "profile_0",
+      "owner": 0,
+      "partition": 0,
+      "object_id": "object_0",
+      "generation": 0,
+      "op_id": 7,
+      "transaction_id": 1,
+      "offset": 4090,
+      "bytes": 20,
+      "object_bytes": 8192,
+      "role": "weight",
+      "router": false
+    }
+  ],
+  "native_simulations": 0,
+  "full_model_forward": false,
+  "sem_moe_or_hiband_certified": false
+}

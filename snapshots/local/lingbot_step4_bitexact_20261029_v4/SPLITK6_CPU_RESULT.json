@@ -1,0 +1,66 @@
+{
+  "status": "PASS_LIMITED_SPLITK6_FULL_SMALL_BATCH",
+  "rows": [
+    {
+      "stage": "w1",
+      "recipe": "FP32_workspace_sequential",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 0
+    },
+    {
+      "stage": "w1",
+      "recipe": "FP32_workspace_adjacent",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 4
+    },
+    {
+      "stage": "w1",
+      "recipe": "BF16_workspace_sequential",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 22829
+    },
+    {
+      "stage": "w1",
+      "recipe": "single_walk",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 61
+    },
+    {
+      "stage": "w3",
+      "recipe": "FP32_workspace_sequential",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 0
+    },
+    {
+      "stage": "w3",
+      "recipe": "FP32_workspace_adjacent",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 0
+    },
+    {
+      "stage": "w3",
+      "recipe": "BF16_workspace_sequential",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 29574
+    },
+    {
+      "stage": "w3",
+      "recipe": "single_walk",
+      "rows": 148,
+      "elements": 113664,
+      "BF16_bit_mismatches": 99
+    }
+  ],
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "source_internal_Golden_injected": false,
+  "development_only": true
+}

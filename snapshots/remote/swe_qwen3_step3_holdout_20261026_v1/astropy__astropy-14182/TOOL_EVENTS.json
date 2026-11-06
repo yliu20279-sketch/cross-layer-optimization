@@ -1,0 +1,134 @@
+[
+  {
+    "command": "git reset --hard a5917978be39d13cd90b517e1de4e7a539ffaa48 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793022502.9188707,
+    "start_monotonic": 7698449.858342452,
+    "result": {
+      "output": "HEAD is now at a5917978b Merge pull request #14172 from astropy/pre-commit-ci-update-config\na5917978be39d13cd90b517e1de4e7a539ffaa48\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698450.647777852,
+    "seconds": 0.7894357889890671
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); tbl.write(sys.stdout, format='ascii.rst')\"",
+    "start_utc": 1793022582.9772286,
+    "start_monotonic": 7698529.916700261,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nNameError: name 'sys' is not defined\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698531.578031251,
+    "seconds": 1.6613314021378756
+  },
+  {
+    "command": "cd /testbed\npython -c \"import sys; from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); tbl.write(sys.stdout, format='ascii.rst')\"",
+    "start_utc": 1793022667.1696017,
+    "start_monotonic": 7698614.109073289,
+    "result": {
+      "output": "===== ========\n wave response\n===== ========\n350.0      0.7\n950.0      1.2\n===== ========\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698615.398638193,
+    "seconds": 1.289565152488649
+  },
+  {
+    "command": "cd /testbed\npython -c \"import sys; from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); tbl.write(sys.stdout, format='ascii.fixed_width', header_rows=['name', 'unit'])\"",
+    "start_utc": 1793022790.9685023,
+    "start_monotonic": 7698737.907973793,
+    "result": {
+      "output": "|  wave | response |\n|    nm |       ct |\n| 350.0 |      0.7 |\n| 950.0 |      1.2 |\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698739.194344827,
+    "seconds": 1.2863712599501014
+  },
+  {
+    "command": "cd /testbed\npython -c \"import sys; from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); tbl.write(sys.stdout, format='ascii.rst', header_rows=['name', 'unit'])\"",
+    "start_utc": 1793022916.3492854,
+    "start_monotonic": 7698863.288756826,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/testbed/astropy/table/connect.py\", line 130, in __call__\n    self.registry.write(instance, *args, **kwargs)\n  File \"/testbed/astropy/io/registry/core.py\", line 385, in write\n    return writer(data, *args, **kwargs)\n  File \"/testbed/astropy/io/ascii/connect.py\", line 28, in io_write\n    return write(table, filename, **kwargs)\n  File \"/testbed/astropy/io/ascii/ui.py\", line 975, in write\n    writer = get_writer(Writer=Writer, fast_writer=fast_writer, **kwargs)\n  File \"/testbed/astropy/io/ascii/ui.py\", line 901, in get_writer\n    writer = core._get_writer(Writer, fast_writer, **kwargs)\n  File \"/testbed/astropy/io/ascii/core.py\", line 1815, in _get_writer\n    writer = Writer(**writer_kwargs)\nTypeError: __init__() got an unexpected keyword argument 'header_rows'\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698864.524359407,
+    "seconds": 1.2356027057394385
+  },
+  {
+    "command": "cd /testbed\ngrep -r 'header_rows' /testbed/astropy/io/ascii/core.py",
+    "start_utc": 1793023150.2754607,
+    "start_monotonic": 7699097.214929214,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699097.512973532,
+    "seconds": 0.29804479610174894
+  },
+  {
+    "command": "cd /testbed\ngrep -r 'header_rows' /testbed/astropy/io/ascii/ui.py",
+    "start_utc": 1793023192.2814977,
+    "start_monotonic": 7699139.220969386,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699139.52492193,
+    "seconds": 0.3039528261870146
+  },
+  {
+    "command": "cd /testbed\ngrep -r 'header_rows' /testbed/astropy/io/registry/core.py",
+    "start_utc": 1793023233.7373118,
+    "start_monotonic": 7699180.676783729,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699180.964175416,
+    "seconds": 0.2873918917030096
+  },
+  {
+    "command": "cd /testbed\ngrep -r 'header_rows' /testbed/astropy/table/connect.py",
+    "start_utc": 1793023273.4178507,
+    "start_monotonic": 7699220.357322616,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699220.657429625,
+    "seconds": 0.3001072611659765
+  },
+  {
+    "command": "cd /testbed\npython -c \"import sys; from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); print(tbl.write(sys.stdout, format='ascii.rst', header_rows=['name', 'unit']))\"",
+    "start_utc": 1793023374.037107,
+    "start_monotonic": 7699320.97657874,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/testbed/astropy/table/connect.py\", line 130, in __call__\n    self.registry.write(instance, *args, **kwargs)\n  File \"/testbed/astropy/io/registry/core.py\", line 385, in write\n    return writer(data, *args, **kwargs)\n  File \"/testbed/astropy/io/ascii/connect.py\", line 28, in io_write\n    return write(table, filename, **kwargs)\n  File \"/testbed/astropy/io/ascii/ui.py\", line 975, in write\n    writer = get_writer(Writer=Writer, fast_writer=fast_writer, **kwargs)\n  File \"/testbed/astropy/io/ascii/ui.py\", line 901, in get_writer\n    writer = core._get_writer(Writer, fast_writer, **kwargs)\n  File \"/testbed/astropy/io/ascii/core.py\", line 1815, in _get_writer\n    writer = Writer(**writer_kwargs)\nTypeError: __init__() got an unexpected keyword argument 'header_rows'\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699322.205719736,
+    "seconds": 1.2291412353515625
+  },
+  {
+    "command": "cd /testbed\npython -c \"import sys; from astropy.table import QTable; import astropy.units as u; tbl = QTable({'wave': [350,950]*u.nm, 'response': [0.7, 1.2]*u.count}); print(tbl.write(sys.stdout, format='ascii.fixed_width', header_rows=['name', 'unit']))\"",
+    "start_utc": 1793023475.6724713,
+    "start_monotonic": 7699422.611942797,
+    "result": {
+      "output": "|  wave | response |\n|    nm |       ct |\n| 350.0 |      0.7 |\n| 950.0 |      1.2 |\nNone\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7699423.788960121,
+    "seconds": 1.1770184906199574
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "total_cycles": 39256773,
+  "operations": 12786,
+  "dma_operations": 644,
+  "page_misses": 322,
+  "checks": [
+    "all operations completed",
+    "all DAG dependencies respected",
+    "directional PCIe service conserved",
+    "page fetch-evict-commit order respected",
+    "HB callbacks precede operation completion",
+    "represented memory bytes conserved"
+  ],
+  "limitations": [
+    "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+    "DeepStack operator timing disabled; analytical graph timing only",
+    "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+    "analytical peak-MAC compute proxy, not profiled operator timing",
+    "aggregated ring collective proxy, not chunk-accurate overlap",
+    "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+    "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+    "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+    "host memory service and staging SRAM bandwidth not yet modeled",
+    "embedding/LM head/router/vector execution omitted from diagnostic graph"
+  ],
+  "simulation_wall_seconds": 26.7450955491513
+}

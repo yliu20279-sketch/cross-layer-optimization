@@ -1,0 +1,20 @@
+{
+  "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+  "syntax": {
+    "output": "CONTROLLER_SYNTAX_OK\n",
+    "returncode": 0,
+    "exception_info": ""
+  },
+  "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+  "tests": {
+    "output": "ERROR: while parsing the following warning configuration:\n\n  ignore::marshmallow.warnings.ChangedInMarshmallow3Warning\n\nThis error occurred:\n\nTraceback (most recent call last):\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1918, in parse_warning_filter\n    category: type[Warning] = _resolve_warning_category(category_)\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1956, in _resolve_warning_category\n    m = __import__(module, None, None, [klass])\n  File \"/testbed/src/marshmallow/__init__.py\", line 38, in <module>\n    raise RuntimeError(\"controller_import_probe\")\nRuntimeError: controller_import_probe\n\n\n",
+    "returncode": 4,
+    "exception_info": ""
+  },
+  "runner": "pytest",
+  "targets": null,
+  "default_full_suite": true,
+  "source_modified_by_controller": false,
+  "hidden_tests_used": false,
+  "source_unchanged_through_validation": true
+}

@@ -1,0 +1,20 @@
+{
+  "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/__init__.py\"]'",
+  "syntax": {
+    "output": "CONTROLLER_SYNTAX_OK\n",
+    "returncode": 0,
+    "exception_info": ""
+  },
+  "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+  "tests": {
+    "output": "REPEATED_FAILED_ACTION_BLOCKED: this exact command already failed on the same repository files. Inspect the relevant file/error and choose a different approach. No command was executed.",
+    "returncode": 78,
+    "exception_info": "RepeatedFailedAction"
+  },
+  "runner": "pytest",
+  "targets": null,
+  "default_full_suite": true,
+  "source_modified_by_controller": false,
+  "hidden_tests_used": false,
+  "source_unchanged_through_validation": true
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "command": "git reset --hard b40a0f4e33823e6d0f341f7e8684e359a99060d1",
+    "start_utc": 1793014690.1577919,
+    "start_monotonic": 7690637.09726305,
+    "result": {
+      "output": "HEAD is now at b40a0f4e Merge branch '2.x-line' into dev\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690637.43641113,
+    "seconds": 0.3391485447064042
+  },
+  {
+    "command": "false",
+    "start_utc": 1793014690.6657116,
+    "start_monotonic": 7690637.605182907,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690637.904935227,
+    "seconds": 0.2997528435662389
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c \"raise RuntimeError(123)\" || true",
+    "start_utc": 1793014691.6332731,
+    "start_monotonic": 7690638.572744296,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nRuntimeError: 123\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690638.923097403,
+    "seconds": 0.35035353899002075
+  },
+  {
+    "command": "printf '\n# deliberate guard regression\n' >> tests/test_deserialization.py",
+    "start_utc": 1793014692.6526206,
+    "start_monotonic": 7690639.59209138,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690639.88912994,
+    "seconds": 0.29703906644135714
+  },
+  {
+    "command": "git diff --name-only b40a0f4e33823e6d0f341f7e8684e359a99060d1 -- tests",
+    "start_utc": 1793014693.5757751,
+    "start_monotonic": 7690640.515246275,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690640.806104816,
+    "seconds": 0.2908590445294976
+  }
+]

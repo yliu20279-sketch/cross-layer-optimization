@@ -1,0 +1,110 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 18d3805..6a28884 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,6 +13,10 @@ set(CMAKE_BUILD_TYPE RELEASE)
+ set(POWER_RELEASE orion_power_beta_mar2003)
+ set(GRAPH_LIB graph_lib)
+ 
++# Set build type to Debug
++set(CMAKE_BUILD_TYPE Debug)
++set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
++
+ add_subdirectory(${POWER_RELEASE}/power)
+ add_subdirectory(${GRAPH_LIB})
+ 
+diff --git a/changes/router.cpp b/changes/router.cpp
+index a05c1a4..a5ae780 100644
+--- a/changes/router.cpp
++++ b/changes/router.cpp
+@@ -3,7 +3,7 @@
+ using namespace std;
+ using namespace boost;
+ 
+-CRouter::CRouter(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size)
++CRouter::CRouter(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size):m_address(address)
+ {
+ 	switch(configuration::ap().routing_alg()){
+ 	case XY_:
+@@ -129,3 +129,7 @@ ostream&operator<<(ostream&os,const CRouter&router)
+ {
+ 	return os<<(*router.m_router);
+ }
++
++add_type CRouter::returnAddress(){
++	return m_router->address();
++}
+\ No newline at end of file
+diff --git a/changes/router.h b/changes/router.h
+index 0f935d3..87e6dc7 100644
+--- a/changes/router.h
++++ b/changes/router.h
+@@ -16,7 +16,7 @@ public:
+ 	void copyFrom(const CRouter&r);
+ 	//移动构造函数
+ 	CRouter(CRouter&&r0);
+-	
++	add_type m_address;
+ 	double power_buffer_report();
+ 	double power_crossbar_report();
+ 	double power_arbiter_report();
+@@ -28,7 +28,7 @@ public:
+ 	void receive_packet();
+ 	void receive_flit(long pc, long vc, flit_template&flit);
+ 	void inputTrace(const SPacket&packet);
+-
++	add_type returnAddress();
+ 	friend ostream&operator<<(ostream&os,const CRouter&router);
+ };
+ ostream&operator<<(ostream&os,const CRouter&router);
+diff --git a/sim_router.cc b/sim_router.cc
+index 9ff4fcb..e6e0d1d 100644
+--- a/sim_router.cc
++++ b/sim_router.cc
+@@ -1115,6 +1115,19 @@ void sim_router_template::flit_traversal(long i)
+ 		VC_type outadd_t = output_module_.get_add(i);
+ 		power_module_.power_link_traversal(i, flit_t.data());
+ 
++		{	//增加发包次数统计(bench.txt)输出cycle数。大于100cycle计数+1
++			// if (trans_it->status == ProtoStateMachine::DONE) 			
++			string paccountinfo_fname("../pacCountInfo.txt");
++			static ofstream ofs(paccountinfo_fname.c_str());
++			ofs << (long)flit_t.start_time() << ' '<< (long)flit_t.finish_time() << ' ';
++			for (auto& x :flit_t.sor_addr()) ofs << x << ' ';
++			for (auto& x : flit_t.des_addr()) ofs << x << ' ';
++			ofs << '1' << ' '  << flit_t.data().size();
++			// ofs << flit_t.protoDesc << ' ' << trans_it->packetDelay.size() << ' ';
++			// for (auto& x : trans_it->packetDelay) ofs << (long)x << ' ';
++			ofs << endl;
++		}
++		
+ 		output_module_.remove_flit(i);
+ 		output_module_.remove_add(i);
+ 		mess_queue::wm_pointer().add_message(mess_event(flit_delay_t,
+@@ -1141,6 +1154,13 @@ void sim_router_template::flit_traversal(long i)
+ //receive the flit at the destination router
+ void sim_router_template::accept_flit(time_type a, const flit_template &b)
+ {
++	time_type t = a - b.start_time();
++	cout<<"start time: "<< (long)b.start_time() <<" ";
++	for (auto &x : b.sor_addr())
++		cout << "source address: " << x << " ";
++	for (auto &x : b.des_addr())
++		cout << "destination address: " << x << " ";
++	cout<< "delay: "<<t<<endl;
+ 	//changed at 2024-6-4
+ 	if (configuration::wap().sync_protocol_enable() == false)
+ 	{
+diff --git a/test/mesh_4_4.gv b/test/mesh_4_4.gv
+index 7f46448..efcd7ac 100644
+--- a/test/mesh_4_4.gv
++++ b/test/mesh_4_4.gv
+@@ -2,7 +2,7 @@
+ 
+ graph mesh_4_4
+ {
+-    edge[weight=1]
++    edge[weight=80000]
+     node[pipeline_stage_delay=1]
+     //横线
+     0--1--2--3

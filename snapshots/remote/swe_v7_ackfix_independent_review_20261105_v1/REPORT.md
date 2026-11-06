@@ -1,0 +1,19 @@
+# 连续两层 ISA、写回与时钟独立验收
+截至北京时间2026-11-06 10:35，状态 PASS_LIMITED_INDEPENDENT_FULL_TWO_LAYER_ISA_CACHE_CLOCK。
+
+本轮采用已经完成的较新 swe_qwen3_continuous_portable_20261103_v7_ackfix 作为完整运行来源，重新独立审计。原完整两轮运行耗时78237.456秒，约21小时44分钟。本轮独立复核耗时1000.410秒，约16分40秒。原实验、原PASS回执和旧失败均保留，复核输出全部写在本服务器新目录。
+
+原BF16、host128GiB/HB8GiB、16NPU、层0和1、prefill19/cached decode1。
+每轮759个FP32投影、1626944个FP32元素及56阶段参考检查通过，12项严格输出/KV通过。759投影的本轮重查比较原运行绑定的FP32输出哈希与CPU oracle，56阶段二进制重新核SHA并与CPU oracle逐文件核对。源码执行逐投影首差门保留，GPU历史差异保留。
+
+每轮78459632条写回、27686个缓存完成门、98151项CPU后继传输时钟检查通过，布局来源缺口0。本轮重新逐行读取两轮约11.6GB原CPU日志，重新生成账本。原始日志SHA和新账本SHA均与对应原回执一致。两轮CPU地址/输入缓存门身份一致。两个完整ROI的全部有记录CPU核心ISA拒绝均为0，支持解码计数各8201。
+
+每轮98614条水平NoC回放通过，第二轮反馈全部应用。每轮1265222项时钟观测通过，CPU2.5GHz tick、DRAM1.25ns及向上取整合同由原时钟审计核查。该验收覆盖已声明的完成因果与时钟换算，完整CPU/PCIe/逐MAC成本和策略净收益仍待验收。
+
+ISA补齐工作另保存在 ../swe_v7_log_repair_20261105_v1/。隔离Sniper实际重编译后，正例5841次解码均支持，AVX_VXORPS负例被检测。
+初按旧v7首轮约11小时评估，两轮约22小时，设36小时运行上限及2小时最终审计上限。随后发现已有更近的v7_ackfix完整验收，复用其原始证据进行独立重验。本聊天新启动的重复候选在约367秒时主动终止，前缀、退出回执和SUPERSEDED说明保留在 ../swe_v7_isa_repaired_20261105_v1/。其终止不代表数值失败。
+准备阶段缺目录等失败记录、此前诊断和有界探针均保留。未修改或终止其他聊天的v8_phasefix运行。本聊天运行和复核进程均已退出，后续heartbeat已暂停。
+
+最终来源为 FINAL_REVIEW.json、ACCEPTANCE_SUMMARY.json、ISA_AND_STRICT_INITIAL.json、RAW_ORACLE_RECHECK.json、BASE_INDEPENDENT_AUDIT.json、CACHE_CHAIN_AUDIT.json、CLOCK_AUDIT.json 与 RUNTIME_AND_ARCHIVE_BINDING.json。
+复跑入口 python3 run_review.py 会重写本复核目录的派生结果；如需再次独立复核，先复制审计脚本并将OUT改到新的隔离目录。原实验始终只读。
+正式矩阵0。本轮新证据全部留113，未回传本地。后续系统性能B仍待完整成本、到达及策略实际生效等准入条件。

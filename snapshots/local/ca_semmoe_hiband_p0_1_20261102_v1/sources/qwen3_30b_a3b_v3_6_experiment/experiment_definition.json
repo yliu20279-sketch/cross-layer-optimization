@@ -1,0 +1,22 @@
+{
+  "model": "Qwen3-30B-A3B",
+  "revision": "8143878278a202cc0ff9ef1bbe00b2abb1adf86d",
+  "architecture": "v3.6 execution overlay; capacity feasibility must pass before simulation",
+  "scales": [1,2,4,8,16],
+  "cohorts": 5,
+  "contexts_screen": [128,512],
+  "capacity_diagnostic_context": 2048,
+  "profile_requests": 20,
+  "eval_requests": 80,
+  "selection_min_tokens": 528,
+  "host_link": "frozen v3.6 PCIe5 x16, effective 55.04 GB/s/direction, one-way latency 250 ns; modeled assumptions not measurements",
+  "paging_precondition": "8 GiB host cannot back all W4 pages; implement exclusive host/HB page ownership with eviction return transfers or explicitly model backing storage before latency claims",
+  "decode_tokens_screen": 16,
+  "schemes": ["baseline_ep","hiband","sem_moe","hiband_sem_moe"],
+  "routing": "real cached incremental teacher-forced; profile/eval disjoint before placement",
+  "workload_adjustment": "context and concurrency only in primary screen; weight reuse preserved; skew cohorts separately labeled",
+  "forbidden_primary_changes": ["artificial Bank alias injection","hardware degradation","invented layer barriers","disable legitimate weight reuse"],
+  "attribution": "four NoC/Bank intervention combinations; Shapley only after intervention validation and nonnegative/stack conservation checks",
+  "negative_result_allowed": true,
+  "claim_gate": "Bank intervention must alter total runtime with paired CI excluding zero; hotspot or conflict counts alone are insufficient"
+}

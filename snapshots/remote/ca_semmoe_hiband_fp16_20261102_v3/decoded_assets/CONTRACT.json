@@ -1,0 +1,13 @@
+{
+  "source_model": "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4",
+  "target": "GPTQ-decoded-FP16",
+  "source_quantization": "legacy GPTQ4 group128",
+  "execution_dtype": "F16",
+  "projection_layout": "input-major K,N",
+  "dense_layout": "source row-major, explicitly preserved",
+  "runtime_unpack_ops": 0,
+  "runtime_packed_reads": 0,
+  "source_packed_storage_is_archival": true,
+  "full_model_forward": false,
+  "offline_conversion_wall_seconds_not_simulator_ticks": true
+}

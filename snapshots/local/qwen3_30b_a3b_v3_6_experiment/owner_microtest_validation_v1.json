@@ -1,0 +1,92 @@
+{
+  "cases": {
+    "different_owner_different_partition": {
+      "bank_owner_by_op": {
+        "0": [
+          101
+        ],
+        "1": [
+          202
+        ]
+      },
+      "event_owner_by_op": {
+        "0": 101,
+        "1": 202
+      },
+      "expected_owner_by_op": {
+        "0": 101,
+        "1": 202
+      },
+      "failures": [],
+      "sampled_transactions": 32,
+      "status": "PASS"
+    },
+    "different_owner_same_bank_overlap": {
+      "bank_owner_by_op": {
+        "0": [
+          101
+        ],
+        "1": [
+          202
+        ]
+      },
+      "event_owner_by_op": {
+        "0": 101,
+        "1": 202
+      },
+      "expected_owner_by_op": {
+        "0": 101,
+        "1": 202
+      },
+      "failures": [],
+      "sampled_transactions": 32,
+      "status": "PASS"
+    },
+    "same_owner_same_bank_overlap": {
+      "bank_owner_by_op": {
+        "0": [
+          101
+        ],
+        "1": [
+          101
+        ]
+      },
+      "event_owner_by_op": {
+        "0": 101,
+        "1": 101
+      },
+      "expected_owner_by_op": {
+        "0": 101,
+        "1": 101
+      },
+      "failures": [],
+      "sampled_transactions": 32,
+      "status": "PASS"
+    },
+    "single_owner_row_switch": {
+      "bank_owner_by_op": {
+        "0": [
+          101
+        ],
+        "1": [
+          101
+        ]
+      },
+      "event_owner_by_op": {
+        "0": 101,
+        "1": 101
+      },
+      "expected_owner_by_op": {
+        "0": 101,
+        "1": 101
+      },
+      "failures": [],
+      "sampled_transactions": 32,
+      "status": "PASS"
+    }
+  },
+  "claim_boundary": "This validates inference-request ownership propagation only. It does not measure or validate cross-request same-Bank contention overhead.",
+  "failures": [],
+  "schema": "owner-propagation-validation-v1",
+  "status": "PASS"
+}

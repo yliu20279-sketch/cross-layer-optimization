@@ -1,0 +1,121 @@
+{
+  "state": "PASS_LIMITED_FIXED_TOKEN_POST_MOE_RESIDUAL",
+  "checks": [
+    {
+      "stage": "pre_MoE_residual",
+      "elements": 2048,
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": "post_MoE_residual",
+      "elements": 2048,
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "stage": "downstream_ingress",
+      "elements": 2048,
+      "different": 0,
+      "exact": true,
+      "max_abs": 0.0
+    }
+  ],
+  "captured_GPU_diagnostic": {
+    "stage": "same_token_vs_existing_GPU_decoder_output",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "scope": "one already captured token, no new GPU call; other source differences retained"
+  },
+  "device": {
+    "rank": 0,
+    "counts": {
+      "events": 573,
+      "pipeline_cycles": 98523530,
+      "HB_write_bytes": 73728,
+      "RAM_transactions": 4608,
+      "RAM_physical_bytes": 147456,
+      "SRAM_read_bytes": 90112,
+      "SRAM_write_bytes": 94208,
+      "SRAM_service_bytes": 184320,
+      "HB_read_bytes": 73728,
+      "vector_ops": 4096
+    },
+    "SRAM_peak_bytes": 8192,
+    "HB_address_extent_bytes": 235343872,
+    "HB_allocated_bytes": 73728,
+    "done_ns": 98561054
+  },
+  "negative_controls": [
+    "0:decoder_input_BF16:unresident",
+    "0:attention_output_BF16:unresident",
+    "0:merged_MoE_BF16:unresident",
+    "pre_residual_before_operands_resident",
+    "merged_MoE_retire_before_residual",
+    "0:decoder_input_FP32:unresident",
+    "0:attention_output_FP32:unresident",
+    "0:pre_MoE_residual_FP32:unresident",
+    "0:pre_MoE_residual_add:early_operand_free",
+    "0:pre_MoE_residual_BF16:unresident",
+    "retired_decoder_input_read",
+    "post_add_missing_residual",
+    "post_add_wrong_epoch_residual",
+    "post_add_missing_MoE",
+    "post_add_wrong_epoch_MoE",
+    "residual_input_retire_before_post_add",
+    "0:residual_skip_FP32:unresident",
+    "0:merged_MoE_FP32:unresident",
+    "0:post_MoE_residual_FP32:unresident",
+    "post_result_read_before_add",
+    "0:post_MoE_residual_add:early_operand_free",
+    "0:post_MoE_residual_BF16:unresident",
+    "retired_merged_MoE_read",
+    "0:layer1_ingress_BF16:unresident",
+    "layer1_before_ingress_commit",
+    "post_output_retire_before_ingress_reader",
+    "ingress_snapshot_free_before_copy"
+  ],
+  "dependencies": {
+    "request": "R0002",
+    "phase": "prefill",
+    "local_token": 0,
+    "layer": 0,
+    "parent_commit_ns": 98513699,
+    "parent_output_offset": 235339776,
+    "parent_restore_event": 8,
+    "parent_restore_ready_ns": 98514328,
+    "residual_BF16_ready_ns": 98536457,
+    "post_add_start_ns": 98544089,
+    "post_add_done_ns": 98555080,
+    "post_BF16_commit_event": 566,
+    "post_BF16_ready_ns": 98559114,
+    "ingress_commit_event": 570,
+    "ingress_ready_ns": 98560410,
+    "downstream_ready_event": 571,
+    "diagnostic_read_event": 572,
+    "ingress_global_address": 20971520,
+    "pending": [
+      "layer1_input_norm"
+    ],
+    "layer1_arithmetic": false
+  },
+  "parent_plus_new_conservative_HB_bytes": 231429824,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "final_sha256": "b41c86e29fffd6c985d04fef6b13555d445af48d7868d03ceac19cf06c2d355e",
+  "final_output_pending": [
+    "layer1_input_norm"
+  ],
+  "batch": "DIFFERENCES_RETAINED",
+  "softmax_FP32": "FAILED_RETAINED",
+  "codec_control_cost": null,
+  "full_timing": "NOT_CERTIFIED",
+  "new_native_fragments": 1,
+  "new_GPU_Sniper_agent_runs": 0,
+  "new_NoC_runs": 0,
+  "physical_NPU_runs": 0,
+  "scope": "same conditional captured-dispatch M1 token, BF16 post-residual and ingress; no next-layer compute/full-layer/whole-model promotion"
+}

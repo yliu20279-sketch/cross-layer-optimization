@@ -1,0 +1,12 @@
+[
+  {
+    "command": "find /opt/miniconda3/envs/testbed/lib/python3.7/site-packages -type f -name \"marshmallow.py\" -exec grep -A 10 '_invoke_field_validators' {} \\;",
+    "state_sha256": "f285ed74051135415b828c99bbb0e1055b06396292946b731ea9b8220c5fc238",
+    "kind": "repeated_failed_action_blocked"
+  },
+  {
+    "command": "pip install \"marshmallow<2.20.0\"",
+    "state_sha256": "06f826a30d8628be1f878aa4f3851f2014c4c54fbb8f0e578714c485a0d60a41",
+    "kind": "repeated_failed_action_blocked"
+  }
+]

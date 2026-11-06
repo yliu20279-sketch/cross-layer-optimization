@@ -1,0 +1,39 @@
+{
+  "status": "PARTIAL_P0_1B_COMPLETE_SCOPED_P0_1C",
+  "plan_saved": "CA_两模型实验计划_20261102_v4.md",
+  "p0_1b": "PARTIAL: CPU functional MoE and actual control integration; full target layer still missing",
+  "p0_1c": "complete identity-gated decisions for requested known historical assets, not all-event replay",
+  "remote_tests": {
+    "status": "PASS_SOFTWARE_AND_DECODE_REFERENCE_ONLY",
+    "tests": 28,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "native_simulations": 0,
+    "model_forwards": 0,
+    "gpu_runs": 0,
+    "p0_2_started": false
+  },
+  "final_build_identity": "00009d3cc615cc96b840165d119cc78bf87010fa867efdbf493fb33ae0ac3489",
+  "real_control_probe_runs": 2,
+  "final_diagnostic_MoE_subgraphs": 2,
+  "complete_model_forwards": 0,
+  "GPU_runs": 0,
+  "formal_performance_runs": 0,
+  "p0_2_started": false,
+  "performance_ready": false,
+  "next_required": [
+    "connect actual attention/residual/norm/KV output to normalized MoE inputs without fixture substitution",
+    "couple actual numeric primitive, SRS/SAG payload and physical memory/NoC completion in the same target execution",
+    "bind 72 Q15 QKV biases and all PP/TP precision boundaries in the full target layer",
+    "complete dynamic host/HB/KV/activation/SRAM lifetime, migration/cache version and CPU/PCIe costs",
+    "only then conduct P0-2 minimal numerical/timing admission before formal performance matrices"
+  ],
+  "sources": {
+    "REMOTE_BUILD_LIVE_02.json": "f05762fc50147832bcf66e8a7380dd85baf2b52639f00528cb403ea8dadac7c4",
+    "REMOTE_PAYLOAD_AUDIT_v2.json": "be13d22f53142a2b02ed57d5ac4e7a6ad3c3976e954ae756df096aa63826d165",
+    "REMOTE_SOFTWARE_CHECKS_v4.json": "e2536235761a28e96f5a198539725a1a7065f42826985e087f23993cf5e22e1c",
+    "REAL_CONTROL_PROBE_02.json": "d797b237536eeb3880211021d0113d93b0e66a43e084e6b535087d66ecd400b7",
+    "REUSE_DISPOSITIONS.json": "5f132918712b9a31a5e56a01567c598fcaf2032b6b0673b3810724bb3fe52f52"
+  }
+}

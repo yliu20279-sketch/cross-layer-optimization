@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "classification": "Controlled soft70 address-mapping stress, not natural Qwen3 serving behavior",
+  "evaluation": {
+    "context": 512,
+    "batch": 4,
+    "decoder_layers": 48,
+    "cohort_policy": "exploratory_low_skew",
+    "cohort_repeat": 1,
+    "request_ids": [
+      "fd65cbe7eb0419a8",
+      "f1a2fdfcb624ef89",
+      "abf8f6346574938f",
+      "d99c82abdeb32e50"
+    ]
+  },
+  "profile": {
+    "cohort_repeat": 2,
+    "request_ids": [
+      "52481e73c1758127",
+      "5e65f34d3bb4c2d4",
+      "e1b4219b47c02fd0",
+      "9240f04c6b7d4906"
+    ],
+    "expert_weight_reads": 1536,
+    "distinct_expert_pages": 1381,
+    "cross_request_overlap_edges": 347,
+    "coaccess_assignment_changes_vs_heat": 31
+  },
+  "paired_full48_results": [
+    {
+      "scheme": "round_robin_page_bank",
+      "control_run": "c4_full48_pager_control_v2",
+      "layout_run": "c4_full48_round_robin_v2",
+      "control_cycles": 175231069,
+      "layout_cycles": 84080402,
+      "cycle_reduction_percent": 52.02,
+      "control_cross_request_bank_wait_ticks": 5195705838,
+      "layout_cross_request_bank_wait_ticks": 406651376,
+      "bank_wait_reduction_percent": 92.17,
+      "matched_operations": 28260,
+      "matched_dependencies": 41279,
+      "matched_represented_memory_bytes": 8992456704,
+      "matched_packets_completed": 4804
+    },
+    {
+      "scheme": "profile_heat_balanced",
+      "control_run": "c4_full48_heat_control_v1",
+      "layout_run": "c4_full48_heat_layout_v1",
+      "control_cycles": 184906242,
+      "layout_cycles": 128481704,
+      "cycle_reduction_percent": 30.52,
+      "control_cross_request_bank_wait_ticks": 2881998177,
+      "layout_cross_request_bank_wait_ticks": 648382464,
+      "bank_wait_reduction_percent": 77.50,
+      "matched_operations": 28260,
+      "matched_dependencies": 41911,
+      "matched_represented_memory_bytes": 8992456704,
+      "matched_packets_completed": 4804
+    },
+    {
+      "scheme": "profile_heat_and_coaccess",
+      "control_run": "c4_full48_coaccess_control_v1",
+      "layout_run": "c4_full48_coaccess_layout_v1",
+      "control_cycles": 187243862,
+      "layout_cycles": 130348925,
+      "cycle_reduction_percent": 30.39,
+      "control_cross_request_bank_wait_ticks": 2887730970,
+      "layout_cross_request_bank_wait_ticks": 666409442,
+      "bank_wait_reduction_percent": 76.92,
+      "matched_operations": 28260,
+      "matched_dependencies": 41907,
+      "matched_represented_memory_bytes": 8992456704,
+      "matched_packets_completed": 4804
+    }
+  ],
+  "selected_scheme_for_panel_c": "round_robin_page_bank",
+  "selection_basis": "Lowest held-out end-to-end cycles and Bank-wait ticks; largest improvement against its own pager-matched control. Different placements change pager dependencies, so cross-scheme control DAGs are not identical.",
+  "capacity_and_address_checks": {
+    "expert_page_bytes": 2359296,
+    "per_bank_page_capacity": 14,
+    "full48_peak_resident_pages_per_bank": 12,
+    "expert_row_start": 4096,
+    "max_untagged_address_end_bytes": 65403008,
+    "all_tagged_expert_operations_mapped": 2958,
+    "paging_inclusive_single_layer": 23,
+    "single_layer_page_misses": 16,
+    "single_layer_evictions": 16,
+    "checked_tagged_dram_transactions": 589824,
+    "single_layer_max_untagged_decoded_row": 224
+  },
+  "figure": {
+    "panel_a": "Original soft70 component breakdown, unchanged data",
+    "panel_b": "Original c4 soft70 Bank-by-layer wait matrix, unchanged data",
+    "panel_c": "Selected page-layout Bank-by-layer wait matrix",
+    "shared_log_color_scale_thousand_ticks": [0.001, 1000000.0],
+    "zero_wait_encoding": "color-scale floor"
+  },
+  "limitations": [
+    "One held-out four-request cohort; no multi-seed confidence interval.",
+    "Full48 runs use aggregate Bank logs; detailed transaction-level mapping was validated on one paging-inclusive layer, not all 48 layers.",
+    "Synthetic address-mapping stress and model-based timing are not physical-chip measurements.",
+    "The original panel (b) and new panel (c) have different pager DAGs; quantitative improvement claims use the pager-matched control, not a direct b-versus-c runtime comparison."
+  ]
+}

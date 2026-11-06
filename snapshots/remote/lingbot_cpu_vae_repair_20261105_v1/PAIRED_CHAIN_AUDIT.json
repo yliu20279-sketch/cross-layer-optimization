@@ -1,0 +1,356 @@
+{
+  "state": "FAIL_FIRST_DIVERGENCE",
+  "operators": [
+    {
+      "name": "post_quant_conv",
+      "type": "WanCausalConv3d",
+      "diff": 0,
+      "elements": 99840,
+      "CPU_stride": [
+        99840,
+        1,
+        99840,
+        1664,
+        16
+      ],
+      "GPU_stride": [
+        99840,
+        1,
+        99840,
+        1664,
+        16
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.conv_in",
+      "type": "WanCausalConv3d",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.dropout",
+      "type": "Dropout",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.0",
+      "type": "WanResidualBlock",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        1,
+        2396160,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.norm",
+      "type": "WanRMS_norm",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        384,
+        1,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        384,
+        1,
+        39936,
+        384
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.to_qkv",
+      "type": "Conv2d",
+      "diff": 0,
+      "elements": 7188480,
+      "CPU_stride": [
+        7188480,
+        1,
+        119808,
+        1152
+      ],
+      "GPU_stride": [
+        7188480,
+        6240,
+        104,
+        1
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.proj",
+      "type": "Conv2d",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        2396160,
+        1,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        6240,
+        104,
+        1
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.attentions.0",
+      "type": "WanAttentionBlock",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        384,
+        1,
+        384,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        6240,
+        2396160,
+        104,
+        1
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "diff": 0,
+      "elements": 2396160,
+      "CPU_stride": [
+        384,
+        1,
+        384,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        6240,
+        2396160,
+        104,
+        1
+      ],
+      "max_abs": 0.0
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "diff": 407001,
+      "elements": 2396160,
+      "CPU_stride": [
+        384,
+        1,
+        384,
+        39936,
+        384
+      ],
+      "GPU_stride": [
+        2396160,
+        6240,
+        2396160,
+        104,
+        1
+      ],
+      "max_abs": 1.9073486328125e-06
+    }
+  ]
+}

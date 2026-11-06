@@ -1,0 +1,11 @@
+{
+  "reference_injection": [
+    "cached original conditions and encoder RNG",
+    "full 48-layer GPU transformer cond/uncond outputs injected into CPU boundary replay",
+    "original GPU scheduler input latent/state injected into CPU replay"
+  ],
+  "target_GPU_count": 0,
+  "new_external_GPU_forwards": 2,
+  "scope": "first step of original 40-step schedule only",
+  "source_pipeline": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/source/lingbot_video/pipeline_lingbot_video.py"
+}

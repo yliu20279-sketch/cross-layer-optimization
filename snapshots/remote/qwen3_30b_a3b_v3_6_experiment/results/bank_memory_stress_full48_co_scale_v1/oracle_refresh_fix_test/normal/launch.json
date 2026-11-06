@@ -1,0 +1,61 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_cross_request_release_v2/build_outstanding_v7/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_memory_stress_full48_co_scale_v1/oracle_refresh_fix_test/normal/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "HB_BANK_LOG_DETAIL": "0",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_memory_stress_full48_co_scale_v1/oracle_refresh_fix_test/normal",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_memory_stress_full48_co_scale_v1/graphs/c1_co",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_memory_stress_full48_co_scale_v1/oracle_refresh_fix_test/normal",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_REQUEST_RELEASES": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_memory_stress_full48_co_scale_v1/releases/simultaneous_c1.csv",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270",
+    "HB_MAX_OUTSTANDING_PER_OP": "1"
+  },
+  "binary_sha256": "e01b559ff944d1cc9a7c08a9d9d950ef21435ab9992fc93e46b543774f36c0fd",
+  "ramulator_library_sha256": "091ac941fe5884a14e459bae721e1e04c1fbd95cb9556e7cc656adf5a5876dd7",
+  "graph_hashes": {
+    "address_manifest.csv": "a7b4b2d8eb81539800db32fd9faaacfde8bfc1c582a736a74acf2b406e07355a",
+    "memory_stress_manifest.json": "32a749966157e40736890a6bb870687f5f2f6d84fd4f73c42129f80251b918e6",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "28661649cde21dd678fc1753a33766c4e426652b1fe6e07b05bfbcc5dded06ff",
+    "graph_manifest.json": "6a8a06b0dbe17585247e05e2bb946e4339dcc775b6768cb6392c5f7dec63129b",
+    "ops.csv": "66d3541a1ce90c2e1fbed996cd7ba6139de113c56f212b9e30150731af0746d6"
+  },
+  "deepstack_timing_sha256": null,
+  "execution_timeout_seconds": 14400,
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack full-operation Bank timing disabled",
+    "ScaleSim shape-level compute timing"
+  ]
+}

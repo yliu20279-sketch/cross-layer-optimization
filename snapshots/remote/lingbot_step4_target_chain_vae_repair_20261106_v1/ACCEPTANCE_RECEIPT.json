@@ -1,0 +1,75 @@
+{
+  "state": "PASS_LIMITED_REPAIRED_CPU_VAE_TARGET_BOUNDARY_CHAIN",
+  "rounds": [
+    {
+      "round": 1,
+      "VAE_raw_fp32_differences": 0,
+      "VAE_uint8_differences": 0,
+      "VAE_values": 1198080,
+      "CFG_scheduler_next_latent": "actor hard assertion passed; 2048 values per stage",
+      "events": [
+        {
+          "op": 0,
+          "start_ns": 1,
+          "receive_done_ns": 13039,
+          "consumer_ns": 20098,
+          "bytes": 24576
+        },
+        {
+          "op": 1,
+          "start_ns": 20098,
+          "receive_done_ns": 783656,
+          "consumer_ns": 2152590,
+          "bytes": 4792320
+        }
+      ],
+      "NoC_feedback_records": 87,
+      "all_previous_feedback_applied": false,
+      "domain_completion_order_checks": 416
+    },
+    {
+      "round": 2,
+      "VAE_raw_fp32_differences": 0,
+      "VAE_uint8_differences": 0,
+      "VAE_values": 1198080,
+      "CFG_scheduler_next_latent": "actor hard assertion passed; 2048 values per stage",
+      "events": [
+        {
+          "op": 0,
+          "start_ns": 1,
+          "receive_done_ns": 8427,
+          "consumer_ns": 15486,
+          "bytes": 24576
+        },
+        {
+          "op": 1,
+          "start_ns": 15486,
+          "receive_done_ns": 292241,
+          "consumer_ns": 1661175,
+          "bytes": 4792320
+        }
+      ],
+      "NoC_feedback_records": 87,
+      "all_previous_feedback_applied": true,
+      "domain_completion_order_checks": 416
+    }
+  ],
+  "subprocesses_zero": 8,
+  "target_GPU_calls": 0,
+  "reference_output_used_for_computation": false,
+  "reference_injections": [
+    "frozen cond/uncond prediction and scheduler input tile",
+    "frozen final latent first temporal slice; remaining39DiTsteps omitted"
+  ],
+  "uncovered_costs": [
+    "CPU native service duration not in target clock",
+    "PCIe DMA timing in this target chain",
+    "CPU cache/writeback timing",
+    "complete operator ISA/perMAC",
+    "other120output frames",
+    "remaining39DiTsteps"
+  ],
+  "promotion": false,
+  "formal_PK": false,
+  "CA_ablation": false
+}

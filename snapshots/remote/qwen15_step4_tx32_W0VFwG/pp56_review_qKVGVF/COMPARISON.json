@@ -1,0 +1,358 @@
+{
+  "status": "K64_LINEAR_REFERENCE_DIAGNOSTIC_ONLY",
+  "scope": "independent installed eager CPU decoder layer, not a GPU/full model",
+  "model": "qwen15",
+  "torch_version": "2.6.0+cu124",
+  "transformers_version": "4.51.3",
+  "implementation_file": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/env/lib/python3.11/site-packages/transformers/models/qwen2_moe/modeling_qwen2_moe.py",
+  "implementation_sha256": "60beee9fc29141b9484e17e9fe98569afbd320ea77945cd32c1c284bd4d6c439",
+  "norm_topk_prob": false,
+  "reference_expert_accumulation": "ascending expert id via index_add, as captured source",
+  "target_expert_accumulation": "ascending_expert_id",
+  "phases": [
+    {
+      "phase": "prefill",
+      "elements": 2048,
+      "different_storage_bits": 581,
+      "maxabs": 0.001953125,
+      "meanabs": 5.036778748035431e-05,
+      "finite": true,
+      "target_selected": [
+        16,
+        31,
+        57,
+        43
+      ],
+      "reference_selected": [
+        16,
+        31,
+        57,
+        43
+      ],
+      "selected_set_equal": true,
+      "target_selected_mass": 0.136077880859375,
+      "reference_selected_mass": 0.136077880859375,
+      "KV": [
+        {
+          "rank": 0,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 0,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 1,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 1,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 2,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 2,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 3,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 3,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 4,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 21,
+          "maxabs": 0.0009765625,
+          "meanabs": 8.006580173969269e-06,
+          "finite": true
+        },
+        {
+          "rank": 4,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 41,
+          "maxabs": 0.00048828125,
+          "meanabs": 7.056631147861481e-06,
+          "finite": true
+        },
+        {
+          "rank": 5,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 21,
+          "maxabs": 0.0009765625,
+          "meanabs": 1.015886664390564e-05,
+          "finite": true
+        },
+        {
+          "rank": 5,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 27,
+          "maxabs": 0.000244140625,
+          "meanabs": 2.9578804969787598e-06,
+          "finite": true
+        },
+        {
+          "rank": 6,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 26,
+          "maxabs": 0.00390625,
+          "meanabs": 1.8568243831396103e-05,
+          "finite": true
+        },
+        {
+          "rank": 6,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 34,
+          "maxabs": 0.000244140625,
+          "meanabs": 3.225402906537056e-06,
+          "finite": true
+        },
+        {
+          "rank": 7,
+          "member": "k",
+          "elements": 512,
+          "different_storage_bits": 14,
+          "maxabs": 0.0009765625,
+          "meanabs": 6.660819053649902e-06,
+          "finite": true
+        },
+        {
+          "rank": 7,
+          "member": "v",
+          "elements": 512,
+          "different_storage_bits": 26,
+          "maxabs": 0.000244140625,
+          "meanabs": 3.4086406230926514e-06,
+          "finite": true
+        }
+      ]
+    },
+    {
+      "phase": "decode",
+      "elements": 2048,
+      "different_storage_bits": 569,
+      "maxabs": 0.0009765625,
+      "meanabs": 5.047023296356201e-05,
+      "finite": true,
+      "target_selected": [
+        31,
+        57,
+        16,
+        22
+      ],
+      "reference_selected": [
+        31,
+        57,
+        16,
+        22
+      ],
+      "selected_set_equal": true,
+      "target_selected_mass": 0.13983154296875,
+      "reference_selected_mass": 0.13983154296875,
+      "KV": [
+        {
+          "rank": 0,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 0,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 1,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 1,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 2,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 2,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 3,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 3,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 0,
+          "maxabs": 0.0,
+          "meanabs": 0.0,
+          "finite": true
+        },
+        {
+          "rank": 4,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 21,
+          "maxabs": 0.0009765625,
+          "meanabs": 4.003290086984634e-06,
+          "finite": true
+        },
+        {
+          "rank": 4,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 41,
+          "maxabs": 0.00048828125,
+          "meanabs": 3.5283155739307404e-06,
+          "finite": true
+        },
+        {
+          "rank": 5,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 21,
+          "maxabs": 0.0009765625,
+          "meanabs": 5.07943332195282e-06,
+          "finite": true
+        },
+        {
+          "rank": 5,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 27,
+          "maxabs": 0.000244140625,
+          "meanabs": 1.4789402484893799e-06,
+          "finite": true
+        },
+        {
+          "rank": 6,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 26,
+          "maxabs": 0.00390625,
+          "meanabs": 9.284121915698051e-06,
+          "finite": true
+        },
+        {
+          "rank": 6,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 34,
+          "maxabs": 0.000244140625,
+          "meanabs": 1.612701453268528e-06,
+          "finite": true
+        },
+        {
+          "rank": 7,
+          "member": "k",
+          "elements": 1024,
+          "different_storage_bits": 14,
+          "maxabs": 0.0009765625,
+          "meanabs": 3.330409526824951e-06,
+          "finite": true
+        },
+        {
+          "rank": 7,
+          "member": "v",
+          "elements": 1024,
+          "different_storage_bits": 26,
+          "maxabs": 0.000244140625,
+          "meanabs": 1.7043203115463257e-06,
+          "finite": true
+        }
+      ]
+    }
+  ],
+  "target_outputs_modified": false,
+  "reference_layer_calls": 2,
+  "complete_model_forwards": 0,
+  "GPU_runs": 0,
+  "formal_performance_runs": 0,
+  "original_model_bit_exact_verified": false
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+    "state_sha256": "a95e851ee4dc4237151b727ad70dfdaac39783f2a6b91ed73f0cc2f90234c30a",
+    "kind": "repeated_failed_action_blocked"
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+    "state_sha256": "47bd4bf3c8a12920ed80c5e28795b40c67507735717fb6b09fd90f6b5c8f3aae",
+    "kind": "repeated_failed_action_blocked"
+  }
+]

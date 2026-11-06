@@ -1,0 +1,166 @@
+{
+  "status": "PASS_WITH_EVIDENCE_GAP",
+  "workload": {
+    "model": "Qwen3-30B-A3B-derived diagnostic",
+    "routing": "captured Qwen3 cohorts",
+    "arrival": "synthetic bursty c8, seed 1101",
+    "address_mapping": "native",
+    "classification": "hybrid diagnostic; not a natural production serving trace"
+  },
+  "observed_fields": {
+    "event_level": [
+      "inference_request_id",
+      "task-encoded layer/expert page identity",
+      "partition/PE",
+      "start",
+      "backend_done",
+      "bytes"
+    ],
+    "bank_aggregate_level": [
+      "partition",
+      "bankgroup",
+      "bank",
+      "cross_request_bank_wait_ticks",
+      "row_status counts"
+    ]
+  },
+  "missing_join_fields": [
+    "transaction-level expert_page_id in retained Bank logs",
+    "transaction-level decoded Bank joined to expert_page_id",
+    "blocking transaction/page/request identity",
+    "per-layout row-buffer and Bank-wait logs"
+  ],
+  "expert_accesses": {
+    "count": 6144,
+    "owners": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "unique_pages": 2398,
+    "partitions": 16,
+    "represented_bytes": 14495514624
+  },
+  "overlap_proxy": {
+    "cross_user_overlapping_access_pairs": {
+      "distinct_page": 292
+    },
+    "cross_user_overlap_cycles_pair_sum": {
+      "distinct_page": 6593732.0
+    },
+    "distinct_page_pair_fraction": 1.0,
+    "distinct_page_overlap_fraction": 1.0,
+    "examples": {
+      "same_page": [],
+      "distinct_page": [
+        {
+          "partition": 3,
+          "owners": [
+            2,
+            3
+          ],
+          "pages": [
+            [
+              2,
+              125
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "overlap_cycles": 8723.75
+        },
+        {
+          "partition": 3,
+          "owners": [
+            6,
+            2
+          ],
+          "pages": [
+            [
+              1,
+              26
+            ],
+            [
+              10,
+              57
+            ]
+          ],
+          "overlap_cycles": 12838.0
+        },
+        {
+          "partition": 3,
+          "owners": [
+            3,
+            1
+          ],
+          "pages": [
+            [
+              16,
+              60
+            ],
+            [
+              17,
+              2
+            ]
+          ],
+          "overlap_cycles": 5169.75
+        },
+        {
+          "partition": 3,
+          "owners": [
+            4,
+            5
+          ],
+          "pages": [
+            [
+              39,
+              40
+            ],
+            [
+              38,
+              55
+            ]
+          ],
+          "overlap_cycles": 12454.25
+        },
+        {
+          "partition": 3,
+          "owners": [
+            4,
+            5
+          ],
+          "pages": [
+            [
+              39,
+              40
+            ],
+            [
+              38,
+              58
+            ]
+          ],
+          "overlap_cycles": 12454.25
+        }
+      ]
+    },
+    "interpretation_limit": "These are operation-level expert-weight service-window overlaps, not transaction-level same-Bank conflicts. Distinct-page overlap is only a necessary opportunity indicator."
+  },
+  "paired_bank_intervention": {
+    "normal_cycles": 495458864,
+    "oracle_cycles": 495293474,
+    "exposed_cross_request_bank_cycles": 165390,
+    "exposed_fraction": 0.00033381176928545174,
+    "cumulative_cross_request_bank_wait_ticks": 7344622,
+    "requests_with_positive_completion_delta": 9,
+    "upper_bound_note": "For this exact run, a layout that removes only cross-request same-Bank timing cannot be credited with more end-to-end gain than the paired oracle delta."
+  },
+  "four_layout_experiment_status": "NOT_EXECUTABLE_FROM_RETAINED_ARTIFACTS",
+  "reason": "The saved full48 graph/address_manifest and transaction-detail Bank log are absent. Changing or evaluating page-to-Bank placement would therefore require regenerating the graph and rerunning the instrumented simulator, not post-processing current outputs."
+}

@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "scheme": "baseline_ep",
+      "cycles": 39248003,
+      "engines": {
+        "FULL": 2304
+      },
+      "graph_compute_phases": {
+        "COMPUTE": 2304
+      },
+      "bsa_bga_overlap_cycles": 0.0,
+      "mode_changes_rows": 1
+    },
+    {
+      "scheme": "hiband",
+      "cycles": 39256773,
+      "engines": {
+        "BSA": 1536,
+        "BGA": 768
+      },
+      "graph_compute_phases": {
+        "COMPUTE_BSA": 1536,
+        "COMPUTE_BGA": 768
+      },
+      "bsa_bga_overlap_cycles": 0.0,
+      "mode_changes_rows": 114
+    },
+    {
+      "scheme": "sem_moe",
+      "cycles": 43978694,
+      "engines": {
+        "FULL": 2304
+      },
+      "graph_compute_phases": {
+        "COMPUTE": 2304
+      },
+      "bsa_bga_overlap_cycles": 0.0,
+      "mode_changes_rows": 1
+    },
+    {
+      "scheme": "hiband_sem_moe",
+      "cycles": 43987728,
+      "engines": {
+        "BSA": 1536,
+        "BGA": 768
+      },
+      "graph_compute_phases": {
+        "COMPUTE_BSA": 1536,
+        "COMPUTE_BGA": 768
+      },
+      "bsa_bga_overlap_cycles": 0.0,
+      "mode_changes_rows": 144
+    }
+  ],
+  "claim_gate": {
+    "hic_overlap_positive": false,
+    "formal_four_control_ready": false,
+    "reason": "current full-layer DAG has no continuous-microbatch BSA/BGA overlap; diagnostic timing cannot represent HiBand benefit"
+  }
+}

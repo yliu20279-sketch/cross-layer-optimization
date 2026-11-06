@@ -1,0 +1,65 @@
+{
+  "state": "PASS_LIMITED_RUNTIME_RECEIPT_ORDER",
+  "branches": [
+    {
+      "branch": "uncond",
+      "issued_writebacks": 65,
+      "pending": 0,
+      "writeback_now_fs": 14014214400000,
+      "writeback_done_fs": 14014366497964,
+      "wait_ns": 152.097964,
+      "DMA": [
+        {
+          "direction": "request",
+          "bytes": 528384,
+          "segments": 2064,
+          "start_ns": 9042867,
+          "done_ns": 9053457
+        },
+        {
+          "direction": "response",
+          "bytes": 768,
+          "segments": 3,
+          "start_ns": 14014806,
+          "done_ns": 14015091
+        }
+      ],
+      "delayed_actual_receipt_controls": 4,
+      "consumer_start_ns": 14016375
+    },
+    {
+      "branch": "uncond",
+      "issued_writebacks": 65,
+      "pending": 0,
+      "writeback_now_fs": 13951589200000,
+      "writeback_done_fs": 13951741297964,
+      "wait_ns": 152.097964,
+      "DMA": [
+        {
+          "direction": "request",
+          "bytes": 528384,
+          "segments": 2064,
+          "start_ns": 9044022,
+          "done_ns": 9054612
+        },
+        {
+          "direction": "response",
+          "bytes": 768,
+          "segments": 3,
+          "start_ns": 13952173,
+          "done_ns": 13952458
+        }
+      ],
+      "delayed_actual_receipt_controls": 4,
+      "consumer_start_ns": 13953629
+    }
+  ],
+  "completion_observation": "CPU/writeback acknowledgement and NoC receive time are conservative receiver observations; raw Sniper drain and gateway DMA device times independently checked",
+  "limitations": [
+    "custom configured PCIe device model uses serialized queue0 and polling boundary at receive",
+    "both service rounds use the same CFG; round2 consumes its own round1 profile",
+    "NoC first pass is domain service; second pass applies PopNet feedback; no convergence claim",
+    "one active NPU/HB and CPU0; no full layer cost coverage"
+  ],
+  "original_audit": "INDEPENDENT_AUDIT.json"
+}

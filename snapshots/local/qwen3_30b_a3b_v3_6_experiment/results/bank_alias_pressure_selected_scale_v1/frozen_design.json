@@ -1,0 +1,26 @@
+{
+  "status": "FROZEN",
+  "classification": "controlled address-mapping stress; not a natural Qwen3 workload",
+  "selection_source": "results/bank_alias_pressure_screen_c4_v2/screen_report.json",
+  "selection_rule": "maximum strict paired normal-minus-oracle end-to-end fraction among alias cases",
+  "selected_alias_case": "effective2",
+  "selected_effective_banks": 2,
+  "concurrencies": [
+    1,
+    2,
+    4
+  ],
+  "c4_evidence": "reused from the frozen screening suite; c1/c2 are run here",
+  "paired_cases": [
+    "selected alias normal/oracle",
+    "balanced16 normal/oracle"
+  ],
+  "invariants": [
+    "full 48-layer C+O DAG",
+    "context 512",
+    "compute multiplier 0.25",
+    "outstanding=1",
+    "simultaneous arrivals",
+    "unchanged transaction stream"
+  ]
+}

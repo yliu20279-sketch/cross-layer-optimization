@@ -1,0 +1,14 @@
+{
+  "state": "PRE_RUN_METADATA_CAUSALITY_PROTOCOL",
+  "input": "same759 BF16 logits rows of short R0002 and development R0001; actual host SourceCudaRoute128 output, not reference IDs injected",
+  "CPU_completion": "reuse exact same759-row frozen Sniper ROI elapsed3715344800000fs; no division into per-row time; conservative whole-batch completion gate",
+  "wire_ABI": "two zero-copy planes:759x8 int64 little-endian IDs=48576B;759x8 BF16 weight bits=12144B; total60720B; no packing memcpy",
+  "HB_ABI": "IDs at CH0 byte0, weights at byte48576; reserve60736B aligned32; two DMA descriptors,256B max packets; all-batch gate before readback",
+  "dispatch": "only after CPU completion AND both PCIe/HB commit callbacks AND metadata HB-to-SRAM read completion; parse actual transferred bits; release6072 fixed32B descriptors into host functional owner queues",
+  "mapping": "owner=expert%16, origin=local_token%16 reset per source phase; preserve slot and BF16 weight bits; tags bind source root/request/phase/layer0/epoch",
+  "scope": "dispatch descriptor release only, not NoC token transfer, expert arrival/weight residency/compute; no timing claim for descriptor construction or parsing",
+  "negative_controls": "early CPU publication; PCIe issue before CPU ready; packets arrived but HB not committed; IDs-only partial metadata; HB read still pending; duplicate plane callback; stale epoch; corrupt payload; duplicate dispatch; free SRAM before dispatch consumer",
+  "profile": {"precision":"original BF16 with source FP32 internal differences retained","host_GiB_overlay":128,"HB_GiB":8,"CH0_bytes":536870912,"SRAM_bytes":4194304},
+  "limits": "reuse configured PCIe/host DMA constant DRAM proxy; CPU/control/cache maintenance and gateway physical propagation uncalibrated; no complete latency or strategy benefit; softmax FP32 mismatch unchanged",
+  "budget": "one new N0/CH0 native metadata fragment at most180s, CPU1 thread, no new Sniper/GPU/agent/new holdout"
+}

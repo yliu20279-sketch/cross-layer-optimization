@@ -1,0 +1,32 @@
+{
+  "compile_command": [
+    "g++",
+    "-std=c++17",
+    "-O0",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-shared",
+    "-fPIC",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/codec_bridge.cpp",
+    "-o",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/libbf16_codec_bridge.so"
+  ],
+  "compile_returncode": 0,
+  "compile_stderr": "",
+  "protocol_sha256": "aa8a80b0dc4f721396a12265fd6f15ff725eff4ccf8bc2779d4516b7f191d7ff",
+  "codec_header_sha256": "0b281590e1a5e2dc7d416490226e96a8328ebd3af685f89a4837dedae25bec12",
+  "run_command": [
+    "/mnt/sda1/h3240101068/legosim_four_workloads_step3_20261024_v1/venv/bin/python",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/test_adapter.py",
+    "--source",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/modeling_qwen3_moe.py",
+    "--codec",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/libbf16_codec_bridge.so",
+    "--out",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_functional_v1_20261026/attempt1"
+  ],
+  "run_returncode": 0,
+  "stdout": "{\n  \"state\": \"PASS_LIMITED_CPU_SYNTHETIC_SOURCE_SEMANTICS\",\n  \"check_count\": 51,\n  \"failed\": 0,\n  \"event_count\": 269,\n  \"runtime\": {\n    \"python\": \"3.11.16 (main, Aug 27 2026, 14:44:21) [GCC 14.3.0]\",\n    \"torch\": \"2.6.0+cu124\",\n    \"numpy\": \"2.4.6\",\n    \"platform\": \"Linux-5.15.0-139-generic-x86_64-with-glibc2.31\",\n    \"threads\": 1,\n    \"cuda_initialized\": false,\n    \"mkldnn_enabled\": true\n  }\n}\n",
+  "stderr": "",
+  "codec_library_sha256": "d84abb1f46167f32e92380428df83f2a121b432cfe8caf19bd8a79d73305f6f5"
+}

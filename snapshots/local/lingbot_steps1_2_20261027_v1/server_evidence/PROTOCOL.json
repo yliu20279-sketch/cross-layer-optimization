@@ -1,0 +1,28 @@
+{
+  "target_has_GPU": false,
+  "target_profile": "HOST128_HB8_ORIGINAL_BF16_FP32_SOFTWARE_CANDIDATE",
+  "reference_only": "physical GPU1; not an architectural accelerator or target timing source",
+  "sample": "official TI2V example_4",
+  "seed": 42,
+  "frames": 121,
+  "height": 480,
+  "width": 832,
+  "steps": [
+    1,
+    40
+  ],
+  "guidance": 3,
+  "shift": 3,
+  "dtype": "original BF16/F32 parameters; original source encode autocast",
+  "refiner": false,
+  "precision_substitution": false,
+  "reference_variants": [
+    "Torch2.6cu124 instead of recommended2.12nightlycu130",
+    "source per-expert fallback for absent torch._grouped_mm",
+    "source chunked_scatter128 instead of scatter",
+    "staged text_encoder/vae/transformer residency to fit reference GPU1"
+  ],
+  "runtime_deadline_s": 5400,
+  "source_edits": false,
+  "created": 1793104778.5402563
+}

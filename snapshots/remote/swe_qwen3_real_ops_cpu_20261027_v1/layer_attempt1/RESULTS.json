@@ -1,0 +1,83 @@
+{
+  "state": "FULL_LAYER0_CPU_SOURCE_CHECK_WITH_CROSS_BACKEND_DIFFERENCES_RETAINED",
+  "checks": [
+    {
+      "name": "full_layer_adapter_vs_unmodified_source_CPU",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "full_layer_autonomous_CPU_vs_captured_GPU",
+      "phase": "prefill",
+      "exact": false,
+      "unequal": 4249,
+      "max_abs": 0.0068359375
+    },
+    {
+      "name": "autonomous_route_CPU_vs_captured_GPU",
+      "phase": "prefill",
+      "exact": false,
+      "unequal": 10,
+      "max_abs": 74.0
+    },
+    {
+      "name": "KV_key_adapter_vs_source_CPU",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "KV_value_adapter_vs_source_CPU",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "full_layer_adapter_vs_unmodified_source_CPU",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "full_layer_autonomous_CPU_vs_captured_GPU",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "autonomous_route_CPU_vs_captured_GPU",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "KV_key_adapter_vs_source_CPU",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "KV_value_adapter_vs_source_CPU",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    }
+  ],
+  "source_sha256": "3af43d01f9f902c8009b6dd7d7b8b563561b53dd0aa54175f585ae90d049fdb8",
+  "weight_keys": 393,
+  "parameter_elements": 623120640,
+  "router": "autonomous CPU logits and Top8; no injected recorded dispatch",
+  "cos_sin": "captured same GPU fixture used as common layer input",
+  "scope": "one real layer0 prefill and cached decode on CPU; not layer1, complete model, GPU exact, target NPU or timing",
+  "NPU_runs": 0,
+  "cuda_initialized": false
+}

@@ -1,0 +1,53 @@
+{
+  "scope": "v4 fixes full-prefill eager-attention OOM; v1/v2/v3 failures retained",
+  "model_precision": "same original BF16 checkpoint and eager Transformers4.51.3 source",
+  "diagnosis": [
+    "old R0010 context greedy capture off/on max128, token equivalence",
+    "same old context official nonthinking sampling max128",
+    "feedback rendering sentinel and original-message integrity audit"
+  ],
+  "sampling": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B#best-practices",
+  "prompt_revision": "short generic action protocol; no sed examples or solution; errors require inspecting current files and trying a different command; brief explanation only",
+  "feedback_fix": "include exception_info in rendered observations, matching official default; prior tiny errors were already visible",
+  "context_tokens": 32768,
+  "context_policy": "no history truncation, no YaRN; record limit failures",
+  "tool_output_chars": 12000,
+  "tool_output_policy": "raw full output logged; explicit head/tail clipping with original length in model observation",
+  "small_repo": {
+    "max_calls": 16,
+    "max_new_tokens": 512,
+    "wall_seconds": 1200
+  },
+  "development": {
+    "registered_tasks": [
+      "marshmallow-code__marshmallow-1343",
+      "marshmallow-code__marshmallow-1359"
+    ],
+    "max_calls": 50,
+    "max_new_tokens": 1024,
+    "wall_seconds_per_task": 2700
+  },
+  "holdout": "identities only; no problem/gold access",
+  "timing": "functional GPU only, no target NPU runs",
+  "GPU": "physical0 only, require at least72GiB free; never preempt other process",
+  "promotion": "tiny submission plus original tests unchanged and passing; development outcomes all retained including failure; no population solve-rate claim",
+  "action_format": "canonical fenced bash; official parse_regex_actions with configurable regex; explicit format skeleton, no solution",
+  "diagnosis_receipts": "../swe_qwen3_step3_repair_20261026_v2/CAPTURE_EQUIVALENCE.json and FEEDBACK_AUDIT.json",
+  "source_bindings": {
+    "backend.py": "bc039fd67cedf456d978210a6fb753f66972b948d2a676464f2a8f6a445f241a",
+    "run_repair.py": "5eb0ed1dcad5b06976f77f12a5485ae626016649c072178045c7dec4d356dff2",
+    "launch.py": "b1e9ae717800755c93da8b43cda5a327c72394c38803cbf05a99c8d6209d21b9",
+    "collect_patches.py": "408809a88e98af430e9eee35aac80556636a33482e0fdde74355788c4e92b917",
+    "evaluate_development.py": "4bc6079e49b92489e5dc8ba61a7968f8570850dcc49edfcb3b7a0602b79d713c"
+  },
+  "prefill": "256-token chunks; no prompt/history truncation; greedy whole/chunked equivalence on old R0010 context before tasks; all chunk routes captured",
+  "memory": "expandable_segments allocator; per-request peak allocated/reserved; source BF16 model/math unchanged",
+  "fixture_schema": "all layer0 prefill chunks and first decode with layer0 KV-before; decoder/prefill phase based on prompt token boundary",
+  "patch_collection": "complete final tree versus base_commit with intent-to-add for untracked files; no source/test edits by collector"
+}

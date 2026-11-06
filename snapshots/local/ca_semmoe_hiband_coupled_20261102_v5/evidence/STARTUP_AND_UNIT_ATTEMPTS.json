@@ -1,0 +1,18 @@
+{
+  "startup": {
+    "first_context": "coupled_probe_01",
+    "observed": "process exited with SIGSEGV before RPC handshake",
+    "bounded_debug_context": "startup_debug_01",
+    "confirmed_frame": "sim_foundation::init_file from sim_foundation constructor",
+    "confirmed_source_guard": "init_file is called when POPNET_COUPLED is absent",
+    "fix": "explicit POPNET_COUPLED=1 plus new-directory stats environment, constructor failure cleanup",
+    "later_probe": "coupled_probe_02 completed two changed-weight computations and one actual packet",
+    "model_numerical_failure_claimed": false
+  },
+  "unit_test": {
+    "initial_issue": "new FP32 normalized probability sum differed from1 by one representable rounding unit; decimal seven-place assertion was too tight",
+    "fix": "use explicit float32 epsilon for this normalization property",
+    "model_outputs_modified": false,
+    "final_remote_suite": "32 checks, no failures/errors/skips"
+  }
+}

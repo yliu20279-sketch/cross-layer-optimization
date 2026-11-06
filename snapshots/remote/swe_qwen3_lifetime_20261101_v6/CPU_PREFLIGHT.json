@@ -1,0 +1,52 @@
+{
+  "state": "PASS_CPU_PORTABLE_SOFTWARE_PREFLIGHT",
+  "tests": [
+    {
+      "phase": "prefill",
+      "layer": 0,
+      "top8_exact": 152,
+      "router_softmax_exact": 2432,
+      "normalization_exact": 152
+    },
+    {
+      "phase": "prefill",
+      "layer": 1,
+      "top8_exact": 152,
+      "router_softmax_exact": 2432,
+      "normalization_exact": 152
+    },
+    {
+      "phase": "decode",
+      "layer": 0,
+      "top8_exact": 8,
+      "router_softmax_exact": 128,
+      "normalization_exact": 8
+    },
+    {
+      "phase": "decode",
+      "layer": 1,
+      "top8_exact": 8,
+      "router_softmax_exact": 128,
+      "normalization_exact": 8
+    }
+  ],
+  "SiLU_full_BF16_bits": 65536,
+  "decode_full_BF16_bits": 65536,
+  "norm_K": [
+    128,
+    2048
+  ],
+  "native_timing": false,
+  "scope": "portable implementation on host CPU before Sniper integration; same original math dependency",
+  "extra_services": [
+    "gather_negative_indices",
+    "index_add_unique",
+    "rotate_half",
+    "cached_KV_concat",
+    "repeat_KV",
+    "prefill_decode_causal_mask",
+    "attention_scalar",
+    "KV_positions"
+  ],
+  "source_sha256": "39ee90bfc5175dd7fe56b296da1dfb71393d40ade69b6501cd89ce8055aac00e"
+}

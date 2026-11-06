@@ -1,0 +1,6 @@
+{
+  "state": "PRE_RUN_BATCH_V2",
+  "algorithm": "M1 64lane; M>1 bk/get_k_padd from oneDNN3.5.3 gemm_info.cpp and gemm_driver.cpp; K2048:768+768+512; K768:384+384; adjacent high/odd beforelow/even; FP32 partial combine thenBF16",
+  "cases": "86 existing groups gate/up/down 258 comparisons",
+  "gate": "exact BF16, no outputfix or tolerance change; original failures retained"
+}

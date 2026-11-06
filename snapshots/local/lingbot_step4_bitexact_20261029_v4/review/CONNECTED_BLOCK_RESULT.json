@@ -1,0 +1,81 @@
+{
+  "status": "PARTIAL_CONNECTED_BLOCK",
+  "rows": [
+    {
+      "branch": "cond",
+      "stage": "attention_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 72023,
+      "max_abs": 0.25
+    },
+    {
+      "branch": "cond",
+      "stage": "ffn_input",
+      "elements": 131072,
+      "BF16_bit_mismatches": 19315,
+      "max_abs": 0.125
+    },
+    {
+      "branch": "cond",
+      "stage": "ffn_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 61960,
+      "max_abs": 2.0
+    },
+    {
+      "branch": "cond",
+      "stage": "post_ffn_norm",
+      "elements": 131072,
+      "BF16_bit_mismatches": 65642,
+      "max_abs": 0.125
+    },
+    {
+      "branch": "cond",
+      "stage": "block_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 30281,
+      "max_abs": 0.125
+    },
+    {
+      "branch": "uncond",
+      "stage": "attention_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 78288,
+      "max_abs": 0.25
+    },
+    {
+      "branch": "uncond",
+      "stage": "ffn_input",
+      "elements": 131072,
+      "BF16_bit_mismatches": 19582,
+      "max_abs": 0.09375
+    },
+    {
+      "branch": "uncond",
+      "stage": "ffn_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 66278,
+      "max_abs": 2.0
+    },
+    {
+      "branch": "uncond",
+      "stage": "post_ffn_norm",
+      "elements": 131072,
+      "BF16_bit_mismatches": 69919,
+      "max_abs": 0.125
+    },
+    {
+      "branch": "uncond",
+      "stage": "block_output",
+      "elements": 131072,
+      "BF16_bit_mismatches": 33496,
+      "max_abs": 0.125
+    }
+  ],
+  "target_GPU_count": 0,
+  "CUDA_initialized": false,
+  "wall_seconds": 87.46987628936768,
+  "source_internal_Golden_injected": false,
+  "scope": "layer0 step0 two CFG;64 query/output rows,all context K/V; not every query,48 layers or40 steps",
+  "whole_step4_complete": false
+}

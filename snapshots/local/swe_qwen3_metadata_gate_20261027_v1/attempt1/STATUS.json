@@ -1,0 +1,53 @@
+{
+  "state": "PASS_LIMITED_CPU_ROUTE_METADATA_HB_DISPATCH_RELEASE",
+  "native": {
+    "counts": {
+      "events": 8,
+      "pipeline_cycles": 3721853,
+      "HB_write_bytes": 60720,
+      "RAM_transactions": 3796,
+      "RAM_physical_bytes": 121472,
+      "HB_read_bytes": 60720,
+      "SRAM_read_bytes": 60720,
+      "SRAM_write_bytes": 60720,
+      "SRAM_service_bytes": 121440
+    },
+    "SRAM_peak_bytes": 60720,
+    "metadata_ready_proxy_ns": 3739936,
+    "negative_controls": [
+      "SRAM_overflow_rejected",
+      "early_consumer_rejected",
+      "native_missing_dependency_rejected"
+    ]
+  },
+  "CPU_profile_elapsed_fs": 3715344800000,
+  "metadata_payload_bytes": 60720,
+  "metadata_HB_reserved_bytes": 60736,
+  "dispatch_records": 6072,
+  "dispatch_record_bytes": 32,
+  "dispatch_host_control_payload_bytes": 194304,
+  "host_function_arrays_and_control_bytes": 837936,
+  "negative_controls": [
+    "CPU_early_publication",
+    "DMA_before_CPU_completion",
+    "wrong_epoch",
+    "packets_not_HB_commit_IDs",
+    "duplicate_callback_IDs",
+    "IDs_only_partial_metadata",
+    "packets_not_HB_commit_weights",
+    "duplicate_callback_weights",
+    "dispatch_before_SRAM_read",
+    "SRAM_read_still_pending",
+    "metadata_corruption",
+    "free_before_dispatch_last_consumer",
+    "duplicate_dispatch"
+  ],
+  "softmax_FP32_GPU_difference": "FAILED_RETAINED_7_PHASES_max1.4901161193847656e-7",
+  "scope": "fixed759-row batch; release of functional dispatch descriptors only, no NoC token/expert arrival or compute",
+  "dispatch_parse_and_descriptor_CPU_cycles": null,
+  "host_GiB_overlay": 128,
+  "HB_GiB": 8,
+  "new_Sniper_GPU_agent_runs": 0,
+  "native_metadata_fragment_runs": 1,
+  "physical_NPU_runs": 0
+}

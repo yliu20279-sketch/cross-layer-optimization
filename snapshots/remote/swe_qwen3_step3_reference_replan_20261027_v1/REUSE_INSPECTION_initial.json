@@ -1,0 +1,2693 @@
+{
+  "state": "INSPECTED_EXISTING_REAL_FIXTURES_NOT_TARGET_EXECUTION",
+  "selection": "fixed short request and first completed request of each old branch; no success selection",
+  "rows": [
+    {
+      "root": "swe_qwen3_step3_gpu_20261026_v1",
+      "request": "R0002",
+      "task_id": "short_generation_capture_on",
+      "prompt_tokens": 19,
+      "new_tokens": 2,
+      "manifest_checks": [
+        {
+          "path": "REQUEST.json",
+          "bytes": 1486,
+          "sha256": "884ccdd807556ee2e9f9c14bd0e1563116de1592c7c5c5a024f60cbf12b7e4b5",
+          "matches": true
+        },
+        {
+          "path": "actual_routes.pt",
+          "bytes": 79370,
+          "sha256": "f1eac0c97f6535e3637fdb02d1c53d0b457b123c915a8efa15238ea79018834f",
+          "matches": true
+        },
+        {
+          "path": "layer0_actual_fixtures.pt",
+          "bytes": 361666,
+          "sha256": "f78c166c14c6690f7482c7a26952adfefe265b5655aeed2b4b69d0049c6ac11f",
+          "matches": true
+        }
+      ],
+      "fixture_schema": {
+        "prefill": {
+          "forward": {
+            "index": 0,
+            "phase": "prefill",
+            "past_tokens": 0,
+            "input_tokens": 19,
+            "input_token_ids": [
+              [
+                151644,
+                872,
+                198,
+                20841,
+                448,
+                6896,
+                279,
+                3409,
+                85332,
+                13,
+                151645,
+                198,
+                151644,
+                77091,
+                198,
+                151667,
+                271,
+                151668,
+                271
+              ]
+            ]
+          },
+          "decoder_input": {
+            "shape": [
+              1,
+              19,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "cos": {
+            "shape": [
+              1,
+              19,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "sin": {
+            "shape": [
+              1,
+              19,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "attention_output": {
+            "shape": [
+              1,
+              19,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_logits": {
+            "shape": [
+              19,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_probabilities_fp32": {
+            "shape": [
+              19,
+              128
+            ],
+            "dtype": "torch.float32",
+            "finite": true
+          },
+          "moe_input": {
+            "shape": [
+              19,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "actual_selected_experts": {
+            "shape": [
+              19,
+              8
+            ],
+            "dtype": "torch.int64",
+            "finite": true
+          },
+          "actual_final_weights": {
+            "shape": [
+              19,
+              8
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "decoder_output": {
+            "shape": [
+              1,
+              19,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          }
+        },
+        "decode": {
+          "forward": {
+            "index": 1,
+            "phase": "decode",
+            "past_tokens": 19,
+            "input_tokens": 1,
+            "input_token_ids": [
+              [
+                45578
+              ]
+            ]
+          },
+          "decoder_input": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "cos": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "sin": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "attention_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_logits": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_probabilities_fp32": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.float32",
+            "finite": true
+          },
+          "moe_input": {
+            "shape": [
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "actual_selected_experts": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.int64",
+            "finite": true
+          },
+          "actual_final_weights": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "decoder_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          }
+        }
+      },
+      "route_records": 96,
+      "expected_route_records": 96,
+      "all_routes_top8": true,
+      "weight_binding_sha256": "1ea11240b7145067a5b9bd35473391031915b09b302dbf2eafd2ba997d7640a2",
+      "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+      "weight_keys": 393,
+      "router_replay": [
+        {
+          "phase": "prefill",
+          "op": "CPU softmax/Top8/renormalize of captured GPU logits",
+          "ids_exact": false,
+          "weights_exact": true,
+          "probabilities_max_abs": 1.4901161193847656e-08,
+          "weights_max_abs": 0.0
+        },
+        {
+          "phase": "decode",
+          "op": "CPU softmax/Top8/renormalize of captured GPU logits",
+          "ids_exact": true,
+          "weights_exact": true,
+          "probabilities_max_abs": 3.725290298461914e-09,
+          "weights_max_abs": 0.0
+        }
+      ]
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "task_id": "marshmallow-code__marshmallow-1359",
+      "prompt_tokens": 738,
+      "new_tokens": 40,
+      "manifest_checks": [
+        {
+          "path": "REQUEST.json",
+          "bytes": 30892,
+          "sha256": "5afb27620fb2a0db59f5271bd2b2b24cb2f303e96cdcd222e10ade6f397914a3",
+          "matches": true
+        },
+        {
+          "path": "actual_routes.pt",
+          "bytes": 2315330,
+          "sha256": "5f95dd4c7051d643d9afc0349b6d726ea6561ab945c8be02b178b7d5cae38e28",
+          "matches": true
+        },
+        {
+          "path": "layer0_actual_fixtures.pt",
+          "bytes": 14642370,
+          "sha256": "075c7e1b9d6c769503910d119d76afa0eec20a8b6dc46e6c836427f0d2167ddc",
+          "matches": true
+        }
+      ],
+      "fixture_schema": {
+        "prefill_chunks": {
+          "0": {
+            "forward": {
+              "index": 0,
+              "phase": "prefill",
+              "past_tokens": 0,
+              "input_tokens": 256,
+              "input_token_ids": [
+                [
+                  151644,
+                  8948,
+                  198,
+                  2610,
+                  525,
+                  264,
+                  3162,
+                  12733,
+                  8315,
+                  13,
+                  5547,
+                  94003,
+                  7017,
+                  1667,
+                  27023,
+                  11293,
+                  304,
+                  279,
+                  17221,
+                  12542,
+                  13,
+                  17841,
+                  448,
+                  264,
+                  9814,
+                  1917,
+                  4008,
+                  323,
+                  6896,
+                  24038,
+                  83393,
+                  27023,
+                  2504,
+                  13,
+                  15042,
+                  510,
+                  73594,
+                  46216,
+                  198,
+                  72513,
+                  1098,
+                  68558,
+                  22723,
+                  198,
+                  13874,
+                  3989,
+                  4418,
+                  279,
+                  8129,
+                  323,
+                  9760,
+                  6350,
+                  7032,
+                  13,
+                  19716,
+                  8129,
+                  2530,
+                  11,
+                  537,
+                  6350,
+                  7032,
+                  25,
+                  1846,
+                  525,
+                  2617,
+                  13,
+                  84468,
+                  13027,
+                  19502,
+                  369,
+                  15664,
+                  13027,
+                  2038,
+                  26,
+                  653,
+                  537,
+                  990,
+                  10923,
+                  93650,
+                  311,
+                  4499,
+                  2038,
+                  23393,
+                  13,
+                  1913,
+                  458,
+                  1465,
+                  11,
+                  1349,
+                  279,
+                  1482,
+                  1034,
+                  323,
+                  2297,
+                  279,
+                  5486,
+                  13,
+                  1032,
+                  64877,
+                  279,
+                  1852,
+                  4641,
+                  3210,
+                  389,
+                  34857,
+                  3542,
+                  374,
+                  19299,
+                  13,
+                  5443,
+                  10275,
+                  1273,
+                  7375,
+                  26,
+                  902,
+                  3922,
+                  476,
+                  6328,
+                  13713,
+                  374,
+                  2500,
+                  13,
+                  25429,
+                  50844,
+                  323,
+                  1598,
+                  9760,
+                  6350,
+                  7032,
+                  1573,
+                  33094,
+                  13,
+                  35533,
+                  553,
+                  42121,
+                  1687,
+                  77031,
+                  26315,
+                  21767,
+                  17282,
+                  18330,
+                  75872,
+                  23981,
+                  7484,
+                  13,
+                  151645,
+                  198,
+                  151644,
+                  872,
+                  198,
+                  6776,
+                  304,
+                  608,
+                  1944,
+                  2721,
+                  13,
+                  19716,
+                  419,
+                  4265,
+                  323,
+                  1598,
+                  9760,
+                  30549,
+                  7032,
+                  13,
+                  3155,
+                  537,
+                  5602,
+                  6350,
+                  7032,
+                  13,
+                  5443,
+                  608,
+                  2912,
+                  44173,
+                  1924,
+                  3235,
+                  18,
+                  14358,
+                  82,
+                  12697,
+                  2721,
+                  8749,
+                  23266,
+                  979,
+                  2500,
+                  382,
+                  18,
+                  13,
+                  15,
+                  25,
+                  6520,
+                  5043,
+                  4157,
+                  387,
+                  1483,
+                  438,
+                  9179,
+                  2070,
+                  369,
+                  1759,
+                  476,
+                  24622,
+                  5043,
+                  198,
+                  25477,
+                  19232,
+                  220,
+                  18,
+                  13,
+                  15,
+                  13,
+                  15,
+                  1287,
+                  23,
+                  323,
+                  220,
+                  18,
+                  13,
+                  15,
+                  13,
+                  15,
+                  1287,
+                  24,
+                  11,
+                  1565,
+                  7689,
+                  63,
+                  5043,
+                  614,
+                  3855,
+                  21244,
+                  458,
+                  1465,
+                  979,
+                  1660,
+                  54586,
+                  438,
+                  9179,
+                  5043,
+                  315,
+                  5476,
+                  5043,
+                  1075,
+                  1565,
+                  852,
+                  63,
+                  476,
+                  1565,
+                  28681,
+                  28587,
+                  576,
+                  43065,
+                  3685,
+                  4278,
+                  304
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "1": {
+            "forward": {
+              "index": 1,
+              "phase": "prefill",
+              "past_tokens": 256,
+              "input_tokens": 256,
+              "input_token_ids": [
+                [
+                  2651,
+                  18,
+                  13,
+                  15,
+                  13,
+                  15,
+                  1287,
+                  23,
+                  323,
+                  3787,
+                  279,
+                  1465,
+                  3685,
+                  304,
+                  2604,
+                  18,
+                  13,
+                  15,
+                  13,
+                  15,
+                  1287,
+                  24,
+                  320,
+                  437,
+                  11,
+                  10955,
+                  11307,
+                  11,
+                  220,
+                  18,
+                  13,
+                  15,
+                  13,
+                  15,
+                  56002,
+                  73594,
+                  12669,
+                  319,
+                  1499,
+                  31996,
+                  74380,
+                  1159,
+                  5043,
+                  11,
+                  12539,
+                  871,
+                  1040,
+                  3017,
+                  8632,
+                  3759,
+                  3416,
+                  5783,
+                  262,
+                  3039,
+                  284,
+                  5043,
+                  5814,
+                  37701,
+                  16350,
+                  79189,
+                  82,
+                  284,
+                  3017,
+                  8632,
+                  3568,
+                  73594,
+                  871,
+                  6550,
+                  1419,
+                  2834,
+                  73594,
+                  319,
+                  6550,
+                  1419,
+                  320,
+                  3562,
+                  3213,
+                  1618,
+                  1537,
+                  5783,
+                  220,
+                  2887,
+                  330,
+                  1944,
+                  48575,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  23,
+                  11,
+                  304,
+                  366,
+                  4352,
+                  1433,
+                  262,
+                  274,
+                  284,
+                  3017,
+                  8632,
+                  3568,
+                  220,
+                  2887,
+                  3521,
+                  7137,
+                  5457,
+                  849,
+                  269,
+                  11930,
+                  3288,
+                  3160,
+                  14,
+                  28290,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  8194,
+                  23266,
+                  18,
+                  13,
+                  21,
+                  47881,
+                  75761,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  61142,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  18,
+                  23,
+                  18,
+                  11,
+                  304,
+                  1304,
+                  2327,
+                  62564,
+                  262,
+                  656,
+                  12920,
+                  284,
+                  656,
+                  1436,
+                  2327,
+                  12132,
+                  3568,
+                  220,
+                  2887,
+                  3521,
+                  7137,
+                  5457,
+                  849,
+                  269,
+                  11930,
+                  3288,
+                  3160,
+                  14,
+                  28290,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  8194,
+                  23266,
+                  18,
+                  13,
+                  21,
+                  47881,
+                  75761,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  61142,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  24,
+                  16,
+                  18,
+                  11,
+                  304,
+                  716,
+                  2327,
+                  12132,
+                  319,
+                  262,
+                  656,
+                  1436,
+                  7666,
+                  5013,
+                  15573,
+                  1269,
+                  11,
+                  2070,
+                  7328,
+                  1218,
+                  220,
+                  2887,
+                  3521,
+                  7137,
+                  5457,
+                  849,
+                  269,
+                  11930,
+                  3288,
+                  3160,
+                  14,
+                  28290,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  8194,
+                  23266,
+                  18,
+                  13,
+                  21,
+                  47881,
+                  75761,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  61142,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  24,
+                  21,
+                  24,
+                  11,
+                  304,
+                  716,
+                  7666,
+                  5013,
+                  319,
+                  262,
+                  2070,
+                  7328,
+                  1436,
+                  7666,
+                  2346,
+                  25371,
+                  15573,
+                  1269,
+                  11,
+                  656,
+                  1218,
+                  220
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "2": {
+            "forward": {
+              "index": 2,
+              "phase": "prefill",
+              "past_tokens": 512,
+              "input_tokens": 225,
+              "input_token_ids": [
+                [
+                  2887,
+                  3521,
+                  7137,
+                  5457,
+                  849,
+                  269,
+                  11930,
+                  3288,
+                  3160,
+                  14,
+                  28290,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  8194,
+                  23266,
+                  18,
+                  13,
+                  21,
+                  47881,
+                  75761,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  14,
+                  9007,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  21,
+                  18,
+                  21,
+                  11,
+                  304,
+                  716,
+                  7666,
+                  2346,
+                  25371,
+                  319,
+                  262,
+                  656,
+                  9398,
+                  1436,
+                  7666,
+                  2346,
+                  25371,
+                  15573,
+                  1269,
+                  11,
+                  656,
+                  1218,
+                  220,
+                  2887,
+                  3521,
+                  7137,
+                  5457,
+                  849,
+                  269,
+                  11930,
+                  3288,
+                  3160,
+                  14,
+                  28290,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  8194,
+                  23266,
+                  18,
+                  13,
+                  21,
+                  47881,
+                  75761,
+                  3183,
+                  277,
+                  927,
+                  74380,
+                  14,
+                  9007,
+                  7197,
+                  497,
+                  1555,
+                  220,
+                  16,
+                  16,
+                  16,
+                  22,
+                  11,
+                  304,
+                  716,
+                  7666,
+                  2346,
+                  25371,
+                  319,
+                  262,
+                  476,
+                  29997,
+                  42735,
+                  56022,
+                  11,
+                  656,
+                  53519,
+                  35839,
+                  84015,
+                  25750,
+                  4708,
+                  1218,
+                  3907,
+                  1454,
+                  25,
+                  364,
+                  852,
+                  6,
+                  1633,
+                  702,
+                  902,
+                  7035,
+                  364,
+                  10518,
+                  9739,
+                  73594,
+                  871,
+                  2132,
+                  4977,
+                  1075,
+                  432,
+                  594,
+                  26625,
+                  279,
+                  2681,
+                  2070,
+                  438,
+                  264,
+                  12539,
+                  2041,
+                  13295,
+                  429,
+                  432,
+                  374,
+                  12824,
+                  264,
+                  10802,
+                  11,
+                  773,
+                  279,
+                  1565,
+                  17349,
+                  56022,
+                  63,
+                  5114,
+                  14525,
+                  438,
+                  5043,
+                  1513,
+                  944,
+                  614,
+                  458,
+                  1565,
+                  10518,
+                  63,
+                  7035,
+                  4192,
+                  4854,
+                  3210,
+                  8473,
+                  304,
+                  264,
+                  501,
+                  12528,
+                  26,
+                  24999,
+                  1034,
+                  50844,
+                  7146,
+                  13,
+                  22150,
+                  6220,
+                  25,
+                  608,
+                  1944,
+                  2721,
+                  13,
+                  5443,
+                  61115,
+                  1034,
+                  15804,
+                  323,
+                  10735,
+                  7032,
+                  311,
+                  2506,
+                  16275,
+                  70028,
+                  13,
+                  1416,
+                  2550,
+                  374,
+                  73059,
+                  11,
+                  1681,
+                  264,
+                  90429,
+                  2088,
+                  13,
+                  3411,
+                  6896,
+                  825,
+                  83393,
+                  27023,
+                  2504,
+                  817,
+                  9851,
+                  13,
+                  151645,
+                  198,
+                  151644,
+                  77091,
+                  198,
+                  151667,
+                  271,
+                  151668
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                225,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                225,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                225,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                225,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                225,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                225,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                225,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                225,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                225,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                225,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "3": {
+            "forward": {
+              "index": 3,
+              "phase": "prefill",
+              "past_tokens": 737,
+              "input_tokens": 1,
+              "input_token_ids": [
+                [
+                  271
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                1,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                1,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          }
+        },
+        "decode": {
+          "forward": {
+            "index": 4,
+            "phase": "decode",
+            "past_tokens": 738,
+            "input_tokens": 1,
+            "input_token_ids": [
+              [
+                73594
+              ]
+            ]
+          },
+          "decoder_input": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "cos": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "sin": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "layer0_key_cache_before": {
+            "shape": [
+              1,
+              4,
+              738,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "layer0_value_cache_before": {
+            "shape": [
+              1,
+              4,
+              738,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "attention_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_logits": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_probabilities_fp32": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.float32",
+            "finite": true
+          },
+          "moe_input": {
+            "shape": [
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "actual_selected_experts": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.int64",
+            "finite": true
+          },
+          "actual_final_weights": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "decoder_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          }
+        }
+      },
+      "route_records": 2064,
+      "expected_route_records": 2064,
+      "all_routes_top8": true,
+      "weight_binding_sha256": "1ea11240b7145067a5b9bd35473391031915b09b302dbf2eafd2ba997d7640a2",
+      "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+      "weight_keys": 393,
+      "router_replay": [
+        {
+          "phase": "decode",
+          "op": "CPU softmax/Top8/renormalize of captured GPU logits",
+          "ids_exact": true,
+          "weights_exact": true,
+          "probabilities_max_abs": 3.725290298461914e-09,
+          "weights_max_abs": 0.0
+        }
+      ]
+    },
+    {
+      "root": "swe_qwen3_step3_holdout_20261026_v1",
+      "request": "R0001",
+      "task_id": "astropy__astropy-12907",
+      "prompt_tokens": 571,
+      "new_tokens": 62,
+      "manifest_checks": [
+        {
+          "path": "REQUEST.json",
+          "bytes": 31410,
+          "sha256": "550921ef09bd64e0d37b80c447e6dc3962404b0604ea7627167777e059ece476",
+          "matches": true
+        },
+        {
+          "path": "actual_routes.pt",
+          "bytes": 2664514,
+          "sha256": "43c53fb7bbfacebea7c9c432016cd4957ed4596cd1c099ca21144f8584aebde8",
+          "matches": true
+        },
+        {
+          "path": "layer0_actual_fixtures.pt",
+          "bytes": 11336642,
+          "sha256": "45b14eb686b81e35c3222196ee0809b6fd861fd9d41c10711d33ff63e501bf00",
+          "matches": true
+        }
+      ],
+      "fixture_schema": {
+        "prefill_chunks": {
+          "0": {
+            "forward": {
+              "index": 0,
+              "phase": "prefill",
+              "past_tokens": 0,
+              "input_tokens": 256,
+              "input_token_ids": [
+                [
+                  151644,
+                  8948,
+                  198,
+                  2610,
+                  525,
+                  264,
+                  3162,
+                  12733,
+                  8315,
+                  13,
+                  5547,
+                  94003,
+                  7017,
+                  1667,
+                  27023,
+                  11293,
+                  304,
+                  279,
+                  17221,
+                  12542,
+                  13,
+                  17841,
+                  448,
+                  264,
+                  9814,
+                  1917,
+                  4008,
+                  323,
+                  6896,
+                  24038,
+                  83393,
+                  27023,
+                  2504,
+                  13,
+                  15042,
+                  510,
+                  73594,
+                  46216,
+                  198,
+                  72513,
+                  1098,
+                  68558,
+                  22723,
+                  198,
+                  13874,
+                  3989,
+                  4418,
+                  279,
+                  8129,
+                  323,
+                  9760,
+                  6350,
+                  7032,
+                  13,
+                  19716,
+                  8129,
+                  2530,
+                  11,
+                  537,
+                  6350,
+                  7032,
+                  25,
+                  1846,
+                  525,
+                  2617,
+                  13,
+                  84468,
+                  13027,
+                  19502,
+                  369,
+                  15664,
+                  13027,
+                  2038,
+                  26,
+                  653,
+                  537,
+                  990,
+                  10923,
+                  93650,
+                  311,
+                  4499,
+                  2038,
+                  23393,
+                  13,
+                  1913,
+                  458,
+                  1465,
+                  11,
+                  1349,
+                  279,
+                  1482,
+                  1034,
+                  323,
+                  2297,
+                  279,
+                  5486,
+                  13,
+                  1032,
+                  64877,
+                  279,
+                  1852,
+                  4641,
+                  3210,
+                  389,
+                  34857,
+                  3542,
+                  374,
+                  19299,
+                  13,
+                  5443,
+                  10275,
+                  1273,
+                  7375,
+                  26,
+                  902,
+                  3922,
+                  476,
+                  6328,
+                  13713,
+                  374,
+                  2500,
+                  13,
+                  25429,
+                  50844,
+                  323,
+                  1598,
+                  9760,
+                  6350,
+                  7032,
+                  1573,
+                  33094,
+                  13,
+                  35533,
+                  553,
+                  42121,
+                  1687,
+                  77031,
+                  26315,
+                  21767,
+                  17282,
+                  18330,
+                  75872,
+                  23981,
+                  7484,
+                  13,
+                  151645,
+                  198,
+                  151644,
+                  872,
+                  198,
+                  6776,
+                  304,
+                  608,
+                  1944,
+                  2721,
+                  13,
+                  19716,
+                  419,
+                  4265,
+                  323,
+                  1598,
+                  9760,
+                  30549,
+                  7032,
+                  13,
+                  3155,
+                  537,
+                  5602,
+                  6350,
+                  7032,
+                  13,
+                  5443,
+                  608,
+                  2912,
+                  44173,
+                  1924,
+                  3235,
+                  18,
+                  14358,
+                  82,
+                  12697,
+                  2721,
+                  8749,
+                  23266,
+                  979,
+                  2500,
+                  382,
+                  1712,
+                  287,
+                  594,
+                  1565,
+                  325,
+                  1732,
+                  2897,
+                  10193,
+                  63,
+                  1558,
+                  537,
+                  12564,
+                  4836,
+                  2897,
+                  12440,
+                  369,
+                  24034,
+                  61572,
+                  16969,
+                  198,
+                  37175,
+                  279,
+                  2701,
+                  1614,
+                  31980,
+                  73594,
+                  12669,
+                  319,
+                  1499,
+                  11763,
+                  17764,
+                  3192,
+                  287,
+                  1159,
+                  4119,
+                  438,
+                  296,
+                  319,
+                  1499,
+                  11763,
+                  17764,
+                  3192,
+                  287,
+                  4523,
+                  49156,
+                  1159,
+                  4836,
+                  2897,
+                  10193,
+                  871,
+                  6226,
+                  284,
+                  296,
+                  33116,
+                  16,
+                  35,
+                  7,
+                  16,
+                  15,
+                  8,
+                  609,
+                  296,
+                  33116,
+                  16,
+                  35,
+                  7,
+                  20,
+                  1218,
+                  73594
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "1": {
+            "forward": {
+              "index": 1,
+              "phase": "prefill",
+              "past_tokens": 256,
+              "input_tokens": 256,
+              "input_token_ids": [
+                [
+                  871,
+                  2132,
+                  594,
+                  4836,
+                  2897,
+                  6172,
+                  438,
+                  498,
+                  2578,
+                  1720,
+                  374,
+                  264,
+                  37236,
+                  31980,
+                  73594,
+                  12669,
+                  319,
+                  20154,
+                  4836,
+                  2897,
+                  10193,
+                  51126,
+                  1218,
+                  1653,
+                  27119,
+                  3007,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  4049,
+                  11,
+                  220,
+                  3007,
+                  5053,
+                  1218,
+                  73594,
+                  871,
+                  2679,
+                  358,
+                  1281,
+                  279,
+                  1614,
+                  803,
+                  6351,
+                  2834,
+                  73594,
+                  12669,
+                  319,
+                  20154,
+                  4836,
+                  2897,
+                  10193,
+                  1255,
+                  1069,
+                  941,
+                  17,
+                  45948,
+                  1139,
+                  1093,
+                  368,
+                  609,
+                  296,
+                  33116,
+                  16,
+                  35,
+                  7,
+                  16,
+                  15,
+                  8,
+                  609,
+                  296,
+                  33116,
+                  16,
+                  35,
+                  7,
+                  20,
+                  5784,
+                  1653,
+                  27119,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  3557,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  3557,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  4049,
+                  11,
+                  3557,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  4049,
+                  11,
+                  3557,
+                  11,
+                  3557,
+                  11,
+                  220,
+                  3007,
+                  5053,
+                  1218,
+                  73594,
+                  871,
+                  785,
+                  2550,
+                  6172,
+                  374,
+                  1549,
+                  11,
+                  438,
+                  3601,
+                  11,
+                  279,
+                  16275,
+                  323,
+                  11127,
+                  311,
+                  279,
+                  13482,
+                  4119,
+                  525,
+                  4836,
+                  480,
+                  323,
+                  9489,
+                  315,
+                  1817,
+                  1008,
+                  17825,
+                  2679,
+                  4764,
+                  11,
+                  358,
+                  22791,
+                  1493,
+                  23628,
+                  4119,
+                  2834,
+                  73594,
+                  12669,
+                  319,
+                  20154,
+                  4836,
+                  2897,
+                  10193,
+                  1255,
+                  1069,
+                  941,
+                  17,
+                  45948,
+                  1139,
+                  1093,
+                  368,
+                  609,
+                  9961,
+                  1218,
+                  1653,
+                  27119,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  3557,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  3557,
+                  11,
+                  3557,
+                  18334,
+                  981,
+                  508,
+                  4049,
+                  11,
+                  3557,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  18334,
+                  981,
+                  508,
+                  4049,
+                  11,
+                  3557,
+                  11,
+                  220,
+                  3007,
+                  11,
+                  220,
+                  3007,
+                  5053,
+                  1218,
+                  73594,
+                  319,
+                  97231,
+                  279,
+                  11127,
+                  323,
+                  16275,
+                  525,
+                  902,
+                  5021,
+                  4836,
+                  480,
+                  30,
+                  871,
+                  1986,
+                  11074,
+                  1075,
+                  264,
+                  9876,
+                  311,
+                  752,
+                  11,
+                  714,
+                  358,
+                  2578,
+                  387,
+                  7402,
+                  2494,
+                  30831,
+                  4854
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                256,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                256,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                256,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "2": {
+            "forward": {
+              "index": 2,
+              "phase": "prefill",
+              "past_tokens": 512,
+              "input_tokens": 58,
+              "input_token_ids": [
+                [
+                  3210,
+                  8473,
+                  304,
+                  264,
+                  501,
+                  12528,
+                  26,
+                  24999,
+                  1034,
+                  50844,
+                  7146,
+                  13,
+                  22150,
+                  6220,
+                  25,
+                  608,
+                  1944,
+                  2721,
+                  13,
+                  5443,
+                  61115,
+                  1034,
+                  15804,
+                  323,
+                  10735,
+                  7032,
+                  311,
+                  2506,
+                  16275,
+                  70028,
+                  13,
+                  1416,
+                  2550,
+                  374,
+                  73059,
+                  11,
+                  1681,
+                  264,
+                  90429,
+                  2088,
+                  13,
+                  3411,
+                  6896,
+                  825,
+                  83393,
+                  27023,
+                  2504,
+                  817,
+                  9851,
+                  13,
+                  151645,
+                  198,
+                  151644,
+                  77091,
+                  198,
+                  151667,
+                  271,
+                  151668
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                58,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                58,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                58,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                58,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                58,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                58,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                58,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                58,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                58,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                58,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          },
+          "3": {
+            "forward": {
+              "index": 3,
+              "phase": "prefill",
+              "past_tokens": 570,
+              "input_tokens": 1,
+              "input_token_ids": [
+                [
+                  271
+                ]
+              ]
+            },
+            "decoder_input": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "cos": {
+              "shape": [
+                1,
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "sin": {
+              "shape": [
+                1,
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "attention_output": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_logits": {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "router_probabilities_fp32": {
+              "shape": [
+                1,
+                128
+              ],
+              "dtype": "torch.float32",
+              "finite": true
+            },
+            "moe_input": {
+              "shape": [
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "actual_selected_experts": {
+              "shape": [
+                1,
+                8
+              ],
+              "dtype": "torch.int64",
+              "finite": true
+            },
+            "actual_final_weights": {
+              "shape": [
+                1,
+                8
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            },
+            "decoder_output": {
+              "shape": [
+                1,
+                1,
+                2048
+              ],
+              "dtype": "torch.bfloat16",
+              "finite": true
+            }
+          }
+        },
+        "decode": {
+          "forward": {
+            "index": 4,
+            "phase": "decode",
+            "past_tokens": 571,
+            "input_tokens": 1,
+            "input_token_ids": [
+              [
+                73594
+              ]
+            ]
+          },
+          "decoder_input": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "cos": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "sin": {
+            "shape": [
+              1,
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "layer0_key_cache_before": {
+            "shape": [
+              1,
+              4,
+              571,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "layer0_value_cache_before": {
+            "shape": [
+              1,
+              4,
+              571,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "attention_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_logits": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "router_probabilities_fp32": {
+            "shape": [
+              1,
+              128
+            ],
+            "dtype": "torch.float32",
+            "finite": true
+          },
+          "moe_input": {
+            "shape": [
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "actual_selected_experts": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.int64",
+            "finite": true
+          },
+          "actual_final_weights": {
+            "shape": [
+              1,
+              8
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          },
+          "decoder_output": {
+            "shape": [
+              1,
+              1,
+              2048
+            ],
+            "dtype": "torch.bfloat16",
+            "finite": true
+          }
+        }
+      },
+      "route_records": 3120,
+      "expected_route_records": 3120,
+      "all_routes_top8": true,
+      "weight_binding_sha256": "1ea11240b7145067a5b9bd35473391031915b09b302dbf2eafd2ba997d7640a2",
+      "model_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+      "weight_keys": 393,
+      "router_replay": [
+        {
+          "phase": "decode",
+          "op": "CPU softmax/Top8/renormalize of captured GPU logits",
+          "ids_exact": true,
+          "weights_exact": true,
+          "probabilities_max_abs": 3.725290298461914e-09,
+          "weights_max_abs": 0.0
+        }
+      ]
+    }
+  ],
+  "torch": "2.6.0+cu124",
+  "CPU_threads": 1,
+  "cuda_initialized": false,
+  "NPU_runs": 0,
+  "scope": "selected request member hashes and real CPU router subchain; not all packet rehash, full layer or target timing"
+}

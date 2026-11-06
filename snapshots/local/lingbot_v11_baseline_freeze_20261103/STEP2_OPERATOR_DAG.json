@@ -1,0 +1,2611 @@
+{
+  "state": "PASS_STRUCTURAL_TEMPLATE",
+  "sample": "example_4",
+  "binding_sha256": "bbfc82c82cc44e45751ec1f54c4f85318c5bc0ad032a5cb9e167d360894c1bd6",
+  "scope": "layer-0 step-0 dual CFG template plus application boundaries; no runtime validation",
+  "expansion": {
+    "layers": 48,
+    "steps": 40,
+    "layer_edge": "output[L] -> input[L+1] within CFG",
+    "step_edge": "next_latent[S] -> both CFG inputs[S+1]"
+  },
+  "communication": {
+    "source_CP": [
+      "Q sequence-to-head",
+      "K sequence-to-head",
+      "V sequence-to-head",
+      "output head-to-sequence"
+    ],
+    "source_CFG": [
+      "latent broadcast",
+      "unconditional output broadcast"
+    ],
+    "target_TP": "ordered O FP32 rank carry",
+    "target_EP": "dispatch and return",
+    "note": "Source CP and CFG are separate accounting categories, not target TP/EP events."
+  },
+  "event_fields": [
+    "request",
+    "step",
+    "timestep",
+    "layer",
+    "cfg",
+    "token",
+    "token_thw",
+    "padding",
+    "rank",
+    "expert",
+    "slot",
+    "shape",
+    "dtype",
+    "bytes",
+    "address",
+    "owner",
+    "last_reader",
+    "buffer_version",
+    "transaction",
+    "clock_domain",
+    "start_tick",
+    "complete_tick",
+    "complete_target_ns",
+    "dependencies"
+  ],
+  "coverage": {
+    "v11": "continuous single-layer numerical and macro completion evidence",
+    "gpu_stage_reference": "step 1 fixtures; no intermediate injection",
+    "probe": "planned, no completion timestamps",
+    "full_video": "planned",
+    "uncond_independent_fp32": "pending"
+  },
+  "node_count": 108,
+  "edge_count": 141,
+  "nodes": {
+    "arrival": {
+      "resource": "request",
+      "dependencies": [],
+      "evidence": "planned",
+      "target_ns": 0
+    },
+    "first_frame_vlm": {
+      "resource": "condition_encoder",
+      "dependencies": [
+        "arrival"
+      ],
+      "evidence": "planned"
+    },
+    "first_frame_vae_encode": {
+      "resource": "VAE",
+      "dependencies": [
+        "arrival"
+      ],
+      "evidence": "planned"
+    },
+    "initial_latent": {
+      "resource": "latent",
+      "dependencies": [
+        "first_frame_vlm",
+        "first_frame_vae_encode"
+      ],
+      "evidence": "planned"
+    },
+    "cond.text_encode": {
+      "resource": "condition_encoder",
+      "dependencies": [
+        "arrival"
+      ],
+      "evidence": "planned",
+      "polarity": "cond"
+    },
+    "cond.block_input": {
+      "resource": "DiT",
+      "dependencies": [
+        "cond.text_encode",
+        "first_frame_vlm",
+        "initial_latent"
+      ],
+      "evidence": "frozen_fixture_boundary",
+      "reference": {
+        "path": "/mnt/sda1/h3240101068/lingbot_step3_capture_20261028_v1/fixtures/full_on_s00_cond_L00_block_input.pt",
+        "sha256": "9b42d67b97a7c23893cb4b86413c98117fd7964a5787b89f590c08aa95a4f784",
+        "bytes": 204322201,
+        "shape": [
+          49883,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "use": "source_input"
+      }
+    },
+    "cond.time_modulation": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.block_input"
+      ],
+      "evidence": "planned"
+    },
+    "cond.rmsnorm": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.time_modulation"
+      ],
+      "evidence": "planned"
+    },
+    "cond.q_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "cond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a3ef8354c2f6f58ddff9da0821f1006df8eb024458ba5eccb9f50d81f0c0fb6a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "ec0add1c2afa386379b0c7a79460c850d0668fd388f55352011e3a94a47dc37d",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a50ed37702c006325799238ce8e537587ba89874671a9828da9c52ae1aa9fd03",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7bc7091164ea6100d221d09600a772a5318f7f5631755ce7849ca73c74ff238c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1b68c12fd2cc41d0743dfaa4cafa4f29d1494120fa521f8bda95bae95fba1dbd",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "8fc1b1060b844b7053cefeff74605fe187ddc1b69cede597a510a3b8639677d1",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7383608c58310006860497aa2d60f452180c666d3082484ad7978aa06ce7b07d",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "16cfd54ed6ed094d85c9b3a985fabd1e7ac01812fa39cd558d8906c374eb4525",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7254eb45f9461bd53016e233830552adaa6d6284e30a2cce155a728711651a4f",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a876ee799b305e329025a5fba43a7fece8fec8fb6f1ccd52bce4d8a609680247",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2236091d3b2cc281e7b714e6896d719568eb12513af5cd0d8da9e7c9a37d970f",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e2741b6c80c1df346cd3c70d96a212a9955b1123446373d7144969738e2510ef",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "dd93dfbc051ca8c902f07cf7ef2f3b3c2aa9ffa3f1c2c33b1d1df92e832d69d2",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a6f509c5dc2fea6d9977fd2bdfa1e66b996dddfd33f0e04cec865848a7bf8e8b",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "73dfbf61158d501cf08bd7f8cfe3a40ccfe929795bc7f531748bb231ff46f833",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f5f47ad6e1a3d6b450cf68c999f77e615e77e8ffb071565610442ff432bf0664",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "cond.q_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.rmsnorm",
+        "cond.q_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "cond.q_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.q_projection"
+      ],
+      "evidence": "planned"
+    },
+    "cond.q_rope": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.q_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.k_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "cond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "25de129c55425562398e894de18a599ef99eafd3ddd6846dd68ab2c2be3aa699",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "426b8e4123a65016e47831b1491ff3a5401f6341ea3356e6991cd99f1d7d2490",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "76d8e6bddb41558f8436fe78e69c77b8fada05fb55ad9d046de60df2d7f578ce",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "85f0ca6a15c03b93ea7e185cf282c02e7e2b2760125258c48492d9fdb1df9ee0",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c95061a6b4c7320c7b647bed094e9c4b58e25e27aea86d6e26e045cfdf8fe54c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e771d0861783edca9ef9368bfd760cf3115b0b8240ff4818d07a02c45ecbad92",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f017ba6f5dfa581f6ff7824ebe1cef86fcf6a215adf8cdea74caa8202351542e",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3ec677969aa4c4109e1dee199f6dde0dcccc4d9ef3aac21f69e30b9c6f539e28",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3c9e10695259620060ddb04f087832bad5f71412e87d743badb654086118b1cd",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1ec00a9958caa392c5ffa1e8f8405c3d76a727137f3f111b8eedf38e696157da",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "49c436852b9c1922e1e819392d113deb9e8db1e05b19b6ba4e9d46c589d5ea26",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "53969125cb7d41a11e43fd2c7ff24ab6c2ade445276b1d9c2a87cf5a7559e810",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a3b1d455b0fae09fb2ea7943d4de16d04fce9eaa4f33de6aca33aa5a0bcf1730",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "8d7723b66fb25528838e41db7613d8bc2690f8e4a947d5be5d9b669d8099647b",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "70acf13d49cb39a1701d195a80ef04d5431b047499718e838003c9a42bc04736",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2e839f0dc772e20c567578da93197638580511643d958b1d66f49ff866346e90",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "cond.k_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.rmsnorm",
+        "cond.k_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "cond.k_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.k_projection"
+      ],
+      "evidence": "planned"
+    },
+    "cond.k_rope": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.k_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.v_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "cond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "646e7edec521f9cacfc3b3cd5c2c76ff2c3fbabe2108ce0d668f606ea41b8e47",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7ba0d2fe9444b982033eca3cbab6304eaaaae0d53bc1ca97486a6b2f920033e1",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "96701cd43c035fe8875d980082e1c8552c47dea83835e6317043b087431b9152",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3fda25e4f8089772e114e83f8d772bff54d56e93fdfa2e090ff7649ff995dace",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "85c9dec6fde280a22e6f221b33791277d281b58d6b261897d5511608dd36e73c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "536bb042433193cc9f7a907aa468f3ec0dd9a8e11f9f547c528bc52928f0f9aa",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "d9be71a648d53f9f07c120d81359fbe054aeb86a826ad6867bcd03ab3083d92a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "42d61725c632192da5bf4a864437fc865297c69bf8894bc8b1ad9fad8e782686",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2d1832de7e69ee1765e9e766397a0fda560a481f8cb10a182d95c70cd61043c8",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c6ff70cebd136a65f443342e7485f635a486d5863487845e3a7f8e3b90afb486",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c4042dddd3373c52f8571c0a13b529f14c576ea8af3c7a2c7413f3eadac27287",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "0467eed7e73db13033afce510718ccc5d654ebede3b479186e874ebb6bdde098",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f2ed5deefe3c57ae64f9533927decc6b657ec9f33169af90599e2bc1894b8be8",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1da9188f1a817ad0aa08a056c66258b929d37d64ffc76454273f79d0407c78ce",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "4cb332b54c28d0959e13fa396fe04a7d888ce9ccc1124ccf7480c18b0b70ff68",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e86d061fe926625ce61de8981a074325cbd6f368e554d1e295602b7b6b02d80a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "cond.v_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.rmsnorm",
+        "cond.v_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "cond.noncausal_score": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.q_rope",
+        "cond.k_rope",
+        "cond.v_projection"
+      ],
+      "evidence": "planned",
+      "inputs_used": [
+        "q",
+        "k"
+      ]
+    },
+    "cond.softmax": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.noncausal_score"
+      ],
+      "evidence": "planned"
+    },
+    "cond.value": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.softmax",
+        "cond.v_projection"
+      ],
+      "evidence": "planned",
+      "kv_regression_only": [
+        {
+          "path": "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/case1/N00/cond_new_Kraw.npy",
+          "sha256": "6b0b3bb77b93a7e3e72a96abe60982cc4a7811a49c7a9c49392c6ba1bcdde92c",
+          "bytes": 25540224
+        },
+        {
+          "path": "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/case1/N00/cond_new_V.npy",
+          "sha256": "dd5543e4ca036abaf7eed6e3a55284e46880f13e691508b396235b6c8f2be8b3",
+          "bytes": 25540224
+        }
+      ]
+    },
+    "cond.o_projection": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "cond.value"
+      ],
+      "evidence": "planned"
+    },
+    "cond.ordered_fp32_rank_carry": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "cond.o_projection"
+      ],
+      "evidence": "planned"
+    },
+    "cond.o_bias": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "cond.ordered_fp32_rank_carry"
+      ],
+      "evidence": "planned"
+    },
+    "cond.attention_residual": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "cond.o_bias"
+      ],
+      "evidence": "planned"
+    },
+    "cond.moe_norm": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "cond.attention_residual"
+      ],
+      "evidence": "planned"
+    },
+    "cond.router_fp32": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.sigmoid": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.router_fp32"
+      ],
+      "evidence": "planned"
+    },
+    "cond.correction_bias": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.sigmoid"
+      ],
+      "evidence": "planned"
+    },
+    "cond.group_top2": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.correction_bias"
+      ],
+      "evidence": "planned"
+    },
+    "cond.top8": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.group_top2"
+      ],
+      "evidence": "planned"
+    },
+    "cond.unbiased_weight_normalize_scale_padding": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.top8",
+        "cond.sigmoid"
+      ],
+      "evidence": "planned"
+    },
+    "cond.pack": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.unbiased_weight_normalize_scale_padding",
+        "cond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.dispatch_tail_arrival": {
+      "resource": "NoC_EP",
+      "dependencies": [
+        "cond.pack"
+      ],
+      "evidence": "planned"
+    },
+    "cond.expert_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "cond.top8"
+      ],
+      "evidence": "planned"
+    },
+    "cond.expert_gate_up": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.dispatch_tail_arrival",
+        "cond.expert_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "cond.silu_mul": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "cond.expert_gate_up"
+      ],
+      "evidence": "planned"
+    },
+    "cond.down": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "cond.silu_mul"
+      ],
+      "evidence": "planned"
+    },
+    "cond.return_tail_arrival": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "cond.down"
+      ],
+      "evidence": "planned"
+    },
+    "cond.restore_source_slot": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "cond.return_tail_arrival"
+      ],
+      "evidence": "planned"
+    },
+    "cond.fp32_weighted_reduce": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "cond.restore_source_slot"
+      ],
+      "evidence": "planned"
+    },
+    "cond.shared_gate_up": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.shared_silu_mul": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.shared_gate_up"
+      ],
+      "evidence": "planned"
+    },
+    "cond.shared_down": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.shared_silu_mul"
+      ],
+      "evidence": "planned"
+    },
+    "cond.shared_routed_join": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.fp32_weighted_reduce",
+        "cond.shared_down"
+      ],
+      "evidence": "planned"
+    },
+    "cond.post_ffn_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.shared_routed_join"
+      ],
+      "evidence": "planned"
+    },
+    "cond.modulation_residual": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.post_ffn_norm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.block_output": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.modulation_residual"
+      ],
+      "evidence": "planned",
+      "reference": {
+        "path": "/mnt/sda1/h3240101068/lingbot_step3_capture_20261028_v1/fixtures/full_on_s00_cond_L00_block_output.pt",
+        "sha256": "157ac31d56b0490faf9ab28d43d940a5ceb7b661c4b1c273a348a0f363ad93ad",
+        "bytes": 204322206,
+        "shape": [
+          49883,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "use": "gpu_compare_only"
+      }
+    },
+    "cond.probe.cpu_return": {
+      "resource": "Sniper",
+      "dependencies": [
+        "cond.rmsnorm"
+      ],
+      "evidence": "planned"
+    },
+    "cond.probe.dirty_writeback_callback": {
+      "resource": "DRAM",
+      "dependencies": [
+        "cond.probe.cpu_return"
+      ],
+      "evidence": "planned"
+    },
+    "cond.probe.dma_poll_complete": {
+      "resource": "PCIe",
+      "dependencies": [
+        "cond.probe.cpu_return",
+        "cond.probe.dirty_writeback_callback"
+      ],
+      "evidence": "planned"
+    },
+    "cond.probe.noc_receive_tail": {
+      "resource": "PopNet",
+      "dependencies": [
+        "cond.probe.dma_poll_complete"
+      ],
+      "evidence": "planned"
+    },
+    "cond.probe.consumer": {
+      "resource": "consumer",
+      "dependencies": [
+        "cond.probe.cpu_return",
+        "cond.probe.dirty_writeback_callback",
+        "cond.probe.dma_poll_complete",
+        "cond.probe.noc_receive_tail"
+      ],
+      "evidence": "planned",
+      "release": "max of matched completion times on the common clock",
+      "match_fields": [
+        "request",
+        "step",
+        "layer",
+        "cfg",
+        "token",
+        "buffer_version",
+        "transaction"
+      ]
+    },
+    "uncond.text_encode": {
+      "resource": "condition_encoder",
+      "dependencies": [
+        "arrival"
+      ],
+      "evidence": "planned",
+      "polarity": "uncond"
+    },
+    "uncond.block_input": {
+      "resource": "DiT",
+      "dependencies": [
+        "uncond.text_encode",
+        "first_frame_vlm",
+        "initial_latent"
+      ],
+      "evidence": "frozen_fixture_boundary",
+      "reference": {
+        "path": "/mnt/sda1/h3240101068/lingbot_step3_capture_20261028_v1/fixtures/full_on_s00_uncond_L00_block_input.pt",
+        "sha256": "fb9506797a159455581a2cb842f4cffd2410b544125480587dfab6613e3eaefc",
+        "bytes": 200648099,
+        "shape": [
+          48986,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "use": "source_input"
+      }
+    },
+    "uncond.time_modulation": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.block_input"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.rmsnorm": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.time_modulation"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.q_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "uncond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a3ef8354c2f6f58ddff9da0821f1006df8eb024458ba5eccb9f50d81f0c0fb6a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "ec0add1c2afa386379b0c7a79460c850d0668fd388f55352011e3a94a47dc37d",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a50ed37702c006325799238ce8e537587ba89874671a9828da9c52ae1aa9fd03",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7bc7091164ea6100d221d09600a772a5318f7f5631755ce7849ca73c74ff238c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1b68c12fd2cc41d0743dfaa4cafa4f29d1494120fa521f8bda95bae95fba1dbd",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "8fc1b1060b844b7053cefeff74605fe187ddc1b69cede597a510a3b8639677d1",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7383608c58310006860497aa2d60f452180c666d3082484ad7978aa06ce7b07d",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "16cfd54ed6ed094d85c9b3a985fabd1e7ac01812fa39cd558d8906c374eb4525",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7254eb45f9461bd53016e233830552adaa6d6284e30a2cce155a728711651a4f",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a876ee799b305e329025a5fba43a7fece8fec8fb6f1ccd52bce4d8a609680247",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2236091d3b2cc281e7b714e6896d719568eb12513af5cd0d8da9e7c9a37d970f",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e2741b6c80c1df346cd3c70d96a212a9955b1123446373d7144969738e2510ef",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "dd93dfbc051ca8c902f07cf7ef2f3b3c2aa9ffa3f1c2c33b1d1df92e832d69d2",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a6f509c5dc2fea6d9977fd2bdfa1e66b996dddfd33f0e04cec865848a7bf8e8b",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "73dfbf61158d501cf08bd7f8cfe3a40ccfe929795bc7f531748bb231ff46f833",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_q.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f5f47ad6e1a3d6b450cf68c999f77e615e77e8ffb071565610442ff432bf0664",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "uncond.q_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.rmsnorm",
+        "uncond.q_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.q_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.q_projection"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.q_rope": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.q_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.k_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "uncond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "25de129c55425562398e894de18a599ef99eafd3ddd6846dd68ab2c2be3aa699",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "426b8e4123a65016e47831b1491ff3a5401f6341ea3356e6991cd99f1d7d2490",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "76d8e6bddb41558f8436fe78e69c77b8fada05fb55ad9d046de60df2d7f578ce",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "85f0ca6a15c03b93ea7e185cf282c02e7e2b2760125258c48492d9fdb1df9ee0",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c95061a6b4c7320c7b647bed094e9c4b58e25e27aea86d6e26e045cfdf8fe54c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e771d0861783edca9ef9368bfd760cf3115b0b8240ff4818d07a02c45ecbad92",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f017ba6f5dfa581f6ff7824ebe1cef86fcf6a215adf8cdea74caa8202351542e",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3ec677969aa4c4109e1dee199f6dde0dcccc4d9ef3aac21f69e30b9c6f539e28",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3c9e10695259620060ddb04f087832bad5f71412e87d743badb654086118b1cd",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1ec00a9958caa392c5ffa1e8f8405c3d76a727137f3f111b8eedf38e696157da",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "49c436852b9c1922e1e819392d113deb9e8db1e05b19b6ba4e9d46c589d5ea26",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "53969125cb7d41a11e43fd2c7ff24ab6c2ade445276b1d9c2a87cf5a7559e810",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "a3b1d455b0fae09fb2ea7943d4de16d04fce9eaa4f33de6aca33aa5a0bcf1730",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "8d7723b66fb25528838e41db7613d8bc2690f8e4a947d5be5d9b669d8099647b",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "70acf13d49cb39a1701d195a80ef04d5431b047499718e838003c9a42bc04736",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_k.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2e839f0dc772e20c567578da93197638580511643d958b1d66f49ff866346e90",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "uncond.k_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.rmsnorm",
+        "uncond.k_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.k_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.k_projection"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.k_rope": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.k_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.v_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "uncond.block_input"
+      ],
+      "evidence": "planned",
+      "frozen_slices": [
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 0,
+          "rows": [
+            0,
+            128
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "646e7edec521f9cacfc3b3cd5c2c76ff2c3fbabe2108ce0d668f606ea41b8e47",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 1,
+          "rows": [
+            128,
+            256
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "7ba0d2fe9444b982033eca3cbab6304eaaaae0d53bc1ca97486a6b2f920033e1",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 2,
+          "rows": [
+            256,
+            384
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "96701cd43c035fe8875d980082e1c8552c47dea83835e6317043b087431b9152",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 3,
+          "rows": [
+            384,
+            512
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "3fda25e4f8089772e114e83f8d772bff54d56e93fdfa2e090ff7649ff995dace",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 4,
+          "rows": [
+            512,
+            640
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "85c9dec6fde280a22e6f221b33791277d281b58d6b261897d5511608dd36e73c",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 5,
+          "rows": [
+            640,
+            768
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "536bb042433193cc9f7a907aa468f3ec0dd9a8e11f9f547c528bc52928f0f9aa",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 6,
+          "rows": [
+            768,
+            896
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "d9be71a648d53f9f07c120d81359fbe054aeb86a826ad6867bcd03ab3083d92a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 7,
+          "rows": [
+            896,
+            1024
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "42d61725c632192da5bf4a864437fc865297c69bf8894bc8b1ad9fad8e782686",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 8,
+          "rows": [
+            1024,
+            1152
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "2d1832de7e69ee1765e9e766397a0fda560a481f8cb10a182d95c70cd61043c8",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 9,
+          "rows": [
+            1152,
+            1280
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c6ff70cebd136a65f443342e7485f635a486d5863487845e3a7f8e3b90afb486",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 10,
+          "rows": [
+            1280,
+            1408
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "c4042dddd3373c52f8571c0a13b529f14c576ea8af3c7a2c7413f3eadac27287",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 11,
+          "rows": [
+            1408,
+            1536
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "0467eed7e73db13033afce510718ccc5d654ebede3b479186e874ebb6bdde098",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 12,
+          "rows": [
+            1536,
+            1664
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "f2ed5deefe3c57ae64f9533927decc6b657ec9f33169af90599e2bc1894b8be8",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 13,
+          "rows": [
+            1664,
+            1792
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "1da9188f1a817ad0aa08a056c66258b929d37d64ffc76454273f79d0407c78ce",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 14,
+          "rows": [
+            1792,
+            1920
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "4cb332b54c28d0959e13fa396fe04a7d888ce9ccc1124ccf7480c18b0b70ff68",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        },
+        {
+          "name": "blocks.0.attn.to_v.weight",
+          "rank": 15,
+          "rows": [
+            1920,
+            2048
+          ],
+          "shape": [
+            128,
+            2048
+          ],
+          "dtype": "torch.bfloat16",
+          "sha256": "e86d061fe926625ce61de8981a074325cbd6f368e554d1e295602b7b6b02d80a",
+          "shard": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/model/transformer/diffusion_pytorch_model-00001-of-00013.safetensors",
+          "prior_shard_sha256": "c20447e646d912ec373901782b0f08891e91dcc0580f3c1fa0435f0db9e228f7"
+        }
+      ]
+    },
+    "uncond.v_projection": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.rmsnorm",
+        "uncond.v_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.noncausal_score": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.q_rope",
+        "uncond.k_rope",
+        "uncond.v_projection"
+      ],
+      "evidence": "planned",
+      "inputs_used": [
+        "q",
+        "k"
+      ]
+    },
+    "uncond.softmax": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.noncausal_score"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.value": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.softmax",
+        "uncond.v_projection"
+      ],
+      "evidence": "planned",
+      "kv_regression_only": [
+        {
+          "path": "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/case1/N00/uncond_new_Kraw.npy",
+          "sha256": "cc0fc825f0892b7695284b97e0f5b9b0172cba7be20af5afbc947fbb5dddd7eb",
+          "bytes": 25080960
+        },
+        {
+          "path": "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/case1/N00/uncond_new_V.npy",
+          "sha256": "e215e94ac13c809a8893480da69af78d7d7633954d3565e3ed84ee40cc51c8c2",
+          "bytes": 25080960
+        }
+      ]
+    },
+    "uncond.o_projection": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "uncond.value"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.ordered_fp32_rank_carry": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "uncond.o_projection"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.o_bias": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "uncond.ordered_fp32_rank_carry"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.attention_residual": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "uncond.o_bias"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.moe_norm": {
+      "resource": "compute_and_TP",
+      "dependencies": [
+        "uncond.attention_residual"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.router_fp32": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.sigmoid": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.router_fp32"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.correction_bias": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.sigmoid"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.group_top2": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.correction_bias"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.top8": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.group_top2"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.unbiased_weight_normalize_scale_padding": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.top8",
+        "uncond.sigmoid"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.pack": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.unbiased_weight_normalize_scale_padding",
+        "uncond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.dispatch_tail_arrival": {
+      "resource": "NoC_EP",
+      "dependencies": [
+        "uncond.pack"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.expert_weight_read_complete": {
+      "resource": "HB",
+      "dependencies": [
+        "uncond.top8"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.expert_gate_up": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.dispatch_tail_arrival",
+        "uncond.expert_weight_read_complete"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.silu_mul": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "uncond.expert_gate_up"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.down": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "uncond.silu_mul"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.return_tail_arrival": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "uncond.down"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.restore_source_slot": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "uncond.return_tail_arrival"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.fp32_weighted_reduce": {
+      "resource": "compute_and_EP",
+      "dependencies": [
+        "uncond.restore_source_slot"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.shared_gate_up": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.moe_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.shared_silu_mul": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.shared_gate_up"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.shared_down": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.shared_silu_mul"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.shared_routed_join": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.fp32_weighted_reduce",
+        "uncond.shared_down"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.post_ffn_norm": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.shared_routed_join"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.modulation_residual": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.post_ffn_norm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.block_output": {
+      "resource": "compute",
+      "dependencies": [
+        "uncond.modulation_residual"
+      ],
+      "evidence": "planned",
+      "reference": {
+        "path": "/mnt/sda1/h3240101068/lingbot_step3_capture_20261028_v1/fixtures/full_on_s00_uncond_L00_block_output.pt",
+        "sha256": "6548bed5840c2d6aea6175b20e9e0ad24d76ed284219e6358dcd689f0286f0cb",
+        "bytes": 200648104,
+        "shape": [
+          48986,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "use": "gpu_compare_only"
+      }
+    },
+    "uncond.probe.cpu_return": {
+      "resource": "Sniper",
+      "dependencies": [
+        "uncond.rmsnorm"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.probe.dirty_writeback_callback": {
+      "resource": "DRAM",
+      "dependencies": [
+        "uncond.probe.cpu_return"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.probe.dma_poll_complete": {
+      "resource": "PCIe",
+      "dependencies": [
+        "uncond.probe.cpu_return",
+        "uncond.probe.dirty_writeback_callback"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.probe.noc_receive_tail": {
+      "resource": "PopNet",
+      "dependencies": [
+        "uncond.probe.dma_poll_complete"
+      ],
+      "evidence": "planned"
+    },
+    "uncond.probe.consumer": {
+      "resource": "consumer",
+      "dependencies": [
+        "uncond.probe.cpu_return",
+        "uncond.probe.dirty_writeback_callback",
+        "uncond.probe.dma_poll_complete",
+        "uncond.probe.noc_receive_tail"
+      ],
+      "evidence": "planned",
+      "release": "max of matched completion times on the common clock",
+      "match_fields": [
+        "request",
+        "step",
+        "layer",
+        "cfg",
+        "token",
+        "buffer_version",
+        "transaction"
+      ]
+    },
+    "cfg_combine": {
+      "resource": "compute",
+      "dependencies": [
+        "cond.block_output",
+        "uncond.block_output"
+      ],
+      "evidence": "planned",
+      "requirement": "both branches finish all 48 layers before CFG combine"
+    },
+    "scheduler_update": {
+      "resource": "latent",
+      "dependencies": [
+        "cfg_combine"
+      ],
+      "evidence": "planned"
+    },
+    "inpainting": {
+      "resource": "latent",
+      "dependencies": [
+        "scheduler_update"
+      ],
+      "evidence": "planned"
+    },
+    "next_latent": {
+      "resource": "latent",
+      "dependencies": [
+        "inpainting"
+      ],
+      "evidence": "planned"
+    },
+    "vae_decode": {
+      "resource": "VAE",
+      "dependencies": [
+        "next_latent"
+      ],
+      "evidence": "planned",
+      "requirement": "consume final latent after step 39"
+    },
+    "frame_output": {
+      "resource": "output",
+      "dependencies": [
+        "vae_decode"
+      ],
+      "evidence": "planned"
+    }
+  },
+  "topological_order": [
+    "arrival",
+    "first_frame_vlm",
+    "first_frame_vae_encode",
+    "cond.text_encode",
+    "uncond.text_encode",
+    "initial_latent",
+    "cond.block_input",
+    "uncond.block_input",
+    "cond.time_modulation",
+    "cond.q_weight_read_complete",
+    "cond.k_weight_read_complete",
+    "cond.v_weight_read_complete",
+    "uncond.time_modulation",
+    "uncond.q_weight_read_complete",
+    "uncond.k_weight_read_complete",
+    "uncond.v_weight_read_complete",
+    "cond.rmsnorm",
+    "uncond.rmsnorm",
+    "cond.q_projection",
+    "cond.k_projection",
+    "cond.v_projection",
+    "cond.probe.cpu_return",
+    "uncond.q_projection",
+    "uncond.k_projection",
+    "uncond.v_projection",
+    "uncond.probe.cpu_return",
+    "cond.q_norm",
+    "cond.k_norm",
+    "cond.probe.dirty_writeback_callback",
+    "uncond.q_norm",
+    "uncond.k_norm",
+    "uncond.probe.dirty_writeback_callback",
+    "cond.q_rope",
+    "cond.k_rope",
+    "cond.probe.dma_poll_complete",
+    "uncond.q_rope",
+    "uncond.k_rope",
+    "uncond.probe.dma_poll_complete",
+    "cond.noncausal_score",
+    "cond.probe.noc_receive_tail",
+    "uncond.noncausal_score",
+    "uncond.probe.noc_receive_tail",
+    "cond.softmax",
+    "cond.probe.consumer",
+    "uncond.softmax",
+    "uncond.probe.consumer",
+    "cond.value",
+    "uncond.value",
+    "cond.o_projection",
+    "uncond.o_projection",
+    "cond.ordered_fp32_rank_carry",
+    "uncond.ordered_fp32_rank_carry",
+    "cond.o_bias",
+    "uncond.o_bias",
+    "cond.attention_residual",
+    "uncond.attention_residual",
+    "cond.moe_norm",
+    "uncond.moe_norm",
+    "cond.router_fp32",
+    "cond.shared_gate_up",
+    "uncond.router_fp32",
+    "uncond.shared_gate_up",
+    "cond.sigmoid",
+    "cond.shared_silu_mul",
+    "uncond.sigmoid",
+    "uncond.shared_silu_mul",
+    "cond.correction_bias",
+    "cond.shared_down",
+    "uncond.correction_bias",
+    "uncond.shared_down",
+    "cond.group_top2",
+    "uncond.group_top2",
+    "cond.top8",
+    "uncond.top8",
+    "cond.unbiased_weight_normalize_scale_padding",
+    "cond.expert_weight_read_complete",
+    "uncond.unbiased_weight_normalize_scale_padding",
+    "uncond.expert_weight_read_complete",
+    "cond.pack",
+    "uncond.pack",
+    "cond.dispatch_tail_arrival",
+    "uncond.dispatch_tail_arrival",
+    "cond.expert_gate_up",
+    "uncond.expert_gate_up",
+    "cond.silu_mul",
+    "uncond.silu_mul",
+    "cond.down",
+    "uncond.down",
+    "cond.return_tail_arrival",
+    "uncond.return_tail_arrival",
+    "cond.restore_source_slot",
+    "uncond.restore_source_slot",
+    "cond.fp32_weighted_reduce",
+    "uncond.fp32_weighted_reduce",
+    "cond.shared_routed_join",
+    "uncond.shared_routed_join",
+    "cond.post_ffn_norm",
+    "uncond.post_ffn_norm",
+    "cond.modulation_residual",
+    "uncond.modulation_residual",
+    "cond.block_output",
+    "uncond.block_output",
+    "cfg_combine",
+    "scheduler_update",
+    "inpainting",
+    "next_latent",
+    "vae_decode",
+    "frame_output"
+  ]
+}

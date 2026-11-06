@@ -1,0 +1,72 @@
+{
+  "interpretation": "Fixed observed timeline; overlap proxy only, not Bank wait or end-to-end cycles",
+  "trace_label": "heat",
+  "profile_reads": 1536,
+  "evaluation_reads": 1536,
+  "profile_overlap_edges": 347,
+  "evaluation_overlap_edges": 344,
+  "profile_to_evaluation_edge_coverage": {
+    "matched_edges": 4,
+    "evaluation_edge_fraction": 0.011627906976744186,
+    "evaluation_overlap_weight_fraction": 0.009908544442955344
+  },
+  "changed_pages_coaccess_vs_heat": 31,
+  "evaluation_overlap_edges_touching_changed_pages": 4,
+  "evaluation_overlap_weight_touching_changed_pages": 810465.0,
+  "evaluation_edges_whose_same_bank_status_changes": 0,
+  "evaluation_overlap_weight_whose_same_bank_status_changes": 0,
+  "profile_scores": {
+    "heat": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 10290669.0,
+      "same_bank_fraction": 0.029005221761762866
+    },
+    "coaccess": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "round_robin": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 183429.0,
+      "same_bank_fraction": 0.0005170119476720513
+    }
+  },
+  "heldout_fixed_timeline_scores": {
+    "heat": {
+      "total_overlap": 90017056.0,
+      "same_bank_overlap": 20424537.0,
+      "same_bank_fraction": 0.2268963006299606
+    },
+    "coaccess": {
+      "total_overlap": 90017056.0,
+      "same_bank_overlap": 20424537.0,
+      "same_bank_fraction": 0.2268963006299606
+    },
+    "round_robin": {
+      "total_overlap": 90017056.0,
+      "same_bank_overlap": 499703.0,
+      "same_bank_fraction": 0.005551203540804534
+    }
+  },
+  "diagnostic_oracle_using_evaluation_overlap_not_deployable": {
+    "score": {
+      "total_overlap": 90017056.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "changed_pages_vs_heat": 5493
+  },
+  "shuffled_profile_edge_null": {
+    "caveat": "NOT a matched 31-page ablation; shuffled construction may change many cold-page assignments",
+    "count": 0,
+    "seed": 20261011,
+    "same_bank_overlap_mean": null,
+    "same_bank_overlap_min": null,
+    "same_bank_overlap_max": null,
+    "fraction_null_at_least_as_good_as_coaccess": null,
+    "changed_pages_mean": null,
+    "changed_pages_min": null,
+    "changed_pages_max": null
+  }
+}

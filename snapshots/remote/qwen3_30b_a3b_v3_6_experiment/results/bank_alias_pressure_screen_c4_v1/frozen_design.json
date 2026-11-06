@@ -1,0 +1,64 @@
+{
+  "status": "FROZEN",
+  "classification": "controlled address-mapping stress; not a natural Qwen3 workload",
+  "model": "Qwen3-30B-A3B",
+  "graph": "results/bank_memory_stress_full48_co_scale_strict_v2/graphs/c4_co",
+  "layers": 48,
+  "context": 512,
+  "concurrency": 4,
+  "compute_multiplier": 0.25,
+  "max_outstanding_per_memory_op": 1,
+  "arrival": "simultaneous",
+  "mapping_cases": [
+    {
+      "name": "balanced16",
+      "mode": "balanced",
+      "effective_banks": 16
+    },
+    {
+      "name": "effective16",
+      "mode": "alias",
+      "effective_banks": 16
+    },
+    {
+      "name": "effective8",
+      "mode": "alias",
+      "effective_banks": 8
+    },
+    {
+      "name": "effective4",
+      "mode": "alias",
+      "effective_banks": 4
+    },
+    {
+      "name": "effective2",
+      "mode": "alias",
+      "effective_banks": 2
+    }
+  ],
+  "bank_field": {
+    "byte_address_bits": [
+      14,
+      17
+    ],
+    "decode": "bankgroup*4+bank"
+  },
+  "alias_transform": "mapped_bank = original_decoded_bank mod effective_banks; row and column bits unchanged",
+  "balanced_transform": "mapped_bank = splitmix64(op_id || transaction_index) mod 16; row and column bits unchanged",
+  "paired_oracle": "only cross-request same-Bank timing blockers removed; global row state preserved",
+  "invariants": [
+    "same DAG",
+    "same routes and placement",
+    "same request arrivals",
+    "same transaction count and byte volume",
+    "same compute/NoC/paging settings",
+    "same row and column address bits"
+  ],
+  "limitations": [
+    "alias mapping can make distinct original physical addresses collide after Bank-bit compression",
+    "timing stress only; no functional data-value simulation",
+    "single deterministic captured cohort (n=1)"
+  ],
+  "binary_sha256": "f3a9fe372dae8b473d2c3ec2d34bcdba9d8dbc8eece66748e4dc424c5ff24b14",
+  "ramulator_sha256": "091ac941fe5884a14e459bae721e1e04c1fbd95cb9556e7cc656adf5a5876dd7"
+}

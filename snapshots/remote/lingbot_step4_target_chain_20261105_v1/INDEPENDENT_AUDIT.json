@@ -1,0 +1,89 @@
+{
+  "state": "PARTIAL_TARGET_BOUNDARY_CHAIN_CPU_VAE_NUMERIC_GAP",
+  "actual_target_services": "NPUSim HB/SRAM, external Ramulator32B, InterChiplet synchronous payload and two-round PopNet",
+  "cfg_scheduler_completion": "PASS_LIMITED",
+  "VAE_GPU_bitwise": "FAIL",
+  "CPU_VAE_repeated_bitwise_equal": true,
+  "rounds": [
+    {
+      "round": 1,
+      "cfg_scheduler_next_latent_bitwise_equal": true,
+      "elements_per_stage": 2048,
+      "VAE_first_frame_raw_differences": 1060777,
+      "VAE_max_abs_diff": 6.318092346191406e-06,
+      "VAE_mean_abs_diff": 1.5431460553827492e-07,
+      "VAE_uint8_different_values": 60,
+      "events": [
+        {
+          "op": 0,
+          "start_ns": 1,
+          "receive_done_ns": 13039,
+          "consumer_ns": 20098,
+          "bytes": 24576
+        },
+        {
+          "op": 1,
+          "start_ns": 20098,
+          "receive_done_ns": 783656,
+          "consumer_ns": 2152590,
+          "bytes": 4792320
+        }
+      ],
+      "NoC_feedback_records": 87,
+      "previous_feedback_applied": false
+    },
+    {
+      "round": 2,
+      "cfg_scheduler_next_latent_bitwise_equal": true,
+      "elements_per_stage": 2048,
+      "VAE_first_frame_raw_differences": 1060777,
+      "VAE_max_abs_diff": 6.318092346191406e-06,
+      "VAE_mean_abs_diff": 1.5431460553827492e-07,
+      "VAE_uint8_different_values": 60,
+      "events": [
+        {
+          "op": 0,
+          "start_ns": 1,
+          "receive_done_ns": 8427,
+          "consumer_ns": 15486,
+          "bytes": 24576
+        },
+        {
+          "op": 1,
+          "start_ns": 15486,
+          "receive_done_ns": 292241,
+          "consumer_ns": 1661175,
+          "bytes": 4792320
+        }
+      ],
+      "NoC_feedback_records": 87,
+      "previous_feedback_applied": true
+    }
+  ],
+  "diagnostic": {
+    "state": "VAE_PREFIX_DIAGNOSTIC",
+    "gpu_prefix_vs_full_gpu_raw_differences": 0,
+    "gpu_prefix_vs_full_gpu_max_abs": 0.0,
+    "cpu_vs_gpu_prefix_raw_differences": 1060777,
+    "cpu_vs_gpu_prefix_max_abs": 6.318092346191406e-06,
+    "new_external_VAE_prefix_decodes": 1,
+    "target_GPU_count": 0
+  },
+  "subprocesses_zero": 8,
+  "elapsed_wall_seconds": 69.08588457107544,
+  "reference_injections": [
+    "saved full GPU cond/uncond predictions and scheduler input for 2048-element tile",
+    "frozen original step40 final latent first temporal slice; steps1..39 omitted"
+  ],
+  "target_GPU_count": 0,
+  "new_external_GPU_first_frame_VAE_diagnostic": 1,
+  "uncovered_costs": [
+    "native CPU service duration unmodeled in target clock",
+    "CPU cache/writeback timing",
+    "PCIe DMA in this new chain",
+    "complete operator ISA/perMAC",
+    "other120VAEframes",
+    "remaining39DiTsteps"
+  ],
+  "promotion": false
+}

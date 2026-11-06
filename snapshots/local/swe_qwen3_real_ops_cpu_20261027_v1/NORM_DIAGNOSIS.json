@@ -1,0 +1,38 @@
+{
+  "state": "DIAGNOSTIC_ONLY_NOT_NEW_NUMERIC_CONTRACT",
+  "source": "development R0001 prefill chunk1",
+  "variants": [
+    {
+      "variant": "source_CPU_fp32",
+      "unequal": 16,
+      "max_abs": 0.0009765625,
+      "exact": false
+    },
+    {
+      "variant": "only_variance_reduced_fp64_then_cast_fp32",
+      "unequal": 16,
+      "max_abs": 0.0009765625,
+      "exact": false
+    },
+    {
+      "variant": "only_rsqrt_fp64_then_cast_fp32",
+      "unequal": 0,
+      "max_abs": 0.0,
+      "exact": true
+    },
+    {
+      "variant": "variance_and_rsqrt_fp64_then_cast_fp32",
+      "unequal": 0,
+      "max_abs": 0.0,
+      "exact": true
+    }
+  ],
+  "token133": {
+    "variance_fp32": 0.0010773988906294107,
+    "variance_fp64": 0.001077398857377787,
+    "variance_fp64_cast_fp32": 0.0010773988906294107
+  },
+  "conclusion": "Changing a diagnostic stage can establish sufficiency on this sample, not identify the unrecorded original GPU intermediate or certify all inputs.",
+  "NPU_runs": 0,
+  "cuda_initialized": false
+}

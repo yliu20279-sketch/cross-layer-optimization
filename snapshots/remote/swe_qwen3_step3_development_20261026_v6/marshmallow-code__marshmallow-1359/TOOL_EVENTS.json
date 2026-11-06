@@ -1,0 +1,26 @@
+[
+  {
+    "command": "git reset --hard b40a0f4e33823e6d0f341f7e8684e359a99060d1 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793014867.5551412,
+    "start_monotonic": 7690814.494612126,
+    "result": {
+      "output": "HEAD is now at b40a0f4e Merge branch '2.x-line' into dev\nb40a0f4e33823e6d0f341f7e8684e359a99060d1\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690814.838308103,
+    "seconds": 0.34369618259370327
+  },
+  {
+    "command": "cd /testbed\npython -c \"from marshmallow import fields, Schema; class MySchema(Schema): times = fields.List(fields.DateTime()); s = MySchema()\"",
+    "start_utc": 1793014924.5390034,
+    "start_monotonic": 7690871.478474231,
+    "result": {
+      "output": "  File \"<string>\", line 1\n    from marshmallow import fields, Schema; class MySchema(Schema): times = fields.List(fields.DateTime()); s = MySchema()\n                                            ^\nSyntaxError: invalid syntax\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7690871.794337348,
+    "seconds": 0.3158635012805462
+  }
+]

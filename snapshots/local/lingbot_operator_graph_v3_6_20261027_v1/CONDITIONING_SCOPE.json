@@ -1,0 +1,104 @@
+{
+  "kind": "SOURCE_AND_DEPENDENCY_BOUND_MACRO_DECOMPOSITION_NOT_RUNTIME_KERNEL_TRACE",
+  "operators": [
+    {
+      "operator": "vlm_image",
+      "semantics": "patch Conv3d 3->1024, temporal2/spatial16; positional interpolation + 2D RoPE",
+      "dtype": "BF16",
+      "target_candidate": "matrix Conv lowering + vector",
+      "scope": "Qwen3VL vision",
+      "repeat": 24
+    },
+    {
+      "operator": "vlm_vision_block",
+      "semantics": "LayerNorm -> QKV MHA -> O/residual -> LayerNorm -> FC1/GELU/FC2/residual",
+      "dtype": "BF16/mixed norms",
+      "target_candidate": "TP/sequence candidate",
+      "scope": "no expert routing",
+      "repeat": 24
+    },
+    {
+      "operator": "vlm_merger",
+      "semantics": "main merger and deepstack mergers at vision blocks5/11/17",
+      "dtype": "BF16",
+      "target_candidate": "vector + matrix",
+      "scope": "4-patch merge to2560",
+      "repeat": 4
+    },
+    {
+      "operator": "vlm_embedding",
+      "semantics": "text embedding lookup + image feature scatter + mRoPE ids",
+      "dtype": "BF16/int",
+      "target_candidate": "HB/DMA + vector",
+      "scope": "Qwen3VL text core, no LM head",
+      "repeat": 1
+    },
+    {
+      "operator": "vlm_text_block",
+      "semantics": "RMSNorm -> GQA QKV/QKnorm/mRoPE -> causal attention -> O/residual -> RMSNorm -> dense SwiGLU/residual",
+      "dtype": "BF16/mixed norms",
+      "target_candidate": "TP candidate, KV behaviour must be observed",
+      "scope": "36 layers H2560,32Q/8KV heads128,I9728",
+      "repeat": 36
+    },
+    {
+      "operator": "vlm_deepstack",
+      "semantics": "inject 3 merged visual features into first 3 text layers at image positions",
+      "dtype": "BF16",
+      "target_candidate": "vector/scatter",
+      "scope": "not final-three/vision-layer indices in text",
+      "repeat": 3
+    },
+    {
+      "operator": "vlm_output",
+      "semantics": "final norm, hidden-state selection, prefix crop, mask crop; batch1 right-padding removal",
+      "dtype": "BF16",
+      "target_candidate": "vector/DMA",
+      "scope": "conditioning embeddings not generated text",
+      "repeat": 1
+    },
+    {
+      "operator": "vae_encode",
+      "semantics": "causal Conv3d -> 4 resolution stages/residual convs -> mid attention/residual -> norm/SiLU/conv -> quant Conv -> Gaussian sample",
+      "dtype": "FP32 weights; image encode CUDA BF16 autocast in pipeline",
+      "target_candidate": "FP32 Conv software/vector candidate; host/GPU alternative scope",
+      "scope": "cond image encode only",
+      "repeat": 1
+    },
+    {
+      "operator": "vae_residual",
+      "semantics": "RMS normalize -> SiLU -> causalConv3d -> norm/SiLU/dropout(eval) -> causalConv3d + shortcut",
+      "dtype": "FP32/source autocast boundaries",
+      "target_candidate": "conv tiling; temporal halo/cache completion",
+      "scope": "encode/decode macro template",
+      "repeat": "dynamic"
+    },
+    {
+      "operator": "vae_mid_attention",
+      "semantics": "per-frame spatial QKV Conv2d -> SDPA -> output Conv2d + residual",
+      "dtype": "FP32/mixed kernel",
+      "target_candidate": "attention/vector + Conv",
+      "scope": "mid block exists despite attn_scales=[]",
+      "repeat": "dynamic"
+    },
+    {
+      "operator": "vae_decode",
+      "semantics": "post_quant Conv -> causal Conv -> mid block -> 4 up stages/residual/resample -> norm/SiLU/outputConv; temporal feature cache",
+      "dtype": "FP32 default decode",
+      "target_candidate": "tiled Conv/vector or external reference scope",
+      "scope": "stage channels from source/config; first chunk differs",
+      "repeat": 1
+    },
+    {
+      "operator": "scheduler",
+      "semantics": "FlowUniPC multistep predictor/corrector, history shift, scalar solves and latent affine; conditioned-slice overwrite",
+      "dtype": "FP32 latent; source scalar precision retained",
+      "target_candidate": "host initially, explicit gateway cost",
+      "scope": "not one independent Euler add per step",
+      "repeat": 40
+    }
+  ],
+  "vlm_reference": "source/modeling_qwen3_vl_v5_8_1.py",
+  "vae_reference": "source/autoencoder_kl_wan_v0_39_0.py",
+  "remaining": "per-tile shapes, backend fusion, temporal/cache schedule and full conditioning device lowering require captured fixture; no claim of complete target execution"
+}

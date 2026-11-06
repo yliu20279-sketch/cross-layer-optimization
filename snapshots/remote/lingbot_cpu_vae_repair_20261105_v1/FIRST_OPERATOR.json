@@ -1,0 +1,39 @@
+{
+  "state": "FIRST_SAME_INPUT_OPERATOR_DIFFERENCE",
+  "prior_conversion_bitwise_equal": true,
+  "operators": [
+    {
+      "name": "post_quant_conv",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 99840,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.conv_in",
+      "type": "WanCausalConv3d",
+      "different_elements": 1990711,
+      "elements": 2396160,
+      "max_abs_diff": 1.430511474609375e-06,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ],
+      "module_repr": "WanCausalConv3d(16, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1))"
+    }
+  ]
+}

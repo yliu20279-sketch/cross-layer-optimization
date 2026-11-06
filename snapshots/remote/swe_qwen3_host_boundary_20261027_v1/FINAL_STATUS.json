@@ -1,0 +1,20 @@
+{
+  "state": "PASS_LIMITED_HOST_CODEC_DMA_MEMORY_PCIE_NATIVE_GEMM_COUPLING",
+  "CPU_Sniper_ROI_runs": 2,
+  "native_fragment_runs_this_branch": 2,
+  "native_fragment_runs_swe_qwen3_total": 3,
+  "physical_NPU_runs": 0,
+  "new_GPU_agent_runs": 0,
+  "new_holdout_bodies_read": false,
+  "precision": "original BF16 checkpoint; temporary local FP32 software workspace",
+  "host_GiB_overlay": 128,
+  "HB_GiB": 8,
+  "selected": "coupled_attempt2 includes host DMA source/read and destination/write service",
+  "first_coupling": "preserved; omitted host DMA endpoint DRAM service, not selected for timing",
+  "modeled_primary_proxy_ns": 1462074,
+  "arithmetic_nonidle_subtraction": "NOT_RESIMULATED_NOT_PROMOTED",
+  "remaining_unmodeled": ["DMA descriptor preparation and polling CPU", "allocator and cache maintenance", "physical gateway/HB fixed propagation", "multiNPU NoC"],
+  "complete_router_or_model_timing": "NOT_CERTIFIED",
+  "numerical": "new native FP32 output matches profiled encode input and final BF16 bits match original GPU",
+  "next": "Independent softmax/Top8 or expert subchain function; obtain explicit DMA-control/cache-maintenance contract before complete timing."
+}

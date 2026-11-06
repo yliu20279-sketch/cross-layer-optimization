@@ -1,0 +1,56 @@
+{
+  "cases": {
+    "baseline_ep": {
+      "dependencies_sha256": "8d01b179d654a51a1501ff9a7ea03a4340fa4b40ab443991cb38ab4bc8190331",
+      "expert_compute_cycles": 449442816,
+      "expert_compute_operations": 1536,
+      "memory_operations": 11844,
+      "net_bytes": 35438592,
+      "operations": 28272,
+      "ownerless_memory_operations": 0,
+      "page_misses": 546,
+      "total_compute_cycles": 860186560
+    },
+    "hiband": {
+      "dependencies_sha256": "8d01b179d654a51a1501ff9a7ea03a4340fa4b40ab443991cb38ab4bc8190331",
+      "expert_compute_cycles": 449442816,
+      "expert_compute_operations": 1536,
+      "memory_operations": 11844,
+      "net_bytes": 35438592,
+      "operations": 28272,
+      "ownerless_memory_operations": 0,
+      "page_misses": 546,
+      "total_compute_cycles": 860186560
+    },
+    "hiband_sem_moe": {
+      "dependencies_sha256": "1533bd42bdedb2492376fdd682aea147e828127fc97783ea5a644c8a5d5a055c",
+      "expert_compute_cycles": 449442816,
+      "expert_compute_operations": 1536,
+      "memory_operations": 11838,
+      "net_bytes": 31612928,
+      "operations": 27476,
+      "ownerless_memory_operations": 0,
+      "page_misses": 543,
+      "total_compute_cycles": 860186560
+    },
+    "sem_moe": {
+      "dependencies_sha256": "1533bd42bdedb2492376fdd682aea147e828127fc97783ea5a644c8a5d5a055c",
+      "expert_compute_cycles": 449442816,
+      "expert_compute_operations": 1536,
+      "memory_operations": 11838,
+      "net_bytes": 31612928,
+      "operations": 27476,
+      "ownerless_memory_operations": 0,
+      "page_misses": 543,
+      "total_compute_cycles": 860186560
+    }
+  },
+  "checks": [
+    "frozen manifest fields identical",
+    "HiBand paired graphs differ only in phase/scope",
+    "compute work conserved across placement schemes"
+  ],
+  "failures": [],
+  "schema": "strict-four-graph-audit-v1",
+  "status": "PASS"
+}

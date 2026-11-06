@@ -1,0 +1,25 @@
+diff --git a/src/marshmallow/fields.py b/src/marshmallow/fields.py
+index 0b18e7dd..5e7e2453 100644
+--- a/src/marshmallow/fields.py
++++ b/src/marshmallow/fields.py
+@@ -633,7 +633,7 @@ class List(Field):
+     def _bind_to_schema(self, field_name, schema):
+         super()._bind_to_schema(field_name, schema)
+         self.inner = copy.deepcopy(self.inner)
+-        self.inner._bind_to_schema(field_name, self)
++        self.inner._bind_to_schema(field_name, schema)
+         if isinstance(self.inner, Nested):
+             self.inner.only = self.only
+             self.inner.exclude = self.exclude
+diff --git a/test_mm.py b/test_mm.py
+new file mode 100644
+index 00000000..124acdf1
+--- /dev/null
++++ b/test_mm.py
+@@ -0,0 +1,6 @@
++from marshmallow import fields, Schema
++
++class MySchema(Schema):
++    times = fields.List(fields.DateTime())
++
++s = MySchema()

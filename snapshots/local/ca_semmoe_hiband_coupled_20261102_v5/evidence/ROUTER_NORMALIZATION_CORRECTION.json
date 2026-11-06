@@ -1,0 +1,9 @@
+{
+  "status": "CONFIRMED_V4_FUNCTIONAL_ROUTER_BUG",
+  "qwen15_actual_norm_topk_prob": false,
+  "qwen3_actual_norm_topk_prob": true,
+  "v4_issue": "MoEPayloadExecutor normalized selected probabilities for both models unconditionally",
+  "impact": "Qwen1.5 v4 CPU MoE output is not faithful to the selected model's router probability mass; it was never certified against an original-model oracle",
+  "treatment": "preserve v4 evidence as historical interface-scoped checks; fix v5 from actual configs; no performance result to revoke",
+  "model_or_precision_change": false
+}

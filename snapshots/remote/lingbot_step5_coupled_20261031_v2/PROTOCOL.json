@@ -1,0 +1,17 @@
+{
+  "scope": "dualCFG64 selected queries each full actual K/V; 16 real NPU runtime actors and16 external HB controllers; real direct peer FIFO completion gating",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original mixed BF16/FP32",
+  "timeout_seconds": 1800,
+  "CPU_threads_per_rank": 1,
+  "global_batch_prerequisite": "step4 autonomous full FFN/route binding; selected FFN and router recomputed and must match",
+  "unknown_costs": [
+    "CPU codec and source-compatible software math",
+    "host PCIe gateway",
+    "SRAM Bank complete services"
+  ],
+  "not_complete_step5": true,
+  "failures": "first difference/child failure/timeout stops; retain evidence"
+}

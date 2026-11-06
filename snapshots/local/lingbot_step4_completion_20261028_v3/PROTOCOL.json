@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29",
+  "status": "FROZEN_BEFORE_PRIMITIVE_RUN",
+  "target_GPU_count": 0,
+  "new_GPU_runs": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original mixed BF16/FP32; no FP16 or FP64 candidate arithmetic",
+  "scope": "derive CUDA2048 mean(square) reduction; independent C oneDNN-style BF16 software GEMM on real LingBot shared/routed expert inputs",
+  "source": "steps3 same seen example4 step0 layer0 both CFG",
+  "rows": "RMSNorm full sequences; experts predetermined first32 video/last32 conditioning rows",
+  "RMS_variants": [
+    "old CPU mean+rsqrt baseline",
+    "source-derived CUDA mean plus CPU rsqrt",
+    "same mean plus FP32 reciprocal sqrt, separate diagnostic"
+  ],
+  "BF16_GEMM": "independent C source-derived oneDNN accumulation; compare native CPU source and original GPU boundaries separately",
+  "gates": "bitwise only, preserve all failures; no tolerance promotion",
+  "cpu_threads": 4,
+  "worker_count": 1,
+  "timeout_seconds": 600,
+  "memory_budget_GiB": 24,
+  "storage_budget_GiB": 3,
+  "no_promotion": [
+    "full layer/GPU exactness not implied by CPU primitive pass",
+    "host fallback costs/timing and HBM lifetime not certified"
+  ],
+  "prior_failure_dirs": [
+    "lingbot_step4_functional_20261028_v1",
+    "lingbot_step4_router_repair_20261028_v2"
+  ],
+  "source_URLs": [
+    "https://github.com/pytorch/pytorch/blob/v2.6.0/aten/src/ATen/native/cuda/Reduce.cuh",
+    "https://github.com/oneapi-src/oneDNN/tree/v3.5.3/src/cpu/x64/gemm"
+  ]
+}

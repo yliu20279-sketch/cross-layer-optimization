@@ -1,0 +1,104 @@
+{
+  "state": "CANDIDATE_SOFTWARE_LOWERING_AND_EP16_CPU_FUNCTIONAL_CHECK",
+  "checks": [
+    {
+      "name": "sequential_FP32_vector_lowering_vs_GPU_router_logits",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "sequential_FP32_vector_lowering_vs_CPU_adapter",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "EP16_return_source_order_vs_canonical",
+      "phase": "prefill",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "EP16_naive_rank_order_vs_canonical_diagnostic",
+      "phase": "prefill",
+      "exact": false,
+      "unequal": 20251,
+      "max_abs": 0.0078125
+    },
+    {
+      "name": "sequential_FP32_vector_lowering_vs_GPU_router_logits",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "sequential_FP32_vector_lowering_vs_CPU_adapter",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "EP16_return_source_order_vs_canonical",
+      "phase": "decode",
+      "exact": true,
+      "unequal": 0,
+      "max_abs": 0.0
+    },
+    {
+      "name": "EP16_naive_rank_order_vs_canonical_diagnostic",
+      "phase": "decode",
+      "exact": false,
+      "unequal": 1144,
+      "max_abs": 0.0009765625
+    }
+  ],
+  "primitive_ledgers": [
+    {
+      "phase": "prefill",
+      "M": 19,
+      "N": 128,
+      "K": 2048,
+      "FP32_mul": 4980736,
+      "FP32_add": 4980736,
+      "BF16_decode_scalar_calls": 9961472,
+      "BF16_encode_scalar_calls": 2432,
+      "tile": {
+        "m": 1,
+        "n": 64,
+        "k": 64
+      },
+      "tile_SRAM_payload_bytes": 8576,
+      "SRAM_scope": "single tile only; not full layer peak or bank arbitration",
+      "cycles": null
+    },
+    {
+      "phase": "decode",
+      "M": 1,
+      "N": 128,
+      "K": 2048,
+      "FP32_mul": 262144,
+      "FP32_add": 262144,
+      "BF16_decode_scalar_calls": 524288,
+      "BF16_encode_scalar_calls": 128,
+      "tile": {
+        "m": 1,
+        "n": 64,
+        "k": 64
+      },
+      "tile_SRAM_payload_bytes": 8576,
+      "SRAM_scope": "single tile only; not full layer peak or bank arbitration",
+      "cycles": null
+    }
+  ],
+  "code_sha256": "8d4693f6ba8e8a4399f7d8f8310cc3d055c532344d437a43ca54a609fbb53586",
+  "library_sha256": "7774b15e340d5f1a07046e7906b00f2eb466778078d292420f75f370c69345b5",
+  "cuda_initialized": false,
+  "NPU_runs": 0,
+  "scope": "host FP32 software candidate; no NPUSim events, target ISA instruction mapping, SRAM lifetime or target timing certification"
+}

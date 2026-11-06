@@ -1,0 +1,93 @@
+{
+  "schema": "ca-composite-contract-2",
+  "state": "PARTIAL_NOT_READY",
+  "model_id": "Qwen/Qwen1.5-MoE-A2.7B",
+  "spec": {
+    "id": "Qwen/Qwen1.5-MoE-A2.7B",
+    "layers": 24,
+    "experts": 60,
+    "ep": 4,
+    "tp": 4,
+    "pp": 4,
+    "topk": 4,
+    "hidden": 2048,
+    "layers_per_stage": 6,
+    "shared_expert": true
+  },
+  "precision": {
+    "weights": "BF16",
+    "activations": "BF16",
+    "accumulation": "per-op FP32 candidate; native operation order unverified",
+    "source_gpu_differences": "retained, no tolerance relaxation"
+  },
+  "precision_sha256": "907908d533d491fe7af94d6d2efc386fe773ac874e18105e32091ae1265772e6",
+  "checkpoint_content_sha256": null,
+  "revision": null,
+  "tokenizer_sha256": null,
+  "tokenizer_config_sha256": null,
+  "source_config_sha256": null,
+  "capacity_candidate": {
+    "host_bytes": 137438953472,
+    "hb_partitions": 16,
+    "hb_partition_bytes": 536870912
+  },
+  "capacity_verified": false,
+  "costs_verified": false,
+  "runtime": {
+    "binary": null,
+    "libraries": [],
+    "source_build_identity_sha256": null
+  },
+  "capabilities": {
+    "native_sem_moe_schedule": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "native_srs_sag": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_operator_lowering": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "actual_bf16_memory_io": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_capacity_lifetimes": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cpu_costs": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cache_version_services": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "hiband_controls_and_timing": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "ca_native_address_binding": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    }
+  },
+  "software_reference": {
+    "split_fallback": "rejected",
+    "causal_token_scheduler": true,
+    "two_gram": false,
+    "collectives": "semantic reference only",
+    "opcode_lowering": false,
+    "costs": "missing costs rejected"
+  },
+  "native_runs": 0,
+  "author_equivalence": false,
+  "blocker_notes": [
+    "exact original checkpoint/tokenizer not found in bounded search",
+    "Chat-GPTQ variant excluded, no substitute"
+  ]
+}

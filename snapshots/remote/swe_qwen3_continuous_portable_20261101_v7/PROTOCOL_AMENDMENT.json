@@ -1,0 +1,19 @@
+{
+  "state": "PREPARED_NOT_RUN",
+  "source_baseline": "/mnt/sda1/h3240101068/swe_qwen3_continuous_lowering_20261031_v3",
+  "numeric": "original BF16; unchanged CPU reference and exact FP32 gates; GPU differences retained",
+  "changes": [
+    "HB readback alias provenance",
+    "CPU22 real strided address generation",
+    "ordinary software LRU eviction plus real directory DRAM completion gate"
+  ],
+  "CPU_cache_maintenance": "single CPU0, frozen mask/LRU hierarchy, no NUCA or active directory conflicts; unique simulator bookkeeping tokens, not target payload",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "cache_scratch_bytes": 17301504,
+  "host_scratch_reserved_bytes": 536870912,
+  "wall_bound_seconds": 86400,
+  "reason_for_bound": "previous streaming two-round baseline42865s; added software cache maintenance must not be truncated at old12h boundary",
+  "dynamic_reclamation": false,
+  "full_steps_1_7": false
+}

@@ -1,0 +1,3310 @@
+{
+  "kind": "FINITE_TEMPLATE_NOT_MEASURED_TRACE",
+  "steps": 40,
+  "cfg": "sequential two-branch, guidance3",
+  "dit_macro_reference": "DIT_FORWARD_48.json",
+  "nodes": [
+    {
+      "id": "input",
+      "op": "image + official JSON; no rewriter/refiner",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "preprocess",
+      "op": "crop/normalize image; VLM resize",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "vlm_pos",
+      "op": "Qwen3-VL image + positive text encoding",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "vlm_neg",
+      "op": "Qwen3-VL image + negative text encoding",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "vae_enc",
+      "op": "image VAE encode/sample/latent scale",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "noise",
+      "op": "seeded latent RNG",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "init",
+      "op": "initial image-latent overwrite",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "schedule",
+      "op": "FlowUniPC timestep schedule",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S00.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S00.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S00.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S00.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S00.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S01.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S01.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S01.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S01.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S01.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S02.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S02.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S02.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S02.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S02.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S03.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S03.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S03.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S03.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S03.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S04.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S04.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S04.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S04.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S04.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S05.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S05.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S05.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S05.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S05.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S06.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S06.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S06.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S06.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S06.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S07.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S07.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S07.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S07.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S07.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S08.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S08.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S08.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S08.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S08.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S09.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S09.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S09.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S09.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S09.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S10.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S10.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S10.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S10.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S10.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S11.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S11.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S11.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S11.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S11.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S12.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S12.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S12.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S12.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S12.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S13.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S13.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S13.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S13.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S13.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S14.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S14.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S14.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S14.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S14.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S15.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S15.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S15.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S15.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S15.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S16.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S16.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S16.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S16.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S16.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S17.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S17.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S17.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S17.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S17.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S18.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S18.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S18.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S18.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S18.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S19.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S19.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S19.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S19.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S19.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S20.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S20.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S20.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S20.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S20.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S21.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S21.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S21.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S21.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S21.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S22.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S22.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S22.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S22.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S22.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S23.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S23.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S23.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S23.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S23.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S24.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S24.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S24.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S24.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S24.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S25.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S25.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S25.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S25.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S25.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S26.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S26.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S26.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S26.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S26.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S27.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S27.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S27.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S27.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S27.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S28.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S28.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S28.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S28.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S28.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S29.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S29.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S29.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S29.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S29.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S30.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S30.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S30.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S30.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S30.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S31.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S31.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S31.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S31.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S31.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S32.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S32.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S32.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S32.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S32.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S33.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S33.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S33.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S33.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S33.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S34.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S34.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S34.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S34.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S34.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S35.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S35.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S35.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S35.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S35.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S36.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S36.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S36.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S36.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S36.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S37.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S37.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S37.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S37.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S37.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S38.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S38.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S38.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S38.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S38.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S39.cond",
+      "op": "48-block conditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S39.uncond",
+      "op": "48-block unconditional DiT macro",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S39.cfg",
+      "op": "FP32 uncond + g*(cond-uncond)",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S39.scheduler",
+      "op": "FlowUniPC state/history + latent update",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "S39.inpaint",
+      "op": "overwrite conditioned initial latent slices",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "vae_decode",
+      "op": "inverse latent scaling + Wan temporal-cache VAE decode",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    },
+    {
+      "id": "post",
+      "op": "clamp/normalize/video encoding and file output",
+      "scope": "REQUEST_TEMPLATE_NOT_TRACE"
+    }
+  ],
+  "edges": [
+    {
+      "src": "input",
+      "dst": "preprocess",
+      "kind": "data_completion"
+    },
+    {
+      "src": "preprocess",
+      "dst": "vlm_pos",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "vlm_neg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "preprocess",
+      "dst": "vae_enc",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "init",
+      "kind": "data_completion"
+    },
+    {
+      "src": "noise",
+      "dst": "init",
+      "kind": "data_completion"
+    },
+    {
+      "src": "init",
+      "dst": "schedule",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "vae_enc",
+      "kind": "source_sequential_setup_order"
+    },
+    {
+      "src": "schedule",
+      "dst": "S00.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S00.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "schedule",
+      "dst": "S00.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S00.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.cond",
+      "dst": "S00.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S00.cond",
+      "dst": "S00.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.uncond",
+      "dst": "S00.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.cfg",
+      "dst": "S00.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "schedule",
+      "dst": "S00.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.scheduler",
+      "dst": "S00.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S00.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.inpaint",
+      "dst": "S01.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S01.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.inpaint",
+      "dst": "S01.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S01.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.cond",
+      "dst": "S01.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S01.cond",
+      "dst": "S01.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.uncond",
+      "dst": "S01.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.cfg",
+      "dst": "S01.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S00.inpaint",
+      "dst": "S01.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.scheduler",
+      "dst": "S01.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S01.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.inpaint",
+      "dst": "S02.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S02.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.inpaint",
+      "dst": "S02.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S02.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.cond",
+      "dst": "S02.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S02.cond",
+      "dst": "S02.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.uncond",
+      "dst": "S02.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.cfg",
+      "dst": "S02.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S01.inpaint",
+      "dst": "S02.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.scheduler",
+      "dst": "S02.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S02.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.inpaint",
+      "dst": "S03.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S03.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.inpaint",
+      "dst": "S03.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S03.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.cond",
+      "dst": "S03.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S03.cond",
+      "dst": "S03.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.uncond",
+      "dst": "S03.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.cfg",
+      "dst": "S03.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S02.inpaint",
+      "dst": "S03.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.scheduler",
+      "dst": "S03.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S03.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.inpaint",
+      "dst": "S04.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S04.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.inpaint",
+      "dst": "S04.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S04.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.cond",
+      "dst": "S04.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S04.cond",
+      "dst": "S04.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.uncond",
+      "dst": "S04.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.cfg",
+      "dst": "S04.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S03.inpaint",
+      "dst": "S04.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.scheduler",
+      "dst": "S04.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S04.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.inpaint",
+      "dst": "S05.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S05.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.inpaint",
+      "dst": "S05.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S05.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.cond",
+      "dst": "S05.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S05.cond",
+      "dst": "S05.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.uncond",
+      "dst": "S05.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.cfg",
+      "dst": "S05.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S04.inpaint",
+      "dst": "S05.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.scheduler",
+      "dst": "S05.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S05.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.inpaint",
+      "dst": "S06.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S06.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.inpaint",
+      "dst": "S06.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S06.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.cond",
+      "dst": "S06.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S06.cond",
+      "dst": "S06.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.uncond",
+      "dst": "S06.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.cfg",
+      "dst": "S06.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S05.inpaint",
+      "dst": "S06.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.scheduler",
+      "dst": "S06.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S06.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.inpaint",
+      "dst": "S07.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S07.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.inpaint",
+      "dst": "S07.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S07.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.cond",
+      "dst": "S07.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S07.cond",
+      "dst": "S07.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.uncond",
+      "dst": "S07.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.cfg",
+      "dst": "S07.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S06.inpaint",
+      "dst": "S07.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.scheduler",
+      "dst": "S07.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S07.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.inpaint",
+      "dst": "S08.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S08.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.inpaint",
+      "dst": "S08.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S08.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.cond",
+      "dst": "S08.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S08.cond",
+      "dst": "S08.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.uncond",
+      "dst": "S08.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.cfg",
+      "dst": "S08.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S07.inpaint",
+      "dst": "S08.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.scheduler",
+      "dst": "S08.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S08.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.inpaint",
+      "dst": "S09.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S09.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.inpaint",
+      "dst": "S09.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S09.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.cond",
+      "dst": "S09.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S09.cond",
+      "dst": "S09.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.uncond",
+      "dst": "S09.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.cfg",
+      "dst": "S09.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S08.inpaint",
+      "dst": "S09.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.scheduler",
+      "dst": "S09.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S09.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.inpaint",
+      "dst": "S10.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S10.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.inpaint",
+      "dst": "S10.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S10.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.cond",
+      "dst": "S10.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S10.cond",
+      "dst": "S10.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.uncond",
+      "dst": "S10.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.cfg",
+      "dst": "S10.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S09.inpaint",
+      "dst": "S10.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.scheduler",
+      "dst": "S10.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S10.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.inpaint",
+      "dst": "S11.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S11.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.inpaint",
+      "dst": "S11.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S11.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.cond",
+      "dst": "S11.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S11.cond",
+      "dst": "S11.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.uncond",
+      "dst": "S11.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.cfg",
+      "dst": "S11.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S10.inpaint",
+      "dst": "S11.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.scheduler",
+      "dst": "S11.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S11.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.inpaint",
+      "dst": "S12.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S12.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.inpaint",
+      "dst": "S12.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S12.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.cond",
+      "dst": "S12.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S12.cond",
+      "dst": "S12.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.uncond",
+      "dst": "S12.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.cfg",
+      "dst": "S12.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S11.inpaint",
+      "dst": "S12.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.scheduler",
+      "dst": "S12.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S12.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.inpaint",
+      "dst": "S13.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S13.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.inpaint",
+      "dst": "S13.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S13.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.cond",
+      "dst": "S13.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S13.cond",
+      "dst": "S13.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.uncond",
+      "dst": "S13.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.cfg",
+      "dst": "S13.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S12.inpaint",
+      "dst": "S13.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.scheduler",
+      "dst": "S13.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S13.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.inpaint",
+      "dst": "S14.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S14.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.inpaint",
+      "dst": "S14.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S14.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.cond",
+      "dst": "S14.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S14.cond",
+      "dst": "S14.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.uncond",
+      "dst": "S14.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.cfg",
+      "dst": "S14.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S13.inpaint",
+      "dst": "S14.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.scheduler",
+      "dst": "S14.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S14.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.inpaint",
+      "dst": "S15.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S15.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.inpaint",
+      "dst": "S15.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S15.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.cond",
+      "dst": "S15.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S15.cond",
+      "dst": "S15.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.uncond",
+      "dst": "S15.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.cfg",
+      "dst": "S15.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S14.inpaint",
+      "dst": "S15.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.scheduler",
+      "dst": "S15.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S15.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.inpaint",
+      "dst": "S16.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S16.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.inpaint",
+      "dst": "S16.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S16.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.cond",
+      "dst": "S16.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S16.cond",
+      "dst": "S16.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.uncond",
+      "dst": "S16.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.cfg",
+      "dst": "S16.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S15.inpaint",
+      "dst": "S16.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.scheduler",
+      "dst": "S16.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S16.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.inpaint",
+      "dst": "S17.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S17.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.inpaint",
+      "dst": "S17.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S17.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.cond",
+      "dst": "S17.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S17.cond",
+      "dst": "S17.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.uncond",
+      "dst": "S17.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.cfg",
+      "dst": "S17.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S16.inpaint",
+      "dst": "S17.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.scheduler",
+      "dst": "S17.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S17.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.inpaint",
+      "dst": "S18.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S18.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.inpaint",
+      "dst": "S18.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S18.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.cond",
+      "dst": "S18.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S18.cond",
+      "dst": "S18.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.uncond",
+      "dst": "S18.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.cfg",
+      "dst": "S18.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S17.inpaint",
+      "dst": "S18.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.scheduler",
+      "dst": "S18.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S18.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.inpaint",
+      "dst": "S19.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S19.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.inpaint",
+      "dst": "S19.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S19.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.cond",
+      "dst": "S19.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S19.cond",
+      "dst": "S19.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.uncond",
+      "dst": "S19.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.cfg",
+      "dst": "S19.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S18.inpaint",
+      "dst": "S19.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.scheduler",
+      "dst": "S19.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S19.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.inpaint",
+      "dst": "S20.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S20.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.inpaint",
+      "dst": "S20.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S20.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.cond",
+      "dst": "S20.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S20.cond",
+      "dst": "S20.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.uncond",
+      "dst": "S20.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.cfg",
+      "dst": "S20.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S19.inpaint",
+      "dst": "S20.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.scheduler",
+      "dst": "S20.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S20.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.inpaint",
+      "dst": "S21.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S21.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.inpaint",
+      "dst": "S21.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S21.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.cond",
+      "dst": "S21.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S21.cond",
+      "dst": "S21.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.uncond",
+      "dst": "S21.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.cfg",
+      "dst": "S21.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S20.inpaint",
+      "dst": "S21.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.scheduler",
+      "dst": "S21.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S21.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.inpaint",
+      "dst": "S22.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S22.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.inpaint",
+      "dst": "S22.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S22.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.cond",
+      "dst": "S22.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S22.cond",
+      "dst": "S22.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.uncond",
+      "dst": "S22.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.cfg",
+      "dst": "S22.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S21.inpaint",
+      "dst": "S22.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.scheduler",
+      "dst": "S22.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S22.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.inpaint",
+      "dst": "S23.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S23.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.inpaint",
+      "dst": "S23.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S23.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.cond",
+      "dst": "S23.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S23.cond",
+      "dst": "S23.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.uncond",
+      "dst": "S23.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.cfg",
+      "dst": "S23.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S22.inpaint",
+      "dst": "S23.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.scheduler",
+      "dst": "S23.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S23.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.inpaint",
+      "dst": "S24.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S24.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.inpaint",
+      "dst": "S24.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S24.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.cond",
+      "dst": "S24.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S24.cond",
+      "dst": "S24.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.uncond",
+      "dst": "S24.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.cfg",
+      "dst": "S24.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S23.inpaint",
+      "dst": "S24.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.scheduler",
+      "dst": "S24.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S24.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.inpaint",
+      "dst": "S25.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S25.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.inpaint",
+      "dst": "S25.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S25.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.cond",
+      "dst": "S25.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S25.cond",
+      "dst": "S25.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.uncond",
+      "dst": "S25.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.cfg",
+      "dst": "S25.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S24.inpaint",
+      "dst": "S25.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.scheduler",
+      "dst": "S25.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S25.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.inpaint",
+      "dst": "S26.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S26.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.inpaint",
+      "dst": "S26.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S26.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.cond",
+      "dst": "S26.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S26.cond",
+      "dst": "S26.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.uncond",
+      "dst": "S26.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.cfg",
+      "dst": "S26.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S25.inpaint",
+      "dst": "S26.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.scheduler",
+      "dst": "S26.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S26.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.inpaint",
+      "dst": "S27.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S27.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.inpaint",
+      "dst": "S27.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S27.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.cond",
+      "dst": "S27.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S27.cond",
+      "dst": "S27.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.uncond",
+      "dst": "S27.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.cfg",
+      "dst": "S27.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S26.inpaint",
+      "dst": "S27.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.scheduler",
+      "dst": "S27.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S27.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.inpaint",
+      "dst": "S28.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S28.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.inpaint",
+      "dst": "S28.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S28.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.cond",
+      "dst": "S28.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S28.cond",
+      "dst": "S28.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.uncond",
+      "dst": "S28.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.cfg",
+      "dst": "S28.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S27.inpaint",
+      "dst": "S28.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.scheduler",
+      "dst": "S28.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S28.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.inpaint",
+      "dst": "S29.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S29.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.inpaint",
+      "dst": "S29.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S29.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.cond",
+      "dst": "S29.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S29.cond",
+      "dst": "S29.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.uncond",
+      "dst": "S29.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.cfg",
+      "dst": "S29.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S28.inpaint",
+      "dst": "S29.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.scheduler",
+      "dst": "S29.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S29.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.inpaint",
+      "dst": "S30.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S30.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.inpaint",
+      "dst": "S30.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S30.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.cond",
+      "dst": "S30.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S30.cond",
+      "dst": "S30.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.uncond",
+      "dst": "S30.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.cfg",
+      "dst": "S30.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S29.inpaint",
+      "dst": "S30.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.scheduler",
+      "dst": "S30.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S30.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.inpaint",
+      "dst": "S31.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S31.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.inpaint",
+      "dst": "S31.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S31.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.cond",
+      "dst": "S31.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S31.cond",
+      "dst": "S31.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.uncond",
+      "dst": "S31.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.cfg",
+      "dst": "S31.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S30.inpaint",
+      "dst": "S31.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.scheduler",
+      "dst": "S31.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S31.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.inpaint",
+      "dst": "S32.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S32.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.inpaint",
+      "dst": "S32.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S32.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.cond",
+      "dst": "S32.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S32.cond",
+      "dst": "S32.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.uncond",
+      "dst": "S32.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.cfg",
+      "dst": "S32.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S31.inpaint",
+      "dst": "S32.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.scheduler",
+      "dst": "S32.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S32.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.inpaint",
+      "dst": "S33.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S33.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.inpaint",
+      "dst": "S33.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S33.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.cond",
+      "dst": "S33.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S33.cond",
+      "dst": "S33.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.uncond",
+      "dst": "S33.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.cfg",
+      "dst": "S33.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S32.inpaint",
+      "dst": "S33.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.scheduler",
+      "dst": "S33.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S33.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.inpaint",
+      "dst": "S34.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S34.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.inpaint",
+      "dst": "S34.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S34.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.cond",
+      "dst": "S34.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S34.cond",
+      "dst": "S34.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.uncond",
+      "dst": "S34.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.cfg",
+      "dst": "S34.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S33.inpaint",
+      "dst": "S34.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.scheduler",
+      "dst": "S34.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S34.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.inpaint",
+      "dst": "S35.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S35.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.inpaint",
+      "dst": "S35.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S35.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.cond",
+      "dst": "S35.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S35.cond",
+      "dst": "S35.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.uncond",
+      "dst": "S35.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.cfg",
+      "dst": "S35.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S34.inpaint",
+      "dst": "S35.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.scheduler",
+      "dst": "S35.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S35.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.inpaint",
+      "dst": "S36.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S36.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.inpaint",
+      "dst": "S36.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S36.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.cond",
+      "dst": "S36.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S36.cond",
+      "dst": "S36.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.uncond",
+      "dst": "S36.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.cfg",
+      "dst": "S36.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S35.inpaint",
+      "dst": "S36.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.scheduler",
+      "dst": "S36.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S36.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.inpaint",
+      "dst": "S37.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S37.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.inpaint",
+      "dst": "S37.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S37.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.cond",
+      "dst": "S37.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S37.cond",
+      "dst": "S37.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.uncond",
+      "dst": "S37.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.cfg",
+      "dst": "S37.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S36.inpaint",
+      "dst": "S37.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.scheduler",
+      "dst": "S37.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S37.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.inpaint",
+      "dst": "S38.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S38.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.inpaint",
+      "dst": "S38.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S38.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.cond",
+      "dst": "S38.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S38.cond",
+      "dst": "S38.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.uncond",
+      "dst": "S38.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.cfg",
+      "dst": "S38.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S37.inpaint",
+      "dst": "S38.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.scheduler",
+      "dst": "S38.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S38.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.inpaint",
+      "dst": "S39.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_pos",
+      "dst": "S39.cond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.inpaint",
+      "dst": "S39.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vlm_neg",
+      "dst": "S39.uncond",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S39.cond",
+      "dst": "S39.uncond",
+      "kind": "source_sequential_cfg_order"
+    },
+    {
+      "src": "S39.cond",
+      "dst": "S39.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S39.uncond",
+      "dst": "S39.cfg",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S39.cfg",
+      "dst": "S39.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S38.inpaint",
+      "dst": "S39.scheduler",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S39.scheduler",
+      "dst": "S39.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_enc",
+      "dst": "S39.inpaint",
+      "kind": "data_completion"
+    },
+    {
+      "src": "S39.inpaint",
+      "dst": "vae_decode",
+      "kind": "data_completion"
+    },
+    {
+      "src": "vae_decode",
+      "dst": "post",
+      "kind": "data_completion"
+    }
+  ]
+}

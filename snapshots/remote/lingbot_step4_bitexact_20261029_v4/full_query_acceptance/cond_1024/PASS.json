@@ -1,0 +1,63 @@
+{
+  "branch": "cond",
+  "begin": 1024,
+  "end": 1088,
+  "rows": 64,
+  "comparisons": [
+    {
+      "branch": "cond",
+      "stage": "attention_output",
+      "begin": 1024,
+      "end": 1088,
+      "elements": 131072,
+      "BF16_bit_mismatches": 0,
+      "max_abs": 0.0
+    },
+    {
+      "branch": "cond",
+      "stage": "ffn_input",
+      "begin": 1024,
+      "end": 1088,
+      "elements": 131072,
+      "BF16_bit_mismatches": 0,
+      "max_abs": 0.0
+    },
+    {
+      "branch": "cond",
+      "stage": "ffn_output",
+      "begin": 1024,
+      "end": 1088,
+      "elements": 131072,
+      "BF16_bit_mismatches": 0,
+      "max_abs": 0.0
+    },
+    {
+      "branch": "cond",
+      "stage": "post_ffn_norm",
+      "begin": 1024,
+      "end": 1088,
+      "elements": 131072,
+      "BF16_bit_mismatches": 0,
+      "max_abs": 0.0
+    },
+    {
+      "branch": "cond",
+      "stage": "block_output",
+      "begin": 1024,
+      "end": 1088,
+      "elements": 131072,
+      "BF16_bit_mismatches": 0,
+      "max_abs": 0.0
+    }
+  ],
+  "seconds": 18.520338535308838,
+  "files": {
+    "block_output.npy": "078147832f7b95fadb597252c35277a232e7a65ab65c527b1a14499267c7817c",
+    "attention_output.npy": "be960213aa3a372c7715b90a0e39143cd594a3b8f812b81bf639bf50aeb1b625",
+    "ffn_output.npy": "a63980518803363cd0b29033beae8925cb71cf7d6557686206ebec18c9a40f43",
+    "weights.npy": "76e84876d8cd2ce3857827e7c8d404bbda8f434f73057fedb0caf3e3031ab3a7",
+    "post_ffn_norm.npy": "34d1f971d471be432d0046f0f46ff3364238a6f54b1b959653dd107c2835961a",
+    "ids.npy": "8e87b207ba240b8e208b34c05af6f1e0285f8000d746b9c32eca53f21a65304e",
+    "ffn_input.npy": "25541300f5e0bf6b6d8adff9a7800331da5a7eb21a4388f86c94b948b9b8ffce"
+  }
+}

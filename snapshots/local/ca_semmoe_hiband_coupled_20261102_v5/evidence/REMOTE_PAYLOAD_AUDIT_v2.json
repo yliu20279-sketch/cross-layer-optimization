@@ -1,0 +1,1259 @@
+{
+  "status": "PASS_CPU_PAYLOAD_INTEGRATION_SCOPED",
+  "codec": {
+    "F16": {
+      "finite_checked": 63488,
+      "nan_inf_class_checks": true
+    },
+    "BF16": {
+      "finite_checked": 65280,
+      "nan_inf_class_checks": true
+    }
+  },
+  "collectives": {
+    "F16": {
+      "ranks": 4,
+      "tokens": 5,
+      "width": 2048,
+      "packets": 30,
+      "payload_bytes": 122880,
+      "target_noc": false
+    },
+    "BF16": {
+      "ranks": 16,
+      "tokens": 5,
+      "width": 2048,
+      "packets": 150,
+      "payload_bytes": 614400,
+      "target_noc": false
+    }
+  },
+  "moe": {
+    "qwen3": {
+      "scope": "normalized-input MoE CPU functional integration",
+      "operations": [
+        {
+          "projection": "model.layers.0.mlp.gate",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            128
+          ],
+          "weight": "model.layers.0.mlp.gate.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.119.gate_proj",
+          "partition": 7,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.119.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.119.up_proj",
+          "partition": 7,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.119.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.119.down_proj",
+          "partition": 7,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.119.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.100.gate_proj",
+          "partition": 4,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.100.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.100.up_proj",
+          "partition": 4,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.100.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.100.down_proj",
+          "partition": 4,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.100.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.120.gate_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.120.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.120.up_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.120.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.120.down_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.120.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.8.gate_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.8.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.8.up_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.8.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.8.down_proj",
+          "partition": 8,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.8.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.65.gate_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.65.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.65.up_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.65.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.65.down_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.65.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.98.gate_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.98.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.98.up_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.98.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.98.down_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.98.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.18.gate_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.18.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.18.up_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.18.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.18.down_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.18.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.118.gate_proj",
+          "partition": 6,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.118.gate_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.118.up_proj",
+          "partition": 6,
+          "shape": [
+            1,
+            2048,
+            768
+          ],
+          "weight": "model.layers.0.mlp.experts.118.up_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.118.down_proj",
+          "partition": 6,
+          "shape": [
+            1,
+            768,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.118.down_proj.weight",
+          "bias": false,
+          "dtype": "BF16"
+        }
+      ],
+      "output_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+      "read_bytes": 76021760,
+      "transfers": [
+        {
+          "src": 0,
+          "dst": 7,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 7,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "3cd7a872fba0b2dd7bc8003326e002b76ae07d4cf4a3e0cfc00ef53fd08c7790",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 4,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 4,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "290d05dde406d0512fadca71080cd047b4072e2a43e81e70140e60d860fdbfef",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 8,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 8,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "02ef1d5e541f039ae46858c93dc1f7d73ad7a52c919ea17b5ec6bf7587ad439c",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 8,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 8,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "3b9bab799d3a19a0c6591a61609d5bb3830a2ec8d3143e43b323666420365fa8",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 1,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 1,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "f239ef1bcd13edc83cd6e19ece219d04742c3102cb6e14a1c98e1f597efa720e",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 2,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "c98b8088db54f887977350b77f3490f1ede263ed7e55d7e6572821473d356d6d",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 2,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "58310a9f20ae38abf87b76db778f523847497458f8b902e307db00b733d307f3",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 6,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "7f259c030e45ed4663091e2970ab261057cafbd9a4a3628dd50d3cd8b120c4ff",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 6,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "ba1d11d3aec9d24aadc19c9a9ba5cc8fcdc8b2563fd5c078e16fdb9ab0f1f675",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 1,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 3,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 4,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 5,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 6,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 7,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 8,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 9,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 10,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 11,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 12,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 13,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 14,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 15,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "9f39ba0e24469a9baba5f504c5d1891bd725e295519e9e33d50a7f4c901545e0",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        }
+      ],
+      "original_model_numerics_verified": false,
+      "target_timing": false
+    },
+    "qwen15": {
+      "scope": "normalized-input MoE CPU functional integration",
+      "operations": [
+        {
+          "projection": "model.layers.0.mlp.gate",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            60
+          ],
+          "weight": "model.layers.0.mlp.gate.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.26.gate_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.26.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.26.up_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.26.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.26.down_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.26.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.40.gate_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.40.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.40.up_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.40.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.40.down_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.40.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.47.gate_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.47.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.47.up_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.47.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.47.down_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.47.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.3.gate_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.3.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.3.up_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.experts.3.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.experts.3.down_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.experts.3.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.gate_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.up_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.down_proj",
+          "partition": 0,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.gate_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.up_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.down_proj",
+          "partition": 1,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.gate_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.up_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.down_proj",
+          "partition": 2,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.gate_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.gate_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.up_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            2048,
+            1408
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.up_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert.down_proj",
+          "partition": 3,
+          "shape": [
+            1,
+            1408,
+            2048
+          ],
+          "weight": "model.layers.0.mlp.shared_expert.down_proj.weight",
+          "bias": false,
+          "dtype": "F16"
+        },
+        {
+          "projection": "model.layers.0.mlp.shared_expert_gate",
+          "partition": 0,
+          "shape": [
+            1,
+            2048,
+            1
+          ],
+          "weight": "model.layers.0.mlp.shared_expert_gate.weight",
+          "bias": false,
+          "dtype": "F16"
+        }
+      ],
+      "output_sha256": "ba40535cf045ffa1aa3fe3efb9cbd315583abe75a03cf421efef5ae9788c7a57",
+      "read_bytes": 346279936,
+      "transfers": [
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 2,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "e76ddbf6a67328416e48d0a960ec946b186f3b05c831430c2e99b4c38bc69de3",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 3,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 3,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "bfab0c72ddbb3d9481b5e37871e6e2934c982052e86860a751a3bad2058d3b33",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 3,
+          "token": 0,
+          "stage": "dispatch",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 3,
+          "dst": 0,
+          "token": 0,
+          "stage": "combine",
+          "bytes": 4096,
+          "payload_sha256": "8b1ebd1a58a4d250ab5db4f92704476c5bb029ad2b54fb8c071d7f4051c0d8be",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 1,
+          "token": 0,
+          "stage": "shared_input",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 1,
+          "dst": 0,
+          "token": 0,
+          "stage": "shared_reduce",
+          "bytes": 4096,
+          "payload_sha256": "82a35fc4b58f2ce3aa8c538965d43f7c1928ece4aee31b70731e3f2abb9ee596",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "shared_input",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 2,
+          "dst": 0,
+          "token": 0,
+          "stage": "shared_reduce",
+          "bytes": 4096,
+          "payload_sha256": "9e0e8c7ac5537e20124dafdc98e1ac8ca0179e03aa54d72db5a7c2accbe7e2f7",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 3,
+          "token": 0,
+          "stage": "shared_input",
+          "bytes": 4096,
+          "payload_sha256": "1b1cb19eb85553c134cd9b25085c022b2d630969b4b2b18c6cf2d09ca85f50a5",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 3,
+          "dst": 0,
+          "token": 0,
+          "stage": "shared_reduce",
+          "bytes": 4096,
+          "payload_sha256": "462a5b106cdf9e6c6eb8bc65f6144a4bd19a9058e59577fa3165de7ac13c3ed6",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 1,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "ba40535cf045ffa1aa3fe3efb9cbd315583abe75a03cf421efef5ae9788c7a57",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 2,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "ba40535cf045ffa1aa3fe3efb9cbd315583abe75a03cf421efef5ae9788c7a57",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        },
+        {
+          "src": 0,
+          "dst": 3,
+          "token": 0,
+          "stage": "SAG",
+          "bytes": 4096,
+          "payload_sha256": "ba40535cf045ffa1aa3fe3efb9cbd315583abe75a03cf421efef5ae9788c7a57",
+          "completed": true,
+          "backend": "native CPU copy",
+          "target_noc": false
+        }
+      ],
+      "original_model_numerics_verified": false,
+      "target_timing": false
+    }
+  },
+  "q15_qkv": [
+    {
+      "projection": "model.layers.0.self_attn.q_proj",
+      "shape_KN": [
+        2048,
+        2048
+      ],
+      "checked_columns": [
+        0,
+        1024,
+        2047
+      ],
+      "bias_applied": true
+    },
+    {
+      "projection": "model.layers.0.self_attn.k_proj",
+      "shape_KN": [
+        2048,
+        2048
+      ],
+      "checked_columns": [
+        0,
+        1024,
+        2047
+      ],
+      "bias_applied": true
+    },
+    {
+      "projection": "model.layers.0.self_attn.v_proj",
+      "shape_KN": [
+        2048,
+        2048
+      ],
+      "checked_columns": [
+        0,
+        1024,
+        2047
+      ],
+      "bias_applied": true
+    }
+  ],
+  "q3_object_count": 18867,
+  "q3_sampled_objects": 142,
+  "q3_sampled_shards": 16,
+  "q3_sampled_spans": 426,
+  "native_library_sha256": "898e7d47c1348749a3da7f8305880ef2b922afa6256ad4c94d47571f0c33902f",
+  "q3_byte_service_read_bytes": 76035392,
+  "full_attention_or_model": false,
+  "target_simulations": 0,
+  "gpu_runs": 0,
+  "formal_performance_runs": 0,
+  "original_model_oracle_compared": false,
+  "sources": {
+    "core/scheduling.py": "14edcb9581008eedf0eca2b70eba67d6fb83baec287ffbf9ba82dd4362a8eea0",
+    "core/runtime.py": "035057d7c6aa5f9995f1960081b42c10e38343166414236a8987df6c36d2de02",
+    "core/payload_collectives.py": "ce9c48e3bb225c547b101be1862fac9ea2dd606ab20462270b5c24b5df28cb4b",
+    "core/coaccess.py": "deec7dc5aa5549c0be004244b2513d1bf5fb52d83c6fe9bce6b7051a1d19f8b9",
+    "core/live_moe.py": "99ee20df4e6d3922f19d94e9c090e94a4ca36eab8b46a7794be3cce6c882a389",
+    "core/readiness.py": "5a4db00173992798352465054c1bf9208511009eeca7640bfc0955dcfa50df9e",
+    "core/phase_gates.py": "b1e44c9a717ec05a3f90242fccfb79308e15215441f870b698c956f8e7542e3d",
+    "core/collectives.py": "25a45ecf71f703b47e657f2b18d120e361f90baed3e1799718fd3de60ecfbb06",
+    "core/graph.py": "019d44f4bd246e53d240ce4e1c13b7d4c8a6e3bef0616377c94002911770f539",
+    "core/reuse.py": "03bf02ef48175fefd8f052b0be7218c444da7ddd2fdb6799aca2d98be98ae996",
+    "core/native_payload.py": "efaeb539d81cb8891f9cd46a5746f6ebbb261ec5b783a49db92231db0521678f",
+    "core/artifacts.py": "77cdd06a07a54577e63058b1e8efa73621f97f078863d369585955087e242241",
+    "core/gptq.py": "9e5252b9bcda2dc18adee968a134cc3f80a468193011304dc78c136754473446",
+    "core/capture.py": "7ad04d357397b4d09af6afe6b1f3aae537d234e6dd7c2159c59c132cd94fdd5c",
+    "core/common.py": "842c628eccde82cc069ae93871eb9427a92687dc2d5c7fd35e00e3bfc40f8592",
+    "core/__init__.py": "e264a5b1be4bb577ef6de1fb7e73233b47335ba02133c46f6ff034d73c1af565",
+    "core/memory.py": "0abb563d5bbee00d8841f93d0d4b0fd59a79b749a636d39e723e02c9cb7721de",
+    "models/shared.py": "0faad4817ca4c2d87fafb4fac7caf29b1baa3032a18c11c9d9d0a4f860f13daa",
+    "models/__init__.py": "4f9d1b807a24f79296d13ee000425166f9f360e362b40ea9aa057d2af55cb42d",
+    "models/qwen3/build_graph.py": "fca4b1089e68e20abc8c090c4e0dde1528af73c2d3d92368491860a76e51f3e4",
+    "models/qwen3/run_contract.py": "12a96ed113674df4524670238c51fe7a94070844193ded5df92c1b70c89b7190",
+    "models/qwen3/memory_lowering.py": "5478672ab2adf36e79cbaa269d0f3744236d8e7c2728182c067e3f32454c6e42",
+    "models/qwen3/__init__.py": "0a7f4a186ec7beb765e4796d11abaf645bdc984bc73416f6ec3fc9d6e46215ca",
+    "models/qwen3/sem_moe.py": "4f588bc61a37969282aafcdc713b25dd98f26b7e3af64705600f45f4010eda3b",
+    "models/qwen15/build_graph.py": "c303cef36bfe74f33d0346637727eca03ac7070aaaadca36a4f179569c6f8d0c",
+    "models/qwen15/run_contract.py": "4c57e7f75eceb87093ab52ffa43a72bf59c87b9fc7f294b90e8fdb698bae673b",
+    "models/qwen15/capture_contract.py": "ed28674022d579dd84c51d088509e2a205331ea960761dd940e1b5fd8c24a4f7",
+    "models/qwen15/memory_lowering.py": "3d019461fe1967aafe7bc521c2bf334dfb66b9b604873422abfe1782f1ad2234",
+    "models/qwen15/projections.py": "fd13f3b505d159629cdfc8110927260b5a23d0041fed273df026649ed39012b0",
+    "models/qwen15/__init__.py": "8cc3ae21fa289ba45524b84e9bc9896eb7f3b23ffe4aaf907cd6508d18bc2a40",
+    "models/qwen15/fp16_math.py": "fb44eb48d2afd268d6ae69a0d61fbeb35196358d704e748c9b580949740b1cf6",
+    "models/qwen15/sem_moe.py": "4f588bc61a37969282aafcdc713b25dd98f26b7e3af64705600f45f4010eda3b"
+  }
+}

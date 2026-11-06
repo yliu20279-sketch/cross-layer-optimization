@@ -1,0 +1,27 @@
+{
+  "state": "PREREGISTERED_BEFORE_REFERENCE_GENERATION",
+  "workload": "swe_qwen3 R0002 prefill layer0 actual selected-expert gate projection",
+  "selection": "For each rank r, first source route occurrence with expert_id modulo16 equal r; use that token's original post_attention_norm input",
+  "precision": "original BF16, FP32 accumulator, unchanged source CPU comparison bit exact",
+  "host_bytes": 137438953472,
+  "HB_partitions": 16,
+  "HB_bytes_per_partition": 536870912,
+  "NPU_SRAM_bytes": 4194304,
+  "target_GPU": 0,
+  "owner_policy": "expert_id modulo16, frozen static functional baseline, not Sem-MoE policy benefit",
+  "links": {
+    "CPU48_to_gateway16": "host DRAM60ns+12.8B/ns shared proxy, PCIe55.04B/ns per direction+250ns",
+    "Ni_to_CHi32+i": "dedicated shared per-partition128B/5cycle occupancy; protocol headers and replies charged explicitly",
+    "horizontal": "canonical17-router graph, standard PopNet full trace and feedback"
+  },
+  "limitations": [
+    "HB fixed latency unknown, no physical timing certification",
+    "protocol framing cost is an explicit research overlay",
+    "BF16 GEMM CPU functional plus generic FP32 vector cost, codec and complete opcode/SRAM bank costs not certified",
+    "16 real selected-expert projections do not equal full distributed layer",
+    "host warm DRAM backing capacity and actual reads are separate from cold disk I/O",
+    "GPU GEMM and softmax FP32 differences retained"
+  ],
+  "launch_prerequisite": "previous unified FIFO v2 complete independent audit passes",
+  "no_new_GPU_agent_SWE_gold_hidden_tests": true
+}

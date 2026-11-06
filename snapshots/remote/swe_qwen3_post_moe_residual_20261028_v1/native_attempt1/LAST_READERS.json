@@ -1,0 +1,786 @@
+{
+  "regions": [
+    {
+      "rank": 0,
+      "offset": 16777216,
+      "bytes": 4096,
+      "label": "decoder_input_BF16",
+      "pending": [],
+      "retired_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "offset": 17825792,
+      "bytes": 4096,
+      "label": "attention_output_BF16",
+      "pending": [],
+      "retired_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "offset": 235339776,
+      "bytes": 4096,
+      "label": "merged_MoE_BF16",
+      "pending": [],
+      "retired_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "offset": 33554432,
+      "bytes": 8192,
+      "label": "decoder_input_FP32",
+      "pending": [],
+      "retired_ns": 98532753
+    },
+    {
+      "rank": 0,
+      "offset": 34603008,
+      "bytes": 8192,
+      "label": "attention_output_FP32",
+      "pending": [],
+      "retired_ns": 98532753
+    },
+    {
+      "rank": 0,
+      "offset": 35651584,
+      "bytes": 8192,
+      "label": "pre_MoE_residual_FP32",
+      "pending": [],
+      "retired_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "offset": 18874368,
+      "bytes": 4096,
+      "label": "pre_MoE_residual_BF16",
+      "pending": [],
+      "retired_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "offset": 36700160,
+      "bytes": 8192,
+      "label": "residual_skip_FP32",
+      "pending": [],
+      "retired_ns": 98555080
+    },
+    {
+      "rank": 0,
+      "offset": 37748736,
+      "bytes": 8192,
+      "label": "merged_MoE_FP32",
+      "pending": [],
+      "retired_ns": 98555080
+    },
+    {
+      "rank": 0,
+      "offset": 38797312,
+      "bytes": 8192,
+      "label": "post_MoE_residual_FP32",
+      "pending": [],
+      "retired_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "offset": 19922944,
+      "bytes": 4096,
+      "label": "post_MoE_residual_BF16",
+      "pending": [],
+      "retired_ns": 98560410
+    },
+    {
+      "rank": 0,
+      "offset": 20971520,
+      "bytes": 4096,
+      "label": "layer1_ingress_BF16",
+      "pending": [
+        "layer1_input_norm"
+      ],
+      "retired_ns": null
+    }
+  ],
+  "readers": [
+    {
+      "rank": 0,
+      "label": "decoder_input_FP32",
+      "offset": 33554432,
+      "reader": "arithmetic",
+      "event": 280,
+      "done_ns": 98532753
+    },
+    {
+      "rank": 0,
+      "label": "attention_output_FP32",
+      "offset": 34603008,
+      "reader": "arithmetic",
+      "event": 280,
+      "done_ns": 98532753
+    },
+    {
+      "rank": 0,
+      "label": "pre_MoE_residual_FP32",
+      "offset": 35651584,
+      "reader": "encode",
+      "event": 281,
+      "done_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "label": "decoder_input_BF16",
+      "offset": 16777216,
+      "reader": "pre_residual_add",
+      "event": 10,
+      "done_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "label": "attention_output_BF16",
+      "offset": 17825792,
+      "reader": "pre_residual_add",
+      "event": 15,
+      "done_ns": 98536457
+    },
+    {
+      "rank": 0,
+      "label": "residual_skip_FP32",
+      "offset": 36700160,
+      "reader": "arithmetic",
+      "event": 559,
+      "done_ns": 98555080
+    },
+    {
+      "rank": 0,
+      "label": "merged_MoE_FP32",
+      "offset": 37748736,
+      "reader": "arithmetic",
+      "event": 559,
+      "done_ns": 98555080
+    },
+    {
+      "rank": 0,
+      "label": "post_MoE_residual_FP32",
+      "offset": 38797312,
+      "reader": "encode",
+      "event": 560,
+      "done_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "label": "pre_MoE_residual_BF16",
+      "offset": 18874368,
+      "reader": "post_MoE_add",
+      "event": 289,
+      "done_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "label": "merged_MoE_BF16",
+      "offset": 235339776,
+      "reader": "downstream_residual",
+      "event": 294,
+      "done_ns": 98559114
+    },
+    {
+      "rank": 0,
+      "label": "post_MoE_residual_BF16",
+      "offset": 19922944,
+      "reader": "next_layer_ingress",
+      "event": 567,
+      "done_ns": 98560410
+    },
+    {
+      "rank": 0,
+      "label": "layer1_ingress_BF16",
+      "offset": 20971520,
+      "reader": "diagnostic_readback",
+      "event": 572,
+      "done_ns": 98561054
+    }
+  ],
+  "SRAM": [
+    {
+      "rank": 0,
+      "buffers": [
+        4,
+        5
+      ],
+      "event": 30,
+      "done_ns": 98521976
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        7,
+        8
+      ],
+      "event": 38,
+      "done_ns": 98522307
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        10,
+        11
+      ],
+      "event": 46,
+      "done_ns": 98522638
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        13,
+        14
+      ],
+      "event": 54,
+      "done_ns": 98522971
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        16,
+        17
+      ],
+      "event": 62,
+      "done_ns": 98523302
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        19,
+        20
+      ],
+      "event": 70,
+      "done_ns": 98523853
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        22,
+        23
+      ],
+      "event": 78,
+      "done_ns": 98524186
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        25,
+        26
+      ],
+      "event": 86,
+      "done_ns": 98524517
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        28,
+        29
+      ],
+      "event": 94,
+      "done_ns": 98524783
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        31,
+        32
+      ],
+      "event": 102,
+      "done_ns": 98525116
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        34,
+        35
+      ],
+      "event": 110,
+      "done_ns": 98525447
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        37,
+        38
+      ],
+      "event": 118,
+      "done_ns": 98525778
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        40,
+        41
+      ],
+      "event": 126,
+      "done_ns": 98526111
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        43,
+        44
+      ],
+      "event": 134,
+      "done_ns": 98526442
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        46,
+        47
+      ],
+      "event": 142,
+      "done_ns": 98526773
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        49,
+        50
+      ],
+      "event": 150,
+      "done_ns": 98527106
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        52,
+        53
+      ],
+      "event": 158,
+      "done_ns": 98527372
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        55,
+        56
+      ],
+      "event": 166,
+      "done_ns": 98527888
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        58,
+        59
+      ],
+      "event": 174,
+      "done_ns": 98528221
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        61,
+        62
+      ],
+      "event": 182,
+      "done_ns": 98528552
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        64,
+        65
+      ],
+      "event": 190,
+      "done_ns": 98528883
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        67,
+        68
+      ],
+      "event": 198,
+      "done_ns": 98529216
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        70,
+        71
+      ],
+      "event": 206,
+      "done_ns": 98529547
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        73,
+        74
+      ],
+      "event": 214,
+      "done_ns": 98529878
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        76,
+        77
+      ],
+      "event": 222,
+      "done_ns": 98530143
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        79,
+        80
+      ],
+      "event": 230,
+      "done_ns": 98530476
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        82,
+        83
+      ],
+      "event": 238,
+      "done_ns": 98530807
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        85,
+        86
+      ],
+      "event": 246,
+      "done_ns": 98531138
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        88,
+        89
+      ],
+      "event": 254,
+      "done_ns": 98531681
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        91,
+        92
+      ],
+      "event": 262,
+      "done_ns": 98532012
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        94,
+        95
+      ],
+      "event": 270,
+      "done_ns": 98532343
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        97,
+        98
+      ],
+      "event": 278,
+      "done_ns": 98532676
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        103,
+        104
+      ],
+      "event": 309,
+      "done_ns": 98544297
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        106,
+        107
+      ],
+      "event": 317,
+      "done_ns": 98544628
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        109,
+        110
+      ],
+      "event": 325,
+      "done_ns": 98544961
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        112,
+        113
+      ],
+      "event": 333,
+      "done_ns": 98545292
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        115,
+        116
+      ],
+      "event": 341,
+      "done_ns": 98545623
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        118,
+        119
+      ],
+      "event": 349,
+      "done_ns": 98545956
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        121,
+        122
+      ],
+      "event": 357,
+      "done_ns": 98546287
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        124,
+        125
+      ],
+      "event": 365,
+      "done_ns": 98546618
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        127,
+        128
+      ],
+      "event": 373,
+      "done_ns": 98546902
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        130,
+        131
+      ],
+      "event": 381,
+      "done_ns": 98547418
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        133,
+        134
+      ],
+      "event": 389,
+      "done_ns": 98547751
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        136,
+        137
+      ],
+      "event": 397,
+      "done_ns": 98548082
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        139,
+        140
+      ],
+      "event": 405,
+      "done_ns": 98548413
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        142,
+        143
+      ],
+      "event": 413,
+      "done_ns": 98548746
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        145,
+        146
+      ],
+      "event": 421,
+      "done_ns": 98549077
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        148,
+        149
+      ],
+      "event": 429,
+      "done_ns": 98549408
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        151,
+        152
+      ],
+      "event": 437,
+      "done_ns": 98549673
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        154,
+        155
+      ],
+      "event": 445,
+      "done_ns": 98550006
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        157,
+        158
+      ],
+      "event": 453,
+      "done_ns": 98550337
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        160,
+        161
+      ],
+      "event": 461,
+      "done_ns": 98550668
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        163,
+        164
+      ],
+      "event": 469,
+      "done_ns": 98551211
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        166,
+        167
+      ],
+      "event": 477,
+      "done_ns": 98551542
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        169,
+        170
+      ],
+      "event": 485,
+      "done_ns": 98551873
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        172,
+        173
+      ],
+      "event": 493,
+      "done_ns": 98552206
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        175,
+        176
+      ],
+      "event": 501,
+      "done_ns": 98552472
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        178,
+        179
+      ],
+      "event": 509,
+      "done_ns": 98552803
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        181,
+        182
+      ],
+      "event": 517,
+      "done_ns": 98553136
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        184,
+        185
+      ],
+      "event": 525,
+      "done_ns": 98553467
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        187,
+        188
+      ],
+      "event": 533,
+      "done_ns": 98553798
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        190,
+        191
+      ],
+      "event": 541,
+      "done_ns": 98554131
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        193,
+        194
+      ],
+      "event": 549,
+      "done_ns": 98554462
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        196,
+        197
+      ],
+      "event": 557,
+      "done_ns": 98555003
+    },
+    {
+      "rank": 0,
+      "buffers": [
+        200
+      ],
+      "event": 570,
+      "done_ns": 98560410
+    }
+  ]
+}

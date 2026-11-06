@@ -1,0 +1,134 @@
+{
+  "state": "PASS_LIMITED_M1_EXPERT49_TAIL_AND_RETURN",
+  "checks": [
+    {
+      "stage": "silu",
+      "exact": true,
+      "elements": 768,
+      "different": 0,
+      "max_abs": 0.0
+    },
+    {
+      "stage": "product",
+      "exact": true,
+      "elements": 768,
+      "different": 0,
+      "max_abs": 0.0
+    },
+    {
+      "stage": "down",
+      "exact": true,
+      "elements": 2048,
+      "different": 0,
+      "max_abs": 0.0
+    },
+    {
+      "stage": "returned_body",
+      "exact": true,
+      "elements": 2048,
+      "different": 0,
+      "max_abs": 0.0
+    }
+  ],
+  "parent_boundary_ns": 13660642,
+  "down_start_ns": 16737265,
+  "down_done_ns": 18049775,
+  "returned": {
+    "src": 1,
+    "dst": 0,
+    "bytes": 4224,
+    "body_bytes": 4096,
+    "send_ready": 18054468,
+    "tail": 18054605,
+    "TX_release": 18054605,
+    "HB_ready": 18055532,
+    "consumer_ready": 18056176,
+    "consumer_event": 5,
+    "global_address": 2097152,
+    "sha256": "f7056472a8f8e7646945921834b018d1d3eda9de3dcf91a5a6bc8f956ebcfc1e",
+    "metadata_descriptor": "0000000000000000310000010000393e00000000000000009939eecac64fff28",
+    "weighted_commit": false
+  },
+  "negative_controls": [
+    "gate_BF16_read_unresident",
+    "up_BF16_read_unresident",
+    "down_BF16_read_unresident",
+    "gate_BF16_retire_before_reader",
+    "up_BF16_retire_before_reader",
+    "down_BF16_retire_before_reader",
+    "retired_gate_read",
+    "silu_BF16_read_unresident",
+    "silu_FP32_read_unresident",
+    "up_FP32_read_unresident",
+    "product_FP32_read_unresident",
+    "product_read_before_compute",
+    "mul_input_free_before_reader",
+    "product_BF16_read_unresident",
+    "down_input_FP32_read_unresident",
+    "down_weight_FP32_read_unresident",
+    "down_output_FP32_read_unresident",
+    "down_input_retire_before_tiles",
+    "down_weight_retire_before_tiles",
+    "down_tile_free_before_reader",
+    "down_input_retire_pending_tiles",
+    "down_BF16_read_unresident",
+    "TX_free_before_tail",
+    "missing_return_tail",
+    "duplicate_return_tail",
+    "early_return_tail",
+    "return_read_before_tail",
+    "return_RX_free_before_commit",
+    "return_consumer_before_commit"
+  ],
+  "device": {
+    "1": {
+      "rank": 1,
+      "counts": {
+        "events": 108567,
+        "pipeline_cycles": 14944023,
+        "HB_write_bytes": 9467904,
+        "RAM_transactions": 594720,
+        "RAM_physical_bytes": 19031040,
+        "HB_read_bytes": 9563136,
+        "SRAM_read_bytes": 23189632,
+        "SRAM_write_bytes": 23193728,
+        "SRAM_service_bytes": 46383360,
+        "vector_ops": 3406592
+      },
+      "SRAM_peak_bytes": 3145728,
+      "HB_address_extent_bytes": 52432896,
+      "HB_allocated_bytes": 9467904,
+      "done_ns": 18054605
+    },
+    "0": {
+      "rank": 0,
+      "counts": {
+        "events": 6,
+        "pipeline_cycles": 18054605,
+        "SRAM_read_bytes": 4224,
+        "SRAM_write_bytes": 8448,
+        "SRAM_service_bytes": 12672,
+        "HB_write_bytes": 4224,
+        "RAM_transactions": 264,
+        "RAM_physical_bytes": 8448,
+        "HB_read_bytes": 4224
+      },
+      "SRAM_peak_bytes": 4224,
+      "HB_address_extent_bytes": 2101376,
+      "HB_allocated_bytes": 4224,
+      "done_ns": 18056176
+    }
+  },
+  "parent_plus_new_conservative_HB_bytes": 32333376,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "SiLU": "explicit host numpy FP32 software, BF16 boundaries, no target exp timing",
+  "codec_control_cost": null,
+  "full_timing": "NOT_CERTIFIED",
+  "batch_GEMM": "DIFFERENCES_RETAINED",
+  "softmax_FP32": "FAILED_RETAINED",
+  "new_native_fragments": 1,
+  "new_GPU_Sniper_agent_runs": 0,
+  "physical_NPU_runs": 0,
+  "whole_MoE": "NOT_RUN"
+}

@@ -1,0 +1,16 @@
+{
+  "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/schema.py\"]'",
+  "syntax": {
+    "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+    "returncode": 1,
+    "exception_info": ""
+  },
+  "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+  "tests": null,
+  "runner": "pytest",
+  "targets": null,
+  "default_full_suite": true,
+  "source_modified_by_controller": false,
+  "hidden_tests_used": false,
+  "source_unchanged_through_validation": true
+}

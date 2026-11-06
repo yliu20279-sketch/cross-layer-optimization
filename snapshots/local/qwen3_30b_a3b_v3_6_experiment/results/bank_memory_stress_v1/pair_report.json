@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "classification": "synthetic memory-stress on captured Qwen3 routes",
+  "full_memory_trace": true,
+  "lanes": 4,
+  "compute_multiplier": 0.25,
+  "max_outstanding_per_op": 1,
+  "pairs": [
+    {
+      "case": "ctx512_c16_high_L47_l4_c025",
+      "normal_cycles": 13310445,
+      "oracle_cycles": 12848756,
+      "exposed_bank_cycles": 461689,
+      "exposed_fraction": 0.03468621822936799
+    },
+    {
+      "case": "ctx512_c16_low_L25_l4_c025",
+      "normal_cycles": 6365799,
+      "oracle_cycles": 5796649,
+      "exposed_bank_cycles": 569150,
+      "exposed_fraction": 0.0894074726519012
+    }
+  ]
+}

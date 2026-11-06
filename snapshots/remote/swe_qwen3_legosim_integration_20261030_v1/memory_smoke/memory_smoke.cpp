@@ -1,0 +1,6 @@
+#include <fstream>
+#include <vector>
+#include <stdexcept>
+#include "npusim_chiplet_memory.h"
+#include "sync_protocol.h"
+int main(int argc,char**argv){NPUSim::NPUConfig c;c.external_memory_enable=true;c.external_memory_model="chiplet";c.dram_transaction_bytes=32;c.dram_size_bytes=536870912;c.dram_chiplet_x=2;c.dram_chiplet_y=0;c.dram_chiplet_burst_bytes=4096;c.dram_chiplet_region_bytes=536870912;c.dram_chiplet_grid_cols=3;c.activation_dtype=c.weight_dtype=c.output_dtype=NPUSim::TensorDType::kBf16;c.accumulator_dtype=NPUSim::TensorDType::kFp32;unsigned long long cycle=0;NPUSim::ChipletMemoryClientOptions o;o.self_x=1;o.self_y=0;o.transaction_trace_path=argv[1];NPUSim::ChipletMemoryClient m(c,o,cycle);std::vector<uint16_t>a;for(unsigned i=0;i<65536;++i)if((i&0x7f80)!=0x7f80)a.push_back(i);std::vector<uint16_t>b(a.size());m.store(1048576,a.data(),a.size()*2,"BF16_real_HB_store");m.load(1048576,b.data(),b.size()*2,"BF16_real_HB_load");if(a!=b)return 7;auto rec=m.completionRecords();for(auto&v:rec)if(v.complete_cycle<v.issue_cycle)return 8;m.shutdown();std::ofstream f(argv[2]);f<<"{\"state\":\"PASS_BF16_EXTERNAL_DRAM_ROUNDTRIP\",\"finite_values\":65280,\"transfers\":"<<rec.size()<<",\"cycle\":"<<cycle<<",\"active_HB_bytes\":536870912}";InterChiplet::sendCycleCmd(cycle);return 0;}

@@ -1,0 +1,146 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793003946.914135,
+    "start_monotonic": 7679893.85360724,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679894.196850794,
+    "seconds": 0.3432437954470515
+  },
+  {
+    "command": "grep -r 'validates' /testbed",
+    "start_utc": 1793003963.8584116,
+    "start_monotonic": 7679910.797884046,
+    "result": {
+      "output": "/testbed/tests/test_serialization.py:    def test_email_field_validates(self, user):\n/testbed/tests/test_serialization.py:    def test_url_field_validates(self, user):\n/testbed/tests/test_decorators.py:    validates,\n/testbed/tests/test_decorators.py:    validates_schema,\n/testbed/tests/test_decorators.py:    @validates('foo')\n/testbed/tests/test_decorators.py:    def test_validates_and_strict(self):\n/testbed/tests/test_decorators.py:            @validates('s')\n/testbed/tests/test_decorators.py:    def test_validates_with_attribute_and_strict(self):\n/testbed/tests/test_decorators.py:            @validates('s')\n/testbed/tests/test_decorators.py:    def test_validates_decorator(self):\n/testbed/tests/test_decorators.py:            @validates('bar')\n/testbed/tests/test_decorators.py:            @validates('bar')\n/testbed/tests/test_decorators.py:    def test_validates_load_from(self):\n/testbed/tests/test_decorators.py:            @validates('foo')\n/testbed/tests/test_decorators.py:            @validates_schema\n/testbed/tests/test_decorators.py:            @validates_schema\n/testbed/tests/test_decorators.py:            @validates_schema(pass_many=True)\n/testbed/tests/test_decorators.py:            @validates_schema\n/testbed/tests/test_decorators.py:            @validates_schema\n/testbed/tests/test_decorators.py:            @validates_schema\n/testbed/tests/test_decorators.py:            @validates_schema(pass_original=True)\n/testbed/tests/test_decorators.py:            @validates_schema(pass_many=True, pass_original=True)\n/testbed/tests/test_decorators.py:            @validates_schema(pass_original=True)\n/testbed/tests/test_decorators.py:            @validates_schema(skip_on_field_errors=True)\n/testbed/tests/test_decorators.py:            @validates_schema(skip_on_field_errors=True, pass_many=True)\n/testbed/tests/test_schema.py:    validates, validates_schema\n/testbed/tests/test_schema.py:        @validates_schema\n/testbed/tests/test_schema.py:    def test_custom_error_handler_with_validates_decorator(self):\n/testbed/tests/test_schema.py:            @validates('num')\n/testbed/tests/test_schema.py:    def test_custom_error_handler_with_validates_schema_decorator(self):\n/testbed/tests/test_schema.py:            @validates_schema\n/testbed/tests/test_schema.py:            def validates_schema(self, data):\n/testbed/tests/test_schema.py:            @validates('a')\n/testbed/tests/test_schema.py:            @validates('b')\n/testbed/tests/test_schema.py:    def test_all_errors_on_many_nested_field_with_validates_decorator(self):\n/testbed/tests/test_schema.py:            @validates('inner')\n/testbed/tests/test_schema.py:            def validates_inner(self, data):\n/testbed/tests/test_schema.py:            @validates('foo')\n/testbed/tests/test_deserialization.py:        # validator returns None, so anything validates\n/testbed/tests/test_deserialization.py:        # validator returns False, so nothing validates\n/testbed/CHANGELOG.rst:- Respect ``load_from`` when reporting errors for ``@validates('field_name')``\n/testbed/CHANGELOG.rst:- Make ``@validates`` consistent with field validator behavior: if validation fails, the field will not be included in the deserialized output (:issue:`391`). Thanks :user:`martinstein` for reporting and thanks :user:`vuonghv` for the fix.\n/testbed/CHANGELOG.rst:- Add ``skip_on_field_errors`` parameter to ``validates_schema`` (:issue:`323`). Thanks :user:`jjvattamattom` for the suggestion and :user:`d-sutherland` for the PR.\n/testbed/CHANGELOG.rst:- Fix ``@validates`` behavior when used when ``attribute`` is specified and ``strict=True`` (:issue:`350`). Thanks :user:`density` for reporting.\n/testbed/CHANGELOG.rst:- Fix passing data to schema validator when using ``@validates_schema(many=True)`` (:issue:`297`). Thanks :user:`d-sutherland` for reporting.\n/testbed/CHANGELOG.rst:- Fix usage of ``@validates`` with a nested field when ``many=True`` (:issue:`298`). Thanks :user:`nelfin` for the catch and patch.\n/testbed/CHANGELOG.rst:- The ``raw`` parameter of the ``pre_*``, ``post_*``, ``validates_schema`` decorators was renamed to ``pass_many`` (:issue:`276`).\n/testbed/CHANGELOG.rst:- Methods decorated with the ``pre_*``, ``post_*``, and ``validates_*`` decorators must be instance methods. Class methods and instance methods are not supported at this time.\n/testbed/CHANGELOG.rst:- ``Schema.validator``, ``Schema.preprocessor``, and ``Schema.data_handler`` are removed. Use ``validates_schema``, ``pre_load``, and ``post_dump`` instead.\n/testbed/CHANGELOG.rst:- Add ``marshmallow.validates_schema`` decorator for defining schema-level validators (:issue:`116`).\n/testbed/CHANGELOG.rst:- Add ``marshmallow.validates`` decorator for defining field validators as Schema methods (:issue:`116`). Thanks :user:`philtay`.\n/testbed/CHANGELOG.rst:- ``Schema.validator`` is deprecated. Use ``marshmallow.validates_schema`` instead.\n/testbed/CHANGELOG.rst:- Implicit passing of original, raw data to Schema validators is removed. Use ``@marshmallow.validates_schema(pass_original=True)`` instead.\n/testbed/CHANGELOG.rst:- Add ``Schema.validate`` method which validates input data against a schema. Similar to ``Schema.load``, but does not call ``make_object`` and only returns the errors dictionary.\n/testbed/src/marshmallow/fields.py:    \"\"\"A field that validates input on serialization.\"\"\"\n/testbed/src/marshmallow/decorators.py:        Schema, pre_load, pre_dump, post_load, validates_schema,\n/testbed/src/marshmallow/decorators.py:        validates, fields, ValidationError\n/testbed/src/marshmallow/decorators.py:        @validates_schema\n/testbed/src/marshmallow/decorators.py:        @validates('age')\n/testbed/src/marshmallow/decorators.py:VALIDATES = 'validates'\n/testbed/src/marshmallow/decorators.py:VALIDATES_SCHEMA = 'validates_schema'\n/testbed/src/marshmallow/decorators.py:def validates(field_name):\n/testbed/src/marshmallow/decorators.py:    :param str field_name: Name of the field that the method validates.\n/testbed/src/marshmallow/decorators.py:def validates_schema(fn=None, pass_many=False, pass_original=False, skip_on_field_errors=False):\n/testbed/src/marshmallow/__init__.py:    pre_dump, post_dump, pre_load, post_load, validates, validates_schema\n/testbed/src/marshmallow/__init__.py:    'validates',\n/testbed/src/marshmallow/__init__.py:    'validates_schema',\n/testbed/src/marshmallow/schema.py:        `marshmallow.decorators.validates_schema`,\n/testbed/docs/upgrading.rst:Similar to pre-processing and post-processing methods, schema validators are now defined as methods. Decorate schema validators with `validates_schema <marshmallow.decorators.validates_schema>`. `Schema.validator` is removed.\n/testbed/docs/upgrading.rst:    from marshmallow import Schema, fields, validates_schema, ValidationError\n/testbed/docs/upgrading.rst:        @validates_schema\n/testbed/docs/extending.rst:You can register schema-level validation functions for a :class:`Schema` using the :meth:`marshmallow.validates_schema <marshmallow.decorators.validates_schema>` decorator. Schema-level validation errors will be stored on the ``_schema`` key of the errors dictonary.\n/testbed/docs/extending.rst:    from marshmallow import Schema, fields, validates_schema, ValidationError\n/testbed/docs/extending.rst:        @validates_schema\n/testbed/docs/extending.rst:Normally, unspecified field names are ignored by the validator. If you would like access to the original, raw input (e.g. to fail validation if an unknown field name is sent), add ``pass_original=True`` to your call to `validates_schema <marshmallow.decorators.validates_schema>`.\n/testbed/docs/extending.rst:    from marshmallow import Schema, fields, validates_schema, ValidationError\n/testbed/docs/extending.rst:        @validates_schema(pass_original=True)\n/testbed/docs/extending.rst:        @validates_schema\n/testbed/docs/quickstart.rst:    :meth:`Schema.dump` also returns a dictionary of errors, which will include any ``ValidationErrors`` raised during serialization. However, ``required``, ``allow_none``, ``validate``, `@validates <marshmallow.decorators.validates>`, and `@validates_schema <marshmallow.decorators.validates_schema>` only apply during deserialization.\n/testbed/docs/quickstart.rst:It is often convenient to write validators as methods. Use the `validates <marshmallow.decorators.validates>` decorator to register field validator methods.\n/testbed/docs/quickstart.rst:    from marshmallow import fields, Schema, validates, ValidationError\n/testbed/docs/quickstart.rst:        @validates('quantity')\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679911.063359118,
+    "seconds": 0.2654754240065813
+  },
+  {
+    "command": "grep -r 'validates' /testbed/src/marshmallow",
+    "start_utc": 1793003986.0923848,
+    "start_monotonic": 7679933.031855941,
+    "result": {
+      "output": "/testbed/src/marshmallow/fields.py:    \"\"\"A field that validates input on serialization.\"\"\"\n/testbed/src/marshmallow/decorators.py:        Schema, pre_load, pre_dump, post_load, validates_schema,\n/testbed/src/marshmallow/decorators.py:        validates, fields, ValidationError\n/testbed/src/marshmallow/decorators.py:        @validates_schema\n/testbed/src/marshmallow/decorators.py:        @validates('age')\n/testbed/src/marshmallow/decorators.py:VALIDATES = 'validates'\n/testbed/src/marshmallow/decorators.py:VALIDATES_SCHEMA = 'validates_schema'\n/testbed/src/marshmallow/decorators.py:def validates(field_name):\n/testbed/src/marshmallow/decorators.py:    :param str field_name: Name of the field that the method validates.\n/testbed/src/marshmallow/decorators.py:def validates_schema(fn=None, pass_many=False, pass_original=False, skip_on_field_errors=False):\n/testbed/src/marshmallow/__init__.py:    pre_dump, post_dump, pre_load, post_load, validates, validates_schema\n/testbed/src/marshmallow/__init__.py:    'validates',\n/testbed/src/marshmallow/__init__.py:    'validates_schema',\n/testbed/src/marshmallow/schema.py:        `marshmallow.decorators.validates_schema`,\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679933.331426709,
+    "seconds": 0.29957121424376965
+  },
+  {
+    "command": "find /testbed -name \"*.py\" -exec grep -l 'validates' {} \\;",
+    "start_utc": 1793004013.3780534,
+    "start_monotonic": 7679960.317524519,
+    "result": {
+      "output": "/testbed/tests/test_serialization.py\n/testbed/tests/test_decorators.py\n/testbed/tests/test_schema.py\n/testbed/tests/test_deserialization.py\n/testbed/src/marshmallow/fields.py\n/testbed/src/marshmallow/decorators.py\n/testbed/src/marshmallow/__init__.py\n/testbed/src/marshmallow/schema.py\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679960.692609153,
+    "seconds": 0.37508488539606333
+  },
+  {
+    "command": "grep -r 'TypeError' /testbed",
+    "start_utc": 1793004030.1339006,
+    "start_monotonic": 7679977.073373071,
+    "result": {
+      "output": "/testbed/tests/test_schema.py:    with pytest.raises(TypeError, match='must be declared as a Field instance'):\n/testbed/tests/base.py:        except TypeError as te:\n/testbed/tests/base.py:        except TypeError as te:\n/testbed/CHANGELOG.rst:- Prevent ``TypeError`` when a non-collection is passed to a ``Schema`` with ``many=True``.\n/testbed/src/marshmallow/fields.py:        except (TypeError, ValueError):\n/testbed/src/marshmallow/fields.py:            except TypeError:\n/testbed/src/marshmallow/fields.py:        except (TypeError, IndexError):\n/testbed/src/marshmallow/fields.py:            except (TypeError, AttributeError, ValueError):\n/testbed/src/marshmallow/fields.py:            except (TypeError, AttributeError, ValueError):\n/testbed/src/marshmallow/fields.py:            except TypeError:\n/testbed/src/marshmallow/fields.py:        except (AttributeError, TypeError, ValueError):\n/testbed/src/marshmallow/fields.py:        except (AttributeError, TypeError, ValueError):\n/testbed/src/marshmallow/fields.py:        except (TypeError, ValueError):\n/testbed/src/marshmallow/ordereddict.py:            raise TypeError('expected at most 1 arguments, got %d' % len(args))\n/testbed/src/marshmallow/schema.py:            except TypeError:\n/testbed/src/marshmallow/schema.py:                    raise TypeError(msg)\n/testbed/src/marshmallow/utils.py:    except TypeError:\n/testbed/src/marshmallow/utils.py:    except (KeyError, AttributeError, IndexError, TypeError):\n/testbed/src/marshmallow/validate.py:        except TypeError:\n/testbed/src/marshmallow/validate.py:        except TypeError:\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679977.379352892,
+    "seconds": 0.30598008539527655
+  },
+  {
+    "command": "grep -r 'NoneType' /testbed",
+    "start_utc": 1793004048.0452576,
+    "start_monotonic": 7679994.984728568,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7679995.313922677,
+    "seconds": 0.3291943743824959
+  },
+  {
+    "command": "grep -r 'subscriptable' /testbed",
+    "start_utc": 1793004066.553979,
+    "start_monotonic": 7680013.493451118,
+    "result": {
+      "output": "",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680013.74405183,
+    "seconds": 0.250600952655077
+  },
+  {
+    "command": "grep -r 'data' /testbed/src/marshmallow/schema.py",
+    "start_utc": 1793004089.7807486,
+    "start_monotonic": 7680036.720219738,
+    "result": {
+      "output": "#: Return type of :meth:`Schema.dump` including serialized data and errors\nMarshalResult = namedtuple('MarshalResult', ['data', 'errors'])\n#: Return type of :meth:`Schema.load`, including deserialized data and errors\nUnmarshalResult = namedtuple('UnmarshalResult', ['data', 'errors'])\n        data, errors = schema.dump(album)\n        data  # {'release_date': '1968-12-06', 'title': 'Beggars Banquet'}\n    :param bool strict: If `True`, raise errors if invalid data are passed in\n        `__validators__`, `__preprocessors__`, and `__data_handlers__` are removed in favor of\n                'method to add additional data instead.',\n    def _postprocess(self, data, many, obj):\n                for each in data:\n                data.update(self.extra)\n        return data\n    def handle_error(self, error, data):\n        :param data: The original input data.\n        and the serialized object (if serializing data) or data dictionary (if\n        deserializing data) as arguments.\n        \"\"\"Serialize an object to native Python data types according to this\n        :return: A tuple of the form (``data``, ``errors``)\n                    original_data=obj)\n                preresult = error.data\n                    original_data=obj)\n                data=obj,\n        :return: A tuple of the form (``data``, ``errors``)\n    def load(self, data, many=None, partial=None):\n        \"\"\"Deserialize a data structure to an object defined by this Schema's\n        :param dict data: The data to deserialize.\n        :param bool many: Whether to deserialize `data` as a collection. If `None`, the\n        :return: A tuple of the form (``data``, ``errors``)\n        result, errors = self._do_load(data, many, partial=partial, postprocess=True)\n        return UnmarshalResult(data=result, errors=errors)\n    def loads(self, json_data, many=None, *args, **kwargs):\n        :param str json_data: A JSON string of the data to deserialize.\n        :return: A tuple of the form (``data``, ``errors``)\n        data = self.opts.json_module.loads(json_data, *args, **kwargs)\n        return self.load(data, many=many, partial=partial)\n    def validate(self, data, many=None, partial=None):\n        \"\"\"Validate `data` against the schema, returning a dictionary of\n        :param dict data: The data to validate.\n        :param bool many: Whether to validate `data` as a collection. If `None`, the\n        _, errors = self._do_load(data, many, partial=partial, postprocess=False)\n    def _do_load(self, data, many=None, partial=None, postprocess=True):\n        \"\"\"Deserialize `data`, returning the deserialized result and a dictonary of\n        :param data: The data to deserialize.\n        :param bool many: Whether to deserialize `data` as a collection. If `None`, the\n        :return: A tuple of the form (`data`, `errors`)\n            processed_data = self._invoke_load_processors(\n                data,\n                original_data=data)\n                    processed_data,\n                result = error.data\n            self._invoke_field_validators(unmarshal, data=result, many=many)\n                self._invoke_validators(unmarshal, pass_many=True, data=result, original_data=data,\n                self._invoke_validators(unmarshal, pass_many=False, data=result, original_data=data,\n                    original_data=data)\n                self.__error_handler__(errors, data)\n                data=data,\n            self.handle_error(exc, data)\n    def _invoke_dump_processors(self, tag_name, data, many, original_data=None):\n        data = self._invoke_processors(tag_name, pass_many=False,\n            data=data, many=many, original_data=original_data)\n        data = self._invoke_processors(tag_name, pass_many=True,\n            data=data, many=many, original_data=original_data)\n        return data\n    def _invoke_load_processors(self, tag_name, data, many, original_data=None):\n        data = self._invoke_processors(tag_name, pass_many=True,\n            data=data, many=many, original_data=original_data)\n        data = self._invoke_processors(tag_name, pass_many=False,\n            data=data, many=many, original_data=original_data)\n        return data\n    def _invoke_field_validators(self, unmarshal, data, many):\n                for idx, item in enumerate(data):\n                            data=value,\n                            data[idx].pop(field_name, None)\n                    value = data[field_obj.attribute or field_name]\n                        data=value,\n                        data.pop(field_name, None)\n            self, unmarshal, pass_many, data, original_data, many, field_errors=False):\n                for idx, item in enumerate(data):\n                                                item, original_data, self.fields, many=many,\n                                            data, original_data, self.fields, many=many,\n    def _invoke_processors(self, tag_name, pass_many, data, many, original_data=None):\n                    data = utils.if_none(processor(data, many, original_data), data)\n                    data = utils.if_none(processor(data, many), data)\n                    data = [utils.if_none(processor(item, original_data), item)\n                            for item in data]\n                    data = [utils.if_none(processor(item), item) for item in data]\n                    data = utils.if_none(processor(data, original_data), data)\n                    data = utils.if_none(processor(data), data)\n        return data\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680036.993084073,
+    "seconds": 0.2728645605966449
+  },
+  {
+    "command": "grep -r 'field_obj' /testbed/src/marshmallow/schema.py",
+    "start_utc": 1793004114.614748,
+    "start_monotonic": 7680061.554219911,
+    "result": {
+      "output": "    def on_bind_field(self, field_name, field_obj):\n        for field_name, field_obj in iteritems(fields_dict):\n                    field_obj.load_only = True\n                    field_obj.dump_only = True\n                field_obj._add_to_schema(field_name, self)\n                self.on_bind_field(field_name, field_obj)\n                if (isinstance(field_obj, type) and\n                        issubclass(field_obj, base.FieldABC)):\n                           .format(field_name, field_obj.__name__))\n        \"\"\"Return only those field_name:field_obj pairs specified by\n        :returns: An dict of field_name:field_obj pairs.\n                    field_obj = self.TYPE_MAPPING.get(attribute_type, fields.Field)()\n                    field_obj = fields.Field()\n                ret[key] = field_obj\n                field_obj = self.fields[field_name]\n                        value = item[field_obj.attribute or field_name]\n                            field_name=field_obj.load_from or field_name,\n                            field_obj=field_obj,\n                    value = data[field_obj.attribute or field_name]\n                        field_name=field_obj.load_from or field_name,\n                        field_obj=field_obj\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680061.859530016,
+    "seconds": 0.30531034525483847
+  },
+  {
+    "command": "grep -r 'data[field_obj.attribute' /testbed/src/marshmallow/schema.py",
+    "start_utc": 1793004141.5899286,
+    "start_monotonic": 7680088.529399578,
+    "result": {
+      "output": "grep: Unmatched [, [^, [:, [., or [=\n",
+      "returncode": 2,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680088.836726054,
+    "seconds": 0.3073267238214612
+  },
+  {
+    "command": "grep -r \"data[field_obj.attribute\" /testbed/src/marshmallow/schema.py",
+    "start_utc": 1793004177.6003776,
+    "start_monotonic": 7680124.539848579,
+    "result": {
+      "output": "grep: Unmatched [, [^, [:, [., or [=\n",
+      "returncode": 2,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680124.823146017,
+    "seconds": 0.2832977641373873
+  },
+  {
+    "command": "grep -r \"data\\[field_obj\\.attribute\" /testbed/src/marshmallow/schema.py",
+    "start_utc": 1793004216.408657,
+    "start_monotonic": 7680163.348129344,
+    "result": {
+      "output": "                    value = data[field_obj.attribute or field_name]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7680163.599033411,
+    "seconds": 0.25090438686311245
+  }
+]

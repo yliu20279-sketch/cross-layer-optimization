@@ -1,0 +1,66 @@
+{
+  "state": "PASS_LIMITED_HOST_CODEC_PCIE_NATIVE_ROUTER_COUPLING",
+  "device": {
+    "counts": {
+      "events": 16689,
+      "pipeline_cycles": 1065703,
+      "HB_write_bytes": 1057280,
+      "RAM_transactions": 66336,
+      "RAM_physical_bytes": 2122752,
+      "SRAM_read_bytes": 3163136,
+      "SRAM_write_bytes": 3163136,
+      "SRAM_service_bytes": 6326272,
+      "vector_ops": 524416,
+      "HB_read_bytes": 1065472
+    },
+    "SRAM_peak_bytes": 17408,
+    "CH0_peak_bytes": 1057280,
+    "modeled_proxy_end_ns": 1462074,
+    "negative_controls": [
+      "SRAM_overflow_rejected",
+      "early_consumer_rejected",
+      "native_missing_dependency_rejected"
+    ]
+  },
+  "CPU_service": {
+    "decode": {
+      "ROI_elapsed_fs": 856075200000,
+      "nonidle_fs": 800839200000,
+      "idle_fs": 55236000000,
+      "instructions": 1585023
+    },
+    "encode": {
+      "ROI_elapsed_fs": 101871200000,
+      "nonidle_fs": 2202000000,
+      "idle_fs": 99669200000,
+      "instructions": 2309
+    }
+  },
+  "primary_clock": "integerfs host; native1ns gates ceil exactly once; primary uses full ROI including recorded idle",
+  "nonidle_only_sensitivity_ns": 1307168.8,
+  "H2D_bytes": 1056768,
+  "D2H_bytes": 512,
+  "descriptors": 18,
+  "packets": 4130,
+  "boundary_negative_controls": [
+    "third_pinned_window_rejected",
+    "pending_window_release_rejected",
+    "window_last_consumer_guard",
+    "early_DMA_completion_rejected",
+    "65th_uncommitted_credit_rejected",
+    "full_duplex_independent_serializers",
+    "HB_consumer_before_upload_rejected"
+  ],
+  "numerical": "new native FP32 output equals profiled encode input; BF16 bits equal original GPU",
+  "physical_NPU_runs": 0,
+  "native_fragment_runs_this_attempt": 1,
+  "new_GPU_agent_runs": 0,
+  "unmodeled": [
+    "DMA descriptor CPU preparation/polling",
+    "allocator and CPU cache maintenance",
+    "physical gateway/HB link fixed propagation",
+    "multiNPU NoC"
+  ],
+  "host_DMA_memory": "shared12.8GB/s60ns/chunk constant proxy from explicit CPU overlay",
+  "timing_scope": "gainestown-derived cold ROI plus host DMA DRAM proxy plus PCIe and native N0/CH0; not physically calibrated or full router"
+}

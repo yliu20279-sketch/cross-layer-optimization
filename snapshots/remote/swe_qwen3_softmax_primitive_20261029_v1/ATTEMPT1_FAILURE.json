@@ -1,0 +1,6 @@
+{
+  "state": "FAILED_EXP_STAGE_ORACLE",
+  "different": 558,
+  "reason": "torch.exp independent operator not accepted as pinned softmax internal vector exp oracle",
+  "amendment": "separate reconstruction of source softmax SLEEF16 mapping; shared math dependency explicitly acknowledged; final probability still compared strictly to unmodified torch.softmax; original candidate numerical code unchanged"
+}

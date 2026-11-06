@@ -1,0 +1,199 @@
+{
+  "schema": "ca-composite-contract-2",
+  "state": "PARTIAL_NOT_READY",
+  "model_id": "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4",
+  "spec": {
+    "id": "Qwen/Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4",
+    "layers": 24,
+    "experts": 60,
+    "ep": 4,
+    "tp": 4,
+    "pp": 4,
+    "topk": 4,
+    "hidden": 2048,
+    "layers_per_stage": 6,
+    "shared_expert": true,
+    "target_representation": "GPTQ-decoded-FP16",
+    "weight_dtype": "F16"
+  },
+  "precision": {
+    "source_quantization": "legacy GPTQ INT4 group128",
+    "target_weights": "F16",
+    "activation_storage": "F16",
+    "gemm_K_accumulation": "F32 increasing-K; final GEMM store F16",
+    "shared_TP": "F16 rank partials; fixed-order F32 sum; final F16",
+    "qkv_bias": "nonzero F16 operands retained; projection epilogue before final F16 output",
+    "runtime_unpack_ops": 0,
+    "runtime_scale_zero_gidx_reads": 0,
+    "reference_tolerances": "old scoped rtol=atol=.002 retained; not full-model quality pass"
+  },
+  "precision_sha256": "3e1d7b084815d95441495b5898f5654d2897a090d4acb800fdcf3250229f2bfb",
+  "checkpoint_content_sha256": "af39a579429fbd36a9b6c8507344d07b789d034eec0fb305b294d25bd807120c",
+  "content_fingerprint_definition": "SHA256 canonical filename/size/full-file-SHA256 manifest",
+  "revision": null,
+  "upstream_revision_verified": false,
+  "content_snapshot_id": "sha256:af39a579429fbd36a9b6c8507344d07b789d034eec0fb305b294d25bd807120c",
+  "tokenizer_sha256": "f7c9b2dba4a296b1aa76c16a34b8225c0c118978400d4bb66bff0902d702f5b8",
+  "tokenizer_config_sha256": null,
+  "source_config_sha256": null,
+  "capacity_candidate": {
+    "host_bytes": 137438953472,
+    "hb_partitions": 16,
+    "hb_partition_bytes": 536870912
+  },
+  "capacity_verified": false,
+  "costs_verified": false,
+  "runtime": {
+    "binary": {
+      "path": "/mnt/sda1/h3240101068/ca_semmoe_hiband_fp16_20261102_v3/runtime/native_fp16_hook",
+      "sha256": "2196a049bd156659e2cecac416c3ed8f51fde0d230d64dc6ff3ee6c5d9d8cc1e"
+    },
+    "libraries": [
+      {
+        "path": "/lib/x86_64-linux-gnu/libboost_graph.so.1.71.0",
+        "sha256": "f05e5a38e10de6eaaef673a863748bfc7359bb2a0eab997a9a544435f39a9f2c",
+        "bytes": 321712
+      },
+      {
+        "path": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/expert_page_layout_v1/toolchain/ramulator2_layout/libramulator.so",
+        "sha256": "8cdb6a6a84a0339fb07df2e61431e8846517a19834189487c9533e3332dc7e1a",
+        "bytes": 2520784
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+        "sha256": "fffbe6d8bad58795568e1ad15ba95f5862c3e98af7a43efa7f8cf594be913b5f",
+        "bytes": 2526680
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libm.so.6",
+        "sha256": "a0e70f48f02a399e8dd37f861a99e226c285a9daf50a25d19fff7ccf18b97f9c",
+        "bytes": 1369384
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "sha256": "1785fc8cd9a2ba72f773b0b60b20e58ff79bf30ce2fd8e241c8b31303dcea17e",
+        "bytes": 146000
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libc.so.6",
+        "sha256": "53b909551f8e581120ddc2d24cfb5df76c52e3c2e2a5dac0d202b25638b3e902",
+        "bytes": 2029592
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libboost_regex.so.1.71.0",
+        "sha256": "8ba016f96cf59ea484eb77a800bdaa2020e6a3dde60b1d320b2cf807a4aedaf2",
+        "bytes": 1044552
+      },
+      {
+        "path": "/lib64/ld-linux-x86-64.so.2",
+        "sha256": "cfd44e4341767033532d1483c8250d200ad4cdf535d0abc19064ae34cdc51ca0",
+        "bytes": 191504
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicui18n.so.66",
+        "sha256": "e6b2f6fdf6f473bd529526a06b1e1bb6dab4a9998da941346711f1805dd42816",
+        "bytes": 3132040
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicuuc.so.66",
+        "sha256": "d41e9287614412b6e95f809773a5f0f86ee3763a7d5f0db4856e79f64f7c8dab",
+        "bytes": 1976648
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libpthread.so.0",
+        "sha256": "af27ed906f6185e0143b9c0d0da287788efa7eb6b2639e44d48fb2939415fdc5",
+        "bytes": 157224
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libicudata.so.66",
+        "sha256": "50b039da86ab40fed973954892aa52b0b833127b94103ec62b71c1e0891ce5ed",
+        "bytes": 28046896
+      },
+      {
+        "path": "/lib/x86_64-linux-gnu/libdl.so.2",
+        "sha256": "e0d0cace80b627e50ca3f7b621b64917677c27c74077080854d57cf4e548edc6",
+        "bytes": 18848
+      }
+    ],
+    "source_build_identity_sha256": "0724894e4d7ba2f84df8220f29a5387645959242d7ee038f26c3aa4cf85fb42f",
+    "scope": "compiled FP16 tiled substrate + accept/callback hook; not complete composite",
+    "candidate_executed_as_model": false
+  },
+  "capabilities": {
+    "native_sem_moe_schedule": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "native_srs_sag": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_operator_lowering": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_capacity_lifetimes": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cpu_costs": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cache_version_services": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "hiband_controls_and_timing": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "ca_native_address_binding": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "actual_fp16_memory_io": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    }
+  },
+  "software_reference": {
+    "split_fallback": "rejected",
+    "causal_token_scheduler": true,
+    "two_gram": false,
+    "collectives": "semantic reference only",
+    "opcode_lowering": false,
+    "costs": "missing costs rejected"
+  },
+  "native_runs": 0,
+  "author_equivalence": false,
+  "blocker_notes": [
+    "original BF16 asset requirement removed by explicit user instruction",
+    "full target model forward and native composite validation not run"
+  ],
+  "display_name": "Qwen1.5-MoE-A2.7B-Chat / GPTQ-decoded FP16",
+  "execution_representation": "GPTQ-decoded-FP16",
+  "source_quantization": "GPTQ_INT4",
+  "target_weight_dtype": "F16",
+  "source_checkpoint_sha256": "65b03f5e818f8070b9826e4e58b1ae1208d52ef78987fcdd9ef6ddbc17d73d97",
+  "target_manifest_sha256": "49a5568584285eba9675c770356ba2d7f13412a01124d21c0478b1124861bc21",
+  "target_assets_verified": true,
+  "runtime_gptq_archive_dependencies": 0,
+  "host_weights_reserved_bytes": 28631568384,
+  "p0_1b_status": "PARTIAL",
+  "p0_1c_status": "COMPLETE_IDENTITY_GATED_DISPOSITIONS_ONLY",
+  "tested_candidates": {
+    "cpu_payload": {
+      "binary": "/mnt/sda1/h3240101068/ca_semmoe_hiband_native_20261102_v4/runtime/build_02/libpayload.so",
+      "sha256": "898e7d47c1348749a3da7f8305880ef2b922afa6256ad4c94d47571f0c33902f",
+      "scope": "normalized-input MoE CPU function, not original model numerical certification or target timing"
+    },
+    "memory_network_controls": {
+      "binary": "/mnt/sda1/h3240101068/ca_semmoe_hiband_native_20261102_v4/runtime/build_02/native_live",
+      "sha256": "460749da38cffbbab487deda68eef9ccc5a3d44303308bd6d11e1e601816b588",
+      "scope": "three-transaction real backend probe; analytical compute; not full layer"
+    }
+  },
+  "full_layer_payload_timing_coupling_verified": false,
+  "formal_performance_started": false
+}

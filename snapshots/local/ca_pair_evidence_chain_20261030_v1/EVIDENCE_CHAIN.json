@@ -1,0 +1,90 @@
+{
+  "scope": "CONTROLLED_SYNTHETIC_GROUP_LEVEL_OBSERVATIONAL_CHAIN_NOT_ISOLATED_PAIR_CAUSAL_EFFECT",
+  "experiment": "qwen3_strategy_native_v1/evidence_v1 coaccess_witness",
+  "baseline": "RR, not O_preRR or the previously cited eC O_fixture experiment",
+  "pair": {
+    "ops": [
+      0,
+      1
+    ],
+    "logical_pages": [
+      23360,
+      23376
+    ],
+    "local_pages": [
+      0,
+      16
+    ],
+    "offset_bytes": 256,
+    "rr_same_bank": true,
+    "ca_different_banks": true,
+    "rr_outstanding_overlap_cycles": 186.25,
+    "ca_outstanding_overlap_cycles": 22.5,
+    "op1_wait_ticks_before": 120.0,
+    "op1_wait_ticks_after": 0.0,
+    "op1_callback_cycle_before": 241.25,
+    "op1_callback_cycle_after": 77.5
+  },
+  "group": {
+    "rr": {
+      "cycles": 51835,
+      "operations": 208,
+      "dependencies": 372,
+      "transaction_count": 3072,
+      "first_window_latest_parent": 11,
+      "barrier_ready": 3057.0,
+      "barrier_done": 3058.0,
+      "next_window_ready": 3058.0
+    },
+    "coaccess": {
+      "cycles": 30736,
+      "operations": 208,
+      "dependencies": 372,
+      "transaction_count": 3072,
+      "first_window_latest_parent": 11,
+      "barrier_ready": 1920.0,
+      "barrier_done": 1921.0,
+      "next_window_ready": 1921.0
+    }
+  },
+  "cycle_gain_percent": 40.70415742259091,
+  "checks": [
+    {
+      "strategy": "rr",
+      "original_manifest_binding": true,
+      "full_domain_bijection": true,
+      "all_3072_logical_transactions_and_callbacks": true,
+      "all_208_event_dependencies": true,
+      "mlp1_continuation": true,
+      "callback_to_op_done_rule": true,
+      "barrier_and_next_window_gate": true
+    },
+    {
+      "strategy": "coaccess",
+      "original_manifest_binding": true,
+      "full_domain_bijection": true,
+      "all_3072_logical_transactions_and_callbacks": true,
+      "all_208_event_dependencies": true,
+      "mlp1_continuation": true,
+      "callback_to_op_done_rule": true,
+      "barrier_and_next_window_gate": true
+    }
+  ],
+  "counterexample": {
+    "op": 1,
+    "offset": 0,
+    "bank_wait_ticks_before": 13,
+    "bank_wait_ticks_after": 0,
+    "callback_before": 50,
+    "callback_after": 50
+  },
+  "attribution_limits": [
+    "Other ten pages in window also change; no pair-only intervention",
+    "No logged blocking transaction ID; the wait counter is cross-owner same-Bank, not pair-exclusive",
+    "Row state and scheduling may change globally despite matching selected transaction row/column/status",
+    "Consumer is explicit synthetic barrier over 12 LOADs; next consumer is another synthetic window",
+    "Owners are synthetic labels, not real independent users; MLP=1 per op; not natural full-MoE gain"
+  ],
+  "no_new_simulation": true,
+  "no_remote_access": true
+}

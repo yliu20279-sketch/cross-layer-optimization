@@ -1,0 +1,30 @@
+{
+  "status": "PARTIAL_CORE",
+  "rows": [
+    {
+      "branch": "cond",
+      "query_rows": 64,
+      "context_rows": 49883,
+      "elements": 131072,
+      "BF16_bit_mismatches": 21,
+      "max_abs": 0.00390625,
+      "seconds": 33.42578840255737,
+      "scope": "isolated core, source QKV injected; not autonomous attention"
+    },
+    {
+      "branch": "uncond",
+      "query_rows": 64,
+      "context_rows": 48986,
+      "elements": 131072,
+      "BF16_bit_mismatches": 22,
+      "max_abs": 0.001953125,
+      "seconds": 33.004148721694946,
+      "scope": "isolated core, source QKV injected; not autonomous attention"
+    }
+  ],
+  "wall_seconds": 68.4322099685669,
+  "target_GPU_count": 0,
+  "CUDA_initialized": false,
+  "FP64_tensor_math": false,
+  "source_QKV_injected": true
+}

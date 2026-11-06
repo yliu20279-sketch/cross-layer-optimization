@@ -1,0 +1,8 @@
+{
+  "state": "PRE_RUN_CPU_CANDIDATE",
+  "algorithm": "generic FP32 Kahan 2048 K; zero init s/c; p=x*w,y=p-c,t=s+y,c=(t-s)-y,s=t; final BF16 RNE; no output-specific correction",
+  "cases": "all actual nonempty experts of existing R0002 prefill/decode plus all20 expert49 control",
+  "gate": "zero BF16 differences vs same CPU source linear; no tolerances; stop target/up admission if any gate case fails",
+  "profile": "original BF16 host128GiB/HB8GiB; CPU software candidate no target timing; no GPU/agent/holdout",
+  "budget": "CPU1 thread <=300s"
+}

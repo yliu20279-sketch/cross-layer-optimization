@@ -1,0 +1,81 @@
+{
+  "status": "PARTIAL_PRIMITIVE_CHECKS_NOT_FULL_STEP4",
+  "norm_summary": [],
+  "expert_summary": [
+    {
+      "name": "cond_MoE_CPU_replay",
+      "scope": "recorded route downstream CPU functional candidate only",
+      "shape": [
+        64,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "elements": 131072,
+      "bitwise_mismatches": 0,
+      "max_abs": 0.0,
+      "exact": true,
+      "candidate_sha256": "44b7eed9c8579fefaa85ff27e4b9efa4a36454f773adfdf24de668a175830b27",
+      "reference_sha256": "44b7eed9c8579fefaa85ff27e4b9efa4a36454f773adfdf24de668a175830b27"
+    },
+    {
+      "name": "cond_MoE_GPU_replay",
+      "scope": "recorded route downstream GPU Golden, not free router pass",
+      "shape": [
+        64,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "elements": 131072,
+      "bitwise_mismatches": 1657,
+      "max_abs": 0.5,
+      "exact": false,
+      "candidate_sha256": "44b7eed9c8579fefaa85ff27e4b9efa4a36454f773adfdf24de668a175830b27",
+      "reference_sha256": "83e08660e2c65d3a153134365206eb53abf9e161ac2a28d803bdbf7423723ffc"
+    },
+    {
+      "name": "uncond_MoE_CPU_replay",
+      "scope": "recorded route downstream CPU functional candidate only",
+      "shape": [
+        64,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "elements": 131072,
+      "bitwise_mismatches": 0,
+      "max_abs": 0.0,
+      "exact": true,
+      "candidate_sha256": "ea9950735ef10d0d9c61c19c5c396269a1229b6c40d2563cd5adbf2838100625",
+      "reference_sha256": "ea9950735ef10d0d9c61c19c5c396269a1229b6c40d2563cd5adbf2838100625"
+    },
+    {
+      "name": "uncond_MoE_GPU_replay",
+      "scope": "recorded route downstream GPU Golden, not free router pass",
+      "shape": [
+        64,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "elements": 131072,
+      "bitwise_mismatches": 2052,
+      "max_abs": 1.0,
+      "exact": false,
+      "candidate_sha256": "ea9950735ef10d0d9c61c19c5c396269a1229b6c40d2563cd5adbf2838100625",
+      "reference_sha256": "7861547f21ad91306da80c7fe95e04f40822312ca44b2597b11ed2fd97657c5b"
+    }
+  ],
+  "independent_C_CPU_comparisons": 935,
+  "independent_C_CPU_failed": 0,
+  "independent_C_CPU_elements": 5898240,
+  "target_GPU_count": 0,
+  "new_GPU_runs": 0,
+  "physical_NPU_runs": 0,
+  "new_simulator_runs": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "original mixed BF16/FP32",
+  "refiner": false,
+  "CUDA_initialized": false,
+  "wall_seconds": 22.825708150863647,
+  "maxrss_bytes": 1775783936,
+  "scope": "full RMS postnorm; recorded-route 64-row experts; CPU pass never promotes GPU/whole model"
+}

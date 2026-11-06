@@ -1,0 +1,44 @@
+{
+  "status": "PASS_LIMITED_SHARED_BOUNDARY_GPU",
+  "rows": [
+    {
+      "branch": "cond",
+      "rows": 64,
+      "elements": 131072,
+      "BF16_mismatches": 0,
+      "max_abs": 0.0,
+      "recipe": "H100 FDA16/neab2 sequential K walk, no split-K assumed; not generic cuBLAS claim"
+    },
+    {
+      "branch": "uncond",
+      "rows": 64,
+      "elements": 131072,
+      "BF16_mismatches": 0,
+      "max_abs": 0.0,
+      "recipe": "H100 FDA16/neab2 sequential K walk, no split-K assumed; not generic cuBLAS claim"
+    }
+  ],
+  "wall_seconds": 4.212106704711914,
+  "target_GPU_count": 0,
+  "CUDA_initialized": false,
+  "profile": {
+    "gpu": "H100",
+    "input_fmt": "bf16",
+    "output_fmt": "fp32",
+    "nfma": 16,
+    "neab": 2,
+    "round_mode": "trunc",
+    "denorm_products": true,
+    "int_bits": 2,
+    "frac_bits": 25,
+    "input_sig_bits": 8,
+    "mma_shape": [
+      16,
+      8,
+      16
+    ],
+    "c_order": "early",
+    "interleaved": false
+  },
+  "upstream_commit": "3f7cdf7010a9fe691bb5832755f668556edcc217"
+}

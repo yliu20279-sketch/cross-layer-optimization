@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "schema": "full48-co-scale-paired-conserving-attribution-v1",
+  "definition": "Oracle critical-path components plus paired normal-minus-oracle delta; only the delta is strict cross-request Bank-conflict exposed time.",
+  "workload": {
+    "model": "Qwen3-30B-A3B",
+    "layers": 48,
+    "context": 512,
+    "route_policy": "captured low-skew cohort",
+    "compute_multiplier": 0.25,
+    "max_outstanding_per_memory_op": 1,
+    "memory_lanes": 0,
+    "arrival_policy": "simultaneous",
+    "classification": "synthetic C+O memory-stress, not natural serving"
+  },
+  "components_order": [
+    "Compute",
+    "NoC",
+    "DRAM service and non-cross-request memory wait",
+    "Paging DMA",
+    "Sync/other",
+    "Strict cross-request Bank exposed"
+  ],
+  "cases": [
+    {
+      "concurrency": 1,
+      "normal_cycles": 60465143.0,
+      "oracle_cycles": 60465143.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "speedup_normal_over_oracle": 1.0,
+      "components": {
+        "Compute": 10379008.0,
+        "NoC": 32560.0,
+        "DRAM service and non-cross-request memory wait": 37118972.0,
+        "Paging DMA": 7740412.0,
+        "Sync/other": 5194191.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 9081600,
+        "transactions_with_wait": 0,
+        "represented_bytes": 2324791296,
+        "controller_queue_ticks": 181360822.0,
+        "cross_request_bank_wait_ticks": 0.0
+      },
+      "waited_transaction_fraction": 0.0,
+      "cross_request_share_of_controller_queue": 0.0
+    },
+    {
+      "concurrency": 2,
+      "normal_cycles": 72565940.0,
+      "oracle_cycles": 72153288.0,
+      "strict_bank_exposed_cycles": 412652.0,
+      "strict_bank_exposed_fraction": 0.005686579681872791,
+      "speedup_normal_over_oracle": 1.0057191018100242,
+      "components": {
+        "Compute": 9914470.0,
+        "NoC": 25640.0,
+        "DRAM service and non-cross-request memory wait": 48376376.0,
+        "Paging DMA": 7791292.0,
+        "Sync/other": 6045510.0,
+        "Strict cross-request Bank exposed": 412652.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 17942016,
+        "transactions_with_wait": 1086733,
+        "represented_bytes": 4592959488,
+        "controller_queue_ticks": 629354308.0,
+        "cross_request_bank_wait_ticks": 220534941.0
+      },
+      "waited_transaction_fraction": 0.06056916903875239,
+      "cross_request_share_of_controller_queue": 0.3504146046140992
+    },
+    {
+      "concurrency": 4,
+      "normal_cycles": 88993743.0,
+      "oracle_cycles": 86882171.0,
+      "strict_bank_exposed_cycles": 2111572.0,
+      "strict_bank_exposed_fraction": 0.023727196191759233,
+      "speedup_normal_over_oracle": 1.0243038586132935,
+      "components": {
+        "Compute": 9596236.0,
+        "NoC": 28243.0,
+        "DRAM service and non-cross-request memory wait": 58682828.0,
+        "Paging DMA": 10163383.0,
+        "Sync/other": 8411481.0,
+        "Strict cross-request Bank exposed": 2111572.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 35128320,
+        "transactions_with_wait": 4043108,
+        "represented_bytes": 8992456704,
+        "controller_queue_ticks": 1614279214.0,
+        "cross_request_bank_wait_ticks": 809799542.0
+      },
+      "waited_transaction_fraction": 0.1150953988121265,
+      "cross_request_share_of_controller_queue": 0.501647753980186
+    },
+    {
+      "concurrency": 8,
+      "normal_cycles": 115109954.0,
+      "oracle_cycles": 111132919.0,
+      "strict_bank_exposed_cycles": 3977035.0,
+      "strict_bank_exposed_fraction": 0.03454987915293581,
+      "speedup_normal_over_oracle": 1.035786291188842,
+      "components": {
+        "Compute": 9252376.0,
+        "NoC": 24693.0,
+        "DRAM service and non-cross-request memory wait": 73804050.0,
+        "Paging DMA": 14562764.0,
+        "Sync/other": 13489036.0,
+        "Strict cross-request Bank exposed": 3977035.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 66035712,
+        "transactions_with_wait": 8646487,
+        "represented_bytes": 16904355840,
+        "controller_queue_ticks": 2673997514.0,
+        "cross_request_bank_wait_ticks": 1322701777.0
+      },
+      "waited_transaction_fraction": 0.13093653022170793,
+      "cross_request_share_of_controller_queue": 0.4946533308557145
+    },
+    {
+      "concurrency": 16,
+      "normal_cycles": 163026789.0,
+      "oracle_cycles": 155722629.0,
+      "strict_bank_exposed_cycles": 7304160.0,
+      "strict_bank_exposed_fraction": 0.044803434115358795,
+      "speedup_normal_over_oracle": 1.0469049363403697,
+      "components": {
+        "Compute": 11275006.0,
+        "NoC": 25683.0,
+        "DRAM service and non-cross-request memory wait": 93782864.0,
+        "Paging DMA": 18494940.0,
+        "Sync/other": 32144136.0,
+        "Strict cross-request Bank exposed": 7304160.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 121915392,
+        "transactions_with_wait": 14033832,
+        "represented_bytes": 31208767488,
+        "controller_queue_ticks": 3382359031.0,
+        "cross_request_bank_wait_ticks": 1491828728.0
+      },
+      "waited_transaction_fraction": 0.11511124042483495,
+      "cross_request_share_of_controller_queue": 0.4410616124211209
+    }
+  ],
+  "claim_boundary": [
+    "Each bar is one deterministic captured cohort (n=1); no confidence interval is available.",
+    "The stacked components conserve exactly to measured normal runtime.",
+    "Only normal-minus-oracle is strict cross-request same-Bank critical-path exposure.",
+    "C+O is a controlled memory-stress workload and must not be presented as a natural Qwen serving result."
+  ]
+}

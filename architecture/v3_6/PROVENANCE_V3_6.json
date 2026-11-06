@@ -1,0 +1,49 @@
+{
+  "schema_version": "3.6-provenance-1.0",
+  "parent": "target_architecture_v3_5",
+  "creation_policy": "non-destructive fork; parent files are not modified",
+  "capacity_delta": {
+    "total_mib": {
+      "v3_5": 4096,
+      "v3_6": 8192
+    },
+    "per_partition_mib": {
+      "v3_5": 256,
+      "v3_6": 512
+    },
+    "ramulator_rows": {
+      "v3_5": 8192,
+      "v3_6": 16384
+    },
+    "partition_address_bits": {
+      "v3_5": "address[31:28]",
+      "v3_6": "address[32:29]"
+    }
+  },
+  "unchanged_by_design": [
+    "16 NPU clusters",
+    "16 HB-DRAM partitions",
+    "four logical projected banks per partition",
+    "Ramulator decoded-bank organization",
+    "25.6 GB/s per vertical link",
+    "4x4 PopNet topology",
+    "NoC width and latency",
+    "NPU compute and SRAM parameters",
+    "thermal evidence boundary"
+  ],
+  "source_hashes": {
+    "target_architecture_v3_5.yaml": "aed2de0cbdcfddc40373a666954e957c4028b6624c177f3370e0eb2ffa4dbc83",
+    "address_mapping.json": "604b9e8dc684273eb2c5c01f636d5f31edc7222dbb33e10d4a58bdde96bfdfda",
+    "npusim_cluster_v3_5.json": "c8a1b7dea2f59d1f2a819c50f809db71f9ecb1de741982fb8ea3987d921e0d0d",
+    "ramulator2_hb_partition_v3_5.yaml": "544458c99a9046614e86cd45bb80b9a6f28d3b19bf535180ed094d6d3680daf3",
+    "thermal_stack_v3_5.json": "8ba2374bc04a04b0da537e47a5bddd199620b159e31598111ffccebeb19aa2d7",
+    "tile_memory_noc_mapping_v3_5.json": "76e2469d4f3eec78ba5a10b36dfe415a036d3b71630db160af8d4be6cec38254",
+    "deepstack_bank_oracle_v3_5.json": "352b3e585704a0b5cc9d34436e1cfc7a92da4a00626e05e7616a1e9e43e75597",
+    "hb_link_model.json": "0a681819cda3941a609f3d5196f44dddf01e33b0827da442840a9bb47859c5c8",
+    "clock_domain_mapping.json": "b788c1447a25045b6d3e9965f48fa9c82d4298149ed0ab0b34841a960470111d",
+    "pcie_dma_model.json": "9dc059e75895ba7bd9290fe7d2cc188239bc76666eef816b4ed7998b45ce9a65",
+    "noc_v3_5.gv": "7fcb775395e82f4912c219a3952fa7c903cd2a82f5231e4c81de8a4ad21b7db6"
+  },
+  "execution_status": "NOT_RUN",
+  "prohibition": "Do not reuse V3.5 PASS results as V3.6 validation evidence."
+}

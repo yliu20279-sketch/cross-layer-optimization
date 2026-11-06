@@ -1,0 +1,16 @@
+{
+  "schema_version": "3.6-qwen3-capacity-1.0",
+  "model": "Qwen/Qwen3-8B",
+  "target_quantization": "W4A16",
+  "capacity_bytes": 8589934592,
+  "ideal_int4_weight_bytes": 4095213568,
+  "kv_cache_fp16_bytes_context_4096": 603979776,
+  "minimum_unallocated_bytes_before_quant_metadata_and_runtime": 3890741248,
+  "status": "CAPACITY_ENABLED_WITH_HEADROOM_VALIDATION_REQUIRED",
+  "requirements": [
+    "measure serialized W4 scale and zero-point bytes",
+    "reserve per-cluster activation and collective buffers",
+    "validate peak rather than average partition occupancy",
+    "reject mapping if any 512 MiB partition overflows"
+  ]
+}

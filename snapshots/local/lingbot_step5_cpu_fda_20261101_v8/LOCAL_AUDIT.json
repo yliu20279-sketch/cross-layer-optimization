@@ -1,0 +1,117 @@
+{
+  "state": "PASS_LOCAL_ACTUAL_CPU_PORTABLE_FDA_KERNELS",
+  "payloads": 80,
+  "archive_SHA_pass": true,
+  "all_payload_SHA_pass": true,
+  "FP32_software_reference_elements": 2304,
+  "BF16_original_GPU_elements": 2304,
+  "bit_mismatches": 0,
+  "SQLite_marker_deltas_pass": true,
+  "marker_segments": [
+    {
+      "label": "K",
+      "phase": "decode",
+      "elapsed_raw": 801074000000
+    },
+    {
+      "label": "K",
+      "phase": "FDA_software",
+      "elapsed_raw": 4072365200000
+    },
+    {
+      "label": "K",
+      "phase": "encode_bias",
+      "elapsed_raw": 435600000
+    },
+    {
+      "label": "V",
+      "phase": "decode",
+      "elapsed_raw": 801138400000
+    },
+    {
+      "label": "V",
+      "phase": "FDA_software",
+      "elapsed_raw": 4028253200000
+    },
+    {
+      "label": "V",
+      "phase": "encode_bias",
+      "elapsed_raw": 411600000
+    },
+    {
+      "label": "Ocarry",
+      "phase": "decode",
+      "elapsed_raw": 801580800000
+    },
+    {
+      "label": "Ocarry",
+      "phase": "FDA_software",
+      "elapsed_raw": 3484723200000
+    },
+    {
+      "label": "Ocarry",
+      "phase": "encode_bias",
+      "elapsed_raw": 10596000000
+    }
+  ],
+  "whole_step5": false,
+  "full_CPU_cost": false,
+  "ROI": {
+    "global_elapsed_fs": 14019118400000,
+    "core_elapsed_fs": 14001296400000,
+    "global_simulated_ms": 14.0191184,
+    "core_simulated_ms": 14.0012964,
+    "cycles": 35047796,
+    "instructions": 70404194,
+    "CPU_GHz": 2.5,
+    "global_unit_crosscheck": true,
+    "core_equals_global_assumption_rejected": true
+  },
+  "marker_simulated_ms": [
+    {
+      "label": "K",
+      "phase": "decode",
+      "core_simulated_ms": 0.801074
+    },
+    {
+      "label": "K",
+      "phase": "FDA_software",
+      "core_simulated_ms": 4.0723652
+    },
+    {
+      "label": "K",
+      "phase": "encode_bias",
+      "core_simulated_ms": 0.0004356
+    },
+    {
+      "label": "V",
+      "phase": "decode",
+      "core_simulated_ms": 0.8011384
+    },
+    {
+      "label": "V",
+      "phase": "FDA_software",
+      "core_simulated_ms": 4.0282532
+    },
+    {
+      "label": "V",
+      "phase": "encode_bias",
+      "core_simulated_ms": 0.0004116
+    },
+    {
+      "label": "Ocarry",
+      "phase": "decode",
+      "core_simulated_ms": 0.8015808
+    },
+    {
+      "label": "Ocarry",
+      "phase": "FDA_software",
+      "core_simulated_ms": 3.4847232
+    },
+    {
+      "label": "Ocarry",
+      "phase": "encode_bias",
+      "core_simulated_ms": 0.010596
+    }
+  ]
+}

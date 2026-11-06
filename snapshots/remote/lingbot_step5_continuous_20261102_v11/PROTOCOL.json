@@ -1,0 +1,18 @@
+{
+  "target_GPU_count": 0,
+  "precision": "mixed BF16/FP32 unchanged",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "ranks": 16,
+  "CPU_threads_per_rank": 1,
+  "nice": 10,
+  "timeout_seconds": 129600,
+  "scope": "new K/V+Q/full attention/ordered O/free router/all selected expert recompute/residual in same live domain; two rounds",
+  "complete_CPU_opcode_timing": false,
+  "complete_per_MAC_SRAM": false,
+  "whole_step5": false,
+  "reference_only": [
+    "prior K/V and routes, original GPU stage fixtures"
+  ],
+  "no_intermediate_checkpoint_input": true
+}

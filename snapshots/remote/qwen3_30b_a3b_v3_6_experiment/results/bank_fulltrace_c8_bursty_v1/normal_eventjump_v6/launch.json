@@ -1,0 +1,59 @@
+{
+  "command": [
+    "toolchain/popnet_cross_request_release_v2/build_eventjump_v6/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "results/bank_fulltrace_c8_bursty_v1/normal_eventjump_v6/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "HB_BANK_LOG_DETAIL": "0",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "results/bank_fulltrace_c8_bursty_v1/normal_eventjump_v6",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "results/bank_fulltrace_c8_bursty_v1/graph",
+    "HB_OUT": "results/bank_fulltrace_c8_bursty_v1/normal_eventjump_v6",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_REQUEST_RELEASES": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/bank_conflict_arrival_sampling_v2/releases/bursty_c8_seed1101.csv",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270"
+  },
+  "binary_sha256": "a4e2667448da7c1d92332550064e09766963213bd001a8770f3fd89c25113301",
+  "ramulator_library_sha256": "a88551ba27b6445a627324a0c74cefc0aa3e870da00719cdc25864468ac87e70",
+  "graph_hashes": {
+    "address_manifest.csv": "e1b047c6d246f8e86fd76073e2b37853d803558899f9c163f065409d24a1ed1f",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "9e030a30ae0e5c7a5754efed5aa77c2dc117add3b5897e585c52dee0ce194b0e",
+    "graph_manifest.json": "7253a91d332d78d6d82f3b365ba776e241e4ebbfffdcf3afd623990ab8db805e",
+    "ops.csv": "5c028026c5ec2e068c159d78f589d36ef7138e5b890c10bd1f14d4259382cf7a"
+  },
+  "deepstack_timing_sha256": null,
+  "execution_timeout_seconds": 14400,
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack full-operation Bank timing disabled",
+    "ScaleSim shape-level compute timing"
+  ]
+}

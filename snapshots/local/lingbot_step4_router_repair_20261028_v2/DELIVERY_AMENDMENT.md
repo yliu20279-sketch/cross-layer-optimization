@@ -1,0 +1,1 @@
+封包首版误将所有同名STATUS.json排除，导致native_router/STATUS.json未入包。外层和296成员SHA本已通过，但发现回执缺项后修正封包脚本，重新生成含该原始状态的证据包。首版外层/SHA/本地校验保留为.initial_missing_native_status；未改任何数值载荷或验收门槛。

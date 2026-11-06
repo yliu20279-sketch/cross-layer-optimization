@@ -1,0 +1,13 @@
+{
+ "state":"FROZEN_SCOPE_BEFORE_EXECUTION",
+ "input":"same R0002 CPU-source fixture, prefill19/cached decode1, continuous layers0/1",
+ "precision":"original BF16, mixed FP32 source boundaries, no tolerance relaxation",
+ "host_GiB":128,"HB_GiB":8,"NPU_count":16,"target_GPU":0,
+ "mapping":"N0 front half, attention/KV/router/merge; expert matrix calls on expert_id modulo16; N0 handles owner0 locally",
+ "host":"all original model parameters supplied by actual Sniper CPU from original checkpoint mappings; source parameter copies in numerical oracle are not used as device weight bytes",
+ "remote_baseline":"blocking host-mediated BF16 input/weight and FP32-result transfer through PCIe/gateway/XY NoC, deliberately no policy optimization",
+ "execution":"two genuine unified rounds, separate per-round outputs, full horizontal PopNet feedback and independent stage/CPU/weight/last-reader audit",
+ "known_open_costs":["BF16 codec and full opcode lowering","CPU nonlinear/metadata software placement","SRAM Bank timing","HB unknown fixed latency"],
+ "GPU_differences":"retain original prefill4249 output and10 route slots plus softmax FP32 differences",
+ "exclusions":"no GPU run, SWE/agent/gold/hidden tests, no HiBand/Sem-MoE benefit claim"
+}

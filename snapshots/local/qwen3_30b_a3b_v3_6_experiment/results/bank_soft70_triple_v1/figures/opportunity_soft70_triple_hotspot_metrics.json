@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "matrix_shape": [
+    16,
+    48
+  ],
+  "aggregation": "decoded Bank x decoder layer; summed over 16 partitions",
+  "unit": "thousand DRAM ticks in figure",
+  "normalization": "LogNorm; zeros masked",
+  "total_wait_ticks": 155208451.0,
+  "top4_banks": [
+    8,
+    10,
+    6,
+    1
+  ],
+  "top4_share": 0.3256072763718259,
+  "maximum_cell_ticks": 8758766.0,
+  "scope": "50% compression plus soft70-then-XOR online Bank simulation; hotspot link and 128 B/cycle decode do not change decoded Bank identity",
+  "limitation": "controlled soft70 address-mapping stress; not a natural Qwen3 workload"
+}

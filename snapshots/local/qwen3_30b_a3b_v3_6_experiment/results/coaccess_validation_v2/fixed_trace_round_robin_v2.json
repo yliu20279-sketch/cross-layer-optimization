@@ -1,0 +1,72 @@
+{
+  "interpretation": "Fixed observed timeline; overlap proxy only, not Bank wait or end-to-end cycles",
+  "trace_label": "round_robin",
+  "profile_reads": 1536,
+  "evaluation_reads": 1536,
+  "profile_overlap_edges": 347,
+  "evaluation_overlap_edges": 337,
+  "profile_to_evaluation_edge_coverage": {
+    "matched_edges": 3,
+    "evaluation_edge_fraction": 0.008902077151335312,
+    "evaluation_overlap_weight_fraction": 0.01248736715944465
+  },
+  "changed_pages_coaccess_vs_heat": 31,
+  "evaluation_overlap_edges_touching_changed_pages": 7,
+  "evaluation_overlap_weight_touching_changed_pages": 728797.0,
+  "evaluation_edges_whose_same_bank_status_changes": 1,
+  "evaluation_overlap_weight_whose_same_bank_status_changes": 84694.0,
+  "profile_scores": {
+    "heat": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 10290669.0,
+      "same_bank_fraction": 0.029005221761762866
+    },
+    "coaccess": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "round_robin": {
+      "total_overlap": 354786772.0,
+      "same_bank_overlap": 183429.0,
+      "same_bank_fraction": 0.0005170119476720513
+    }
+  },
+  "heldout_fixed_timeline_scores": {
+    "heat": {
+      "total_overlap": 59584778.0,
+      "same_bank_overlap": 4456130.0,
+      "same_bank_fraction": 0.07478638252205957
+    },
+    "coaccess": {
+      "total_overlap": 59584778.0,
+      "same_bank_overlap": 4540824.0,
+      "same_bank_fraction": 0.07620778582073429
+    },
+    "round_robin": {
+      "total_overlap": 59584778.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    }
+  },
+  "diagnostic_oracle_using_evaluation_overlap_not_deployable": {
+    "score": {
+      "total_overlap": 59584778.0,
+      "same_bank_overlap": 0,
+      "same_bank_fraction": 0.0
+    },
+    "changed_pages_vs_heat": 5490
+  },
+  "shuffled_profile_edge_null": {
+    "caveat": "NOT a matched 31-page ablation; shuffled construction may change many cold-page assignments",
+    "count": 0,
+    "seed": 20261011,
+    "same_bank_overlap_mean": null,
+    "same_bank_overlap_min": null,
+    "same_bank_overlap_max": null,
+    "fraction_null_at_least_as_good_as_coaccess": null,
+    "changed_pages_mean": null,
+    "changed_pages_min": null,
+    "changed_pages_max": null
+  }
+}

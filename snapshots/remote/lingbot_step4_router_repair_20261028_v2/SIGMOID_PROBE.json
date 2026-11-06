@@ -1,0 +1,99 @@
+{
+  "status": "DIAGNOSTIC_NOT_PROMOTED",
+  "rows": [
+    {
+      "branch": "cond",
+      "mode": "Torch_sigmoid",
+      "FP32_scores_bit_mismatches": 1649391,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 3,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        16582,
+        24913,
+        45553
+      ]
+    },
+    {
+      "branch": "cond",
+      "mode": "FP32_exp_add_div_expression",
+      "FP32_scores_bit_mismatches": 1575751,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 4,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        8731,
+        16582,
+        24913,
+        45553
+      ]
+    },
+    {
+      "branch": "cond",
+      "mode": "scalar_libm_FP32_exp_add_div",
+      "FP32_scores_bit_mismatches": 1578731,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 4,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        8731,
+        16582,
+        24913,
+        45553
+      ]
+    },
+    {
+      "branch": "uncond",
+      "mode": "Torch_sigmoid",
+      "FP32_scores_bit_mismatches": 1617293,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 3,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        9011,
+        42700,
+        46615
+      ]
+    },
+    {
+      "branch": "uncond",
+      "mode": "FP32_exp_add_div_expression",
+      "FP32_scores_bit_mismatches": 1545465,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 3,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        9011,
+        42700,
+        46615
+      ]
+    },
+    {
+      "branch": "uncond",
+      "mode": "scalar_libm_FP32_exp_add_div",
+      "FP32_scores_bit_mismatches": 1547836,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 3,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        9011,
+        42700,
+        46615
+      ]
+    }
+  ],
+  "precision": "FP32 intermediates, no FP64/FP16",
+  "compile_flags": "-O2 -shared -fPIC -fno-fast-math -ffp-contract=off",
+  "code_sha256": "9c6ce560e24c6c88ad49e5730791ee30d3d0057381582f6554e3638e3df63430",
+  "binary_sha256": "9964ae096d59bcd1aa762bdc93fe399f194494a1e829b92813aa54eb7c5a9d8e",
+  "overall_step4": "PARTIAL",
+  "target_GPU_count": 0,
+  "new_GPU_runs": 0,
+  "claim": "different exp implementations measured; a BF16 output match does not certify FP32 sigmoid semantics"
+}

@@ -1,0 +1,12 @@
+{
+ "state":"PREREGISTERED_IMPLEMENTATION_BEFORE_OUTPUTS",
+ "source_case":"first real CPU-route expert on N0 from the frozen16-node gate cases",
+ "precision":"original model/activation BF16; lossless temporary FP32 expansion; FP32 source-order accumulation; BF16 RNE output",
+ "host_GiB":128,"architectural_HB_GiB":8,"active_NPU":1,"active_HB_MiB":512,
+ "CPU_software":"actual portable NPUSim codec loops inside Sniper ROI, explicit cache flush requests; cache-maintenance timing coverage must be reported separately",
+ "NPU_execution":"M1 gate K2048 N768; actual SRAM FP32 operands; explicit16-lane MUL/ADD and source64-lane reduction order; no FP16 MAC throughput",
+ "SRAM":{"capacity_bytes":4194304,"banks":8,"aggregate_B_per_cycle":256,"beat_bytes":32,"shared_read_write_ports_per_bank":1,"mapping":"(byte_address/32)%8","status":"explicit parameterized research point; ports/mapping not specified by canonical architecture"},
+ "acceptance":"exact original BF16 output and independent unchanged C source_gemm FP32 output; CPU conversion identities; SRAM data/last-reader and dynamic primitive accounting",
+ "scope":"first operator, not whole distributed layer or complete target timing; GPU differences retained; no new GPU/SWE/agent/hidden tests",
+ "HB_fixed_latency":"unknown, not invented"
+}

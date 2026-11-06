@@ -1,0 +1,24 @@
+{
+  "compile_command": [
+    "g++",
+    "-std=c++17",
+    "-O0",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_executor_audit_20261026_v1/cpu_source_probe_v2.cpp",
+    "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/artifact/MLP/json/include",
+    "-Wl,--gc-sections",
+    "-o",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_executor_audit_20261026_v1/cpu_source_probe_v2"
+  ],
+  "compile_returncode": 0,
+  "compile_stderr": "",
+  "scope": "isolated CPU source unit test, no model or timing simulation",
+  "probe_source_sha256": "8b073400ba60868f7c769e00e5625a4b439db1191909081ee572480b51b11fce",
+  "run_returncode": 0,
+  "run_stdout": "{\n  \"bf16_large_value_finite\": true,\n  \"finite_bf16_patterns\": 65280,\n  \"finite_roundtrip_mismatches\": 0,\n  \"fp16_same_value_overflows\": true,\n  \"generic_runtime_operator_probe\": {\n    \"Cast\": \"unsupported ONNX op in NPUSim C++ runtime: Cast\",\n    \"Cos\": \"unsupported ONNX op in NPUSim C++ runtime: Cos\",\n    \"Gather\": \"unsupported ONNX op in NPUSim C++ runtime: Gather\",\n    \"ScatterElements\": \"unsupported ONNX op in NPUSim C++ runtime: ScatterElements\",\n    \"Sin\": \"unsupported ONNX op in NPUSim C++ runtime: Sin\",\n    \"TopK\": \"unsupported ONNX op in NPUSim C++ runtime: TopK\"\n  },\n  \"rmsnorm_boundary_difference_elements\": 258,\n  \"rmsnorm_first_counterexample\": {\n    \"element\": 3,\n    \"generic_fused_then_round\": -0.310546875,\n    \"source_style_two_rounds\": -0.3125,\n    \"weight\": [\n      -0.86328125,\n      -0.6640625,\n      -0.55859375,\n      -0.515625,\n      0.51953125,\n      -0.59765625,\n      -0.41015625,\n      -0.6796875\n    ],\n    \"x\": [\n      -2.921875,\n      -0.73046875,\n      1.2421875,\n      0.94140625,\n      1.3515625,\n      -0.6171875,\n      0.390625,\n      2.359375\n    ]\n  },\n  \"rmsnorm_scope\": \"same scalar FP32 inverse in both sides, isolates cast-before-scale vs cast-after-scale; not full GPU equivalence\",\n  \"rmsnorm_tested_elements\": 1024,\n  \"scope\": \"CPU source unit probe; no model, GPU, timing simulation or deployed binary equivalence\",\n  \"selected_rne_ties_pass\": true,\n  \"softmax_bf16_global_activation_even_with_fp32_output\": [\n    0.08984375,\n    0.2451171875,\n    0.6640625\n  ],\n  \"softmax_fp32\": [\n    0.09003057330846786,\n    0.2447284758090973,\n    0.6652409434318542\n  ],\n  \"softmax_probabilities_differ\": true,\n  \"three_element_payload_bytes\": 6\n}\n",
+  "run_stderr": "",
+  "binary_sha256": "a0347f6c6bb2fa93adbd22f8cdb6d801a9a51ffa48241d0beb9217e9b743369f"
+}

@@ -1,0 +1,13 @@
+# 步骤4目标执行链有界验证
+
+2026-11-05。总体PARTIAL_TARGET_BOUNDARY_CHAIN_CPU_VAE_NUMERIC_GAP。目标链连接和CFG/scheduler切片功能有限通过，CPU VAE对冻结GPU参考数值未逐位通过，未晋级完整边界链。
+
+真实执行为一个活动NPU/HB、外部Ramulator32B、同步字节通信、两轮PopNet，以及网关实际调用的CPU FP32软件服务。第0步CFG、scheduler与inpainting取[1,16,2,8,8]切片，共2048元素/阶段；输入、返回和消费者读回均实际经过HB。两轮各阶段与已冻结参考逐位一致，CPU服务返回并经网络接收及HB提交后才释放消费者。8子进程均0，反馈按轮实际应用；具体计数、时间及CPU重复性见INDEPENDENT_AUDIT.json。
+
+参考注入有两处。第一处为已采集完整GPU模型的cond/uncond预测和scheduler输入latent，当前切片只验证首步边界。第二处为原40步最终latent的首时间片，显式跳过中间39步，不能表述成第0步输出连续生成最终latent。VAE采用原FP32 CPU软件实际解码完整空间首帧，不注入旧像素作为计算输出。
+
+CPU VAE首帧与冻结GPU首帧有1060777个FP32位模式差异，最大绝对差6.318092346191406e-6，round至U8后60个通道值不同。保留FAIL数值结论，没有扩大容差或对结果加参考修正。额外一次GPU首时间片诊断与既有完整GPU解码首帧零差异，表明本样本中的时间前缀裁切没有引入该差异；CPU路径仍存在后端数值缺口。两轮具体结果与重复性见独立回执。
+
+本次CPU回调为原生软件，墙钟保存但未映射为目标CPU周期。CPU缓存/写回、此条新链上的PCIe DMA、完整opcode/逐MAC、其余120帧和39步成本均未覆盖。此前步骤3四门控结果不能直接当作本条新增CPU服务的成本验收。当前目标时钟只覆盖HB/SRAM、同步传输及宏运行事件，不用于端到端性能推断。
+
+网关首次生成代码存在换行转义编译失败，gateway_failed.cpp保留；修订后编译并真实运行。旧输入、参考和失败不改。证据仅保存113本目录，主要入口为PROTOCOL.json、REFERENCE_BINDING.json、INDEPENDENT_AUDIT.json、STATUS.json和DELIVERY.json。未执行正式PK或CA消融。

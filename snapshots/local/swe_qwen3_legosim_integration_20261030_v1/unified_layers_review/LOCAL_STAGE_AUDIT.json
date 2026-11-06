@@ -1,0 +1,22 @@
+{
+  "state": "PASS_LIMITED_STAGE_AND_RECORDED_DEPENDENCY_AUDIT_CPU_ACCEPTANCE_FAILED",
+  "strict_checks": 12,
+  "stage_files": 56,
+  "nodes": 2998,
+  "weight_versions": 759,
+  "negative_controls": [
+    "overlapping_HB_allocations",
+    "reader_before_ready",
+    "noncausal_parent",
+    "HB_capacity_overrun",
+    "weight_payload_length_corruption",
+    "static_SRAM_bound_overrun",
+    "weight_overwrite_before_last_reader"
+  ],
+  "CPU_missing_results": [
+    "decode"
+  ],
+  "CPU_PASS": false,
+  "full_steps_1_7": false,
+  "scope": "First run numeric stage audit only. Decode FIFO EOF prevents CPU end-to-end acceptance. Immutable retained buffers avoid reuse; this does not certify an eviction allocator or native SRAM residency."
+}

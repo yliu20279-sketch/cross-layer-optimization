@@ -1,0 +1,550 @@
+{
+  "status": "PROPOSED_STRUCTURAL_MAPPING_NOT_EXECUTED",
+  "attention": "TP16 with fourfold KV-head replication",
+  "moe": "EP16; baseline p_l(e)=e mod16; Sem-MoE p_l(e) must be frozen from profile",
+  "token_origin": "o(t)=t mod16 baseline structural choice; dispatch once, not once per hidden replica",
+  "router": "N0 per layer per logical token; count metadata traffic",
+  "ranks": [
+    {
+      "rank": 0,
+      "npu": "N0",
+      "partition": "CH0",
+      "query_heads": [
+        0,
+        1
+      ],
+      "kv_head": 0,
+      "kv_replication_group": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "experts": [
+        0,
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112
+      ],
+      "vocabulary_range": [
+        0,
+        9496
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 254373888,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 1,
+      "npu": "N1",
+      "partition": "CH1",
+      "query_heads": [
+        2,
+        3
+      ],
+      "kv_head": 0,
+      "kv_replication_group": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "experts": [
+        1,
+        17,
+        33,
+        49,
+        65,
+        81,
+        97,
+        113
+      ],
+      "vocabulary_range": [
+        9496,
+        18992
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 2,
+      "npu": "N2",
+      "partition": "CH2",
+      "query_heads": [
+        4,
+        5
+      ],
+      "kv_head": 0,
+      "kv_replication_group": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "experts": [
+        2,
+        18,
+        34,
+        50,
+        66,
+        82,
+        98,
+        114
+      ],
+      "vocabulary_range": [
+        18992,
+        28488
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 3,
+      "npu": "N3",
+      "partition": "CH3",
+      "query_heads": [
+        6,
+        7
+      ],
+      "kv_head": 0,
+      "kv_replication_group": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "experts": [
+        3,
+        19,
+        35,
+        51,
+        67,
+        83,
+        99,
+        115
+      ],
+      "vocabulary_range": [
+        28488,
+        37984
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 4,
+      "npu": "N4",
+      "partition": "CH4",
+      "query_heads": [
+        8,
+        9
+      ],
+      "kv_head": 1,
+      "kv_replication_group": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "experts": [
+        4,
+        20,
+        36,
+        52,
+        68,
+        84,
+        100,
+        116
+      ],
+      "vocabulary_range": [
+        37984,
+        47480
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 5,
+      "npu": "N5",
+      "partition": "CH5",
+      "query_heads": [
+        10,
+        11
+      ],
+      "kv_head": 1,
+      "kv_replication_group": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "experts": [
+        5,
+        21,
+        37,
+        53,
+        69,
+        85,
+        101,
+        117
+      ],
+      "vocabulary_range": [
+        47480,
+        56976
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 6,
+      "npu": "N6",
+      "partition": "CH6",
+      "query_heads": [
+        12,
+        13
+      ],
+      "kv_head": 1,
+      "kv_replication_group": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "experts": [
+        6,
+        22,
+        38,
+        54,
+        70,
+        86,
+        102,
+        118
+      ],
+      "vocabulary_range": [
+        56976,
+        66472
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 7,
+      "npu": "N7",
+      "partition": "CH7",
+      "query_heads": [
+        14,
+        15
+      ],
+      "kv_head": 1,
+      "kv_replication_group": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "experts": [
+        7,
+        23,
+        39,
+        55,
+        71,
+        87,
+        103,
+        119
+      ],
+      "vocabulary_range": [
+        66472,
+        75968
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 8,
+      "npu": "N8",
+      "partition": "CH8",
+      "query_heads": [
+        16,
+        17
+      ],
+      "kv_head": 2,
+      "kv_replication_group": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "experts": [
+        8,
+        24,
+        40,
+        56,
+        72,
+        88,
+        104,
+        120
+      ],
+      "vocabulary_range": [
+        75968,
+        85464
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 9,
+      "npu": "N9",
+      "partition": "CH9",
+      "query_heads": [
+        18,
+        19
+      ],
+      "kv_head": 2,
+      "kv_replication_group": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "experts": [
+        9,
+        25,
+        41,
+        57,
+        73,
+        89,
+        105,
+        121
+      ],
+      "vocabulary_range": [
+        85464,
+        94960
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 10,
+      "npu": "N10",
+      "partition": "CH10",
+      "query_heads": [
+        20,
+        21
+      ],
+      "kv_head": 2,
+      "kv_replication_group": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "experts": [
+        10,
+        26,
+        42,
+        58,
+        74,
+        90,
+        106,
+        122
+      ],
+      "vocabulary_range": [
+        94960,
+        104456
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 11,
+      "npu": "N11",
+      "partition": "CH11",
+      "query_heads": [
+        22,
+        23
+      ],
+      "kv_head": 2,
+      "kv_replication_group": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "experts": [
+        11,
+        27,
+        43,
+        59,
+        75,
+        91,
+        107,
+        123
+      ],
+      "vocabulary_range": [
+        104456,
+        113952
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 12,
+      "npu": "N12",
+      "partition": "CH12",
+      "query_heads": [
+        24,
+        25
+      ],
+      "kv_head": 3,
+      "kv_replication_group": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "experts": [
+        12,
+        28,
+        44,
+        60,
+        76,
+        92,
+        108,
+        124
+      ],
+      "vocabulary_range": [
+        113952,
+        123448
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 13,
+      "npu": "N13",
+      "partition": "CH13",
+      "query_heads": [
+        26,
+        27
+      ],
+      "kv_head": 3,
+      "kv_replication_group": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "experts": [
+        13,
+        29,
+        45,
+        61,
+        77,
+        93,
+        109,
+        125
+      ],
+      "vocabulary_range": [
+        123448,
+        132944
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 14,
+      "npu": "N14",
+      "partition": "CH14",
+      "query_heads": [
+        28,
+        29
+      ],
+      "kv_head": 3,
+      "kv_replication_group": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "experts": [
+        14,
+        30,
+        46,
+        62,
+        78,
+        94,
+        110,
+        126
+      ],
+      "vocabulary_range": [
+        132944,
+        142440
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    },
+    {
+      "rank": 15,
+      "npu": "N15",
+      "partition": "CH15",
+      "query_heads": [
+        30,
+        31
+      ],
+      "kv_head": 3,
+      "kv_replication_group": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "experts": [
+        15,
+        31,
+        47,
+        63,
+        79,
+        95,
+        111,
+        127
+      ],
+      "vocabulary_range": [
+        142440,
+        151936
+      ],
+      "expert_bytes_all_layers": 3623878656,
+      "pinned_nonexpert_weight_bytes": 229208064,
+      "full_model_static_resident": false
+    }
+  ],
+  "bf16_support": "UNVERIFIED; FP16 MAC spec does not prove BF16",
+  "units": {
+    "CPU": "Host CPU / external container; target CPU/OS timing unresolved",
+    "MAC": "NPU array candidate: FP16 MAC + FP32 accumulate; BF16 unresolved",
+    "VECTOR": "NPU FP32 vector/reduce software lowering candidate; transcendental/TopK latency unresolved",
+    "HB": "CHi HB-DRAM + Ni SRAM lifetime; Ramulator callback required",
+    "NOC": "4x4 mesh / PopNet completion + reduction arithmetic where needed",
+    "HOSTLINK": "CPU gateway / PCIe DMA callback; no CPU execution hidden in NPU"
+  },
+  "memory": "HB weight/KV backing; SRAM tiles; active expert residency gate; host/gateway/storage unresolved",
+  "hiband": "phase/mode/scope separate; no overlap assumed; one vertical interface per Ni/CHi",
+  "physical_addresses": "UNALLOCATED; no executable Ramulator/NPUSim IR claimed",
+  "kv_cache_policy": "proposed replicated KV; actual functional GPU cache behavior must be measured"
+}

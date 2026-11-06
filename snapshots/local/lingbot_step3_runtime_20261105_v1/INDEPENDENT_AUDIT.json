@@ -1,0 +1,64 @@
+{
+  "state": "PASS_LIMITED_DUAL_CFG_K_SERVICE",
+  "branches": [
+    {
+      "branch": "cond",
+      "fp32_elements": 128,
+      "bf16_gpu_elements": 128,
+      "clock_records": 168,
+      "domain_records": 70,
+      "gate": {
+        "identity": {
+          "request": "example_4",
+          "cfg": "cond",
+          "step": 0,
+          "layer": 0,
+          "token": 0,
+          "version": 1
+        },
+        "completed": {
+          "cpu_return": 14014848,
+          "dma_poll_complete": 14016141,
+          "dirty_writeback_callback": 14016567,
+          "noc_receive_tail": 14016567
+        },
+        "ready_ns": 14016567,
+        "consumer_start_ns": 14016567,
+        "consumer_done_ns": 14017248
+      }
+    },
+    {
+      "branch": "uncond",
+      "fp32_elements": 128,
+      "bf16_gpu_elements": 128,
+      "clock_records": 168,
+      "domain_records": 70,
+      "gate": {
+        "identity": {
+          "request": "example_4",
+          "cfg": "uncond",
+          "step": 0,
+          "layer": 0,
+          "token": 0,
+          "version": 1
+        },
+        "completed": {
+          "cpu_return": 13949997,
+          "dma_poll_complete": 13951288,
+          "dirty_writeback_callback": 13951732,
+          "noc_receive_tail": 13951732
+        },
+        "ready_ns": 13951732,
+        "consumer_start_ns": 13951732,
+        "consumer_done_ns": 13952413
+      }
+    }
+  ],
+  "limits": [
+    "single K projection per branch",
+    "CPU and writeback completion acknowledged at receiver time; exact issue time retained in Sniper log",
+    "PCIe model custom serialized queue0, configured deterministic service",
+    "NoC live receive uses domain synchronization and second-pass PopNet feedback; no packet-level physical PCIe validation"
+  ],
+  "whole_step5": false
+}

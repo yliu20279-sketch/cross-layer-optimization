@@ -1,0 +1,35 @@
+{
+  "source": "/mnt/sda1/h3240101068/swe_qwen3_continuous_portable_20261103_v7_ackfix",
+  "observed_command": {
+    "cmd": "/usr/bin/env",
+    "args": [
+      "GLIBC_TUNABLES=glibc.cpu.hwcaps=-AVX_Usable,-FMA_Usable,-AVX2_Usable,-FMA4_Usable,-XSAVEC_Usable,-AVX512F_Usable,-AVX512DQ_Usable,-AVX_Fast_Unaligned_Load,-AVX512F,-AVX512CD,-AVX512DQ,-AVX512BW,-AVX512ER,-AVX512PF,-AVX512VL,-BMI1,-BMI2,-LZCNT,-XSAVE,-OSXSAVE,-XSAVE_Usable",
+      "LD_BIND_NOW=1",
+      "/usr/bin/setarch",
+      "x86_64",
+      "-R",
+      "/mnt/sda1/h3240101068/swe_qwen3_continuous_portable_20261103_v7_ackfix/sniper_atomic/run-sniper",
+      "-n",
+      "4",
+      "-c",
+      "gainestown",
+      "-c",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/cpu_overlay.cfg",
+      "--roi",
+      "--no-cache-warming",
+      "-d",
+      "/mnt/sda1/h3240101068/swe_qwen3_continuous_portable_20261103_v7_ackfix/sniper",
+      "--",
+      "/mnt/sda1/h3240101068/swe_qwen3_continuous_portable_20261103_v7_ackfix/host",
+      "/mnt/sda1/h3240101068/swe_qwen3_continuous_portable_20261103_v7_ackfix/data"
+    ],
+    "log": "cpu.log",
+    "is_to_stdout": false,
+    "clock_rate": 2.5
+  },
+  "runtime_sha256": "3942807f9be2e22600f778638b2c5d216e93f5b493d495f3aba65ff5ecc224b3",
+  "archive_sha256": "d7562383c12b6a28745963131417933db053c7bbe3eed907cafbc44982b0f92b",
+  "archive_bytes": 127991981,
+  "original_run_elapsed_seconds": 78237.45631670952,
+  "formal_matrix_runs": 0
+}

@@ -1,0 +1,14 @@
+# 隔离构建及原生有界验收
+状态 PASS_LIMITED_NATIVE_ENDPOINT_AND_KV_CALLBACK_WINDOWS，完整模型仍PARTIAL。
+
+隔离Sniper修订头文件相关三个对象重新编译，libcarbon与standalone重新链接，二进制含MAINT_EVENT_LOG。构建、二进制哈希和命令在本目录。首次顶层make因旧依赖路径失败，保留日志；最终common/standalone构建成功。
+
+高精度KV后端从v11原命令重编译链接。两个模型探针输出及路由权限检查通过，各6项跨请求拒绝。Qwen3两个请求195接受，220/247.5回调，共同在途25；Qwen1.5为178接受、230/235回调，共同在途52。使用后端原始时钟，未换算物理性能。支持实际接收到回调的窗口重叠，内部Bank命令交叠未认证。
+
+修订Sniper真实端点两轮全部10子进程0，每轮19 ACK/51 drain/34 CPU传输时钟检查/32反馈，第二轮反馈全部应用。持有权泄漏负例明确拒绝。NATIVE_AUDIT.json及audit_native.py为独立复核入口。
+
+首次端点复制使用data目录符号链接，使CPU输出通过data/..落回旧v8 endpoint_positive/case1及case2。该轮不用于验收。历史CPU回执受到本次写入影响，保留FIRST_ENDPOINT_OUTPUT_PATH_ISSUE.json，不能将那些回执继续当作未变历史证据。v2改为真实data目录、逐文件链接输入，全部验收读取v2新输出。
+
+随后接回原BF16连续两层模型入口，保留host128/HB8，180秒上限。首轮缺两个冻结附件失败保留；补齐后运行至计划上限停止。已审计专用事件及CPU时钟前缀，但无完整投影及模型输出完成回执，不能晋级完整连续两层。详细见../swe_v7_repaired_prefix_20261105_v1/PREFIX_AUDIT.json。后续完整基线仍需携带ISA准入观察器的构建及更长有界数值验收。正式矩阵0。
+
+全部本轮证据留113服务器。此前本地历史证据未在本轮移动或删除。

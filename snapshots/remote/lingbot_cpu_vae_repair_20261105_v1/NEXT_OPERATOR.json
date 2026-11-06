@@ -1,0 +1,71 @@
+{
+  "state": "FIRST_SAME_INPUT_OPERATOR_DIFFERENCE",
+  "prior_conversion_bitwise_equal": true,
+  "operators": [
+    {
+      "name": "post_quant_conv",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 99840,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.conv_in",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 496094,
+      "elements": 2396160,
+      "max_abs_diff": 9.5367431640625e-07,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ],
+      "module_repr": "WanRMS_norm()"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "state": "PARTIAL_NATIVE_FP32_ROUTER_GPU_NUMERIC_GATE",
+  "checks": [
+    {
+      "name": "FP32_native_payload_vs_sequential_CPU",
+      "exact": true,
+      "max_abs": 0.0
+    },
+    {
+      "name": "original_FP32_logits_vs_original_GPU",
+      "exact": false,
+      "mismatches": 121,
+      "max_abs": 2.47955322265625e-05
+    }
+  ],
+  "device": {
+    "counts": {
+      "host_preload_bytes": 1056768,
+      "SRAM_read_bytes": 3163136,
+      "SRAM_write_bytes": 3163136,
+      "events": 16651,
+      "SRAM_service_bytes": 6326272,
+      "vector_ops": 524416,
+      "HB_read_bytes": 1065472,
+      "RAM_transactions": 33312,
+      "RAM_physical_bytes": 1065984,
+      "HB_write_bytes": 512
+    },
+    "SRAM_peak_bytes": 17408,
+    "CH0_reserved_peak_bytes": 1057280,
+    "fragment_proxy_cycles": 250447,
+    "negative_controls": [
+      "SRAM_overflow_rejected",
+      "early_consumer_rejected",
+      "native_missing_dependency_rejected",
+      "cross_call_missing_producer_rejected"
+    ],
+    "active_NPU_simulated_clusters": 1,
+    "active_partitions": 1,
+    "scope": "FP32-expanded arithmetic fragment only; host codec/PCIe/gateway excluded, no BF16 total-latency claim"
+  },
+  "host_boundary": {
+    "BF16_decode_elements": 2048,
+    "BF16_encode_elements": 0,
+    "original_mixed_input_weight_bytes": 1052672,
+    "expanded_FP32_preload_bytes": 1056768,
+    "expanded_FP32_output_export_bytes": 512,
+    "target_codec_cycles": null,
+    "target_hostlink_cycles": null,
+    "note": "temporary FP32 software workspace, not replacing mixed BF16/FP32 checkpoint; boundary costs excluded from fragment proxy"
+  },
+  "host_GiB_overlay": 128,
+  "HB_GiB": 8,
+  "CUDA_initialized": false,
+  "physical_NPU_runs": 0,
+  "native_NPUSim_fragment_runs": 1,
+  "elapsed_host_seconds": 0.8265269054099917,
+  "full_BF16_target_timing": "NOT_CERTIFIED",
+  "whole_layer": "NOT_RUN"
+}

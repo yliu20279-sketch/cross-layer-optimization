@@ -1,0 +1,13 @@
+{
+  "state": "PRE_RUN_SOFTMAX_TOP8_FUNCTIONAL_PROTOCOL",
+  "selection": ["short R0002 all captured layer0 phases", "development v6 R0001 all captured layer0 phases"],
+  "model": "Qwen3-30B-A3B original BF16; FP32 softmax, FP32 Top8 renorm, final BF16 weights; host128GiB/HB8GiB unchanged",
+  "placement": "explicit x86 host software fallback for exp/Top8, not new NPU instructions; transfer and native NPU lowering remain separate",
+  "selector": "E128/k8 finite nonnegative FP32 probabilities with canonical positive zero; kth-value threshold then source CUDA gather order and32-slot unstable sorting network from pinned PyTorch2.6; no recorded IDs fed into implementation",
+  "softmax": "max-subtract, scalar expf, FP32 sum and division; CPU libm implementation, no claim it is CUDA expf bit-identical",
+  "renorm": "FP32 eight-value half-tree sum, FP32 division then unchanged NPUSim BF16 codec",
+  "gates": {"recorded_probability_selector":"all expert IDs and BF16 final weights exact to recorded GPU", "independent_softmax_chain":"report GPU FP32 probabilities exactness separately from IDs and BF16 final weights; any FP32 mismatch retained, no retrospective tolerance", "synthetic":"all equal, internal tie, boundary tie, underflow, signed-zero logits; reject NaN/Inf logits and negative/noncanonical probabilities explicitly"},
+  "comparators": "Ascending expert-ID stable sort is a diagnostic negative control, never promoted as source GPU tie policy",
+  "budget": "CPU one thread, source/header identity and fixture SHA checks, no new GPU model/agent/new holdout; at most one180s Sniper ROI of complete software fallback",
+  "bounds": "E128/k8 only; kernel selection for other sizes/backends not inferred; nonfinite source behavior not certified; target timing/NoC/pager/benefit not certified"
+}

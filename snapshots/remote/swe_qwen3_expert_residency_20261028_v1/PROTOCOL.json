@@ -1,0 +1,11 @@
+{
+  "state": "PRE_RUN",
+  "selection": "parent R0002 row0 slot0 expert49 owner1; complete gate projection1x2048x768",
+  "weights": "original BF16 gate/up/down, immutable host address map from safetensors headers; selected shard SHA verified",
+  "profile": "host128GiB/HB8GiB overlay; one owner CH512MiB SRAM4MiB",
+  "numeric": "BF16 source and result; exact BF16 decode to FP32 temporary workspace; explicit nonfused K-order vector multiply/add; compare exact CPU source linear and sequential reference without tolerance relaxation",
+  "gates": "metadata/inbox/weight/workspace required; pinned host lease through commit; arithmetic SRAM readers;12 gate tiles; inbox kept live for pending up_proj",
+  "boundary": "restore selected prior inbox after certified receive; no new NoC; host codec/control timing null; DMA and PCIe inherit experimental proxy",
+  "budget": "one bounded native attempt <=300s, CPU one thread; no GPU/Sniper/agent/holdout; failure retained",
+  "softmax": "FP32 difference retained"
+}

@@ -1,0 +1,24 @@
+{
+  "compile_command": [
+    "g++",
+    "-std=c++17",
+    "-O0",
+    "-fno-fast-math",
+    "-ffp-contract=off",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_executor_audit_20261026_v1/cpu_source_probe.cpp",
+    "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/artifact/MLP/json/include",
+    "-Wl,--gc-sections",
+    "-o",
+    "/mnt/sda1/h3240101068/swe_qwen3_bf16_executor_audit_20261026_v1/cpu_source_probe"
+  ],
+  "compile_returncode": 0,
+  "compile_stdout": "",
+  "compile_stderr": "",
+  "scope": "isolated CPU unit probe only; original executor sources unchanged",
+  "run_returncode": -6,
+  "run_stdout": "",
+  "run_stderr": "terminate called after throwing an instance of 'std::runtime_error'\n  what():  functional ONNX execution lacks shape for graph input 'x'\n",
+  "binary_sha256": "c12296db458e9db88c1e4aa47090a8b17a4712d5d20a72f8c00d823643577dd1"
+}

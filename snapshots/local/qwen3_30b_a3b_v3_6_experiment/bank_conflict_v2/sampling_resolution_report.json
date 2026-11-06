@@ -1,0 +1,40 @@
+{
+  "status": "RESOLVED_FULL_TRACE_REQUIRED",
+  "scope": "Seven representative single-layer, one-step, c8 simultaneous-release traces.",
+  "completed_runs": 21,
+  "layers": [
+    0,
+    8,
+    16,
+    24,
+    32,
+    40,
+    47
+  ],
+  "decision": "Reject fixed-cap transaction sampling for strict Bank-conflict timing; use full transactions for mechanism evidence.",
+  "one_mib_error_ranges": {
+    "relative_wait_per_transaction": [
+      -1.0,
+      0.5416976581063923
+    ],
+    "relative_waited_transaction_fraction": [
+      -1.0,
+      0.7987432494659826
+    ],
+    "bank_traffic_js_divergence": [
+      0.002911194763976649,
+      0.008121972434055292
+    ]
+  },
+  "observations": [
+    "End-to-end cycles are unchanged because another modeled gate dominates; this is not evidence that strict Bank statistics converge.",
+    "One MiB sampling reproduces Bank traffic distribution fairly closely but does not reproduce collision timing.",
+    "Four KiB sampling can create severe false contention by synchronizing sparse sampled requests.",
+    "A full 48-layer full-trace run was stopped after resource extrapolation showed it would exceed the configured two-hour timeout."
+  ],
+  "next_protocol": [
+    "Use full transaction traces for layer-stratified Bank mechanism and distribution figures.",
+    "Do not use sampled strict wait totals or sampled owner-shadow deltas as endpoint evidence.",
+    "For full-model endpoint attribution, first replace the cycle-by-cycle driver with an event-driven or parallel memory replay validated against these full-trace layers."
+  ]
+}

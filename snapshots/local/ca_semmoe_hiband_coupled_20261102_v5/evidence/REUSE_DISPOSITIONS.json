@@ -1,0 +1,5049 @@
+{
+  "status": "COMPLETE_REUSE_DISPOSITIONS_SCOPED",
+  "scope": "identity-gated reuse decisions, not replay/all-event reaudit",
+  "q15_main_cases": 100,
+  "q15_counterfactual_cases": 25,
+  "q15_counterfactual_zero_deltas": 25,
+  "q3_seven_reconstructed": 7,
+  "q3_remote_pairs_observed": 10,
+  "check_status_counts": {
+    "HASHED_NO_EXPECTED": 176,
+    "MATCH": 874
+  },
+  "raw_evidence_sha256": "001c09cf7ef72ed5c09fdf8546b66ebe7137d30160b8cc1419be87d84f603075",
+  "matched_cycle_cases": 0,
+  "raw_events_replayed": false,
+  "rows": [
+    {
+      "model": "qwen15",
+      "case": "c16_rep1_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep1/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 414838146,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep1_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep1/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 422615466,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep1_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep1/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 390551155,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep1_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep1/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 385741283,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep2_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep2/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 412521338,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep2_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep2/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 420716050,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep2_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep2/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 387793581,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep2_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep2/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 382458741,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep3_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep3/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 411754819,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep3_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep3/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 420363443,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep3_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep3/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 386970918,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep3_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep3/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 381843902,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep4_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep4/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 411985461,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep4_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep4/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 420315261,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep4_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep4/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 390701103,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep4_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep4/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 384851943,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep5_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep5/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 415288257,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep5_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep5/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 423019577,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep5_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep5/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 392387302,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep5_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c16/rep5/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 386575302,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep1_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep1/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28620921,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep1_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep1/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28798225,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep1_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep1/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26248315,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep1_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep1/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26193563,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep2_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep2/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28370649,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep2_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep2/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28752969,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep2_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep2/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26667773,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep2_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep2/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26565717,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep3_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep3/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28464666,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep3_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep3/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28680122,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep3_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep3/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26730151,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep3_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep3/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26669191,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep4_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep4/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28372557,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep4_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep4/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28621797,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep4_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep4/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 27010059,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep4_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep4/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26939139,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep5_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep5/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28433804,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep5_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep5/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 28789964,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep5_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep5/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26546209,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep5_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c1/rep5/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26517153,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep1_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep1/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 52995202,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep1_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep1/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 53559330,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep1_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep1/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48806548,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep1_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep1/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48467188,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep2_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep2/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 52186102,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep2_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep2/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 52965022,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep2_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep2/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48979246,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep2_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep2/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48801990,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep3_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep3/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 52584711,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep3_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep3/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 53460183,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep3_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep3/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49299133,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep3_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep3/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49000453,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep4_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep4/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 52320790,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep4_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep4/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 53231590,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep4_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep4/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49558584,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep4_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep4/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49056672,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep5_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep5/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 53164598,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep5_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep5/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 53742142,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep5_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep5/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49438958,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep5_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c2/rep5/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49222534,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep1_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep1/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 103736124,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep1_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep1/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 105620556,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep1_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep1/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 96107315,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep1_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep1/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 95204139,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep2_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep2/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 102964800,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep2_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep2/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 104927920,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep2_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep2/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 96877878,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep2_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep2/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 95814774,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep3_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep3/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 102745656,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep3_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep3/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 104748032,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep3_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep3/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 97148936,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep3_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep3/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 96131000,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep4_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep4/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 103436971,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep4_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep4/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 105394307,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep4_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep4/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 98445408,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep4_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep4/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 97330064,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep5_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep5/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 103081240,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep5_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep5/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 105010472,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep5_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep5/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 97212519,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep5_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c4/rep5/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 95947775,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep1_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep1/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 207545548,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep1_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep1/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 211473172,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep1_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep1/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194681417,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep1_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep1/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 192509401,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep2_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep2/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 205805346,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep2_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep2/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 210002682,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep2_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep2/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 192425854,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep2_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep2/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 190084350,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep3_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep3/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 206443843,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep3_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep3/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 210584939,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep3_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep3/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194349484,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep3_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep3/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 191917372,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep4_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep4/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 205533974,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep4_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep4/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 209922758,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep4_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep4/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 195434623,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep4_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep4/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 192684327,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep5_baseline_ep",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep5/baseline_ep",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 207093337,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep5_hiband",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep5/hiband",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 211191985,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep5_hiband_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep5/hiband_sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194975749,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep5_sem_moe",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/layout_faithful_v1/c8/rep5/sem_moe",
+      "group": "matrix_full_v2",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 192291757,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep1_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c16/rep1/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 390551155,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep2_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c16/rep2/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 387793581,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep3_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c16/rep3/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 386970918,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep4_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c16/rep4/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 390701103,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c16_rep5_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c16/rep5/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 392387302,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep1_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c1/rep1/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26248315,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep2_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c1/rep2/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26667773,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep3_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c1/rep3/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26730151,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep4_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c1/rep4/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 27010059,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c1_rep5_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c1/rep5/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 26546209,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep1_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c2/rep1/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48806548,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep2_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c2/rep2/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 48979246,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep3_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c2/rep3/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49299133,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep4_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c2/rep4/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49558584,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c2_rep5_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c2/rep5/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 49438958,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep1_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c4/rep1/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 96107315,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep2_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c4/rep2/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 96877878,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep3_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c4/rep3/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 97148936,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep4_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c4/rep4/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 98445408,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c4_rep5_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c4/rep5/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 97212519,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep1_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c8/rep1/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194681417,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep2_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c8/rep2/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 192425854,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep3_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c8/rep3/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194349484,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep4_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c8/rep4/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 195434623,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen15",
+      "case": "c8_rep5_hiband_sem_moe_bank_balanced",
+      "source": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/graphs/bank_balanced_counterfactual_v1/c8/rep5/hiband_sem_moe_bank_balanced",
+      "group": "counterfactual_v1",
+      "old_memory_contract": "layout-faithful INT4 expert allocation plus routing-derived activations",
+      "historical_cycles": 194975749,
+      "checks": {
+        "MATCH": 6,
+        "HASHED_NO_EXPECTED": 1
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical negative/diagnostic and audit method only",
+      "extra_incompatibilities": [
+        "INT4 allocation versus decoded FP16",
+        "sampled mechanism versus full-transaction candidate",
+        "actual dynamic control/CA/composite input graph not frozen"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c2-fixed",
+      "source": "results/strict_ctx128_c2_owner_shadow_pairs_v1/hiband_sem_moe",
+      "group": "seven-summary",
+      "historical_cycles": 245554209,
+      "historical_delta": 1705,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c4-fixed",
+      "source": "results/strict_ctx128_c4_hsm_owner_shadow_pair_v1",
+      "group": "seven-summary",
+      "historical_cycles": 324381013,
+      "historical_delta": 8496,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c8-fixed",
+      "source": "results/strict_ctx128_c8_hsm_owner_shadow_pair_postfix_v1",
+      "group": "seven-summary",
+      "historical_cycles": 490042730,
+      "historical_delta": 9239,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c8-cap768",
+      "source": "results/sensitivity_ctx128_c8_hsm_cap768_pair_v1",
+      "group": "seven-summary",
+      "historical_cycles": 477680405,
+      "historical_delta": 187171,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 14
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c8-cap1024",
+      "source": "results/sensitivity_ctx128_c8_hsm_cap1024_pair_v1",
+      "group": "seven-summary",
+      "historical_cycles": 471362494,
+      "historical_delta": -24856,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "c8-high-skew",
+      "source": "results/exploratory_ctx128_c8_hsm_high_skew_pair_v1",
+      "group": "seven-summary",
+      "historical_cycles": 496197499,
+      "historical_delta": 346882,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    },
+    {
+      "model": "qwen3",
+      "case": "ctx512-c8-high-skew",
+      "source": "results/exploratory_ctx512_c8_hsm_high_skew_pair_v1",
+      "group": "seven-summary",
+      "historical_cycles": 514947334,
+      "historical_delta": 144706,
+      "checks": {
+        "HASHED_NO_EXPECTED": 5,
+        "MATCH": 12
+      },
+      "verdict": {
+        "level": "HISTORICAL_SCOPED_ONLY",
+        "cycle_reuse_allowed": false,
+        "missing": [
+          "model_id",
+          "checkpoint_content_sha256",
+          "tokenizer_sha256",
+          "precision_sha256",
+          "libraries_sha256",
+          "configuration_sha256",
+          "dag_sha256",
+          "input_sha256",
+          "initial_state_sha256",
+          "timing_contract_sha256",
+          "intervention_sha256"
+        ],
+        "differences": [
+          "binary_sha256"
+        ]
+      },
+      "reuse": "historical sensitivity, negative case, DEV/method only",
+      "extra_incompatibilities": [
+        "old proxy execution does not establish complete native BF16 B",
+        "capacity 768/1024MiB cases are not 512MiB partition matches"
+      ]
+    }
+  ],
+  "other_assets": [
+    {
+      "asset": "183 Q15 projections",
+      "reuse": "exact payload equality from v3, use under explicit profile ownership; no cycle inheritance"
+    },
+    {
+      "asset": "old Q15 four numerics",
+      "reuse": "old normalized layer0 FP16 tolerance scope only"
+    },
+    {
+      "asset": "old joint backend",
+      "reuse": "33 verified link objects/source ABI, not old composite cycles"
+    },
+    {
+      "asset": "Q3 old FP16",
+      "reuse": "do not substitute for BF16 model"
+    },
+    {
+      "asset": "old stage1/stage2 and 288-case formula",
+      "reuse": "methods and already-seen historical controls; not independent TEST or new B cycles"
+    }
+  ]
+}

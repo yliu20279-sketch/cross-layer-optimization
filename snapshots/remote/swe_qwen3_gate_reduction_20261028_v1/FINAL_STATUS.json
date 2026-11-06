@@ -1,0 +1,95 @@
+{
+  "state": "PASS_LIMITED_M1_GATE_THEN_UP_SOURCE_TREE",
+  "checks": {
+    "gate_proj": {
+      "BF16_exact": true,
+      "different": 0,
+      "max_abs": 0.0
+    },
+    "up_proj": {
+      "BF16_exact": true,
+      "different": 0,
+      "max_abs": 0.0
+    }
+  },
+  "stages": [
+    {
+      "projection": "gate_proj",
+      "start_ns": 8345187,
+      "done_ns": 9848142,
+      "output_global": 562036736,
+      "output_bytes": 3072,
+      "output_pending_consumer": "SiLU"
+    },
+    {
+      "projection": "up_proj",
+      "start_ns": 12159505,
+      "done_ns": 13660642,
+      "output_global": 587202560,
+      "output_bytes": 3072,
+      "output_pending_consumer": "gate_times_up"
+    }
+  ],
+  "gate_verified_ns": 9848142,
+  "expert": 49,
+  "row": 0,
+  "slot": 0,
+  "owner": 1,
+  "shape": [
+    1,
+    2048,
+    768
+  ],
+  "negative_controls": [
+    "weight_read_before_resident",
+    "compute_missing_metadata",
+    "compute_missing_inbox",
+    "compute_missing_weight",
+    "compute_missing_expanded",
+    "gate_proj_retire_before_compute",
+    "gate_proj_tile_free_before_reader",
+    "gate_proj_retire_pending_tiles",
+    "up_proj_retire_before_compute",
+    "up_proj_tile_free_before_reader",
+    "up_proj_retire_pending_tiles"
+  ],
+  "device": {
+    "rank": 1,
+    "counts": {
+      "events": 206705,
+      "pipeline_cycles": 6649463,
+      "SRAM_read_bytes": 45025536,
+      "SRAM_write_bytes": 45025536,
+      "SRAM_service_bytes": 90051072,
+      "HB_write_bytes": 22038656,
+      "RAM_transactions": 1284808,
+      "RAM_physical_bytes": 41113856,
+      "HB_read_bytes": 19075200,
+      "vector_ops": 6486528
+    },
+    "SRAM_peak_bytes": 3145728,
+    "HB_address_extent_bytes": 50334720,
+    "HB_allocated_bytes": 22038656,
+    "done_ns": 13660642
+  },
+  "parent_plus_new_conservative_HB_bytes": 22861248,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "codec_control_cost": null,
+  "full_timing": "NOT_CERTIFIED",
+  "softmax_FP32": "FAILED_RETAINED_max1.4901161193847656e-7",
+  "new_native_fragments": 1,
+  "new_GPU_Sniper_agent_runs": 0,
+  "physical_NPU_runs": 0,
+  "batch_GEMM": "NOT_CERTIFIED",
+  "whole_expert": "NOT_RUN",
+  "date": "2026-10-28",
+  "overall_step3": "PARTIAL",
+  "scope": "M1 expert49 gate/up only",
+  "CPU_M1_gate_outputs": 138240,
+  "CPU_M1_up_outputs": 138240,
+  "batch_differences_retained_each": 21,
+  "source_weights_and_numpy_audit": true,
+  "native_fragments_cumulative": 8,
+  "Sniper_ROI_cumulative": 3
+}

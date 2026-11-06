@@ -1,0 +1,302 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793087983.2717261,
+    "start_monotonic": 7763930.211190914,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763930.548459989,
+    "seconds": 0.3372694794088602
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793087983.8620076,
+    "start_monotonic": 7763930.801478497,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7763931.116641466,
+    "seconds": 0.31516333669424057
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i if data is None:\\n    continue' schema.py",
+    "start_utc": 1793088416.172358,
+    "start_monotonic": 7764363.111828015,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764363.395666344,
+    "seconds": 0.2838388243690133
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088417.517196,
+    "start_monotonic": 7764364.456666662,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\nACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=894\n884 indent_columns=28 |                             getter_func=validator,\n885 indent_columns=28 |                             data=value,\n886 indent_columns=28 |                             field_name=field_obj.load_from or field_name,\n887 indent_columns=28 |                             field_obj=field_obj,\n888 indent_columns=28 |                             index=(idx if self.opts.index_errors else None)\n889 indent_columns=24 |                         )\n890 indent_columns=24 |                         if validated_value is missing:\n891 indent_columns=28 |                             data[idx].pop(field_name, None)\n892 indent_columns=12 |             else:\n893 indent_columns=16 |                 try:\n894 indent_columns=0 | if data is None:\n895 indent_columns=4 |     continue\n896 indent_columns=20 |                     value = data[field_obj.attribute or field_name]\n897 indent_columns=16 |                 except KeyError:\n898 indent_columns=20 |                     pass\n899 indent_columns=16 |                 else:\n900 indent_columns=20 |                     validated_value = unmarshal.call_and_store(\n901 indent_columns=24 |                         getter_func=validator,\n902 indent_columns=24 |                         data=value,\n903 indent_columns=24 |                         field_name=field_obj.load_from or field_name,\n904 indent_columns=24 |                         field_obj=field_obj\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764364.808483009,
+    "seconds": 0.3518178975209594
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793088702.6768727,
+    "start_monotonic": 7764649.616340474,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764649.901023337,
+    "seconds": 0.2846833309158683
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793088704.0158951,
+    "start_monotonic": 7764650.955366055,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=894\n884 indent_columns=28 |                             getter_func=validator,\n885 indent_columns=28 |                             data=value,\n886 indent_columns=28 |                             field_name=field_obj.load_from or field_name,\n887 indent_columns=28 |                             field_obj=field_obj,\n888 indent_columns=28 |                             index=(idx if self.opts.index_errors else None)\n889 indent_columns=24 |                         )\n890 indent_columns=24 |                         if validated_value is missing:\n891 indent_columns=28 |                             data[idx].pop(field_name, None)\n892 indent_columns=12 |             else:\n893 indent_columns=16 |                 try:\n894 indent_columns=0 | if data is None:\n895 indent_columns=4 |     continue\n896 indent_columns=16 |                 if data is None:\n897 indent_columns=20 |                     continue\n898 indent_columns=20 |                     value = data[field_obj.attribute or field_name]\n899 indent_columns=16 |                 except KeyError:\n900 indent_columns=20 |                     pass\n901 indent_columns=16 |                 else:\n902 indent_columns=20 |                     validated_value = unmarshal.call_and_store(\n903 indent_columns=24 |                         getter_func=validator,\n904 indent_columns=24 |                         data=value,\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 894\n    if data is None:\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7764651.283594106,
+    "seconds": 0.32822829112410545
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/try:/ a\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793089105.9340239,
+    "start_monotonic": 7765052.873493985,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765053.12698524,
+    "seconds": 0.2534916987642646
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793089107.293048,
+    "start_monotonic": 7765054.232518828,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\nACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n162 indent_columns=16 |                 except KeyError:\n163 indent_columns=20 |                     continue\n164 indent_columns=16 |                 else:\n165 indent_columns=20 |                     break\n166 indent_columns=12 |             else:\n167 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\n168 indent_columns=16 |                 # We should never hit this - it's just here for completeness\n169 indent_columns=16 |                 # to exclude the possibility of attr being undefined.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765054.573257331,
+    "seconds": 0.3407394168898463
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793089253.4772482,
+    "start_monotonic": 7765200.41671843,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765200.718322825,
+    "seconds": 0.3016047449782491
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793089254.836904,
+    "start_monotonic": 7765201.776375848,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n162 indent_columns=16 |                 except KeyError:\n163 indent_columns=20 |                     continue\n164 indent_columns=16 |                 else:\n165 indent_columns=20 |                     break\n166 indent_columns=12 |             else:\n167 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\n168 indent_columns=16 |                 # We should never hit this - it's just here for completeness\n169 indent_columns=16 |                 # to exclude the possibility of attr being undefined.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7765202.12172476,
+    "seconds": 0.345349321141839
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/try:/ a\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793090114.8188179,
+    "start_monotonic": 7766061.7582879,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766062.056073345,
+    "seconds": 0.29778587631881237
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090116.1810565,
+    "start_monotonic": 7766063.120528511,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n164 indent_columns=16 |                 except KeyError:\n165 indent_columns=20 |                     continue\n166 indent_columns=16 |                 else:\n167 indent_columns=20 |                     break\n168 indent_columns=12 |             else:\n169 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766063.458573859,
+    "seconds": 0.33804669603705406
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\                    if data is None:\\n                        continue' schema.py",
+    "start_utc": 1793090430.2299175,
+    "start_monotonic": 7766377.169387703,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766377.467930254,
+    "seconds": 0.2985427649691701
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090431.5955458,
+    "start_monotonic": 7766378.535017435,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\nACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n164 indent_columns=16 |                 except KeyError:\n165 indent_columns=20 |                     continue\n166 indent_columns=16 |                 else:\n167 indent_columns=20 |                     break\n168 indent_columns=12 |             else:\n169 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766378.881435277,
+    "seconds": 0.3464189786463976
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793090653.4403682,
+    "start_monotonic": 7766600.379839922,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766600.667025864,
+    "seconds": 0.2871860507875681
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793090654.783491,
+    "start_monotonic": 7766601.722962604,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n164 indent_columns=16 |                 except KeyError:\n165 indent_columns=20 |                     continue\n166 indent_columns=16 |                 else:\n167 indent_columns=20 |                     break\n168 indent_columns=12 |             else:\n169 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766602.069560832,
+    "seconds": 0.3465994680300355
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/def _invoke_field_validators(self, data, many=False):/,$ {/value = data/ i\\                if data is None:\\n                    continue}' schema.py",
+    "start_utc": 1793090849.9293652,
+    "start_monotonic": 7766796.868836981,
+    "result": {
+      "output": "sed: -e expression #1, char 0: unmatched `{'\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7766797.170279451,
+    "seconds": 0.3014427488669753
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i \"/def _invoke_field_validators(self, data, many=False):/,$ {/value = data/ i\\\\\n                if data is None:\\\\\n                    continue}\" schema.py",
+    "start_utc": 1793091076.8494322,
+    "start_monotonic": 7767023.78890413,
+    "result": {
+      "output": "sed: -e expression #1, char 0: unmatched `{'\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767024.086735355,
+    "seconds": 0.29783147294074297
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\ncat << 'EOF' > /tmp/patch.sh\n#!/bin/bash\nsed -i '/value = data/ i\\\n                if data is None:\\\n                    continue' schema.py\nEOF\nchmod +x /tmp/patch.sh\n/tmp/patch.sh",
+    "start_utc": 1793091923.695408,
+    "start_monotonic": 7767870.634879926,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767870.941900629,
+    "seconds": 0.3070210414007306
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793091925.0676758,
+    "start_monotonic": 7767872.007147829,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n164 indent_columns=16 |                 except KeyError:\n165 indent_columns=20 |                     continue\n166 indent_columns=16 |                 else:\n167 indent_columns=20 |                     break\n168 indent_columns=12 |             else:\n169 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7767872.352356473,
+    "seconds": 0.34520894195884466
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/def _invoke_field_validators(self, data, many=False):/,$ {/value = data/ i\\\n                if data is None:\\\n                    continue}' schema.py",
+    "start_utc": 1793092208.3254967,
+    "start_monotonic": 7768155.264968833,
+    "result": {
+      "output": "sed: -e expression #1, char 0: unmatched `{'\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768155.563798834,
+    "seconds": 0.298830340616405
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i\\\n                if data is None:\\\n                    continue' schema.py",
+    "start_utc": 1793092916.1827092,
+    "start_monotonic": 7768863.122181082,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768863.425293777,
+    "seconds": 0.30311294272542
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793092917.5401525,
+    "start_monotonic": 7768864.479624387,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n164 indent_columns=16 |                 except KeyError:\n165 indent_columns=20 |                     continue\n166 indent_columns=16 |                 else:\n167 indent_columns=20 |                     break\n168 indent_columns=12 |             else:\n169 indent_columns=16 |                 # In case we didn't find the attribute and didn't break above.\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7768864.826187191,
+    "seconds": 0.34656372107565403
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/try:/ a\\                if data is None:\\n                    continue' schema.py",
+    "start_utc": 1793093163.0851254,
+    "start_monotonic": 7769110.024595184,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769110.30703352,
+    "seconds": 0.2824385557323694
+  },
+  {
+    "command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if not p.is_file(): continue\n raw=p.read_bytes()\n try: compile(raw,name,'\"'\"'exec'\"'\"')\n except SyntaxError as exc:\n  lines=raw.decode('\"'\"'utf-8'\"'\"',errors='\"'\"'replace'\"'\"').splitlines()\n  position=exc.lineno or 1\n  print('\"'\"'ACTUAL_SOURCE_CONTEXT file='\"'\"'+name+'\"'\"' error_line='\"'\"'+str(position))\n  for number in range(max(1,position-10),min(len(lines),position+10)+1):\n   line=lines[number-1];prefix=line[:len(line)-len(line.lstrip('\"'\"' \\t'\"'\"'))]\n   print(str(number)+'\"'\"' indent_columns='\"'\"'+str(len(prefix.expandtabs(8)))+'\"'\"' | '\"'\"'+line)\n  print('\"'\"'END_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.'\"'\"')\n  sys.stdout.flush()\n  raise\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')\n' '[\"src/marshmallow/schema.py\"]'",
+    "start_utc": 1793093164.4372492,
+    "start_monotonic": 7769111.376721429,
+    "result": {
+      "output": "ACTUAL_SOURCE_CONTEXT file=src/marshmallow/schema.py error_line=159\n149 indent_columns=8 |         \"\"\"\n150 indent_columns=8 |         mro = inspect.getmro(self)\n151 indent_columns=8 |         self._has_processors = False\n152 indent_columns=8 |         self.__processors__ = defaultdict(list)\n153 indent_columns=8 |         for attr_name in dir(self):\n154 indent_columns=12 |             # Need to look up the actual descriptor, not whatever might be\n155 indent_columns=12 |             # bound to the class. This needs to come from the __dict__ of the\n156 indent_columns=12 |             # declaring class.\n157 indent_columns=12 |             for parent in mro:\n158 indent_columns=16 |                 try:\n159 indent_columns=16 |                 if data is None:\n160 indent_columns=20 |                     continue\n161 indent_columns=16 |                 if data is None:\n162 indent_columns=20 |                     continue\n163 indent_columns=16 |                 if data is None:\n164 indent_columns=20 |                     continue\n165 indent_columns=20 |                     attr = parent.__dict__[attr_name]\n166 indent_columns=16 |                 except KeyError:\n167 indent_columns=20 |                     continue\n168 indent_columns=16 |                 else:\n169 indent_columns=20 |                     break\nEND_ACTUAL_SOURCE_CONTEXT: source is unchanged; inspect existing bad edits rather than reinserting them.\nTraceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"src/marshmallow/schema.py\", line 159\n    if data is None:\n    ^\nIndentationError: expected an indented block\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7769111.70121892,
+    "seconds": 0.32449773512780666
+  }
+]

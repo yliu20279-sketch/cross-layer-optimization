@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-27",
+  "state": "CANDIDATE_PREPARED_NOT_GPU_LAUNCHED",
+  "prerequisite": "v2 completed all actor generation and official development scoring; launch only if v2 DEVELOPMENT_GATE_FAILED and GPU0 resource gate passes; never terminate/move v2",
+  "model": "original Qwen3-30B-A3B BF16 ad44e777bcd18fa416d9da3bd8f70d33ebb85d39, source internal FP32 unchanged",
+  "target": {"host_GiB":128,"HB_GiB":8,"NPU_runs":0},
+  "development": "same two previously used Marshmallow dev cases; one attempt each, no manual patch repair",
+  "method": "thinking 0.6/0.95/20, library-maintainer objective, observed source inventory, implementation-diff progress, unchanged inspection cache, one/two ordered final-only bash blocks",
+  "budget": {"model_calls_per_task":32,"total_new_tokens_per_task":32768,"max_new_tokens_call":4096,"wall_seconds_between_calls_and_blocks":5400,"shell_timeout_seconds":120},
+  "capture": "off for development; full actual routes/fixtures after selection on new acceptance",
+  "context": "no history truncation; context cap32768 including reserved output, overflow is retained failure",
+  "progress": "tracked/new package implementation source differences count; root reproduction scripts and tmp files do not; common source suffixes include Python/C/C++/Cython/Rust",
+  "selection": "require both official dev resolved, no existing-test changes, no infrastructure or patch-collection failures",
+  "holdout": "reuse only the two identity-only Matplotlib25442/Django11099 registrations if v2 never accessed their bodies; otherwise register new unread cases before freeze; gold never read and hidden tests evaluator only after all actor generation",
+  "stop": "one bounded two-dev candidate iteration; failure retains evidence and no holdout access, no automatic endless prompt search",
+  "evidence_scope": "selected development pilots, not unbiased success rate or target timing/benefit certification"
+}

@@ -1,0 +1,867 @@
+[
+  {
+    "name": "cond_post_attention_norm_GPU",
+    "scope": "full_sequence_isolated_Golden_input",
+    "shape": [
+      1,
+      49883,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 102160384,
+    "bitwise_mismatches": 651,
+    "numerical_mismatches": 651,
+    "max_abs": 0.03125,
+    "rmse": 9.588140528649092e-06,
+    "candidate_raw_sha256": "bbd0c37f7d1d7317912e79a3161d626d68235bc004b09f137ddc61a114d5ca58",
+    "reference_raw_sha256": "750ced13e73e2a1d226b62126e5e7042d81bd6cdbba13ec384b46a702ded59f9",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_post_attention_norm_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_post_attention_norm.pt"
+  },
+  {
+    "name": "cond_post_attention_norm_CPU",
+    "scope": "source_CPU_self_consistency",
+    "shape": [
+      1,
+      49883,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 102160384,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "bbd0c37f7d1d7317912e79a3161d626d68235bc004b09f137ddc61a114d5ca58",
+    "reference_raw_sha256": "bbd0c37f7d1d7317912e79a3161d626d68235bc004b09f137ddc61a114d5ca58",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_residual_norm2_mod_GPU",
+    "scope": "full_sequence_Golden_postnorm_injected_boundary",
+    "shape": [
+      1,
+      49883,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 102160384,
+    "bitwise_mismatches": 524,
+    "numerical_mismatches": 524,
+    "max_abs": 0.03125,
+    "rmse": 1.483851701777894e-05,
+    "candidate_raw_sha256": "a32da52cefb998244f202d3b381ae588ac231aeff19b7605f1bcc5a6d13b1605",
+    "reference_raw_sha256": "c013d23fddcb3c24902c6e5b2adb320fdcbc29d6694999d6cbe3c348de6c1e31",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_residual_norm2_mod_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_ffn_input.pt"
+  },
+  {
+    "name": "cond_residual_norm2_mod_CPU",
+    "scope": "source_CPU_self_consistency",
+    "shape": [
+      1,
+      49883,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 102160384,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "a32da52cefb998244f202d3b381ae588ac231aeff19b7605f1bcc5a6d13b1605",
+    "reference_raw_sha256": "a32da52cefb998244f202d3b381ae588ac231aeff19b7605f1bcc5a6d13b1605",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_router_logits_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      49883,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6385024,
+    "bitwise_mismatches": 5173841,
+    "numerical_mismatches": 5173841,
+    "max_abs": 1.33514404296875e-05,
+    "rmse": 1.7075963114621118e-06,
+    "candidate_raw_sha256": "15cea0c21d8043f4b1283ed0cce55f5d96a0740ac54dc2d8e228460642d6b7de",
+    "reference_raw_sha256": "bdd0125d68588b8b8fcbeb105fcfe0c55a83f1edf23bf2d2e444d5c4b5d71f9c",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_router_logits_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_router_logits.pt"
+  },
+  {
+    "name": "cond_router_scores_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      49883,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6385024,
+    "bitwise_mismatches": 5467603,
+    "numerical_mismatches": 5467603,
+    "max_abs": 7.748603820800781e-07,
+    "rmse": 2.071721105778579e-08,
+    "candidate_raw_sha256": "08784b062afa825bff1ee69baef977e75c642d22c949afe93be58948435ed205",
+    "reference_raw_sha256": "e6127cc2a78b755fc234f0117662ec613a5daedad0db9f3c4ea0478b56708354",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_router_scores_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_router_scores.pt"
+  },
+  {
+    "name": "cond_router_choice_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      49883,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6385024,
+    "bitwise_mismatches": 4865211,
+    "numerical_mismatches": 4865211,
+    "max_abs": 7.748603820800781e-07,
+    "rmse": 2.071747395859802e-08,
+    "candidate_raw_sha256": "7c41d4cbeb046944e919c656522fa112759b3db733eacff9d44ded8b31744a24",
+    "reference_raw_sha256": "a1514e03acce15920291b647980a5f2960f6a7e7a839207dd6d7a4d223a503d8",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_router_choice_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_router_choice.pt"
+  },
+  {
+    "name": "cond_router_logits_CPU",
+    "scope": "source_CPU_FP32_linear",
+    "shape": [
+      49883,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6385024,
+    "bitwise_mismatches": 5056544,
+    "numerical_mismatches": 5056544,
+    "max_abs": 1.33514404296875e-05,
+    "rmse": 1.4915307247065357e-06,
+    "candidate_raw_sha256": "15cea0c21d8043f4b1283ed0cce55f5d96a0740ac54dc2d8e228460642d6b7de",
+    "reference_raw_sha256": "eb4cd3aace0e44544c3993036b26c40b036a9616ae51c654960efb5bdac433a3",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_shared_GPU",
+    "scope": "64_rows_actual_FFN_input",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 2166,
+    "numerical_mismatches": 2166,
+    "max_abs": 0.5,
+    "rmse": 0.00377698359079659,
+    "candidate_raw_sha256": "9d8a221462a4d35217b4001aecb7936ccf255895dc1069c1f10ef324956d6145",
+    "reference_raw_sha256": "ac4a368b90c4bcd69ce2c0c529b19470b36b70dbc7a3c1ba16f8c8d5a9e059fd",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_shared_CPU",
+    "scope": "source_CPU_BF16_linear_reference",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 107,
+    "numerical_mismatches": 107,
+    "max_abs": 0.25,
+    "rmse": 0.0009884820319712162,
+    "candidate_raw_sha256": "9d8a221462a4d35217b4001aecb7936ccf255895dc1069c1f10ef324956d6145",
+    "reference_raw_sha256": "d871fbe3914d70807c6e5d71838fe670c1406910af4cfc22dcaaa10bf5c05a2a",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_free_router_MoE_GPU",
+    "scope": "64_rows_free_router_no_ID_injection",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 1656,
+    "numerical_mismatches": 1656,
+    "max_abs": 0.5,
+    "rmse": 0.005027996841818094,
+    "candidate_raw_sha256": "d1c50a0e884592ed0fc2d84f018030a48558fd4683d09aa8d095ad88b25ceb94",
+    "reference_raw_sha256": "83e08660e2c65d3a153134365206eb53abf9e161ac2a28d803bdbf7423723ffc",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_recorded_route_MoE_GPU",
+    "scope": "DIAGNOSTIC_recorded_route_replay_NOT_router_PASS",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 1656,
+    "numerical_mismatches": 1656,
+    "max_abs": 0.5,
+    "rmse": 0.005027996841818094,
+    "candidate_raw_sha256": "d1c50a0e884592ed0fc2d84f018030a48558fd4683d09aa8d095ad88b25ceb94",
+    "reference_raw_sha256": "83e08660e2c65d3a153134365206eb53abf9e161ac2a28d803bdbf7423723ffc",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_free_router_MoE_CPU",
+    "scope": "source_CPU_BF16_expert_and_router_reference",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 143,
+    "numerical_mismatches": 143,
+    "max_abs": 0.5,
+    "rmse": 0.002725206082686782,
+    "candidate_raw_sha256": "d1c50a0e884592ed0fc2d84f018030a48558fd4683d09aa8d095ad88b25ceb94",
+    "reference_raw_sha256": "52aecc7257712658e5926827a867fe2fa88c8680c8b51ad9b086ef99cf3307f9",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_slot_restore_CPU",
+    "scope": "same_expert_outputs_source_unsorted_restore",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "5b4dcb56573498de36f4a52911752bde1547d449ad165b21b8aba3511d14474a",
+    "reference_raw_sha256": "5b4dcb56573498de36f4a52911752bde1547d449ad165b21b8aba3511d14474a",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_post_ffn_norm_GPU",
+    "scope": "full_sequence_isolated_Golden_FFN_output",
+    "shape": [
+      1,
+      49883,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 102160384,
+    "bitwise_mismatches": 690,
+    "numerical_mismatches": 690,
+    "max_abs": 0.015625,
+    "rmse": 9.676592526375316e-06,
+    "candidate_raw_sha256": "13616cf35adb48ca8c9a7acf5a4ee5e68ddecc1b3a45537034e861f390c848f2",
+    "reference_raw_sha256": "721649876da374eb8c7923e801bc8f05818787d7d96cd8de9234c5e941e949aa",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/cond_post_ffn_norm_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_cond_L00_post_ffn_norm.pt"
+  },
+  {
+    "name": "cond_residual_commit_GPU",
+    "scope": "64_rows_Golden_postnorm_boundaries",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "b36c921883d0e5efa2a10dc90405a5f544ad7c0fb084f1962ba9c398f5cae62d",
+    "reference_raw_sha256": "b36c921883d0e5efa2a10dc90405a5f544ad7c0fb084f1962ba9c398f5cae62d",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_attention_GPU",
+    "scope": "64_query_rows_ALL_49883_context_rows",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 14570,
+    "numerical_mismatches": 14570,
+    "max_abs": 0.25,
+    "rmse": 0.005715993698686361,
+    "candidate_raw_sha256": "56b2764b4f6881fda6e6edabcefda81146f98cdcb91d4ec8e9efe4ee71f4ed52",
+    "reference_raw_sha256": "99dd52c6d8603b0d16b9651863c7b62111a184ea6b83bb2a07bbf06040d21811",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_attention_core_CPU_SDPA",
+    "scope": "same_QKV_CPU_SDPA_vs_FP32_materialized_softmax",
+    "shape": [
+      1,
+      64,
+      16,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 6190,
+    "numerical_mismatches": 6190,
+    "max_abs": 0.0625,
+    "rmse": 0.0009231408475898206,
+    "candidate_raw_sha256": "8734b1d1847003398d56ee074da730294aec761568978189f2bc44ff152c9516",
+    "reference_raw_sha256": "08cd458e862436e6fd8daa8ac81e599ee4046593e1ffabee9ca1483299d727b7",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_RoPE_CPU_head0",
+    "scope": "source_complex64_RoPE_same_Q_norm_input",
+    "shape": [
+      1,
+      64,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 8192,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "50a0777542f7e23091c5498b4fb2609bc4735f9f605d7b9a297ef42429ed7389",
+    "reference_raw_sha256": "50a0777542f7e23091c5498b4fb2609bc4735f9f605d7b9a297ef42429ed7389",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_RoPE_CPU_head15",
+    "scope": "source_complex64_RoPE_same_Q_norm_input",
+    "shape": [
+      1,
+      64,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 8192,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "f5f841f719ae656619ba3905031ae653600d0a390747fc8e38ace8ac90fce671",
+    "reference_raw_sha256": "f5f841f719ae656619ba3905031ae653600d0a390747fc8e38ace8ac90fce671",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "cond_chained_block_GPU",
+    "scope": "64_output_rows_full_context_attention_free_router_NO_Golden_internal_injection",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 10843,
+    "numerical_mismatches": 10843,
+    "max_abs": 0.0625,
+    "rmse": 0.0003623429802246392,
+    "candidate_raw_sha256": "9f44773eed07c1ede79c3aabd2dab4c19f0aef09af364c6f17b7bdb27a245efa",
+    "reference_raw_sha256": "b36c921883d0e5efa2a10dc90405a5f544ad7c0fb084f1962ba9c398f5cae62d",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_post_attention_norm_GPU",
+    "scope": "full_sequence_isolated_Golden_input",
+    "shape": [
+      1,
+      48986,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 100323328,
+    "bitwise_mismatches": 649,
+    "numerical_mismatches": 649,
+    "max_abs": 0.03125,
+    "rmse": 9.871211659628898e-06,
+    "candidate_raw_sha256": "7a068e8a1fd64483c3ae9bcbf92144b854acc6b7172bfc74c8ebd022960009a3",
+    "reference_raw_sha256": "b931b9d82ffca74103ae1133ddc9a0f2128da6775b4f9aef3aaf7159684ee169",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_post_attention_norm_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_post_attention_norm.pt"
+  },
+  {
+    "name": "uncond_post_attention_norm_CPU",
+    "scope": "source_CPU_self_consistency",
+    "shape": [
+      1,
+      48986,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 100323328,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "7a068e8a1fd64483c3ae9bcbf92144b854acc6b7172bfc74c8ebd022960009a3",
+    "reference_raw_sha256": "7a068e8a1fd64483c3ae9bcbf92144b854acc6b7172bfc74c8ebd022960009a3",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_residual_norm2_mod_GPU",
+    "scope": "full_sequence_Golden_postnorm_injected_boundary",
+    "shape": [
+      1,
+      48986,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 100323328,
+    "bitwise_mismatches": 571,
+    "numerical_mismatches": 571,
+    "max_abs": 0.03125,
+    "rmse": 1.585012250870932e-05,
+    "candidate_raw_sha256": "aadc7028968908ccd42d99ba9876504bc5eb97b5c3ffd2dc2f17d0ff651e4ebf",
+    "reference_raw_sha256": "5bacd152f3fbf9f1276712d5f3e9c9eebba229b02b4b1c3dae91a8fb147f3817",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_residual_norm2_mod_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_ffn_input.pt"
+  },
+  {
+    "name": "uncond_residual_norm2_mod_CPU",
+    "scope": "source_CPU_self_consistency",
+    "shape": [
+      1,
+      48986,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 100323328,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "aadc7028968908ccd42d99ba9876504bc5eb97b5c3ffd2dc2f17d0ff651e4ebf",
+    "reference_raw_sha256": "aadc7028968908ccd42d99ba9876504bc5eb97b5c3ffd2dc2f17d0ff651e4ebf",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_router_logits_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      48986,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6270208,
+    "bitwise_mismatches": 5092876,
+    "numerical_mismatches": 5092876,
+    "max_abs": 1.52587890625e-05,
+    "rmse": 1.6687715742591536e-06,
+    "candidate_raw_sha256": "d5282f1d385c008dca90a04b9db6035848968651a3d552c4b7482626488ab38d",
+    "reference_raw_sha256": "25717eee8892da1798be816caf98b02f1b1549920e1217b87fe2716004aa79c9",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_router_logits_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_router_logits.pt"
+  },
+  {
+    "name": "uncond_router_scores_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      48986,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6270208,
+    "bitwise_mismatches": 5380368,
+    "numerical_mismatches": 5380368,
+    "max_abs": 8.940696716308594e-07,
+    "rmse": 2.312820157612805e-08,
+    "candidate_raw_sha256": "6625949f87cce765f540203f792d0850e0b5d370e76ee1c0b5d9b6aa4f9efaa4",
+    "reference_raw_sha256": "3094de93e013f337fefd5f334f960a8e9c4f841dbee5aa491e0b987c0e45b1e3",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_router_scores_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_router_scores.pt"
+  },
+  {
+    "name": "uncond_router_choice_GPU",
+    "scope": "full_sequence_isolated_actual_FFN_input",
+    "shape": [
+      48986,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6270208,
+    "bitwise_mismatches": 4865100,
+    "numerical_mismatches": 4865100,
+    "max_abs": 8.940696716308594e-07,
+    "rmse": 2.312855862385277e-08,
+    "candidate_raw_sha256": "71d7d4e855823daf57e9e8292d54e185ea959bb155207d75c2420a7266c3aeb1",
+    "reference_raw_sha256": "a8ee3088bbdc8175c9f8f8b81bcb8872d39b56820a8b299cb121c70cbbbd26a2",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_router_choice_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_router_choice.pt"
+  },
+  {
+    "name": "uncond_router_logits_CPU",
+    "scope": "source_CPU_FP32_linear",
+    "shape": [
+      48986,
+      128
+    ],
+    "dtype": "torch.float32",
+    "elements": 6270208,
+    "bitwise_mismatches": 4976642,
+    "numerical_mismatches": 4976642,
+    "max_abs": 1.239776611328125e-05,
+    "rmse": 1.4583411029889248e-06,
+    "candidate_raw_sha256": "d5282f1d385c008dca90a04b9db6035848968651a3d552c4b7482626488ab38d",
+    "reference_raw_sha256": "4d5e98d32f9a78bbc1d7a88aed291a396dbcbd299ddc4901ce4245c008e38425",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_shared_GPU",
+    "scope": "64_rows_actual_FFN_input",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 2299,
+    "numerical_mismatches": 2299,
+    "max_abs": 0.5,
+    "rmse": 0.003982609137892723,
+    "candidate_raw_sha256": "0f3481d13fbb2f8c9405a8732214b14aacc5fc15782b05134459a3a0a6ccb861",
+    "reference_raw_sha256": "3b6cd886410b261aa40a5a48881efdbfac3de53387f699a5496ebad40121a0d5",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_shared_CPU",
+    "scope": "source_CPU_BF16_linear_reference",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 309,
+    "numerical_mismatches": 309,
+    "max_abs": 0.25,
+    "rmse": 0.0014663412002846599,
+    "candidate_raw_sha256": "0f3481d13fbb2f8c9405a8732214b14aacc5fc15782b05134459a3a0a6ccb861",
+    "reference_raw_sha256": "517edfb991f1591bf8fa587d8141a0ae87e3cfe59f1bb6a71a21dcf6b316b546",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_free_router_MoE_GPU",
+    "scope": "64_rows_free_router_no_ID_injection",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 2021,
+    "numerical_mismatches": 2021,
+    "max_abs": 1.0,
+    "rmse": 0.005681468173861504,
+    "candidate_raw_sha256": "605c557798dd51299267cfaa9f974dd4f987ead11ae702cc7ad186f101a8d243",
+    "reference_raw_sha256": "7861547f21ad91306da80c7fe95e04f40822312ca44b2597b11ed2fd97657c5b",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_recorded_route_MoE_GPU",
+    "scope": "DIAGNOSTIC_recorded_route_replay_NOT_router_PASS",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 2021,
+    "numerical_mismatches": 2021,
+    "max_abs": 1.0,
+    "rmse": 0.005681468173861504,
+    "candidate_raw_sha256": "605c557798dd51299267cfaa9f974dd4f987ead11ae702cc7ad186f101a8d243",
+    "reference_raw_sha256": "7861547f21ad91306da80c7fe95e04f40822312ca44b2597b11ed2fd97657c5b",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_free_router_MoE_CPU",
+    "scope": "source_CPU_BF16_expert_and_router_reference",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 126,
+    "numerical_mismatches": 126,
+    "max_abs": 0.25,
+    "rmse": 0.0016763008898124099,
+    "candidate_raw_sha256": "605c557798dd51299267cfaa9f974dd4f987ead11ae702cc7ad186f101a8d243",
+    "reference_raw_sha256": "ee63be1770611adfe7d006e6e3ba4af69c2dec2c74ae2012b8d2fa240a3d2ee5",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_slot_restore_CPU",
+    "scope": "same_expert_outputs_source_unsorted_restore",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "3f31ecea0f23ec9959141e1b2257b3bacc55183fa465cf9e918605be6b8080db",
+    "reference_raw_sha256": "3f31ecea0f23ec9959141e1b2257b3bacc55183fa465cf9e918605be6b8080db",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_post_ffn_norm_GPU",
+    "scope": "full_sequence_isolated_Golden_FFN_output",
+    "shape": [
+      1,
+      48986,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 100323328,
+    "bitwise_mismatches": 739,
+    "numerical_mismatches": 739,
+    "max_abs": 0.0625,
+    "rmse": 1.2819034964195453e-05,
+    "candidate_raw_sha256": "db9041f7fcb0600db7b1b18610cabaf7fb0ed23b7f65b0baf34e106286ec965b",
+    "reference_raw_sha256": "9ef3e69ad452cf91a22c9e81ed33821e4f74f9a417fd4be66d443ea5c5712860",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null,
+    "candidate_file": "outputs/uncond_post_ffn_norm_GPU.pt",
+    "reference_original": "fixtures/full_on_s00_uncond_L00_post_ffn_norm.pt"
+  },
+  {
+    "name": "uncond_residual_commit_GPU",
+    "scope": "64_rows_Golden_postnorm_boundaries",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "ccde21b3e52faf0a3a45a3467a5179a8a600b1ce8e5a3441e788f605f38c08f9",
+    "reference_raw_sha256": "ccde21b3e52faf0a3a45a3467a5179a8a600b1ce8e5a3441e788f605f38c08f9",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_attention_GPU",
+    "scope": "64_query_rows_ALL_48986_context_rows",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 13524,
+    "numerical_mismatches": 13524,
+    "max_abs": 0.25,
+    "rmse": 0.004823950119316578,
+    "candidate_raw_sha256": "0abf0a2b9646090adacd7c12aaad1769e1173ff4cabc253a223a850233492ace",
+    "reference_raw_sha256": "2eaa6ac40c4b0521d1f4b4be7db5dc6ab41e91140822d5b0b1a593492c40fdd0",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_attention_core_CPU_SDPA",
+    "scope": "same_QKV_CPU_SDPA_vs_FP32_materialized_softmax",
+    "shape": [
+      1,
+      64,
+      16,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 6069,
+    "numerical_mismatches": 6069,
+    "max_abs": 0.0625,
+    "rmse": 0.0008683234336785972,
+    "candidate_raw_sha256": "fad23c70d8b4a57fc08894717df7137813c9874d1ced23956c7c92cf7dbfa479",
+    "reference_raw_sha256": "12083362359f12e3cb247c71bfedd66593cac28c8a6cae18177617c48e420db5",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_RoPE_CPU_head0",
+    "scope": "source_complex64_RoPE_same_Q_norm_input",
+    "shape": [
+      1,
+      64,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 8192,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "31dabcaa033e980a8c193b141a57fb72ac23c262a8407af4ff31d133d0008528",
+    "reference_raw_sha256": "31dabcaa033e980a8c193b141a57fb72ac23c262a8407af4ff31d133d0008528",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_RoPE_CPU_head15",
+    "scope": "source_complex64_RoPE_same_Q_norm_input",
+    "shape": [
+      1,
+      64,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 8192,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "9c810a280fbe277b6f4dd69e8813f0978ebf01613de25f6409b37a13d64692be",
+    "reference_raw_sha256": "9c810a280fbe277b6f4dd69e8813f0978ebf01613de25f6409b37a13d64692be",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "uncond_chained_block_GPU",
+    "scope": "64_output_rows_full_context_attention_free_router_NO_Golden_internal_injection",
+    "shape": [
+      1,
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 12366,
+    "numerical_mismatches": 12366,
+    "max_abs": 0.09375,
+    "rmse": 0.0007715181563980877,
+    "candidate_raw_sha256": "37eb0d1cdf4668be1e24d2becbcb76d9d69f20104043d2eebe55e2de6938ec5e",
+    "reference_raw_sha256": "ccde21b3e52faf0a3a45a3467a5179a8a600b1ce8e5a3441e788f605f38c08f9",
+    "finite": true,
+    "pass_bitwise": false,
+    "promotion_tolerance": null
+  },
+  {
+    "name": "expert_order_commit_negative_diagnostic",
+    "scope": "real_slot_outputs_expert_order_alternative_not_used",
+    "shape": [
+      64,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "elements": 131072,
+    "bitwise_mismatches": 0,
+    "numerical_mismatches": 0,
+    "max_abs": 0.0,
+    "rmse": 0.0,
+    "candidate_raw_sha256": "3f31ecea0f23ec9959141e1b2257b3bacc55183fa465cf9e918605be6b8080db",
+    "reference_raw_sha256": "3f31ecea0f23ec9959141e1b2257b3bacc55183fa465cf9e918605be6b8080db",
+    "finite": true,
+    "pass_bitwise": true,
+    "promotion_tolerance": null
+  }
+]

@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "task",
+      "op": "Load issue + repo/base commit",
+      "unit": "CPU"
+    },
+    {
+      "id": "prompt",
+      "op": "History + chat template + tokenizer",
+      "unit": "CPU"
+    },
+    {
+      "id": "prefill",
+      "op": "Uncached prefill / recomputation",
+      "unit": "NPU symbolic"
+    },
+    {
+      "id": "head",
+      "op": "LM head + sample first output token",
+      "unit": "CPU/NPU proposed"
+    },
+    {
+      "id": "decode",
+      "op": "Decode recurrent forward + KV state",
+      "unit": "NPU symbolic"
+    },
+    {
+      "id": "parse",
+      "op": "Parse generated action / format checks",
+      "unit": "CPU"
+    },
+    {
+      "id": "tool",
+      "op": "Read/search/edit/test command in container",
+      "unit": "External CPU/container"
+    },
+    {
+      "id": "feedback",
+      "op": "Observation + stdout/stderr/exit",
+      "unit": "CPU"
+    },
+    {
+      "id": "finish",
+      "op": "Final patch + harness evaluation",
+      "unit": "External CPU/container"
+    },
+    {
+      "id": "limits",
+      "op": "Timeout / format error / failure exit",
+      "unit": "CPU"
+    }
+  ],
+  "edges": [
+    {
+      "src": "task",
+      "dst": "prompt",
+      "kind": "data"
+    },
+    {
+      "src": "prompt",
+      "dst": "prefill",
+      "kind": "data"
+    },
+    {
+      "src": "prefill",
+      "dst": "head",
+      "kind": "data"
+    },
+    {
+      "src": "head",
+      "dst": "decode",
+      "kind": "conditional more output"
+    },
+    {
+      "src": "decode",
+      "dst": "decode",
+      "kind": "next generated token; recurrent template"
+    },
+    {
+      "src": "head",
+      "dst": "parse",
+      "kind": "complete message"
+    },
+    {
+      "src": "decode",
+      "dst": "parse",
+      "kind": "complete message"
+    },
+    {
+      "src": "parse",
+      "dst": "tool",
+      "kind": "valid nonterminal command"
+    },
+    {
+      "src": "tool",
+      "dst": "feedback",
+      "kind": "actual process completion"
+    },
+    {
+      "src": "feedback",
+      "dst": "prompt",
+      "kind": "next turn; conditional loop"
+    },
+    {
+      "src": "parse",
+      "dst": "feedback",
+      "kind": "format error; no tool executed"
+    },
+    {
+      "src": "parse",
+      "dst": "finish",
+      "kind": "submit command"
+    },
+    {
+      "src": "parse",
+      "dst": "limits",
+      "kind": "budget/invalid output"
+    },
+    {
+      "src": "tool",
+      "dst": "limits",
+      "kind": "timeout/fatal failure"
+    }
+  ],
+  "nature": "CONTROL_FLOW_TEMPLATE_WITH_LOOPS_NOT_EXECUTABLE_DAG",
+  "unrolling": "Each observed turn/token gets unique ID; only finite observed unrolling may be DAG-audited",
+  "warning": "A read->edit->test sequence is goal, not guaranteed actions in every task"
+}

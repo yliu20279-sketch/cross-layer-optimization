@@ -1,0 +1,35 @@
+{
+  "status": "PASS_LIMITED_PINNED_FP32_GEMM_SOURCE_KERNEL_BINDING",
+  "rows": [
+    {
+      "branch": "cond",
+      "shape": [
+        49883,
+        2048
+      ],
+      "dtype": "torch.float32",
+      "GPU_FP32_Golden_mismatches": 0,
+      "kernels": [
+        "sm80_xmma_gemm_f32f32_f32f32_f32_tn_n_tilesize128x128x8_stage3_warpsize2x2x1_ffma_aligna4_alignc4_execute_kernel__5x_cublas"
+      ]
+    },
+    {
+      "branch": "uncond",
+      "shape": [
+        48986,
+        2048
+      ],
+      "dtype": "torch.float32",
+      "GPU_FP32_Golden_mismatches": 0,
+      "kernels": [
+        "sm80_xmma_gemm_f32f32_f32f32_f32_tn_n_tilesize128x128x8_stage3_warpsize2x2x1_ffma_aligna4_alignc4_execute_kernel__5x_cublas"
+      ]
+    }
+  ],
+  "target_GPU_count": 0,
+  "external_GPU_jobs": 1,
+  "full_model_inference_calls": 0,
+  "peak_allocated": 637222912,
+  "Torch_version": "2.6.0+cu124",
+  "Torch_git": "2236df1770800ffea5697b11b0bb0d910b2e59e1"
+}

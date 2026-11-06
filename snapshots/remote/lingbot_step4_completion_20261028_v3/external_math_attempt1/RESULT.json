@@ -1,0 +1,73 @@
+{
+  "status": "PASS_LIMITED_EXTERNAL_MATH_DIAGNOSTIC",
+  "target_GPU_count": 0,
+  "external_GPU_jobs": 1,
+  "external_physical_GPU_index": 1,
+  "full_model_inference_calls": 0,
+  "rows": [
+    {
+      "branch": "cond",
+      "norm": "norm_post_attn.weight",
+      "rows": 49883,
+      "source_matches_prior_GPU_Golden": true,
+      "manual_matches_source": true,
+      "source_raw_sha256": "750ced13e73e2a1d226b62126e5e7042d81bd6cdbba13ec384b46a702ded59f9",
+      "derived_CPU_mean_bit_mismatches": 0,
+      "CPU_correct_RNE_factor_bit_mismatches": 9723
+    },
+    {
+      "branch": "cond",
+      "norm": "norm_post_ffn.weight",
+      "rows": 49883,
+      "source_matches_prior_GPU_Golden": true,
+      "manual_matches_source": true,
+      "source_raw_sha256": "721649876da374eb8c7923e801bc8f05818787d7d96cd8de9234c5e941e949aa",
+      "derived_CPU_mean_bit_mismatches": 0,
+      "CPU_correct_RNE_factor_bit_mismatches": 10928
+    },
+    {
+      "branch": "cond",
+      "op": "sigmoid",
+      "elements": 6385024,
+      "source_matches_prior_GPU_Golden": true,
+      "separate_GPU_exp_add_recip_score_bit_mismatches": 0,
+      "score_sha256": "e6127cc2a78b755fc234f0117662ec613a5daedad0db9f3c4ea0478b56708354"
+    },
+    {
+      "branch": "uncond",
+      "norm": "norm_post_attn.weight",
+      "rows": 48986,
+      "source_matches_prior_GPU_Golden": true,
+      "manual_matches_source": true,
+      "source_raw_sha256": "b931b9d82ffca74103ae1133ddc9a0f2128da6775b4f9aef3aaf7159684ee169",
+      "derived_CPU_mean_bit_mismatches": 0,
+      "CPU_correct_RNE_factor_bit_mismatches": 10156
+    },
+    {
+      "branch": "uncond",
+      "norm": "norm_post_ffn.weight",
+      "rows": 48986,
+      "source_matches_prior_GPU_Golden": true,
+      "manual_matches_source": true,
+      "source_raw_sha256": "9ef3e69ad452cf91a22c9e81ed33821e4f74f9a417fd4be66d443ea5c5712860",
+      "derived_CPU_mean_bit_mismatches": 0,
+      "CPU_correct_RNE_factor_bit_mismatches": 10824
+    },
+    {
+      "branch": "uncond",
+      "op": "sigmoid",
+      "elements": 6270208,
+      "source_matches_prior_GPU_Golden": true,
+      "separate_GPU_exp_add_recip_score_bit_mismatches": 0,
+      "score_sha256": "3094de93e013f337fefd5f334f960a8e9c4f841dbee5aa491e0b987c0e45b1e3"
+    }
+  ],
+  "peak_allocated": 1636282368,
+  "peak_reserved": 1639972864,
+  "torch_version": "2.6.0+cu124",
+  "torch_git": "2236df1770800ffea5697b11b0bb0d910b2e59e1",
+  "CUDA_runtime": "12.4",
+  "wall_seconds": 13.059917211532593,
+  "not_target_execution": true,
+  "scope": "source norm4 and sigmoid2 only; exact against prior tensors; not new model/quality/target performance pass"
+}

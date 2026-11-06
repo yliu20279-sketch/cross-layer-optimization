@@ -1,0 +1,51 @@
+{
+  "state": "PASS_LIMITED_UNIFIED_ENTRY_REAL_RESIDUAL_NORM_SUBCHAIN",
+  "unified_entry_rebuilt": true,
+  "PopNet_rebuilt": true,
+  "source_upload_authorized_and_verified": true,
+  "BF16_finite_roundtrip": 65280,
+  "real_HB_roundtrip": 65280,
+  "active_HB_bytes": 536870912,
+  "front_numeric_checks": [
+    {
+      "path": "real_front/prefill_ACTUAL.bin",
+      "bytes": 77824,
+      "sha256": "04064b4fa7d9486ea90ec4c213c8387f210ceabc4d9abe3c30fd714d0ba68471",
+      "reference_sha256": "04064b4fa7d9486ea90ec4c213c8387f210ceabc4d9abe3c30fd714d0ba68471"
+    },
+    {
+      "path": "real_front/decode_ACTUAL.bin",
+      "bytes": 4096,
+      "sha256": "318066e9e8def4e52f913ab0886b0c5a9dc99043cd6725c9763315c27305556d",
+      "reference_sha256": "318066e9e8def4e52f913ab0886b0c5a9dc99043cd6725c9763315c27305556d"
+    },
+    {
+      "path": "real_front/attempt2_feedback/payload/prefill_ACTUAL.bin",
+      "bytes": 77824,
+      "sha256": "04064b4fa7d9486ea90ec4c213c8387f210ceabc4d9abe3c30fd714d0ba68471",
+      "reference_sha256": "04064b4fa7d9486ea90ec4c213c8387f210ceabc4d9abe3c30fd714d0ba68471"
+    },
+    {
+      "path": "real_front/attempt2_feedback/payload/decode_ACTUAL.bin",
+      "bytes": 4096,
+      "sha256": "318066e9e8def4e52f913ab0886b0c5a9dc99043cd6725c9763315c27305556d",
+      "reference_sha256": "318066e9e8def4e52f913ab0886b0c5a9dc99043cd6725c9763315c27305556d"
+    }
+  ],
+  "two_round_delays_loaded": 315,
+  "false_success_negative_controls": 3,
+  "unified_front_NPU_process_runs": 3,
+  "unified_front_Sniper_ROIs": 3,
+  "full_layers_in_unified_driver": 0,
+  "KV_in_unified_driver": false,
+  "physical_NPU_runs": 0,
+  "new_GPU_runs": 0,
+  "remaining": [
+    "full layer/two layer driver port",
+    "16 NPU and 8GiB HB end-to-end mapping",
+    "host128 real services and weights",
+    "norm opcode/codec costs and CPU exp costs",
+    "full-system timing"
+  ],
+  "scope": "real InterChiplet/Sniper/NPUSim/Ramulator/PopNet integration fragment, not complete steps1-7; legacy standalone19 not rerun"
+}

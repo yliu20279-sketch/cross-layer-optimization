@@ -1,0 +1,72 @@
+{
+  "state": "PASS_LIMITED_CPU_VAE_FIRST_FRAME_BITWISE_REPAIR",
+  "first_divergent_operator": {
+    "name": "decoder.conv_in",
+    "type": "WanCausalConv3d",
+    "different_elements": 1990711,
+    "elements": 2396160,
+    "max_abs_diff": 1.430511474609375e-06,
+    "input_shapes": [
+      [
+        1,
+        16,
+        1,
+        60,
+        104
+      ]
+    ],
+    "module_repr": "WanCausalConv3d(16, 384, kernel_size=(3, 3, 3), stride=(1, 1, 1))"
+  },
+  "same_input_checks": {
+    "calls": 127,
+    "elements": 1978129920,
+    "different_elements": 0
+  },
+  "sequential_layout_first_divergence": {
+    "name": "decoder.mid_block.resnets.1.norm1",
+    "type": "WanRMS_norm",
+    "diff": 407001,
+    "elements": 2396160,
+    "CPU_stride": [
+      384,
+      1,
+      384,
+      39936,
+      384
+    ],
+    "GPU_stride": [
+      2396160,
+      6240,
+      2396160,
+      104,
+      1
+    ],
+    "max_abs": 1.9073486328125e-06
+  },
+  "final_full_CPU_frame": {
+    "state": "PASS_BITWISE",
+    "different_elements": 0,
+    "elements": 1198080,
+    "max_abs_diff": 0.0,
+    "u8_differences": 0,
+    "wall_seconds": 215.98830556869507,
+    "target_GPU_calls": 0,
+    "reference_output_used_for_computation": false,
+    "reference_injection": "frozen final latent at DiT-to-VAE; only first temporal slice decoded"
+  },
+  "compatibility_freeze": "/mnt/sda1/h3240101068/lingbot_step4_target_chain_vae_repair_20261106_v1/COMPAT_FREEZE.json",
+  "reference_outputs_used_for_computation": false,
+  "scope": "frozen example_4 first temporal slice and complete first spatial frame only",
+  "failures_retained": [
+    "FULL_CPU_FRAME_AUDIT.json",
+    "PAIRED_CHAIN_AUDIT.json",
+    "FIRST_OPERATOR.json",
+    "NEXT_OPERATOR.json",
+    "NEXT2_OPERATOR.json",
+    "NEXT3_OPERATOR.json",
+    "NEXT4_OPERATOR.json",
+    "NEXT5_OPERATOR.json"
+  ],
+  "formal_PK": false,
+  "CA_ablation": false
+}

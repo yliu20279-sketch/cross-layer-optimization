@@ -1,0 +1,11 @@
+{
+  "precision": "original BF16",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "fixture": "R0002 prefill19/decode1 layers0/1",
+  "new": "all adapter BF16 add/multiply use independent C FP32 operation + BF16 RNE gated by native SRAM/HB",
+  "retained": "CPU RMSNorm reduction/rsqrt, softmax, SiLU, layout; existing matrix macro; GPU differences",
+  "timing": "software codec and integer overhead not fully charged",
+  "tolerance": "strict unchanged",
+  "GPU_runs": 0
+}

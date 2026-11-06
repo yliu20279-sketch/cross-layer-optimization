@@ -1,0 +1,23 @@
+{
+  "state": "PASS_LIMITED_FIXED_TOKEN_RESIDUAL_INPUTS",
+  "fixture": "/mnt/sda1/h3240101068/swe_qwen3_step3_gpu_20261026_v1/requests/R0002/layer0_actual_fixtures.pt",
+  "fixture_sha256": "f78c166c14c6690f7482c7a26952adfefe265b5655aeed2b4b69d0049c6ac11f",
+  "request": "R0002",
+  "phase": "prefill",
+  "local_token": 0,
+  "layer": 0,
+  "elements": 2048,
+  "source_formula": "BF16(BF16(decoder_input+attention_output)+BF16_MoE_output)",
+  "normalized_moe_input_is_not_residual": true,
+  "wrong_normalized_input_different": 2047,
+  "CPU_vs_numpy_bitwise": true,
+  "diagnostic_vs_captured_GPU": {
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0
+  },
+  "parent_final_sha256": "cb74807888a5364973a4b10bc40137b20e9b45b1c3b26a32aa21189e8742a41f",
+  "parent_commit_ns": 98513699,
+  "GPU_runs": 0,
+  "scope": "conditional recorded dispatch and M1 experts; captured GPU comparison diagnostic, no tolerance changes"
+}

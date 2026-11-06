@@ -1,0 +1,16 @@
+{
+  "scope": "bounded target boundary integration, not full DiT",
+  "sample": "example_4",
+  "initial_injection": "captured GPU cond/uncond predictions and scheduler input, selected 2048-element tile",
+  "final_latent_injection": "frozen step40 latent first temporal slice; 39 intermediate steps omitted",
+  "VAE_execution": "actual original FP32 CPU decode first temporal slice, full spatial frame",
+  "costs_not_covered": [
+    "CPU compute and cache",
+    "PCIe DMA",
+    "full-layer NPU operator ISA",
+    "remaining VAE frames",
+    "39 DiT steps"
+  ],
+  "wall_limit_seconds": 900,
+  "full_system": false
+}

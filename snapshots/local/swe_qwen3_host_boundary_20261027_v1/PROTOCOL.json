@@ -1,0 +1,14 @@
+{
+  "state": "PRE_RUN_HOST_BOUNDARY_PROTOCOL",
+  "input": "same short R0002 first decode and router weight; prior native FP32 output",
+  "codec": "unchanged NPUSim BF16 codec, actual scalar x86_64 kernel inside Sniper ROI, no FP16 or checkpoint change",
+  "CPU": "Sniper gainestown-derived interval proxy; 4 configured cores, one application thread; 2.5GHz, target cache sizes; constant DRAM 12.8GB/s and60ns inherited experimental assumption, not V3.6 hardware fact",
+  "ROI": "file IO/allocation excluded; no-cache-warming; decode and encode separately, no113walltime conversion",
+  "host": {"capacity_GiB":128,"canonical_BF16_model_bytes":61064245248,"runtime_budget_bytes":17179869184,"IO_budget_bytes":1073741824},
+  "link": {"effective_GBps_per_direction":55.04,"latency_ns":250,"IOMMU_hit_ns_per_descriptor":20,"payload_bytes":256,"queues":4,"outstanding_per_queue":16,"descriptor_chunk_bytes":65536,"staging_buffers":2,"staging_bytes_each":65536},
+  "link_policy": "serial conservative descriptor issue through one direction-wide serializer; 256B packets, fixed latency per packet propagation pipelined; same descriptor one20ns IOMMU hit; staging held until HB commit callback; full-duplex separate serializers",
+  "service": "new native N0/CH0 run with actual host upload HB write callbacks before consumers and actual HB readback before D2H/encode; no offline shift of old traces",
+  "limits": "gateway physical link fixed latency unknown; descriptor preparation/polling/software allocator costs not provided by V3.6; excluded and explicit, no complete physical latency claim",
+  "checks": ["codec bit exact", "payload/hash conservation", "clock unit conversion once", "DMA queue/credit and staging last-consumer checks", "negative early read/free/overflow", "native output exact"],
+  "budget": "one decode and one encode Sniper ROI run at most180s each, one native fragment at most300s; no GPU/agent/new holdout"
+}

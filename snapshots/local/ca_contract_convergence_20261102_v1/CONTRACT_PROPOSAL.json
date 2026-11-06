@@ -1,0 +1,61 @@
+{
+  "status": "PROPOSED_FOR_REVIEW_NOT_IMPLEMENTED",
+  "date": "2026-11-02 Asia/Shanghai",
+  "user_confirmed_document_scope": "keep original plan, separate proposed convergence, prioritize Q15 evidence reuse, no Chat-GPTQ substitution",
+  "models": {
+    "qwen3": {
+      "id": "Qwen/Qwen3-30B-A3B",
+      "proposed_precision": "original BF16 with explicit per-op accumulation",
+      "checkpoint_revision": null,
+      "tokenizer_hash": null,
+      "proposed_parallelism": "TP16/EP16",
+      "runtime_ready": false
+    },
+    "qwen15": {
+      "id": "Qwen/Qwen1.5-MoE-A2.7B",
+      "proposed_precision": "original BF16 with explicit per-op accumulation",
+      "checkpoint_revision": null,
+      "tokenizer_hash": null,
+      "known_chat_gptq_is_substitute": false,
+      "proposed_parallelism": "PP4 x TP4/EP4",
+      "runtime_ready": false
+    }
+  },
+  "resources_proposal": {
+    "host_GiB": 128,
+    "HB_GiB": 8,
+    "partitions": 16,
+    "is_change_to_old_spec": false,
+    "capacity_certified": false
+  },
+  "ca": {
+    "reference": "CA4-STRUCT-REF",
+    "proposed": "CA4-TIME-PROPOSED",
+    "page_bytes": 4096,
+    "profile_interval": "successful backend accept to matched callback; half-open; not bank residence",
+    "profile_information": "historical independent requests only",
+    "same_partition_different_page_different_owner": true,
+    "search_budget_proposed": {
+      "seeds": [
+        2026102301,
+        2026102302,
+        2026102303
+      ],
+      "evaluations_per_seed": 20000,
+      "wall_time": "resource cutoff means incomplete, not silent winner selection"
+    }
+  },
+  "required_pending": [
+    "model checkpoint/tokenizer immutable identity",
+    "per-model precision topology capacity and runtime contracts",
+    "future-information-free Sem-MoE schedule and split refusal",
+    "SRS/SAG semantics and declared algorithm subset",
+    "actual binary/source/config identity and clocks",
+    "HiBand scopes/modes/costs coverage",
+    "new CA sidecar identity and budget",
+    "separate P0-2 execution authorization and results"
+  ],
+  "changes_applied_to_code": 0,
+  "experiments_started": 0,
+  "original_plan_modified": false
+}

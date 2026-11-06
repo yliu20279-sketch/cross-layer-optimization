@@ -1,0 +1,145 @@
+{
+  "state": "PASS_LIMITED_CFG_SCHEDULER_NEXT_LATENT",
+  "checks": {
+    "original_pipeline_cfg": true,
+    "cpu_cfg": true,
+    "scheduler": true,
+    "next_latent": true,
+    "finite": true,
+    "condition_prefix": true
+  },
+  "sample": "example_4",
+  "step": 0,
+  "next_step": 1,
+  "schedule_steps": 40,
+  "shift": 3.0,
+  "guidance": 3.0,
+  "refiner": false,
+  "target_GPU_count": 0,
+  "reference_injection": [
+    "original encoder conditions and RNG",
+    "two newly captured complete GPU transformer outputs",
+    "original pipeline scheduler input latent and timestep"
+  ],
+  "scope": "CPU functional boundary replay; no target simulator timing or full video",
+  "scheduler_class": "FlowUniPCMultistepScheduler",
+  "scheduler_source": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/source/lingbot_video/scheduling_flow_unipc.py",
+  "pipeline_source": "/mnt/sda1/models/LingBot-Video-MoE-30B-A3B-TI2V-base-f2e538f64afe/source/lingbot_video/pipeline_lingbot_video.py",
+  "timestep": 999.0,
+  "timesteps": [
+    999,
+    991,
+    982,
+    973,
+    963,
+    954,
+    944,
+    933,
+    922,
+    911,
+    899,
+    887,
+    874,
+    861,
+    847,
+    832,
+    817,
+    801,
+    785,
+    767,
+    749,
+    730,
+    710,
+    688,
+    666,
+    642,
+    617,
+    590,
+    562,
+    531,
+    499,
+    465,
+    428,
+    388,
+    345,
+    299,
+    249,
+    195,
+    136,
+    71
+  ],
+  "tensors": {
+    "cfg_CPU": {
+      "file": "cfg_CPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "2376ff0e95bccbb49acc73a48bf3879eb90a77441e2f0b40cd028a2fa745da87"
+    },
+    "cfg_GPU": {
+      "file": "cfg_GPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "2376ff0e95bccbb49acc73a48bf3879eb90a77441e2f0b40cd028a2fa745da87"
+    },
+    "scheduler_CPU": {
+      "file": "scheduler_CPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "880dd5047ccc0f4fd0eeb1f3b16208597f354593fd4cb8b2502c460966714f7f"
+    },
+    "scheduler_GPU": {
+      "file": "scheduler_GPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "880dd5047ccc0f4fd0eeb1f3b16208597f354593fd4cb8b2502c460966714f7f"
+    },
+    "next_latent_CPU": {
+      "file": "next_latent_CPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "864454cd57c4ad656d2c31b6fa88ca25ea1d21b1dca374f9f342a055e3343b91"
+    },
+    "next_latent_GPU": {
+      "file": "next_latent_GPU.pt",
+      "shape": [
+        1,
+        16,
+        31,
+        60,
+        104
+      ],
+      "dtype": "torch.float32",
+      "raw_sha256": "864454cd57c4ad656d2c31b6fa88ca25ea1d21b1dca374f9f342a055e3343b91"
+    }
+  }
+}

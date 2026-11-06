@@ -1,0 +1,83 @@
+{
+  "state": "NOT_PROMOTED_ISA_OBSERVER",
+  "results": [
+    {
+      "mode": "positive",
+      "supported_decoded_occurrences": 6679,
+      "rejected": [
+        {
+          "name": "AVX2_VPMINUB",
+          "count": 1
+        },
+        {
+          "name": "AVX2_VPXOR",
+          "count": 1
+        },
+        {
+          "name": "AVX_VMOVD",
+          "count": 1
+        },
+        {
+          "name": "AVX_VMOVDQU",
+          "count": 60
+        },
+        {
+          "name": "AVX2_VPCMPEQB",
+          "count": 14
+        },
+        {
+          "name": "AVX_VMOVDQA",
+          "count": 8
+        },
+        {
+          "name": "AVX_VZEROUPPER",
+          "count": 10
+        },
+        {
+          "name": "XSAVEC_XSAVEC",
+          "count": 1
+        },
+        {
+          "name": "XSAVE_XRSTOR",
+          "count": 1
+        },
+        {
+          "name": "AVX2_VPMOVMSKB",
+          "count": 4
+        },
+        {
+          "name": "AVX_VPTEST",
+          "count": 2
+        },
+        {
+          "name": "BMI1_TZCNT",
+          "count": 3
+        },
+        {
+          "name": "AVX2_VPAND",
+          "count": 6
+        },
+        {
+          "name": "AVX2_VPBROADCASTB",
+          "count": 1
+        },
+        {
+          "name": "AVX_VPXOR",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "mode": "negative",
+      "supported_decoded_occurrences": 2,
+      "rejected": [
+        {
+          "name": "AVX_VXORPS",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "scope": "representative actual CPU software paths including libraries; negative AVX must be detected; complete layers still require final ISA audit",
+  "full_steps_1_7": false
+}

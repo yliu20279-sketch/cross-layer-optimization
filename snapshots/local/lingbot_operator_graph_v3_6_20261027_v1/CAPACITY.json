@@ -1,0 +1,65 @@
+{
+  "header_summary": {
+    "transformer": {
+      "tensor_count": 977,
+      "elements": 30084512320,
+      "tensor_bytes": 60272785536,
+      "dtype_counts": {
+        "F32": 441,
+        "BF16": 536
+      }
+    },
+    "text_encoder": {
+      "tensor_count": 713,
+      "elements": 4437815808,
+      "tensor_bytes": 8875631616,
+      "dtype_counts": {
+        "BF16": 713
+      }
+    },
+    "vae": {
+      "tensor_count": 194,
+      "elements": 126892531,
+      "tensor_bytes": 507570124,
+      "dtype_counts": {
+        "F32": 194
+      }
+    }
+  },
+  "HB_bytes": 8589934592,
+  "HB_per_rank_bytes": 536870912,
+  "SRAM_per_rank_bytes": 4194304,
+  "source_frame_case": {
+    "frames": 121,
+    "height": 480,
+    "width": 832,
+    "latent": [
+      1,
+      16,
+      31,
+      60,
+      104
+    ],
+    "video_tokens": 48360,
+    "text_tokens": "L_cond and L_uncond measured later"
+  },
+  "routed_expert_bytes": 9437184,
+  "shared_expert_bytes": 9437184,
+  "routed_all_layers_bytes": 57982058496,
+  "all_layer_EP16_routed_bytes_per_rank": 3623878656,
+  "single_layer_EP16_routed_bytes_per_rank": 75497472,
+  "example_video_only_hidden_BF16_bytes": 198082560,
+  "example_video_only_temb6_FP32_bytes": 2376990720,
+  "example_video_only_attention_scores_FP32_bytes": 149676134400,
+  "example_compact_routes_uint16_BF16_bytes_lower_bound": 5942476800,
+  "example_full_router_FP32_array_bytes_lower_bound": 95079628800,
+  "source_default_restore_unsorted_BF16_bytes_lower_bound": 1584660480,
+  "source_default_restore_unsorted_FP32_cast_bytes_lower_bound": 3169320960,
+  "recommended_host_backing_candidate_bytes": 137438953472,
+  "host_overlay_status": "PROPOSAL_NOT_SELECTED_OR_EXECUTED; original host8GiB unchanged",
+  "HB_fit": false,
+  "whole_model_residency": "BLOCKED_ON_CANONICAL_HOST8_HB8",
+  "peak_liveness": "UNPROVEN",
+  "mac_per_block": "4*S*H^2 + 2*S^2*H + S*H*128 + 3*H*I*(sum mhat_e + Nshared); effective sum m_e <= 8*Nvalid; grouped padded sum mhat_e separately",
+  "throughput": "No BF16 or FP32 matrix rate inferred from FP16 specification"
+}

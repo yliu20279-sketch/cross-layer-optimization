@@ -1,0 +1,38 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793082889.0893373,
+    "start_monotonic": 7758836.028808718,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7758836.351756639,
+    "seconds": 0.32294844556599855
+  },
+  {
+    "command": "pwd; /opt/miniconda3/envs/testbed/bin/python -c 'import sys; print(sys.version); print(sys.executable)'",
+    "start_utc": 1793082889.6550264,
+    "start_monotonic": 7758836.594497243,
+    "result": {
+      "output": "/testbed\n3.9.21 (main, Dec 11 2024, 16:24:11) \n[GCC 11.2.0]\n/opt/miniconda3/envs/testbed/bin/python\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7758836.9052222,
+    "seconds": 0.31072536297142506
+  },
+  {
+    "command": "cd /testbed/src/marshmallow\nsed -i '/value = data/ i if data is None:\\n    continue' schema.py",
+    "start_utc": 1793083313.28051,
+    "start_monotonic": 7759260.219977397,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7759260.509840774,
+    "seconds": 0.2898641265928745
+  }
+]

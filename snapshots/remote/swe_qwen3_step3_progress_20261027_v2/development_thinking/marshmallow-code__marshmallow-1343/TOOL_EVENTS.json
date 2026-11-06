@@ -1,0 +1,134 @@
+[
+  {
+    "command": "git reset --hard 2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793077587.4128754,
+    "start_monotonic": 7753534.352347288,
+    "result": {
+      "output": "HEAD is now at 2be2d83a Bump version and update changelog\n2be2d83a1a9a6d3d9b85804f3ab545cecc409bb0\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7753534.700962331,
+    "seconds": 0.34861529525369406
+  },
+  {
+    "command": "grep -r '_invoke_field_validators' /opt/miniconda3/envs/testbed/lib/python3.7/site-packages/marshmallow/schema.py",
+    "start_utc": 1793078092.3563616,
+    "start_monotonic": 7754039.295829272,
+    "result": {
+      "output": "grep: /opt/miniconda3/envs/testbed/lib/python3.7/site-packages/marshmallow/schema.py: No such file or directory\n",
+      "returncode": 2,
+      "exception_info": ""
+    },
+    "done_monotonic": 7754039.547766636,
+    "seconds": 0.2519376138225198
+  },
+  {
+    "command": "find /opt/miniconda3/envs/testbed/lib/python3.7/site-packages -name \"schema.py\"",
+    "start_utc": 1793078171.9285727,
+    "start_monotonic": 7754118.868041545,
+    "result": {
+      "output": "find: '/opt/miniconda3/envs/testbed/lib/python3.7/site-packages': No such file or directory\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7754119.173302508,
+    "seconds": 0.3052612068131566
+  },
+  {
+    "command": "find /opt/miniconda3/envs/testbed/lib/python3.7/site-packages -type d -name \"marshmallow\" -exec grep -l '_invoke_field_validators' {} \\;",
+    "start_utc": 1793078422.5567527,
+    "start_monotonic": 7754369.496220444,
+    "result": {
+      "output": "find: '/opt/miniconda3/envs/testbed/lib/python3.7/site-packages': No such file or directory\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7754369.762282783,
+    "seconds": 0.2660625809803605
+  },
+  {
+    "command": "find /opt/miniconda3/envs/testbed/lib/python3.7/site-packages -type f -name \"marshmallow.py\" -exec grep -A 10 '_invoke_field_validators' {} \\;",
+    "start_utc": 1793078551.6891847,
+    "start_monotonic": 7754498.628652367,
+    "result": {
+      "output": "find: '/opt/miniconda3/envs/testbed/lib/python3.7/site-packages': No such file or directory\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7754498.910783035,
+    "seconds": 0.2821312490850687
+  },
+  {
+    "command": "python -c \"import marshmallow; print(marshmallow.__file__)\"",
+    "start_utc": 1793078973.3306088,
+    "start_monotonic": 7754920.270077577,
+    "result": {
+      "output": "/testbed/src/marshmallow/__init__.py\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7754920.764556925,
+    "seconds": 0.49448033794760704
+  },
+  {
+    "command": "cat /testbed/src/marshmallow/schema.py | grep -A 20 '_invoke_field_validators'",
+    "start_utc": 1793079210.8215435,
+    "start_monotonic": 7755157.761014527,
+    "result": {
+      "output": "            self._invoke_field_validators(unmarshal, data=result, many=many)\n            errors = unmarshal.errors\n            field_errors = bool(errors)\n            # Run schema-level migration\n            try:\n                self._invoke_validators(unmarshal, pass_many=True, data=result, original_data=data,\n                                        many=many, field_errors=field_errors)\n            except ValidationError as err:\n                errors.update(err.messages)\n            try:\n                self._invoke_validators(unmarshal, pass_many=False, data=result, original_data=data,\n                                        many=many, field_errors=field_errors)\n            except ValidationError as err:\n                errors.update(err.messages)\n        # Run post processors\n        if not errors and postprocess:\n            try:\n                result = self._invoke_load_processors(\n                    POST_LOAD,\n                    result,\n                    many,\n--\n    def _invoke_field_validators(self, unmarshal, data, many):\n        for attr_name in self.__processors__[(VALIDATES, False)]:\n            validator = getattr(self, attr_name)\n            validator_kwargs = validator.__marshmallow_kwargs__[(VALIDATES, False)]\n            field_name = validator_kwargs['field_name']\n\n            try:\n                field_obj = self.fields[field_name]\n            except KeyError:\n                if field_name in self.declared_fields:\n                    continue\n                raise ValueError('\"{0}\" field does not exist.'.format(field_name))\n\n            if many:\n                for idx, item in enumerate(data):\n                    try:\n                        value = item[field_obj.attribute or field_name]\n                    except KeyError:\n                        pass\n                    else:\n                        validated_value = unmarshal.call_and_store(\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7755158.048768692,
+    "seconds": 0.2877544295042753
+  },
+  {
+    "command": "cat << 'EOF' > /testbed/fix.py\nfrom marshmallow import Schema, fields, validates\n\nclass Bar(Schema):\n    value = fields.String()\n\n    @validates('value')\n    def validate_value(self, value):\n        if value is None:\n            return\n        pass\n\nclass Foo(Schema):\n    bar = fields.Nested(Bar)\n\nsch = Foo()\nsch.validate({'bar': 'invalid'})\nEOF\npython /testbed/fix.py",
+    "start_utc": 1793079856.92091,
+    "start_monotonic": 7755803.860377359,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"/testbed/fix.py\", line 16, in <module>\n    sch.validate({'bar': 'invalid'})\n  File \"/testbed/src/marshmallow/schema.py\", line 628, in validate\n    _, errors = self._do_load(data, many, partial=partial, postprocess=False)\n  File \"/testbed/src/marshmallow/schema.py\", line 664, in _do_load\n    result = unmarshal(\n  File \"/testbed/src/marshmallow/marshalling.py\", line 287, in deserialize\n    value = self.call_and_store(\n  File \"/testbed/src/marshmallow/marshalling.py\", line 65, in call_and_store\n    value = getter_func(data)\n  File \"/testbed/src/marshmallow/marshalling.py\", line 282, in <lambda>\n    getter = lambda val: field_obj.deserialize(\n  File \"/testbed/src/marshmallow/fields.py\", line 265, in deserialize\n    output = self._deserialize(value, attr, data)\n  File \"/testbed/src/marshmallow/fields.py\", line 465, in _deserialize\n    data, errors = self.schema.load(value)\n  File \"/testbed/src/marshmallow/schema.py\", line 588, in load\n    result, errors = self._do_load(data, many, partial=partial, postprocess=True)\n  File \"/testbed/src/marshmallow/schema.py\", line 674, in _do_load\n    self._invoke_field_validators(unmarshal, data=result, many=many)\n  File \"/testbed/src/marshmallow/schema.py\", line 894, in _invoke_field_validators\n    value = data[field_obj.attribute or field_name]\nTypeError: 'NoneType' object is not subscriptable\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7755804.394675981,
+    "seconds": 0.5342998625710607
+  },
+  {
+    "command": "pip install marshmallow<2.20.0\npython -c \"from marshmallow import Schema, fields, validates; class Bar(Schema): value = fields.String(); @validates('value') def validate_value(self, value): pass; class Foo(Schema): bar = fields.Nested(Bar); Foo().validate({'bar': 'invalid'})\"",
+    "start_utc": 1793080005.0753195,
+    "start_monotonic": 7755952.01478809,
+    "result": {
+      "output": "bash: line 1: 2.20.0: No such file or directory\n  File \"<string>\", line 1\n    from marshmallow import Schema, fields, validates; class Bar(Schema): value = fields.String(); @validates('value') def validate_value(self, value): pass; class Foo(Schema): bar = fields.Nested(Bar); Foo().validate({'bar': 'invalid'})\n                                                       ^\nSyntaxError: invalid syntax\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7755952.314167039,
+    "seconds": 0.2993792574852705
+  },
+  {
+    "command": "pip install \"marshmallow<2.20.0\"",
+    "start_utc": 1793080139.639112,
+    "start_monotonic": 7756086.578581394,
+    "result": {
+      "output": "WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f5e5b03a670>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/marshmallow/\nWARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f5e5aee7850>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/marshmallow/\nWARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f5e5aee7ac0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/marshmallow/\nWARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f5e5aee7c70>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/marshmallow/\nWARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f5e5aee7e20>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/marshmallow/\nERROR: Could not find a version that satisfies the requirement marshmallow<2.20.0 (from versions: none)\nERROR: No matching distribution found for marshmallow<2.20.0\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756094.941343963,
+    "seconds": 8.362763488665223
+  },
+  {
+    "command": "cat << 'EOF' > /testbed/fix.py\nfrom marshmallow import Schema, fields, validates\n\nclass Bar(Schema):\n    value = fields.String()\n\n    @validates('value')\n    def validate_value(self, value):\n        if value is None:\n            return\n        # Original validation logic (placeholder)\n        pass\n\nclass Foo(Schema):\n    bar = fields.Nested(Bar)\n\nsch = Foo()\nsch.validate({'bar': 'invalid'})\nEOF\npython /testbed/fix.py",
+    "start_utc": 1793080566.5970023,
+    "start_monotonic": 7756513.53647044,
+    "result": {
+      "output": "Traceback (most recent call last):\n  File \"/testbed/fix.py\", line 17, in <module>\n    sch.validate({'bar': 'invalid'})\n  File \"/testbed/src/marshmallow/schema.py\", line 628, in validate\n    _, errors = self._do_load(data, many, partial=partial, postprocess=False)\n  File \"/testbed/src/marshmallow/schema.py\", line 664, in _do_load\n    result = unmarshal(\n  File \"/testbed/src/marshmallow/marshalling.py\", line 287, in deserialize\n    value = self.call_and_store(\n  File \"/testbed/src/marshmallow/marshalling.py\", line 65, in call_and_store\n    value = getter_func(data)\n  File \"/testbed/src/marshmallow/marshalling.py\", line 282, in <lambda>\n    getter = lambda val: field_obj.deserialize(\n  File \"/testbed/src/marshmallow/fields.py\", line 265, in deserialize\n    output = self._deserialize(value, attr, data)\n  File \"/testbed/src/marshmallow/fields.py\", line 465, in _deserialize\n    data, errors = self.schema.load(value)\n  File \"/testbed/src/marshmallow/schema.py\", line 588, in load\n    result, errors = self._do_load(data, many, partial=partial, postprocess=True)\n  File \"/testbed/src/marshmallow/schema.py\", line 674, in _do_load\n    self._invoke_field_validators(unmarshal, data=result, many=many)\n  File \"/testbed/src/marshmallow/schema.py\", line 894, in _invoke_field_validators\n    value = data[field_obj.attribute or field_name]\nTypeError: 'NoneType' object is not subscriptable\n",
+      "returncode": 1,
+      "exception_info": ""
+    },
+    "done_monotonic": 7756514.055904137,
+    "seconds": 0.5194345703348517
+  }
+]

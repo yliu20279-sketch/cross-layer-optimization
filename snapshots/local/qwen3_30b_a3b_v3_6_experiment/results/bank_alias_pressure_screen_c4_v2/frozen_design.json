@@ -1,0 +1,64 @@
+{
+  "status": "FROZEN",
+  "classification": "controlled address-mapping stress; not a natural Qwen3 workload",
+  "model": "Qwen3-30B-A3B",
+  "graph": "results/bank_memory_stress_full48_co_scale_strict_v2/graphs/c4_co",
+  "layers": 48,
+  "context": 512,
+  "concurrency": 4,
+  "compute_multiplier": 0.25,
+  "max_outstanding_per_memory_op": 1,
+  "arrival": "simultaneous",
+  "mapping_cases": [
+    {
+      "name": "balanced16",
+      "mode": "balanced",
+      "effective_banks": 16
+    },
+    {
+      "name": "effective16",
+      "mode": "alias",
+      "effective_banks": 16
+    },
+    {
+      "name": "effective8",
+      "mode": "alias",
+      "effective_banks": 8
+    },
+    {
+      "name": "effective4",
+      "mode": "alias",
+      "effective_banks": 4
+    },
+    {
+      "name": "effective2",
+      "mode": "alias",
+      "effective_banks": 2
+    }
+  ],
+  "bank_field": {
+    "byte_address_bits": [
+      14,
+      17
+    ],
+    "decode": "bankgroup*4+bank"
+  },
+  "alias_transform": "after frontend acceptance, mapped_bank = original_decoded_bank mod effective_banks; original physical address plus row and column decoding remain unchanged",
+  "balanced_transform": "after frontend acceptance, mapped_bank = splitmix64(original physical address || request owner) mod 16; original physical address plus row and column decoding remain unchanged",
+  "paired_oracle": "only cross-request same-Bank timing blockers removed; global row state preserved",
+  "invariants": [
+    "same DAG",
+    "same routes and placement",
+    "same request arrivals",
+    "same transaction count and byte volume",
+    "same compute/NoC/paging settings",
+    "same row and column address bits"
+  ],
+  "limitations": [
+    "multiple original Banks intentionally converge on the same timing-domain decoded Bank, while frontend physical addresses remain distinct",
+    "timing stress only; no functional data-value simulation",
+    "single deterministic captured cohort (n=1)"
+  ],
+  "binary_sha256": "b0599c14254eb26f3948ac6edd60745c8efd9626ba231119ef596b973492073d",
+  "ramulator_sha256": "5ba45cf4677cb5dee2c67d21b26de41da005406211198768bac44bb2d66f906d"
+}

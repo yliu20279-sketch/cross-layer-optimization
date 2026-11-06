@@ -1,0 +1,18 @@
+{
+  "status": "PASS_DIAGNOSTIC_COMPLETED",
+  "source": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/four_control_smoke_ctx128_c1_v1/hiband/graph",
+  "cases": [
+    {
+      "case": "all_global",
+      "returncode": 0,
+      "validation_exists": true,
+      "stdout_tail": "nserved\",\n    \"page fetch-evict-commit order respected\",\n    \"HB callbacks precede operation completion\",\n    \"represented memory bytes conserved\"\n  ],\n  \"limitations\": [\n    \"baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim\",\n    \"DeepStack operator timing disabled; analytical graph timing only\",\n    \"diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result\",\n    \"analytical peak-MAC compute proxy, not profiled operator timing\",\n    \"aggregated ring collective proxy, not chunk-accurate overlap\",\n    \"initial HB pages deterministically resident; initialization excluded and not called cold-start\",\n    \"ideal W4 storage with BF16-derived routes; quantization metadata unresolved\",\n    \"first4096-byte contiguous memory sampling; full address sampling convergence not verified\",\n    \"host memory service and staging SRAM bandwidth not yet modeled\",\n    \"embedding/LM head/router/vector execution omitted from diagnostic graph\"\n  ],\n  \"simulation_wall_seconds\": 26.7450955491513\n}\n"
+    },
+    {
+      "case": "all_local",
+      "returncode": 0,
+      "validation_exists": true,
+      "stdout_tail": "erved\",\n    \"page fetch-evict-commit order respected\",\n    \"HB callbacks precede operation completion\",\n    \"represented memory bytes conserved\"\n  ],\n  \"limitations\": [\n    \"baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim\",\n    \"DeepStack operator timing disabled; analytical graph timing only\",\n    \"diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result\",\n    \"analytical peak-MAC compute proxy, not profiled operator timing\",\n    \"aggregated ring collective proxy, not chunk-accurate overlap\",\n    \"initial HB pages deterministically resident; initialization excluded and not called cold-start\",\n    \"ideal W4 storage with BF16-derived routes; quantization metadata unresolved\",\n    \"first4096-byte contiguous memory sampling; full address sampling convergence not verified\",\n    \"host memory service and staging SRAM bandwidth not yet modeled\",\n    \"embedding/LM head/router/vector execution omitted from diagnostic graph\"\n  ],\n  \"simulation_wall_seconds\": 26.849668748676777\n}\n"
+    }
+  ]
+}

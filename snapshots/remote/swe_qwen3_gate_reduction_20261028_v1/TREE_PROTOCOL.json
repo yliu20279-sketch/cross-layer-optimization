@@ -1,0 +1,11 @@
+{
+  "state": "PRE_RUN_SOURCE_DERIVED_M1_RULE",
+  "contract": "M=1 K2048 CPU AVX512 source GEMV only, current target row0/slot0 matches; larger source batches remain unimplemented",
+  "algorithm": "128 FP32 lanes, K-stride128, half-tree offsets64/32/16 then AVX512 lane8/4/2/1, BF16 RNE",
+  "sources": [
+    "https://raw.githubusercontent.com/pytorch/pytorch/v2.6.0/aten/src/ATen/native/cpu/ReducedPrecisionFloatGemvFastPathKernel.cpp",
+    "https://raw.githubusercontent.com/pytorch/pytorch/v2.6.0/aten/src/ATen/cpu/vec/functional_base.h"
+  ],
+  "validation": "all160 existing short dispatch assignments and20 expert49 control rows, individual M1 source comparisons; batch differences explicitly retained; no output-specific fixes",
+  "up_gate": "only after zero differences across all M1 gate checks; no new GPU/SWE/holdout"
+}

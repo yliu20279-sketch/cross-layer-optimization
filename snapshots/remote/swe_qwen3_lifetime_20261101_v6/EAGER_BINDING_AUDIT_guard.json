@@ -1,0 +1,24 @@
+{
+  "state": "PASS_LIMITED_PORTABLE_ROI_ISA_AND_AVX_REJECTION",
+  "GLIBC_TUNABLES": "glibc.cpu.hwcaps=-AVX_Usable,-FMA_Usable,-AVX2_Usable,-FMA4_Usable,-XSAVEC_Usable,-AVX512F_Usable,-AVX512DQ_Usable,-AVX_Fast_Unaligned_Load,-AVX512F,-AVX512CD,-AVX512DQ,-AVX512BW,-AVX512ER,-AVX512PF,-AVX512VL,-BMI1,-BMI2,-LZCNT,-XSAVE,-OSXSAVE,-XSAVE_Usable",
+  "LD_BIND_NOW": "1",
+  "results": [
+    {
+      "mode": "positive",
+      "rejected": [],
+      "supported": 5841
+    },
+    {
+      "mode": "negative",
+      "rejected": [
+        {
+          "name": "AVX_VXORPS",
+          "count": 1
+        }
+      ],
+      "supported": 2
+    }
+  ],
+  "scope": "steady-state ROI; dynamic binding is explicit setup before ROI, as model/math mmap setup already was; no claim for all pre-ROI ISA or startup latency",
+  "full_steps_1_7": false
+}

@@ -1,0 +1,61 @@
+{
+  "state": "NO_FULL_TIMING_PROMOTION",
+  "items": [
+    {
+      "component": "initial K/V",
+      "numeric": "reuse step4 autonomous complete K/V projections, then per-head norm/RoPE recomputed",
+      "native": "actual per-head K/V HB/SRAM staging",
+      "missing": "new K/V GEMM execution and host-to-HB initial-placement cost in this run"
+    },
+    {
+      "component": "Q + head attention",
+      "numeric": "autonomous selected Q and per-head full-context CPU source-compatible flash",
+      "native": "generic vector macro plus real HB/SRAM staging",
+      "missing": "complete primitive/CPU/SFU/cache cost"
+    },
+    {
+      "component": "O projection",
+      "numeric": "ordered FDA16 FP32 accumulator rank0..15, BF16 bias once",
+      "native": "real peer FIFO and completion gate plus HB/SRAM; CPU FDA math",
+      "missing": "actual per-product/register/SRAM compute service cost"
+    },
+    {
+      "component": "router",
+      "numeric": "free FP32 split5/FMA/sigmoid/Top8; compare prior full CPU routes",
+      "native": "weight HB/SRAM, numerical work on CPU",
+      "missing": "complete CPU or native vector/reduce/SFU lowering cost"
+    },
+    {
+      "component": "expert batch counts",
+      "numeric": "previous autonomous full FFN/route pass, SHA prerequisite; no GPU routes used",
+      "native": "replayed workload prerequisite, selected owner arithmetic recomputed",
+      "missing": "global new router completion barrier/cost for online execution"
+    },
+    {
+      "component": "experts/shared",
+      "numeric": "global original M fixes recipe; owner batched selected rows recomputed; shared once per origin token",
+      "native": "actual weight/input/output HB/SRAM, peer dispatch/return after completion; vector proxy",
+      "missing": "full per-MAC software/primitive/SRAM costs"
+    },
+    {
+      "component": "restore/norm/residual",
+      "numeric": "actual returned BF16 slots, original FP32 4-stream order and BF16 boundaries",
+      "native": "CPU payload after network returns",
+      "missing": "complete CPU/target opcode service cost"
+    },
+    {
+      "component": "HB/NoC",
+      "numeric": "real FIFO data SHA and native store/load readback",
+      "native": "16 NPUSim +16 external Ramulator + PopNet feedback",
+      "missing": "calibrated physical HB delay, complete host/PCIe/gateway and full-query TP traffic"
+    },
+    {
+      "component": "SRAM Bank",
+      "numeric": "actual 4MiB byte array and bounded 64KiB staging",
+      "native": "32B stripe /8 shared single-port banks reservation advances clock",
+      "missing": "canonical port mapping not established; per-op compute accesses incomplete"
+    }
+  ],
+  "zero_cost_assumption_allowed": false,
+  "whole_step5": false
+}

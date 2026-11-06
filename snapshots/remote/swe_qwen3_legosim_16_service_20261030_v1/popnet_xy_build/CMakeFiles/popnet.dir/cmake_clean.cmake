@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/popnet.dir/SRGen.cc.o"
+  "CMakeFiles/popnet.dir/SRGen.cc.o.d"
+  "CMakeFiles/popnet.dir/SStd.cc.o"
+  "CMakeFiles/popnet.dir/SStd.cc.o.d"
+  "CMakeFiles/popnet.dir/SString.cc.o"
+  "CMakeFiles/popnet.dir/SString.cc.o.d"
+  "CMakeFiles/popnet.dir/changes/global.cpp.o"
+  "CMakeFiles/popnet.dir/changes/global.cpp.o.d"
+  "CMakeFiles/popnet.dir/changes/reconfigurable_topo.cpp.o"
+  "CMakeFiles/popnet.dir/changes/reconfigurable_topo.cpp.o.d"
+  "CMakeFiles/popnet.dir/changes/router.cpp.o"
+  "CMakeFiles/popnet.dir/changes/router.cpp.o.d"
+  "CMakeFiles/popnet.dir/changes/shortest_path_routing.cpp.o"
+  "CMakeFiles/popnet.dir/changes/shortest_path_routing.cpp.o.d"
+  "CMakeFiles/popnet.dir/configuration.cc.o"
+  "CMakeFiles/popnet.dir/configuration.cc.o.d"
+  "CMakeFiles/popnet.dir/flit.cc.o"
+  "CMakeFiles/popnet.dir/flit.cc.o.d"
+  "CMakeFiles/popnet.dir/main.cc.o"
+  "CMakeFiles/popnet.dir/main.cc.o.d"
+  "CMakeFiles/popnet.dir/mess_event.cc.o"
+  "CMakeFiles/popnet.dir/mess_event.cc.o.d"
+  "CMakeFiles/popnet.dir/mess_queue.cc.o"
+  "CMakeFiles/popnet.dir/mess_queue.cc.o.d"
+  "CMakeFiles/popnet.dir/sim_foundation.cc.o"
+  "CMakeFiles/popnet.dir/sim_foundation.cc.o.d"
+  "CMakeFiles/popnet.dir/sim_protoengine.cc.o"
+  "CMakeFiles/popnet.dir/sim_protoengine.cc.o.d"
+  "CMakeFiles/popnet.dir/sim_router.cc.o"
+  "CMakeFiles/popnet.dir/sim_router.cc.o.d"
+  "CMakeFiles/popnet.dir/sim_routing.cc.o"
+  "CMakeFiles/popnet.dir/sim_routing.cc.o.d"
+  "CMakeFiles/popnet.dir/sim_vcarb.cc.o"
+  "CMakeFiles/popnet.dir/sim_vcarb.cc.o.d"
+  "popnet"
+  "popnet.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/popnet.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

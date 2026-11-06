@@ -1,0 +1,24 @@
+[
+  {
+    "stage": "sdpa",
+    "comparison": {
+      "different_elements": 2320683,
+      "elements": 2396160,
+      "max_abs_diff": 2.0265579223632812e-06
+    },
+    "kernels": [
+      "aten::scaled_dot_product_attention",
+      "aten::_scaled_dot_product_efficient_attention",
+      "aten::transpose",
+      "aten::as_strided",
+      "aten::_efficient_attention_forward",
+      "cudaStreamIsCapturing",
+      "aten::empty",
+      "cudaFuncSetAttribute",
+      "Unrecognized",
+      "cudaLaunchKernel",
+      "fmha_cutlassF_f32_aligned_32x128_gmem_sm80(PyTorchMemEffAttention::AttentionKernel<float, cutlass::arch::Sm80, true, 32, 128, 65536, true, true>::Params)",
+      "cudaDeviceSynchronize"
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "state": "PARTIAL_NATIVE_GATE_SOURCE_NUMERIC_DIFFERENCE",
+  "checks": {
+    "native_vs_sequential_FP32_exact": true,
+    "BF16_vs_CPU_source_exact": false,
+    "BF16_vs_CPU_source_different": 1,
+    "BF16_max_abs": 1.9073486328125e-06
+  },
+  "expert": 49,
+  "row": 0,
+  "slot": 0,
+  "owner": 1,
+  "shape": [
+    1,
+    2048,
+    768
+  ],
+  "compute_start_ns": 8345187,
+  "compute_done_ns": 9847994,
+  "negative_controls": [
+    "weight_read_before_resident",
+    "compute_missing_metadata",
+    "compute_missing_inbox",
+    "compute_missing_weight",
+    "compute_missing_expanded",
+    "workspace_retire_before_compute",
+    "tile_free_before_arithmetic",
+    "workspace_retire_with_pending_tiles",
+    "inbox_release_before_up_proj"
+  ],
+  "device": {
+    "rank": 1,
+    "counts": {
+      "events": 100478,
+      "pipeline_cycles": 5693159,
+      "SRAM_read_bytes": 22129920,
+      "SRAM_write_bytes": 22129920,
+      "SRAM_service_bytes": 44259840,
+      "HB_write_bytes": 15744128,
+      "RAM_transactions": 790120,
+      "RAM_physical_bytes": 25283840,
+      "HB_read_bytes": 9539712,
+      "vector_ops": 3146496
+    },
+    "SRAM_peak_bytes": 3145728,
+    "HB_address_extent_bytes": 25168896,
+    "HB_allocated_bytes": 15744128,
+    "done_ns": 9847994
+  },
+  "parent_plus_new_conservative_HB_bytes": 16566720,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "codec_control_cost": null,
+  "full_timing": "NOT_CERTIFIED",
+  "softmax_FP32": "FAILED_RETAINED_max1.4901161193847656e-7",
+  "new_native_fragments": 1,
+  "new_GPU_Sniper_agent_runs": 0,
+  "physical_NPU_runs": 0
+}

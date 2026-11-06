@@ -1,0 +1,34 @@
+{
+  "status": "FROZEN_CANDIDATE_NUMERICAL_DIAGNOSTIC_ONLY",
+  "original_mapping": "lingbot_operator_graph_v3_6_20261027_v1/MAPPING.json",
+  "changes": {
+    "O_projection": "replace independent FP32 partial allreduce candidate with rank0..15 original FDA16 accumulator carry, preserving contiguous K128 per head; source BF16 bias once after rank15"
+  },
+  "scope": "same-input O projection diagnostics 64 rows per branch, not complete TP16 attention",
+  "why": "independent partial sum yielded 130/106 BF16 differences",
+  "invariants": [
+    "no simultaneous TP and source CP traffic",
+    "unique origin t mod16",
+    "owner e mod16",
+    "actual Top8 slot identity restored",
+    "shared once per token",
+    "global M recipe fixed before row tiling",
+    "original BF16/FP32 preserved"
+  ],
+  "DAG": [
+    "router_completed -> dispatch_identity_payload_ready",
+    "dispatch_NoC_completed -> owner_input_valid",
+    "owner_compute_completed -> return_payload_ready",
+    "return_NoC_completed -> origin_slot_valid",
+    "all_eight_slots_and_shared_valid -> original_FP32_restore -> BF16_commit",
+    "all_QKV_head_shards_ready -> independent_head_attention",
+    "O_carry_rank_h_completed -> O_carry_rank_h+1_input_valid",
+    "rank15_O_accumulator_completed -> original_O_bias_once -> BF16_commit"
+  ],
+  "remaining": [
+    "implement and measure complete payload-coupled NoC DAG",
+    "carry handoff transport full attention integration",
+    "host128 backing / PCIe/gateway / actual HB and SRAM lifetimes",
+    "all-query target NoC timing"
+  ]
+}

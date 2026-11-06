@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-30",
+  "scope": "CPU full-context KV plus isolated/connected64query attention and block validation",
+  "target_GPU_count": 0,
+  "OMP_threads": 16,
+  "CPU_job_timeout_seconds": 7200,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "precision": "unchanged mixed BF16/FP32",
+  "gates": "bitwise, preserve failure",
+  "input_rows": "all real K/V, original64 selected Q rows",
+  "whole_model_pass": false,
+  "extra_RCP_profile_bytes": 33554432,
+  "host_remaining_after_RCP_bytes": 11847728052,
+  "files": {
+    "target_math.py": "5244c65ea2e107cd09849772fb860689f011a9b644b3afb51f5d556503e2cfa5",
+    "validate_full_kv.py": "962f2c89f1cff395dcfde1f98f076a0ca581bef3e1d1a0d898b182d7b498bf61",
+    "flash_cpu_unfused.cpp": "73d52bd4e69d95ac5e089fbb7d8dfdff3cdf4141136e2b1e76900d38abbe9f3e",
+    "check_flash_cpu_unfused.py": "693f1b1cf181db2a9e454872aa6147d3fb318fa3943db1bfeb57036e220666e6",
+    "profile_rcp.cu": "bd2d65e74f7190e40df4d09a4c8e257f50cd6ade1caa6a071263f66abda34060"
+  }
+}

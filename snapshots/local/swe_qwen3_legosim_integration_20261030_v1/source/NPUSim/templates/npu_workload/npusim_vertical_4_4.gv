@@ -1,0 +1,15 @@
+graph npusim_vertical_4_4 {
+    // NPU 片内拓扑：16 是 controller，0..15 是 MAC 节点。
+    // 它只服务 bench_npu_intra.txt 的离线 PopNet，不参与全局芯粒间 phase2。
+    edge[weight=1]
+    node[pipeline_stage_delay=1]
+
+    16--0
+    16--1
+    16--2
+    16--3
+    0--4--8--12
+    1--5--9--13
+    2--6--10--14
+    3--7--11--15
+}

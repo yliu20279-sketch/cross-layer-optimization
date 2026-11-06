@@ -1,0 +1,11 @@
+# 步骤4首步双CFG与scheduler边界验收
+
+2026-11-05。PASS_LIMITED_CFG_SCHEDULER_NEXT_LATENT。example_4，原40步日程第0步到第1步输入，timestep999，shift3，guidance3，refiner关闭。每阶段形状[1,16,31,60,104]，3095040个FP32元素。CFG合并、scheduler输出及inpainting后下一latent全部逐位一致，有限性和固定首帧条件检查通过。另用原TI2V pipeline注入捕获的预测和latent独立回放一次，其scheduler与下一latent均逐位一致。
+
+参考注入位置为原编码条件与编码后RNG、两支完整GPU Transformer预测、原pipeline的scheduler输入latent和timestep。采集沿用原权重及混合BF16/FP32，物理GPU1仅补取外部参考，共两次完整48层前向；目标GPU仍0。CPU CFG用NumPy三个FP32操作复算；scheduler使用原FlowUniPC源码的CPU回放，对照GPU源码计算。它验证跨设备边界语义，不是独立scheduler数学算法认证。
+
+scheduler配置与40步timesteps、更新前后状态、输入/输出张量和SHA索引保存在本目录。原TI2V pipeline回放使用真实example_4首帧预处理、冻结条件和注入预测，并在首步更新后立即停止。未运行后续39步或VAE，未新增目标模拟时序；完整单层成本与端到端基线仍PARTIAL。
+
+历史现场保留。v1加载期间因CPU scheduler方法绑定修订主动停止。v2完成两支预测后，标量timestep哈希的0维view触发异常，预测、latent和timestep文件已写入；v3复用这些真实捕获，先扁平化再计算哈希完成边界验收。原pipeline回放首次占位图像维度不符，失败日志保留；修订版改用原首帧真实预处理后通过。没有重复运行完整模型来掩盖失败。
+
+证据只保留113。BOUNDARY_AUDIT.json、PIPELINE_REPLAY_AUDIT.json、SOURCE_INPUT_BINDING.json、FINAL_STATUS.json、MANIFEST.json及DELIVERY.json为入口。模型参考采集在同级v2目录，失败与修改现场在v1/v2/v3保留。暂未运行正式PK或CA消融。

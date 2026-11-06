@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-28",
+  "scope": "one original LingBot router row, explicit FP32 K-order software multiplication/addition in N0/CH0 runtime; CPU payload + native event gate",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "active_NPU_clusters": 1,
+  "input": "step3 full_on step0 cond layer0 FFNinput row0 BF16",
+  "weight": "original router.weight FP32",
+  "output": "FP32, no BF16 logit conversion",
+  "negative_controls": "runtime producer/lifetime/capacity guards; independent event and numeric audit required",
+  "timeout_seconds": 300,
+  "software_numeric_reference": "K ascending FP32 multiply then add; source GPU FP32 compared without relaxed tolerance",
+  "uncertified": "CPU codec/PCIe/gateway; sigmoid/Top8; full layer/timing/strategies"
+}

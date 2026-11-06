@@ -1,0 +1,31 @@
+{
+  "bridge_command": [
+    "g++",
+    "-std=c++17",
+    "-shared",
+    "-fPIC",
+    "-fvisibility=hidden",
+    "-O2",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/bridge.cpp",
+    "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/NPUSim/npusim_runtime.cpp",
+    "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/NPUSim/npusim_chiplet_memory.cpp",
+    "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/NPUSim/npusim_chiplet_runtime.cpp",
+    "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/NPUSim",
+    "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/Ramulator2-Chiplet",
+    "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/artifact/MLP/json/include",
+    "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet/includes",
+    "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/MLP_mesh/json/include",
+    "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet_host/lib/libinterchiplet_c.a",
+    "-Wl,--gc-sections",
+    "-Wl,--no-undefined",
+    "-pthread",
+    "-o",
+    "/mnt/sda1/h3240101068/lingbot_step5_continuous_20261102_v11/libpeer.so"
+  ],
+  "libpeer_sha256": "7a6052994380041d62c37f7eaf4c5d8096f95ab5b1717f30455d45d839fe670d",
+  "libflash_sha256": "4c1229bc975ca633c407de174d571ef46d89f724649af6728314cb5df49f47e7",
+  "DRAM_cycle_ns": 1.25,
+  "CPU_Sniper_included": false
+}

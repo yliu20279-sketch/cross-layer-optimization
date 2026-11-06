@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "binary_sha256": "b4c4e55407db4d607731056a3f2d11d3a9b86b4105e79eb24b2c19587940da45",
+  "checks": [
+    "same-direction bandwidth serialized",
+    "opposite directions concurrent",
+    "dependent compute waits for DMA",
+    "independent compute overlaps DMA",
+    "no-DMA events byte-identical to frozen baseline",
+    "DMA-HB write-read-compute chain preserves backend callbacks and byte accounting"
+  ],
+  "limitations": [
+    "page-level throughput/latency model, not packet-accurate PCIe",
+    "HB read/write and cache ownership must still be connected in workload lowering",
+    "64 pooled DMA credits abstract four queues times sixteen outstanding; no per-queue packet arbitration"
+  ],
+  "memory_commit_total_cycles": 1170
+}

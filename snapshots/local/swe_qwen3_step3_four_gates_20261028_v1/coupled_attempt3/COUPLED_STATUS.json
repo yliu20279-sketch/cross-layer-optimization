@@ -1,0 +1,53 @@
+{
+  "state": "PASS_LIMITED_TWO_LAYER_NATIVE_MATRIX_HOST_FALLBACK_BRIDGE",
+  "device": {
+    "rank": 0,
+    "counts": {
+      "events": 139420,
+      "pipeline_cycles": 181251345,
+      "HB_write_bytes": 1709464820,
+      "RAM_transactions": 107915094,
+      "RAM_physical_bytes": 3453283008,
+      "HB_read_bytes": 1743782516,
+      "SRAM_read_bytes": 18541875444,
+      "SRAM_write_bytes": 20220104564,
+      "SRAM_service_bytes": 38761980008,
+      "vector_ops": 4619080512
+    },
+    "SRAM_peak_bytes": 703744,
+    "HB_address_extent_bytes": 102833632,
+    "HB_allocated_bytes": 69262580,
+    "done_ns": 1116963034
+  },
+  "tensor_nodes": 2327,
+  "matrix_calls": 759,
+  "weight_versions": 759,
+  "host_fallback_ops": 772,
+  "packet_count": 6909460,
+  "HB_address_extent": 102833632,
+  "retained_final_nodes": [
+    1872,
+    2326
+  ],
+  "retained_KV_nodes": [
+    1916,
+    1917,
+    2143,
+    2144
+  ],
+  "CPU_cost": null,
+  "scope": "N0 native memory and generic FP32 matrix macro checkpoints; RMSNorm/softmax/layout/other vector semantics explicit host fallback, not pure NPU or complete timing",
+  "strict_checks": 12,
+  "strict_different": 0,
+  "prefill_tokens": 19,
+  "decode_tokens": 1,
+  "layers": 2,
+  "new_native_fragments": 1,
+  "new_GPU_Sniper_agent_runs": 0,
+  "physical_NPU_runs": 0,
+  "full_timing": "NOT_CERTIFIED",
+  "mapping": "N0 serial functional diagnostic; no TP16/EP16 collective claim",
+  "GPU_differences_retained": true,
+  "host_GiB": 128,
+  "HB_GiB": 8
+}

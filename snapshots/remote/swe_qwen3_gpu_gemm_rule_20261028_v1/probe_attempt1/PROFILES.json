@@ -1,0 +1,22 @@
+[
+  {
+    "projection": "q",
+    "kernels": [
+      "sm90_xmma_gemm_bf16bf16_bf16f32_f32_tn_n_tilesize64x64x64_warpgroupsize1x1x1_execute_segment_k_off_kernel__5x_cublas"
+    ]
+  },
+  {
+    "projection": "k",
+    "kernels": [
+      "void cublasLt::splitKreduce_kernel<32, 16, int, float, __nv_bfloat16, float, __nv_bfloat16, true, false, false>(cublasLt::cublasSplitKParams<float>, float const*, __nv_bfloat16 const*, __nv_bfloat16*, float const*, float const*, __nv_bfloat16 const*, float const*, __nv_bfloat16*, void*, long, float*, int*)",
+      "void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_64x64_32x6_tn_align8>(cutlass_80_tensorop_s16816gemm_bf16_64x64_32x6_tn_align8::Params)"
+    ]
+  },
+  {
+    "projection": "v",
+    "kernels": [
+      "void cublasLt::splitKreduce_kernel<32, 16, int, float, __nv_bfloat16, float, __nv_bfloat16, true, false, false>(cublasLt::cublasSplitKParams<float>, float const*, __nv_bfloat16 const*, __nv_bfloat16*, float const*, float const*, __nv_bfloat16 const*, float const*, __nv_bfloat16*, void*, long, float*, int*)",
+      "void cutlass::Kernel2<cutlass_80_tensorop_s16816gemm_bf16_64x64_32x6_tn_align8>(cutlass_80_tensorop_s16816gemm_bf16_64x64_32x6_tn_align8::Params)"
+    ]
+  }
+]

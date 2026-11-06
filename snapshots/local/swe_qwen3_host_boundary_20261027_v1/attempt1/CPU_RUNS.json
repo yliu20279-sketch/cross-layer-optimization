@@ -1,0 +1,46 @@
+[
+  {
+    "mode": "decode",
+    "command": [
+      "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim/run-sniper",
+      "-n",
+      "4",
+      "-c",
+      "gainestown",
+      "-c",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/cpu_overlay.cfg",
+      "--roi",
+      "--no-cache-warming",
+      "-d",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/decode_sim",
+      "--",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/codec_roi",
+      "decode",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/input_BF16.bin",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/decode_result.bin"
+    ],
+    "returncode": 0
+  },
+  {
+    "mode": "encode",
+    "command": [
+      "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim/run-sniper",
+      "-n",
+      "4",
+      "-c",
+      "gainestown",
+      "-c",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/cpu_overlay.cfg",
+      "--roi",
+      "--no-cache-warming",
+      "-d",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/encode_sim",
+      "--",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/codec_roi",
+      "encode",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/output_FP32.bin",
+      "/mnt/sda1/h3240101068/swe_qwen3_host_boundary_20261027_v1/attempt1/encode_result.bin"
+    ],
+    "returncode": 0
+  }
+]

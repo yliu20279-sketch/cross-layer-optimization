@@ -1,0 +1,25 @@
+{
+  "state": "FAIL_TINY_GATE",
+  "agent_result": {
+    "exit_status": "LimitsExceeded",
+    "submission": ""
+  },
+  "baseline": {
+    "output": "test_empty (test_mean.MeanTests) ... ERROR\ntest_values (test_mean.MeanTests) ... ok\n\n======================================================================\nERROR: test_empty (test_mean.MeanTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_mean.py\", line 4, in test_empty\n    def test_empty(self): self.assertIsNone(mean([]))\n  File \"/work/mean.py\", line 2, in mean\n    return sum(values) / len(values)\nZeroDivisionError: division by zero\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nFAILED (errors=1)\n",
+    "returncode": 1,
+    "exception_info": ""
+  },
+  "final_test": {
+    "output": "test_empty (test_mean.MeanTests) ... ERROR\ntest_values (test_mean.MeanTests) ... FAIL\n\n======================================================================\nERROR: test_empty (test_mean.MeanTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_mean.py\", line 4, in test_empty\n    def test_empty(self): self.assertIsNone(mean([]))\n  File \"/work/mean.py\", line 2, in mean\n    return sum(values) if len(values) > 0 else None/ len(values)\nTypeError: unsupported operand type(s) for /: 'NoneType' and 'int'\n\n======================================================================\nFAIL: test_values (test_mean.MeanTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_mean.py\", line 5, in test_values\n    def test_values(self): self.assertEqual(mean([2,4,6]),4)\nAssertionError: 12 != 4\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nFAILED (failures=1, errors=1)\n",
+    "returncode": 1,
+    "exception_info": ""
+  },
+  "test_file_unchanged": true,
+  "wall_seconds": 759.1473520779982,
+  "tool_calls": 18,
+  "image": "codex-aligned-build:20260827-slim",
+  "image_id": "sha256:7e5318cf2cdee1c8c29a4253adcb7be263f59b83f7bf00b09528e7274608a63a",
+  "container_id": "e9c7415d6864042b1417c402b73a6eafe2fca319155440bd852f010985244fa3",
+  "scope": "synthetic compatibility fixture, not SWE-bench task",
+  "official_mini_agent_commit": "04d809ceab9df28f9adaed044884180159172930"
+}

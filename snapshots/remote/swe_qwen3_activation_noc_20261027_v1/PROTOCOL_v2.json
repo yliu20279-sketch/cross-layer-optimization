@@ -1,0 +1,16 @@
+{
+  "state": "PRE_RUN_ACTIVATION_RESIDENCY_NOC_PROTOCOL",
+  "selection": "fixed short R0002 layer0 prefill19 plus first decode1, first20 rows of already verified metadata batch;160 assignments",
+  "precision": "original BF16 activation and weight bits, int64 source IDs; softmax FP32 mismatch inherited unchanged",
+  "profile": "host128GiB/HB8GiB overlay;16 NPU/CH512MiB each,4MiB SRAM each; no canonical modification",
+  "metadata": "verified parent complete-boundary then fresh N0 native HB restore/read; compact origin metadata frames go through native NoC to15 peers before token sends; root local path separately gated",
+  "activation": "same captured BF16 moe_input; origin=local_token%16 reset per phase; native HB fixture commit at local65536+, global=(rank<<29)+local; initial fixture injection boundary not full activation production timing",
+  "last_reader": "8 dispatch source DMA readers per token; HB may retire/reuse only after last source read; TX SRAM independently held through all native packet tails; RX staging held until receiver HB commit; expert inbox retained pending expert consumption",
+  "positive_reuse": "after last source read overwrite retired HB withA5 before token NoC completion; actual received body must retain original BF16 bits; diagnostic overwrite traffic separate from workload",
+  "wire": "token frame128B header plus4096B BF16 token=4224B,33x128B packets; metadata header128B plus96B/token records padded128; message/epoch/expert/slot/weight bindings checked",
+  "scope": "ideal payload bytes copied only after native PopNet timing certificate; not literal numerical bits in random simulator flits; local copies distinguished; expert receive only, no weight loading/compute",
+  "budget": "one isolated16-peer native activation/NoC fragment max300s, CPU1 thread; no new Sniper/GPU/agent/holdout",
+  "unmodeled": "fixture producer/host injection, control/header/hash CPU cost, gateway, perSRAMBank arbitration, physical calibration; no complete latency or policy benefit",
+  "TX_SRAM_service": "Explicit source SRAM read/drain for every metadata and token frame, local or remote, before native NoC injection; readiness includes drain completion.",
+  "amendment": "attempt1 payload/lifetime success retained but omitted TX drain service; attempt2 selected, at most300s; no old source/library overwrite"
+}

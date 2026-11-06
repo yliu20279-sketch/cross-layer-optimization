@@ -1,0 +1,566 @@
+{
+  "state": "PASS_LIMITED_NATIVE_BF16_VECTOR_FRAGMENT",
+  "checks": [
+    {
+      "label": "prefill_L0_residual",
+      "elements": 38912,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_q_cos",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_q_sin",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_q_RoPE",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_k_cos",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_k_sin",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L0_k_RoPE",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_residual",
+      "elements": 38912,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_q_cos",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_q_sin",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_q_RoPE",
+      "elements": 77824,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_k_cos",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_k_sin",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "prefill_L1_k_RoPE",
+      "elements": 9728,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_residual",
+      "elements": 2048,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_q_cos",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_q_sin",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_q_RoPE",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_k_cos",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_k_sin",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L0_k_RoPE",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_residual",
+      "elements": 2048,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_q_cos",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_q_sin",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_q_RoPE",
+      "elements": 4096,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_k_cos",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_k_sin",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    },
+    {
+      "label": "decode_L1_k_RoPE",
+      "elements": 512,
+      "different": 0,
+      "exact": true
+    }
+  ],
+  "negative_controls": [
+    "prefill_L0_attention_residual:early_SRAM_free",
+    "prefill_L0_attention_residual:early_HB_retire",
+    "prefill_L0_q_cos:early_SRAM_free",
+    "prefill_L0_q_cos:early_HB_retire",
+    "prefill_L0_q_sin:early_SRAM_free",
+    "prefill_L0_q_sin:early_HB_retire",
+    "prefill_L0_q_RoPE:early_SRAM_free",
+    "prefill_L0_q_RoPE:early_HB_retire",
+    "prefill_L0_k_cos:early_SRAM_free",
+    "prefill_L0_k_cos:early_HB_retire",
+    "prefill_L0_k_sin:early_SRAM_free",
+    "prefill_L0_k_sin:early_HB_retire",
+    "prefill_L0_k_RoPE:early_SRAM_free",
+    "prefill_L0_k_RoPE:early_HB_retire",
+    "prefill_L1_attention_residual:early_SRAM_free",
+    "prefill_L1_attention_residual:early_HB_retire",
+    "prefill_L1_q_cos:early_SRAM_free",
+    "prefill_L1_q_cos:early_HB_retire",
+    "prefill_L1_q_sin:early_SRAM_free",
+    "prefill_L1_q_sin:early_HB_retire",
+    "prefill_L1_q_RoPE:early_SRAM_free",
+    "prefill_L1_q_RoPE:early_HB_retire",
+    "prefill_L1_k_cos:early_SRAM_free",
+    "prefill_L1_k_cos:early_HB_retire",
+    "prefill_L1_k_sin:early_SRAM_free",
+    "prefill_L1_k_sin:early_HB_retire",
+    "prefill_L1_k_RoPE:early_SRAM_free",
+    "prefill_L1_k_RoPE:early_HB_retire",
+    "decode_L0_attention_residual:early_SRAM_free",
+    "decode_L0_attention_residual:early_HB_retire",
+    "decode_L0_q_cos:early_SRAM_free",
+    "decode_L0_q_cos:early_HB_retire",
+    "decode_L0_q_sin:early_SRAM_free",
+    "decode_L0_q_sin:early_HB_retire",
+    "decode_L0_q_RoPE:early_SRAM_free",
+    "decode_L0_q_RoPE:early_HB_retire",
+    "decode_L0_k_cos:early_SRAM_free",
+    "decode_L0_k_cos:early_HB_retire",
+    "decode_L0_k_sin:early_SRAM_free",
+    "decode_L0_k_sin:early_HB_retire",
+    "decode_L0_k_RoPE:early_SRAM_free",
+    "decode_L0_k_RoPE:early_HB_retire",
+    "decode_L1_attention_residual:early_SRAM_free",
+    "decode_L1_attention_residual:early_HB_retire",
+    "decode_L1_q_cos:early_SRAM_free",
+    "decode_L1_q_cos:early_HB_retire",
+    "decode_L1_q_sin:early_SRAM_free",
+    "decode_L1_q_sin:early_HB_retire",
+    "decode_L1_q_RoPE:early_SRAM_free",
+    "decode_L1_q_RoPE:early_HB_retire",
+    "decode_L1_k_cos:early_SRAM_free",
+    "decode_L1_k_cos:early_HB_retire",
+    "decode_L1_k_sin:early_SRAM_free",
+    "decode_L1_k_sin:early_HB_retire",
+    "decode_L1_k_RoPE:early_SRAM_free",
+    "decode_L1_k_RoPE:early_HB_retire"
+  ],
+  "nodes": [
+    {
+      "label": "prefill_L0_attention_residual",
+      "a": 0,
+      "b": 77824,
+      "out": 155648,
+      "compute_event": 14,
+      "commit_event": 16,
+      "ready_ns": 75999,
+      "elements": 38912,
+      "sha256": "90b7c55b762eb14d9d7a360ccf6e47154c1c32caa6f6525e969d84604facb40a"
+    },
+    {
+      "label": "prefill_L0_q_cos",
+      "a": 233472,
+      "b": 389120,
+      "out": 544768,
+      "compute_event": 34,
+      "commit_event": 36,
+      "ready_ns": 227327,
+      "elements": 77824,
+      "sha256": "3b33a5424c463b94d1bbe044ac73dc8b511d4ec5de46403fce8dd222c74adf50"
+    },
+    {
+      "label": "prefill_L0_q_sin",
+      "a": 700416,
+      "b": 856064,
+      "out": 1011712,
+      "compute_event": 54,
+      "commit_event": 56,
+      "ready_ns": 379303,
+      "elements": 77824,
+      "sha256": "a3f723b954142f15757dbfb140a91d8d1a57119c6d42a477458225472ffc46d8"
+    },
+    {
+      "label": "prefill_L0_q_RoPE",
+      "a": 544768,
+      "b": 1011712,
+      "out": 1167360,
+      "compute_event": 62,
+      "commit_event": 64,
+      "ready_ns": 455399,
+      "elements": 77824,
+      "sha256": "d963196340b4eec816962829e586b0ae78f8dde2c071770490e8518cb8f959b1"
+    },
+    {
+      "label": "prefill_L0_k_cos",
+      "a": 1323008,
+      "b": 1342464,
+      "out": 1361920,
+      "compute_event": 74,
+      "commit_event": 76,
+      "ready_ns": 474758,
+      "elements": 9728,
+      "sha256": "6b7e1e0958f2515eac0ecb8c29e38114d457805a5aa3f933d59c40e2af30308f"
+    },
+    {
+      "label": "prefill_L0_k_sin",
+      "a": 1381376,
+      "b": 1400832,
+      "out": 1420288,
+      "compute_event": 86,
+      "commit_event": 88,
+      "ready_ns": 494149,
+      "elements": 9728,
+      "sha256": "13187e70643876dc957713246c59a8b9019ca92f052f92902cb87c6e00351b70"
+    },
+    {
+      "label": "prefill_L0_k_RoPE",
+      "a": 1361920,
+      "b": 1420288,
+      "out": 1439744,
+      "compute_event": 94,
+      "commit_event": 96,
+      "ready_ns": 503889,
+      "elements": 9728,
+      "sha256": "9eba89307f436869bbbba5b0774aad5bb9c9790779ff49bccb34394995ded18a"
+    },
+    {
+      "label": "prefill_L1_attention_residual",
+      "a": 1459200,
+      "b": 1537024,
+      "out": 1614848,
+      "compute_event": 110,
+      "commit_event": 112,
+      "ready_ns": 579489,
+      "elements": 38912,
+      "sha256": "45a4ddb69f6bd51f42e43118f0046f1209d42008f3bc7b1e180ec9ae2faa1b77"
+    },
+    {
+      "label": "prefill_L1_q_cos",
+      "a": 1692672,
+      "b": 1848320,
+      "out": 2003968,
+      "compute_event": 130,
+      "commit_event": 132,
+      "ready_ns": 730237,
+      "elements": 77824,
+      "sha256": "3787d1c40b18ce4c072c845e4f4266fa8cf530a1d5463052a39ae9cfd03e9259"
+    },
+    {
+      "label": "prefill_L1_q_sin",
+      "a": 2159616,
+      "b": 2315264,
+      "out": 2470912,
+      "compute_event": 150,
+      "commit_event": 152,
+      "ready_ns": 880782,
+      "elements": 77824,
+      "sha256": "81d2d2a062552d311245fc6441aa7da36cdf0af12565267c11ae8164a3667ecb"
+    },
+    {
+      "label": "prefill_L1_q_RoPE",
+      "a": 2003968,
+      "b": 2470912,
+      "out": 2626560,
+      "compute_event": 158,
+      "commit_event": 160,
+      "ready_ns": 957437,
+      "elements": 77824,
+      "sha256": "41ecee5e08e35e76e4d87596e39395349586885d85d7b6114e945eb838bf6860"
+    },
+    {
+      "label": "prefill_L1_k_cos",
+      "a": 2782208,
+      "b": 2801664,
+      "out": 2821120,
+      "compute_event": 170,
+      "commit_event": 172,
+      "ready_ns": 977428,
+      "elements": 9728,
+      "sha256": "6e2b87f4f986b4fda674ce046978f4a7a505d7836e08df01d67e571852695ec2"
+    },
+    {
+      "label": "prefill_L1_k_sin",
+      "a": 2840576,
+      "b": 2860032,
+      "out": 2879488,
+      "compute_event": 182,
+      "commit_event": 184,
+      "ready_ns": 997129,
+      "elements": 9728,
+      "sha256": "f4d60b3c3feab7e437492d2d0715ae435e6dfb2bc4266e12b2c7c33aba72784c"
+    },
+    {
+      "label": "prefill_L1_k_RoPE",
+      "a": 2821120,
+      "b": 2879488,
+      "out": 2898944,
+      "compute_event": 190,
+      "commit_event": 192,
+      "ready_ns": 1006650,
+      "elements": 9728,
+      "sha256": "c225819a3a1c7f49479fdf75d454d8260e1f78d5e12398eaa3b468dafab3ad4a"
+    },
+    {
+      "label": "decode_L0_attention_residual",
+      "a": 2918400,
+      "b": 2922496,
+      "out": 2926592,
+      "compute_event": 202,
+      "commit_event": 204,
+      "ready_ns": 1011645,
+      "elements": 2048,
+      "sha256": "1dcb27a65e3b79b56e004f976da456223e5764775d8dc1c739cd56c20bc04378"
+    },
+    {
+      "label": "decode_L0_q_cos",
+      "a": 2930688,
+      "b": 2938880,
+      "out": 2947072,
+      "compute_event": 214,
+      "commit_event": 216,
+      "ready_ns": 1020668,
+      "elements": 4096,
+      "sha256": "13216f74aec30477eeb8f6747284f7bee545523009656ceffa740858f3fb1dc3"
+    },
+    {
+      "label": "decode_L0_q_sin",
+      "a": 2955264,
+      "b": 2963456,
+      "out": 2971648,
+      "compute_event": 226,
+      "commit_event": 228,
+      "ready_ns": 1029318,
+      "elements": 4096,
+      "sha256": "9d42b3aeb09e6e1dca3aee57fd9bf463f35c250dff162af70bb25614c11f8293"
+    },
+    {
+      "label": "decode_L0_q_RoPE",
+      "a": 2947072,
+      "b": 2971648,
+      "out": 2979840,
+      "compute_event": 234,
+      "commit_event": 236,
+      "ready_ns": 1033515,
+      "elements": 4096,
+      "sha256": "38d8d5d8616b3424da70b6983490f886bbaa6bbe522d7f228f6dafd011a01d7e"
+    },
+    {
+      "label": "decode_L0_k_cos",
+      "a": 2988032,
+      "b": 2989056,
+      "out": 2990080,
+      "compute_event": 246,
+      "commit_event": 248,
+      "ready_ns": 1035560,
+      "elements": 512,
+      "sha256": "58ffb2a7955d6d3005ee58d151dcdc50958da5e01ec5595dc1d3af1e171ff43d"
+    },
+    {
+      "label": "decode_L0_k_sin",
+      "a": 2991104,
+      "b": 2992128,
+      "out": 2993152,
+      "compute_event": 258,
+      "commit_event": 260,
+      "ready_ns": 1037350,
+      "elements": 512,
+      "sha256": "3451abb3a76a0b20981bdb6b301276ad764b19000d82751dec2c27f6f64661a8"
+    },
+    {
+      "label": "decode_L0_k_RoPE",
+      "a": 2990080,
+      "b": 2993152,
+      "out": 2994176,
+      "compute_event": 266,
+      "commit_event": 268,
+      "ready_ns": 1037967,
+      "elements": 512,
+      "sha256": "b03cea0d24031b95e6eba4213dfb7872e1f38f95677e5ce549dad4a15b7a148e"
+    },
+    {
+      "label": "decode_L1_attention_residual",
+      "a": 2995200,
+      "b": 2999296,
+      "out": 3003392,
+      "compute_event": 278,
+      "commit_event": 280,
+      "ready_ns": 1042633,
+      "elements": 2048,
+      "sha256": "11a89be3e3407d9367111b5e4896bde1a9f2b6bbc0ff79fdb7a2c02db1a6daf7"
+    },
+    {
+      "label": "decode_L1_q_cos",
+      "a": 3007488,
+      "b": 3015680,
+      "out": 3023872,
+      "compute_event": 290,
+      "commit_event": 292,
+      "ready_ns": 1051370,
+      "elements": 4096,
+      "sha256": "86ed673f53a302644ec52465eb0869a6138416305761e49aeca85cb50aa5c5fb"
+    },
+    {
+      "label": "decode_L1_q_sin",
+      "a": 3032064,
+      "b": 3040256,
+      "out": 3048448,
+      "compute_event": 302,
+      "commit_event": 304,
+      "ready_ns": 1059878,
+      "elements": 4096,
+      "sha256": "6c71d1fa6ca6b000bf8a5c5feba5fb0c48ce3f42f369ae79a870f2bbdb59c410"
+    },
+    {
+      "label": "decode_L1_q_RoPE",
+      "a": 3023872,
+      "b": 3048448,
+      "out": 3056640,
+      "compute_event": 310,
+      "commit_event": 312,
+      "ready_ns": 1063784,
+      "elements": 4096,
+      "sha256": "65457069011c676a3ae1703b21f599afce8deef5fdb8effa767ce29a93b01b24"
+    },
+    {
+      "label": "decode_L1_k_cos",
+      "a": 3064832,
+      "b": 3065856,
+      "out": 3066880,
+      "compute_event": 322,
+      "commit_event": 324,
+      "ready_ns": 1065574,
+      "elements": 512,
+      "sha256": "6f29eeedc65648546d37315ceb4d3ba6ecd1a89605965f99ee34cbf141a5b73d"
+    },
+    {
+      "label": "decode_L1_k_sin",
+      "a": 3067904,
+      "b": 3068928,
+      "out": 3069952,
+      "compute_event": 334,
+      "commit_event": 336,
+      "ready_ns": 1067434,
+      "elements": 512,
+      "sha256": "edd8889a39969b7adffc0886c74fb9a40b748041214d0cde56887e0edfa59aa3"
+    },
+    {
+      "label": "decode_L1_k_RoPE",
+      "a": 3066880,
+      "b": 3069952,
+      "out": 3070976,
+      "compute_event": 342,
+      "commit_event": 344,
+      "ready_ns": 1068033,
+      "elements": 512,
+      "sha256": "1cc4f4ef7e09efb1e0ddee0a5a46347a1c4bd9e0a34da722a4024ea7079ac491"
+    }
+  ],
+  "device": {
+    "rank": 0,
+    "counts": {
+      "events": 344,
+      "pipeline_cycles": 193368,
+      "HB_write_bytes": 3072000,
+      "RAM_transactions": 175360,
+      "RAM_physical_bytes": 5611520,
+      "HB_read_bytes": 2539520,
+      "SRAM_read_bytes": 3809280,
+      "SRAM_write_bytes": 3809280,
+      "SRAM_service_bytes": 7618560,
+      "vector_ops": 634880
+    },
+    "SRAM_peak_bytes": 466944,
+    "HB_address_extent_bytes": 3072000,
+    "HB_allocated_bytes": 3072000,
+    "done_ns": 1068033
+  },
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "GPU_runs": 0,
+  "native_runs": 1,
+  "physical_NPU_runs": 0,
+  "scope": "real prefill/decode layers0/1 residual and RoPE C BF16 kernels gated by native SRAM/HB events; Q/K norm inputs CPU boundary, not continuous full layer; codec/integer/software macro timing uncertified; softmax unchanged"
+}

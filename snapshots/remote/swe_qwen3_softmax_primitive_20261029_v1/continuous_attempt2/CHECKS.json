@@ -1,0 +1,248 @@
+[
+  {
+    "name": "full_layer_adapter_vs_unmodified_source_CPU",
+    "phase": "prefill",
+    "layer": 0,
+    "shape": [
+      1,
+      19,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_key_vs_source_CPU",
+    "phase": "prefill",
+    "layer": 0,
+    "shape": [
+      1,
+      4,
+      19,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_value_vs_source_CPU",
+    "phase": "prefill",
+    "layer": 0,
+    "shape": [
+      1,
+      4,
+      19,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "layer0_vs_captured_GPU",
+    "phase": "prefill",
+    "layer": 0,
+    "shape": [
+      1,
+      19,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": false,
+    "different": 4249,
+    "max_abs": 0.0068359375,
+    "strict": false
+  },
+  {
+    "name": "route_vs_captured_GPU",
+    "phase": "prefill",
+    "layer": 0,
+    "shape": [
+      19,
+      8
+    ],
+    "dtype": "torch.int64",
+    "exact": false,
+    "different": 10,
+    "max_abs": 74.0,
+    "strict": false
+  },
+  {
+    "name": "full_layer_adapter_vs_unmodified_source_CPU",
+    "phase": "prefill",
+    "layer": 1,
+    "shape": [
+      1,
+      19,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_key_vs_source_CPU",
+    "phase": "prefill",
+    "layer": 1,
+    "shape": [
+      1,
+      4,
+      19,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_value_vs_source_CPU",
+    "phase": "prefill",
+    "layer": 1,
+    "shape": [
+      1,
+      4,
+      19,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "full_layer_adapter_vs_unmodified_source_CPU",
+    "phase": "decode",
+    "layer": 0,
+    "shape": [
+      1,
+      1,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_key_vs_source_CPU",
+    "phase": "decode",
+    "layer": 0,
+    "shape": [
+      1,
+      4,
+      20,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_value_vs_source_CPU",
+    "phase": "decode",
+    "layer": 0,
+    "shape": [
+      1,
+      4,
+      20,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "layer0_vs_captured_GPU",
+    "phase": "decode",
+    "layer": 0,
+    "shape": [
+      1,
+      1,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": false
+  },
+  {
+    "name": "route_vs_captured_GPU",
+    "phase": "decode",
+    "layer": 0,
+    "shape": [
+      1,
+      8
+    ],
+    "dtype": "torch.int64",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": false
+  },
+  {
+    "name": "full_layer_adapter_vs_unmodified_source_CPU",
+    "phase": "decode",
+    "layer": 1,
+    "shape": [
+      1,
+      1,
+      2048
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_key_vs_source_CPU",
+    "phase": "decode",
+    "layer": 1,
+    "shape": [
+      1,
+      4,
+      20,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  },
+  {
+    "name": "KV_value_vs_source_CPU",
+    "phase": "decode",
+    "layer": 1,
+    "shape": [
+      1,
+      4,
+      20,
+      128
+    ],
+    "dtype": "torch.bfloat16",
+    "exact": true,
+    "different": 0,
+    "max_abs": 0.0,
+    "strict": true
+  }
+]

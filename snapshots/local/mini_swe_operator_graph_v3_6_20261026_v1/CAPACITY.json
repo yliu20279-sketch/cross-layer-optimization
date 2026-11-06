@@ -1,0 +1,128 @@
+{
+  "parameter_elements": 30532122624,
+  "unique_weight_payload_bytes": 61064245248,
+  "weight_shard_file_bytes": 61066575648,
+  "model_repository_bytes": 61084187391,
+  "experts_total_bytes": 57982058496,
+  "expert_one_bytes": 9437184,
+  "experts_per_rank_all_layers_bytes": 3623878656,
+  "qk_norm_vectors_each": 128,
+  "old_mapping_formula_parameters": 30532331520,
+  "old_mapping_overcount_elements": 208896,
+  "proposed_kv_projection_replica_extra_bytes": 603979776,
+  "proposed_norm_replica_extra_bytes": 6328320,
+  "proposed_physical_weight_payload_bytes": 61674553344,
+  "pinned_nonexpert_per_rank_bytes": [
+    254373888,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064,
+    229208064
+  ],
+  "example_expert_cache_budget": [
+    {
+      "context": 512,
+      "rank": 0,
+      "pinned_bytes": 254373888,
+      "kv_bytes": 12582912,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 25,
+      "base_fits": true,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    },
+    {
+      "context": 512,
+      "rank": 1,
+      "pinned_bytes": 229208064,
+      "kv_bytes": 12582912,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 27,
+      "base_fits": true,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    },
+    {
+      "context": 4096,
+      "rank": 0,
+      "pinned_bytes": 254373888,
+      "kv_bytes": 100663296,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 15,
+      "base_fits": true,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    },
+    {
+      "context": 4096,
+      "rank": 1,
+      "pinned_bytes": 229208064,
+      "kv_bytes": 100663296,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 18,
+      "base_fits": true,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    },
+    {
+      "context": 16384,
+      "rank": 0,
+      "pinned_bytes": 254373888,
+      "kv_bytes": 402653184,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 0,
+      "base_fits": false,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    },
+    {
+      "context": 16384,
+      "rank": 1,
+      "pinned_bytes": 229208064,
+      "kv_bytes": 402653184,
+      "reserve_bytes": 33554432,
+      "whole_expert_slots": 0,
+      "base_fits": false,
+      "evidence": "analytical candidate; one session, nonexpert pinned, 32MiB runtime reserve is unvalidated assumption"
+    }
+  ],
+  "unique_kv_bytes_per_cached_token": 98304,
+  "proposed_kv_bytes_per_cached_token": 393216,
+  "proposed_kv_per_rank_bytes_per_cached_token": 24576,
+  "kv_examples": [
+    {
+      "context": 512,
+      "sessions": 1,
+      "per_rank_bytes": 12582912,
+      "global_bytes": 201326592,
+      "evidence": "analytical example, not measured workload"
+    },
+    {
+      "context": 4096,
+      "sessions": 1,
+      "per_rank_bytes": 100663296,
+      "global_bytes": 1610612736,
+      "evidence": "analytical example, not measured workload"
+    }
+  ],
+  "target_hb_total_bytes": 8589934592,
+  "target_host_dram_bytes": 8589934592,
+  "target_sram_per_npu_bytes": 4194304,
+  "static_fit": false,
+  "even_unique_payload_fits_hb_plus_host": false,
+  "blocker": "61 GB unique BF16 payload > 8 GiB HB + 8 GiB target host; external storage or explicit host-capacity amendment required; actual server RAM is not target host",
+  "unresolved": [
+    "per-rank resident nonexpert/paged-expert schedule",
+    "KV growth/session policy",
+    "peak SRAM tiling and runtime buffers",
+    "address allocation and 32B transactions",
+    "BF16 arithmetic",
+    "host/PCIe/storage service"
+  ]
+}

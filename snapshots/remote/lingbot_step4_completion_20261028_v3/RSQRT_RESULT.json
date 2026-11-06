@@ -1,0 +1,62 @@
+{
+  "status": "PARTIAL_RSQRT_CANDIDATE_NOT_PROMOTED",
+  "rows": [
+    {
+      "branch": "cond",
+      "norm": "norm_post_attn.weight",
+      "rows": 49883,
+      "factors_differ_from_CPU_rsqrt": 8734,
+      "GPU_BF16_mismatches": 386,
+      "GPU_max_abs": 0.015625,
+      "integer_RNE_interval_checks": 49883,
+      "pass_bitwise": false
+    },
+    {
+      "branch": "cond",
+      "norm": "norm_post_ffn.weight",
+      "rows": 49883,
+      "factors_differ_from_CPU_rsqrt": 16322,
+      "GPU_BF16_mismatches": 301,
+      "GPU_max_abs": 0.03125,
+      "integer_RNE_interval_checks": 49883,
+      "pass_bitwise": false
+    },
+    {
+      "branch": "uncond",
+      "norm": "norm_post_attn.weight",
+      "rows": 48986,
+      "factors_differ_from_CPU_rsqrt": 14168,
+      "GPU_BF16_mismatches": 333,
+      "GPU_max_abs": 0.03125,
+      "integer_RNE_interval_checks": 48986,
+      "pass_bitwise": false
+    },
+    {
+      "branch": "uncond",
+      "norm": "norm_post_ffn.weight",
+      "rows": 48986,
+      "factors_differ_from_CPU_rsqrt": 16471,
+      "GPU_BF16_mismatches": 294,
+      "GPU_max_abs": 0.015625,
+      "integer_RNE_interval_checks": 48986,
+      "pass_bitwise": false
+    }
+  ],
+  "integer_RNE_interval_checks": 197738,
+  "expert_attempt1_failure_stage_counts": {
+    "('gate', True)": 147,
+    "('up', True)": 137,
+    "('SiLU', True)": 151,
+    "('product', True)": 120,
+    "('down', True)": 85,
+    "('up', False)": 50,
+    "('product', False)": 67,
+    "('down', False)": 102,
+    "('gate', False)": 40,
+    "('SiLU', False)": 36
+  },
+  "candidate_arithmetic": "FP32 input/output, unsigned128 midpoint comparisons, no FP64",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8
+}

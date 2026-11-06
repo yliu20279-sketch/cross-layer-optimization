@@ -1,0 +1,52 @@
+{
+  "commands": [
+    [
+      "gcc",
+      "-O2",
+      "-march=nehalem",
+      "-mno-avx",
+      "-mno-fma",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-c",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/portable.c",
+      "-o",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/portable.o"
+    ],
+    [
+      "g++",
+      "-O2",
+      "-march=nehalem",
+      "-mno-avx",
+      "-mno-fma",
+      "-ffp-contract=off",
+      "-fno-fast-math",
+      "-std=c++17",
+      "-I/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/snipersim/include",
+      "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet/includes",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/host.cpp",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/portable.o",
+      "/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet_host/lib/libinterchiplet_c.a",
+      "-pthread",
+      "-lm",
+      "-o",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/host"
+    ],
+    [
+      "g++",
+      "-O2",
+      "-std=c++17",
+      "-I/mnt/sdb1/h3240101068/npusim_ramulator2_validation_20260826/workspace/interchiplet/includes",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/gateway.cpp",
+      "-o",
+      "/mnt/sda1/h3240101068/lingbot_step5_cpu_service_20261101_v9/gateway"
+    ]
+  ],
+  "libpeer_sha256": "7a6052994380041d62c37f7eaf4c5d8096f95ab5b1717f30455d45d839fe670d",
+  "CPU_clock_rate": 2.5,
+  "DRAM_tick_ns": 1.25,
+  "active_NPU": 1,
+  "active_HB_MiB": 512,
+  "full_architecture_HB_GiB": 8,
+  "cache_coherence_timing_certified": false
+}

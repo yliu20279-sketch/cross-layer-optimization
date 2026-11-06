@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "matrix_rows": 1600,
+  "base_runs": 400,
+  "graph_tests": [
+    {
+      "context": 128,
+      "batch": 1,
+      "steps": 2,
+      "microbatch_size": 1,
+      "status": "PASS",
+      "operations": 13920,
+      "page_misses": 192,
+      "evidence_type": "SYNTHETIC_TEST_ONLY"
+    },
+    {
+      "context": 512,
+      "batch": 16,
+      "steps": 2,
+      "microbatch_size": 16,
+      "status": "PASS",
+      "operations": 107680,
+      "page_misses": 9568,
+      "evidence_type": "SYNTHETIC_TEST_ONLY"
+    },
+    {
+      "context": 128,
+      "batch": 4,
+      "steps": 2,
+      "microbatch_size": 1,
+      "status": "PASS",
+      "operations": 56064,
+      "page_misses": 768,
+      "evidence_type": "SYNTHETIC_TEST_ONLY"
+    }
+  ],
+  "tiered_pages": {
+    "status": "PASS",
+    "checks": [
+      "exclusive ownership",
+      "LRU replacement",
+      "host overflow rejected",
+      "directional link serialization",
+      "staging transfer sequence",
+      "warm hit has no transfer"
+    ],
+    "limitations": [
+      "reference state machine only; not coupled to LegoSim",
+      "cold placement must be separately compared with warm steady state",
+      "page-sized staging must fit runtime reserve",
+      "queue and packet effects are not modeled by this throughput reference"
+    ]
+  },
+  "limitations": [
+    "No server accessed or simulation launched",
+    "Synthetic routes validate code structure only, not Qwen performance",
+    "Planning table is not a results table",
+    "No statistical or Bank bottleneck claim"
+  ]
+}

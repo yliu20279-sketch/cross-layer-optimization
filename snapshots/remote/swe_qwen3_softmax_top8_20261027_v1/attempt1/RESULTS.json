@@ -1,0 +1,227 @@
+{
+  "state": "FUNCTIONAL_CHECK_COMPLETE_DIFFERENCES_RETAINED",
+  "rows": [
+    {
+      "root": "swe_qwen3_step3_gpu_20261026_v1",
+      "request": "R0002",
+      "phase": "prefill",
+      "tokens": 19,
+      "internal_tie_rows": 4,
+      "boundary_tie_rows": 1,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 2.9802322387695312e-08,
+      "stable_expert_ID_tie_negative_control_bad_rows": 3
+    },
+    {
+      "root": "swe_qwen3_step3_gpu_20261026_v1",
+      "request": "R0002",
+      "phase": "decode",
+      "tokens": 1,
+      "internal_tie_rows": 1,
+      "boundary_tie_rows": 0,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 1.1175870895385742e-08,
+      "stable_expert_ID_tie_negative_control_bad_rows": 1
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/0",
+      "tokens": 256,
+      "internal_tie_rows": 64,
+      "boundary_tie_rows": 23,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 4.470348358154297e-08,
+      "stable_expert_ID_tie_negative_control_bad_rows": 47
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/1",
+      "tokens": 256,
+      "internal_tie_rows": 68,
+      "boundary_tie_rows": 27,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 1.4901161193847656e-07,
+      "stable_expert_ID_tie_negative_control_bad_rows": 46
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/2",
+      "tokens": 225,
+      "internal_tie_rows": 69,
+      "boundary_tie_rows": 29,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 4.470348358154297e-08,
+      "stable_expert_ID_tie_negative_control_bad_rows": 54
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "prefill_chunks/3",
+      "tokens": 1,
+      "internal_tie_rows": 0,
+      "boundary_tie_rows": 0,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 1.4901161193847656e-08,
+      "stable_expert_ID_tie_negative_control_bad_rows": 0
+    },
+    {
+      "root": "swe_qwen3_step3_development_20261026_v6",
+      "request": "R0001",
+      "phase": "decode",
+      "tokens": 1,
+      "internal_tie_rows": 0,
+      "boundary_tie_rows": 0,
+      "captured_probability_selector_ids_exact": true,
+      "captured_probability_selector_bad_rows": 0,
+      "captured_probability_weights_exact": true,
+      "new_softmax_ids_exact": true,
+      "new_softmax_bad_id_rows": 0,
+      "new_softmax_weights_exact": true,
+      "FP32_probabilities_exact": false,
+      "FP32_probabilities_max_abs": 7.450580596923828e-09,
+      "stable_expert_ID_tie_negative_control_bad_rows": 0
+    }
+  ],
+  "real_tokens": 759,
+  "synthetic": [
+    {
+      "name": "uniform",
+      "repeat_exact": true,
+      "IDs": [
+        [
+          7,
+          6,
+          4,
+          5,
+          1,
+          0,
+          2,
+          3
+        ]
+      ],
+      "weight_sum": 1.0
+    },
+    {
+      "name": "internal_ties",
+      "repeat_exact": true,
+      "IDs": [
+        [
+          126,
+          127,
+          124,
+          125,
+          123,
+          122,
+          121,
+          120
+        ]
+      ],
+      "weight_sum": 1.000732421875
+    },
+    {
+      "name": "boundary_group",
+      "repeat_exact": true,
+      "IDs": [
+        [
+          6,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0,
+          7
+        ]
+      ],
+      "weight_sum": 0.9996967315673828
+    },
+    {
+      "name": "underflow",
+      "repeat_exact": true,
+      "IDs": [
+        [
+          0,
+          2,
+          4,
+          7,
+          3,
+          1,
+          5,
+          6
+        ]
+      ],
+      "weight_sum": 1.0
+    },
+    {
+      "name": "signed_zero_logits",
+      "repeat_exact": true,
+      "IDs": [
+        [
+          7,
+          6,
+          4,
+          5,
+          1,
+          0,
+          2,
+          3
+        ]
+      ],
+      "weight_sum": 1.0
+    }
+  ],
+  "guards": [
+    "NaN_logit_rejected",
+    "Inf_logit_rejected",
+    "negative_probability_rejected",
+    "negative_zero_probability_rejected"
+  ],
+  "captured_probability_selector_all_exact": true,
+  "new_softmax_route_all_exact": true,
+  "GPU_FP32_probability_all_exact": false,
+  "scope": "finite E128/k8 host software functional fallback, no new GPU or native NPU events, no injected IDs",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "new_GPU_agent_runs": 0,
+  "physical_NPU_runs": 0,
+  "CUDA_initialized": false
+}

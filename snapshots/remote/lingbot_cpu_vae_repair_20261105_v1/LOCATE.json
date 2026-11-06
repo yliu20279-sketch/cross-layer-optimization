@@ -1,0 +1,88 @@
+{
+  "latent_conversion": {
+    "shape": [
+      1,
+      16,
+      1,
+      60,
+      104
+    ],
+    "different_elements": 0,
+    "max_abs_diff": 0.0,
+    "first_indices": []
+  },
+  "modules": [
+    [
+      "",
+      "AutoencoderKLWan"
+    ],
+    [
+      "encoder",
+      "WanEncoder3d"
+    ],
+    [
+      "encoder.nonlinearity",
+      "SiLU"
+    ],
+    [
+      "encoder.conv_in",
+      "WanCausalConv3d"
+    ],
+    [
+      "encoder.down_blocks",
+      "ModuleList"
+    ],
+    [
+      "encoder.down_blocks.0",
+      "WanResidualBlock"
+    ],
+    [
+      "encoder.down_blocks.0.nonlinearity",
+      "SiLU"
+    ],
+    [
+      "encoder.down_blocks.0.norm1",
+      "WanRMS_norm"
+    ],
+    [
+      "encoder.down_blocks.0.conv1",
+      "WanCausalConv3d"
+    ],
+    [
+      "encoder.down_blocks.0.norm2",
+      "WanRMS_norm"
+    ],
+    [
+      "encoder.down_blocks.0.dropout",
+      "Dropout"
+    ],
+    [
+      "encoder.down_blocks.0.conv2",
+      "WanCausalConv3d"
+    ],
+    [
+      "encoder.down_blocks.0.conv_shortcut",
+      "Identity"
+    ],
+    [
+      "encoder.down_blocks.1",
+      "WanResidualBlock"
+    ],
+    [
+      "encoder.down_blocks.1.nonlinearity",
+      "SiLU"
+    ],
+    [
+      "encoder.down_blocks.1.norm1",
+      "WanRMS_norm"
+    ],
+    [
+      "encoder.down_blocks.1.conv1",
+      "WanCausalConv3d"
+    ],
+    [
+      "encoder.down_blocks.1.norm2",
+      "WanRMS_norm"
+    ]
+  ]
+}

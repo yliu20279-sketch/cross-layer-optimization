@@ -1,0 +1,16 @@
+{
+  "scope": "actual NPU HB/SRAM -> gateway -> Sniper CPU FDA16 -> actual return -> NPU store/read consumer; three real kernels two rounds",
+  "target_GPU_count": 0,
+  "precision": "original BF16/FP32",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "active_NPU": 1,
+  "active_HB_MiB": 512,
+  "CPU_active_threads": 1,
+  "CPU_clock_rate": 2.5,
+  "DRAM_ns": 1.25,
+  "runtime_limit_seconds": 600,
+  "cache_coherence_timing_certified": false,
+  "full_step5": false,
+  "threshold": "all raw FP32 software-reference and BF16 original-GPU bits exact; timing normalized without tolerance relaxation"
+}

@@ -1,0 +1,386 @@
+[
+  {
+    "command": "git reset --hard d16bfe05a744909de4b27f5875fe0d4ed41ce607 && git clean -fd && git rev-parse HEAD",
+    "start_utc": 1793019782.7387881,
+    "start_monotonic": 7695729.678258712,
+    "result": {
+      "output": "HEAD is now at d16bfe05a Merge pull request #12900 from Cadair/custom_compound_model\nd16bfe05a744909de4b27f5875fe0d4ed41ce607\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7695730.360606309,
+    "seconds": 0.682347958907485
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; cm = m.Linear1D(10) & m.Linear1D(5); print(separability_matrix(cm))\"",
+    "start_utc": 1793019849.4541304,
+    "start_monotonic": 7695796.393601023,
+    "result": {
+      "output": "[[ True False]\n [False  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7695798.203928503,
+    "seconds": 1.8103277804329991
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & m.Linear1D(10) & m.Linear1D(5)))\"",
+    "start_utc": 1793019921.0568423,
+    "start_monotonic": 7695867.996309861,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True False]\n [False False False  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7695869.425526515,
+    "seconds": 1.4292170591652393
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793019994.9782035,
+    "start_monotonic": 7695941.9176735,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7695943.31472408,
+    "seconds": 1.3970508556813002
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020092.5570948,
+    "start_monotonic": 7696039.496564453,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696040.83772964,
+    "seconds": 1.3411655016243458
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020167.7151973,
+    "start_monotonic": 7696114.654666734,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696116.055652262,
+    "seconds": 1.400985992513597
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020243.1063237,
+    "start_monotonic": 7696190.045792961,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696191.440013206,
+    "seconds": 1.3942213002592325
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020318.9271142,
+    "start_monotonic": 7696265.866583452,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696267.22662878,
+    "seconds": 1.3600456360727549
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020421.2789521,
+    "start_monotonic": 7696368.218424121,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696369.695404866,
+    "seconds": 1.476981010288
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020498.7729833,
+    "start_monotonic": 7696445.712454732,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696446.986241606,
+    "seconds": 1.273787084966898
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020576.3951287,
+    "start_monotonic": 7696523.334600465,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696524.646290876,
+    "seconds": 1.3116906434297562
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020654.3858104,
+    "start_monotonic": 7696601.325281676,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696602.736392602,
+    "seconds": 1.4111119639128447
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020734.0321562,
+    "start_monotonic": 7696680.971627748,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696682.32452462,
+    "seconds": 1.352897104807198
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020812.7864192,
+    "start_monotonic": 7696759.725890721,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696761.140773684,
+    "seconds": 1.4148831851780415
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793020918.8689837,
+    "start_monotonic": 7696865.808455492,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696867.221238227,
+    "seconds": 1.4127829503268003
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021025.489608,
+    "start_monotonic": 7696972.429079632,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7696973.835448845,
+    "seconds": 1.4063694309443235
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021134.3907275,
+    "start_monotonic": 7697081.33019892,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697082.792395378,
+    "seconds": 1.4621966602280736
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021243.1838117,
+    "start_monotonic": 7697190.123282857,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697191.433679787,
+    "seconds": 1.3103971583768725
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021326.910738,
+    "start_monotonic": 7697273.850209333,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697275.238373184,
+    "seconds": 1.3881641943007708
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021411.8176947,
+    "start_monotonic": 7697358.757166027,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697360.138579319,
+    "seconds": 1.381413558498025
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021497.7491326,
+    "start_monotonic": 7697444.688603996,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697446.100370451,
+    "seconds": 1.4117666548117995
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021611.1201422,
+    "start_monotonic": 7697558.059613873,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697559.445915024,
+    "seconds": 1.3863013796508312
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021697.198617,
+    "start_monotonic": 7697644.13808886,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697645.519727159,
+    "seconds": 1.3816385148093104
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021783.5783157,
+    "start_monotonic": 7697730.517787317,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697731.710696734,
+    "seconds": 1.1929096756502986
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793021899.4265513,
+    "start_monotonic": 7697846.366022881,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697847.632823753,
+    "seconds": 1.2668010918423533
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022015.1905158,
+    "start_monotonic": 7697962.129987226,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7697963.562191441,
+    "seconds": 1.4322052206844091
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022135.4552822,
+    "start_monotonic": 7698082.394753893,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698083.693216901,
+    "seconds": 1.2984632477164268
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022226.0282822,
+    "start_monotonic": 7698172.967753703,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698174.246409016,
+    "seconds": 1.278655738569796
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022314.1921666,
+    "start_monotonic": 7698261.131638338,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698262.569761152,
+    "seconds": 1.4381239702925086
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022405.651729,
+    "start_monotonic": 7698352.591200998,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698354.014636435,
+    "seconds": 1.4234356572851539
+  },
+  {
+    "command": "cd /testbed\npython -c \"from astropy.modeling.separable import separability_matrix; from astropy.modeling import models as m; print(separability_matrix(m.Pix2Sky_TAN() & (m.Linear1D(10) & m.Linear1D(5))))\"",
+    "start_utc": 1793022496.9075599,
+    "start_monotonic": 7698443.847030812,
+    "result": {
+      "output": "[[ True  True False False]\n [ True  True False False]\n [False False  True  True]\n [False False  True  True]]\n",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698445.104360784,
+    "seconds": 1.2573301773518324
+  },
+  {
+    "command": "git -c core.fileMode=false diff --binary",
+    "start_utc": 1793022498.973559,
+    "start_monotonic": 7698445.913029576,
+    "result": {
+      "output": "",
+      "returncode": 0,
+      "exception_info": ""
+    },
+    "done_monotonic": 7698446.450015141,
+    "seconds": 0.5369857857003808
+  }
+]

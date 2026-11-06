@@ -1,0 +1,66 @@
+{
+  "status": "DESIGN_ONLY_PENDING_REQUIRED_TRACE_FIELDS",
+  "objective": "Compare Bank layouts while fixing expert-to-device/partition ownership",
+  "dataset_split": {
+    "profile": "disjoint requests used only to estimate page heat/co-access",
+    "evaluation": "later disjoint requests; no future accesses used for placement",
+    "required_repeats": "multiple arrival seeds and at least steady/Poisson/bursty modes"
+  },
+  "controls": [
+    {
+      "name": "original",
+      "definition": "unaltered native physical page addresses"
+    },
+    {
+      "name": "static_xor_interleave",
+      "definition": "owner-independent address-bit XOR/interleave; same transform for profile and evaluation"
+    },
+    {
+      "name": "heat_balance",
+      "definition": "greedy per-partition assignment by descending profile bytes/accesses to the least-loaded feasible Bank"
+    },
+    {
+      "name": "cross_user_time_weighted_coaccess",
+      "definition": "per-partition capacitated assignment that penalizes placing distinct pages with high cross-user temporal-overlap score on the same Bank"
+    }
+  ],
+  "fixed_across_controls": [
+    "request cohort and arrivals",
+    "routing and expert selection",
+    "expert-to-device and expert-to-partition ownership",
+    "DAG, compute and NoC configuration",
+    "bytes and page size",
+    "random seeds",
+    "Bank capacity"
+  ],
+  "required_transaction_log": [
+    "transaction_id",
+    "inference_request_id",
+    "layer",
+    "expert_id",
+    "expert_page_id",
+    "partition",
+    "decoded Bank",
+    "row",
+    "arrival/eligible/grant/depart cycles",
+    "blocking request/page identity",
+    "cross-request same-Bank pre-issue wait",
+    "bytes",
+    "row hit/miss/conflict"
+  ],
+  "reported_metrics": [
+    "paired end-to-end latency and throughput",
+    "cross-request same-Bank pre-issue wait",
+    "normal-minus-Bank-oracle critical-path exposure",
+    "row-buffer hit/miss/conflict rates",
+    "represented and remote NoC bytes plus peak-link load",
+    "per-Bank capacity and imbalance",
+    "static load-time placement bytes",
+    "runtime migration bytes (must be zero for the static design)"
+  ],
+  "separate_attribution": {
+    "different_pages_same_bank": "potentially addressable by layout",
+    "same_page_multiple_users": "not addressable by relocation alone; requires replication, striping, or scheduling"
+  },
+  "claim_gate": "No benefit claim until all four controls complete on held-out evaluation requests and the end-to-end paired delta is stable across seeds."
+}

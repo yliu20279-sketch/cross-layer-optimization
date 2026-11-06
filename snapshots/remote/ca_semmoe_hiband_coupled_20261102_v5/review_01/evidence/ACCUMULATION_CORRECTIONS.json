@@ -1,0 +1,15 @@
+{
+  "official_reference_environment": "Transformers 4.51.3, PyTorch 2.6.0+cu124, CPU only",
+  "expert_order": {
+    "old_frozen_layer01_candidate": "TopK slot order",
+    "official_source_and_corrected_candidate": "ascending expert id; TopK slot identity retained",
+    "old_results_preserved": true
+  },
+  "matrix_contract": {
+    "early_build01_build02": "reused BF16 FDA64 numerical primitive for both representations",
+    "corrected_build03_and_later": "explicit FP16 K64 partial sums in increasing K; BF16 FDA64 preserved separately",
+    "adversarial_probe": "finite FP16 operands distinguish outputs 2 for K64 partials and 1 for FDA64",
+    "official_model_bit_exact_pass_claimed": false
+  },
+  "interpretation": "Corrections to implementation/precision binding, not new benchmark data selection or performance tuning"
+}

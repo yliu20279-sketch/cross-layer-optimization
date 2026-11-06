@@ -1,0 +1,72 @@
+{
+  "state": "PASS_LIMITED_TWO_LAYERS_CPU_SOURCE",
+  "strict_checks": 12,
+  "strict_different": 0,
+  "cross_GPU": [
+    {
+      "name": "layer0_vs_captured_GPU",
+      "phase": "prefill",
+      "layer": 0,
+      "shape": [
+        1,
+        19,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "exact": false,
+      "different": 4249,
+      "max_abs": 0.0068359375,
+      "strict": false
+    },
+    {
+      "name": "route_vs_captured_GPU",
+      "phase": "prefill",
+      "layer": 0,
+      "shape": [
+        19,
+        8
+      ],
+      "dtype": "torch.int64",
+      "exact": false,
+      "different": 10,
+      "max_abs": 74.0,
+      "strict": false
+    },
+    {
+      "name": "layer0_vs_captured_GPU",
+      "phase": "decode",
+      "layer": 0,
+      "shape": [
+        1,
+        1,
+        2048
+      ],
+      "dtype": "torch.bfloat16",
+      "exact": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "strict": false
+    },
+    {
+      "name": "route_vs_captured_GPU",
+      "phase": "decode",
+      "layer": 0,
+      "shape": [
+        1,
+        8
+      ],
+      "dtype": "torch.int64",
+      "exact": true,
+      "different": 0,
+      "max_abs": 0.0,
+      "strict": false
+    }
+  ],
+  "prefill_tokens": 19,
+  "decode_tokens": 1,
+  "layers": 2,
+  "source_parameter_dtype": "original BF16",
+  "target_native_runs": 1,
+  "GPU_runs": 0,
+  "scope": "N0 serial native matrix macro and explicit host semantic fallback; not pure NPU or whole model"
+}

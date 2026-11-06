@@ -1,0 +1,15 @@
+{
+  "qwen3": {
+    "batches": 64,
+    "positive_conservative_overlap": 17,
+    "inconclusive_precision": 47,
+    "minimum_lower_bound": "-5365"
+  },
+  "qwen15": {
+    "batches": 16,
+    "positive_conservative_overlap": 0,
+    "inconclusive_precision": 16,
+    "minimum_lower_bound": "-843"
+  },
+  "interpretation": "Source admits both requests before ticking Ramulator and waits for both actual callbacks. This proves concurrent outstanding requests. CSV completion timestamps use default precision, so some interval durations cannot be certified. Internal DRAM bank operation overlap requires command traces."
+}

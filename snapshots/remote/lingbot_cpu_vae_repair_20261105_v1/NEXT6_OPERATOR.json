@@ -1,0 +1,2028 @@
+{
+  "state": "NO_LEAF_DIFFERENCE",
+  "operators": [
+    {
+      "name": "post_quant_conv",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 99840,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.conv_in",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          16,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.norm",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.to_qkv",
+      "type": "Conv2d",
+      "different_elements": 0,
+      "elements": 7188480,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.attentions.0.proj",
+      "type": "Conv2d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.attentions.0",
+      "type": "WanAttentionBlock",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.mid_block.resnets.1.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.1.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.resnets.2.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 2396160,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.upsamplers.0.resample.0",
+      "type": "WanUpsample",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          60,
+          104
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.0.upsamplers.0.resample.1",
+      "type": "Conv2d",
+      "different_elements": 0,
+      "elements": 4792320,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.conv_shortcut",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 4792320,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 4792320,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.1.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.resnets.2.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 9584640,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          1,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.upsamplers.0.resample.0",
+      "type": "WanUpsample",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          120,
+          208
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.1.upsamplers.0.resample.1",
+      "type": "Conv2d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          384,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.1.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.resnets.2.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 19169280,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          1,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.upsamplers.0.resample.0",
+      "type": "WanUpsample",
+      "different_elements": 0,
+      "elements": 76677120,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          240,
+          416
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.2.upsamplers.0.resample.1",
+      "type": "Conv2d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          192,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.0.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.1.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.conv_shortcut",
+      "type": "Identity",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.norm1",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.conv1",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.norm2",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.dropout",
+      "type": "Dropout",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.up_blocks.3.resnets.2.conv2",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.norm_out",
+      "type": "WanRMS_norm",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.nonlinearity",
+      "type": "SiLU",
+      "different_elements": 0,
+      "elements": 38338560,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    },
+    {
+      "name": "decoder.conv_out",
+      "type": "WanCausalConv3d",
+      "different_elements": 0,
+      "elements": 1198080,
+      "max_abs_diff": 0.0,
+      "input_shapes": [
+        [
+          1,
+          96,
+          1,
+          480,
+          832
+        ]
+      ]
+    }
+  ]
+}

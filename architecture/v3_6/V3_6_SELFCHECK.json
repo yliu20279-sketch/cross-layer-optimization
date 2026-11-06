@@ -1,0 +1,167 @@
+{
+  "schema_version": "3.6-selfcheck-1.0",
+  "status": "PASS",
+  "checks": {
+    "schema_3_6": {
+      "pass": true,
+      "detail": 3.6
+    },
+    "component_schemas_3_6": {
+      "pass": true,
+      "detail": {
+        "thermal": "3.6-thermal-1.0",
+        "tile": "3.6",
+        "deepstack": "3.6-deepstack-bank-1.0",
+        "hb": "3.6-hb-link-1.0"
+      }
+    },
+    "not_execution_validated": {
+      "pass": true,
+      "detail": "CONFIGURATION_READY_EXECUTION_NOT_VALIDATED"
+    },
+    "total_capacity_8_gib": {
+      "pass": true,
+      "detail": 8192
+    },
+    "per_partition_512_mib": {
+      "pass": true,
+      "detail": 512
+    },
+    "capacity_arithmetic": {
+      "pass": true,
+      "detail": {
+        "physical_tier": "upper",
+        "physical_name": "HB-DRAM",
+        "total_capacity_mib": 8192,
+        "partitions": 16,
+        "capacity_mib_per_partition": 512,
+        "logical_banks_per_partition": 4,
+        "total_logical_banks": 64,
+        "partition_ids": [
+          "CH0",
+          "CH1",
+          "CH2",
+          "CH3",
+          "CH4",
+          "CH5",
+          "CH6",
+          "CH7",
+          "CH8",
+          "CH9",
+          "CH10",
+          "CH11",
+          "CH12",
+          "CH13",
+          "CH14",
+          "CH15"
+        ],
+        "transaction_bytes": 32,
+        "request_mode_granularity": "partition",
+        "normal_nmp_mutually_exclusive_per_partition": true,
+        "timing_proxy": {
+          "simulator": "Ramulator2",
+          "commit": "b30320bc9385b708e86b67ebb9f48858cc66d798",
+          "command_timing_source": "LPDDR5_6400",
+          "status": "proxy_not_physical_HB_timing",
+          "tck_ns": 1.25,
+          "scheduler": "FRFCFS",
+          "row_policy": "Open",
+          "refresh": "AllBank",
+          "cross_logical_request_multi_outstanding": true,
+          "ramulator_transaction_bytes": 32,
+          "deepstack_oracle_sector_bytes": 256,
+          "bandwidth_floor_policy": "per_partition_serialized_service_reservation_with_overlapping_ramulator_requests"
+        },
+        "ramulator_instances": 16,
+        "capacity_change_from_v3_5": {
+          "old_total_mib": 4096,
+          "old_per_partition_mib": 256,
+          "new_total_mib": 8192,
+          "new_per_partition_mib": 512,
+          "changed_dimension": "row_depth_only",
+          "logical_banks_per_partition_unchanged": true,
+          "bandwidth_unchanged": true
+        }
+      }
+    },
+    "address_total_8_gib": {
+      "pass": true,
+      "detail": 8589934592
+    },
+    "address_partition_512_mib": {
+      "pass": true,
+      "detail": 536870912
+    },
+    "address_selector_updated": {
+      "pass": true,
+      "detail": "address[32:29]"
+    },
+    "sixteen_contiguous_ranges": {
+      "pass": true,
+      "detail": 16
+    },
+    "last_range_ends_at_total": {
+      "pass": true,
+      "detail": {
+        "id": "CH15",
+        "base": 8053063680,
+        "limit_exclusive": 8589934592,
+        "banks": [
+          "B60",
+          "B61",
+          "B62",
+          "B63"
+        ]
+      }
+    },
+    "npu_capacity_matches": {
+      "pass": true,
+      "detail": {
+        "enable": true,
+        "model": "chiplet",
+        "transaction_bytes": 32,
+        "cycle_scale": 1.25,
+        "gate_on_external_completion": true,
+        "cross_logical_request_multi_outstanding": true,
+        "size_bytes_per_client": 536870912,
+        "burst_bytes": 4096,
+        "region_bytes": 536870912,
+        "mapping_file": "address_mapping.json",
+        "capacity_change": "V3.6 doubles addressable rows; transaction size, banks and bandwidth are unchanged"
+      }
+    },
+    "ramulator_capacity_matches": {
+      "pass": true,
+      "detail": 536870912
+    },
+    "ramulator_row_depth_doubled": {
+      "pass": true,
+      "detail": [
+        1,
+        1,
+        4,
+        4,
+        16384,
+        1024
+      ]
+    },
+    "decoded_banks_unchanged": {
+      "pass": true,
+      "detail": 16
+    },
+    "hb_bandwidth_unchanged": {
+      "pass": true,
+      "detail": 25.6
+    },
+    "qwen_theoretical_headroom_positive": {
+      "pass": true,
+      "detail": 3890741248
+    },
+    "v3_5_sources_unchanged": {
+      "pass": true,
+      "detail": {
+        "files": 11
+      }
+    }
+  }
+}

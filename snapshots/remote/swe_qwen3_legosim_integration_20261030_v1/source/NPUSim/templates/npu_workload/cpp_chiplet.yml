@@ -1,0 +1,20 @@
+phase1:
+  # C++ 原语 NPU 使用与 ONNX 应用相同的坐标 (1,0)；DRAM 为 (2,0)。
+  - cmd: "$BENCHMARK_ROOT/bin/npu_primitives_template"
+    args: ["1", "0", "$BENCHMARK_ROOT/npu_chiplet_config.json", "$BENCHMARK_ROOT/output/cpp_run/reports"]
+    log: "npu_primitives.1.0.log"
+    is_to_stdout: false
+    clock_rate: 1
+  - cmd: "$SIMULATOR_ROOT/Ramulator2-Chiplet/ramulator2"
+    # 共享 LPDDR5 server；最后的 1 表示等待一个 NPU client 的 shutdown 标记。
+    args: ["2", "0", "1.0", "--server", "$SIMULATOR_ROOT/Ramulator2-Chiplet/lpddr5_config.yaml", "134217728", "1", "$BENCHMARK_ROOT/output/cpp_run/reports/ramulator2_lpddr5_timing.csv"]
+    log: "ramulator2.2.0.log"
+    is_to_stdout: false
+    clock_rate: 1
+phase2:
+  # InterChiplet phase1 写出的 ../bench.txt 由 PopNet 回放，生成 ../delayInfo.txt。
+  - cmd: "$SIMULATOR_ROOT/popnet_chiplet/build/popnet"
+    args: ["-A", "3", "-c", "1", "-V", "3", "-B", "12", "-O", "12", "-F", "4", "-L", "1", "-T", "1000000000", "-r", "1", "-I", "../bench.txt", "-R", "4", "-G", "$BENCHMARK_ROOT/cpu_npu_dram_3.gv", "-D", "../delayInfo.txt", "-P"]
+    log: "popnet.log"
+    is_to_stdout: false
+    clock_rate: 1

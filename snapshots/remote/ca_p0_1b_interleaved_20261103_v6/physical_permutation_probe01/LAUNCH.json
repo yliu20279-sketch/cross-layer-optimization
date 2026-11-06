@@ -1,0 +1,21 @@
+{
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "120",
+    "/mnt/sda1/h3240101068/ca_semmoe_hiband_coupled_20261102_v5/build_04/coupled_backend",
+    "/mnt/sda1/h3240101068/ca_p0_1b_interleaved_20261103_v6/physical_permutation_probe01",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "project_dynamic"
+  ],
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/ca_p0_1b_interleaved_20261103_v6/physical_permutation_probe01",
+    "POPNET_STATS_WINDOW_CYCLES": "100000"
+  },
+  "binary_sha256": "fe5c47ff083c6b3168217156caaead8e1ef2e1e7d4f4b2f2cacf17681364d9ba",
+  "scope": "bounded coupled functional check",
+  "cpu_pcie_costs_verified": false,
+  "formal_performance": false
+}

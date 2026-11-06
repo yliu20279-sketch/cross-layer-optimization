@@ -1,0 +1,123 @@
+{
+  "_id": "65f9e0e992911b173703716f",
+  "id": "princeton-nlp/SWE-bench_Lite",
+  "author": "princeton-nlp",
+  "sha": "6ec7bb89b9342f664a54a6e0a6ea6501d3437cc2",
+  "lastModified": "2025-03-03T05:29:31.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "size_categories:n<1K",
+    "format:parquet",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:mlcroissant",
+    "library:polars",
+    "arxiv:2310.06770",
+    "region:us"
+  ],
+  "description": "\n\t\n\t\t\n\t\n\t\n\t\tDataset Summary\n\t\n\nSWE-bench Lite is subset of SWE-bench, a dataset that tests systems\u2019 ability to solve GitHub issues automatically. The dataset collects 300 test Issue-Pull Request pairs from 11 popular Python. Evaluation is performed by unit test verification using post-PR behavior as the reference solution.\nThe dataset was released as part of SWE-bench: Can Language Models Resolve Real-World GitHub Issues?\n\n\t\n\t\t\n\t\n\t\n\t\tWant to run inference now?\n\t\n\nThis dataset only contains the\u2026 See the full description on the dataset page: https://huggingface.co/datasets/princeton-nlp/SWE-bench_Lite.",
+  "downloads": 81160,
+  "likes": 76,
+  "cardData": {
+    "dataset_info": {
+      "features": [
+        {
+          "name": "repo",
+          "dtype": "string"
+        },
+        {
+          "name": "instance_id",
+          "dtype": "string"
+        },
+        {
+          "name": "base_commit",
+          "dtype": "string"
+        },
+        {
+          "name": "patch",
+          "dtype": "string"
+        },
+        {
+          "name": "test_patch",
+          "dtype": "string"
+        },
+        {
+          "name": "problem_statement",
+          "dtype": "string"
+        },
+        {
+          "name": "hints_text",
+          "dtype": "string"
+        },
+        {
+          "name": "created_at",
+          "dtype": "string"
+        },
+        {
+          "name": "version",
+          "dtype": "string"
+        },
+        {
+          "name": "FAIL_TO_PASS",
+          "dtype": "string"
+        },
+        {
+          "name": "PASS_TO_PASS",
+          "dtype": "string"
+        },
+        {
+          "name": "environment_setup_commit",
+          "dtype": "string"
+        }
+      ],
+      "splits": [
+        {
+          "name": "dev",
+          "num_bytes": 232250,
+          "num_examples": 23
+        },
+        {
+          "name": "test",
+          "num_bytes": 3520909,
+          "num_examples": 300
+        }
+      ],
+      "download_size": 1239091,
+      "dataset_size": 3753159
+    },
+    "configs": [
+      {
+        "config_name": "default",
+        "data_files": [
+          {
+            "split": "dev",
+            "path": "data/dev-*"
+          },
+          {
+            "split": "test",
+            "path": "data/test-*"
+          }
+        ]
+      }
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "data/dev-00000-of-00001.parquet"
+    },
+    {
+      "rfilename": "data/test-00000-of-00001.parquet"
+    }
+  ],
+  "createdAt": "2024-03-19T19:00:57.000Z",
+  "usedStorage": 7334166
+}

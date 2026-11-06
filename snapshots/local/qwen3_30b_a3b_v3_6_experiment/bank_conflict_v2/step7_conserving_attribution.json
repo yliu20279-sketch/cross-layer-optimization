@@ -1,0 +1,2213 @@
+{
+  "status": "PASS",
+  "schema": "fulltrace-paired-conserving-attribution-v1",
+  "definition": "Oracle critical-path components plus paired normal-minus-owner-shadow delta. Only the paired delta is strict cross-request Bank exposed time.",
+  "components_order": [
+    "Compute",
+    "NoC",
+    "DRAM service and non-cross-request memory wait",
+    "Paging DMA",
+    "Sync/other",
+    "Strict cross-request Bank exposed"
+  ],
+  "cases": [
+    {
+      "layer": 0,
+      "weight": 5,
+      "normal_cycles": 5307854.0,
+      "oracle_cycles": 5307854.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 1972586.0,
+        "NoC": 593.0,
+        "DRAM service and non-cross-request memory wait": 591375.0,
+        "Paging DMA": 0.0,
+        "Sync/other": 2743300.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 817,
+        "strict_wait_ticks": 22934.0
+      },
+      "oracle_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 384,
+        "strict_wait_ticks": 1168.0
+      },
+      "critical_path_op_ids": [
+        273,
+        274,
+        275,
+        324,
+        340,
+        356,
+        357,
+        375,
+        376,
+        377,
+        650,
+        651,
+        1039,
+        1040,
+        1053,
+        1055
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 273,
+          "kind": "LOAD",
+          "task": "S0L0W2_KV_read_3",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 71040.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 71040.0
+          }
+        },
+        {
+          "op_id": 274,
+          "kind": "COMPUTE",
+          "task": "S0L0W2_attention_3",
+          "ready": 71040.0,
+          "start": 457580.0,
+          "done": 658276.0,
+          "split": {
+            "Compute": 200696.0,
+            "Sync/other": 386540.0
+          }
+        },
+        {
+          "op_id": 275,
+          "kind": "STORE",
+          "task": "S0L0W2_KV_append_3",
+          "ready": 658276.0,
+          "start": 658276.0,
+          "done": 809971.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 151695.0
+          }
+        },
+        {
+          "op_id": 324,
+          "kind": "BARRIER",
+          "task": "S0L0W2_attention_collective_ready",
+          "ready": 809971.0,
+          "start": 809971.0,
+          "done": 809971.0,
+          "split": {}
+        },
+        {
+          "op_id": 340,
+          "kind": "NET",
+          "task": "S0L0W2_attention_ring_aggregate_15",
+          "ready": 809971.0,
+          "start": 810196.0,
+          "done": 810436.0,
+          "split": {
+            "NoC": 465.0
+          }
+        },
+        {
+          "op_id": 356,
+          "kind": "COMPUTE",
+          "task": "S0L0W2_router_15",
+          "ready": 810436.0,
+          "start": 858972.0,
+          "done": 875226.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 48536.0
+          }
+        },
+        {
+          "op_id": 357,
+          "kind": "BARRIER",
+          "task": "S0L0W2_router_ready",
+          "ready": 875226.0,
+          "start": 875226.0,
+          "done": 875226.0,
+          "split": {}
+        },
+        {
+          "op_id": 375,
+          "kind": "BARRIER",
+          "task": "S0L0W2E84_arrival",
+          "ready": 875226.0,
+          "start": 875226.0,
+          "done": 875226.0,
+          "split": {}
+        },
+        {
+          "op_id": 376,
+          "kind": "LOAD",
+          "task": "S0L0W2E84_weight_read",
+          "ready": 875226.0,
+          "start": 875226.0,
+          "done": 1059546.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 184320.0
+          }
+        },
+        {
+          "op_id": 377,
+          "kind": "COMPUTE",
+          "task": "S0L0W2E84_SwiGLU",
+          "ready": 1059546.0,
+          "start": 1704294.0,
+          "done": 2289506.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 644748.0
+          }
+        },
+        {
+          "op_id": 650,
+          "kind": "LOAD",
+          "task": "S0L0W4E84_weight_read",
+          "ready": 2289506.0,
+          "start": 2289506.0,
+          "done": 2381666.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 651,
+          "kind": "COMPUTE",
+          "task": "S0L0W4E84_SwiGLU",
+          "ready": 2381666.0,
+          "start": 4045142.0,
+          "done": 4630354.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1663476.0
+          }
+        },
+        {
+          "op_id": 1039,
+          "kind": "LOAD",
+          "task": "S0L0W7E84_weight_read",
+          "ready": 4630354.0,
+          "start": 4630354.0,
+          "done": 4722514.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1040,
+          "kind": "COMPUTE",
+          "task": "S0L0W7E84_SwiGLU",
+          "ready": 4722514.0,
+          "start": 4722514.0,
+          "done": 5307726.0,
+          "split": {
+            "Compute": 585212.0
+          }
+        },
+        {
+          "op_id": 1053,
+          "kind": "NET",
+          "task": "S0L0W7_combine_15_2",
+          "ready": 5307726.0,
+          "start": 5307726.0,
+          "done": 5307854.0,
+          "split": {
+            "NoC": 128.0
+          }
+        },
+        {
+          "op_id": 1055,
+          "kind": "BARRIER",
+          "task": "S0L0W7_residual_ready",
+          "ready": 5307854.0,
+          "start": 5307854.0,
+          "done": 5307854.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 8,
+      "weight": 8,
+      "normal_cycles": 8141498.0,
+      "oracle_cycles": 8141498.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 1972586.0,
+        "NoC": 849.0,
+        "DRAM service and non-cross-request memory wait": 678791.0,
+        "Paging DMA": 0.0,
+        "Sync/other": 5489272.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 516,
+        "strict_wait_ticks": 41720.0
+      },
+      "oracle_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 480,
+        "strict_wait_ticks": 1840.0
+      },
+      "critical_path_op_ids": [
+        726,
+        727,
+        728,
+        729,
+        745,
+        761,
+        762,
+        763,
+        780,
+        781,
+        782,
+        903,
+        904,
+        1040,
+        1041,
+        1057,
+        1059
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 726,
+          "kind": "LOAD",
+          "task": "S0L8W5_KV_read_15",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 142080.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 142080.0
+          }
+        },
+        {
+          "op_id": 727,
+          "kind": "COMPUTE",
+          "task": "S0L8W5_attention_15",
+          "ready": 142080.0,
+          "start": 1092176.0,
+          "done": 1292872.0,
+          "split": {
+            "Compute": 200696.0,
+            "Sync/other": 950096.0
+          }
+        },
+        {
+          "op_id": 728,
+          "kind": "STORE",
+          "task": "S0L8W5_KV_append_15",
+          "ready": 1292872.0,
+          "start": 1292872.0,
+          "done": 1292877.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 5.0
+          }
+        },
+        {
+          "op_id": 729,
+          "kind": "BARRIER",
+          "task": "S0L8W5_attention_collective_ready",
+          "ready": 1292877.0,
+          "start": 1292877.0,
+          "done": 1292877.0,
+          "split": {}
+        },
+        {
+          "op_id": 745,
+          "kind": "NET",
+          "task": "S0L8W5_attention_ring_aggregate_15",
+          "ready": 1292877.0,
+          "start": 1293102.0,
+          "done": 1293342.0,
+          "split": {
+            "NoC": 465.0
+          }
+        },
+        {
+          "op_id": 761,
+          "kind": "COMPUTE",
+          "task": "S0L8W5_router_15",
+          "ready": 1293342.0,
+          "start": 1309126.0,
+          "done": 1325380.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 15784.0
+          }
+        },
+        {
+          "op_id": 762,
+          "kind": "BARRIER",
+          "task": "S0L8W5_router_ready",
+          "ready": 1325380.0,
+          "start": 1325380.0,
+          "done": 1325380.0,
+          "split": {}
+        },
+        {
+          "op_id": 763,
+          "kind": "NET",
+          "task": "S0L8W5_dispatch_4_15",
+          "ready": 1325380.0,
+          "start": 1325380.0,
+          "done": 1325636.0,
+          "split": {
+            "NoC": 256.0
+          }
+        },
+        {
+          "op_id": 780,
+          "kind": "BARRIER",
+          "task": "S0L8W5E80_arrival",
+          "ready": 1325636.0,
+          "start": 1325636.0,
+          "done": 1325636.0,
+          "split": {}
+        },
+        {
+          "op_id": 781,
+          "kind": "LOAD",
+          "task": "S0L8W5E80_weight_read",
+          "ready": 1325636.0,
+          "start": 1325636.0,
+          "done": 1678022.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 352386.0
+          }
+        },
+        {
+          "op_id": 782,
+          "kind": "COMPUTE",
+          "task": "S0L8W5E80_SwiGLU",
+          "ready": 1678022.0,
+          "start": 4044886.0,
+          "done": 4630098.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 2366864.0
+          }
+        },
+        {
+          "op_id": 903,
+          "kind": "LOAD",
+          "task": "S0L8W6E80_weight_read",
+          "ready": 4630098.0,
+          "start": 4630098.0,
+          "done": 4722258.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 904,
+          "kind": "COMPUTE",
+          "task": "S0L8W6E80_SwiGLU",
+          "ready": 4722258.0,
+          "start": 5215310.0,
+          "done": 5800522.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 493052.0
+          }
+        },
+        {
+          "op_id": 1040,
+          "kind": "LOAD",
+          "task": "S0L8W7E80_weight_read",
+          "ready": 5800522.0,
+          "start": 5800522.0,
+          "done": 5892682.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1041,
+          "kind": "COMPUTE",
+          "task": "S0L8W7E80_SwiGLU",
+          "ready": 5892682.0,
+          "start": 7556158.0,
+          "done": 8141370.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1663476.0
+          }
+        },
+        {
+          "op_id": 1057,
+          "kind": "NET",
+          "task": "S0L8W7_combine_15_6",
+          "ready": 8141370.0,
+          "start": 8141370.0,
+          "done": 8141498.0,
+          "split": {
+            "NoC": 128.0
+          }
+        },
+        {
+          "op_id": 1059,
+          "kind": "BARRIER",
+          "task": "S0L8W7_residual_ready",
+          "ready": 8141498.0,
+          "start": 8141498.0,
+          "done": 8141498.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 16,
+      "weight": 8,
+      "normal_cycles": 8726582.0,
+      "oracle_cycles": 8726582.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 1972586.0,
+        "NoC": 721.0,
+        "DRAM service and non-cross-request memory wait": 418565.0,
+        "Paging DMA": 0.0,
+        "Sync/other": 6334710.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 3,
+        "strict_wait_ticks": 1650.0
+      },
+      "oracle_bank": {
+        "transactions": 893056,
+        "transactions_with_wait": 0,
+        "strict_wait_ticks": 0.0
+      },
+      "critical_path_op_ids": [
+        722,
+        723,
+        724,
+        725,
+        741,
+        757,
+        758,
+        759,
+        778,
+        779,
+        780,
+        904,
+        905,
+        1041,
+        1042,
+        1053
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 722,
+          "kind": "LOAD",
+          "task": "S0L16W5_KV_read_15",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 142080.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 142080.0
+          }
+        },
+        {
+          "op_id": 723,
+          "kind": "COMPUTE",
+          "task": "S0L16W5_attention_15",
+          "ready": 142080.0,
+          "start": 1092176.0,
+          "done": 1292872.0,
+          "split": {
+            "Compute": 200696.0,
+            "Sync/other": 950096.0
+          }
+        },
+        {
+          "op_id": 724,
+          "kind": "STORE",
+          "task": "S0L16W5_KV_append_15",
+          "ready": 1292872.0,
+          "start": 1292872.0,
+          "done": 1292877.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 5.0
+          }
+        },
+        {
+          "op_id": 725,
+          "kind": "BARRIER",
+          "task": "S0L16W5_attention_collective_ready",
+          "ready": 1292877.0,
+          "start": 1292877.0,
+          "done": 1292877.0,
+          "split": {}
+        },
+        {
+          "op_id": 741,
+          "kind": "NET",
+          "task": "S0L16W5_attention_ring_aggregate_15",
+          "ready": 1292877.0,
+          "start": 1293102.0,
+          "done": 1293342.0,
+          "split": {
+            "NoC": 465.0
+          }
+        },
+        {
+          "op_id": 757,
+          "kind": "COMPUTE",
+          "task": "S0L16W5_router_15",
+          "ready": 1293342.0,
+          "start": 1309126.0,
+          "done": 1325380.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 15784.0
+          }
+        },
+        {
+          "op_id": 758,
+          "kind": "BARRIER",
+          "task": "S0L16W5_router_ready",
+          "ready": 1325380.0,
+          "start": 1325380.0,
+          "done": 1325380.0,
+          "split": {}
+        },
+        {
+          "op_id": 759,
+          "kind": "NET",
+          "task": "S0L16W5_dispatch_3_8",
+          "ready": 1325380.0,
+          "start": 1325380.0,
+          "done": 1325636.0,
+          "split": {
+            "NoC": 256.0
+          }
+        },
+        {
+          "op_id": 778,
+          "kind": "BARRIER",
+          "task": "S0L16W5E83_arrival",
+          "ready": 1325636.0,
+          "start": 1325636.0,
+          "done": 1325636.0,
+          "split": {}
+        },
+        {
+          "op_id": 779,
+          "kind": "LOAD",
+          "task": "S0L16W5E83_weight_read",
+          "ready": 1325636.0,
+          "start": 1325636.0,
+          "done": 1417796.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 780,
+          "kind": "COMPUTE",
+          "task": "S0L16W5E83_SwiGLU",
+          "ready": 1417796.0,
+          "start": 5215310.0,
+          "done": 5800522.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 3797514.0
+          }
+        },
+        {
+          "op_id": 904,
+          "kind": "LOAD",
+          "task": "S0L16W6E83_weight_read",
+          "ready": 5800522.0,
+          "start": 5800522.0,
+          "done": 5892682.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 905,
+          "kind": "COMPUTE",
+          "task": "S0L16W6E83_SwiGLU",
+          "ready": 5892682.0,
+          "start": 6385734.0,
+          "done": 6970946.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 493052.0
+          }
+        },
+        {
+          "op_id": 1041,
+          "kind": "LOAD",
+          "task": "S0L16W7E83_weight_read",
+          "ready": 6970946.0,
+          "start": 6970946.0,
+          "done": 7063106.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1042,
+          "kind": "COMPUTE",
+          "task": "S0L16W7E83_SwiGLU",
+          "ready": 7063106.0,
+          "start": 8141370.0,
+          "done": 8726582.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1078264.0
+          }
+        },
+        {
+          "op_id": 1053,
+          "kind": "BARRIER",
+          "task": "S0L16W7_residual_ready",
+          "ready": 8726582.0,
+          "start": 8726582.0,
+          "done": 8726582.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 24,
+      "weight": 8,
+      "normal_cycles": 7279352.0,
+      "oracle_cycles": 7279352.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 2557798.0,
+        "NoC": 834.0,
+        "DRAM service and non-cross-request memory wait": 1002509.0,
+        "Paging DMA": 300346.0,
+        "Sync/other": 3417865.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 1685632,
+        "transactions_with_wait": 45,
+        "strict_wait_ticks": 112642.0
+      },
+      "oracle_bank": {
+        "transactions": 1685632,
+        "transactions_with_wait": 1,
+        "strict_wait_ticks": 1100.0
+      },
+      "critical_path_op_ids": [
+        57,
+        58,
+        59,
+        64,
+        79,
+        95,
+        97,
+        99,
+        139,
+        140,
+        142,
+        143,
+        144,
+        145,
+        313,
+        314,
+        1081,
+        1082,
+        1227,
+        1228,
+        1233,
+        1237
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 57,
+          "kind": "LOAD",
+          "task": "S0L24W0_KV_read_14",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 23680.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 23680.0
+          }
+        },
+        {
+          "op_id": 58,
+          "kind": "COMPUTE",
+          "task": "S0L24W0_attention_14",
+          "ready": 23680.0,
+          "start": 23680.0,
+          "done": 224376.0,
+          "split": {
+            "Compute": 200696.0
+          }
+        },
+        {
+          "op_id": 59,
+          "kind": "STORE",
+          "task": "S0L24W0_KV_append_14",
+          "ready": 224376.0,
+          "start": 224376.0,
+          "done": 742405.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 518029.0
+          }
+        },
+        {
+          "op_id": 64,
+          "kind": "BARRIER",
+          "task": "S0L24W0_attention_collective_ready",
+          "ready": 742405.0,
+          "start": 742405.0,
+          "done": 742405.0,
+          "split": {}
+        },
+        {
+          "op_id": 79,
+          "kind": "NET",
+          "task": "S0L24W0_attention_ring_aggregate_14",
+          "ready": 742405.0,
+          "start": 742615.0,
+          "done": 742855.0,
+          "split": {
+            "NoC": 450.0
+          }
+        },
+        {
+          "op_id": 95,
+          "kind": "COMPUTE",
+          "task": "S0L24W0_router_14",
+          "ready": 742855.0,
+          "start": 833768.0,
+          "done": 850022.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 90913.0
+          }
+        },
+        {
+          "op_id": 97,
+          "kind": "BARRIER",
+          "task": "S0L24W0_router_ready",
+          "ready": 850022.0,
+          "start": 850022.0,
+          "done": 850022.0,
+          "split": {}
+        },
+        {
+          "op_id": 99,
+          "kind": "NET",
+          "task": "S0L24W0_dispatch_14_8",
+          "ready": 850022.0,
+          "start": 850150.0,
+          "done": 850278.0,
+          "split": {
+            "NoC": 256.0
+          }
+        },
+        {
+          "op_id": 139,
+          "kind": "BARRIER",
+          "task": "S0L24W0E87_arrival",
+          "ready": 850278.0,
+          "start": 850278.0,
+          "done": 850278.0,
+          "split": {}
+        },
+        {
+          "op_id": 140,
+          "kind": "DMA_H2D",
+          "task": "S0L24W0E87_fetch",
+          "ready": 850278.0,
+          "start": 1064352.0,
+          "done": 1107488.0,
+          "split": {
+            "Paging DMA": 257210.0
+          }
+        },
+        {
+          "op_id": 142,
+          "kind": "DMA_D2H",
+          "task": "S0L24W0E87_evict",
+          "ready": 1107488.0,
+          "start": 1107488.0,
+          "done": 1150624.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 143,
+          "kind": "STORE",
+          "task": "S0L24W0E87_commit",
+          "ready": 1150624.0,
+          "start": 1150624.0,
+          "done": 1242784.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 144,
+          "kind": "LOAD",
+          "task": "S0L24W0E87_weight_read",
+          "ready": 1242784.0,
+          "start": 1242784.0,
+          "done": 1334944.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 145,
+          "kind": "COMPUTE",
+          "task": "S0L24W0E87_SwiGLU",
+          "ready": 1334944.0,
+          "start": 1334944.0,
+          "done": 1920156.0,
+          "split": {
+            "Compute": 585212.0
+          }
+        },
+        {
+          "op_id": 313,
+          "kind": "LOAD",
+          "task": "S0L24W1E87_weight_read",
+          "ready": 1920156.0,
+          "start": 1920156.0,
+          "done": 2012316.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 314,
+          "kind": "COMPUTE",
+          "task": "S0L24W1E87_SwiGLU",
+          "ready": 2012316.0,
+          "start": 2505368.0,
+          "done": 3090580.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 493052.0
+          }
+        },
+        {
+          "op_id": 1081,
+          "kind": "LOAD",
+          "task": "S0L24W6E87_weight_read",
+          "ready": 3090580.0,
+          "start": 3090580.0,
+          "done": 3182740.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1082,
+          "kind": "COMPUTE",
+          "task": "S0L24W6E87_SwiGLU",
+          "ready": 3182740.0,
+          "start": 6016640.0,
+          "done": 6601852.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 2833900.0
+          }
+        },
+        {
+          "op_id": 1227,
+          "kind": "LOAD",
+          "task": "S0L24W7E87_weight_read",
+          "ready": 6601852.0,
+          "start": 6601852.0,
+          "done": 6694012.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1228,
+          "kind": "COMPUTE",
+          "task": "S0L24W7E87_SwiGLU",
+          "ready": 6694012.0,
+          "start": 6694012.0,
+          "done": 7279224.0,
+          "split": {
+            "Compute": 585212.0
+          }
+        },
+        {
+          "op_id": 1233,
+          "kind": "NET",
+          "task": "S0L24W7_combine_8_9",
+          "ready": 7279224.0,
+          "start": 7279224.0,
+          "done": 7279352.0,
+          "split": {
+            "NoC": 128.0
+          }
+        },
+        {
+          "op_id": 1237,
+          "kind": "BARRIER",
+          "task": "S0L24W7_residual_ready",
+          "ready": 7279352.0,
+          "start": 7279352.0,
+          "done": 7279352.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 32,
+      "weight": 8,
+      "normal_cycles": 10813561.0,
+      "oracle_cycles": 10813561.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 1972586.0,
+        "NoC": 1075.0,
+        "DRAM service and non-cross-request memory wait": 1390433.0,
+        "Paging DMA": 1026810.0,
+        "Sync/other": 6422657.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 1630336,
+        "transactions_with_wait": 659,
+        "strict_wait_ticks": 140170.0
+      },
+      "oracle_bank": {
+        "transactions": 1630336,
+        "transactions_with_wait": 738,
+        "strict_wait_ticks": 9263.0
+      },
+      "critical_path_op_ids": [
+        53,
+        54,
+        55,
+        64,
+        78,
+        94,
+        97,
+        99,
+        123,
+        124,
+        126,
+        127,
+        307,
+        309,
+        310,
+        607,
+        609,
+        610,
+        756,
+        758,
+        759,
+        904,
+        906,
+        907,
+        908,
+        909,
+        1047,
+        1048,
+        1199,
+        1200,
+        1212,
+        1215
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 53,
+          "kind": "LOAD",
+          "task": "S0L32W0_KV_read_13",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 23680.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 23680.0
+          }
+        },
+        {
+          "op_id": 54,
+          "kind": "COMPUTE",
+          "task": "S0L32W0_attention_13",
+          "ready": 23680.0,
+          "start": 23680.0,
+          "done": 224376.0,
+          "split": {
+            "Compute": 200696.0
+          }
+        },
+        {
+          "op_id": 55,
+          "kind": "STORE",
+          "task": "S0L32W0_KV_append_13",
+          "ready": 224376.0,
+          "start": 224376.0,
+          "done": 834565.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 610189.0
+          }
+        },
+        {
+          "op_id": 64,
+          "kind": "BARRIER",
+          "task": "S0L32W0_attention_collective_ready",
+          "ready": 834565.0,
+          "start": 834565.0,
+          "done": 834565.0,
+          "split": {}
+        },
+        {
+          "op_id": 78,
+          "kind": "NET",
+          "task": "S0L32W0_attention_ring_aggregate_13",
+          "ready": 834565.0,
+          "start": 834760.0,
+          "done": 835000.0,
+          "split": {
+            "NoC": 435.0
+          }
+        },
+        {
+          "op_id": 94,
+          "kind": "COMPUTE",
+          "task": "S0L32W0_router_13",
+          "ready": 835000.0,
+          "start": 1034464.0,
+          "done": 1050718.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 199464.0
+          }
+        },
+        {
+          "op_id": 97,
+          "kind": "BARRIER",
+          "task": "S0L32W0_router_ready",
+          "ready": 1050718.0,
+          "start": 1050718.0,
+          "done": 1050718.0,
+          "split": {}
+        },
+        {
+          "op_id": 99,
+          "kind": "NET",
+          "task": "S0L32W0_dispatch_4_11",
+          "ready": 1050718.0,
+          "start": 1050974.0,
+          "done": 1051102.0,
+          "split": {
+            "NoC": 384.0
+          }
+        },
+        {
+          "op_id": 123,
+          "kind": "BARRIER",
+          "task": "S0L32W0E33_arrival",
+          "ready": 1051102.0,
+          "start": 1051102.0,
+          "done": 1051102.0,
+          "split": {}
+        },
+        {
+          "op_id": 124,
+          "kind": "DMA_H2D",
+          "task": "S0L32W0E33_fetch",
+          "ready": 1051102.0,
+          "start": 1179316.0,
+          "done": 1222452.0,
+          "split": {
+            "Paging DMA": 171350.0
+          }
+        },
+        {
+          "op_id": 126,
+          "kind": "DMA_D2H",
+          "task": "S0L32W0E33_evict",
+          "ready": 1222452.0,
+          "start": 1222452.0,
+          "done": 1265588.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 127,
+          "kind": "STORE",
+          "task": "S0L32W0E33_commit",
+          "ready": 1265588.0,
+          "start": 1265588.0,
+          "done": 1357748.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 307,
+          "kind": "DMA_H2D",
+          "task": "S0L32W1E104_fetch",
+          "ready": 1357748.0,
+          "start": 1607976.0,
+          "done": 1651112.0,
+          "split": {
+            "Paging DMA": 293364.0
+          }
+        },
+        {
+          "op_id": 309,
+          "kind": "DMA_D2H",
+          "task": "S0L32W1E104_evict",
+          "ready": 1651112.0,
+          "start": 1651112.0,
+          "done": 1694248.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 310,
+          "kind": "STORE",
+          "task": "S0L32W1E104_commit",
+          "ready": 1694248.0,
+          "start": 1694248.0,
+          "done": 1786408.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 607,
+          "kind": "DMA_H2D",
+          "task": "S0L32W3E106_fetch",
+          "ready": 1786408.0,
+          "start": 1908038.0,
+          "done": 1951174.0,
+          "split": {
+            "Paging DMA": 164766.0
+          }
+        },
+        {
+          "op_id": 609,
+          "kind": "DMA_D2H",
+          "task": "S0L32W3E106_evict",
+          "ready": 1951174.0,
+          "start": 1951174.0,
+          "done": 1994310.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 610,
+          "kind": "STORE",
+          "task": "S0L32W3E106_commit",
+          "ready": 1994310.0,
+          "start": 1994310.0,
+          "done": 2086470.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 756,
+          "kind": "DMA_H2D",
+          "task": "S0L32W4E61_fetch",
+          "ready": 2086470.0,
+          "start": 2165234.0,
+          "done": 2208370.0,
+          "split": {
+            "Paging DMA": 121900.0
+          }
+        },
+        {
+          "op_id": 758,
+          "kind": "DMA_D2H",
+          "task": "S0L32W4E61_evict",
+          "ready": 2208370.0,
+          "start": 2208370.0,
+          "done": 2251506.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 759,
+          "kind": "STORE",
+          "task": "S0L32W4E61_commit",
+          "ready": 2251506.0,
+          "start": 2251506.0,
+          "done": 2362950.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 111444.0
+          }
+        },
+        {
+          "op_id": 904,
+          "kind": "DMA_H2D",
+          "task": "S0L32W5E80_fetch",
+          "ready": 2362950.0,
+          "start": 2379564.0,
+          "done": 2422700.0,
+          "split": {
+            "Paging DMA": 59750.0
+          }
+        },
+        {
+          "op_id": 906,
+          "kind": "DMA_D2H",
+          "task": "S0L32W5E80_evict",
+          "ready": 2422700.0,
+          "start": 2422700.0,
+          "done": 2465836.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 907,
+          "kind": "STORE",
+          "task": "S0L32W5E80_commit",
+          "ready": 2465836.0,
+          "start": 2465836.0,
+          "done": 2557996.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 908,
+          "kind": "LOAD",
+          "task": "S0L32W5E80_weight_read",
+          "ready": 2557996.0,
+          "start": 2557996.0,
+          "done": 2650156.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 909,
+          "kind": "COMPUTE",
+          "task": "S0L32W5E80_SwiGLU",
+          "ready": 2650156.0,
+          "start": 6131609.0,
+          "done": 6716821.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 3481453.0
+          }
+        },
+        {
+          "op_id": 1047,
+          "kind": "LOAD",
+          "task": "S0L32W6E80_weight_read",
+          "ready": 6716821.0,
+          "start": 6716821.0,
+          "done": 6808981.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1048,
+          "kind": "COMPUTE",
+          "task": "S0L32W6E80_SwiGLU",
+          "ready": 6808981.0,
+          "start": 7887245.0,
+          "done": 8472457.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1078264.0
+          }
+        },
+        {
+          "op_id": 1199,
+          "kind": "LOAD",
+          "task": "S0L32W7E80_weight_read",
+          "ready": 8472457.0,
+          "start": 8472457.0,
+          "done": 8564617.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1200,
+          "kind": "COMPUTE",
+          "task": "S0L32W7E80_SwiGLU",
+          "ready": 8564617.0,
+          "start": 10228093.0,
+          "done": 10813305.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1663476.0
+          }
+        },
+        {
+          "op_id": 1212,
+          "kind": "NET",
+          "task": "S0L32W7_combine_11_4",
+          "ready": 10813305.0,
+          "start": 10813305.0,
+          "done": 10813561.0,
+          "split": {
+            "NoC": 256.0
+          }
+        },
+        {
+          "op_id": 1215,
+          "kind": "BARRIER",
+          "task": "S0L32W7_residual_ready",
+          "ready": 10813561.0,
+          "start": 10813561.0,
+          "done": 10813561.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 40,
+      "weight": 7,
+      "normal_cycles": 8972060.0,
+      "oracle_cycles": 8972060.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 1972586.0,
+        "NoC": 1030.0,
+        "DRAM service and non-cross-request memory wait": 1216653.0,
+        "Paging DMA": 593724.0,
+        "Sync/other": 5188067.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 1611904,
+        "transactions_with_wait": 632,
+        "strict_wait_ticks": 136105.0
+      },
+      "oracle_bank": {
+        "transactions": 1611904,
+        "transactions_with_wait": 515,
+        "strict_wait_ticks": 9892.0
+      },
+      "critical_path_op_ids": [
+        9,
+        10,
+        11,
+        64,
+        75,
+        91,
+        97,
+        100,
+        108,
+        109,
+        111,
+        112,
+        427,
+        429,
+        430,
+        431,
+        432,
+        1026,
+        1027,
+        1163,
+        1164,
+        1204,
+        1207
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 9,
+          "kind": "LOAD",
+          "task": "S0L40W0_KV_read_2",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 23680.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 23680.0
+          }
+        },
+        {
+          "op_id": 10,
+          "kind": "COMPUTE",
+          "task": "S0L40W0_attention_2",
+          "ready": 23680.0,
+          "start": 23680.0,
+          "done": 224376.0,
+          "split": {
+            "Compute": 200696.0
+          }
+        },
+        {
+          "op_id": 11,
+          "kind": "STORE",
+          "task": "S0L40W0_KV_append_2",
+          "ready": 224376.0,
+          "start": 224376.0,
+          "done": 926725.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 702349.0
+          }
+        },
+        {
+          "op_id": 64,
+          "kind": "BARRIER",
+          "task": "S0L40W0_attention_collective_ready",
+          "ready": 926725.0,
+          "start": 926725.0,
+          "done": 926725.0,
+          "split": {}
+        },
+        {
+          "op_id": 75,
+          "kind": "NET",
+          "task": "S0L40W0_attention_ring_aggregate_10",
+          "ready": 926725.0,
+          "start": 926875.0,
+          "done": 927115.0,
+          "split": {
+            "NoC": 390.0
+          }
+        },
+        {
+          "op_id": 91,
+          "kind": "COMPUTE",
+          "task": "S0L40W0_router_10",
+          "ready": 927115.0,
+          "start": 1034464.0,
+          "done": 1050718.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 107349.0
+          }
+        },
+        {
+          "op_id": 97,
+          "kind": "BARRIER",
+          "task": "S0L40W0_router_ready",
+          "ready": 1050718.0,
+          "start": 1050718.0,
+          "done": 1050718.0,
+          "split": {}
+        },
+        {
+          "op_id": 100,
+          "kind": "NET",
+          "task": "S0L40W0_dispatch_2_7",
+          "ready": 1050718.0,
+          "start": 1051102.0,
+          "done": 1051230.0,
+          "split": {
+            "NoC": 512.0
+          }
+        },
+        {
+          "op_id": 108,
+          "kind": "BARRIER",
+          "task": "S0L40W0E33_arrival",
+          "ready": 1051230.0,
+          "start": 1051230.0,
+          "done": 1051230.0,
+          "split": {}
+        },
+        {
+          "op_id": 109,
+          "kind": "DMA_H2D",
+          "task": "S0L40W0E33_fetch",
+          "ready": 1051230.0,
+          "start": 1093584.0,
+          "done": 1136720.0,
+          "split": {
+            "Paging DMA": 85490.0
+          }
+        },
+        {
+          "op_id": 111,
+          "kind": "DMA_D2H",
+          "task": "S0L40W0E33_evict",
+          "ready": 1136720.0,
+          "start": 1136720.0,
+          "done": 1179856.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 112,
+          "kind": "STORE",
+          "task": "S0L40W0E33_commit",
+          "ready": 1179856.0,
+          "start": 1179856.0,
+          "done": 1272016.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 427,
+          "kind": "DMA_H2D",
+          "task": "S0L40W2E17_fetch",
+          "ready": 1272016.0,
+          "start": 1650842.0,
+          "done": 1693978.0,
+          "split": {
+            "Paging DMA": 421962.0
+          }
+        },
+        {
+          "op_id": 429,
+          "kind": "DMA_D2H",
+          "task": "S0L40W2E17_evict",
+          "ready": 1693978.0,
+          "start": 1693978.0,
+          "done": 1737114.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 430,
+          "kind": "STORE",
+          "task": "S0L40W2E17_commit",
+          "ready": 1737114.0,
+          "start": 1737114.0,
+          "done": 1829274.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 431,
+          "kind": "LOAD",
+          "task": "S0L40W2E17_weight_read",
+          "ready": 1829274.0,
+          "start": 1829274.0,
+          "done": 1921434.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 432,
+          "kind": "COMPUTE",
+          "task": "S0L40W2E17_SwiGLU",
+          "ready": 1921434.0,
+          "start": 1949388.0,
+          "done": 2534600.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 27954.0
+          }
+        },
+        {
+          "op_id": 1026,
+          "kind": "LOAD",
+          "task": "S0L40W6E17_weight_read",
+          "ready": 2534600.0,
+          "start": 2534600.0,
+          "done": 2656584.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 121984.0
+          }
+        },
+        {
+          "op_id": 1027,
+          "kind": "COMPUTE",
+          "task": "S0L40W6E17_SwiGLU",
+          "ready": 2656584.0,
+          "start": 6631084.0,
+          "done": 7216296.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 3974500.0
+          }
+        },
+        {
+          "op_id": 1163,
+          "kind": "LOAD",
+          "task": "S0L40W7E17_weight_read",
+          "ready": 7216296.0,
+          "start": 7216296.0,
+          "done": 7308456.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1164,
+          "kind": "COMPUTE",
+          "task": "S0L40W7E17_SwiGLU",
+          "ready": 7308456.0,
+          "start": 8386720.0,
+          "done": 8971932.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1078264.0
+          }
+        },
+        {
+          "op_id": 1204,
+          "kind": "NET",
+          "task": "S0L40W7_combine_7_2",
+          "ready": 8971932.0,
+          "start": 8971932.0,
+          "done": 8972060.0,
+          "split": {
+            "NoC": 128.0
+          }
+        },
+        {
+          "op_id": 1207,
+          "kind": "BARRIER",
+          "task": "S0L40W7_residual_ready",
+          "ready": 8972060.0,
+          "start": 8972060.0,
+          "done": 8972060.0,
+          "split": {}
+        }
+      ]
+    },
+    {
+      "layer": 47,
+      "weight": 4,
+      "normal_cycles": 21868870.0,
+      "oracle_cycles": 21868870.0,
+      "strict_bank_exposed_cycles": 0.0,
+      "strict_bank_exposed_fraction": 0.0,
+      "components": {
+        "Compute": 4979940.0,
+        "NoC": 1083.0,
+        "DRAM service and non-cross-request memory wait": 1709779.0,
+        "Paging DMA": 848790.0,
+        "Sync/other": 14329278.0,
+        "Strict cross-request Bank exposed": 0.0
+      },
+      "conservation_error_cycles": 0.0,
+      "normal_bank": {
+        "transactions": 1593472,
+        "transactions_with_wait": 481,
+        "strict_wait_ticks": 29679.0
+      },
+      "oracle_bank": {
+        "transactions": 1593472,
+        "transactions_with_wait": 300,
+        "strict_wait_ticks": 7412.0
+      },
+      "critical_path_op_ids": [
+        1,
+        2,
+        3,
+        64,
+        70,
+        86,
+        97,
+        101,
+        139,
+        140,
+        142,
+        143,
+        292,
+        294,
+        295,
+        306,
+        308,
+        309,
+        316,
+        318,
+        319,
+        330,
+        332,
+        333,
+        481,
+        483,
+        484,
+        485,
+        486,
+        836,
+        837,
+        1143,
+        1144,
+        1295,
+        1296,
+        1307,
+        1308,
+        1324,
+        1325
+      ],
+      "critical_path_detail": [
+        {
+          "op_id": 1,
+          "kind": "LOAD",
+          "task": "S0L47W0_KV_read_0",
+          "ready": 0.0,
+          "start": 0.0,
+          "done": 23680.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 23680.0
+          }
+        },
+        {
+          "op_id": 2,
+          "kind": "COMPUTE",
+          "task": "S0L47W0_attention_0",
+          "ready": 23680.0,
+          "start": 23680.0,
+          "done": 224376.0,
+          "split": {
+            "Compute": 200696.0
+          }
+        },
+        {
+          "op_id": 3,
+          "kind": "STORE",
+          "task": "S0L47W0_KV_append_0",
+          "ready": 224376.0,
+          "start": 224376.0,
+          "done": 926725.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 702349.0
+          }
+        },
+        {
+          "op_id": 64,
+          "kind": "BARRIER",
+          "task": "S0L47W0_attention_collective_ready",
+          "ready": 926725.0,
+          "start": 926725.0,
+          "done": 926725.0,
+          "split": {}
+        },
+        {
+          "op_id": 70,
+          "kind": "NET",
+          "task": "S0L47W0_attention_ring_aggregate_5",
+          "ready": 926725.0,
+          "start": 926800.0,
+          "done": 927040.0,
+          "split": {
+            "NoC": 315.0
+          }
+        },
+        {
+          "op_id": 86,
+          "kind": "COMPUTE",
+          "task": "S0L47W0_router_5",
+          "ready": 927040.0,
+          "start": 1034464.0,
+          "done": 1050718.0,
+          "split": {
+            "Compute": 16254.0,
+            "Sync/other": 107424.0
+          }
+        },
+        {
+          "op_id": 97,
+          "kind": "BARRIER",
+          "task": "S0L47W0_router_ready",
+          "ready": 1050718.0,
+          "start": 1050718.0,
+          "done": 1050718.0,
+          "split": {}
+        },
+        {
+          "op_id": 101,
+          "kind": "NET",
+          "task": "S0L47W0_dispatch_5_0",
+          "ready": 1050718.0,
+          "start": 1051102.0,
+          "done": 1051230.0,
+          "split": {
+            "NoC": 512.0
+          }
+        },
+        {
+          "op_id": 139,
+          "kind": "BARRIER",
+          "task": "S0L47W0E85_arrival",
+          "ready": 1051230.0,
+          "start": 1051230.0,
+          "done": 1051230.0,
+          "split": {}
+        },
+        {
+          "op_id": 140,
+          "kind": "DMA_H2D",
+          "task": "S0L47W0E85_fetch",
+          "ready": 1051230.0,
+          "start": 1222182.0,
+          "done": 1265318.0,
+          "split": {
+            "Paging DMA": 214088.0
+          }
+        },
+        {
+          "op_id": 142,
+          "kind": "DMA_D2H",
+          "task": "S0L47W0E85_evict",
+          "ready": 1265318.0,
+          "start": 1265318.0,
+          "done": 1308454.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 143,
+          "kind": "STORE",
+          "task": "S0L47W0E85_commit",
+          "ready": 1308454.0,
+          "start": 1308454.0,
+          "done": 1400614.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 292,
+          "kind": "DMA_H2D",
+          "task": "S0L47W1E47_fetch",
+          "ready": 1400614.0,
+          "start": 1436512.0,
+          "done": 1479648.0,
+          "split": {
+            "Paging DMA": 79034.0
+          }
+        },
+        {
+          "op_id": 294,
+          "kind": "DMA_D2H",
+          "task": "S0L47W1E47_evict",
+          "ready": 1479648.0,
+          "start": 1479648.0,
+          "done": 1522784.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 295,
+          "kind": "STORE",
+          "task": "S0L47W1E47_commit",
+          "ready": 1522784.0,
+          "start": 1522784.0,
+          "done": 1614944.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 306,
+          "kind": "DMA_H2D",
+          "task": "S0L47W1E66_fetch",
+          "ready": 1614944.0,
+          "start": 1650842.0,
+          "done": 1693978.0,
+          "split": {
+            "Paging DMA": 79034.0
+          }
+        },
+        {
+          "op_id": 308,
+          "kind": "DMA_D2H",
+          "task": "S0L47W1E66_evict",
+          "ready": 1693978.0,
+          "start": 1693978.0,
+          "done": 1737114.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 309,
+          "kind": "STORE",
+          "task": "S0L47W1E66_commit",
+          "ready": 1737114.0,
+          "start": 1737114.0,
+          "done": 1829274.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 316,
+          "kind": "DMA_H2D",
+          "task": "S0L47W1E88_fetch",
+          "ready": 1829274.0,
+          "start": 1865172.0,
+          "done": 1908308.0,
+          "split": {
+            "Paging DMA": 79034.0
+          }
+        },
+        {
+          "op_id": 318,
+          "kind": "DMA_D2H",
+          "task": "S0L47W1E88_evict",
+          "ready": 1908308.0,
+          "start": 1908308.0,
+          "done": 1951444.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 319,
+          "kind": "STORE",
+          "task": "S0L47W1E88_commit",
+          "ready": 1951444.0,
+          "start": 1951444.0,
+          "done": 2043604.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 330,
+          "kind": "DMA_H2D",
+          "task": "S0L47W1E123_fetch",
+          "ready": 2043604.0,
+          "start": 2079502.0,
+          "done": 2122638.0,
+          "split": {
+            "Paging DMA": 79034.0
+          }
+        },
+        {
+          "op_id": 332,
+          "kind": "DMA_D2H",
+          "task": "S0L47W1E123_evict",
+          "ready": 2122638.0,
+          "start": 2122638.0,
+          "done": 2165774.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 333,
+          "kind": "STORE",
+          "task": "S0L47W1E123_commit",
+          "ready": 2165774.0,
+          "start": 2165774.0,
+          "done": 2320084.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 154310.0
+          }
+        },
+        {
+          "op_id": 481,
+          "kind": "DMA_H2D",
+          "task": "S0L47W2E86_fetch",
+          "ready": 2320084.0,
+          "start": 2336698.0,
+          "done": 2379834.0,
+          "split": {
+            "Paging DMA": 59750.0
+          }
+        },
+        {
+          "op_id": 483,
+          "kind": "DMA_D2H",
+          "task": "S0L47W2E86_evict",
+          "ready": 2379834.0,
+          "start": 2379834.0,
+          "done": 2422970.0,
+          "split": {
+            "Paging DMA": 43136.0
+          }
+        },
+        {
+          "op_id": 484,
+          "kind": "STORE",
+          "task": "S0L47W2E86_commit",
+          "ready": 2422970.0,
+          "start": 2422970.0,
+          "done": 2515130.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 485,
+          "kind": "LOAD",
+          "task": "S0L47W2E86_weight_read",
+          "ready": 2515130.0,
+          "start": 2515130.0,
+          "done": 2607290.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 486,
+          "kind": "COMPUTE",
+          "task": "S0L47W2E86_SwiGLU",
+          "ready": 2607290.0,
+          "start": 5589263.0,
+          "done": 6174475.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 2981973.0
+          }
+        },
+        {
+          "op_id": 836,
+          "kind": "LOAD",
+          "task": "S0L47W4E86_weight_read",
+          "ready": 6174475.0,
+          "start": 6174475.0,
+          "done": 6266635.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 837,
+          "kind": "COMPUTE",
+          "task": "S0L47W4E86_SwiGLU",
+          "ready": 6266635.0,
+          "start": 7930111.0,
+          "done": 8515323.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1663476.0
+          }
+        },
+        {
+          "op_id": 1143,
+          "kind": "LOAD",
+          "task": "S0L47W6E86_weight_read",
+          "ready": 8515323.0,
+          "start": 8515323.0,
+          "done": 8607483.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1144,
+          "kind": "COMPUTE",
+          "task": "S0L47W6E86_SwiGLU",
+          "ready": 8607483.0,
+          "start": 9685747.0,
+          "done": 10270959.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1078264.0
+          }
+        },
+        {
+          "op_id": 1295,
+          "kind": "LOAD",
+          "task": "S0L47W7E86_weight_read",
+          "ready": 10270959.0,
+          "start": 10270959.0,
+          "done": 10363119.0,
+          "split": {
+            "DRAM service and non-cross-request memory wait": 92160.0
+          }
+        },
+        {
+          "op_id": 1296,
+          "kind": "COMPUTE",
+          "task": "S0L47W7E86_SwiGLU",
+          "ready": 10363119.0,
+          "start": 11441383.0,
+          "done": 12026595.0,
+          "split": {
+            "Compute": 585212.0,
+            "Sync/other": 1078264.0
+          }
+        },
+        {
+          "op_id": 1307,
+          "kind": "NET",
+          "task": "S0L47W7_combine_0_4",
+          "ready": 12026595.0,
+          "start": 12026595.0,
+          "done": 12026851.0,
+          "split": {
+            "NoC": 256.0
+          }
+        },
+        {
+          "op_id": 1308,
+          "kind": "BARRIER",
+          "task": "S0L47W7_residual_ready",
+          "ready": 12026851.0,
+          "start": 12026851.0,
+          "done": 12026851.0,
+          "split": {}
+        },
+        {
+          "op_id": 1324,
+          "kind": "COMPUTE",
+          "task": "S0W7_lm_head_15",
+          "ready": 12026851.0,
+          "start": 19446728.0,
+          "done": 21868870.0,
+          "split": {
+            "Compute": 2422142.0,
+            "Sync/other": 7419877.0
+          }
+        },
+        {
+          "op_id": 1325,
+          "kind": "BARRIER",
+          "task": "S0W7_lm_head_ready",
+          "ready": 21868870.0,
+          "start": 21868870.0,
+          "done": 21868870.0,
+          "split": {}
+        }
+      ]
+    }
+  ],
+  "weighted_48_layer_estimate": {
+    "method": "nearest-representative-layer weights; extrapolation, not measured full-model endpoint",
+    "weights": {
+      "0": 5,
+      "8": 8,
+      "16": 8,
+      "24": 8,
+      "32": 8,
+      "40": 7,
+      "47": 4
+    },
+    "normal_cycles": 456507114.0,
+    "components": {
+      "Compute": 111395240.0,
+      "NoC": 42339.0,
+      "DRAM service and non-cross-request memory wait": 46234946.0,
+      "Paging DMA": 18168476.0,
+      "Sync/other": 280666113.0,
+      "Strict cross-request Bank exposed": 0.0
+    },
+    "conservation_error_cycles": 0.0
+  },
+  "claim_boundary": [
+    "Seven one-step layer-isolated full-transaction traces with simultaneous c8 release.",
+    "Exact conservation holds per measured layer and for the weighted extrapolation.",
+    "The weighted 48-layer result is not an end-to-end full-model simulation.",
+    "Zero exposed Bank cycles means Bank waiting is off the measured critical path; it does not mean zero cumulative Bank contention."
+  ]
+}

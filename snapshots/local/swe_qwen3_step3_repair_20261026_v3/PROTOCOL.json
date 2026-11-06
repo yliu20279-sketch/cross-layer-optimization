@@ -1,0 +1,47 @@
+{
+  "scope": "v3 action format repair; retain v1 task failure and v2 format failure",
+  "model_precision": "same original BF16 checkpoint and eager Transformers4.51.3 source",
+  "diagnosis": [
+    "old R0010 context greedy capture off/on max128, token equivalence",
+    "same old context official nonthinking sampling max128",
+    "feedback rendering sentinel and original-message integrity audit"
+  ],
+  "sampling": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "source": "https://huggingface.co/Qwen/Qwen3-30B-A3B#best-practices",
+  "prompt_revision": "short generic action protocol; no sed examples or solution; errors require inspecting current files and trying a different command; brief explanation only",
+  "feedback_fix": "include exception_info in rendered observations, matching official default; prior tiny errors were already visible",
+  "context_tokens": 32768,
+  "context_policy": "no history truncation, no YaRN; record limit failures",
+  "tool_output_chars": 12000,
+  "tool_output_policy": "raw full output logged; explicit head/tail clipping with original length in model observation",
+  "small_repo": {
+    "max_calls": 16,
+    "max_new_tokens": 512,
+    "wall_seconds": 1200
+  },
+  "development": {
+    "registered_tasks": [
+      "marshmallow-code__marshmallow-1343",
+      "marshmallow-code__marshmallow-1359"
+    ],
+    "max_calls": 50,
+    "max_new_tokens": 1024,
+    "wall_seconds_per_task": 2700
+  },
+  "holdout": "identities only; no problem/gold access",
+  "timing": "functional GPU only, no target NPU runs",
+  "GPU": "physical0 only, require at least72GiB free; never preempt other process",
+  "promotion": "tiny submission plus original tests unchanged and passing; development outcomes all retained including failure; no population solve-rate claim",
+  "action_format": "canonical fenced bash; official parse_regex_actions with configurable regex; explicit format skeleton, no solution",
+  "diagnosis_receipts": "../swe_qwen3_step3_repair_20261026_v2/CAPTURE_EQUIVALENCE.json and FEEDBACK_AUDIT.json",
+  "source_bindings": {
+    "backend.py": "dddcde22e8db00f5e1e2845a07e54c3fdc8e13e24ece8e7f9ca793e21c75a8b8",
+    "run_repair.py": "e2ae4a64f1a8f1ab407a10b60b7d753e1cbeedb612a335ae33bc697a06099a6a",
+    "launch.py": "ef8cbee5cf66504ac040c846f07876b321318c714474d250894a5110d3249d19"
+  }
+}

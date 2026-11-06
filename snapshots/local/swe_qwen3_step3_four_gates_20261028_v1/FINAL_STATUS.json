@@ -1,0 +1,28 @@
+{
+  "state": "PASS_LIMITED_FOUR_GATE_FUNCTIONAL_BRIDGE",
+  "step3": "PARTIAL",
+  "precision": "original BF16",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "accepted_gates": [
+    "front-half 68 strict stage comparisons",
+    "batch 258 groups / 645120 elements exact",
+    "two layers prefill19 + cached decode1: 12 strict output/KV checks exact",
+    "continuous HB handoff and generated KV dependency audit"
+  ],
+  "remaining": [
+    "original GPU prefill output 4249 / route 10 differences",
+    "softmax FP32 differences retained",
+    "772 host fallbacks with CPU costs null",
+    "N0 serial only; TP/EP and full timing not certified"
+  ],
+  "native_runs_this_task": 3,
+  "native_runs_cumulative": 14,
+  "Sniper_ROIs_cumulative": 3,
+  "physical_NPU_runs": 0,
+  "new_GPU_runs": 0,
+  "delivery": "LOCAL_DELIVERY_VERIFICATION.json",
+  "local_audit": "LOCAL_CAUSALITY_AUDIT.json",
+  "remote_full_audit": "coupled_attempt3/INDEPENDENT_AUDIT.json",
+  "report_upload": "AUTO_REVIEW_REJECTED; local report retained; no retry"
+}

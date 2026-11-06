@@ -1,0 +1,50 @@
+{
+  "schema": "strict-bank-contention-instrumentation-v1",
+  "status": "DESIGN_FROZEN_IMPLEMENTATION_PENDING",
+  "metric": {
+    "name": "cross_request_same_bank_preissue_wait_cycles",
+    "unit": "Ramulator controller cycles",
+    "count_condition": [
+      "the external request is resident in a controller request buffer",
+      "its current prerequisite command has no failed timing constraint above the Bank level",
+      "the current prerequisite command is blocked by a timing constraint at the decoded physical Bank",
+      "the command that most recently established that blocking Bank constraint belongs to a different nonnegative inference_request_id"
+    ],
+    "decoded_bank": ["channel", "rank", "bankgroup", "bank"],
+    "aggregation": "sum one cycle per waiting request per controller tick satisfying every count condition"
+  },
+  "excluded": [
+    "request service after its command is granted",
+    "channel/rank/global bus timing failures",
+    "WCK synchronization and refresh unless a distinct cross-request Bank-level constraint is the active blocker",
+    "same inference_request_id Bank serialization",
+    "scheduler delay when another request uses a different Bank",
+    "NoC, DMA, compute, dependency, paging, and generic controller queue delay",
+    "row_status classifications by themselves"
+  ],
+  "required_source_changes": [
+    "store the source_id that last establishes each command-ready constraint at every DRAM hierarchy node",
+    "extend timing checks to return the first failing hierarchy level, decoded Bank, ready cycle, and blocker source_id",
+    "scan waiting external requests once per controller tick after prerequisite resolution and before command issue",
+    "emit per-request accumulated strict wait plus optional interval records",
+    "retain existing first_issue/final_issue/row_status fields as separate diagnostics"
+  ],
+  "microtest_oracles": {
+    "different_owner_same_bank_overlap": "strict wait must be positive",
+    "same_owner_same_bank_overlap": "strict wait must equal zero",
+    "different_owner_different_partition": "strict wait must equal zero",
+    "single_owner_row_switch": "strict wait must equal zero"
+  },
+  "known_limitations": [
+    "A single command-ready timestamp may be the maximum of constraints established by multiple commands; blocker ownership must follow the constraint that wins the maximum, including deterministic tie handling.",
+    "This direct metric is an attribution of observed pre-issue waiting, not by itself an end-to-end causal slowdown. A paired Bank-conflict-removal intervention remains required for the bottleneck claim.",
+    "Critical-path exposed conflict time must be computed separately; summing all request wait cycles is not a conserved wall-clock decomposition."
+  ],
+  "claim_gates": [
+    "all four microtest oracles pass",
+    "per-request strict wait is conserved against emitted interval records",
+    "normal and Bank-conflict-removal paired runs keep DAG, routing, placement, bytes, compute, NoC, paging, and random seeds identical",
+    "stacked-bar components sum to end-to-end runtime without summing overlapping request waits",
+    "Bank intervention produces a stable end-to-end reduction with paired uncertainty"
+  ]
+}

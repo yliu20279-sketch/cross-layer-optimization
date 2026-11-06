@@ -1,0 +1,42 @@
+{
+  "status": "DIAGNOSTIC_NOT_PROMOTED",
+  "rows": [
+    {
+      "branch": "cond",
+      "mode": "installed_libdevice_range_host_exp2_SUBSTITUTE",
+      "FP32_scores_bit_mismatches": 1459087,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 2,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        24913,
+        45553
+      ]
+    },
+    {
+      "branch": "uncond",
+      "mode": "installed_libdevice_range_host_exp2_SUBSTITUTE",
+      "FP32_scores_bit_mismatches": 1432491,
+      "FP32_scores_max_abs": 1.1920928955078125e-07,
+      "slot_mismatch_rows": 0,
+      "BF16_weight_bit_mismatches": 5,
+      "full_FP32_score_gate_pass": false,
+      "weight_counterexample_rows": [
+        7757,
+        9011,
+        29532,
+        42700,
+        46615
+      ]
+    }
+  ],
+  "precision": "FP32 intermediates, no FP64/FP16",
+  "compile_flags": "-O2 -shared -fPIC -fno-fast-math -ffp-contract=off -frounding-math",
+  "code_sha256": "a1e764f210fc705de4dd45c88333d161411a2cb9ae3f01eca5c3dd9af351a843",
+  "binary_sha256": "287c034a0af5e4b96c7bbe69e700173cb3e62dbc4bd75d4af55c2fcdfbf29c67",
+  "overall_step4": "PARTIAL",
+  "target_GPU_count": 0,
+  "new_GPU_runs": 0,
+  "claim": "different exp implementations measured; a BF16 output match does not certify FP32 sigmoid semantics"
+}

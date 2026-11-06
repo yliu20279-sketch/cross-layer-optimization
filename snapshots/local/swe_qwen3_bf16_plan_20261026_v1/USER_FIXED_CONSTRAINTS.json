@@ -1,0 +1,19 @@
+{
+  "benchmark": "swe_qwen3",
+  "authority": "explicit user instruction in this chat",
+  "fixed": {
+    "host_DRAM_GiB": 128,
+    "HB_DRAM_GiB": 8,
+    "HB_partitions": 16,
+    "HB_MiB_per_partition": 512,
+    "model": "Qwen3-30B-A3B",
+    "checkpoint_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "model_precision": "original BF16; preserve source FP32 operations and BF16 rounding",
+    "weight_quantization": false,
+    "FP16_model_substitution": false
+  },
+  "architecture_label": "V3.6-derived HOST128/HB8 study configuration; explicit host capacity amendment",
+  "target_BF16_arithmetic": "must verify implementation; no assumed FP16 throughput",
+  "implementation_state": "NOT_EXECUTED",
+  "scope": "implementation plan, not launch authorization for full matrix"
+}

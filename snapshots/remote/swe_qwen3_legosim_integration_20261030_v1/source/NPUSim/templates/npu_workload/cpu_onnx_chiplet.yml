@@ -1,0 +1,30 @@
+phase1:
+  # CPU=(0,0)：将输入 hidden state 的真实字节 STORE 到 DRAM，再仅发送 task/shape/
+  # dtype/地址描述符给 NPU；最后从 DRAM LOAD output，不直接传 tensor 给 NPU。
+  - cmd: "$BENCHMARK_ROOT/bin/cpu_onnx_start"
+    args: []
+    log: "cpu_onnx.0.0.log"
+    is_to_stdout: false
+    clock_rate: 1
+  # NPU=(1,0)：收到 token 后解析/lower model.onnx。它读取 CPU 输入、预置权重、
+  # 写回中间/输出均通过 DRAM=(2,0)；片内延迟由 NPUSIM_INTRA_DELAY_PROFILE 注入。
+  - cmd: "$SIMULATOR_ROOT/NPUSim/build/npusim_onnx_chiplet_wrapper"
+    args: ["$BENCHMARK_ROOT/model.onnx", "$BENCHMARK_ROOT/npu_chiplet_config.json", "$BENCHMARK_ROOT/output/cpu_onnx_run/reports"]
+    log: "npu_onnx_wrapper.1.0.log"
+    is_to_stdout: false
+    clock_rate: 1
+  # 共享 LPDDR5=(2,0)：同一 server 既服务 CPU 又服务 NPU。最后的 1 是 NPU
+  # client 数；NPU 收到 CPU 的 output-consumed ACK 后才发送 shutdown。
+  - cmd: "$SIMULATOR_ROOT/Ramulator2-Chiplet/ramulator2"
+    args: ["2", "0", "1.0", "--server", "$SIMULATOR_ROOT/Ramulator2-Chiplet/lpddr5_config.yaml", "134217728", "1", "$BENCHMARK_ROOT/output/cpu_onnx_run/reports/ramulator2_lpddr5_timing.csv"]
+    log: "ramulator2.2.0.log"
+    is_to_stdout: false
+    clock_rate: 1
+phase2:
+  # phase1 的 CPU<->NPU 与 CPU/NPU<->LPDDR5 通信统一写到 ../bench.txt。
+  # PopNet 回放生成 ../delayInfo.txt；本轮 LPDDR5 timing 由 Ramulator2 单独记录。
+  - cmd: "$SIMULATOR_ROOT/popnet_chiplet/build/popnet"
+    args: ["-A", "3", "-c", "1", "-V", "3", "-B", "12", "-O", "12", "-F", "4", "-L", "1", "-T", "1000000000", "-r", "1", "-I", "../bench.txt", "-R", "4", "-G", "$BENCHMARK_ROOT/cpu_npu_dram_3.gv", "-D", "../delayInfo.txt", "-P"]
+    log: "popnet.log"
+    is_to_stdout: false
+    clock_rate: 1

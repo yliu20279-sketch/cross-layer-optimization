@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "total_cycles": 123062739,
+  "operations": 28272,
+  "dma_operations": 1092,
+  "page_misses": 546,
+  "hic_overlap_npu_cycles": 0,
+  "hic_overlap_capacity_fraction": 0.0,
+  "checks": [
+    "all operations completed",
+    "all DAG dependencies respected",
+    "directional PCIe service conserved",
+    "page fetch-evict-commit order respected",
+    "HB callbacks precede operation completion",
+    "represented memory bytes conserved"
+  ],
+  "limitations": [
+    "diagnostic only; no formal Sem-MoE or HiBand SOTA claim",
+    "DeepStack per-operation Bank timing enabled",
+    "ScaleSim shape-level compute timing",
+    "diagnostic reproduction; not formal Sem-MoE/HiBand SOTA result",
+    "microbatch page-replacement order is a fixed deterministic schedule, not an optimized online policy",
+    "aggregated ring collective proxy, not chunk-accurate overlap",
+    "initial HB pages deterministically resident; initialization excluded and not called cold-start",
+    "ideal W4 storage with BF16-derived routes; quantization metadata unresolved",
+    "first4096-byte contiguous memory sampling; full address sampling convergence not verified",
+    "host memory service and staging SRAM bandwidth not yet modeled",
+    "embedding and elementwise/vector execution omitted from diagnostic graph",
+    "decode microbatch is one token per request",
+    "QKV column partition uses N=(8192+1024+1024)/16=640",
+    "output projection uses row partition K=2048/16=128 and N=2048",
+    "two query heads per TP16 rank; KV head replication/ownership is abstracted",
+    "router column partition uses N=128/16=8",
+    "each routed expert executes locally without tensor parallelism",
+    "gate and up projections are fused as N=1536; down is K=768,N=2048",
+    "ScaleSim report labels this toolchain configuration, not a paper hardware configuration",
+    "elementwise layernorm, rotary, softmax, activation, residual and quantization kernels are not timed"
+  ],
+  "simulation_wall_seconds": 84.64313920494169
+}

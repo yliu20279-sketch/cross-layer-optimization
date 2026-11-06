@@ -1,0 +1,36 @@
+{
+  "state": "PREREGISTERED_FULL_CONTINUOUS_LOWERING",
+  "source": "original BF16 Qwen3 CPU semantic reference",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "NPU_count": 16,
+  "HB_partition_MiB": 512,
+  "CPU_clock_rate": 2.5,
+  "DRAM_tick_ns": 1.25,
+  "SRAM": {
+    "bytes": 4194304,
+    "banks": 8,
+    "beat_bytes": 32,
+    "shared_rw_ports": 1,
+    "mapping": "(address/32)%8",
+    "status": "explicit research point; canonical ports/mapping unspecified"
+  },
+  "matrix": "all759 calls on actual FP32 primitive/SRAM path, source-order M1+batch+tails; to be verified, not claimed passed",
+  "software": "actual Sniper codecs/RMSNorm/softmax/SILU/Top8/route normalization/gather/index_add/dispatch/layout/KV/rotate/scalar/mask",
+  "math_data": "full FP32 exp16 domain 16GiB plus full BF16 SiLU128KiB, original source dependency; not output-specific correction",
+  "host_weight_bytes": 61066575648,
+  "host_math_bytes": 17180000256,
+  "host_scratch_reserve_bytes": 536870912,
+  "cache_maintenance_timing": "not yet certified; must remain explicit",
+  "tensor_arena_end": 251658240,
+  "temporary_HB": {
+    "weight": 268435456,
+    "input": 335544320,
+    "output": 339738624
+  },
+  "GPU_differences": "retained including4249 outputs and10route slots",
+  "new_GPU_runs": 0,
+  "new_SWE_runs": 0,
+  "full_target_timing": false,
+  "full_steps_1_7": false
+}

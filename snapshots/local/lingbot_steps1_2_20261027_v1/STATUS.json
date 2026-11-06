@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-28",
+  "work_scope": "user-requested steps1-2",
+  "step1": "PASS_LIMITED_CONTRACT_STATIC_BUDGET_AND_CPU_CODEC",
+  "step2": "PASS_LIMITED_EXTERNAL_GPU_REFERENCE",
+  "independent_reference_checks_passed": 25,
+  "target_GPU_count": 0,
+  "target_NPU_simulator_runs": 0,
+  "physical_NPU_runs": 0,
+  "target_full_BF16_function_certified": false,
+  "target_timing_certified": false,
+  "target_host_overlay_GiB": 128,
+  "target_HB_GiB": 8,
+  "canonical_host_GiB": 8,
+  "canonical_architecture_sha256": "8bf1c5c4a2c4929e7c1ea8101c0dac4296e3a9efc0f8510bfb9a4781bd93b101",
+  "source_model_precision": "original mixedBF16/F32; noFP16/W4/FP8 substitution",
+  "reference_steps": [
+    1,
+    40
+  ],
+  "reference_DiT_forwards": [
+    2,
+    80
+  ],
+  "video_frames": 121,
+  "video_resolution": [
+    480,
+    832
+  ],
+  "video_fps": 24,
+  "refiner": false,
+  "route_ID_weight_trace_captured": false,
+  "local_package": {
+    "status": "PASS_ALL_ARCHIVE_AND_MEMBER_SHA256",
+    "payload_members": 39,
+    "payload_bytes": 38993604,
+    "archive_sha256": "cad026e7de05b9a8195ac859568ee186a23a2b0701afb6e31955d05df9c49656",
+    "archive_bytes": 34385586
+  },
+  "limits": [
+    "reference is supported source fallback variant, not equivalence test against recommended nightly",
+    "static memory admission is not whole-workload liveness proof",
+    "target CPU fallback and software NPU matrix paths unimplemented/uncalibrated for full model"
+  ],
+  "next": "small real router/dispatch trace and original-precision layer fixture; no strategy performance matrix"
+}

@@ -1,0 +1,93 @@
+{
+  "schema": "ca-composite-contract-2",
+  "state": "PARTIAL_NOT_READY",
+  "model_id": "Qwen/Qwen3-30B-A3B",
+  "spec": {
+    "id": "Qwen/Qwen3-30B-A3B",
+    "layers": 48,
+    "experts": 128,
+    "ep": 16,
+    "tp": 16,
+    "pp": 1,
+    "topk": 8,
+    "hidden": 2048,
+    "layers_per_stage": 48,
+    "shared_expert": false
+  },
+  "precision": {
+    "weights": "BF16",
+    "activations": "BF16",
+    "accumulation": "per-op FP32 candidate; native operation order unverified",
+    "source_gpu_differences": "retained, no tolerance relaxation"
+  },
+  "precision_sha256": "907908d533d491fe7af94d6d2efc386fe773ac874e18105e32091ae1265772e6",
+  "checkpoint_content_sha256": null,
+  "revision": null,
+  "tokenizer_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "tokenizer_config_sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+  "source_config_sha256": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+  "capacity_candidate": {
+    "host_bytes": 137438953472,
+    "hb_partitions": 16,
+    "hb_partition_bytes": 536870912
+  },
+  "capacity_verified": false,
+  "costs_verified": false,
+  "runtime": {
+    "binary": null,
+    "libraries": [],
+    "source_build_identity_sha256": null
+  },
+  "capabilities": {
+    "native_sem_moe_schedule": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "native_srs_sag": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_operator_lowering": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "actual_bf16_memory_io": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "full_capacity_lifetimes": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cpu_costs": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "cache_version_services": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "hiband_controls_and_timing": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    },
+    "ca_native_address_binding": {
+      "status": "not_verified",
+      "evidence_sha256": null
+    }
+  },
+  "software_reference": {
+    "split_fallback": "rejected",
+    "causal_token_scheduler": true,
+    "two_gram": false,
+    "collectives": "semantic reference only",
+    "opcode_lowering": false,
+    "costs": "missing costs rejected"
+  },
+  "native_runs": 0,
+  "author_equivalence": false,
+  "blocker_notes": [
+    "Q3 header/index identities verified; full tensor hashes/revision missing",
+    "existing v7/v8 not inherited as complete admission"
+  ]
+}

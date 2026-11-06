@@ -1,0 +1,54 @@
+{
+  "command": [
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/toolchain/popnet_paging_src/build_paging_v1/popnet",
+    "-A",
+    "4",
+    "-c",
+    "2",
+    "-V",
+    "2",
+    "-B",
+    "12",
+    "-O",
+    "12",
+    "-F",
+    "4",
+    "-L",
+    "1000",
+    "-T",
+    "1000000000",
+    "-r",
+    "1",
+    "-I",
+    "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/paging_c1_s1_v1/run/empty.trace",
+    "-R",
+    "0"
+  ],
+  "controls": {
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/paging_c1_s1_v1/run",
+    "POPNET_STATS_WINDOW_CYCLES": "100000",
+    "HB_GRAPH": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/paging_c1_s1_v1/graph",
+    "HB_OUT": "/mnt/sda1/h3240101068/qwen3_30b_a3b_v3_6_experiment/results/paging_c1_s1_v1/run",
+    "HB_RAM_CONFIG": "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "HB_NOC_SCALE": "1024",
+    "HB_ARCH_TX_BYTES": "256",
+    "HB_BASE_BYTES_PER_CYCLE": "25.6",
+    "HB_EXECUTION_PROFILE": "legacy-default",
+    "HB_PCIE_GBPS": "55.04",
+    "HB_PCIE_LATENCY_NS": "270",
+    "HB_FIXED_MODE": "GLOBAL_BIAS"
+  },
+  "binary_sha256": "b5e26c471769349cb3ddc472d47f90431e9110c3c4ef5e4f3ca9afbdfcae660c",
+  "graph_hashes": {
+    "address_manifest.csv": "26a8552a4e399cd451d628f7fb298965a98e20032bb63b37e52022e3cbcc422c",
+    "modes.csv": "ddd2924d578c3296c8a2b95e05624cc91b365db3e181e046cd6447901d06051b",
+    "deps.csv": "c7bb2679c981b5bd371d9557a2920aa4dad62cf70b6ed56952489ca48ecbd44a",
+    "graph_manifest.json": "b528f76c57b071df91087db23a6bb67ee754f8cb7abf1837c378c2762bd2245a",
+    "ops.csv": "394ba35c77359e17435607a82de8388479b937587bde4b227c2f5a9aae9cfc1e"
+  },
+  "limitations": [
+    "baseline EP16 diagnostic; no Sem-MoE or HiBand SOTA claim",
+    "DeepStack operator timing disabled; analytical graph timing only"
+  ]
+}

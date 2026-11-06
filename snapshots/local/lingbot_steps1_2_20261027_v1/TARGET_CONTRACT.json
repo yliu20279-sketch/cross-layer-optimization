@@ -1,0 +1,23 @@
+{
+  "status": "SELECTED_RESEARCH_CONTRACT_NOT_EXECUTION_CERTIFICATION",
+  "target_contains_gpu": false,
+  "canonical_architecture": "V3.6",
+  "HB_bytes": 8589934592,
+  "host_bytes": 137438953472,
+  "host_overlay": "explicit host capacity expansion only; original canonical host8GiB untouched",
+  "physical_NPUs": 16,
+  "sram_per_NPU_bytes": 4194304,
+  "storage": "complete immutable canonical BF16/F32 weights in host; HB shared read-only cache",
+  "clean_weight_eviction": "invalidate HB; no D2H weight writeback",
+  "mutable_state": "latents/activations/scheduler not clean weights; dirty data must be retained/written back",
+  "target_arithmetic": {
+    "BF16": "preserve codec and source cast boundaries; FP32 software decomposition candidate, not FP16 substitute",
+    "FP32_router": "explicit FP32 software matrix/vector path; exact rounding/TopK contract gate",
+    "special_functions": "host CPU reference first with explicit data transfer; no GPU fallback in target",
+    "Conv3d": "software/tiling path unverified; not assigned BF16 native matrix throughput"
+  },
+  "execution_certified": false,
+  "reference_device": "113 GPU1 permitted only as external Golden generation equipment; not target compute and its seconds not NPU cycles",
+  "model_dtype_change": false,
+  "refiner": false
+}

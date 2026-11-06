@@ -1,0 +1,20 @@
+{
+  "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+  "syntax": {
+    "output": "CONTROLLER_SYNTAX_OK\n",
+    "returncode": 0,
+    "exception_info": ""
+  },
+  "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+  "tests": {
+    "output": "REPEATED_FAILED_ACTION_BLOCKED: this exact command already failed on the same repository files. Inspect the relevant file/error and choose a different approach. No command was executed.",
+    "returncode": 78,
+    "exception_info": "RepeatedFailedAction"
+  },
+  "runner": "pytest",
+  "targets": null,
+  "default_full_suite": true,
+  "source_modified_by_controller": false,
+  "hidden_tests_used": false,
+  "source_unchanged_through_validation": true
+}

@@ -1,0 +1,130 @@
+{
+  "status": "PASS_LIMITED_CONTRACT_STATIC_BUDGET_AND_CPU_CODEC",
+  "target_has_GPU": false,
+  "host_capacity_bytes": 137438953472,
+  "HB_capacity_bytes": 8589934592,
+  "canonical_tensor_bytes": 69655987276,
+  "host_regions": {
+    "immutable_model_bytes": 69655987276,
+    "system_reserve_bytes": 8589934592,
+    "mutable_state_cap_bytes": 17179869184,
+    "reference_fixture_staging_cap_bytes": 8589934592,
+    "runtime_and_page_metadata_cap_bytes": 4294967296
+  },
+  "host_unallocated_bytes": 29128260532,
+  "HB_regions_per_CH": {
+    "weight_cache_bytes": 335544320,
+    "activation_working_cap_bytes": 134217728,
+    "DMA_staging_cap_bytes": 33554432,
+    "runtime_metadata_reserve_bytes": 33554432
+  },
+  "SRAM_tile_bytes": 73728,
+  "SRAM_tile_regions": {
+    "BF16_input": 8192,
+    "BF16_weight": 8192,
+    "FP32_input": 16384,
+    "FP32_weight": 16384,
+    "FP32_accumulator": 16384,
+    "BF16_output": 8192
+  },
+  "codec_checks": [
+    {
+      "name": "zero",
+      "expected_hex": "0x0",
+      "actual_hex": "0x0",
+      "pass_check": true
+    },
+    {
+      "name": "negative_zero",
+      "expected_hex": "0x8000",
+      "actual_hex": "0x8000",
+      "pass_check": true
+    },
+    {
+      "name": "one",
+      "expected_hex": "0x3f80",
+      "actual_hex": "0x3f80",
+      "pass_check": true
+    },
+    {
+      "name": "minus_two",
+      "expected_hex": "0xc000",
+      "actual_hex": "0xc000",
+      "pass_check": true
+    },
+    {
+      "name": "even_tie",
+      "expected_hex": "0x3f80",
+      "actual_hex": "0x3f80",
+      "pass_check": true
+    },
+    {
+      "name": "odd_tie",
+      "expected_hex": "0x3f82",
+      "actual_hex": "0x3f82",
+      "pass_check": true
+    },
+    {
+      "name": "positive_inf",
+      "expected_hex": "0x7f80",
+      "actual_hex": "0x7f80",
+      "pass_check": true
+    },
+    {
+      "name": "negative_inf",
+      "expected_hex": "0xff80",
+      "actual_hex": "0xff80",
+      "pass_check": true
+    },
+    {
+      "name": "smallest_subnormal",
+      "expected_hex": "0x1",
+      "actual_hex": "0x1",
+      "pass_check": true
+    },
+    {
+      "name": "NaN_retains_NaN",
+      "pass_check": true
+    }
+  ],
+  "primitive_contracts": [
+    {
+      "op": "BF16 matrix",
+      "source": "BF16 operands/result with FP32 accumulation boundaries",
+      "target": "decode tile -> FP32 vector MUL/ADD/reduce -> RNE BF16 encode",
+      "native_BF16_array": false,
+      "cost": "explicit vector operations, buffers and transfers; no FP16 throughput reuse",
+      "functional_status": "candidate; source GPU sum/reduction order requires real-fixture gate",
+      "calibrated_cycles": null
+    },
+    {
+      "op": "FP32 router matrix/time MLP",
+      "source": "FP32 weights and arithmetic",
+      "target": "FP32 vector software matrix path",
+      "native_BF16_array": false,
+      "cost": "explicit vector work, not FP16 matrix MAC rate",
+      "functional_status": "real LingBot fixture not yet verified",
+      "calibrated_cycles": null
+    },
+    {
+      "op": "sigmoid/tanh/SiLU/softmax/rsqrt/TopK/scatter/complex RoPE",
+      "source": "source mixed precision and selection order",
+      "target": "host CPU software fallback first; explicit DMA dependency",
+      "target_has_GPU": false,
+      "functional_status": "source primitive contract only; host implementation and Sniper/NoC/HB coupling pending",
+      "calibrated_cycles": null
+    },
+    {
+      "op": "VAE Conv3d/temporal cache",
+      "source": "F32 parameters with source encode autocast boundary",
+      "target": "NPU software convolution lowering or CPU fallback, no GPU in target",
+      "functional_status": "not implemented/certified",
+      "calibrated_cycles": null
+    }
+  ],
+  "admission": "reject allocations exceeding fixed pools; no assertion that complete TI2V live buffers fit",
+  "native_execution_certification": false,
+  "whole_operator_BF16_certification": false,
+  "timing_certification": false,
+  "preserved": "model BF16/F32, totalHB8GiB,16NPU,4MiB SRAM; canonical YAML unchanged"
+}

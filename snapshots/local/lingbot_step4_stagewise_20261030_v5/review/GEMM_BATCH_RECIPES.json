@@ -1,0 +1,3492 @@
+{
+  "source_catalog_sha256": "76ba0ad71fccdea6d106cda4f224410a4986b5fbc35762ac7d626ab322de4130",
+  "scope": "observed BF16 matrix geometries only; CPU target must derive actual batch M autonomously",
+  "recipes": [
+    {
+      "M": 142,
+      "N": 768,
+      "K": 2048,
+      "recipe": "parallel6_FP32_workspace_sequential",
+      "partition_K": 384
+    },
+    {
+      "M": 142,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 148,
+      "N": 768,
+      "K": 2048,
+      "recipe": "parallel6_FP32_workspace_sequential",
+      "partition_K": 384
+    },
+    {
+      "M": 148,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 410,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 410,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 541,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 541,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1286,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1286,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1319,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1319,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1344,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1344,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1397,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1397,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1547,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1547,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1551,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1551,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1625,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1625,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1723,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1723,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1812,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1812,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1834,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1834,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1868,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1868,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1898,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1898,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1936,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1936,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1947,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1947,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1950,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1950,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1956,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1956,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1994,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1994,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1999,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 1999,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2041,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2041,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2046,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2046,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2057,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2057,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2065,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2065,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2080,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2080,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2082,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2082,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2113,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2113,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2134,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2134,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2160,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2160,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2173,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2173,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2175,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2175,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2177,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2177,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2181,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2181,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2190,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2190,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2217,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2217,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2229,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2229,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2251,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2251,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2254,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2254,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2264,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2264,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2285,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2285,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2299,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2299,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2308,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2308,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2311,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2311,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2318,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2318,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2334,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2334,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2346,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2346,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2362,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2362,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2374,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2374,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2378,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2378,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2396,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2396,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2398,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2398,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2425,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2425,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2444,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2444,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2470,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2470,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2475,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2475,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2477,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2477,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2483,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2483,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2486,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2486,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2490,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2490,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2495,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2495,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2500,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2500,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2518,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2518,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2519,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2519,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2526,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2526,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2530,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2530,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2536,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2536,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2543,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2543,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2546,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2546,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2553,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2553,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2560,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2560,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2563,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2563,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2571,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2571,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2572,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2572,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2573,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2573,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2581,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2581,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2590,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2590,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2595,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2595,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2601,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2601,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2604,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2604,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2622,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2622,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2628,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2628,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2636,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2636,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2637,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2637,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2640,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2640,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2650,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2650,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2653,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2653,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2656,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2656,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2660,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2660,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2663,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2663,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2669,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2669,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2677,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2677,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2679,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2679,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2680,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2680,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2681,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2681,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2683,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2683,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2697,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2697,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2708,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2708,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2709,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2709,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2710,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2710,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2711,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2711,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2712,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2712,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2714,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2714,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2723,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2723,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2728,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2728,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2734,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2734,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2756,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2756,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2767,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2767,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2770,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2770,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2793,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2793,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2806,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2806,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2813,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2813,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2823,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2823,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2842,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2842,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2847,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2847,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2849,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2849,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2866,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2866,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2871,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2871,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2873,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2873,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2875,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2875,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2878,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2878,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2883,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2883,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2884,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2884,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2895,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2895,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2903,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2903,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2917,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2917,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2918,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2918,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2920,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2920,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2934,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2934,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2940,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2940,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2954,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2954,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2967,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2967,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2969,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2969,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2970,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2970,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2974,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2974,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2980,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 2980,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3003,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3003,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3007,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3007,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3030,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3030,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3031,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3031,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3034,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3034,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3042,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3042,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3044,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3044,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3059,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3059,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3060,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3060,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3061,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3061,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3065,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3065,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3066,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3066,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3082,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3082,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3107,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3107,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3126,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3126,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3141,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3141,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3143,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3143,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3148,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3148,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3160,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3160,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3161,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3161,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3168,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3168,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3173,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3173,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3183,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3183,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3193,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3193,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3196,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3196,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3212,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3212,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3225,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3225,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3233,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3233,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3234,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3234,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3236,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3236,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3252,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3252,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3276,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3276,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3315,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3315,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3316,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3316,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3322,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3322,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3330,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3330,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3342,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3342,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3370,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3370,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3387,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3387,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3399,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3399,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3407,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3407,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3422,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3422,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3429,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3429,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3431,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3431,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3442,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3442,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3449,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3449,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3506,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3506,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3554,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3554,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3577,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3577,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3586,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3586,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3597,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3597,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3626,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3626,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3627,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3627,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3630,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3630,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3653,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3653,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3655,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3655,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3681,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3681,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3684,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3684,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3710,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3710,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3711,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3711,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3749,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3749,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3760,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3760,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3769,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3769,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3790,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3790,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3805,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3805,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3811,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3811,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3825,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3825,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3834,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3834,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3840,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3840,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3849,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3849,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3888,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3888,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3930,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3930,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3933,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3933,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3946,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3946,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3973,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3973,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3975,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 3975,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4006,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4006,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4110,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4110,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4134,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4134,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4145,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4145,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4221,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4221,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4232,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4232,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4246,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4246,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4268,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4268,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4296,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4296,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4300,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4300,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4331,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4331,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4349,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4349,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4382,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4382,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4429,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4429,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4464,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4464,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4469,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4469,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4564,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4564,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4582,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4582,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4647,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4647,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4774,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4774,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4788,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4788,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4791,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4791,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4870,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4870,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4904,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4904,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4919,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 4919,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5081,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5081,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5203,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5203,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5398,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5398,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5539,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5539,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5609,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5609,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5650,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5650,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5713,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 5713,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 6006,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 6006,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 6276,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 6276,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 9668,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 9668,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 11537,
+      "N": 768,
+      "K": 2048,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    },
+    {
+      "M": 11537,
+      "N": 2048,
+      "K": 768,
+      "recipe": "single_FDA16",
+      "partition_K": null
+    }
+  ]
+}

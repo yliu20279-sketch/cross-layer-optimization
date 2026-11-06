@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-29",
+  "target_GPU_count": 0,
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "model_precision": "original mixed BF16/FP32",
+  "scope": "offline architecture-function profiles plus CPU implementation validation, then numerical GEMM/attention gates",
+  "RSQ": "full2^23 mantissas at exponent127 and128; direct inline PTX rsqrt; raw FP32 outputs, verify independently against prior saved source factors",
+  "EX2": "optional after RSQ pass, full2^32 FP32 input bits; raw outputs; at most16GiB; no workload-selected inputs",
+  "external_reference_device": 1,
+  "external_GPU_context_max_MiB": 512,
+  "external_kernel_blocks": 1,
+  "external_stream": "lowest priority nonblocking",
+  "external_chunk_elements": 16777216,
+  "external_yield_ms": 20,
+  "external_timeout_seconds": 600,
+  "cpu_worker_count": 1,
+  "cpu_timeout_seconds": 600,
+  "refiner": false,
+  "source_model_downloads": 0,
+  "gates": "bitwise exact, preserve failures; no row-index repair or source Golden runtime injection",
+  "upstream_commit": "3f7cdf7010a9fe691bb5832755f668556edcc217",
+  "upstream_use": "research method inspiration; own runtime forbids auto GPU probing/FP64 and generic unsupported GEMM recipes",
+  "not_promoted": [
+    "profiles do not certify their target timing",
+    "no GPU inside target",
+    "original host8 YAML unchanged",
+    "no HiBand/SemMoE/Bank benefit promotion"
+  ]
+}

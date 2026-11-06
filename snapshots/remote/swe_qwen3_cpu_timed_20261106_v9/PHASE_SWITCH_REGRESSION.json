@@ -1,0 +1,61 @@
+{
+  "state": "PASS_REAL_METHOD_METADATA_WITH_TRANSPORT_DOUBLE",
+  "cases": [
+    {
+      "method": "base_adapter.py",
+      "actual": {
+        "label": "actual_CPU_input",
+        "shape": [
+          1,
+          19,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "phase": "prefill",
+        "layer": 0
+      }
+    },
+    {
+      "method": "base_adapter.py",
+      "actual": {
+        "label": "actual_CPU_input",
+        "shape": [
+          1,
+          1,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "phase": "decode",
+        "layer": 0
+      }
+    },
+    {
+      "method": "replay_backend.py",
+      "actual": {
+        "label": "actual_CPU_input",
+        "shape": [
+          1,
+          19,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "phase": "prefill",
+        "layer": 0
+      }
+    },
+    {
+      "method": "replay_backend.py",
+      "actual": {
+        "label": "actual_CPU_input",
+        "shape": [
+          1,
+          1,
+          2048
+        ],
+        "dtype": "torch.bfloat16",
+        "phase": "decode",
+        "layer": 0
+      }
+    }
+  ]
+}

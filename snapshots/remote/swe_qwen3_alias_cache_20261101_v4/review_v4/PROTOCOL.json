@@ -1,0 +1,53 @@
+{
+  "state": "PREREGISTERED_FULL_CONTINUOUS_LOWERING",
+  "source": "original BF16 Qwen3 CPU semantic reference",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "NPU_count": 16,
+  "HB_partition_MiB": 512,
+  "CPU_clock_rate": 2.5,
+  "DRAM_tick_ns": 1.25,
+  "SRAM": {
+    "bytes": 4194304,
+    "banks": 8,
+    "beat_bytes": 32,
+    "shared_rw_ports": 1,
+    "mapping": "(address/32)%8",
+    "status": "explicit research point; canonical ports/mapping unspecified"
+  },
+  "matrix": "all759 calls on actual FP32 primitive/SRAM path, source-order M1+batch+tails; to be verified, not claimed passed",
+  "software": "actual Sniper codecs/RMSNorm/softmax/SILU/Top8/route normalization/gather/index_add/dispatch/layout/KV/rotate/scalar/mask",
+  "math_data": "full FP32 exp16 domain 16GiB plus full BF16 SiLU128KiB, original source dependency; not output-specific correction",
+  "host_weight_bytes": 61066575648,
+  "host_math_bytes": 17180000256,
+  "host_scratch_reserve_bytes": 536870912,
+  "cache_maintenance_timing": "not yet certified; must remain explicit",
+  "tensor_arena_end": 251658240,
+  "temporary_HB": {
+    "weight": 268435456,
+    "input": 335544320,
+    "output": 339738624
+  },
+  "GPU_differences": "retained including4249 outputs and10route slots",
+  "new_GPU_runs": 0,
+  "new_SWE_runs": 0,
+  "full_target_timing": false,
+  "full_steps_1_7": false,
+  "CPU_compile": "O3, march=nehalem, noAVX/noFMA; no fast math or FP contraction",
+  "CPU_runtime": "glibc hwcaps AVX/AVX2/AVX512/FMA disabled on Sniper process only",
+  "previous_attempt": "/mnt/sda1/h3240101068/swe_qwen3_continuous_lowering_20261031_v2",
+  "previous_state": "STOPPED_FOR_SRAM_STREAMING_AMENDMENT",
+  "original_numeric_algorithms_unchanged": true,
+  "streaming_amendment": "64KiB NoC/HB staging; root original BF16 weights actual HB0; weight conversion reads HB0 and streams FP32 toHB256; peer expanded weights streamed before next chunk",
+  "SRAM_IO": {
+    "max_packet_bytes": 65536,
+    "packet_buffers_bytes": 131072,
+    "controller_register_reserve": 65536,
+    "compute_address_end_max": 3457024,
+    "peak_compute_plus_io": 3653632,
+    "generic_software_input_output_guard": 3997696,
+    "IO_bank_cost": "contiguous32B stripes8banks:ceil(n/256) per read/write; updates real chipCycle",
+    "large_python_arrays": "functional shadows of committed HB, not SRAM"
+  },
+  "immediate_FP32_gate": "each of759 matrices SHA checked at publication against unchanged CPU oracle; no output correction"
+}

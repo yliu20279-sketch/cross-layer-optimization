@@ -1,0 +1,11 @@
+{
+  "state": "PRE_RUN_NATIVE_POST_MOE_RESIDUAL",
+  "selection": "same R0002 prefill token0 layer0; restore prior mergedBF16 at235339776 after98513699ns, explicit new native context",
+  "residual_source": "actual fixture decoder_input plus attention_output, native FP32 add thenBF16 boundary; normalized moe_input is not residual",
+  "post_add": "BF16 residual+BF16 prior MoE, exact BF16 result via FP32 software primitive and hostcodec; no tolerance",
+  "lifetime": "two BF16 operands held until result commit; FP32 workspaces through arithmetic/encode; result through actual HB ingress-copy; ingress retained for layer1 norm not executed",
+  "gates": "resident producer complete correct request/phase/token/layer; early retire/read/consumer rejected; actual nextlayer HB commit gate",
+  "profile": "original BF16 host128GiB/HB8GiB overlay, no newNoC/GPU/Sniper/agent/SWE/holdout",
+  "scope": "conditional recorded dispatch and M1 source path; capturedGPU one-token diagnostic only; batch and softmax differences retained; codec/control/gateway timing null",
+  "budget": "one nativeN0 fragment <=120s"
+}

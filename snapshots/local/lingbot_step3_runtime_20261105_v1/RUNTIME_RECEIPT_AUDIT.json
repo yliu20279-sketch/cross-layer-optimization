@@ -1,0 +1,65 @@
+{
+  "state": "PASS_LIMITED_RUNTIME_RECEIPT_ORDER",
+  "branches": [
+    {
+      "branch": "cond",
+      "issued_writebacks": 78,
+      "pending": 0,
+      "writeback_now_fs": 14014431600000,
+      "writeback_done_fs": 14014513933110,
+      "wait_ns": 82.33311,
+      "DMA": [
+        {
+          "direction": "request",
+          "bytes": 528384,
+          "segments": 2064,
+          "start_ns": 9042359,
+          "done_ns": 9052949
+        },
+        {
+          "direction": "response",
+          "bytes": 768,
+          "segments": 3,
+          "start_ns": 14014848,
+          "done_ns": 14015133
+        }
+      ],
+      "delayed_actual_receipt_controls": 4,
+      "consumer_start_ns": 14016567
+    },
+    {
+      "branch": "uncond",
+      "issued_writebacks": 65,
+      "pending": 0,
+      "writeback_now_fs": 13949581200000,
+      "writeback_done_fs": 13949663279408,
+      "wait_ns": 82.079408,
+      "DMA": [
+        {
+          "direction": "request",
+          "bytes": 528384,
+          "segments": 2064,
+          "start_ns": 9043525,
+          "done_ns": 9054115
+        },
+        {
+          "direction": "response",
+          "bytes": 768,
+          "segments": 3,
+          "start_ns": 13949991,
+          "done_ns": 13950276
+        }
+      ],
+      "delayed_actual_receipt_controls": 4,
+      "consumer_start_ns": 13951732
+    }
+  ],
+  "completion_observation": "CPU/writeback acknowledgement and NoC receive time are conservative receiver observations; raw Sniper drain and gateway DMA device times independently checked",
+  "limitations": [
+    "custom configured PCIe device model uses serialized queue0 and polling boundary at receive",
+    "two CFG paths use service round slots; uncond consumes preceding same-shape PopNet delay profile",
+    "NoC first pass is domain service; second pass applies PopNet feedback; no convergence claim",
+    "one active NPU/HB and CPU0; no full layer cost coverage"
+  ],
+  "original_audit": "INDEPENDENT_AUDIT.json"
+}

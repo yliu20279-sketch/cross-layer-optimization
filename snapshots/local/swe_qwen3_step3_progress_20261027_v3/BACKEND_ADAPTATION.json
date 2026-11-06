@@ -1,0 +1,9 @@
+{
+  "scope": "v2 pre-development infrastructure correction; prior partial v1 retained",
+  "source_change": "in-memory AST replace only for expert_idx in range(num_experts) with for expert_idx in torch.unique(selected_experts, sorted=True).tolist()",
+  "preserved": ["original BF16 checkpoint", "original FP32 internal boundaries", "original per-expert kernels and shapes", "ascending expert accumulation order", "original router", "original installed source file"],
+  "gate": "real layer0 weights synthetic1/7/257 token outputs and router logits bitwise equal; full-model short greedy token IDs and forward logits bitwise equal",
+  "limitations": "finite checks and algebraic empty-op elimination, not arbitrary-input numerical certification or target timing; full capture acceptance separately validated",
+  "prior_holdouts": "old Astropy identities used; two newly registered Matplotlib/Django bodies remain unread",
+  "budget": "same paired development protocol; source timing gate cost outside agent budget"
+}

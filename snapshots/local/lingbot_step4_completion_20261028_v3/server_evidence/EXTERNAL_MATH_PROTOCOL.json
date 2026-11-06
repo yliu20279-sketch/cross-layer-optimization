@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-29",
+  "scope": "one external source math diagnostic, never target GPU",
+  "target_GPU_count": 0,
+  "external_reference_GPU": 1,
+  "external_worker_count": 1,
+  "timeout_seconds": 120,
+  "GPU_memory_budget_GiB": 6,
+  "prior_Golden_must_match_bitwise": true,
+  "ops": "four full-shape RMSNorm calls and two sigmoid calls on exact step3 tensors, no full model inference",
+  "precision": "same BF16/FP32",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "no_promotion": "new diagnostics do not relax any target gate",
+  "new_main_model_inference": 0
+}

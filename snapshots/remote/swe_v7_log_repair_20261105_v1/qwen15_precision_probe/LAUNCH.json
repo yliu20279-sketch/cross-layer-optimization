@@ -1,0 +1,21 @@
+{
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "60",
+    "/mnt/sda1/h3240101068/swe_v7_log_repair_20261105_v1/coupled_backend",
+    "/mnt/sda1/h3240101068/swe_v7_log_repair_20261105_v1/qwen15_precision_probe",
+    "/mnt/sdb1/h3240101068/legosim-agentic/LEGOSIM_MICRO/benchmark/qwen1_5_moe_a2_7b_v3_6/memory_bank_completion_v1/results/matrix_full_v2/c1_rep1_hiband_sem_moe/ramulator.yaml",
+    "project_dynamic"
+  ],
+  "environment": {
+    "PATH": "/usr/bin:/bin",
+    "POPNET_COUPLED": "1",
+    "POPNET_STATS_DIR": "/mnt/sda1/h3240101068/swe_v7_log_repair_20261105_v1/qwen15_precision_probe",
+    "POPNET_STATS_WINDOW_CYCLES": "100000"
+  },
+  "binary_sha256": "6457bda740a4e5f646330101a53208a405dff23005874b6417de9d80b88d2a1f",
+  "scope": "bounded coupled functional check",
+  "cpu_pcie_costs_verified": false,
+  "formal_performance": false
+}

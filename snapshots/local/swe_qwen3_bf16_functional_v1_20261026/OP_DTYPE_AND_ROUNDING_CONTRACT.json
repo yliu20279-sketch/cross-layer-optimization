@@ -1,0 +1,117 @@
+{
+  "schema": "swe_qwen3_bf16_functional_contract_v1",
+  "authority": "user fixed HOST128/HB8/original Qwen3 BF16; steps1 and2 execution",
+  "model": {
+    "checkpoint_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "source_transformers_version": "4.51.3",
+    "source_sha256": "3af43d01f9f902c8009b6dd7d7b8b563561b53dd0aa54175f585ae90d049fdb8",
+    "dimensions": {
+      "layers": 48,
+      "hidden": 2048,
+      "q_heads": 32,
+      "kv_heads": 4,
+      "head_dim": 128,
+      "experts": 128,
+      "top_k": 8,
+      "expert_intermediate": 768,
+      "vocab": 151936
+    }
+  },
+  "runtime_reference": {
+    "device": "CPU",
+    "torch": "2.6.0+cu124",
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "threads": 1,
+    "autograd": false,
+    "cuda_initialized": false,
+    "GPU_backend_contract": "NOT_YET_FROZEN_STEP3"
+  },
+  "operators": {
+    "linear_matmul": {
+      "inputs": "BF16",
+      "output": "BF16",
+      "arithmetic": "recorded PyTorch CPU backend",
+      "internal_MAC_accumulation": "backend defined, NOT target hardware certification"
+    },
+    "rmsnorm": {
+      "inputs": [
+        "BF16 hidden",
+        "BF16 scale"
+      ],
+      "FP32": [
+        "square",
+        "mean",
+        "rsqrt",
+        "normalized"
+      ],
+      "round": "normalized -> BF16 BEFORE learned-scale multiply, then BF16 output"
+    },
+    "router": {
+      "logits": "BF16",
+      "softmax": "FP32",
+      "topk": "FP32 values + int64 IDs",
+      "renormalize": "FP32",
+      "final_weights": "BF16",
+      "tie_policy": "source torch.topk current backend; no invented expert-ID ordering"
+    },
+    "silu": {
+      "function": "F.silu on BF16 CPU tensor",
+      "output": "BF16 before up product"
+    },
+    "swiglu": {
+      "boundary_sequence": [
+        "gate BF16",
+        "up BF16",
+        "silu BF16",
+        "multiply BF16",
+        "down BF16"
+      ]
+    },
+    "rope": {
+      "positions": "int64",
+      "inv_freq": "FP32",
+      "frequency_matmul": "FP32",
+      "cos_sin": "FP32 then BF16",
+      "apply": "separate BF16 products and adds",
+      "variants": [
+        "default only"
+      ]
+    },
+    "attention": {
+      "implementation": "eager, eval, dropout0",
+      "softmax": "FP32 then BF16",
+      "GQA": "repeat KV to query groups",
+      "cache": "append-only BF16 session/layer state"
+    },
+    "combine": {
+      "expert_order": "ascending source loop",
+      "index_add": "source invocation order, BF16 CPU backend"
+    },
+    "indices_and_shapes": "int64, never BF16",
+    "scatter_elements": "add only; duplicate replacement unimplemented"
+  },
+  "acceptance": {
+    "finite": "exact equality vs pinned source functions on same CPU backend",
+    "special": "NaN/Inf classification, no cross-backend NaN payload guarantee",
+    "IDs": "exact same CPU result; ties not a GPU portability assertion",
+    "post_BF16_weight_sum_budget": 0.0078125,
+    "budget_role": "representation-only check, never relaxes exact source comparison"
+  },
+  "forbidden": [
+    "W4/INT4",
+    "FP16 model substitution",
+    "global BF16 output-rounding for all ops",
+    "FP16 throughput assigned to BF16",
+    "checkpoint/full-model/target timing pass claim from this unit test"
+  ],
+  "deferred": [
+    "actual checkpoint fixtures",
+    "actual GPU backend/kernels",
+    "full original layer and two layers",
+    "full model/task",
+    "SDPA/FlashAttention",
+    "static/paged/sliding KV",
+    "target BF16 timing and native hardware"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "state": "PARTIAL_REAL_SUBCHAIN_INTEGRATED_FULL_LAUNCH_NOT_READY",
+  "model": "Qwen3-30B-A3B swe_qwen3",
+  "model_precision": "BF16",
+  "host_GiB": 128,
+  "HB_GiB": 8,
+  "target_GPU_count": 0,
+  "target_NPU_count": 16,
+  "HB_per_NPU_bytes": 536870912,
+  "SRAM_per_NPU_bytes": 4194304,
+  "HB_transaction_bytes": 32,
+  "BF16_wire_enum": 3,
+  "accumulator_dtype": "FP32",
+  "softmax_output_dtype": "FP32",
+  "simulator_root": null,
+  "phase_yaml": null,
+  "fresh_run_directory": null,
+  "mesh_width": null,
+  "feedback_rounds": null,
+  "acceptance": {
+    "interchiplet_rebuilt_and_health_checked": true,
+    "sniper_host_driver_bound": false,
+    "BF16_workload_driver_bound_to_real_interchiplet_protocol": false,
+    "HB8_host128_capacity_and_addresses_bound": false,
+    "ramulator_shared_service_and_32B_transactions_checked": false,
+    "popnet_topology_and_feedback_checked": false,
+    "dtype_per_tensor_and_codec_roundtrip_checked": false,
+    "prefill_decode_source_output_and_KV_checked": false,
+    "all_components_exit_and_last_reader_audited": false
+  },
+  "component_progress": {
+    "Sniper_NPU_DRAM_NoC_real_fragment": true,
+    "full_layers": false,
+    "full_target_timing": false
+  }
+}

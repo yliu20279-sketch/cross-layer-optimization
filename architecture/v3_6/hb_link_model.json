@@ -1,0 +1,32 @@
+{
+  "schema_version": "3.6-hb-link-1.0",
+  "physical_mapping": "16 one-to-one vertical NPU-to-DRAM links",
+  "source": "H2-LLM ISCA 2025",
+  "source_url": "https://chenzhangsjtu.github.io/files/2025-H2_LLM_ISCA25.pdf",
+  "pins_per_link": 512,
+  "pin_data_rate_Gbit_per_s": 0.4,
+  "bandwidth_GBps_per_link": 25.6,
+  "aggregate_bandwidth_GBps": 409.6,
+  "energy_pJ_per_bit": 0.88,
+  "pitch_um": 3.0,
+  "throughput_service": {
+    "formula": "payload_bytes / sustained_link_bandwidth",
+    "transaction_bytes": 32,
+    "transaction_service_time_ns": 1.25,
+    "status": "derived_throughput_occupancy_not_physical_link_latency",
+    "note": "This is an average bandwidth-service floor. Pin grouping, beat framing and controller pipeline are not published, so it must not be labeled propagation or serialization latency."
+  },
+  "fixed_link_latency": {
+    "value_ns": null,
+    "status": "not_reported_by_H2_LLM_or_public_fab_data",
+    "must_not_be_merged_with": [
+      "throughput_service_time",
+      "LPDDR5_command_latency",
+      "queueing_delay",
+      "NoC_latency"
+    ],
+    "sensitivity_points_ns": null,
+    "note": "The previous 0/0.25/0.5/1 ns sweep had no paper basis and has been removed from the canonical configuration."
+  },
+  "legacy_bandwidth_fields_allowed": false
+}

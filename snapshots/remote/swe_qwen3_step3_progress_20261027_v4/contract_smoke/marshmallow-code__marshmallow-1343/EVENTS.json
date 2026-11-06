@@ -1,0 +1,140 @@
+[
+  {
+    "turn": 1,
+    "request": "SCRIPTED1",
+    "actions": [
+      {
+        "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text()+'\\ndef controller_marker(\\n')\nPY",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "a42a4b50f9aa2c5f6a1af01ed862ad7d9083f991044b96065e9741e3a8539190"
+    },
+    "unchanged_library_actions": 0
+  },
+  {
+    "turn": 2,
+    "request": "SCRIPTED2",
+    "actions": [],
+    "submission_validation": {
+      "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+      "syntax": {
+        "output": "Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"src/marshmallow/__init__.py\", line 38\n    def controller_marker(\n                          ^\nSyntaxError: unexpected EOF while parsing\n",
+        "returncode": 1,
+        "exception_info": ""
+      },
+      "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+      "tests": null,
+      "source_modified_by_controller": false,
+      "hidden_tests_used": false,
+      "source_unchanged_through_validation": true
+    },
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "a42a4b50f9aa2c5f6a1af01ed862ad7d9083f991044b96065e9741e3a8539190"
+    },
+    "unchanged_library_actions": 1
+  },
+  {
+    "turn": 3,
+    "request": "SCRIPTED3",
+    "actions": [
+      {
+        "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text().replace('\\ndef controller_marker(\\n','')+'\\nraise RuntimeError(\"controller_import_probe\")\\n')\nPY",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "662ae31621b8868fce7a387b65e298b7fa87144bbe62a9deed39a3f0410353a0"
+    },
+    "unchanged_library_actions": 0
+  },
+  {
+    "turn": 4,
+    "request": "SCRIPTED4",
+    "actions": [],
+    "submission_validation": {
+      "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+      "syntax": {
+        "output": "CONTROLLER_SYNTAX_OK\n",
+        "returncode": 0,
+        "exception_info": ""
+      },
+      "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+      "tests": {
+        "output": "ERROR: while parsing the following warning configuration:\n\n  ignore::marshmallow.warnings.ChangedInMarshmallow3Warning\n\nThis error occurred:\n\nTraceback (most recent call last):\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1918, in parse_warning_filter\n    category: type[Warning] = _resolve_warning_category(category_)\n  File \"/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/_pytest/config/__init__.py\", line 1956, in _resolve_warning_category\n    m = __import__(module, None, None, [klass])\n  File \"/testbed/src/marshmallow/__init__.py\", line 38, in <module>\n    raise RuntimeError(\"controller_import_probe\")\nRuntimeError: controller_import_probe\n\n\n",
+        "returncode": 4,
+        "exception_info": ""
+      },
+      "source_modified_by_controller": false,
+      "hidden_tests_used": false,
+      "source_unchanged_through_validation": true
+    },
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "662ae31621b8868fce7a387b65e298b7fa87144bbe62a9deed39a3f0410353a0"
+    },
+    "unchanged_library_actions": 1
+  },
+  {
+    "turn": 5,
+    "request": "SCRIPTED5",
+    "actions": [
+      {
+        "command": "python - <<'PY'\nfrom pathlib import Path\np=Path('src/marshmallow/__init__.py');p.write_text(p.read_text().replace('\\nraise RuntimeError(\"controller_import_probe\")\\n','')+'\\n# controller marker\\n')\nPY",
+        "cached": false,
+        "returncode": 0
+      }
+    ],
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "02100576e0c79454e4327671aa85654b72b5c3a3514ffbbe85174bc84c898542"
+    },
+    "unchanged_library_actions": 0
+  },
+  {
+    "turn": 6,
+    "request": "SCRIPTED6",
+    "actions": [],
+    "submission_validation": {
+      "syntax_command": "/opt/miniconda3/envs/testbed/bin/python -c 'import json,sys,pathlib\nfor name in json.loads(sys.argv[1]):\n p=pathlib.Path(name)\n if p.is_file(): compile(p.read_bytes(),name,'\"'\"'exec'\"'\"')\nprint('\"'\"'CONTROLLER_SYNTAX_OK'\"'\"')' '[\"src/marshmallow/__init__.py\"]'",
+      "syntax": {
+        "output": "CONTROLLER_SYNTAX_OK\n",
+        "returncode": 0,
+        "exception_info": ""
+      },
+      "tests_command": "/opt/miniconda3/envs/testbed/bin/python -m pytest -q",
+      "tests": {
+        "output": "============================= test session starts ==============================\nplatform linux -- Python 3.9.21, pytest-8.3.5, pluggy-1.5.0\nrootdir: /testbed\nconfigfile: setup.cfg\ncollected 779 items\n\ntests/test_decorators.py .......................                         [  2%]\ntests/test_deserialization.py .......................................... [  8%]\n........................................................................ [ 17%]\n.................................................................        [ 25%]\ntests/test_exceptions.py .....                                           [ 26%]\ntests/test_fields.py .................................                   [ 30%]\ntests/test_marshalling.py ........................                       [ 33%]\ntests/test_options.py ..................                                 [ 36%]\ntests/test_py3/test_utils.py .                                           [ 36%]\ntests/test_registry.py .........                                         [ 37%]\ntests/test_schema.py ................................................... [ 44%]\n........................................................................ [ 53%]\n........................................................................ [ 62%]\n........................                                                 [ 65%]\ntests/test_serialization.py ............................................ [ 71%]\n..........................................................               [ 78%]\ntests/test_utils.py .......................................              [ 83%]\ntests/test_validate.py ................................................. [ 89%]\n........................................................................ [ 99%]\n......                                                                   [100%]\n\n=============================== warnings summary ===============================\nsrc/marshmallow/__init__.py:19\n  /testbed/src/marshmallow/__init__.py:19: DeprecationWarning: distutils Version classes are deprecated. Use packaging.version instead.\n    __version_info__ = tuple(LooseVersion(__version__).version)\n\ntests/test_decorators.py::test_decorated_processors\n  /testbed/src/marshmallow/marshalling.py:253: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working\n    if not isinstance(data, collections.Mapping):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n======================= 779 passed, 2 warnings in 2.39s ========================\n",
+        "returncode": 0,
+        "exception_info": ""
+      },
+      "source_modified_by_controller": false,
+      "hidden_tests_used": false,
+      "source_unchanged_through_validation": true
+    },
+    "submit": true,
+    "library_state": {
+      "paths": [
+        "src/marshmallow/__init__.py"
+      ],
+      "sha256": "02100576e0c79454e4327671aa85654b72b5c3a3514ffbbe85174bc84c898542"
+    },
+    "unchanged_library_actions": 1
+  }
+]

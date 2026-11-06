@@ -1,0 +1,24 @@
+{
+  "torch": "2.6.0+cu124",
+  "overall_cpu_capability": "AVX512",
+  "library": "/mnt/sdb1/h3240101068/miniconda3/envs/qwen-moe-route/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so",
+  "library_sha256": "6a356e5505acb5c4babd7a20c7b470d879cac278f5357b58311af3e65b976d45",
+  "BF16_GEMV_registrations": [
+    {
+      "symbol": "_ZN2at6native12DispatchStubIPFviiN3c108BFloat16EPKS3_iS5_iS3_PS3_iENS0_42bf16_gemv_trans_stub_DECLARE_DISPATCH_typeEE4AVX2E",
+      "storage": "D",
+      "pointer_is_null": false
+    },
+    {
+      "symbol": "_ZN2at6native12DispatchStubIPFviiN3c108BFloat16EPKS3_iS5_iS3_PS3_iENS0_42bf16_gemv_trans_stub_DECLARE_DISPATCH_typeEE6AVX512E",
+      "storage": "B",
+      "pointer_is_null": true
+    },
+    {
+      "symbol": "_ZN2at6native12DispatchStubIPFviiN3c108BFloat16EPKS3_iS5_iS3_PS3_iENS0_42bf16_gemv_trans_stub_DECLARE_DISPATCH_typeEE7DEFAULTE",
+      "storage": "D",
+      "pointer_is_null": false
+    }
+  ],
+  "interpretation": "AVX512 registration is null; installed BF16 GEMV falls back to AVX2; batch matmul is a different path"
+}

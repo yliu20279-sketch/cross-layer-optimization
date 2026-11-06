@@ -1,0 +1,219 @@
+{
+  "state": "PASS_LIMITED_FIRST_DIFFERENCE_AUDIT",
+  "payload_files": 100,
+  "free_comparisons": 50,
+  "CPU_stage_bindings_to_prior_two_layer_run": [
+    "input",
+    "input_norm",
+    "attention_output",
+    "pre_MoE_residual",
+    "post_attention_norm",
+    "router_logits",
+    "router_probabilities",
+    "route_IDs",
+    "route_weights"
+  ],
+  "first_internal_operator": "input_RMSNorm FP32 mean(square)",
+  "internal_variance_different": 9,
+  "internal_difference_survives_input_BF16": false,
+  "first_persistent_BF16_operator": "Q/K/V projection GEMM",
+  "projection_differences": [
+    74,
+    5,
+    3
+  ],
+  "capture_identity_checks": 4,
+  "original_output_differences_unchanged": 4249,
+  "original_route_differences": 10,
+  "route_rows": [
+    {
+      "token": 1,
+      "CPU": [
+        66,
+        105,
+        125,
+        86,
+        24,
+        122,
+        95,
+        36
+      ],
+      "GPU": [
+        66,
+        105,
+        125,
+        86,
+        24,
+        95,
+        122,
+        36
+      ],
+      "different_slots": 2,
+      "same_expert_set": true,
+      "GPU_boundary_tie": false,
+      "CPU_boundary_tie": false,
+      "GPU_logits_for_GPU_slots": [
+        -3.0625,
+        -3.140625,
+        -3.5,
+        -3.609375,
+        -3.640625,
+        -3.71875,
+        -3.71875,
+        -3.75
+      ],
+      "CPU_logits_for_GPU_slots": [
+        -3.0625,
+        -3.140625,
+        -3.5,
+        -3.609375,
+        -3.640625,
+        -3.71875,
+        -3.71875,
+        -3.75
+      ]
+    },
+    {
+      "token": 12,
+      "CPU": [
+        94,
+        60,
+        13,
+        58,
+        102,
+        95,
+        99,
+        66
+      ],
+      "GPU": [
+        94,
+        60,
+        13,
+        102,
+        58,
+        66,
+        95,
+        99
+      ],
+      "different_slots": 5,
+      "same_expert_set": true,
+      "GPU_boundary_tie": false,
+      "CPU_boundary_tie": false,
+      "GPU_logits_for_GPU_slots": [
+        -3.46875,
+        -3.640625,
+        -3.78125,
+        -3.84375,
+        -3.84375,
+        -3.859375,
+        -3.859375,
+        -3.859375
+      ],
+      "CPU_logits_for_GPU_slots": [
+        -3.46875,
+        -3.625,
+        -3.78125,
+        -3.84375,
+        -3.84375,
+        -3.859375,
+        -3.859375,
+        -3.859375
+      ]
+    },
+    {
+      "token": 14,
+      "CPU": [
+        84,
+        16,
+        98,
+        114,
+        1,
+        53,
+        45,
+        100
+      ],
+      "GPU": [
+        84,
+        16,
+        98,
+        114,
+        1,
+        53,
+        45,
+        26
+      ],
+      "different_slots": 1,
+      "same_expert_set": false,
+      "GPU_boundary_tie": true,
+      "CPU_boundary_tie": true,
+      "GPU_logits_for_GPU_slots": [
+        -2.015625,
+        -2.3125,
+        -2.34375,
+        -2.71875,
+        -2.921875,
+        -3.65625,
+        -3.90625,
+        -4.0625
+      ],
+      "CPU_logits_for_GPU_slots": [
+        -2.015625,
+        -2.3125,
+        -2.34375,
+        -2.71875,
+        -2.921875,
+        -3.65625,
+        -3.90625,
+        -4.0625
+      ]
+    },
+    {
+      "token": 15,
+      "CPU": [
+        60,
+        115,
+        37,
+        19,
+        102,
+        94,
+        72,
+        82
+      ],
+      "GPU": [
+        60,
+        115,
+        37,
+        19,
+        102,
+        94,
+        82,
+        72
+      ],
+      "different_slots": 2,
+      "same_expert_set": true,
+      "GPU_boundary_tie": false,
+      "CPU_boundary_tie": false,
+      "GPU_logits_for_GPU_slots": [
+        -1.7578125,
+        -3.09375,
+        -3.515625,
+        -3.671875,
+        -3.75,
+        -3.828125,
+        -3.859375,
+        -3.859375
+      ],
+      "CPU_logits_for_GPU_slots": [
+        -1.7578125,
+        -3.09375,
+        -3.515625,
+        -3.671875,
+        -3.75,
+        -3.828125,
+        -3.859375,
+        -3.859375
+      ]
+    }
+  ],
+  "scope": "local file arithmetic audit; equal-input GPU operator probes executed remotely; no universal GEMM cause or implementation fix certified"
+}
