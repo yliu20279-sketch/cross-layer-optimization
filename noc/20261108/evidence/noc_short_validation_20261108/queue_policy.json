@@ -1,0 +1,50 @@
+{
+  "state": "passed",
+  "user_authorized": "short correctness validation; do not auto-run 24 blocks",
+  "data_deleted": false,
+  "active_simulation_sources_modified": false,
+  "updated": "2026-11-08T14:17:18.578398",
+  "short_cases": {
+    "fixed_cs_l1": {
+      "state": "passed",
+      "decoder_blocks": 1,
+      "strict_rounds": 3,
+      "mode": "static_cs",
+      "physical_DAG_and_shared_ports_passed": true,
+      "DRAM_oracle_and_independent_native_passed": true,
+      "independent_original_NoC_passed": true,
+      "aux_flits": 1929,
+      "NoC_experiment_suite_complete": false
+    },
+    "mesh_l2": {
+      "state": "passed",
+      "decoder_blocks": 2,
+      "strict_rounds": 3,
+      "mode": "mesh",
+      "physical_DAG_and_shared_ports_passed": true,
+      "DRAM_oracle_and_independent_native_passed": true,
+      "independent_original_NoC_passed": true,
+      "aux_flits": 0,
+      "NoC_experiment_suite_complete": false
+    }
+  },
+  "retired_processes": [
+    {
+      "pid": 813541,
+      "pgid": 813541,
+      "sid": 813541,
+      "argv": "python3 /mnt/sdb1/h4567/noc_crosslayer_validation_20261108/pipeline.py ",
+      "cwd": "/mnt/sdb1/h4567/noc_crosslayer_validation_20261108"
+    },
+    {
+      "pid": 900109,
+      "pgid": 813541,
+      "sid": 813541,
+      "argv": "python3 /mnt/sdb1/h4567/noc_crosslayer_validation_20261108/run_application.py --name mesh_l24 --plan /mnt/sdb1/h4567/qwen15_native_suite_20261107/plans_c1_128_dec8_l24 --mode mesh --seed /mnt/sdb1/h4567/noc_crosslayer_validation_20261108/mesh_l2/run/proc_r3_p2_t0/output_delayInfo.txt --rounds 16 --timeout 172800 ",
+      "cwd": "/mnt/sdb1/h4567/noc_crosslayer_validation_20261108"
+    }
+  ],
+  "long_case_directory_created": false,
+  "two_short_case_metrics_passed": true,
+  "obsolete_analysis_wait_retired": true
+}

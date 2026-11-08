@@ -1,0 +1,7 @@
+--- a/mess_queue.h
++++ b/mess_queue.h
+@@ -33 +33,3 @@
+-		typedef std::priority_queue<mess_event,std::vector<mess_event>,std::greater<mess_event> > message_q;
++		class message_q:public std::priority_queue<mess_event,std::vector<mess_event>,std::greater<mess_event> > {
++		public: std::vector<mess_event>& storage(){return this->c;}
++		};

@@ -1,0 +1,31 @@
+--- a/sim_router.h
++++ b/sim_router.h
+@@ -285,0 +286 @@
++		long output_ports_; // May include one output-only AUX; no matching input FIFO.
+@@ -337,0 +339,6 @@
++		virtual add_type routing_destination(const flit_template &f,long,long) const {return f.des_addr();}
++		virtual bool local_destination(const flit_template &f,long,long) const {return address_ == f.des_addr();}
++		virtual bool local_receive_ready(time_type, const flit_template &) {return true;}
++		virtual void deliver_local(time_type t, const flit_template &f) {accept_flit(t,f);}
++		virtual void deliver_local_context(time_type t,const flit_template& f,long,long){deliver_local(t,f);}
++		virtual void observe_injection(const flit_template &) {}
+@@ -349,0 +357 @@
++		long output_ports() const {return output_ports_;}
+@@ -364,0 +373 @@
++		virtual ~sim_router_template() = default;
+@@ -368 +377 @@
+-				const add_type & e, long f, long g);
++				const add_type & e, long f, long g, long extra_outputs=0);
+@@ -371,0 +381,3 @@
++        bool quiescent_until(time_type now,time_type& limit);
++        bool completely_idle_until(time_type now,time_type&limit);
++        virtual bool cached_stalled_local_header(long,long)const{return false;}
+@@ -386 +398 @@
+-				long e,SPacket::TId packet_id);
++				long e,SPacket::TId packet_id,const Data_type* serialized_control=nullptr);
+@@ -403 +415 @@
+-		void flit_traversal(long a);
++		virtual void flit_traversal(long a);
+@@ -530 +542 @@
+-	CGraphTopo(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size);
++	CGraphTopo(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size,long extra_outputs=0);

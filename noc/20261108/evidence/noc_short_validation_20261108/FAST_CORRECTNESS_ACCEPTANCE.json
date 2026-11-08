@@ -1,0 +1,45 @@
+{
+  "state": "passed",
+  "time": "2026-11-08T14:17:20.684728",
+  "scope": "tested target-NoC functional/protocol and short native/Qwen joint-simulation correctness",
+  "not_universal_formal_deadlock_proof": true,
+  "full_Qwen_or_HiBand_optimization_performance_complete": false,
+  "full24_required_for_this_acceptance": false,
+  "background_24_continuation_retired": true,
+  "same_target_architecture_NPU16_DRAM32GiB": true,
+  "proofs": {
+    "22_control_cases": {
+      "path": "/mnt/sdb1/h4567/noc_current_control_validation_20261108/status_retry1.json",
+      "sha256": "d006660c1757409f4b18f78fc0721e56509a0defa8fc3faf68f4e9aafb1b1289"
+    },
+    "216_connection_cases": {
+      "path": "/mnt/sdb1/h4567/noc_cs_connectivity_20261108/status.json",
+      "sha256": "598474ecd141cb31e11d4aee4decbade8acda64492c42bbf8bc34ea2b5ac703d"
+    },
+    "774_partial_connections": {
+      "path": "/mnt/sdb1/h4567/noc_cs_partial_connectivity_20261108/status.json",
+      "sha256": "399c9a704634903f8f1cbb1dbdb70b10e1ed1f834317ee1c1b8f3e9f9c33645c"
+    },
+    "4_configuration_ready_compositions": {
+      "path": "/mnt/sdb1/h4567/noc_ready_reconfigure_20261108/accepted_component_validation.json",
+      "sha256": "424715832642e3e334ab157d75d3adb8fda91a5bbb62efed6500c79318b49fb3"
+    },
+    "real_Qwen_first_block_static_CS": {
+      "path": "/mnt/sdb1/h4567/noc_crosslayer_validation_20261108/fixed_cs_l1/acceptance.json",
+      "sha256": "9de4c4178305506bd5e92c89806cb80b983a1688437f4a05d67bc784b9ccde15"
+    },
+    "real_Qwen_two_block_Mesh": {
+      "path": "/mnt/sdb1/h4567/noc_crosslayer_validation_20261108/mesh_l2/acceptance.json",
+      "sha256": "33bc7434063b564a397079b2355f8ed8e63d05675040dfea57cbcc856e449465"
+    },
+    "short_native_dynamic_chain": {
+      "path": "/mnt/sdb1/h4567/noc_short_validation_20261108/accepted_chain_validation.json",
+      "sha256": "1108270c467ba87cb75024b42b9c3531e63a0a2226e398620c4a4f8b86896590"
+    },
+    "retired_24_block_continuation": {
+      "path": "/mnt/sdb1/h4567/noc_short_validation_20261108/queue_policy.json",
+      "sha256": "f2dff3476c9512434f77ff726b9316b8f66356c3d40c7ab1a44e89bc3471da3c"
+    }
+  },
+  "next_stage": "small-scale unified application comparisons; separate from correctness acceptance"
+}

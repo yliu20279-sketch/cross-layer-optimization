@@ -1,0 +1,11 @@
+--- a/sim_foundation.cc
++++ b/sim_foundation.cc
+@@ -13,0 +14 @@
++#include "changes/aux_bridge.h"
+@@ -257 +258,3 @@
+-	router(/* sor_addr_t */inputTraces.front().sourceAddress).receive_packet();
++    const char*clock_only=std::getenv("NOC_CLOCKED_SOURCE_ADMISSION");
++    if(!(clock_only&&std::string(clock_only)=="1"))
++        router(/* sor_addr_t */inputTraces.front().sourceAddress).receive_packet();
+@@ -318,0 +322 @@
++	if(AuxBridge::get().enabled()) AuxBridge::get().credit_received(des_t.front(),pc_t,vc_t);

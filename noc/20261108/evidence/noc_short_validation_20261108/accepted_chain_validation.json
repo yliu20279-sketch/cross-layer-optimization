@@ -1,0 +1,66 @@
+{
+  "state": "passed",
+  "time": "2026-11-08T14:06:48.808901",
+  "cases": {
+    "absolute": {
+      "state": "passed",
+      "strict_rounds": 4,
+      "native_vector_ops": 49152,
+      "actual_native_DRAM_transactions": 64,
+      "application_messages": 48,
+      "actual_AUX_flits": 1040,
+      "all_shared_port_and_consumer_dependencies_checked": true,
+      "independent_NoC_and_DRAM_passed": true
+    },
+    "relative": {
+      "state": "passed",
+      "strict_rounds": 4,
+      "native_vector_ops": 49152,
+      "actual_native_DRAM_transactions": 64,
+      "application_messages": 48,
+      "actual_AUX_flits": 1040,
+      "all_shared_port_and_consumer_dependencies_checked": true,
+      "independent_NoC_and_DRAM_passed": true
+    }
+  },
+  "scope": "short real native vector/DMA/DRAM program with actual NI configuration and receive-ready packets",
+  "not_complete_Qwen_or_performance_result": true,
+  "target_NPUs": 16,
+  "real_Ramulator2_partitions": 16,
+  "DRAM_capacity_bytes": 34359738368,
+  "predictor_modes_same_physical_result": true,
+  "cross_predictor_exact_checks": {
+    "source.csv": true,
+    "events.csv": true,
+    "receive_events.csv": true,
+    "receive_ready_events.csv": true,
+    "wire_headers.csv": true,
+    "bridge_summary.json": true,
+    "receive_summary.json": true,
+    "receive_ready_summary.json": true,
+    "router_stalls.csv": true,
+    "router_stalls_packets.csv": true,
+    "router_stalls_forwarded.csv": true,
+    "router_stalls_forward_busy.csv": true,
+    "router_stalls_packet_forwarded.csv": true,
+    "output_delayInfo.txt": true,
+    "control_events.csv": true,
+    "phase_demand.json": true
+  },
+  "original_simulation_inputs_unchanged": 36,
+  "independent_reference_proof_hashes": {
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/absolute/evidence_retry1/independent_NoC_validation.json": "e96b109a24db16809047176ebe552f95b2540ee63280eae6924899562bc5cd7d",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/absolute/evidence_retry1/independent_native_DRAM.json": "88c208d4cc6d91043f8e156b2e9a2052bc584a828b87837c35c57683f6d9819b",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/absolute/evidence_retry1/oracle_round3.json": "e7fbf1d0f267850e5796de84101d3ebc90203f703368a1dd7463beb8184b1866",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/absolute/evidence_retry1/oracle_round4.json": "b6e7033694aa0843a772fc11c033a06e89ab95d35ec771e69d6976e817a00807",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/relative/evidence_retry1/independent_NoC_validation.json": "e96b109a24db16809047176ebe552f95b2540ee63280eae6924899562bc5cd7d",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/relative/evidence_retry1/independent_native_DRAM.json": "88c208d4cc6d91043f8e156b2e9a2052bc584a828b87837c35c57683f6d9819b",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/relative/evidence_retry1/oracle_round3.json": "e7fbf1d0f267850e5796de84101d3ebc90203f703368a1dd7463beb8184b1866",
+    "/mnt/sdb1/h4567/noc_short_validation_20261108/relative/evidence_retry1/oracle_round4.json": "b6e7033694aa0843a772fc11c033a06e89ab95d35ec771e69d6976e817a00807"
+  },
+  "auditor_sha256": "9699110f3e5ff20ed7cc05be11f2b44c67b61cfd95004b296004e556d8cf572e",
+  "finalizer_sha256": "e926eacb65f7c15be6246d5169e2d6b557e69816c130b9d6630126d9a3520fcb",
+  "historical_failed_audits_preserved": true,
+  "first_audit_issue": "incorrectly equated sender and receiver request times; independent READ posts are now checked",
+  "retry1_finalization_issue": "cross-mode comparator expected a differently named feedback file; native data unchanged"
+}

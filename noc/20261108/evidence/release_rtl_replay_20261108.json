@@ -1,0 +1,44 @@
+{
+  "state": "passed",
+  "scope": "RTL functional regression only",
+  "utc": "2026-11-08T06:40:50.436563+00:00",
+  "tests": {
+    "tool_smoke": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "PASS tool_smoke\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_tool_smoke.sv:2: $finish called at 0 (1ps)"
+    },
+    "switch": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "PASS switch cases=1048576 legal=108 illegal=3988 walking_bits=3072\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_switch.sv:66: $finish called at 1051648000 (1ps)"
+    },
+    "aux_router": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "PASS aux_router route_cases=160 payload_walks=2490 local_aux_parallel=1 controls_while_aux_blocked=8 same_input_HOL_verified=1\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_aux_router.sv:100: $finish called at 53416000 (1ps)"
+    },
+    "transition": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "VCD info: dumpfile build/transition.vcd opened for output.\nPASS transition injected=3072 retired=3072 aux=2880 count_wait=34 credit_wait=122 prefix_wait=43 tail_finishes=12 normal_during_freeze=110 ignored_stale=1\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_transition.sv:191: $finish called at 32440000 (1ps)"
+    },
+    "timeout": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "VCD info: dumpfile build/timeout.vcd opened for output.\nPASS timeout frozen=16 old_config_retained=1 ignored_stale=1 credit_wait_cycles=5084\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_transition.sv:174: $finish called at 73530000 (1ps)"
+    },
+    "management": {
+      "passed": true,
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "output": "PASS management duplicate_arm_preserved_count=1 run_with_new_epoch_activity=1 counter_limit=15 commit_blocked_after_fault=1\n/mnt/sdb1/h4567/github_noc_release_check_retry1_20261108/rtl/tb/tb_management.sv:58: $finish called at 650000 (1ps)"
+    }
+  },
+  "negative_compile_rejected": true
+}

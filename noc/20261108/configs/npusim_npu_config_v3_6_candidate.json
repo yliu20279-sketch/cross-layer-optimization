@@ -1,0 +1,71 @@
+{
+  "npu": {
+    "mac_unit_count": 1,
+    "sram_per_mac_bytes": 4194304,
+    "activation_bytes": 2,
+    "activation_dtype": "bf16",
+    "weight_bytes": 2,
+    "weight_dtype": "bf16",
+    "accumulator_bytes": 4,
+    "accumulator_dtype": "fp32",
+    "output_bytes": 2,
+    "output_dtype": "bf16",
+    "functional_round_each_operator": true,
+    "mac_array": {
+      "rows": 64,
+      "cols": 64
+    },
+    "tiling": {
+      "tile_m": 64,
+      "tile_n": 64,
+      "tile_k": 64
+    },
+    "mac_ops_per_cycle": 2048,
+    "vector_ops_per_cycle": 16,
+    "reduce_ops_per_cycle": 16,
+    "sram_bandwidth_bytes_per_cycle": 256,
+    "ddr_bandwidth_bytes_per_cycle": 128,
+    "memory_unit_bytes": 4194304,
+    "sram_miss_penalty_cycles": 120,
+    "pipeline_depth_cycles": 16,
+    "flit_payload_bytes": 32,
+    "topology": {
+      "mode": "custom_gv",
+      "gv_path": "npusim_one_array.gv",
+      "node_count": 2,
+      "controller_node": 1,
+      "mac_nodes": [
+        0
+      ]
+    }
+  },
+  "timing": {
+    "compute_memory_mode": "sum",
+    "intra_delay_enable": false,
+    "intra_delay_scale": 1.0
+  },
+  "external_memory": {
+    "enable": true,
+    "model": "chiplet",
+    "transaction_bytes": 32,
+    "size_bytes": 2147483648,
+    "chiplet": {
+      "x": 0,
+      "y": 4,
+      "burst_bytes": 4096,
+      "region_bytes": 2147483648,
+      "grid_cols": 1
+    }
+  },
+  "_v3_6_candidate": {
+    "schema_version": "3.6-candidate",
+    "freeze_date": "2026-09-21",
+    "source_file": "npu_config_v3_3_fp16_32gib.json",
+    "source_host": "h4567@10.98.36.113:/mnt/sda1/h4567/semmoe_olmoe_reproduction_20260913/v33_sim",
+    "renamed_to_remove_version_ambiguity": true,
+    "external_memory_size_bytes": 2147483648,
+    "external_memory_region_bytes": 2147483648,
+    "external_memory_burst_bytes": 4096,
+    "known_issue_burst_vs_row": "burst_bytes=4096 exceeds the 2048-byte DRAM row of this LPDDR5 organisation. Bank/row-buffer statistics must not be derived from treating one burst as one row access."
+  }
+}

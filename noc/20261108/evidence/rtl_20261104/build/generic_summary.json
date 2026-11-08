@@ -1,0 +1,74 @@
+{
+  "audit_host": "youmu",
+  "audit_utc": "2026-11-04T07:14:31.716423+00:00",
+  "synthesis_host": "SERVER-113",
+  "tool_version": "Yosys 0.55 (git sha1 60f126cd0, ccache clang 18.1.3 -O3 -flto -flto)",
+  "source_hashes_verified": 13,
+  "wheel_hashes_recorded": 7,
+  "wheel_hashes_verified_here": 0,
+  "process_library": null,
+  "area_um2": null,
+  "timing_closed": false,
+  "application_performance": false,
+  "metadata_excluded": [
+    "$scopeinfo"
+  ],
+  "metadata_reference": "https://yosyshq.readthedocs.io/projects/yosys/en/docs-preview-ci/cmd/index_passes_hierarchy.html",
+  "tops": {
+    "router_local_top": {
+      "raw_cell_objects": 30207,
+      "scope_metadata_objects": 1,
+      "hardware_generic_cells": 30206,
+      "flip_flop_cells": 2615,
+      "combinational_cells": 27591,
+      "latch_cells": 0,
+      "combinational_sccs": 0
+    },
+    "router_aux_top": {
+      "raw_cell_objects": 35673,
+      "scope_metadata_objects": 1,
+      "hardware_generic_cells": 35672,
+      "flip_flop_cells": 2622,
+      "combinational_cells": 33050,
+      "latch_cells": 0,
+      "combinational_sccs": 0
+    },
+    "terminal_switch": {
+      "raw_cell_objects": 11720,
+      "scope_metadata_objects": 0,
+      "hardware_generic_cells": 11720,
+      "flip_flop_cells": 0,
+      "combinational_cells": 11720,
+      "latch_cells": 0,
+      "combinational_sccs": 0
+    },
+    "node_selectors": {
+      "raw_cell_objects": 5402,
+      "scope_metadata_objects": 0,
+      "hardware_generic_cells": 5402,
+      "flip_flop_cells": 0,
+      "combinational_cells": 5402,
+      "latch_cells": 0,
+      "combinational_sccs": 0
+    },
+    "managed_endpoint": {
+      "raw_cell_objects": 5408,
+      "scope_metadata_objects": 2,
+      "hardware_generic_cells": 5406,
+      "flip_flop_cells": 622,
+      "combinational_cells": 4784,
+      "latch_cells": 0,
+      "combinational_sccs": 0
+    }
+  },
+  "netlist_regression": {
+    "router": "PASS aux_router route_cases=160 payload_walks=2490 local_aux_parallel=1 controls_while_aux_blocked=8 same_input_HOL_verified=1\ntb/tb_aux_router.sv:100: $finish called at 53416000 (1ps)",
+    "cs": "PASS switch cases=1048576 legal=108 illegal=3988 walking_bits=3072\ntb/tb_switch.sv:66: $finish called at 1051648000 (1ps)"
+  },
+  "aux_delta": {
+    "hardware_generic_cells": 5466,
+    "flip_flop_cells": 7,
+    "combinational_cells": 5459
+  },
+  "previous_rtl_identical_files": 10
+}

@@ -1,0 +1,124 @@
+--- a/mess_queue.cc
++++ b/mess_queue.cc
+@@ -2,0 +3,3 @@
++#include "changes/aux_bridge.h"
++#include "changes/dynamic_control.h"
++#include "changes/receive_ready.h"
+@@ -6,0 +10,3 @@
++#include <cstdlib>
++#include <limits>
++#include <fstream>
+@@ -13,3 +19,38 @@
+-bool operator<(const mess_event & a, const mess_event & b) {
+-	return a.event_start() < b.event_start();
+-}
++namespace {
++int stable_event_mode(){static const int mode=[](){const char*p=std::getenv("NOC_STABLE_EVENT_ORDER");return p?std::atoi(p):0;}();return mode;}
++int event_phase(mess_type type){
++    if(stable_event_mode()!=2)return int(type);
++    // Sample returning credits and arriving wires before the clocked router.
++    switch(type){
++    case RECONFIGURATION:return 0;
++    case CREDIT_:return 1;
++    case WIRE_:return 2;
++    case AUX_ARRIVAL_:return 3;
++    case PHASE_READY_:return 4;
++    case CONTROL_TICK_:return 5;
++    case EVG_:return 6;
++    case ROUTER_:return 7;
++    case NI_SERVICE_:return 8;
++    }
++    return 9;
++}
++bool event_less(const mess_event&a,const mess_event&b){
++    if(a.event_start()!=b.event_start())return a.event_start()<b.event_start();
++    if(!stable_event_mode())return false;
++    const auto x=event_phase(a.event_type()),y=event_phase(b.event_type());
++    if(x!=y)return x<y;
++    if(a.src()!=b.src())return a.src()<b.src();
++    if(a.des()!=b.des())return a.des()<b.des();
++    if(a.event_type()==WIRE_||a.event_type()==CREDIT_){
++        if(a.pc()!=b.pc())return a.pc()<b.pc();
++        if(a.vc()!=b.vc())return a.vc()<b.vc();
++    }
++    if(a.event_type()==WIRE_||a.event_type()==AUX_ARRIVAL_){
++        if(a.get_flit().getPacketId()!=b.get_flit().getPacketId())return a.get_flit().getPacketId()<b.get_flit().getPacketId();
++        return a.get_flit().sequence()<b.get_flit().sequence();
++    }
++    if(a.event_type()==ROUTER_)return a.getRoutingPeriod()<b.getRoutingPeriod();
++    return false;
++}
++}
++bool operator<(const mess_event & a, const mess_event & b) {return event_less(a,b);}
+@@ -19 +60 @@
+-	return a.event_start()>b.event_start();
++	return event_less(b,a);
+@@ -49,0 +91,4 @@
++    const bool skip_enabled=std::getenv("NOC_QUIESCENT_SKIP")&&std::string(std::getenv("NOC_QUIESCENT_SKIP"))=="1";
++    std::uint64_t skipped_cycles=0,skip_count=0;
++    const bool empty_skip=std::getenv("NOC_EMPTY_SKIP")&&std::string(std::getenv("NOC_EMPTY_SKIP"))=="1";
++    std::uint64_t empty_cycles=0,empty_count=0;
+@@ -64 +109 @@
+-				<<" Virtual Channel "<<current_message.vc()<<endl;
++                <<" Virtual Channel "<<current_message.vc()<<'\n';
+@@ -111,0 +157,12 @@
++			case AUX_ARRIVAL_:
++				AuxBridge::get().arrive(current_message);
++				break;
++			case NI_SERVICE_:
++				AuxBridge::get().service(current_message.event_start());
++				break;
++			case CONTROL_TICK_:
++				DynamicControl::get().tick(current_message.event_start());
++				break;
++			case PHASE_READY_:
++				DynamicControl::get().phase_ready(current_message.src().front());
++				break;
+@@ -117,0 +175,39 @@
++        if(empty_skip&&current_message.event_type()==ROUTER_&&configuration::ap().routing_alg()==GRAPH_TOPO&&!DynamicControl::get().enabled()){
++            auto&events=m_q_.storage();time_type limit=configuration::ap().sim_length();long routers=0;bool okay=true;
++            for(const auto&e:events){
++                if(e.event_type()==ROUTER_){++routers;if(e.getRoutingPeriod()!=1)okay=false;}
++                else limit=std::min(limit,e.event_start());
++            }
++            okay=okay&&routers==1&&AuxBridge::get().completely_idle()&&ReceiveReady::get().idle_until(current_time_,limit);
++            if(okay)for(auto&r:sim_foundation::wsf().inter_network())if(!r.completely_idle_until(current_time_,limit)){okay=false;break;}
++            const auto advance=std::floor(limit-current_time_)-2;
++            if(okay&&advance>=64){
++                // No queue, arbiter, RNG, NI/table action or external event can
++                // change in this interval. Leave two ticks before the earliest
++                // future event and retain the existing heap's equal-time order.
++                for(auto&e:events)if(e.event_type()==ROUTER_)e.set_event_start(e.event_start()+advance);
++                current_time_+=advance;empty_cycles+=advance;++empty_count;mess_counter_+=advance;
++            }
++        }
++        if(skip_enabled&&total_incoming!=total_finished_&&configuration::ap().routing_alg()==GRAPH_TOPO){
++            auto& events=m_q_.storage();time_type limit=configuration::ap().sim_length();
++            int routers=0,ni=0;bool okay=true;
++            for(const auto& event:events){
++                if(event.event_type()==ROUTER_){++routers;if(event.getRoutingPeriod()!=1)okay=false;}
++                else if(event.event_type()==NI_SERVICE_)++ni;
++                else limit=std::min(limit,event.event_start());
++            }
++            okay=okay&&routers==1&&ni==1&&AuxBridge::get().quiescent_until(current_time_,limit);
++            if(okay)for(auto& r:sim_foundation::wsf().inter_network())if(!r.quiescent_until(current_time_,limit)){okay=false;break;}
++            const auto advance=std::floor(limit-current_time_)-2;
++            if(okay&&advance>=64){
++                // Only periodic timestamps move, by the same integer offset,
++                // and remain strictly before every external event. The heap
++                // structure and all equal-time ordering are left untouched.
++                for(auto& event:events)if(event.event_type()==ROUTER_||event.event_type()==NI_SERVICE_)
++                    event.set_event_start(event.event_start()+advance);
++                for(auto& r:sim_foundation::wsf().inter_network())r.skip_blocked(advance);
++                AuxBridge::get().skip_quiescent(advance);
++                current_time_+=advance;skipped_cycles+=advance;++skip_count;mess_counter_+=2*advance;
++            }
++        }
+@@ -120 +216 @@
+-		if (total_incoming == total_finished_)
++		if (total_incoming == total_finished_ && !DynamicControl::get().needs_router_progress() && !ReceiveReady::get().needs_progress())
+@@ -187 +283,3 @@
+-	} 
++	}
++    if(skip_enabled){std::ofstream proof("quiescent_skip.json");proof<<"{\"skip_count\":"<<skip_count<<",\"skipped_quiescent_cycles\":"<<skipped_cycles<<"}";}
++    if(empty_skip){std::ofstream proof("empty_skip.json");proof<<"{\"skip_count\":"<<empty_count<<",\"skipped_completely_empty_cycles\":"<<empty_cycles<<"}";}

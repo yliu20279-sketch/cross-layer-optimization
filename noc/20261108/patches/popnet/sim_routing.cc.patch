@@ -1,0 +1,31 @@
+--- a/sim_routing.cc
++++ b/sim_routing.cc
+@@ -193 +193 @@
+-			add_type des_t = flit_t.des_addr();
++			add_type des_t = routing_destination(flit_t,0,j);
+@@ -195,2 +195,3 @@
+-			if(address_ == des_t) {
+-				accept_flit(event_time, flit_t);
++			if(local_destination(flit_t,0,j)) {
++				if(!local_receive_ready(event_time,flit_t)) continue;
++				deliver_local_context(event_time, flit_t,0,j);
+@@ -220 +221,2 @@
+-				accept_flit(event_time, flit_t);
++				if(!local_receive_ready(event_time,flit_t)) continue;
++				deliver_local_context(event_time, flit_t,0,j);
+@@ -241 +243 @@
+-				if(address_ == des_t) {
++				if(local_destination(flit_t,i,j) && local_receive_ready(event_time,flit_t)) {
+@@ -271 +273 @@
+-				add_type des_t = flit_t.des_addr();
++				add_type des_t = routing_destination(flit_t,i,j);
+@@ -281,2 +283,3 @@
+-				if(address_ == des_t) {
+-					accept_flit(event_time, flit_t);
++				if(local_destination(flit_t,i,j)) {
++					if(!local_receive_ready(event_time,flit_t)) continue;
++					deliver_local_context(event_time, flit_t,i,j);
+@@ -306 +309,2 @@
+-					accept_flit(event_time, flit_t);
++					if(!local_receive_ready(event_time,flit_t)) continue;
++					deliver_local_context(event_time, flit_t,i,j);

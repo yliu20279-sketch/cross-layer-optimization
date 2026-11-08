@@ -1,0 +1,57 @@
+{
+  "host": "SERVER-113",
+  "utc": "2026-11-04T07:05:02.380521+00:00",
+  "all_passed": true,
+  "tests": {
+    "router": {
+      "passed": true,
+      "seconds": 23.615,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb_aux_router",
+        "-DMAPPED_ROUTER",
+        "-o",
+        "build/netlist_tests/router.vvp",
+        "build/synth/router_aux_top.netlist.v",
+        "build/synth/router_local_top.netlist.v",
+        "tb/tb_aux_router.sv"
+      ],
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/netlist_tests/router.vvp"
+      ],
+      "output": "PASS aux_router route_cases=160 payload_walks=2490 local_aux_parallel=1 controls_while_aux_blocked=8 same_input_HOL_verified=1\ntb/tb_aux_router.sv:100: $finish called at 53416000 (1ps)",
+      "sha256": {
+        "build/synth/router_aux_top.netlist.v": "28d2ba92c7aed2597ff2450d503f1df7fc2a550ff1deea8fe3a2cf38e006ca9d",
+        "build/synth/router_local_top.netlist.v": "92a97edbf4200640526e0f9d71a2f67314bac72c87fcbe127c08510896202a9c",
+        "tb/tb_aux_router.sv": "f9dc87a172457798ae836731ce7b07cef3021e5d281581772bfe83eee42f7108"
+      }
+    },
+    "cs": {
+      "passed": true,
+      "seconds": 5.66,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-s",
+        "tb_switch",
+        "-DMAPPED_SWITCH",
+        "-o",
+        "build/netlist_tests/cs.vvp",
+        "build/synth/terminal_switch.netlist.v",
+        "tb/tb_switch.sv"
+      ],
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/netlist_tests/cs.vvp"
+      ],
+      "output": "PASS switch cases=1048576 legal=108 illegal=3988 walking_bits=3072\ntb/tb_switch.sv:66: $finish called at 1051648000 (1ps)",
+      "sha256": {
+        "build/synth/terminal_switch.netlist.v": "abce74da7ee97522b06db9c49a580ce28f6c1da120e4adea2a65c099da353cea",
+        "tb/tb_switch.sv": "e8f4afe41cedf93a4acd6e26ce1a5dd0ac519c54c3449e8c40e62a043ca64354"
+      }
+    }
+  }
+}

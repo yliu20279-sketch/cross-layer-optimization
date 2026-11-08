@@ -1,0 +1,8 @@
+--- a/changes/router.h
++++ b/changes/router.h
+@@ -25,0 +26,3 @@
++    bool quiescent_until(time_type now,time_type& limit){return m_router->quiescent_until(now,limit);}
++    bool completely_idle_until(time_type now,time_type&limit){return m_router->completely_idle_until(now,limit);}
++    void skip_blocked(std::uint64_t);
+@@ -30,0 +34 @@
++	void finish_from_ni(time_type t,const flit_template&f);

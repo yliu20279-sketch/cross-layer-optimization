@@ -1,0 +1,191 @@
+{
+  "utc": "2026-11-04T07:04:14.760709+00:00",
+  "host": "SERVER-113",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.29",
+  "working_directory": "/mnt/sdb1/h4567/noc_generic_synthesis_20261104",
+  "all_passed": true,
+  "tests": {
+    "tool_smoke": {
+      "passed": true,
+      "seconds": 0.019,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_tool_smoke",
+        "-o",
+        "build/tool_smoke.vvp",
+        "tb/tb_tool_smoke.sv"
+      ],
+      "compile_metadata": {},
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/tool_smoke.vvp"
+      ],
+      "output": "PASS tool_smoke\ntb/tb_tool_smoke.sv:2: $finish called at 0 (1s)"
+    },
+    "aux_router": {
+      "passed": true,
+      "seconds": 2.333,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_aux_router",
+        "-o",
+        "build/aux_router.vvp",
+        "rtl/aux_xy_router.sv",
+        "tb/tb_aux_router.sv"
+      ],
+      "compile_metadata": {},
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/aux_router.vvp"
+      ],
+      "output": "PASS aux_router route_cases=160 payload_walks=2490 local_aux_parallel=1 controls_while_aux_blocked=8 same_input_HOL_verified=1\ntb/tb_aux_router.sv:100: $finish called at 53416000 (1ps)"
+    },
+    "transition": {
+      "passed": true,
+      "seconds": 14.022,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_transition",
+        "-o",
+        "build/transition.vvp",
+        "rtl/aux_mesh.sv",
+        "rtl/aux_xy_router.sv",
+        "rtl/drain_network.sv",
+        "rtl/managed_endpoint.sv",
+        "rtl/merge_two.sv",
+        "rtl/ni_config_agent.sv",
+        "rtl/ni_receive.sv",
+        "rtl/node_selectors.sv",
+        "rtl/terminal_switch.sv",
+        "rtl/transition_driver.sv",
+        "tb/tb_transition.sv"
+      ],
+      "compile_metadata": {},
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/transition.vvp"
+      ],
+      "output": "VCD info: dumpfile build/transition.vcd opened for output.\nPASS transition injected=3072 retired=3072 aux=2880 count_wait=34 credit_wait=122 prefix_wait=43 tail_finishes=12 normal_during_freeze=110 ignored_stale=1\ntb/tb_transition.sv:191: $finish called at 32440000 (1ps)"
+    },
+    "timeout": {
+      "passed": true,
+      "seconds": 30.899,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_transition",
+        "-o",
+        "build/timeout.vvp",
+        "rtl/aux_mesh.sv",
+        "rtl/aux_xy_router.sv",
+        "rtl/drain_network.sv",
+        "rtl/managed_endpoint.sv",
+        "rtl/merge_two.sv",
+        "rtl/ni_config_agent.sv",
+        "rtl/ni_receive.sv",
+        "rtl/node_selectors.sv",
+        "rtl/terminal_switch.sv",
+        "rtl/transition_driver.sv",
+        "tb/tb_transition.sv"
+      ],
+      "compile_metadata": {},
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/timeout.vvp",
+        "+FAIL_MODE"
+      ],
+      "output": "VCD info: dumpfile build/timeout.vcd opened for output.\nPASS timeout frozen=16 old_config_retained=1 ignored_stale=1 credit_wait_cycles=5084\ntb/tb_transition.sv:174: $finish called at 73530000 (1ps)"
+    },
+    "management": {
+      "passed": true,
+      "seconds": 0.046,
+      "compile_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+        "-g2012",
+        "-Wall",
+        "-s",
+        "tb_management",
+        "-o",
+        "build/management.vvp",
+        "rtl/aux_mesh.sv",
+        "rtl/aux_xy_router.sv",
+        "rtl/drain_network.sv",
+        "rtl/managed_endpoint.sv",
+        "rtl/merge_two.sv",
+        "rtl/ni_config_agent.sv",
+        "rtl/ni_receive.sv",
+        "rtl/node_selectors.sv",
+        "rtl/terminal_switch.sv",
+        "rtl/transition_driver.sv",
+        "tb/tb_management.sv"
+      ],
+      "compile_metadata": {},
+      "compile_returncode": 0,
+      "simulation_returncode": 0,
+      "simulation_command": [
+        "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+        "build/management.vvp"
+      ],
+      "output": "PASS management duplicate_arm_preserved_count=1 run_with_new_epoch_activity=1 counter_limit=15 commit_blocked_after_fault=1\ntb/tb_management.sv:58: $finish called at 650000 (1ps)"
+    }
+  },
+  "sha256": {
+    "rtl/aux_mesh.sv": "1bd7f2862a5a36597bf9066e23667640c865c899593d961f8f1e1734cfb18012",
+    "rtl/aux_xy_router.sv": "97557ffbba973cccd7b67a42ad2e361c61efcc4d3507a9fa461f2de72638be04",
+    "rtl/drain_network.sv": "d39592ebacd6d4fb74ffdd45f0f69ca07c3f58f3055514e45bcd09c4e3e50f48",
+    "rtl/managed_endpoint.sv": "a739e5410a3d77eaa852b5ec6f8bfd4bb4a99747bd4c9cdbc1f1ae509c89241b",
+    "rtl/merge_two.sv": "bcb3520cb1fbe36ff877b5e51f183d7a56387b79d9501953bce9408558b750b5",
+    "rtl/ni_config_agent.sv": "7a8effb884fe4ff4446864fb9e1f6d5422376252ecde4f5c36b552cc0b4c0a03",
+    "rtl/ni_receive.sv": "903e66e5cabde931d4efc95ad3d4a4b9f13730bfa144dad1d183f0f1ef2f0f3d",
+    "rtl/node_selectors.sv": "fb60e2565a3d5ccc2fdf4c361ddb2d47074a44de2273e9580586b2c75245fcbf",
+    "rtl/terminal_switch.sv": "a7ff24b36368583bed92161425487ba58955dfd1db4b9613045f8a2319f83d32",
+    "rtl/transition_driver.sv": "5e47e85da490c09ee294bef9e43547bda254b1771313b86b5140bf14adee244e",
+    "tb/tb_aux_router.sv": "f9dc87a172457798ae836731ce7b07cef3021e5d281581772bfe83eee42f7108",
+    "tb/tb_management.sv": "9ec319486cc450a92d26d4da2e27f529af770e8a78462a7177902fc98ea14998",
+    "tb/tb_switch.sv": "e8f4afe41cedf93a4acd6e26ce1a5dd0ac519c54c3449e8c40e62a043ca64354",
+    "tb/tb_tool_smoke.sv": "6aa64151774fb3465b0bcee9b12385be833c3d93e3a5fb99cba3cb237f5c6bb7",
+    "tb/tb_transition.sv": "80635f45bd32972e430626d3f0c66667073be87ddf132084b14e398ed54cbd96",
+    "synth/tops.sv": "1212e4a6313d7270e78db8d34a6edb7770e37745328414ad6cd637136a75fd6b",
+    "negative/invalid.sv": "857fba9c2a28d22027dc47bddbe995719e3df058b9af4c71aaa523dafbb01a7e",
+    "run_tests.py": "95b16b7560c96d42eee8bef0afab0e3d28a5afa08b300adf3e293cb402ee049d",
+    "check_artifacts.py": "f92dcb05d1cdb290026c50c5fec1a9de25e6917b8aaa59d2a3224256e9cefe4b",
+    "run_remote.sh": "76e83706079b458f7dd104933dc2ff1298cf1dd04c753ca12e55ab96edd4a7fc",
+    "iverilog_direct.py": "db4ed48372a4a493b309921ce047df756ee91e64b92f75ad96a66ba7de7fab55",
+    "run_local.ps1": "dfd91e29be138b019a19facc7c382466bbcdc3d9a97b68728f1f20ae6729758b",
+    "probe_local_tool.py": "80353bce85f5a724e3211b78273ea5713551de2b5f888fe3ae365d5f3e43ee16"
+  },
+  "scope": "5-input/6-output router and functional transition tests; no HiBand microarchitecture or application performance validation",
+  "iverilog": {
+    "path": "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/iverilog",
+    "sha256": "53fe225686128f0cddca99e94171085182e5d10ac50a0d3d3282e83167d877cd"
+  },
+  "vvp": {
+    "path": "/mnt/sdb1/h4567/noc_rtl_validation_20261103/tools/iverilog/bin/vvp",
+    "sha256": "147f57f68320014f7f441bd2fe2ae6a01057cd4f20274d763758f261bbfb1a94"
+  },
+  "compiler_mode": "standard iverilog driver",
+  "negative_compiler_check": {
+    "rejected": true,
+    "returncode": 2,
+    "metadata": {}
+  }
+}

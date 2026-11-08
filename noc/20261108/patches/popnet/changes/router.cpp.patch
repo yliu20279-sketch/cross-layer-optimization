@@ -1,0 +1,26 @@
+--- a/changes/router.cpp
++++ b/changes/router.cpp
+@@ -1,0 +2,2 @@
++#include "aux_bridge.h"
++#include "router_stalls.h"
+@@ -22 +24,3 @@
+-		m_router=new CGraphTopo(CGraphTopo::vPortCount[address.front()],vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
++		if(AuxBridge::get().enabled())
++			m_router=new AuxGraphRouter(CGraphTopo::vPortCount[address.front()],vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
++		else m_router=new CGraphTopo(CGraphTopo::vPortCount[address.front()],vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
+@@ -69 +73,3 @@
+-		m_router=new CGraphTopo(port_cnt,vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
++		if(AuxBridge::get().enabled())
++			m_router=new AuxGraphRouter(port_cnt,vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
++		else m_router=new CGraphTopo(port_cnt,vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size);
+@@ -107,0 +114 @@
++void CRouter::skip_blocked(std::uint64_t n){RouterStalls::get().skip_blocked(m_router->address().front(),*m_router,n);}
+@@ -114,0 +122,4 @@
++}
++void CRouter::finish_from_ni(time_type t,const flit_template&f)
++{
++	m_router->accept_flit(t,f);
+@@ -135 +146 @@
+-}
+\ No newline at end of file
++}

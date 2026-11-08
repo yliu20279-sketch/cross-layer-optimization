@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.15)
+project(InterChipletRendezvousPredictor LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(BASE /mnt/sda1/h4567/qwen15_moe_target_v36_20261009/interchiplet_patched)
+find_package(Boost REQUIRED COMPONENTS system filesystem program_options)
+find_package(Threads REQUIRED)
+find_library(YAML NAMES yaml-cppd yaml-cpp PATHS ${BASE}/build_qwen15_gcc10/thirdparty/yaml-cpp
+    ${BASE}/build_qwen15 ${BASE}/build/thirdparty/yaml-cpp ${BASE}/build_qwen15/thirdparty/yaml-cpp NO_DEFAULT_PATH REQUIRED)
+add_executable(interchiplet srcs/interchiplet.cpp srcs/cmd_handler.cpp)
+target_include_directories(interchiplet PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includes ${BASE}/thirdparty/CLI11/include
+    ${BASE}/thirdparty/spdlog/include ${BASE}/thirdparty/yaml-cpp/include)
+target_link_libraries(interchiplet PRIVATE ${Boost_LIBRARIES} ${YAML} Threads::Threads)
+add_executable(check_absolute check_absolute.cpp)
+target_include_directories(check_absolute PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includes ${BASE}/thirdparty/spdlog/include)
+target_link_libraries(check_absolute PRIVATE Threads::Threads)
+add_executable(check_rendezvous ../check_rendezvous.cpp)
+target_include_directories(check_rendezvous PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includes ${BASE}/thirdparty/spdlog/include)
+target_link_libraries(check_rendezvous PRIVATE Threads::Threads)
+
+add_executable(check_hb ../check_hb.cpp)
+target_include_directories(check_hb PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/includes ${BASE}/thirdparty/spdlog/include)
+target_link_libraries(check_hb PRIVATE Threads::Threads)

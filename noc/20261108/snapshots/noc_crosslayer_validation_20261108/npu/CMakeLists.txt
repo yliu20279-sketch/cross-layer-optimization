@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.12)
+project(TargetNativeDecoder C CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(SIM /mnt/sdb1/h4567/LEGOSIM_NPU_R2_V20260831)
+set(NPU ${SIM}/NPUSim)
+find_package(Threads REQUIRED)
+add_library(original_runtime STATIC reference_core/npusim_runtime.cpp reference_core/npusim_chiplet_memory.cpp)
+target_include_directories(original_runtime PUBLIC reference_core ${NPU})
+target_include_directories(original_runtime PRIVATE ${SIM}/artifact/MLP/json/include)
+target_link_libraries(original_runtime PUBLIC ${NPU}/build/libnpusim_core.a
+    ${NPU}/build/onnx/libonnx.a ${NPU}/build/onnx/libonnx_proto.a
+    /usr/lib/x86_64-linux-gnu/libprotobuf.a Threads::Threads ${SIM}/interchiplet/lib/libinterchiplet_c.a)
+add_executable(endpoint_decoder endpoint_decoder.cpp)
+target_include_directories(endpoint_decoder BEFORE PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/reference_core)
+target_include_directories(endpoint_decoder PRIVATE ${SIM}/interchiplet/includes ${SIM}/artifact/MLP/json/include)
+target_link_libraries(endpoint_decoder PRIVATE original_runtime)
+target_compile_options(endpoint_decoder PRIVATE -Wall -Wextra -Werror)
+
+add_executable(memory_ring_unit ../unit_endpoint.cpp)
+target_include_directories(memory_ring_unit PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/reference_core ${SIM}/interchiplet/includes)
+target_link_libraries(memory_ring_unit PRIVATE original_runtime)
+target_compile_options(memory_ring_unit PRIVATE -Wall -Wextra -Werror)
+
+add_executable(check_request_ids ../check_request_ids.cpp)
+target_include_directories(check_request_ids PRIVATE ${NPU} ${SIM}/interchiplet/includes)
+target_link_libraries(check_request_ids PRIVATE Threads::Threads ${SIM}/interchiplet/lib/libinterchiplet_c.a)

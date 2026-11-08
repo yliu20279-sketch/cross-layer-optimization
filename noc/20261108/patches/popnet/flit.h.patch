@@ -1,0 +1,7 @@
+--- a/flit.h
++++ b/flit.h
+@@ -21,0 +22 @@
++		long sequence_=0; // Simulator bookkeeping, not an additional wire field.
+@@ -34,0 +36,2 @@
++		long sequence() const {return sequence_;}
++		void set_sequence(long value) {sequence_=value;}

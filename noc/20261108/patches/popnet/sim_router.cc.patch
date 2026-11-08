@@ -1,0 +1,217 @@
+--- a/sim_router.cc
++++ b/sim_router.cc
+@@ -5,0 +6 @@
++#include "changes/program_fences.h"
+@@ -10,0 +12,5 @@
++#include "finite_source.h"
++#include "changes/receive_contract.h"
++#include "changes/router_stalls.h"
++#include "changes/aux_bridge.h"
++#include "changes/receive_ready.h"
+@@ -57 +63 @@
+-											 physic_ports_(),
++											 physic_ports_(), output_ports_(),
+@@ -75 +81 @@
+-										 long d, const add_type &e, long f, long g) : address_(e),
++										 long d, const add_type &e, long f, long g, long extra_outputs) : address_(e),
+@@ -77,2 +83,2 @@
+-																					  output_module_(a, b, c, d),
+-																					  power_module_(a, b, g),
++																					  output_module_(a + extra_outputs, b, c, d),
++																					  power_module_(a + extra_outputs, b, g),
+@@ -82 +88 @@
+-																					  physic_ports_(a),
++																					  physic_ports_(a), output_ports_(a + extra_outputs),
+@@ -412,0 +419,3 @@
++#include "changes/dynamic_control.h"
++#include "changes/wire_protocol.h"
++#include "changes/aux_bridge.h"
+@@ -426 +435 @@
+-	while ((input_module_.ibuff_full() == false) && (local_input_time_ <=
++	while ((input_module_.ibuff_full() == false) && (ProgramFences::get().command_clock() || local_input_time_ <=
+@@ -455,0 +465,18 @@
++		// Optional numerical waveform solve: use this program's explicit
++		// wait-derived WRITE release, not a stale previous-pass timestamp.
++		// Final acceptance still requires no release changes and an original
++		// unguided replay with identical physical output.
++		if(ProgramFences::get().command_clock()){
++			auto transaction=sim_foundation::wsf().protoEngine().get_trans(p.id);
++			const auto issue=ProgramFences::get().issue_time(address_.front(),std::uint64_t(transaction->protoDesc),true,long(p.startTime));
++			if(issue<0||issue>event_time+S_ELPS_)return;
++			p.startTime=issue;local_input_time_=issue;transaction->srcTime=issue;
++		}
++		if(finite_source_capacity()){
++			long queued=0;for(long v=ReceiveReady::get().enabled()?1:0;v<vc_number_;++v)queued+=input_module_.input(0,v).size();
++			if(queued>finite_source_capacity())throw std::runtime_error("source capacity exceeded");
++			if(p.packetSize>finite_source_capacity())throw std::runtime_error("packet exceeds finite source staging allocation");
++			if(queued+p.packetSize>finite_source_capacity())return;
++		}
++		if(!DynamicControl::get().admit_trace(p.id,p.sourceAddress.front(),p.destinationAddress.front()))return;
++		if(!ReceiveReady::get().admit(p.id,p.sourceAddress.front(),p.destinationAddress.front(),event_time))return;
+@@ -494 +521 @@
+-										time_type d, long e,SPacket::TId packet_id)
++									time_type d, long e,SPacket::TId packet_id,const Data_type* serialized_control)
+@@ -547,2 +574,6 @@
+-			vc_t = pair<long, long>(0, input_module_.input(0, 0).size());
+-			for (long i = 0; i < vc_number_; i++)
++			const long first_vc=ReceiveReady::get().enabled()&&!serialized_control?1:0;
++			const long last_vc=ReceiveReady::get().enabled()&&serialized_control?1:vc_number_;
++			vc_t = pair<long, long>(first_vc, input_module_.input(0, first_vc).size());
++			if(ReceiveReady::get().enabled()&&serialized_control&&vc_t.second>=8)
++				throw std::runtime_error("finite control source VC overflow");
++			for (long i = first_vc; i < last_vc; i++)
+@@ -586 +617,19 @@
+-		power_module_.power_buffer_write(0, flit_data);
++		auto& injected=input_module_.input(0,vc_t.first).back();
++		injected.set_sequence(l);
++		const auto original_payload=injected.data();
++		if(serialized_control){
++			if(e!=1||serialized_control->size()!=4)throw std::runtime_error("invalid serialized CPU control frame");
++			injected.data()=*serialized_control;
++		}
++		DynamicControl::get().rewrite(injected);
++		WireProtocol::get().source(injected,serialized_control!=nullptr);
++		DynamicControl::get().account_source_wait(injected);
++		if(!isHeader(injected.type())&&injected.data()!=original_payload)
++			throw std::runtime_error("packetization overwrote payload body");
++		observe_injection(input_module_.input(0,vc_t.first).back());
++		if(finite_source_capacity()&&!(ReceiveReady::get().enabled()&&serialized_control)){
++			long queued=0;for(long v=ReceiveReady::get().enabled()?1:0;v<vc_number_;++v)queued+=input_module_.input(0,v).size();
++			if(queued>finite_source_capacity())throw std::runtime_error("source capacity exceeded after enqueue");
++			finite_source_record("ENQUEUE",address_.front(),injected,mess_queue::m_pointer().current_time(),queued);
++		}
++		power_module_.power_buffer_write(0, injected.data());
+@@ -694 +743 @@
+-	for (long i = 0; i < physic_ports_; i++)
++	for (long i = 0; i < output_ports_; i++)
+@@ -804,0 +854,2 @@
++				const bool local_control=i==0&&ReceiveReady::get().enabled()&&j==0;
++				if(i==0&&!local_control&&!ReceiveContract::get().source_can_read(address_.front(),mess_queue::m_pointer().current_time()))continue;
+@@ -806,0 +858,2 @@
++				if(AuxBridge::get().enabled() && out_t.first==physic_ports_)
++					AuxBridge::get().observe_credit_reservation(address_.front(),input_module_.get_flit(i,j),output_module_.counter(out_t.first,out_t.second));
+@@ -844,0 +898,13 @@
++				ReceiveReady::get().forward(address_.front(),i,j,out_t.first,out_t.second,flit_t,event_time);
++				if(i==0&&finite_source_capacity()&&!local_control){
++					// Last-byte storage ownership ends at source-input dequeue,
++					// not at a nominal injection timestamp or destination arrival.
++					flit_t.set_send_finish(event_time);
++					ReceiveContract::get().source_read(address_.front(),event_time);
++					long queued=0;for(long v=ReceiveReady::get().enabled()?1:0;v<vc_number_;++v)queued+=input_module_.input(0,v).size();
++					finite_source_record("RELEASE",address_.front(),flit_t,event_time,queued-1);
++                    if(isTail(flit_t.type())&&ProgramFences::get().enabled()){
++                        auto transaction=sim_foundation::wsf().protoEngine().get_trans(flit_t.getPacketId());
++                        ProgramFences::get().complete(address_.front(),std::uint64_t(transaction->protoDesc),true,long(event_time));
++                    }
++				}
+@@ -848,0 +915 @@
++				RouterStalls::get().forward(address_.front(),i,out_t.first,flit_t.getPacketId(),event_time);
+@@ -1115,0 +1183 @@
++		WireProtocol::get().fault_on_link(flit_t,address_.front());
+@@ -1197 +1265 @@
+-	for (long i = 1; i < physic_ports_; i++)
++	for (long i = 1; i < output_ports_; i++)
+@@ -1210,0 +1279,18 @@
++	ReceiveReady::get().tick(address_.front(),mess_queue::m_pointer().current_time());
++	bool local_source_pending=false;
++	for(long vc=ReceiveReady::get().enabled()?1:0;vc<vc_number_;++vc)
++		if(input_module_.state(0,vc)==SW_TR_)local_source_pending=true;
++	ReceiveContract::get().source_snapshot(address_.front(),mess_queue::m_pointer().current_time(),local_source_pending);
++    static const bool fast_empty=[](){const char*p=std::getenv("NOC_IDLE_ROUTER_FAST");return p&&std::string(p)=="1";}();
++    if(fast_empty&&finite_source_capacity()&&ReceiveReady::get().enabled()){
++        bool empty=true;
++        for(long p=0;p<output_ports_&&empty;++p)if(!output_module_.outbuffers(p).empty())empty=false;
++        for(long p=0;p<physic_ports_&&empty;++p)for(long v=0;v<vc_number_;++v)
++            if(input_module_.state(p,v)!=INIT_||!input_module_.input(p,v).empty()){empty=false;break;}
++        if(empty){
++            // Ready.tick and source_snapshot above MUST still execute, and
++            // source admission still executes at its original end-of-tick
++            // position. Only no-op empty pipeline/observer scans are omitted.
++            receive_packet();return;
++        }
++    }
+@@ -1215,0 +1302 @@
++	auto sw_probe=RouterStalls::get().before(*this,SW_AB_);
+@@ -1216,0 +1304 @@
++	RouterStalls::get().after(address_.front(),*this,SW_AB_,sw_probe);
+@@ -1217,0 +1306 @@
++	auto vc_probe=RouterStalls::get().before(*this,VC_AB_);
+@@ -1218,0 +1308 @@
++	RouterStalls::get().after(address_.front(),*this,VC_AB_,vc_probe);
+@@ -1219,0 +1310,2 @@
++	auto route_probe=RouterStalls::get().before(*this,ROUTING_);
++	auto home_probe=RouterStalls::get().before(*this,HOME_);
+@@ -1220,0 +1313,53 @@
++	RouterStalls::get().after(address_.front(),*this,ROUTING_,route_probe);
++	RouterStalls::get().after(address_.front(),*this,HOME_,home_probe);
++	// Retry a trace blocked on the finite source allocation after normal stages.
++	// Only the explicitly enabled contract changes legacy admission behaviour.
++	if(finite_source_capacity())receive_packet();
++}
++
++// This predicate is deliberately conservative: every action that can make a
++// grant, draw RNG, transfer a flit, or admit a source packet prevents skipping.
++bool sim_router_template::quiescent_until(time_type now,time_type& limit){
++    if(pipelineStageDelay()!=1||!finite_source_capacity())return false;
++    for(long p=0;p<output_ports_;++p)if(!output_module_.outbuffers(p).empty())return false;
++    for(long p=0;p<physic_ports_;++p)for(long v=0;v<vc_number_;++v){
++        const auto state=input_module_.state(p,v);
++        if(state==SW_TR_||(state==ROUTING_&&!cached_stalled_local_header(p,v)))return false;
++        if(state==HOME_&&!input_module_.input(p,v).empty()&&!AuxBridge::get().mesh_full(address_.front()))return false;
++        if(state==SW_AB_){
++            const auto out=input_module_.crouting(p,v);
++            if(out.first<0||out.second<0)return false;
++            if(output_module_.counter(out.first,out.second)>0&&output_module_.localcounter(out.first)>0)return false;
++        }
++        if(state==VC_AB_)for(const auto& out:input_module_.routing(p,v)){
++            const bool available=output_module_.usage(out.first,out.second)==FREE_;
++            if(available&&(configuration::ap().vc_share()==SHARE_||output_module_.counter(out.first,out.second)==buffer_size_))return false;
++        }
++    }
++    if(!localInputTraces.empty()){
++        const auto& packet=localInputTraces.front();
++        if(packet.startTime>now+S_ELPS_)limit=std::min(limit,packet.startTime);
++        else if(!input_module_.ibuff_full()){
++            long queued=0;for(long v=0;v<vc_number_;++v)queued+=input_module_.input(0,v).size();
++            if(queued+packet.packetSize<=finite_source_capacity())return false;
++        }
++    }
++    return true;
++}
++bool sim_router_template::completely_idle_until(time_type now,time_type&limit){
++    if(pipelineStageDelay()!=1||!finite_source_capacity())return false;
++    for(long p=0;p<output_ports_;++p)if(!output_module_.outbuffers(p).empty())return false;
++    for(long p=0;p<physic_ports_;++p)for(long v=0;v<vc_number_;++v)
++        if(!input_module_.input(p,v).empty()||input_module_.state(p,v)!=INIT_)return false;
++    if(!localInputTraces.empty()){
++        const auto&packet=localInputTraces.front();
++        auto start=packet.startTime;
++        if(ProgramFences::get().command_clock()){
++            auto trans=sim_foundation::wsf().protoEngine().get_trans(packet.id);
++            start=ProgramFences::get().issue_time(address_.front(),std::uint64_t(trans->protoDesc),true,long(start));
++            if(start<0)return false;
++        }
++        if(start<=now+1)return false;
++        limit=std::min(limit,start);
++    }
++    return true;
+@@ -1227 +1372 @@
+-	for (long i = 0; i < physic_ports_; i++)
++	for (long i = 0; i < output_ports_; i++)
+@@ -1231 +1376 @@
+-			if (input_module_.input(i, j).size() > 0)
++			if (i < physic_ports_ && input_module_.input(i, j).size() > 0)
+@@ -1236 +1381 @@
+-			if (input_module_.state(i, j) != INIT_)
++			if (i < physic_ports_ && input_module_.state(i, j) != INIT_)
+@@ -1484 +1629,4 @@
+-	addRoutingForDifferentVC(input_module_,s_ph,s_vc,port,configuration::ap().virtual_channel_number());
++	if(ReceiveReady::get().enabled()){
++		for(long v=1;v<configuration::ap().virtual_channel_number();++v)
++			input_module_.add_routing(s_ph,s_vc,VC_type(port,v));
++	}else addRoutingForDifferentVC(input_module_,s_ph,s_vc,port,configuration::ap().virtual_channel_number());
+@@ -1531,2 +1679,2 @@
+-CGraphTopo::CGraphTopo(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size)
+-	:sim_router_template(port_cnt,vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size)
++CGraphTopo::CGraphTopo(long port_cnt,long vc_cnt,long in_buf_size,long out_buf_size,const add_type&address,long ary_size,long flit_size,long extra_outputs)
++	:sim_router_template(port_cnt,vc_cnt,in_buf_size,out_buf_size,address,ary_size,flit_size,extra_outputs)
