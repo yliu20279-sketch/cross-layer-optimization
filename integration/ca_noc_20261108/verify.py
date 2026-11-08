@@ -32,7 +32,7 @@ def main():
                  ca_snapshot='snapshots/remote/ca_p0_1b_native_20261103_v11',
                  noc_binary_sha256='e6058e940931db3835c4bef6704354aac10851070bc1e0c1f90b65a3f033278a')
     lock=ROOT/'SOURCE_LOCK.json'
-    if args.freeze:lock.write_text(json.dumps(current,indent=2)+'\n')
+    if args.freeze:lock.write_bytes((json.dumps(current,indent=2)+'\n').encode('utf-8'))
     assert json.loads(lock.read_text())==current,'source or evidence differs from locked inputs'
     probe=json.loads((ROOT/'evidence/PROBE_RESULT.json').read_text())
     assert probe['state']=='passed' and probe['consumer']['bitwise_equal']
