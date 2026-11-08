@@ -41,6 +41,16 @@ def main():
     assert probe['DRAM']['packets']==0 and probe['mapping']['changed_bytes']==8192
     for transfer in probe['transfers']:
         assert transfer['issue']<=transfer['receive_complete']<=transfer['drained']<=transfer['write_start']<transfer['consumer_ready']
+    status_file=ROOT/'evidence/SMALL_VALIDATION_STATUS.json'
+    if status_file.exists():
+        status=json.loads(status_file.read_text())
+        audit=json.loads((ROOT/'evidence/SMALL_VALIDATION_AUDIT.json').read_text())
+        assert status['state']==audit['state']=='passed'
+        assert len(status['positive'])==audit['positive_cases']==24
+        assert len(status['negative'])==audit['negative_cases']==6
+        assert audit['paired_bitwise_groups']==6 and audit['DRAM_transactions_checked']==137280
+        assert sha(status_file)==audit['suite_status_sha256']
+        assert sha(ROOT/'audit_small_validation.py')==audit['audit_source_sha256']
     cp=subprocess.run([sys.executable,'-m','unittest','discover','-s',str(ROOT),'-p','test_*.py','-v'],check=True)
     print(json.dumps(dict(state='passed',release_files=len(files),CA_source_hashes=len(INPUTS),
                           unit_tests=8,actual_joint_probe='passed_limited',performance_ready=False)))
