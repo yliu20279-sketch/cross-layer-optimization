@@ -1,0 +1,102 @@
+{
+  "state": "passed",
+  "scope": "serialized physical-page/NoC/vector interface probe",
+  "full_application": false,
+  "online_CA_optimization": false,
+  "performance_ready": false,
+  "DRAM": {
+    "status": "PASS_LIVE_COUPLED_SUBGRAPH_ONLY",
+    "clock_ns": 18456,
+    "transactions": 3776,
+    "callbacks": 3776,
+    "packets": 0,
+    "packet_callbacks": 0,
+    "jobs": 1,
+    "primitive_events": 32,
+    "link_switches": 0,
+    "mapping_installs": 1,
+    "migration_write_bytes": 8192,
+    "primitive_trace_sampling_interval": 10000,
+    "cpu_pcie_costs_verified": false,
+    "formal_performance": false,
+    "HB_peak_reserved": [
+      81920,
+      0,
+      0,
+      0,
+      0,
+      12288,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "transfers": [
+    {
+      "sequence": 1,
+      "src": 0,
+      "dst": 5,
+      "bytes": 2048,
+      "issue": 11448,
+      "receive_complete": 11545,
+      "drained": 11545,
+      "mode": "mesh",
+      "descriptor": 5642869595623653381,
+      "data_flits": 65,
+      "actual_ready_controls": 1,
+      "write_start": 11545,
+      "consumer_ready": 12544,
+      "payload_sha256": "1ba107b4e848a9dfa507028c40f2ee00d1ce41dc11e27ba2d47843a9c6c53426",
+      "legacy_noc_invoked": false
+    },
+    {
+      "sequence": 2,
+      "src": 0,
+      "dst": 5,
+      "bytes": 2048,
+      "issue": 15365,
+      "receive_complete": 15681,
+      "drained": 15684,
+      "mode": "static_cs",
+      "descriptor": 5642869595640430597,
+      "data_flits": 65,
+      "actual_ready_controls": 1,
+      "write_start": 15684,
+      "consumer_ready": 16559,
+      "payload_sha256": "1ba107b4e848a9dfa507028c40f2ee00d1ce41dc11e27ba2d47843a9c6c53426",
+      "legacy_noc_invoked": false
+    }
+  ],
+  "mapping": {
+    "changed_bytes": 8192,
+    "total_weight_bytes": 81920,
+    "start": 12544,
+    "complete": 15021,
+    "generation_before": 0,
+    "generation_after": 1
+  },
+  "consumer": {
+    "kind": "native_FP32_vector_add",
+    "elements": 512,
+    "start": 16896,
+    "output_sha256": "84b3b9ad49de70a06f4966b21f0ec4ff4be206b6ef0f6b49cf84799c90c19dbb",
+    "bitwise_equal": true
+  },
+  "physical_source_addresses": [
+    0,
+    4096
+  ],
+  "target": {
+    "NPU": 16,
+    "capacity_per_partition": 2147483648,
+    "DRAM_transaction_bytes": 32
+  },
+  "original_sources_modified": false
+}
