@@ -1,0 +1,96 @@
+{
+  "status": "architecture and interface contract proposal; not RTL validated",
+  "diagram_dimensions": [
+    2180,
+    1380
+  ],
+  "figure_files": [
+    "figures/05_node_configuration_assignment.png",
+    "figures/05_node_configuration_assignment.svg"
+  ],
+  "schematic_policy": "panel (a) shows symmetric adjacent-CS data links only; panel (b) shows the per-CS fixed configuration interface. Omission of configuration wires from (a) does not remove them from the design or cost.",
+  "node_upper_CS_direct_data_link": false,
+  "CS_direction_mapping": {
+    "NW": "SE",
+    "NE": "SW",
+    "SW": "NE",
+    "SE": "NW"
+  },
+  "configuration_ownership": [
+    {
+      "lower_CS": 0,
+      "owner_node": 0,
+      "owner_location": "NW",
+      "upper_CS": 9
+    },
+    {
+      "lower_CS": 1,
+      "owner_node": 1,
+      "owner_location": "NW",
+      "upper_CS": null
+    },
+    {
+      "lower_CS": 2,
+      "owner_node": 2,
+      "owner_location": "NW",
+      "upper_CS": 10
+    },
+    {
+      "lower_CS": 3,
+      "owner_node": 4,
+      "owner_location": "NW",
+      "upper_CS": null
+    },
+    {
+      "lower_CS": 4,
+      "owner_node": 5,
+      "owner_location": "NW",
+      "upper_CS": null
+    },
+    {
+      "lower_CS": 5,
+      "owner_node": 6,
+      "owner_location": "NW",
+      "upper_CS": null
+    },
+    {
+      "lower_CS": 6,
+      "owner_node": 8,
+      "owner_location": "NW",
+      "upper_CS": 11
+    },
+    {
+      "lower_CS": 7,
+      "owner_node": 9,
+      "owner_location": "NW",
+      "upper_CS": null
+    },
+    {
+      "lower_CS": 8,
+      "owner_node": 10,
+      "owner_location": "NW",
+      "upper_CS": 12
+    }
+  ],
+  "configuration_transport": "ordinary Mesh packet -> owner NI reserved configuration queue -> fixed local command/response interface -> CS-side decoder -> configuration register",
+  "upper_configuration_transport": "owner NI -> corresponding lower CS configuration decoder/relay -> fixed vertical local control interface -> upper CS configuration decoder/register",
+  "new_control_wiring": "9 owner-NI to lower-CS local interfaces; 4 lower-to-upper local interfaces. Not new data links and not a zero-wire configuration scheme.",
+  "safe_update": "pause new CS transfers at all NIs, drain admitted transfers and writes, collect responses through Mesh, write configuration, wait for all write responses, resume",
+  "packet_multipath": "whole packets only; fragments of one transfer may use different paths; no intra-packet flit striping",
+  "receive_placement": "finite staging buffers, descriptor lookup by source+transfer ID, fixed-size fragments except final, offset-directed writes, receipt bitmap updated only on SRAM acceptance",
+  "completion": "all expected fragment bitmap bits set after SRAM writes; duplicates and out-of-range fragments rejected",
+  "flow_control": "data/valid forward and ready backward, finite per-link data queues, separate configuration queue, fair RX and SRAM arbitration",
+  "details_in_text": [
+    "finite queue/context parameters",
+    "request and response fields",
+    "clock-domain assumptions",
+    "address bounds",
+    "resume barrier and failure handling"
+  ],
+  "not_verified": [
+    "RTL and CDC",
+    "link/ready timing",
+    "area/power",
+    "NoC or application performance"
+  ]
+}

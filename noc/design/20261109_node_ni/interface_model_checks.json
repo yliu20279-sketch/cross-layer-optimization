@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "scope": "small finite-buffer interface contract model only; not RTL, NoC simulation or timing",
+  "out_of_order_and_stall_cases": 24,
+  "fragment_queue_capacity": 1,
+  "staging_capacity": 1,
+  "active_contexts": 1,
+  "fragment_payload_bytes": 4,
+  "transfer_bytes": 10,
+  "control_target_paths": {
+    "0": [
+      0,
+      0
+    ],
+    "9": [
+      0,
+      0,
+      9
+    ],
+    "1": [
+      1,
+      1
+    ],
+    "2": [
+      2,
+      2
+    ],
+    "10": [
+      2,
+      2,
+      10
+    ],
+    "3": [
+      4,
+      3
+    ],
+    "4": [
+      5,
+      4
+    ],
+    "5": [
+      6,
+      5
+    ],
+    "6": [
+      8,
+      6
+    ],
+    "11": [
+      8,
+      6,
+      11
+    ],
+    "7": [
+      9,
+      7
+    ],
+    "8": [
+      10,
+      8
+    ],
+    "12": [
+      10,
+      8,
+      12
+    ]
+  },
+  "checks": [
+    "exact offset-directed memory placement",
+    "completion only after all writes",
+    "finite queue backpressure",
+    "reject pending duplicates and invalid fragments",
+    "all 16 drain responses required",
+    "target ownership",
+    "upper target acknowledgement before resume",
+    "stale transaction responses rejected",
+    "failed write keeps pause",
+    "self input excluded by MUX input list"
+  ],
+  "mux_encoding_cases": 80,
+  "not_tested": [
+    "actual network/CDC",
+    "RTL ready/valid",
+    "large context concurrency",
+    "timeout recovery",
+    "physical timing"
+  ]
+}
