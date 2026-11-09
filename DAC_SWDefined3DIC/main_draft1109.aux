@@ -1,0 +1,112 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{wuu2022vcache,li2026helios}
+\citation{wang2026hiband}
+\citation{li2026semantic}
+\citation{lin2026amber}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{I}{1}{Introduction}{section.1}{}}
+\citation{qwen3report}
+\citation{qwen15moe}
+\citation{minisweagent}
+\citation{swebench}
+\citation{lingbotvideo}
+\citation{whisper}
+\citation{orbslam3}
+\citation{pi05}
+\citation{wang2026hiband}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Target 3D system. (a) Host and HB-DRAM organization. (b) Face-to-face integration of the $4\times 4$ Logic-tier NPU mesh and the aligned DRAM channels. (c) Microarchitecture of an NPU--memory pair.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:target-architecture}{{1}{2}{Target 3D system. (a) Host and HB-DRAM organization. (b) Face-to-face integration of the $4\times 4$ Logic-tier NPU mesh and the aligned DRAM channels. (c) Microarchitecture of an NPU--memory pair}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Motivation}{2}{section.2}\protected@file@percent }
+\newlabel{sec:motivation}{{II}{2}{Motivation}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Target System and Workloads}{2}{subsection.2.1}\protected@file@percent }
+\newlabel{sec:target-system-workloads}{{\mbox  {II-A}}{2}{Target System and Workloads}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-B}}Phase-Dependent Congestion in MoE Communication}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Qwen3-30B-A3B prefill communication on the fixed Mesh. Each bar reports the activation-weighted mean NoC round-trip latency at one input length. Zero-load latency contains serialization and uncongested traversal; queueing is the additional delay in the concurrent replay of the same message set. From 128 to 1024 input tokens, the queueing share rises from 57.2\% to 88.8\%.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:noc-phenomenon}{{2}{2}{Qwen3-30B-A3B prefill communication on the fixed Mesh. Each bar reports the activation-weighted mean NoC round-trip latency at one input length. Zero-load latency contains serialization and uncongested traversal; queueing is the additional delay in the concurrent replay of the same message set. From 128 to 1024 input tokens, the queueing share rises from 57.2\% to 88.8\%}{figure.2}{}}
+\citation{lin2026amber}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Path-derived router demand under the same Qwen3 trace. Each heatmap aggregates exact source--destination messages over every router on their deterministic XY path. With one shared scale, the peak moves R9$\rightarrow $R5$\rightarrow $R10 across MoE layers 1, 24, and 48, exposing a time-varying spatial demand pattern.}}{3}{figure.3}\protected@file@percent }
+\newlabel{fig:noc-cause}{{3}{3}{Path-derived router demand under the same Qwen3 trace. Each heatmap aggregates exact source--destination messages over every router on their deterministic XY path. With one shared scale, the peak moves R9$\rightarrow $R5$\rightarrow $R10 across MoE layers 1, 24, and 48, exposing a time-varying spatial demand pattern}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Connection example for the NoC opportunity. (a) The ordinary N2-to-N5 route uses R1 and R5's local output. (b) A configured C1 connection delivers the transfer directly to NI5. The source transmit selector, CS connection, and destination receive selector are configured together.}}{3}{figure.4}\protected@file@percent }
+\newlabel{fig:noc-opportunity}{{4}{3}{Connection example for the NoC opportunity. (a) The ordinary N2-to-N5 route uses R1 and R5's local output. (b) A configured C1 connection delivers the transfer directly to NI5. The source transmit selector, CS connection, and destination receive selector are configured together}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Design Directions}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Memory-bank Design Directions}{3}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:bank-design}{{\mbox  {III-A}}{3}{Memory-bank Design Directions}{subsection.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Reconfigurable Local Connections for MoE Communication}{3}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:noc-design}{{\mbox  {III-B}}{3}{Reconfigurable Local Connections for MoE Communication}{subsection.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Physical NoC organization. The Mesh, added corner attachments, and combined placement describe one network in the same Logic tier. Each CS contains four 3:1 MUXes with selection and enable inputs driven by the NI responsible for that CS. One drawn corner attachment represents separate transmit and receive data bundles.}}{4}{figure.5}\protected@file@percent }
+\newlabel{fig:noc-physical-design}{{5}{4}{Physical NoC organization. The Mesh, added corner attachments, and combined placement describe one network in the same Logic tier. Each CS contains four 3:1 MUXes with selection and enable inputs driven by the NI responsible for that CS. One drawn corner attachment represents separate transmit and receive data bundles}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Design of an NPU node. The NI contains packet classification, configuration reception and storage, separate Mesh and CS receive FIFOs, and the local buffer-write interface. Its stored controls select one auxiliary transmit branch and one receive branch, and drive its owned CS. Separate reverse-control wires return credits from the CS receive FIFO through the configured RX, CS, and TX selections to the transmitting router.}}{4}{figure.6}\protected@file@percent }
+\newlabel{fig:noc-node}{{6}{4}{Design of an NPU node. The NI contains packet classification, configuration reception and storage, separate Mesh and CS receive FIFOs, and the local buffer-write interface. Its stored controls select one auxiliary transmit branch and one receive branch, and drive its owned CS. Separate reverse-control wires return credits from the CS receive FIFO through the configured RX, CS, and TX selections to the transmitting router}{figure.6}{}}
+\newlabel{eq:noc-no-return}{{1}{5}{Reconfigurable Local Connections for MoE Communication}{equation.1}{}}
+\newlabel{eq:noc-output}{{2}{5}{Reconfigurable Local Connections for MoE Communication}{equation.2}{}}
+\newlabel{eq:noc-input}{{3}{5}{Reconfigurable Local Connections for MoE Communication}{equation.3}{}}
+\newlabel{eq:noc-node-tx}{{4}{5}{Reconfigurable Local Connections for MoE Communication}{equation.4}{}}
+\newlabel{eq:noc-node-rx}{{5}{5}{Reconfigurable Local Connections for MoE Communication}{equation.5}{}}
+\newlabel{eq:noc-tx-match}{{6}{5}{Reconfigurable Local Connections for MoE Communication}{equation.6}{}}
+\newlabel{eq:noc-rx-match}{{7}{5}{Reconfigurable Local Connections for MoE Communication}{equation.7}{}}
+\newlabel{eq:noc-flow-route}{{8}{5}{Reconfigurable Local Connections for MoE Communication}{equation.8}{}}
+\newlabel{eq:noc-route-match}{{9}{5}{Reconfigurable Local Connections for MoE Communication}{equation.9}{}}
+\newlabel{eq:noc-resource-demand}{{10}{5}{Reconfigurable Local Connections for MoE Communication}{equation.10}{}}
+\newlabel{eq:noc-serialization-demand}{{11}{5}{Reconfigurable Local Connections for MoE Communication}{equation.11}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Demand-Based CS Connection Selection}}{5}{algorithm.1}\protected@file@percent }
+\newlabel{alg:noc-reconfiguration}{{1}{5}{Reconfigurable Local Connections for MoE Communication}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Predictive Cross-Tier Thermal Management}{6}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:thermal-design}{{\mbox  {III-C}}{6}{Predictive Cross-Tier Thermal Management}{subsection.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces NI-based configuration interface. Configuration commands travel over the Mesh to the NI responsible for the CS. Packet-field comparisons and LOAD/COMMIT conditions update the NI's pending and active registers; local SEL/EN wires connect the active state to the adjacent CS. The signal definitions identify the checks and coordinated stop/drain status used by the receive circuit.}}{6}{figure.7}\protected@file@percent }
+\newlabel{fig:noc-runtime-control}{{7}{6}{NI-based configuration interface. Configuration commands travel over the Mesh to the NI responsible for the CS. Packet-field comparisons and LOAD/COMMIT conditions update the NI's pending and active registers; local SEL/EN wires connect the active state to the adjacent CS. The signal definitions identify the checks and coordinated stop/drain status used by the receive circuit}{figure.7}{}}
+\newlabel{eq:thermal-overlap-objective}{{12}{6}{Predictive Cross-Tier Thermal Management}{equation.12}{}}
+\newlabel{eq:thermal-joint-exposure}{{13}{6}{Predictive Cross-Tier Thermal Management}{equation.13}{}}
+\citation{hotspot_tool}
+\newlabel{eq:thermal-latency-budget}{{14}{7}{Predictive Cross-Tier Thermal Management}{equation.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Common hardware and simulation settings.}}{7}{table.1}\protected@file@percent }
+\newlabel{tab:eval-platform}{{I}{7}{Common hardware and simulation settings}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Evaluation Results and Analysis}{7}{section.4}\protected@file@percent }
+\newlabel{sec:experiment}{{IV}{7}{Evaluation Results and Analysis}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Experimental Setup}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}End-to-End Performance Comparison}{7}{subsection.4.2}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{references,thermal_references}
+\bibcite{wuu2022vcache}{1}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Workloads, input manifests, and measurement boundaries.}}{8}{table.2}\protected@file@percent }
+\newlabel{tab:eval-workloads}{{II}{8}{Workloads, input manifests, and measurement boundaries}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Configurations and scope of the performance comparisons.}}{8}{table.3}\protected@file@percent }
+\newlabel{tab:eval-comparisons}{{III}{8}{Configurations and scope of the performance comparisons}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Supporting Results and Thermal Ablation}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {IV-C}0a}Phase-dependent congestion and bank waiting.}{8}{paragraph.4.3.0.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\mbox  {IV-C}0b}Incremental effect of thermal management.}{8}{paragraph.4.3.0.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Scalability and Sensitivity Analysis}{8}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Hardware Cost and Runtime Overhead}{8}{subsection.4.5}\protected@file@percent }
+\bibcite{li2026helios}{2}
+\bibcite{wang2026hiband}{3}
+\bibcite{li2026semantic}{4}
+\bibcite{lin2026amber}{5}
+\bibcite{qwen3report}{6}
+\bibcite{qwen15moe}{7}
+\bibcite{minisweagent}{8}
+\bibcite{swebench}{9}
+\bibcite{lingbotvideo}{10}
+\bibcite{whisper}{11}
+\bibcite{orbslam3}{12}
+\bibcite{pi05}{13}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces End-to-end latency by workload for B, B plus the full design, and qualified external comparators. Each panel uses identical inputs and completion criteria. Labels distinguish complete-run measurements from estimates based on sampled MoE layers.}}{9}{figure.8}\protected@file@percent }
+\newlabel{fig:eval-overall}{{8}{9}{End-to-end latency by workload for B, B plus the full design, and qualified external comparators. Each panel uses identical inputs and completion criteria. Labels distinguish complete-run measurements from estimates based on sampled MoE layers}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Critical-path latency breakdown for matched MoE communication phases. The timeline shows bank service, data readiness, NoC injection and queueing, configuration, and consumer synchronization. Companion panels show packet tail latency and router activity using common scales across configurations.}}{9}{figure.9}\protected@file@percent }
+\newlabel{fig:eval-breakdown}{{9}{9}{Critical-path latency breakdown for matched MoE communication phases. The timeline shows bank service, data readiness, NoC injection and queueing, configuration, and consumer synchronization. Companion panels show packet tail latency and router activity using common scales across configurations}{figure.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Temperature and workload progress with thermal management enabled and disabled. Both configurations use the same NoC and bank policies. Markers denote thermal triggers, throttling, and work redistribution where observed.}}{9}{figure.10}\protected@file@percent }
+\newlabel{fig:eval-thermal}{{10}{9}{Temperature and workload progress with thermal management enabled and disabled. Both configurations use the same NoC and bank policies. Markers denote thermal triggers, throttling, and work redistribution where observed}{figure.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Scalability and sensitivity. Panels show (a) system scale at fixed workload, (b) input scale at fixed system size, and (c) sensitivity to the local connection budget and reconfiguration interval. Markers indicate the default configuration and whether overall latency is measured or estimated.}}{9}{figure.11}\protected@file@percent }
+\newlabel{fig:eval-scale}{{11}{9}{Scalability and sensitivity. Panels show (a) system scale at fixed workload, (b) input scale at fixed system size, and (c) sensitivity to the local connection budget and reconfiguration interval. Markers indicate the default configuration and whether overall latency is measured or estimated}{figure.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Related Works}{9}{section.5}\protected@file@percent }
+\newlabel{sec:related-works}{{V}{9}{Related Works}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Conclusion}{9}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{VI}{9}{Conclusion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{References}{9}{section*.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Hardware implementation cost by evaluation stage.}}{9}{table.4}\protected@file@percent }
+\newlabel{tab:eval-cost}{{IV}{9}{Hardware implementation cost by evaluation stage}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Runtime overhead of online decision algorithms.}}{9}{table.5}\protected@file@percent }
+\newlabel{tab:eval-runtime}{{V}{9}{Runtime overhead of online decision algorithms}{table.5}{}}
+\bibcite{hotspot_tool}{14}
+\gdef \@abspage@last{10}
