@@ -1,0 +1,247 @@
+\subsection{Traffic Prediction}
+\label{sec:traffic-prediction}
+
+The host CPU prepares circuit candidates before a communication phase
+and checks them when its current plan becomes visible.
+For Dispatch, we adapt the adjacent-layer expert-load predictor used
+by MixNet~\cite{liao2025mixnet}. Let $\mathbf{x}_{\ell-1,s}$ denote the
+normalized expert-slot distribution of the preceding layer for tokens
+whose current source NI $s$ is already known. Their predicted distribution
+is $\widehat{\mathbf{y}}_{\ell,s}=P_\ell\mathbf{x}_{\ell-1,s}$.
+The layer-specific matrix is fitted on development requests as
+\begin{equation}
+  \min_{P_\ell\geq0}\sum_i w_i
+  \|\mathbf{y}_i-P_\ell\mathbf{x}_i\|_2^2,
+  \qquad \mathbf{1}^{\mathsf T}P_\ell=\mathbf{1}^{\mathsf T},
+  \label{eq:noc-load-prediction}
+\end{equation}
+where $\mathbf{x}_i$ and $\mathbf{y}_i$ describe the same token group in
+adjacent layers, and $w_i$ weights its valid slot count and recency.
+Matrix $P_\ell$ has $E_\ell$ rows and $E_{\ell-1}$ columns, where
+$E_\ell$ is the expert count of layer $\ell$.
+Prefill and decode use separate models. A same-layer historical mean
+supplies the estimate when preceding-layer information is unavailable.
+Known source groups, expert placement, and packing rules convert these
+load estimates into source--destination demand; unknown sources remain
+unlocated. Once Top-K and packing metadata are visible, actual packet
+sizes replace the estimates. Source-read and transmit readiness determine
+packet release times.
+
+For Combine, the confirmed Dispatch assignments identify the returning
+destinations. Output shape, precision, aggregation, and packing determine
+the return packets; expert completion determines their release windows.
+Demand history is indexed by layer, phase, prefill/decode, batch range,
+and mapping. Measured congestion additionally uses a fingerprint of the
+physical topology and effective CS configuration. Completed observations
+before the prediction cutoff supply history; a fully observed empty
+hotspot set differs from a missing observation. Historical hotspots guide
+candidate locations while current demand determines the decision.
+
+\subsection{Reconfiguration Problem}
+\label{sec:noc-problem}
+
+\paragraph{Inputs}
+For one configuration decision, $\mathcal F$ is the set of directed
+source--destination flows and $\mathcal M_f$ the remaining, unadmitted
+packets of flow $f$. Packet $m\in\mathcal M=\bigcup_f\mathcal M_f$ carries
+$b_m$ useful payload bytes, and $D_f=\sum_{m\in\mathcal M_f}b_m$ is the
+flow's remaining volume. The wired topology supplies a set
+$\mathcal P_m$ of simple CS paths between that packet's source and
+destination; $\mathcal P=\bigcup_m\mathcal P_m$. Each path records its
+NI attachments and ordered CS input--output connections. The baseline
+Mesh route is denoted by 0. A fixed planning interval of $H$ NoC cycles
+and the visible state determine the available service budgets.
+
+\paragraph{Decision variables and objective}
+Binary $z_p$ selects CS path $p$. Binary $x_{m,p}$ assigns the whole
+packet $m$ to that path. We maximize the useful volume assigned to
+the reconfigurable network:
+\begin{equation}
+  \max_{\mathbf z,\mathbf x}\quad
+  V(\mathbf z,\mathbf x)=
+  \sum_{m\in\mathcal M}b_m\sum_{p\in\mathcal P_m}x_{m,p}.
+  \label{eq:noc-volume-objective}
+\end{equation}
+Headers consume service but contribute no useful payload to $V$.
+Packets without a CS assignment use the Mesh. A flow can therefore
+use several CS paths and the Mesh across its packets.
+
+\paragraph{Assignment and switch constraints}
+Let $g_m$ indicate that the transfer is eligible for new CS admission:
+its source payload is resident, its receive context is allocated, and
+it has no existing path binding. The variable domains and assignment
+constraints are
+\begin{align}
+  z_p&\in\{0,1\}, &&p\in\mathcal P,
+    \label{eq:noc-binary-variables}\\
+  x_{m,p}&\in\{0,1\}, &&m\in\mathcal M,\ p\in\mathcal P_m,
+    \nonumber\\
+  \sum_{p\in\mathcal P_m}x_{m,p}&\leq1, &&m\in\mathcal M,
+    \label{eq:noc-packet-assignment}\\
+  x_{m,p}&\leq z_p,\quad x_{m,p}\leq g_m.
+    \label{eq:noc-path-activation}
+\end{align}
+Equation~\eqref{eq:noc-packet-assignment} counts each packet once.
+Let $A_{c,p}=1$ when path $p$ traverses CS $c$, and zero otherwise.
+The single-connection CS circuit requires
+\begin{equation}
+  \sum_{p\in\mathcal P}A_{c,p}z_p\leq1,
+  \qquad c\in\{0,\ldots,12\}.
+  \label{eq:noc-cs-exclusion}
+\end{equation}
+The physical path table admits wired directions only, excludes a
+direction's return to itself and repeated CSs, and terminates at the
+specified destination. Source and destination attachments are actual
+NI links; nodes never act as intermediate CS forwarding points.
+
+\paragraph{Shared service constraints}
+Resources $r\in\mathcal R$ include directed links, NI transmit and
+receive service, DMA engines, and SRAM-bank access resources.
+The coefficient $u_{m,p,r}$ is packet $m$'s service work on resource $r$
+along path $p$, expressed in NoC-cycle equivalents using the resource's
+service rate. It includes the actual packet framing; $u_{m,0,r}$ is the
+corresponding Mesh cost. Budget $C_r$ is the service available during
+$H$ after reserving work for existing bindings, background traffic,
+and control messages outside $\mathcal M$. Using the derived Mesh
+assignment $x_{m,0}=1-\sum_{p\in\mathcal P_m}x_{m,p}$, the constraint is
+\begin{equation}
+  \sum_{m\in\mathcal M}\sum_{p\in\mathcal P_m\cup\{0\}}
+    u_{m,p,r}x_{m,p}\leq C_r,\qquad r\in\mathcal R.
+  \label{eq:noc-resource-capacity}
+\end{equation}
+The $p=0$ contribution retains the Mesh work of unassigned packets. For a
+shared source or destination resource, both route types consume its
+service. Different CS attachments may operate concurrently while
+sharing these budgets. Queueing, release dependencies, and finite-buffer
+backpressure enter the temporal check in the configuration algorithm.
+
+\paragraph{Mapping variables to hardware}
+For the wired directions $i\ne o$ of CS $c$, constant $A_{c,i,o,p}$
+indicates that path $p$ uses input $i$ and output $o$. The connection
+and enable are determined by $\mathbf z$:
+\begin{equation}
+  h_{c,i,o}(\mathbf z)=\sum_{p\in\mathcal P}A_{c,i,o,p}z_p,
+  \qquad e_c=\sum_{i\ne o}h_{c,i,o}(\mathbf z).
+  \label{eq:noc-switch-mapping}
+\end{equation}
+Equation~\eqref{eq:noc-cs-exclusion} leaves at most one active pair.
+That pair determines the output code and the input's position in that
+output MUX's allowed-input list. When $e_c=0$, the CS is disabled.
+The $x_{m,p}$ assignments identify the source-CS attachment for each
+packet in the NI transmit queue. These CS states and NI assignments
+form configuration $S(\mathbf z,\mathbf x)$, using the register fields
+and commands in Section~\ref{sec:noc-config-interface}.
+
+\subsection{Configuration Algorithm}
+\label{sec:noc-algorithm}
+
+\paragraph{Path preparation}
+Offline, we enumerate local paths through a shared lower CS and
+cross-region paths through U-connected lower CSs and either simple
+direction around the upper network. Each path stores its direction
+codes, source and destination attachments, and resource coefficients.
+Before Top-K, predicted demand prepares a tagged candidate cache.
+Current packet sizes, eligibility, mapping, and configuration replace
+the cached assumptions when the plan becomes visible.
+
+\paragraph{Flow ordering and allocation}
+Flows are ordered by decreasing remaining payload $D_f$; a fixed flow
+identifier breaks ties. Flows without eligible packets are skipped.
+Packets within a flow follow release order,
+then transfer identifier and byte offset. For a proposed circuit set,
+\textsc{Assign} considers permitted CS paths in increasing unloaded
+latency and path-identifier order. It replaces each accepted packet's
+Mesh work with its CS work and checks the added service against the
+remaining budgets. Packets that cannot use a selected path remain on
+the Mesh. An unresolved Mesh budget excess can be reduced during
+construction; only complete vectors satisfying
+\eqref{eq:noc-binary-variables}--\eqref{eq:noc-resource-capacity}
+enter the final candidate pool.
+
+\paragraph{Conflict resolution}
+Starting from an empty proposed circuit set, each round considers the
+$K_f$ largest remaining flows and at most $K_p$ compatible paths per
+flow. These are CPU search budgets. \textsc{Extensions} forms single-path
+and mutually compatible two-path additions. Each addition preserves
+existing circuit choices and is assigned jointly; two separate single-path
+volumes are never added as a substitute for this allocation.
+The extension with the largest increase in $V$ becomes the next
+construction state. Ties favor fewer changes from the active CS states,
+then fixed path identifiers. Construction stops when no volume can be
+added, no compatible path remains, or its time budget expires. Because
+each successful round reserves a new CS, there are at most 13 rounds.
+Thus a two-path extension budget permits configurations containing more
+than two circuits. \textsc{Feasible} stores the tested allocations that
+satisfy all constraints; the active configuration $S_0$ is also retained.
+
+\paragraph{Reconfiguration check and application}
+The feasible pool is checked in decreasing $V$. A tie with the active
+configuration retains it; other ties favor fewer state changes.
+A time-window model propagates serviced packets
+through the selected routes, source reads, receive queues, and destination
+bank writes. It includes the candidate's telemetry, CPU computation,
+pause, drain, writes, descriptor installation, and resume on a common
+timeline. Let $\widehat T(S)$ be the latest estimated completion of the
+current wave's required consumers, and $\eta(S)$ a paired-error margin
+from independent calibration requests. A proposed update is accepted
+only if
+\begin{equation}
+  \widehat T(S)+\eta(S)<\widehat T(S_0).
+  \label{eq:noc-switching-check}
+\end{equation}
+For background wave $b$, its estimated completion $\widehat T_b$ also
+satisfies $\widehat T_b(S)-\widehat T_b(S_0)+\eta_b(S)\leq\epsilon_b$,
+where $\eta_b$ is its error margin and $\epsilon_b$ its allowed delay.
+These checks control application of the volume-based allocation.
+The active network continues during computation. Before applying an
+update, the CPU refreshes completed and bound work and rechecks versions,
+eligibility, and the timing conditions. If no candidate passes within
+the decision budget, it retains $S_0$.
+
+Algorithm~\ref{alg:noc-configuration} gives the steps. The NI protocol
+finishes old transfers before changing CS states, installs the packet
+assignments with the matching version, and resumes after all required
+acknowledgements. Completed observations update demand and
+configuration-specific congestion histories separately.
+
+\begin{algorithm}[!t]
+  \caption{Volume-based NoC configuration}
+  \label{alg:noc-configuration}
+  \small
+  \begin{algorithmic}[1]
+    \Require Current packets $\mathcal M$, budgets $C_r$, cache, active $S_0$
+    \Ensure Retain $S_0$ or apply a checked configuration
+    \State Sort flows by $D_f$ and packets by release order
+    \State $S\gets\varnothing$; $\mathcal C\gets\{S_0\}$
+    \While{construction budget remains}
+      \State $\mathcal E\gets\Call{Extensions}{S,K_f,K_p}$
+      \Statex \Comment{One or two new CS-disjoint paths}
+      \For{$S'\in\mathcal E$}
+        \State $(\mathbf z',\mathbf x')\gets\Call{Assign}{S',\mathcal M}$
+        \If{$\Call{Feasible}{\mathbf z',\mathbf x'}$}
+          \State Add $S'(\mathbf z',\mathbf x')$ to $\mathcal C$
+        \EndIf
+      \EndFor
+      \State Choose the extension with largest added $V$
+      \If{no positive increase}
+        \State \textbf{break}
+      \EndIf
+      \State $S\gets$ chosen extension
+    \EndWhile
+    \State Order $\mathcal C$ by $V$, then fewer CS changes
+    \For{$S'\in\mathcal C$ in this order}
+      \If{$S'=S_0$ or decision budget expired}
+        \State \Return $S_0$
+      \EndIf
+      \State Refresh state; check completion and background delay
+      \Statex \Comment{Control and shared-endpoint costs included}
+      \If{versions, eligibility, and timing checks pass}
+        \State Pause new admissions and finish old transfers
+        \State Collect drain responses; write CS states and confirm
+        \State Install packet assignments and version; confirm
+        \State Resume admissions; \Return $S'$
+      \EndIf
+    \EndFor
+    \State \Return $S_0$
+  \end{algorithmic}
+\end{algorithm}

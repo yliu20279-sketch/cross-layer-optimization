@@ -4,6 +4,8 @@
 
 ## NoC 图纸修订 2026-11-09
 
+[最新 NoC 论文 v5：问题定义与配置算法](noc/design/20261110_paper_formulation/README.md)：2026-11-10 更新，含 TeX、PDF、两张配图、通信量目标、路径/包决策变量及约束、带注释伪代码、中文对照和检查记录。当前为文稿与模型修订，不是在线算法或 RTL 验收结果。
+
 [NoC Design 论文修订 v3（TeX、PDF 和配套图片）](noc/design/20261109_paper_hardware/README.md)：明确四个 NI 的物理接入与一次连接的输入/输出选择，整合当前两张图及硬件、NI 和配置接口正文。仅替换 Design，算法留空，其他章节保留原稿。
 
 [两级 NoC 拓扑和 CS 门电路](noc/design/20261109_two_level_cs/README.md)：包含最新 PNG、可编辑 SVG、独立绘图脚本及输出选择译码的静态核对。下层五方向、上层三方向，MUX 接线排除自连接，每个 CS 至多一条有向连接。此为设计图纸，不提升历史 RTL 或应用实验的验收范围。
