@@ -1,0 +1,7 @@
+FROM debian:bookworm-slim
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get -o Acquire::Retries=2 update && apt-get -o Acquire::Retries=2 install -y --no-install-recommends libtcl8.6 tcl-tclreadline libqt5charts5 && rm -rf /var/lib/apt/lists/*
+COPY noc-openroad-debian11.deb noc-libpython39.deb /tmp/
+RUN dpkg-deb -x /tmp/noc-openroad-debian11.deb /opt/noc-openroad && dpkg-deb -x /tmp/noc-libpython39.deb /opt/noc-python && rm /tmp/*.deb
+ENV LD_LIBRARY_PATH=/opt/noc-openroad/opt/or-tools/lib:/opt/noc-python/usr/lib/x86_64-linux-gnu
+ENTRYPOINT ["/opt/noc-openroad/usr/bin/openroad"]

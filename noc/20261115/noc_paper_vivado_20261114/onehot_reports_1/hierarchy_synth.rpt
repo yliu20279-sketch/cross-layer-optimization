@@ -1,0 +1,170 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Sat Nov 14 21:57:25 2026
+| Host         : [redacted]
+| Command      : report_utilization -hierarchical -hierarchical_depth 3 -file reports_1/hierarchy_synth.rpt
+| Design       : noc_paired
+| Device       : xcku5pffva676-2
+| Design State : Synthesized
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------+------------------------------+------------+------------+---------+------+-------+--------+--------+------+--------------+
+|        Instance       |            Module            | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | URAM | DSP48 Blocks |
++-----------------------+------------------------------+------------+------------+---------+------+-------+--------+--------+------+--------------+
+| noc_paired            |                        (top) |      37457 |      37457 |       0 |    0 | 24455 |      0 |      0 |    0 |            0 |
+|   (noc_paired)        |                        (top) |          3 |          3 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|   circuits.bypass     |                        aux13 |      10508 |      10508 |       0 |    0 |  3421 |      0 |      0 |    0 |            0 |
+|     (circuits.bypass) |                        aux13 |         84 |         84 |       0 |    0 |    80 |      0 |      0 |    0 |            0 |
+|     switches[0].cs    |                    single_cs |       1080 |       1080 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                 noc_slot_102 |       1080 |       1080 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[10].cs   |                 single_cs_78 |        397 |        397 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                 noc_slot_101 |        397 |        397 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[11].cs   |                 single_cs_79 |        406 |        406 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                 noc_slot_100 |        406 |        406 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[12].cs   |                 single_cs_80 |        397 |        397 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_99 |        397 |        397 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[1].cs    |                 single_cs_81 |        555 |        555 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_98 |        555 |        555 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[2].cs    |                 single_cs_82 |       1062 |       1062 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_97 |       1062 |       1062 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[3].cs    |                 single_cs_83 |        552 |        552 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_96 |        552 |        552 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[4].cs    |                 single_cs_84 |       1063 |       1063 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_95 |       1063 |       1063 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[5].cs    |                 single_cs_85 |       1318 |       1318 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_94 |       1318 |       1318 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[6].cs    |                 single_cs_86 |        813 |        813 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_93 |        813 |        813 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[7].cs    |                 single_cs_87 |       1064 |       1064 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_92 |       1064 |       1064 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[8].cs    |                 single_cs_88 |       1321 |       1321 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_91 |       1321 |       1321 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|     switches[9].cs    |                 single_cs_89 |        396 |        396 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       pipeline        |                  noc_slot_90 |        396 |        396 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   mesh                |                       mesh16 |      26927 |      26927 |       0 |    0 | 16906 |      0 |      0 |    0 |            0 |
+|     (mesh)            |                       mesh16 |         23 |         23 |       0 |    0 |     0 |      0 |      0 |    0 |            0 |
+|     routers[0].r      |                  mesh_router |        817 |        817 |       0 |    0 |   791 |      0 |      0 |    0 |            0 |
+|       (routers[0].r)  |                  mesh_router |          0 |          0 |       0 |    0 |    12 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_75 |        534 |        534 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_76 |        264 |        264 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_77 |         19 |         19 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[10].r     |  mesh_router__parameterized9 |       2952 |       2952 |       0 |    0 |  1322 |      0 |      0 |    0 |            0 |
+|       (routers[10].r) |  mesh_router__parameterized9 |          2 |          2 |       0 |    0 |    20 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_70 |        595 |        595 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_71 |        335 |        335 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_72 |        642 |        642 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_73 |        911 |        911 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_74 |        467 |        467 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[11].r     | mesh_router__parameterized10 |       1838 |       1838 |       0 |    0 |  1059 |      0 |      0 |    0 |            0 |
+|       (routers[11].r) | mesh_router__parameterized10 |          2 |          2 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_66 |        266 |        266 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_67 |        440 |        440 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_68 |        334 |        334 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_69 |        796 |        796 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[12].r     | mesh_router__parameterized11 |        694 |        694 |       0 |    0 |   790 |      0 |      0 |    0 |            0 |
+|       (routers[12].r) | mesh_router__parameterized11 |          0 |          0 |       0 |    0 |    12 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_63 |         15 |         15 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_64 |        534 |        534 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_65 |        145 |        145 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[13].r     | mesh_router__parameterized12 |       1362 |       1362 |       0 |    0 |  1056 |      0 |      0 |    0 |            0 |
+|       (routers[13].r) | mesh_router__parameterized12 |          1 |          1 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_59 |         12 |         12 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_60 |        348 |        348 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_61 |        400 |        400 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_62 |        601 |        601 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[14].r     | mesh_router__parameterized13 |       1370 |       1370 |       0 |    0 |  1057 |      0 |      0 |    0 |            0 |
+|       (routers[14].r) | mesh_router__parameterized13 |          4 |          4 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_55 |          9 |          9 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_56 |        281 |        281 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_57 |        628 |        628 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_58 |        448 |        448 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[15].r     | mesh_router__parameterized14 |        840 |        840 |       0 |    0 |   791 |      0 |      0 |    0 |            0 |
+|       (routers[15].r) | mesh_router__parameterized14 |          0 |          0 |       0 |    0 |    12 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_52 |         25 |         25 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_53 |        799 |        799 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_54 |         16 |         16 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[1].r      |  mesh_router__parameterized0 |       1368 |       1368 |       0 |    0 |  1056 |      0 |      0 |    0 |            0 |
+|       (routers[1].r)  |  mesh_router__parameterized0 |          0 |          0 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_48 |         11 |         11 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_49 |       1058 |       1058 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_50 |        274 |        274 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_51 |         25 |         25 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[2].r      |  mesh_router__parameterized1 |       1623 |       1623 |       0 |    0 |  1057 |      0 |      0 |    0 |            0 |
+|       (routers[2].r)  |  mesh_router__parameterized1 |          1 |          1 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_44 |        926 |        926 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_45 |        279 |        279 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_46 |        407 |        407 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_47 |         10 |         10 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[3].r      |  mesh_router__parameterized2 |        837 |        837 |       0 |    0 |   794 |      0 |      0 |    0 |            0 |
+|       (routers[3].r)  |  mesh_router__parameterized2 |          0 |          0 |       0 |    0 |    12 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_41 |         20 |         20 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_42 |        794 |        794 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_43 |         23 |         23 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[4].r      |  mesh_router__parameterized3 |       1483 |       1483 |       0 |    0 |  1055 |      0 |      0 |    0 |            0 |
+|       (routers[4].r)  |  mesh_router__parameterized3 |          1 |          1 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_37 |        796 |        796 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_38 |        274 |        274 |       0 |    0 |   258 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_39 |         10 |         10 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_40 |        402 |        402 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[5].r      |  mesh_router__parameterized4 |       2691 |       2691 |       0 |    0 |  1322 |      0 |      0 |    0 |            0 |
+|       (routers[5].r)  |  mesh_router__parameterized4 |          2 |          2 |       0 |    0 |    20 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_32 |        543 |        543 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_33 |        632 |        632 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_34 |        556 |        556 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_35 |        301 |        301 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_36 |        657 |        657 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[6].r      |  mesh_router__parameterized5 |       2494 |       2494 |       0 |    0 |  1322 |      0 |      0 |    0 |            0 |
+|       (routers[6].r)  |  mesh_router__parameterized5 |          2 |          2 |       0 |    0 |    20 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_27 |        211 |        211 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_28 |        310 |        310 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_29 |        397 |        397 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_30 |        369 |        369 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_31 |       1205 |       1205 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[7].r      |  mesh_router__parameterized6 |       1892 |       1892 |       0 |    0 |  1057 |      0 |      0 |    0 |            0 |
+|       (routers[7].r)  |  mesh_router__parameterized6 |          1 |          1 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_23 |        805 |        805 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_24 |          5 |          5 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_25 |        811 |        811 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_26 |        270 |        270 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[8].r      |  mesh_router__parameterized7 |       1873 |       1873 |       0 |    0 |  1056 |      0 |      0 |    0 |            0 |
+|       (routers[8].r)  |  mesh_router__parameterized7 |          2 |          2 |       0 |    0 |    16 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |  noc_slot__parameterized0_19 |        377 |        377 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_20 |        429 |        429 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_21 |        465 |        465 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_22 |        600 |        600 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|     routers[9].r      |  mesh_router__parameterized8 |       2770 |       2770 |       0 |    0 |  1321 |      0 |      0 |    0 |            0 |
+|       (routers[9].r)  |  mesh_router__parameterized8 |          2 |          2 |       0 |    0 |    20 |      0 |      0 |    0 |            0 |
+|       queues[0].q     |     noc_slot__parameterized0 |        751 |        751 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[1].q     |  noc_slot__parameterized0_15 |        273 |        273 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|       queues[2].q     |  noc_slot__parameterized0_16 |        302 |        302 |       0 |    0 |   260 |      0 |      0 |    0 |            0 |
+|       queues[3].q     |  noc_slot__parameterized0_17 |        658 |        658 |       0 |    0 |   259 |      0 |      0 |    0 |            0 |
+|       queues[4].q     |  noc_slot__parameterized0_18 |        784 |        784 |       0 |    0 |   261 |      0 |      0 |    0 |            0 |
+|   ni[0].receive_slot  |                     noc_slot |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[10].receive_slot |                   noc_slot_0 |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[11].receive_slot |                   noc_slot_1 |          1 |          1 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[12].receive_slot |                   noc_slot_2 |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[13].receive_slot |                   noc_slot_3 |          0 |          0 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[14].receive_slot |                   noc_slot_4 |          0 |          0 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[15].receive_slot |                   noc_slot_5 |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[1].receive_slot  |                   noc_slot_6 |          0 |          0 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[2].receive_slot  |                   noc_slot_7 |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[3].receive_slot  |                   noc_slot_8 |          1 |          1 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[4].receive_slot  |                   noc_slot_9 |          0 |          0 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[5].receive_slot  |                  noc_slot_10 |          1 |          1 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[6].receive_slot  |                  noc_slot_11 |          3 |          3 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[7].receive_slot  |                  noc_slot_12 |          1 |          1 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[8].receive_slot  |                  noc_slot_13 |          0 |          0 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
+|   ni[9].receive_slot  |                  noc_slot_14 |          2 |          2 |       0 |    0 |   257 |      0 |      0 |    0 |            0 |
++-----------------------+------------------------------+------------+------------+---------+------+-------+--------+--------+------+--------------+
+
+

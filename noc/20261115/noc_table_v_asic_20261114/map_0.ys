@@ -1,0 +1,10 @@
+read_liberty -lib NangateOpenCellLibrary_typical.lib
+read_verilog -sv mesh.sv circuits.sv noc_paired.sv
+hierarchy -check -top noc_paired -chparam ENHANCED 0
+synth -top noc_paired -flatten -noabc
+dfflibmap -liberty NangateOpenCellLibrary_typical.lib
+abc -D 800 -exe berkeley-abc -liberty NangateOpenCellLibrary_typical.lib
+clean
+check -assert
+stat -liberty NangateOpenCellLibrary_typical.lib
+write_verilog -noattr mapped_0.v
