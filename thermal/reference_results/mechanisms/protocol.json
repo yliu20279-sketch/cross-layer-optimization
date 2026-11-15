@@ -1,0 +1,51 @@
+{
+  "status": "FIXED_FINAL_SUITE",
+  "requests": 4,
+  "target_C": 60,
+  "policy_cap_C": 65,
+  "guard_C": 64,
+  "modeled_routes": true,
+  "cohorts": 1,
+  "required": [
+    "amber",
+    "amber_energy",
+    "contract_full",
+    "contract_energy",
+    "energy_none",
+    "replica_control",
+    "replica_select",
+    "dynamic",
+    "dynamic_forced",
+    "dynamic_forced_control"
+  ],
+  "conditional": "Run dynamic_copy_control if and only if the dynamic policy copies one or more experts. Preserve zero-action outcome.",
+  "comparisons": {
+    "RouteA_increment": [
+      "contract_energy",
+      "amber_energy"
+    ],
+    "replica_component": [
+      "replica_select",
+      "replica_control"
+    ],
+    "dynamic_system": [
+      "dynamic",
+      "amber"
+    ],
+    "forced_component": [
+      "dynamic_forced",
+      "dynamic_forced_control"
+    ]
+  },
+  "decision_rule": "Complete latency under identical <=65C policy cap. Report total energy and D60 separately, including regressions. No alternate denominator or selected time window. No steady-state claim.",
+  "forced_rule": "First expert in the predeclared layout, request0 prefill, copied once at its pack; execute the invocation at the copied location versus identical unused-copy intervention.",
+  "code_hashes": {
+    "/home/openpi/qwen15_moe_meta_v35_20260928/run_moe60_mechanisms.py": "74591b8d7faa5c219fcceb9de8d1e00e8af00a1081686d9095fc27fd39956932",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_controller.py": "957174d23c00a9bf98573ca46a3a7e6373314ff4577cb48bdf3148e9fcad74bd",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_runtime.py": "c6a42b0765e9df1ee066dba83fef02ec6b52817a933a53fed7fa2a37f99ba73e",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/graph_scheduler.py": "85109abe4c88c556b21a950b19f814520c979003d54996a9cd42b7fde7dc419c",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/amber_online_qwen.py": "d65bcb91b0312a2b78336359bab26c0a80261dfaffac3714b9d92206a009bbed",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/plan.json": "64b843e76809f941178a88b9fcd65b8870e2a278b904d0a6e77e79d343f351b7",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/energy_OPP_table.json": "6a30f99b25ed581e44728128d5f5d76b33839ddfb049dd826baf694c0fc0c539"
+  }
+}

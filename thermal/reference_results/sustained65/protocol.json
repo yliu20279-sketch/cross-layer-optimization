@@ -1,0 +1,64 @@
+{
+  "status": "FROZEN_BEFORE_FIXED12_CONFIRMATORY_RUNS",
+  "workload": "Qwen1.5-MoE-A2.7B",
+  "requests_per_cohort": 4,
+  "tokens": "512 prefill + 1 decode per request; fixed modeled expert routes",
+  "policies": [
+    "amber_energy",
+    "contract_energy"
+  ],
+  "common_soft_target_C": 60.0,
+  "common_cap_C": 65.0,
+  "common_predictive_guard_C": 64.0,
+  "clock_GHz": 2.0,
+  "Rconv_K_per_W": 3.0,
+  "ambient_C": 45.0,
+  "same_opp_table_sha256": "6a30f99b25ed581e44728128d5f5d76b33839ddfb049dd826baf694c0fc0c539",
+  "cohort_arrivals": "Next four requests released immediately at drained previous-cohort ceil(1ms) boundary; no inter-cohort cool-down.",
+  "carry": "Full 1292-state RC state, modal state, last OPP; no thermal reset. New task and link calendars only after all work drains.",
+  "task_dispatch_ns": 10000.0,
+  "no_migration": true,
+  "no_noc_reconfiguration": true,
+  "convergence": {
+    "block_mean_window_delta_C": 0.03,
+    "duration_window_relative_delta": 0.01,
+    "slow_mode_mean_window_delta_C": 0.03,
+    "windows": [
+      [
+        7,
+        8,
+        9
+      ],
+      [
+        10,
+        11,
+        12
+      ]
+    ]
+  },
+  "measurement": "All twelve actual feedback-controlled cohorts; final six for sustained throughput. Compare cohorts7-9 vs10-12 to check drift. No outcome-based cohort selection.",
+  "safety": "Every actual 1ms RC endpoint in every cohort <=65C, initial state included. Infinite idle tail bounded/replayed separately at final boundary.",
+  "scope": "Bounded per-task native profiles, modeled routes/costs; not checkpoint inference, persistent DRAM command queue, or silicon measurements.",
+  "sources": {
+    "/home/openpi/qwen15_moe_meta_v35_20260928/run_moe60_mechanisms.py": "74591b8d7faa5c219fcceb9de8d1e00e8af00a1081686d9095fc27fd39956932",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_controller.py": "957174d23c00a9bf98573ca46a3a7e6373314ff4577cb48bdf3148e9fcad74bd",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_runtime.py": "c6a42b0765e9df1ee066dba83fef02ec6b52817a933a53fed7fa2a37f99ba73e",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/graph_scheduler.py": "85109abe4c88c556b21a950b19f814520c979003d54996a9cd42b7fde7dc419c",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/amber_online_qwen.py": "d65bcb91b0312a2b78336359bab26c0a80261dfaffac3714b9d92206a009bbed",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/plan.json": "64b843e76809f941178a88b9fcd65b8870e2a278b904d0a6e77e79d343f351b7",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/energy_OPP_table.json": "6a30f99b25ed581e44728128d5f5d76b33839ddfb049dd826baf694c0fc0c539",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/run_moe65_sustained.py": "2f680e00029852f3d312191f061c635c1bd072284ee8d27841c3699a65c02f23",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/run_moe65_fixed12.py": "75b6ea03937c6c036ca946b1121e271be0fa8f62054eb4b4bfe3af63a8e54892"
+  },
+  "cohorts": 12,
+  "measurement_cohorts": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "reason": "Exploratory controllers show small aperiodic local peak variations; test sustained window stability rather than strict repetition of each full task schedule.",
+  "acceleration": "Full1292-mode baseline propagation only; use original physical RC arithmetic for all near-tied task scores and near-guard forecasts. Actual execution retains original physical sparse RC. Compare original forecast on first128 and every4096 calls; first cohort full native task timing must match historical."
+}

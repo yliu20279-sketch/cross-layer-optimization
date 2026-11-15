@@ -1,0 +1,369 @@
+{
+  "schema": 1,
+  "scope": "Current modeled-route Qwen1.5-MoE-A2.7B thermal diagnostic and comparison code; not full system validation.",
+  "excludes": [
+    "runs/",
+    ".cache/",
+    "__pycache__/",
+    "provenance/PACKAGE_MANIFEST.json",
+    "provenance/UPLOAD_CHECK.json"
+  ],
+  "files": {
+    ".gitignore": {
+      "sha256": "816ad3d2745c24bfe4a63a21c29f5834fe154f0144d7907743c65e217da0159f",
+      "bytes": 33
+    },
+    "README.md": {
+      "sha256": "ee2e375408f3c358a18bcb9651dccf54601b1203c681cf8285934f1e3667c45b",
+      "bytes": 8031
+    },
+    "inputs/MANIFEST.json": {
+      "sha256": "58a17a06c9b9f3472edab88032a21c575737b5c8b5d9770a39f232b54cfda371",
+      "bytes": 3255
+    },
+    "inputs/copy_profile.json": {
+      "sha256": "1b4f64643c458a3642e38404905302a0fe1f3a0b2ee6e87be8131a7aeade50a4",
+      "bytes": 2041
+    },
+    "inputs/energy_OPP_table.json": {
+      "sha256": "6a30f99b25ed581e44728128d5f5d76b33839ddfb049dd826baf694c0fc0c539",
+      "bytes": 6681762
+    },
+    "inputs/mechanism_plan.json": {
+      "sha256": "64b843e76809f941178a88b9fcd65b8870e2a278b904d0a6e77e79d343f351b7",
+      "bytes": 811245
+    },
+    "inputs/prepared/gtp_srs_addresses.json": {
+      "sha256": "5a33ada7ffa452fba152f70d849511c6a4d0152d484516b0981fd30c8c9396bd",
+      "bytes": 745948
+    },
+    "inputs/prepared/gtp_srs_capacity.json": {
+      "sha256": "f910727639a2245eee51eeb37182324195392683e2cbd7f2a584a9cb49742520",
+      "bytes": 7337
+    },
+    "inputs/prepared/gtp_srs_logical_wave_profiles.json": {
+      "sha256": "3bb66471998c70198111029379532d18c8f45926c15689841e0b85afd55a6fff",
+      "bytes": 33577071
+    },
+    "inputs/prepared/gtp_srs_manifest.json": {
+      "sha256": "901058defb3408f562dba1995ff764395ab6873fb0ba3b4911b62f0c2e902361",
+      "bytes": 6267140
+    },
+    "inputs/prepared/gtp_srs_native_plan.json": {
+      "sha256": "f880cbdb698605a4a8a695d685c00d3a198144a60bbea90e3ad9958c6a239bb7",
+      "bytes": 7475633
+    },
+    "inputs/prepared/gtp_srs_native_task_profiles.json": {
+      "sha256": "40949990c1cb889301a768d4534574bdd3630957313f2cdb9f64dc79fd86c958",
+      "bytes": 1831820
+    },
+    "inputs/prepared/meta_sota_demand_intensity_1req.json": {
+      "sha256": "888c3379872bb392d6fb6570fc22d22f47609506c7a5fa6087b4ed8b80533910",
+      "bytes": 20988
+    },
+    "inputs/prepared/native_hierarchy.json": {
+      "sha256": "72cc032e68135fd228bcabefdf575685c97d0a3f87e325717cf11974ef976eef",
+      "bytes": 14832
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/amber_config.json": {
+      "sha256": "eb04bb20ead4905614bd6bafefd1ba356f9879d5ad363a4a32ed422a6b11bbb5",
+      "bytes": 1956
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/gtp_srs_native_opp_profiles.json": {
+      "sha256": "2c100b86a2f55d95c642a2faeae42d7744aca681b048e88c9d3acce5a25311ce",
+      "bytes": 3172469
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/rc/A.csv": {
+      "sha256": "35d497b731e765f02cee42076a43e31dd59861dfef7411de74cc6fffcb228e73",
+      "bytes": 230718
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/rc/B.csv": {
+      "sha256": "d69c63b6b929f38e118d18acb38722ab9b46d2bb227fe22f46b320c42ad20d5d",
+      "bytes": 13096
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/rc/C.csv": {
+      "sha256": "48160476bde0eab6e111b49f41d7eb4b6b8bbec20788e6fda9a189379eed37ba",
+      "bytes": 9000
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/rc/dimension.txt": {
+      "sha256": "e1f6b4f568e8469161e991c4dd09ebd1777a9c98fc360b660f97f90dd7011e2c",
+      "bytes": 60
+    },
+    "inputs/prepared/operating_point_2ghz_rconv3/scenario.json": {
+      "sha256": "bfa6e52c5e709fd96aea824038db525234e04c87341b95efd71e0526a4d3af7e",
+      "bytes": 8006
+    },
+    "inputs/prepared/placement.json": {
+      "sha256": "a297446aa0bbd0184fcdd3d2929624662071c6977faac160ba532da0d41e9269",
+      "bytes": 31972
+    },
+    "inputs/prepared/routing.json": {
+      "sha256": "853f7c0f0b786cd73b6bd2fe265b1799c8bdd02b45948126783efc7cc0ddd9f0",
+      "bytes": 1631031
+    },
+    "inputs/prepared/semantic_flows.json": {
+      "sha256": "d99f701e398668b2acba9bf44287f4bad33ec0b098df82eb372cc644e62a7bb8",
+      "bytes": 8910520
+    },
+    "inputs/thermal_kernel.json": {
+      "sha256": "554b1a0745e2e0af12b36c470a3bf49b34e71687a8a03989b653db07fa76a02a",
+      "bytes": 42291155
+    },
+    "inputs/warm_1req.json": {
+      "sha256": "3495cf03ca3aaa6cde8c1553f450d99c4cf7bbc9651e1a5004a11912f5e9dd6d",
+      "bytes": 25878
+    },
+    "inputs/warm_4req.json": {
+      "sha256": "8dfde8db75f80c6052e868cdbb8d88735f479860a7b6d2843989313f32ad02f0",
+      "bytes": 25887
+    },
+    "provenance/PORTABILITY_VALIDATION.json": {
+      "sha256": "a54afa19ccf6adcb698f3c90cbe11712ae9b73e5a03f3a3a101f236827a27a06",
+      "bytes": 2270
+    },
+    "provenance/PORTING.md": {
+      "sha256": "02c1bb37a256d75c06054927e8a805992c0aaa425f185397f0bff0700eb5a4b1",
+      "bytes": 3643
+    },
+    "provenance/SOURCE_MANIFEST.json": {
+      "sha256": "83655344c74968593c71f504a7e57f43cc91dcb8fd2affa1f3a2e68b42813035",
+      "bytes": 29998
+    },
+    "reference_results/first_cohort_fingerprints.json": {
+      "sha256": "d6ac9afc2eb68226d793fc3c528ace05d9380e4a84fa506b900b5134d7e555bf",
+      "bytes": 1951
+    },
+    "reference_results/mechanisms/RESULTS.md": {
+      "sha256": "ed2b9e58e1c5f32334344a1bd4ad6142285feace2d6a4232ecc9cd453454ee8b",
+      "bytes": 3827
+    },
+    "reference_results/mechanisms/amber_4req/summary.json": {
+      "sha256": "484cbdf74e76f8a2155ad518c5f438349189e64b07cf08fe98ec30a67dae7c57",
+      "bytes": 4999
+    },
+    "reference_results/mechanisms/amber_energy_4req/summary.json": {
+      "sha256": "dafcef7d9ebca9a57da2c161ea06273e618b3ae24ffb85ef20f0cf34eeaae4df",
+      "bytes": 4982
+    },
+    "reference_results/mechanisms/audit.json": {
+      "sha256": "6569415d1dfc9d41b514074c91900dee54d2c561852288f1dfad0dbcd51ed124",
+      "bytes": 4745
+    },
+    "reference_results/mechanisms/comparison.json": {
+      "sha256": "cd98b8103bba95513d114d8c2cecbbd9e575be9a8763bc5f7d121252675d34e3",
+      "bytes": 51741
+    },
+    "reference_results/mechanisms/contract_energy_4req/summary.json": {
+      "sha256": "a8e0c887d5eb677091a5091498c15880edac2969db3e885ad5cbddb1f4297ad7",
+      "bytes": 5010
+    },
+    "reference_results/mechanisms/contract_full_4req/summary.json": {
+      "sha256": "040fabe983f8a5823f6b62fb98f9ca587f610fbb8c887661b34343ebf063f024",
+      "bytes": 4972
+    },
+    "reference_results/mechanisms/dynamic_4req/summary.json": {
+      "sha256": "18fe4d64a59cd71a824db72b3dcea1f4d1958094ff934dd8200bf1fee7e257ca",
+      "bytes": 5005
+    },
+    "reference_results/mechanisms/dynamic_forced_4req/summary.json": {
+      "sha256": "6065d6c88014a206bf9cc65f5a3045fcb37e6bacc058f71af8e8d296a79a619e",
+      "bytes": 5076
+    },
+    "reference_results/mechanisms/dynamic_forced_control_4req/summary.json": {
+      "sha256": "7ffd9a6addbda16b8a0200ef1955cfdd959b95fed4071997e9fabcfdd862f5fd",
+      "bytes": 5082
+    },
+    "reference_results/mechanisms/energy_none_4req/summary.json": {
+      "sha256": "76227c3a8d9bee61ad9818e80d959922233e9ebf9a746bb63ca3fe731c5be51b",
+      "bytes": 4832
+    },
+    "reference_results/mechanisms/protocol.json": {
+      "sha256": "1a4fa35a11b6bf8e0cdaed26726dfad0671569f394e310259874cb6d9d51def3",
+      "bytes": 2275
+    },
+    "reference_results/mechanisms/replica_control_4req/summary.json": {
+      "sha256": "4fbde2e3657fdbcff65d8a53e52658ff52d62ecaac6430ad53944377ca8e357f",
+      "bytes": 5041
+    },
+    "reference_results/mechanisms/replica_select_4req/summary.json": {
+      "sha256": "1abe7604bbffd76ffc42c5f81d0d13a758bb7e797dab9391566a8d0ccd5088ce",
+      "bytes": 5041
+    },
+    "reference_results/mechanisms/self_test.json": {
+      "sha256": "d10265cf39eccee6f32784d1b900928ee5b71607c9ebf2a2104560ed9deae0b7",
+      "bytes": 2705
+    },
+    "reference_results/sustained65/RESULTS.md": {
+      "sha256": "59601bfdea96d6c00f6c34d7e29ae7b4ffac419061788825625eab55fda0559b",
+      "bytes": 4192
+    },
+    "reference_results/sustained65/amber_energy/cohorts.json": {
+      "sha256": "02af54fb34c07a26bab4f6ed081a84e601f9c63c9a9fc32ae9affb08dedc5d30",
+      "bytes": 126322
+    },
+    "reference_results/sustained65/amber_energy/summary.json": {
+      "sha256": "979bcf62af1a793f737800cc97be73c2b39a516153722ba3719b7103ae627257",
+      "bytes": 2519
+    },
+    "reference_results/sustained65/audit.json": {
+      "sha256": "97bec6002d48f2f2493b4e1f2555c12814ea7bc3a29c0ba11a32117afd573a88",
+      "bytes": 12508
+    },
+    "reference_results/sustained65/comparison.json": {
+      "sha256": "529d2d809804fe2c82237d1af33bbc46c250872062993fd5120bf5cd83cc5631",
+      "bytes": 5692
+    },
+    "reference_results/sustained65/contract_energy/cohorts.json": {
+      "sha256": "dba5886eecc8eb2c1f38a8cfbf70d3075f3cc3f424395a4f38608c9ce9b79ac7",
+      "bytes": 126526
+    },
+    "reference_results/sustained65/contract_energy/summary.json": {
+      "sha256": "f9162a560cacb7eda6187baf4c759cbf502419f28367b903a00971bdb3c7bd9c",
+      "bytes": 2499
+    },
+    "reference_results/sustained65/protocol.json": {
+      "sha256": "96a1d616c28e275919d2635b6a04ad2aff9cf272a03fae918d21a8406c913152",
+      "bytes": 3533
+    },
+    "reference_results/sustained65/sustained_comparison.pdf": {
+      "sha256": "c9f1e5bcee06f93081bec4b64d297773c780e4e04fafbdbc71234d61c28a957e",
+      "bytes": 21294
+    },
+    "reference_results/sustained65/sustained_comparison.png": {
+      "sha256": "b835e0cbdb9153dbf3fb51990ac2725b519eee15746a650677f4b6f37e9076ec",
+      "bytes": 141763
+    },
+    "requirements-tested.txt": {
+      "sha256": "9e58968661f75bfabe79bd4d6fffa1e3640890787229d720f73e323567d585f9",
+      "bytes": 133
+    },
+    "requirements.txt": {
+      "sha256": "fc427f96792059ce540ca8adc5b06cdd1692436654fc3569648ef0d16fc4577b",
+      "bytes": 40
+    },
+    "runtime/backend.py": {
+      "sha256": "40a56bedf530cf2c8701a2a86b84ec969e434e10b810ffe4a1c5c153b75a962d",
+      "bytes": 36356
+    },
+    "runtime/implicit_thermal.py": {
+      "sha256": "52d93cbb55343f9041a15385d7021b370f00f824bf894947493441a33425d164",
+      "bytes": 149
+    },
+    "runtime/modeled_scenario.json": {
+      "sha256": "e50cb08db0e724a319b4ab4841da18af485fa3ce236b8a7c7e57e0569bb5d1e3",
+      "bytes": 7832
+    },
+    "runtime/prepare.py": {
+      "sha256": "942bd864bb7f4c49f557b04aa16e725adc25f7d9c349059fba1c716195ff05ba",
+      "bytes": 535
+    },
+    "runtime/prepared/memory_curves.json": {
+      "sha256": "1dd413e9e8ba80ebdd5d7b0c9074015f9bb7781f17389bc0060dd8d9ecfc403f",
+      "bytes": 95258
+    },
+    "runtime/sota_compare.py": {
+      "sha256": "ab4d3290e90498db56ff22501769a4de8152173768bcdced269cf9ae3236945f",
+      "bytes": 4064
+    },
+    "runtime/sota_compare_config.json": {
+      "sha256": "91a21810fb389f4005071672dab9768a52ba22ebcedff775d7abbe939fb90be4",
+      "bytes": 5015
+    },
+    "src/amber_online_qwen.py": {
+      "sha256": "d65bcb91b0312a2b78336359bab26c0a80261dfaffac3714b9d92206a009bbed",
+      "bytes": 15742
+    },
+    "src/build_native_profiles.py": {
+      "sha256": "9e192aae9423eab7a103614a1750b6c6eb76a4dc482c123a3e7a2fc36536bdd1",
+      "bytes": 11851
+    },
+    "src/graph_paths.py": {
+      "sha256": "28c61d459c43ed30fc13a4f0c49f920ff0188c2603ba4e5e155bd3fc23f448fc",
+      "bytes": 194
+    },
+    "src/graph_scheduler.py": {
+      "sha256": "50c5c98a7f7dbd23252e9a10fda847e6b8cc5953c314003b9d6954ca41319d2c",
+      "bytes": 31578
+    },
+    "src/kv_native_regions.py": {
+      "sha256": "cc1ddae5e961d127cb1fc6d3396961cde91b92717de39a9c0d0298c2831a125c",
+      "bytes": 5018
+    },
+    "src/moe60_controller.py": {
+      "sha256": "33e82f2e6472078918c096b058a8b5743fe50fa6597f23a33fd95bb08b389862",
+      "bytes": 12508
+    },
+    "src/moe60_runtime.py": {
+      "sha256": "6d4c39515d326e6d82718ce6a51f99da6b47508982e9b55249b2731e65a942f5",
+      "bytes": 19988
+    },
+    "src/op_thermal.py": {
+      "sha256": "d8dd4e4a1836db51c94deab9d21d6329678793f5725dbaaf229de0b54af70227",
+      "bytes": 1672
+    },
+    "src/portable.py": {
+      "sha256": "ad96894c2b81406b62fcade3b83356e293766e3a67b66fd74fe08b9a2c00b5b0",
+      "bytes": 2669
+    },
+    "src/profile_operating_point.py": {
+      "sha256": "2e085cacc820f657821db90fcea3c1a47d41c47528329086eb2bb446d2d07f50",
+      "bytes": 10346
+    },
+    "src/run_moe60_mechanisms.py": {
+      "sha256": "d8d00ee9b3282b76ab339d84f590d673693f5321a94b7f2e41faf28d1d2f4b45",
+      "bytes": 19216
+    },
+    "src/run_moe65_fixed12.py": {
+      "sha256": "2361e353d66edebd4d57a1a3b1b2b10d466ebab75e4c328910c7edd724fddacb",
+      "bytes": 15364
+    },
+    "src/run_moe65_sustained.py": {
+      "sha256": "3ee56e7a847e03b3b2d3195763d65c3c55ceaa786393fd7eaea63c837a09292e",
+      "bytes": 16744
+    },
+    "src/run_temperature60_pilot.py": {
+      "sha256": "500368aa69cc9c625dc9ab1af2b7a268934b38103361b0da984a7d9366dbaa15",
+      "bytes": 2429
+    },
+    "src/task_addresses.py": {
+      "sha256": "5db6600f11005618372b09bf4a89cf17e14b8307bc1d61fc61614bc4d010ce82",
+      "bytes": 954
+    },
+    "src/thermal_geometry.py": {
+      "sha256": "6f98d0e15cfed804903cf9bee10ad86cbd40b598982c905dc730546fc59941f7",
+      "bytes": 1262
+    },
+    "tools/check_portable.py": {
+      "sha256": "04c6cb67b2c32c7af5582900b0021e47f070999067077d0fcc66bd4382302b3c",
+      "bytes": 5166
+    },
+    "tools/compile_thermal_kernel.py": {
+      "sha256": "293e211e96660e98926b39a45acc1a762ea0338c9935ea925cd54d093b207296",
+      "bytes": 3853
+    },
+    "tools/rebuild_opp_table.py": {
+      "sha256": "b068337ff9beffedb8d084605a72aef66fffebd415ffb8161c43e5633262008f",
+      "bytes": 1983
+    },
+    "tools/reprofile_operators.py": {
+      "sha256": "eb55b3767e4880f901a683488e8117c209e765139ea64db4e6c5bf1a5da1f87c",
+      "bytes": 3020
+    },
+    "validation/audit_and_report.py": {
+      "sha256": "962dde00054d89ec1d4de472e4f5ebe67658be883c83b46eb5d24a45a1dd2a7a",
+      "bytes": 19413
+    },
+    "validation/audit_fixed12.py": {
+      "sha256": "f718e63ee4d4af71dfdf4701982a49c3de4051bb2d515aed61cd587c744d8cee",
+      "bytes": 10974
+    },
+    "validation/audit_sustained.py": {
+      "sha256": "0239cace6f837e7357be9160be41460021eab51d7488261d73b58f021836e147",
+      "bytes": 14622
+    },
+    "validation/plot_results.py": {
+      "sha256": "a293095e5b411187507c589c7f042aae85f28fb5b72bc9521e96e885e36c9502",
+      "bytes": 2128
+    }
+  }
+}

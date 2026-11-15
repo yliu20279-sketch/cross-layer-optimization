@@ -1,0 +1,83 @@
+{
+  "status": "COMPLETE_FULL_MOE_GRAPH_DIAGNOSTIC",
+  "case": "contract_full",
+  "requests": 4,
+  "workload": "Qwen1.5-MoE-A2.7B, 512 prefill + 1 decode",
+  "routes": "Existing frozen modeled routes",
+  "duration_s": 10.598,
+  "throughput_req_s": 0.37742970371768253,
+  "energy_J": 67.57693378555831,
+  "peak_C": 63.977178316225334,
+  "D60_K2_s": 1800.7117448231165,
+  "within_policy_cap": true,
+  "policy_cap_C": 65.0,
+  "target_C": 60.0,
+  "predictive_guard_C": 64.0,
+  "initial_peak_C": 63.50074800978647,
+  "NoC_bytes": 7816747712,
+  "copy_bytes": 0,
+  "expert_invocations": 6144,
+  "moved_expert_invocations": 0,
+  "copy_count": 0,
+  "controller": {
+    "stage1": {
+      "decisions": 68837,
+      "thermal_candidate_evaluations": 518740,
+      "feasible": 60824,
+      "reordered": 41860
+    },
+    "stage2": {
+      "decisions": 60824,
+      "opp_1": 60824,
+      "deferred_1ms_bins": 63,
+      "opp_switches": 0
+    },
+    "online_final_bin": 10598,
+    "online_peak_completed_bin_C": 63.66993627444893,
+    "controller_scope": "MODELED bounded RC-predictive Stage1 and highest-safe-native-OPP Stage2; no cool-state bypass",
+    "extra": {
+      "contract_wait_epochs": 8097
+    },
+    "compiled_bound_checks": 731577,
+    "compiled_bound_host_seconds": 37.03339729094296,
+    "maximum_admitted_bound_C": 63.999998887219604,
+    "contract_scope": "All future integer 1ms RC endpoints; constant native task power and every committed NoC/copy event. Exact model, RR1. No silicon cost calibration."
+  },
+  "validation": {
+    "status": "COMPLETE_WORK_DAG_NATIVE_SERVICE_RESOURCE_PASS",
+    "tasks": 60824,
+    "MAC": 4346324058112,
+    "native_service_underrun_ns": 0.0,
+    "live_expert_workspace": "PASS",
+    "copied_experts": 0,
+    "expert_invocations": 6144,
+    "preserved_expert_IDs": true
+  },
+  "RC_final_error_C": 2.1316282072803006e-14,
+  "host_seconds": 78.80847400099992,
+  "code_hashes": {
+    "/home/openpi/qwen15_moe_meta_v35_20260928/run_moe60_mechanisms.py": "74591b8d7faa5c219fcceb9de8d1e00e8af00a1081686d9095fc27fd39956932",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_controller.py": "957174d23c00a9bf98573ca46a3a7e6373314ff4577cb48bdf3148e9fcad74bd",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe60_runtime.py": "c6a42b0765e9df1ee066dba83fef02ec6b52817a933a53fed7fa2a37f99ba73e",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/graph_scheduler.py": "85109abe4c88c556b21a950b19f814520c979003d54996a9cd42b7fde7dc419c",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/amber_online_qwen.py": "d65bcb91b0312a2b78336359bab26c0a80261dfaffac3714b9d92206a009bbed",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/plan.json": "64b843e76809f941178a88b9fcd65b8870e2a278b904d0a6e77e79d343f351b7",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/moe_mechanisms_20261110/energy_OPP_table.json": "6a30f99b25ed581e44728128d5f5d76b33839ddfb049dd826baf694c0fc0c539"
+  },
+  "source_hashes": {
+    "/home/openpi/qwen15_moe_meta_v35_20260928/temperature60_pilot_20261110/prepared/operating_point_2ghz_rconv3/gtp_srs_native_opp_profiles.json": "2c100b86a2f55d95c642a2faeae42d7744aca681b048e88c9d3acce5a25311ce",
+    "/home/openpi/thermal_design_space_20261027/qwen3_deepstack_migration_20261109/native_copy_64KiB/summary.json": "1b4f64643c458a3642e38404905302a0fe1f3a0b2ee6e87be8131a7aeade50a4",
+    "/home/openpi/thermal_design_space_20261027/thermal_work_contracts/kernel.npz": "4307871521bddef013fc5346ecd8575a2839cf94ed71e4d25950b5162004ac43",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/prepared/gtp_srs_manifest.json": "901058defb3408f562dba1995ff764395ab6873fb0ba3b4911b62f0c2e902361",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/prepared/routing.json": "853f7c0f0b786cd73b6bd2fe265b1799c8bdd02b45948126783efc7cc0ddd9f0",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/prepared/gtp_srs_addresses.json": "5a33ada7ffa452fba152f70d849511c6a4d0152d484516b0981fd30c8c9396bd",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/prepared/gtp_srs_capacity.json": "f910727639a2245eee51eeb37182324195392683e2cbd7f2a584a9cb49742520",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/temperature60_pilot_20261110/prepared/operating_point_2ghz_rconv3/rc/A.csv": "35d497b731e765f02cee42076a43e31dd59861dfef7411de74cc6fffcb228e73",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/temperature60_pilot_20261110/prepared/operating_point_2ghz_rconv3/rc/B.csv": "d69c63b6b929f38e118d18acb38722ab9b46d2bb227fe22f46b320c42ad20d5d",
+    "/home/openpi/qwen15_moe_meta_v35_20260928/temperature60_pilot_20261110/prepared/operating_point_2ghz_rconv3/rc/C.csv": "48160476bde0eab6e111b49f41d7eb4b6b8bbec20788e6fda9a189379eed37ba"
+  },
+  "task_decision_ns": 10000.0,
+  "expert_decision_ns": 10000.0,
+  "extra_expert_decision_ns": 0.0,
+  "scope": "Same native-profile executor, private expert arenas, modeled routes and copied modulo-address geometry. Single warm cohort; not steady state, numerical checkpoint inference or silicon-calibrated controller."
+}

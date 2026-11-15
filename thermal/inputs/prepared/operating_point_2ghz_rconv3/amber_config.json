@@ -1,0 +1,53 @@
+{
+  "status": "MODELED_PAPER_MECHANISM_ADAPTATION_NOT_CALIBRATED_CONTROLLER",
+  "workload": "Qwen/Qwen1.5-MoE-A2.7B; 512-token prefill plus one decode; four in-flight slots maximum",
+  "thermal_boundary": "Isolated Rconv=3 K/W HotSpot-exported 1292-state RC; 2/1.5/1 GHz native NPU OPP; 85 C hard limit",
+  "nominal_frequency_Hz": 2000000000,
+  "offline": {
+    "status": "MODELED_HIERARCHICAL_SA_WITH_NATIVE_96_BLOCK_RC",
+    "iterations": 96,
+    "evaluation_requests": 1,
+    "seed": 3505,
+    "anneal_temperature_initial": 2.0,
+    "anneal_temperature_final": 0.02,
+    "coarse_fraction": 0.33,
+    "refine_fraction": 0.33,
+    "moves": [
+      "shadow_shifting",
+      "thermal_diffusion",
+      "locality_restoration"
+    ],
+    "thermal_asymmetry_weight": 1.0,
+    "shadow_weight": 0.2,
+    "locality_weight": 0.12,
+    "latency_weight": 1.0,
+    "rise_scale_C": 40.0,
+    "spread_scale_C": 20.0,
+    "top_hot_regions": 4,
+    "max_xy_hops": 6,
+    "target_compatible_mapping": "Permute compute owner only; resident expert and KV DRAM owner stays at its proven physical partition. Every remote HB transfer is routed on actual V3.5 XY.",
+    "candidate_temperature": "Steady 1292-state HotSpot-exported RC solve from candidate 96-block mean power, not analytic temperature proxy"
+  },
+  "online": {
+    "status": "MODELED_BOUNDED_ONE_STEP_MPC",
+    "frequency_ratios": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "voltage_ratios": [
+      0.8,
+      0.9,
+      1.0
+    ],
+    "voltage_provenance": "MODELED ratios 1.0/0.9/0.8 at 2/1.5/1 GHz; Pdynamic follows V^2 f, timing uses separate native profiles",
+    "thermal_target_C": 80.0,
+    "thermal_max_C": 85.0,
+    "safety_guard_C": 1.0,
+    "power_bin_ms": 1,
+    "lookahead_bins": 8,
+    "ready_candidates": 8,
+    "max_defer_bins": 2000,
+    "refresh_rate_scope": "Nominal rate 1 until each activated 2/4/8 native Ramulator2->DRAMPower profile is available; no artificial refresh energy"
+  }
+}

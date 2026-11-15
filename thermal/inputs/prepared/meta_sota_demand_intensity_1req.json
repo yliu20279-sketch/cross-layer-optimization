@@ -1,0 +1,663 @@
+{
+  "status": "QWEN_NATIVE_DEMAND_TIMELINE_NOT_AMBER_ONLINE",
+  "policy": "meta_sota",
+  "requests": 1,
+  "power_bin_ms": 1,
+  "task_count": 15206,
+  "total_compute_active_ns": 1252998152.0000193,
+  "total_DRAM_DMA_occupied_ns": 10568081866.875,
+  "timeline_csv": "meta_sota_demand_intensity_1req.csv",
+  "source_task_sha256": "2eec58cf905b98483ea8eec158c46dc8e5f3287cdf8ec2d14c333476ee9ba144",
+  "source_profile_sha256": "40949990c1cb889301a768d4534574bdd3630957313f2cdb9f64dc79fd86c958",
+  "allocation": "MODELED_UNIFORM_WITHIN_TASK: native compute/DMA totals spread over each scheduled task interval; totals conserved",
+  "by_op": {
+    "embedding": {
+      "compute_active_ns": 65664.0,
+      "DRAM_DMA_occupied_ns": 707068.125,
+      "task_instances": 2,
+      "intensity": -0.8300471848507657
+    },
+    "rms_norm": {
+      "compute_active_ns": 7879680.0,
+      "DRAM_DMA_occupied_ns": 16958210.0,
+      "task_instances": 48,
+      "intensity": -0.365511321613873
+    },
+    "moe_weight_mm_512_2048_128": {
+      "compute_active_ns": 148655232.0,
+      "DRAM_DMA_occupied_ns": 615106365.0,
+      "task_instances": 1152,
+      "intensity": -0.6107287075341129
+    },
+    "gtp_input_stage": {
+      "compute_active_ns": 720.0,
+      "DRAM_DMA_occupied_ns": 127868915.0,
+      "task_instances": 720,
+      "intensity": -0.9999887385304572
+    },
+    "moe_activation_mm_512_128_512": {
+      "compute_active_ns": 9462144.0,
+      "DRAM_DMA_occupied_ns": 102050880.0,
+      "task_instances": 384,
+      "intensity": -0.830295266676653
+    },
+    "causal_softmax": {
+      "compute_active_ns": 44126976.0,
+      "DRAM_DMA_occupied_ns": 67884600.0,
+      "task_instances": 768,
+      "intensity": -0.21209972083599646
+    },
+    "moe_activation_mm_512_512_128": {
+      "compute_active_ns": 11803008.0,
+      "DRAM_DMA_occupied_ns": 76178880.0,
+      "task_instances": 384,
+      "intensity": -0.7316945960514055
+    },
+    "moe_weight_mm_512_128_2048": {
+      "compute_active_ns": 37847424.0,
+      "DRAM_DMA_occupied_ns": 390278995.0,
+      "task_instances": 384,
+      "intensity": -0.823195101631885
+    },
+    "kv_ready_control": {
+      "compute_active_ns": 48.0,
+      "DRAM_DMA_occupied_ns": 0.0,
+      "task_instances": 48,
+      "intensity": 1.0
+    },
+    "srs_reduce_scatter_residual": {
+      "compute_active_ns": 1575936.0,
+      "DRAM_DMA_occupied_ns": 8541007.5,
+      "task_instances": 408,
+      "intensity": -0.6884561033675833
+    },
+    "srs_home_norm": {
+      "compute_active_ns": 7879680.0,
+      "DRAM_DMA_occupied_ns": 16996792.5,
+      "task_instances": 408,
+      "intensity": -0.36649539037337386
+    },
+    "srs_attention_out_gather": {
+      "compute_active_ns": 48.0,
+      "DRAM_DMA_occupied_ns": 8525485.0,
+      "task_instances": 48,
+      "intensity": -0.9999887397069486
+    },
+    "srs_shared_input_gather": {
+      "compute_active_ns": 48.0,
+      "DRAM_DMA_occupied_ns": 8525485.0,
+      "task_instances": 48,
+      "intensity": -0.9999887397069486
+    },
+    "moe_weight_mm_512_2048_60": {
+      "compute_active_ns": 1469976.0,
+      "DRAM_DMA_occupied_ns": 11446275.0,
+      "task_instances": 24,
+      "intensity": -0.7723834880570222
+    },
+    "top4": {
+      "compute_active_ns": 230856.0,
+      "DRAM_DMA_occupied_ns": 284195.0,
+      "task_instances": 48,
+      "intensity": -0.10356061826887046
+    },
+    "moe_weight_mm_512_2048_5632": {
+      "compute_active_ns": 272532528.0,
+      "DRAM_DMA_occupied_ns": 1128763880.0,
+      "task_instances": 48,
+      "intensity": -0.6110280074306734
+    },
+    "expert_pack": {
+      "compute_active_ns": 6303744.0,
+      "DRAM_DMA_occupied_ns": 67967013.75,
+      "task_instances": 1536,
+      "intensity": -0.8302496381895336
+    },
+    "moe_weight_mm_26_2048_1408": {
+      "compute_active_ns": 8228970.0,
+      "DRAM_DMA_occupied_ns": 119571580.0,
+      "task_instances": 90,
+      "intensity": -0.8712216809708565
+    },
+    "moe_weight_mm_28_2048_1408": {
+      "compute_active_ns": 12782662.0,
+      "DRAM_DMA_occupied_ns": 180727313.75,
+      "task_instances": 134,
+      "intensity": -0.8678862735581734
+    },
+    "moe_weight_mm_31_2048_1408": {
+      "compute_active_ns": 16726852.0,
+      "DRAM_DMA_occupied_ns": 225729082.5,
+      "task_instances": 164,
+      "intensity": -0.8620215089022703
+    },
+    "moe_weight_mm_32_2048_1408": {
+      "compute_active_ns": 19671004.0,
+      "DRAM_DMA_occupied_ns": 260201051.25,
+      "task_instances": 188,
+      "intensity": -0.8594285950955084
+    },
+    "moe_weight_mm_33_2048_1408": {
+      "compute_active_ns": 20909084.0,
+      "DRAM_DMA_occupied_ns": 272884506.25,
+      "task_instances": 196,
+      "intensity": -0.8576614011067588
+    },
+    "moe_weight_mm_35_2048_1408": {
+      "compute_active_ns": 23618708.0,
+      "DRAM_DMA_occupied_ns": 297128143.75,
+      "task_instances": 212,
+      "intensity": -0.8527267976528159
+    },
+    "moe_weight_mm_34_2048_1408": {
+      "compute_active_ns": 24354400.0,
+      "DRAM_DMA_occupied_ns": 312428438.75,
+      "task_instances": 224,
+      "intensity": -0.8553703027719965
+    },
+    "moe_weight_mm_37_2048_1408": {
+      "compute_active_ns": 18018156.0,
+      "DRAM_DMA_occupied_ns": 222326222.5,
+      "task_instances": 156,
+      "intensity": -0.8500638449507152
+    },
+    "moe_weight_mm_39_2048_1408": {
+      "compute_active_ns": 17072802.0,
+      "DRAM_DMA_occupied_ns": 205482371.25,
+      "task_instances": 142,
+      "intensity": -0.8465746560667737
+    },
+    "expert_silu_mul": {
+      "compute_active_ns": 26002944.0,
+      "DRAM_DMA_occupied_ns": 69986371.875,
+      "task_instances": 1536,
+      "intensity": -0.4582117027719675
+    },
+    "moe_weight_mm_26_1408_2048": {
+      "compute_active_ns": 4112685.0,
+      "DRAM_DMA_occupied_ns": 62893923.75,
+      "task_instances": 45,
+      "intensity": -0.8772453918584561
+    },
+    "moe_weight_mm_28_1408_2048": {
+      "compute_active_ns": 6380611.0,
+      "DRAM_DMA_occupied_ns": 96363726.25,
+      "task_instances": 67,
+      "intensity": -0.8757963471120643
+    },
+    "moe_weight_mm_31_1408_2048": {
+      "compute_active_ns": 8333906.0,
+      "DRAM_DMA_occupied_ns": 118586656.875,
+      "task_instances": 82,
+      "intensity": -0.868675243613475
+    },
+    "moe_weight_mm_32_1408_2048": {
+      "compute_active_ns": 9794142.0,
+      "DRAM_DMA_occupied_ns": 139249655.625,
+      "task_instances": 94,
+      "intensity": -0.8685736386744192
+    },
+    "moe_weight_mm_33_1408_2048": {
+      "compute_active_ns": 10408482.0,
+      "DRAM_DMA_occupied_ns": 144704857.5,
+      "task_instances": 98,
+      "intensity": -0.865795140075622
+    },
+    "moe_weight_mm_34_1408_2048": {
+      "compute_active_ns": 12121200.0,
+      "DRAM_DMA_occupied_ns": 165206763.75,
+      "task_instances": 112,
+      "intensity": -0.8632905973353568
+    },
+    "moe_weight_mm_35_1408_2048": {
+      "compute_active_ns": 11749994.0,
+      "DRAM_DMA_occupied_ns": 156798236.25,
+      "task_instances": 106,
+      "intensity": -0.8605741041294618
+    },
+    "moe_weight_mm_37_1408_2048": {
+      "compute_active_ns": 8960718.0,
+      "DRAM_DMA_occupied_ns": 116967933.125,
+      "task_instances": 78,
+      "intensity": -0.8576857939801902
+    },
+    "moe_weight_mm_39_1408_2048": {
+      "compute_active_ns": 8485991.0,
+      "DRAM_DMA_occupied_ns": 107781159.375,
+      "task_instances": 71,
+      "intensity": -0.8540259914751523
+    },
+    "moe_weight_mm_30_2048_1408": {
+      "compute_active_ns": 17202236.0,
+      "DRAM_DMA_occupied_ns": 235255705.0,
+      "task_instances": 172,
+      "intensity": -0.863721965473845
+    },
+    "moe_weight_mm_43_2048_1408": {
+      "compute_active_ns": 8260800.0,
+      "DRAM_DMA_occupied_ns": 95139812.5,
+      "task_instances": 64,
+      "intensity": -0.8402175809161672
+    },
+    "moe_weight_mm_36_2048_1408": {
+      "compute_active_ns": 19741170.0,
+      "DRAM_DMA_occupied_ns": 246160902.5,
+      "task_instances": 174,
+      "intensity": -0.851515486025405
+    },
+    "moe_weight_mm_29_2048_1408": {
+      "compute_active_ns": 13136422.0,
+      "DRAM_DMA_occupied_ns": 182071093.75,
+      "task_instances": 134,
+      "intensity": -0.8654106943625709
+    },
+    "moe_weight_mm_41_2048_1408": {
+      "compute_active_ns": 12246178.0,
+      "DRAM_DMA_occupied_ns": 143858396.25,
+      "task_instances": 98,
+      "intensity": -0.8431028935719992
+    },
+    "moe_weight_mm_40_2048_1408": {
+      "compute_active_ns": 10760376.0,
+      "DRAM_DMA_occupied_ns": 128306871.25,
+      "task_instances": 88,
+      "intensity": -0.8452493133677096
+    },
+    "moe_weight_mm_30_1408_2048": {
+      "compute_active_ns": 8575318.0,
+      "DRAM_DMA_occupied_ns": 123981116.875,
+      "task_instances": 86,
+      "intensity": -0.870616345285893
+    },
+    "moe_weight_mm_29_1408_2048": {
+      "compute_active_ns": 6552131.0,
+      "DRAM_DMA_occupied_ns": 96833425.625,
+      "task_instances": 67,
+      "intensity": -0.8732486197512892
+    },
+    "moe_weight_mm_36_1408_2048": {
+      "compute_active_ns": 9819255.0,
+      "DRAM_DMA_occupied_ns": 129845556.875,
+      "task_instances": 87,
+      "intensity": -0.8593882758559367
+    },
+    "moe_weight_mm_43_1408_2048": {
+      "compute_active_ns": 4103200.0,
+      "DRAM_DMA_occupied_ns": 50053554.375,
+      "task_instances": 32,
+      "intensity": -0.8484695012707729
+    },
+    "moe_weight_mm_41_1408_2048": {
+      "compute_active_ns": 6083889.0,
+      "DRAM_DMA_occupied_ns": 75485141.875,
+      "task_instances": 49,
+      "intensity": -0.8508284594106991
+    },
+    "moe_weight_mm_40_1408_2048": {
+      "compute_active_ns": 5347628.0,
+      "DRAM_DMA_occupied_ns": 67819826.25,
+      "task_instances": 44,
+      "intensity": -0.8538249538728485
+    },
+    "moe_weight_mm_47_2048_1408": {
+      "compute_active_ns": 2219376.0,
+      "DRAM_DMA_occupied_ns": 24475385.0,
+      "task_instances": 16,
+      "intensity": -0.8337219801293595
+    },
+    "moe_weight_mm_38_2048_1408": {
+      "compute_active_ns": 17018640.0,
+      "DRAM_DMA_occupied_ns": 207110316.25,
+      "task_instances": 144,
+      "intensity": -0.8481352852862357
+    },
+    "moe_weight_mm_42_2048_1408": {
+      "compute_active_ns": 9906546.0,
+      "DRAM_DMA_occupied_ns": 115366910.0,
+      "task_instances": 78,
+      "intensity": -0.8418412596520048
+    },
+    "moe_weight_mm_56_2048_1408": {
+      "compute_active_ns": 318870.0,
+      "DRAM_DMA_occupied_ns": 3221551.25,
+      "task_instances": 2,
+      "intensity": -0.81986889272004
+    },
+    "moe_weight_mm_38_1408_2048": {
+      "compute_active_ns": 8460360.0,
+      "DRAM_DMA_occupied_ns": 109046588.75,
+      "task_instances": 72,
+      "intensity": -0.8560023881140901
+    },
+    "moe_weight_mm_47_1408_2048": {
+      "compute_active_ns": 1102088.0,
+      "DRAM_DMA_occupied_ns": 12799123.125,
+      "task_instances": 8,
+      "intensity": -0.8414400025882637
+    },
+    "moe_weight_mm_42_1408_2048": {
+      "compute_active_ns": 4920903.0,
+      "DRAM_DMA_occupied_ns": 60392216.875,
+      "task_instances": 39,
+      "intensity": -0.8493134913959736
+    },
+    "moe_weight_mm_56_1408_2048": {
+      "compute_active_ns": 158305.0,
+      "DRAM_DMA_occupied_ns": 1684972.5,
+      "task_instances": 1,
+      "intensity": -0.8282353036913866
+    },
+    "moe_weight_mm_27_2048_1408": {
+      "compute_active_ns": 7286214.0,
+      "DRAM_DMA_occupied_ns": 104448170.0,
+      "task_instances": 78,
+      "intensity": -0.8695797347394871
+    },
+    "moe_weight_mm_27_1408_2048": {
+      "compute_active_ns": 3639207.0,
+      "DRAM_DMA_occupied_ns": 55579786.25,
+      "task_instances": 39,
+      "intensity": -0.877093249976856
+    },
+    "shared_silu_mul": {
+      "compute_active_ns": 26002944.0,
+      "DRAM_DMA_occupied_ns": 69825195.0,
+      "task_instances": 48,
+      "intensity": -0.4573004490883414
+    },
+    "moe_weight_mm_512_5632_2048": {
+      "compute_active_ns": 137631768.0,
+      "DRAM_DMA_occupied_ns": 501737350.0,
+      "task_instances": 24,
+      "intensity": -0.5694763349517923
+    },
+    "moe_weight_mm_44_2048_1408": {
+      "compute_active_ns": 8171786.0,
+      "DRAM_DMA_occupied_ns": 92816647.5,
+      "task_instances": 62,
+      "intensity": -0.8381639220099398
+    },
+    "moe_weight_mm_44_1408_2048": {
+      "compute_active_ns": 4058303.0,
+      "DRAM_DMA_occupied_ns": 48609749.375,
+      "task_instances": 31,
+      "intensity": -0.8458912825898852
+    },
+    "expert_combine": {
+      "compute_active_ns": 7879680.0,
+      "DRAM_DMA_occupied_ns": 50759585.0,
+      "task_instances": 48,
+      "intensity": -0.7312490188954449
+    },
+    "residual_add": {
+      "compute_active_ns": 1575936.0,
+      "DRAM_DMA_occupied_ns": 25392225.0,
+      "task_instances": 48,
+      "intensity": -0.8831261797940171
+    },
+    "moe_weight_mm_20_2048_1408": {
+      "compute_active_ns": 1261582.0,
+      "DRAM_DMA_occupied_ns": 17786968.75,
+      "task_instances": 14,
+      "intensity": -0.8675403691800543
+    },
+    "moe_weight_mm_45_2048_1408": {
+      "compute_active_ns": 3481218.0,
+      "DRAM_DMA_occupied_ns": 39243807.5,
+      "task_instances": 26,
+      "intensity": -0.83704079942562
+    },
+    "moe_weight_mm_20_1408_2048": {
+      "compute_active_ns": 630791.0,
+      "DRAM_DMA_occupied_ns": 9492944.375,
+      "task_instances": 7,
+      "intensity": -0.8753837439177434
+    },
+    "moe_weight_mm_45_1408_2048": {
+      "compute_active_ns": 1728909.0,
+      "DRAM_DMA_occupied_ns": 20584557.5,
+      "task_instances": 13,
+      "intensity": -0.8450344772740712
+    },
+    "moe_weight_mm_23_2048_1408": {
+      "compute_active_ns": 3964972.0,
+      "DRAM_DMA_occupied_ns": 57155545.0,
+      "task_instances": 44,
+      "intensity": -0.8702572492965005
+    },
+    "moe_weight_mm_46_2048_1408": {
+      "compute_active_ns": 3807524.0,
+      "DRAM_DMA_occupied_ns": 42507905.0,
+      "task_instances": 28,
+      "intensity": -0.8355829112583627
+    },
+    "moe_weight_mm_23_1408_2048": {
+      "compute_active_ns": 1982486.0,
+      "DRAM_DMA_occupied_ns": 30393222.5,
+      "task_instances": 22,
+      "intensity": -0.8775325024933431
+    },
+    "moe_weight_mm_46_1408_2048": {
+      "compute_active_ns": 1891022.0,
+      "DRAM_DMA_occupied_ns": 22459216.25,
+      "task_instances": 14,
+      "intensity": -0.8446814375625257
+    },
+    "moe_weight_mm_25_2048_1408": {
+      "compute_active_ns": 5406780.0,
+      "DRAM_DMA_occupied_ns": 79114690.0,
+      "task_instances": 60,
+      "intensity": -0.8720613827468926
+    },
+    "moe_weight_mm_25_1408_2048": {
+      "compute_active_ns": 2703390.0,
+      "DRAM_DMA_occupied_ns": 42066591.25,
+      "task_instances": 30,
+      "intensity": -0.8792320244717547
+    },
+    "moe_weight_mm_24_2048_1408": {
+      "compute_active_ns": 2883616.0,
+      "DRAM_DMA_occupied_ns": 41888625.0,
+      "task_instances": 32,
+      "intensity": -0.8711873278802372
+    },
+    "moe_weight_mm_24_1408_2048": {
+      "compute_active_ns": 1441808.0,
+      "DRAM_DMA_occupied_ns": 22007779.375,
+      "task_instances": 16,
+      "intensity": -0.8770291368506437
+    },
+    "moe_weight_mm_48_2048_1408": {
+      "compute_active_ns": 1971214.0,
+      "DRAM_DMA_occupied_ns": 21506186.25,
+      "task_instances": 14,
+      "intensity": -0.8320756149310016
+    },
+    "moe_weight_mm_48_1408_2048": {
+      "compute_active_ns": 978887.0,
+      "DRAM_DMA_occupied_ns": 11353585.0,
+      "task_instances": 7,
+      "intensity": -0.8412504808443919
+    },
+    "moe_weight_mm_49_2048_1408": {
+      "compute_active_ns": 857346.0,
+      "DRAM_DMA_occupied_ns": 9275797.5,
+      "task_instances": 6,
+      "intensity": -0.8307838036636903
+    },
+    "moe_weight_mm_49_1408_2048": {
+      "compute_active_ns": 425763.0,
+      "DRAM_DMA_occupied_ns": 4886335.0,
+      "task_instances": 3,
+      "intensity": -0.8397006229930246
+    },
+    "moe_weight_mm_22_2048_1408": {
+      "compute_active_ns": 1261582.0,
+      "DRAM_DMA_occupied_ns": 18082683.75,
+      "task_instances": 14,
+      "intensity": -0.8695652741433207
+    },
+    "moe_weight_mm_22_1408_2048": {
+      "compute_active_ns": 630791.0,
+      "DRAM_DMA_occupied_ns": 9583107.5,
+      "task_instances": 7,
+      "intensity": -0.8764837931373608
+    },
+    "moe_weight_mm_51_2048_1408": {
+      "compute_active_ns": 590836.0,
+      "DRAM_DMA_occupied_ns": 6255041.25,
+      "task_instances": 4,
+      "intensity": -0.8273892509539227
+    },
+    "moe_weight_mm_51_1408_2048": {
+      "compute_active_ns": 293378.0,
+      "DRAM_DMA_occupied_ns": 3309776.25,
+      "task_instances": 2,
+      "intensity": -0.8371549039289672
+    },
+    "moe_weight_mm_21_2048_1408": {
+      "compute_active_ns": 720904.0,
+      "DRAM_DMA_occupied_ns": 10244058.75,
+      "task_instances": 8,
+      "intensity": -0.8685077156326865
+    },
+    "moe_weight_mm_21_1408_2048": {
+      "compute_active_ns": 360452.0,
+      "DRAM_DMA_occupied_ns": 5395453.125,
+      "task_instances": 4,
+      "intensity": -0.8747540162069645
+    },
+    "moe_weight_mm_50_2048_1408": {
+      "compute_active_ns": 873714.0,
+      "DRAM_DMA_occupied_ns": 9388851.25,
+      "task_instances": 6,
+      "intensity": -0.8297279522778186
+    },
+    "moe_weight_mm_50_1408_2048": {
+      "compute_active_ns": 433827.0,
+      "DRAM_DMA_occupied_ns": 4888416.875,
+      "task_instances": 3,
+      "intensity": -0.8369759033261136
+    },
+    "moe_weight_mm_55_2048_1408": {
+      "compute_active_ns": 313414.0,
+      "DRAM_DMA_occupied_ns": 3211803.75,
+      "task_instances": 2,
+      "intensity": -0.8221874379249339
+    },
+    "moe_weight_mm_55_1408_2048": {
+      "compute_active_ns": 155617.0,
+      "DRAM_DMA_occupied_ns": 1679048.125,
+      "task_instances": 1,
+      "intensity": -0.8303592324512082
+    },
+    "moe_weight_mm_54_2048_1408": {
+      "compute_active_ns": 309234.0,
+      "DRAM_DMA_occupied_ns": 3194586.25,
+      "task_instances": 2,
+      "intensity": -0.8234875205142159
+    },
+    "moe_weight_mm_54_1408_2048": {
+      "compute_active_ns": 153537.0,
+      "DRAM_DMA_occupied_ns": 1668969.375,
+      "task_instances": 1,
+      "intensity": -0.8315100543886986
+    },
+    "moe_weight_mm_18_2048_1408": {
+      "compute_active_ns": 180226.0,
+      "DRAM_DMA_occupied_ns": 2500762.5,
+      "task_instances": 2,
+      "intensity": -0.8655525751042945
+    },
+    "moe_weight_mm_18_1408_2048": {
+      "compute_active_ns": 90113.0,
+      "DRAM_DMA_occupied_ns": 1336373.75,
+      "task_instances": 1,
+      "intensity": -0.8736574314482767
+    },
+    "moe_weight_mm_17_2048_1408": {
+      "compute_active_ns": 180226.0,
+      "DRAM_DMA_occupied_ns": 2483107.5,
+      "task_instances": 2,
+      "intensity": -0.864661335127576
+    },
+    "moe_weight_mm_17_1408_2048": {
+      "compute_active_ns": 90113.0,
+      "DRAM_DMA_occupied_ns": 1335097.5,
+      "task_instances": 1,
+      "intensity": -0.8735442939832396
+    },
+    "final_norm": {
+      "compute_active_ns": 328320.0,
+      "DRAM_DMA_occupied_ns": 706596.875,
+      "task_instances": 2,
+      "intensity": -0.3655142592973953
+    },
+    "moe_weight_mm_1_2048_9496": {
+      "compute_active_ns": 6985120.0,
+      "DRAM_DMA_occupied_ns": 240844220.0,
+      "task_instances": 32,
+      "intensity": -0.943629596076074
+    },
+    "next_token": {
+      "compute_active_ns": 132944.0,
+      "DRAM_DMA_occupied_ns": 101771.25,
+      "task_instances": 2,
+      "intensity": 0.13281092728316546
+    },
+    "moe_weight_mm_1_2048_128": {
+      "compute_active_ns": 3390336.0,
+      "DRAM_DMA_occupied_ns": 103106520.0,
+      "task_instances": 1152,
+      "intensity": -0.9363298386949565
+    },
+    "moe_activation_mm_1_128_513": {
+      "compute_active_ns": 281472.0,
+      "DRAM_DMA_occupied_ns": 8844000.0,
+      "task_instances": 384,
+      "intensity": -0.9383106977918512
+    },
+    "moe_activation_mm_1_513_128": {
+      "compute_active_ns": 284544.0,
+      "DRAM_DMA_occupied_ns": 8715000.0,
+      "task_instances": 384,
+      "intensity": -0.9367647960830016
+    },
+    "moe_weight_mm_1_128_2048": {
+      "compute_active_ns": 1118592.0,
+      "DRAM_DMA_occupied_ns": 42138675.0,
+      "task_instances": 384,
+      "intensity": -0.9482818921500519
+    },
+    "moe_weight_mm_1_2048_60": {
+      "compute_active_ns": 33744.0,
+      "DRAM_DMA_occupied_ns": 1028295.0,
+      "task_instances": 24,
+      "intensity": -0.9364543109998785
+    },
+    "moe_weight_mm_1_2048_5632": {
+      "compute_active_ns": 6213552.0,
+      "DRAM_DMA_occupied_ns": 190778560.0,
+      "task_instances": 48,
+      "intensity": -0.9369157278744237
+    },
+    "moe_weight_mm_1_2048_1408": {
+      "compute_active_ns": 6213696.0,
+      "DRAM_DMA_occupied_ns": 210026820.0,
+      "task_instances": 192,
+      "intensity": -0.9425297708779052
+    },
+    "moe_weight_mm_1_1408_2048": {
+      "compute_active_ns": 3105888.0,
+      "DRAM_DMA_occupied_ns": 112288738.75,
+      "task_instances": 96,
+      "intensity": -0.9461692786315113
+    },
+    "moe_weight_mm_1_5632_2048": {
+      "compute_active_ns": 3108120.0,
+      "DRAM_DMA_occupied_ns": 112042560.0,
+      "task_instances": 24,
+      "intensity": -0.9460164716352522
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "status": "PASS_FRESH_NATIVE_64KiB_COPY_DMA",
+  "chunk_bytes": 65536,
+  "profiles": {
+    "0_read": {
+      "service_ns": 11028.125,
+      "relative_context_span": 0.005780674412014735,
+      "bank_energy_J": [
+        9.7999171875e-07,
+        9.793179687499999e-07,
+        9.793179687499999e-07,
+        9.793179687499999e-07
+      ]
+    },
+    "0_write": {
+      "service_ns": 11166.25,
+      "relative_context_span": 0.0,
+      "bank_energy_J": [
+        9.202008750000001e-07,
+        9.202008750000001e-07,
+        9.202008750000001e-07,
+        9.202008750000001e-07
+      ]
+    },
+    "4096_read": {
+      "service_ns": 10928.125,
+      "relative_context_span": 0.02573634543894767,
+      "bank_energy_J": [
+        9.79078375e-07,
+        9.79078375e-07,
+        9.79752125e-07,
+        9.79078375e-07
+      ]
+    },
+    "4096_write": {
+      "service_ns": 11166.25,
+      "relative_context_span": 0.0,
+      "bank_energy_J": [
+        9.202008750000001e-07,
+        9.202008750000001e-07,
+        9.195271250000001e-07,
+        9.202008750000001e-07
+      ]
+    }
+  },
+  "source_hashes": {
+    "/home/openpi/sustained_thermal_v35_20260914/native_wave": "a17096c6c0086fb31da2e622ee1284d257fba819c8aa40be0f45278433fb506b",
+    "/home/openpi/sustained_thermal_v35_20260914/native_wave.cpp": "39077658110e3854f8b0f5ded440068377dc6e79e7c3b5c01e4aa83b626f91fa",
+    "/home/openpi/thermal_design_space_20261027/qwen3_deepstack_migration_20261109/native_copy_64KiB/config.yaml": "19b1235977a362cc95d4cbd3db711b09c4c2517e7462537a7374a8d36ef85786",
+    "/home/openpi/thermal_design_space_20261027/qwen3_deepstack_migration_20261109/native_copy_64KiB/input.txt": "8e06835df3e90fe43ee56832c43ef5cb429fe82df2d219c2c496c92a0926cade",
+    "/home/openpi/sustained_thermal_v35_20260914/prepared/dram_power_proxy.json": "e8fbc347d3ed952585dec3c20b8fb6639d1586efaa483438f86b33b037379c69"
+  },
+  "scope": "Two bounded contexts per geometry, RR1; copy read/NoC/write are serial with one staging buffer. Not whole-copy persistent command state."
+}

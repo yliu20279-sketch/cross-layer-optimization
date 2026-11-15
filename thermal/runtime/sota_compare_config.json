@@ -1,0 +1,91 @@
+{
+  "status": "MODELED_ARCHITECTURE_LEVEL_MECHANISM_ADAPTATION",
+  "common": {
+    "workload": "OpenPI pi0.5",
+    "architecture": "V3.5",
+    "tasks_per_request": 315,
+    "request_counts": [4, 32, 64, 128],
+    "power_bin_ns": 1000000,
+    "initial_C": 45.0,
+    "continuous_thermal_replay": true,
+    "minimum_repetitions": 3,
+    "maximum_repetitions": 64,
+    "stable_pairs": 2,
+    "convergence_mean_C": 0.25,
+    "convergence_peak_C": 0.25,
+    "comparison_request_count": 64,
+    "provenance": "All workload counts, native compute plans, logical-wave Ramulator2 timing, DRAMPower energy, V3.5 floorplan and HotSpot RC operator come from the audited current V3.5 experiment. The user-authorized capacity point is 32 GiB (16x2 GiB), with an explicit shared FP16 weight layout. No legacy result trace is consumed."
+  },
+  "baseline": {
+    "policy": "balanced_rotation FCFS",
+    "memory_placement": "compute-local",
+    "provenance": "Current corrected V3.5 baseline policy"
+  },
+  "amber": {
+    "paper": "AMBER: Thermal-Aware Spatio-Temporal Scheduling for Edge LLM Inference on 3D DRAM-on-NPU Systems",
+    "offline_sa_iterations": 96,
+    "sa_seed": 3505,
+    "sa_initial_temperature": 2.0,
+    "sa_final_temperature": 0.02,
+    "thermal_asymmetry_weight": 1.0,
+    "shadow_weight": 0.2,
+    "locality_weight": 0.12,
+    "latency_weight": 1.0,
+    "offline_rc_objective": {
+      "status": "MODELED_NOT_PAPER_SPECIFIED",
+      "timing": "full 16-request candidate event reschedule; latency/(baseline+latency) normalized to [0,1]",
+      "evaluation_requests": 16,
+      "max_rise_scale_C": 40.0,
+      "spread_scale_C": 20.0,
+      "top_hot_regions": 4,
+      "hot_cold_candidate_count": 4,
+      "max_xy_hops": 6,
+      "intra_layer_moves": [
+        "shadow_shifting",
+        "thermal_diffusion",
+        "locality_restoration"
+      ]
+    },
+    "online_horizon_ready_tasks": 8,
+    "online_rc_controller": {
+      "status": "MODELED_PAPER_EQUATION_ADAPTATION",
+      "nominal_frequency_GHz": 2.0,
+      "nominal_core_voltage_ratio": 1.25,
+      "thermal_Rconv_K_W": 3.0,
+      "lookahead_slots": 8,
+      "ready_start_slack_ms": 1.0,
+      "maximum_safety_defer_ms": 2000,
+      "safety_defer_coarse_ms": 8,
+      "power_bin_ms": 1.0,
+      "safety_guard_C": 1.0,
+      "predictor": "HotSpot-exported 1292-state RC backward Euler, two 0.5ms substeps",
+      "stage1_solver": "bounded one-step receding-horizon candidate enumeration",
+      "stage2_solver": "highest feasible per-region native OPP"
+    },
+    "thermal_target_C": 80.0,
+    "thermal_max_C": 85.0,
+    "prediction_guard_C": 1.0,
+    "frequency_ratios": [0.5, 0.75, 1.0],
+    "voltage_ratios": [0.8, 0.9, 1.0],
+    "interlayer_redistribution": "NOT_APPLICABLE_SINGLE_DRAM_LAYER",
+    "comsol": "NOT_RUN; common V3.5 HotSpot RC backend used for all methods",
+    "parameter_provenance": "MODELED controller/search hyperparameters because the paper does not publish an executable implementation or complete hyperparameters. No total-power scaling."
+  },
+  "hiband": {
+    "paper": "HiBand: A Hierarchical Bandwidth-Aware HB-DRAM Accelerator with Array-Level Co-Execution and Reconfigurable NoC for LLM Inference",
+    "candidate_group_sides": [2, 4],
+    "group_selection": "Algorithm-1-style measured candidate sweep for each offered-load point",
+    "hic": "Dependency-ready list scheduling of native NPUSim macro-wave shards through QKV/QK/PV; arrays are released at native service completion so independent compute can overlap the capacity-constrained physical XY collective; no whole-task division or max-stage latency formula and no work count is removed",
+    "sor": "Dependency-ready extension of the native macro-wave shard pipeline through output/FFN phases; total parent MAC, native activity and semantic tensor bytes remain unchanged",
+    "weight_layout": "Policy-specific shared checkpoint relayout with explicit primitive shard addresses over each selected GTP group; no per-request replication; each candidate must fit the same 16x2 GiB capacity",
+    "noc_modes": {
+      "full_local": {"local_priority": 1.0, "global_priority": 0.0},
+      "local_biased": {"local_priority": 0.75, "global_priority": 0.25},
+      "global_biased": {"local_priority": 0.25, "global_priority": 0.75},
+      "full_global": {"local_priority": 0.0, "global_priority": 1.0}
+    },
+    "noc_adaptation": "V3.5 fixed 4x4 XY physical links are unchanged. Each mode now changes the physical-link TDM reservation using its configured local/global share; reservations remain serialized and cannot exceed one flit/cycle. The paper's additional 2048-bit local-direct sub-link is not fabricated.",
+    "array_count_adaptation": "Paper 32 arrays -> target 16 clusters. Only square groups that exactly tile the 4x4 target mesh (2x2 and 4x4) are legal.",
+    "parameter_provenance": "Mechanism-equivalent event adaptation driven by current NPUSim macro waves and Ramulator2/DRAMPower profiles; not RTL reproduction of the paper's split-Benes router."
+  }
+}
