@@ -23,7 +23,7 @@
 \maketitle
 
 \begin{abstract}
-An asynchronous agent can run general-purpose tasks alongside AI inference. We focus on AI inference with mixture-of-experts (MoE) models. In a 3D DRAM-stacked system, MoE dispatch traffic can contend with general-purpose memory requests at shared network-on-chip (NoC) outputs, delaying a step that needs both results. Our traffic-aware NoC reconfiguration predicts demand from expert activation and memory accesses and diverts selected MoE packets through configurable switches. Before updating routes, the controller estimates completion time, accounting for network interface delays, memory bank access, and reconfiguration overhead. Operator-level dynamic voltage and frequency scaling and thermal-aware task scheduling manage execution under peak-temperature constraints.
+An asynchronous agent can run general-purpose tasks alongside AI inference. We focus on AI inference with mixture-of-experts (MoE) models. In a 3D DRAM-stacked system, MoE dispatch traffic can contend with general-purpose memory requests at shared network-on-chip (NoC) outputs, delaying a step that needs both results. We place coherence traffic on a separate Mesh and reconfigure MoE paths using predicted demand. Configurable switches provide additional MoE channels and bypass intermediate routers. Before updating routes, the controller estimates completion time, accounting for network interface delays, memory bank access, and reconfiguration overhead. Operator-level dynamic voltage and frequency scaling and thermal-aware task scheduling manage execution under peak-temperature constraints.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -58,8 +58,9 @@ loop share its capacity. As heavily loaded node pairs change, finer-grained
 connections can add bandwidth between neighboring nodes and bypass
 intermediate routers for distant transfers.
 
-We add a configurable-switch fabric alongside the existing NoC and
-reconfigure it as communication demand changes. A predictor estimates
+We separate coherence traffic onto a dedicated Mesh and add configurable
+switches to the MoE Mesh. The switch connections change with communication
+demand. A predictor estimates
 per-phase demand, and a configuration algorithm assigns packets to compatible
 circuits under switch-conflict and network interface and memory bank capacity
 constraints. The controller checks estimated completion time and
@@ -70,7 +71,8 @@ peak-temperature constraints.
 This work makes three contributions:
 \begin{enumerate}
   \item We design a reconfigurable NoC for concurrent general-purpose
-  workloads and MoE inference in 3D DRAM-stacked systems. The switch fabric
+  workloads and MoE inference in 3D DRAM-stacked systems. Separate Mesh
+  planes carry coherence and MoE traffic. The switch fabric
   provides local channels and cross-region paths that can be reassigned to
   individual node pairs between communication phases.
 
@@ -117,7 +119,7 @@ imposing a peak-temperature constraint on execution.
 
 To study co-execution, we replay an MoE dispatch trace alongside synthetic
 cache-coherence read requests that represent general-purpose memory traffic.
-The requests and their responses traverse the same horizontal mesh as the
+On the baseline, requests and responses share the horizontal Mesh with
 MoE traffic.
 
 The main MoE evaluation covers Qwen3-30B-A3B~\cite{qwen3report} and
@@ -205,57 +207,42 @@ coherence responses to the coherence-only level.
   \label{fig:noc-phenomenon}
 \end{figure*}
 
-\noindent\textbf{Opportunity: Configurable Connections.}
-Configurable paths can provide additional channels for heavy transfers and
-reduce intermediate-router forwarding. Figures~\ref{fig:noc-opportunity}(a) and (b)
-illustrate these opportunities using three transfers. For neighboring
-nodes, the $\mathrm{NI}_5$--$\mathrm{CS}_1$--$\mathrm{NI}_6$ circuit adds
-a channel alongside the existing Mesh link. A separate
-$\mathrm{NI}_5$--$\mathrm{CS}_3$--$\mathrm{NI}_9$ circuit allows the same
-source to communicate with another peer without sending both transfers
-through its local Mesh router. For the distant $N_0$-to-$N_{15}$ transfer,
-interconnected lower and upper CSs form an NI-to-NI path that bypasses
-intermediate Mesh routers. These connections can be reassigned between
-communication phases to serve changing peers and heavy source--destination
-pairs. Thus, the same physical network supports additional neighboring-node
-bandwidth, communication with multiple peers, and router bypass for distant
-transfers, subject to the shared service capacities of the NIs, DMA engines,
-and SRAM banks.
+\noindent\textbf{Opportunity: Separate Paths for Coherence and MoE.}
+Figure~\ref{fig:noc-opportunity}(a) shows a GetS request from $N_0$
+and MoE traffic from $N_5$ competing for the $N_4$-to-$N_8$ Mesh
+output. Arbitration divides the available link service among these
+inputs. A separate coherence Mesh gives GetS requests and their DataS
+responses independent physical paths. In
+Fig.~\ref{fig:noc-opportunity}(b), they use
+$C_0$--$C_4$--$C_8$, while MoE packets remain on plane M.
+The network interface (NI) selects the plane by message class and opcode. Both planes
+share endpoint memory service.
 
-Arbitration allocates transmission opportunities on the shared output.
-Round-robin and priority arbitration cannot prevent queue buildup when
-aggregate demand persistently exceeds the output's service capacity.
-In Fig.~\ref{fig:noc-opportunity}(c), routing the selected MoE packet
-through CS3 from NI4 to NI8 removes its contention with coherence reads
-at the N4-to-N8 mesh output. We assess the benefit by when the step that
-requires both branches becomes ready.
+Within plane M, configurable circuits provide additional paths for
+concentrated MoE transfers. The
+$\mathrm{NI}_5$--$\mathrm{CS}_3$--$\mathrm{NI}_8$ circuit bypasses
+the intermediate Mesh router at $N_4$. Circuits also add channels
+between neighboring nodes, while paths through the upper CS network
+bypass multiple Mesh routers for distant transfers. These
+connections can be reassigned between communication phases as the
+busy node pairs change. The circuits share NI service and SRAM-bank
+bandwidth.
 
 \begin{figure*}[!t]
   \centering
-  \begin{minipage}[t]{0.49\textwidth}
-    \vspace{0pt}\centering
-    {\small (a) Ordinary Mesh paths\par}
-    \includegraphics[width=\linewidth,trim=0bp 201bp 950bp 214bp,clip]{figures/noc_opportunity_current.pdf}\par
-    \vspace{3pt}
-    {\small (c) Co-execution timing\par}
-    \includegraphics[width=\linewidth]{figures/figure3_contention.pdf}\par
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.49\textwidth}
-    \vspace{0pt}\centering
-    {\small (b) Configured NI-to-NI paths\par}
-    \includegraphics[width=\linewidth,trim=950bp 145bp 0bp 62bp,clip]{figures/noc_opportunity_current.pdf}\par
-    \vspace{2pt}
-    \includegraphics[width=\linewidth,trim=0bp 0bp 680bp 686bp,clip]{figures/noc_opportunity_current.pdf}
-  \end{minipage}
-  \caption{Configurable paths for co-execution. (a) Ordinary Mesh routes.
-  (b) Local and cross-region circuits. (c) Illustrative timing of CS3
-  diversion around the shared $N_4$-to-$N_8$ Mesh output.}
-  \Description{Three panels show the ordinary Mesh paths, three circuits
-  through the configurable-switch network, and timing diagrams comparing
-  queueing on the fixed Mesh with CS3 diversion.}
+  \includegraphics[width=\textwidth]{figures/noc_opportunity_dual_plane.pdf}
+  \caption{Separate paths for coherence and MoE traffic.
+  (a) Two inputs compete for one baseline Mesh output.
+  (b) Complete dual-plane topology with GetS/DataS routes and the
+  MoE Mesh and CS paths highlighted.}
+  \Description{The left panel shows a coherence-request queue and a MoE
+  queue sharing the output from node 4 to node 8. The right panel shows
+  all sixteen nodes, sixteen coherence routers, thirteen configurable
+  switches, and their physical connections.
+  Requests and responses traverse C0, C4, and C8; MoE packets use the
+  Mesh route or the NI5-CS3-NI8 circuit on plane M.}
   \label{fig:noc-opportunity}
 \end{figure*}
-
 
 \noindent\textbf{Thermal Management.}
 Concentrated activity in the stacked Logic and DRAM tiers raises temperatures in both tiers, increasing the risk of thermal throttling, which can increase inference latency. While task migration has been widely studied for thermal management, its effectiveness in DRAM-stacked NPUs is limited by the strong dependence of computation on locally stored model weights. Migrating tasks may require weight replication or remote memory accesses, introducing additional DRAM and NoC overhead. Our experiments show that these costs largely offset the performance benefits of task migration. Therefore, instead of relocating tasks, we reduce heat generation through operator-level energy-aware DVFS and improve execution efficiency through thermal-aware task scheduling.
@@ -263,230 +250,141 @@ Concentrated activity in the stacked Logic and DRAM tiers raises temperatures in
 \section{Design}
 \label{sec:design}
 
-\subsection{Reconfigurable Network}
+\subsection{Dual-Plane NoC}
 \label{sec:noc-design}
 
-Figure~\ref{fig:noc-physical-design}(a) shows the reconfigurable network
-alongside the basic $4\times4$ Mesh. The logic tier contains sixteen NPU
-nodes, nine lower-level configurable switches (CSs), and four upper-level
-CSs. Nodes $N_0$--$N_{15}$ and lower CSs $\mathrm{CS}_0$--$\mathrm{CS}_8$
-are indexed in row-major order. Each lower CS physically connects to
-the NIs of the four corner nodes of a $2\times2$ group. A corner, edge, or interior node
-therefore connects to one, two, or four lower CSs, respectively.
-The upper CSs form a $2\times2$ network:
-$\mathrm{CS}_9$, $\mathrm{CS}_{10}$, $\mathrm{CS}_{11}$, and
-$\mathrm{CS}_{12}$ connect down to $\mathrm{CS}_0$, $\mathrm{CS}_2$,
-$\mathrm{CS}_6$, and $\mathrm{CS}_8$, respectively.
-Each upper CS connects to its corresponding lower CS and two upper
-neighbors. For a local transfer, a lower CS selects one node-facing
-input and a different node-facing output. A connection between a node
-and the upper network instead selects one node-facing direction and U.
-The upper network provides additional paths between the four lower
-CSs attached to it. Upper CSs reach NPU nodes through these lower CSs.
-The two CS levels are connectivity levels within the same logic die.
-Their MUXes, configuration registers, and control gates are implemented
-as logic cells, with the connections routed in the die's metal stack.
-The separated planes in the figure depict this connectivity hierarchy.
+Figure~\ref{fig:noc-physical-design} shows two physically separate
+$4\times4$ networks on the logic tier. Plane M carries MoE data and
+control messages through the original Mesh and configurable switches
+(CSs). Plane C carries GetS shared-read requests and their DataS
+responses. Each node $N_i$ connects directly to its corresponding
+coherence router $C_i$. The interconnects are routed in the logic die's
+metal layers.
 
-Figure~\ref{fig:noc-physical-design}(b) shows the two CS circuits.
-A lower CS has four corner directions, northwest (NW), northeast (NE),
-southwest (SW), and southeast (SE), and an upper direction U.
-Only the four lower CSs listed above have a physical U attachment.
-In the other five instances, the U input data and valid signals are
-tied to zero, the U output enable is hardwired to zero, and the
-U-side ready input is tied to zero. These constant connections are
-fixed at implementation time and cannot be changed by configuration
-writes. Figure~\ref{fig:noc-physical-design}(b) depicts the lower-CS
-circuit with a connected U direction. An upper CS has two in-plane
-directions and a downward direction D. The lower and upper circuits
-use five 4:1 multiplexers (MUXes) and three 2:1 MUXes, respectively.
-Each output MUX is wired to the other directions' inputs, excluding
-a return to its own direction. The configuration register supplies
-an output-direction code, an input-selection code, and a connection
-enable (EN). Direction decoding enables at most one output, so each
-CS establishes at most one directed input--output connection.
-
-A short transfer between two nodes attached to the same lower CS can
-use that CS directly between its source and destination NIs.
-This circuit provides an additional data channel alongside the Mesh,
-increasing the available path bandwidth and moving part of the traffic
-away from contended Mesh links and router outputs. Circuits through the
-upper network connect nodes attached to different U-connected lower
-CSs, bypassing intermediate Mesh routers.
-Multiple CS attachments allow a node to participate in separate circuits.
-A heavily communicating neighboring pair can use an additional CS path
-alongside its Mesh connection. These connections can be reassigned as the
-busy endpoints and node pairs change between communication phases.
-Traffic without an assigned circuit uses the ordinary Mesh.
-The aggregate transfer rate is also limited by NI service and SRAM
-bank bandwidth.
+The M plane retains nine lower CSs and four upper CSs. Each lower CS
+connects to the four corner nodes of a $2\times2$ group. Corner, edge,
+and interior nodes thus have one, two, and four CS attachments.
+Upper switches $\mathrm{CS}_9$--$\mathrm{CS}_{12}$ form a $2\times2$
+network and connect down to $\mathrm{CS}_0$, $\mathrm{CS}_2$,
+$\mathrm{CS}_6$, and $\mathrm{CS}_8$, respectively. A local circuit
+connects two NIs through one lower CS; a longer circuit uses the upper
+network to bypass intermediate Mesh routers. MoE packets use an
+assigned circuit or the M-plane Mesh. Coherence requests and responses
+use C-plane links independently of these route choices.
 
 \begin{figure*}[!t]
   \centering
-  \includegraphics[width=\textwidth]{figures/noc_topology_cs.pdf}
-  \caption{Reconfigurable network and switch circuits.
-  (a) Nine lower CSs and four interconnected upper CSs, with the basic
-  Mesh shown for comparison. The separated planes denote connectivity
-  levels on one logic die. (b) A U-connected lower CS and an upper CS.
-  Each MUX excludes its own direction's input; output decoding enables
-  one connection.}
-  \Description{The left panel shows the two levels of configurable switches
-  and a basic Mesh. Only four lower switches attach to upper switches.
-  The right panel expands the five-direction lower switch and
-  three-direction upper switch, including configuration registers,
-  direction decoding, input MUXes, and output enable gates.}
+  \includegraphics[width=\textwidth]{figures/noc_dual_plane.pdf}
+  \caption{Dual-plane NoC. (a) MoE Mesh/CS plane M and coherence Mesh
+  plane C, with one local connection per node.
+  (b) Node, packet-type decoder, and five-port coherence router.
+  (c) CS circuit with input selection and output enable.}
+  \Description{The upper-left panel shows the two networks and sixteen
+  node-to-coherence-router connections. The upper-right panel shows a
+  five-direction configurable switch. The lower panel shows packet-type
+  classification, separate MoE and coherence queues, packet formation,
+  receive processing, shared SRAM arbitration, and the coherence router.}
   \label{fig:noc-physical-design}
 \end{figure*}
 
 \subsection{Node and Network Interface}
 \label{sec:noc-node-design}
 
-Figure~\ref{fig:noc-node}(a) expands an NPU node. Its NPU cluster contains
-a multiply--accumulate (MAC) array and a vector unit. A banked SRAM
-scratchpad holds local weights and activations. The SRAM access controller
-arbitrates bank requests from the NPU and the network interface (NI).
-The Mesh router retains its four directional connections and a local
-NI connection. The NI also has separate transmit and receive connections
-to each adjacent lower CS. NW, NE, SW, and SE beneath the CSs in this
-figure identify their positions relative to the node; a CS northwest
-of the node uses its own SE direction to reach that node.
+Figure~\ref{fig:noc-physical-design}(b) shows an NPU node with banked
+SRAM, a network interface (NI), and an M-plane Mesh router. The NI
+decodes the message class and opcode before packet formation. Its type
+map directs GetS and DataS to plane C and MoE messages to plane M.
+A short MoE control message uses M, while a DataS response carrying a
+cache line uses C. Separate queues and packetizers feed the two planes;
+each packet keeps its selected plane throughout transmission.
+Source reads, receive writes, and NPU accesses share the SRAM arbiter.
 
-\begin{figure*}[!t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/noc_node_ni.pdf}
-  \caption{Node and NI organization.
-  (a) NPU, scratchpad, NI, Mesh router, and adjacent lower-CS data
-  connections. (b) NI transmit, receive, and reassembly paths, together
-  with the configuration interface of one assigned CS.
-  Each lower CS is configured by its northwest node's NI.}
-  \Description{A node contains an NPU cluster, local SRAM, shared bank
-  arbitration, a network interface, and a Mesh router. The NI has separate
-  adjacent-CS data streams. The expanded NI shows transfer control,
-  packet formation, finite receive queues, offset-based reassembly,
-  SRAM write-back, and a separate configuration queue. A CS-side decoder
-  writes the configuration register and relays commands to an attached
-  upper CS where present.}
-  \label{fig:noc-node}
-\end{figure*}
+Each $C_i$ has four neighbor ports and one local NI port, with separate
+input queues for requests and responses. These queues form two virtual
+networks with independent credits. A $5\times5$ crossbar connects the
+input banks to output registers. XY routing selects the next direction,
+and round-robin arbitration selects an eligible input. Output registers
+hold data until the receiver accepts it. The NI allocates response
+storage before issuing GetS; the service endpoint reserves a response
+transmit slot before starting the memory operation. Request and response
+queues therefore have separate storage and flow-control state.
 
-Figure~\ref{fig:noc-node}(b) shows the NI data path. The transfer controller
-receives descriptors specifying the source and destination nodes, SRAM
-addresses, transfer length, packet-to-CS assignments, and the
-configuration version under which those attachments are usable.
-A direct memory access (DMA) read engine
-fetches source data and forms packets using the NI's configured payload
-size. The final packet carries the remaining bytes. The sending and
-receiving NIs use the same payload-size setting for a transfer.
-Transmit queues select the Mesh or an assigned CS circuit for each complete packet.
-A transfer may use several paths across its packets; the flits within
-one packet follow the same path.
-Each incoming data connection has a finite receive queue. Receive
-arbitration feeds the reassembly buffer, while packet-type decoding
-separates configuration commands from data.
-CS streams carry data and a valid indication forward, with a ready
-indication returning along the selected path. A transfer occurs when
-valid and ready are both asserted.
+On plane M, the NI selects the Mesh or a configured CS attachment for
+each complete packet. Packets carry a transfer identifier, byte offset,
+and transfer length. Receive descriptors supply the destination SRAM
+address. The receive arbiter and depacketizer check the packet and
+write its payload at that address plus the offset. A receipt bitmap
+records accepted writes, and completion is reported when all expected
+packet writes finish. Finite receive queues buffer concurrent Mesh
+and CS arrivals. The C-plane receive path matches responses to their
+request identifiers and shares the endpoint's SRAM write service.
 
-Each data packet identifies its transfer by \texttt{TransferID}, formed
-from the source NI and a source-local sequence number.
-\texttt{Offset} gives its byte position within the transfer, and
-\texttt{Length} gives the total transfer size. Receive descriptors
-associate a transfer with its destination SRAM base address.
-The NI derives each packet's index and expected payload length from
-its offset, the transfer length, and the agreed payload size. It checks
-the transfer identifier, offset alignment, and payload length before
-writing the payload to the base address plus \texttt{Offset}.
-A receipt bitmap has one bit per expected packet, updated after the
-SRAM accepts that packet's payload write; already-received packets are
-identified by their set bits. Transfers are admitted after allocating
-their receive descriptors and bitmap storage.
-Payloads can be written in arrival order while their offsets restore
-the destination data layout.
-The NI reports completion after all expected packet writes have completed;
-the NPU then consumes the assembled data. This permits bounded
-receive staging without holding later fragments until earlier ones
-arrive. Reassembly writes and NPU accesses share the SRAM bank arbiter.
+\subsection{Configurable Switches}
+\label{sec:noc-switches}
+
+Figure~\ref{fig:noc-physical-design}(c) shows a lower CS with directions
+NW, NE, SW, SE, and U. Five four-input multiplexers select among the
+other directions' inputs. The configuration fields $s$, $b$, and EN
+select the input, output, and connection enable. Output decoding
+activates one directed input--output pair. Data and valid propagate
+forward, and ready propagates back along the selected connection.
+The output register retains its data under backpressure.
+
+Only $\mathrm{CS}_0$, $\mathrm{CS}_2$, $\mathrm{CS}_6$, and
+$\mathrm{CS}_8$ have U links. The remaining lower CSs have their U
+interfaces disabled. Each upper CS has two neighbor directions and
+one downward direction, implemented with three two-input multiplexers.
+Separate NI attachments permit concurrent MoE circuits, subject to
+shared NI service, direct memory access (DMA) engines, and SRAM bandwidth.
 
 \input{noc_prediction_configuration.tex}
 
 \subsection{Configuration Interface}
 \label{sec:noc-config-interface}
 
-The host CPU sends configuration packets over the ordinary Mesh to the
-NI assigned to the target CS. Each lower CS is assigned to the NI of
-its northwest corner node. This fixes one configuration writer per CS,
-independently of its four neighboring data connections.
-The NI places commands in a separate configuration queue and sends them
-through a local command/response interface to the CS-side configurator.
-The NI serializes writes to each assigned CS and rejects obsolete
-configuration versions before forwarding commands.
-The CS-side command decoder acts as the configurator: it decodes the
-target and operation, writes the CS configuration register, and returns
-a response.
-For an upper CS, the corresponding lower CS relays the command and
-response over a fixed inter-level control interface.
-These local control interfaces operate independently of the CS data
-MUX settings. Responses return through the NI and ordinary Mesh.
+The host sends CS configuration commands over the M-plane Mesh.
+Each lower CS is configured by its northwest node's NI; that CS relays
+commands to its attached upper CS where present. A separate NI
+configuration queue feeds the CS command decoder, which writes the
+configuration register and returns an acknowledgement. This control
+interface is independent of the selected CS data connection.
 
-Table~\ref{tab:noc-command-fields} defines the packet and command fields.
-A CS state is $q_c=(s_c^{\mathrm{out}},s_c^{\mathrm{in}},e_c)$, where
-$c\in\{0,\ldots,12\}$ identifies the target CS,
-$s_c^{\mathrm{out}}$ selects its output direction,
-$s_c^{\mathrm{in}}$ selects an allowed input at that output's MUX,
-and $e_c$ enables the connection.
-The lower CS uses three output bits, two input bits, and one enable bit;
-the upper CS uses two output bits, one input bit, and one enable bit.
-Lower output codes 000--100 select NW, NE, SW, SE, and U, respectively.
-Upper codes 00, 01, and 10 select the instance's horizontal direction,
-vertical in-plane direction, and D. Input codes follow the remaining
-input order shown at each MUX. A cleared enable or an unused output
-code disables the connection.
+Table~\ref{tab:noc-command-fields} summarizes the command fields.
+A lower CS uses three output-selection bits, two input-selection bits,
+and one enable bit; an upper CS uses two, one, and one, respectively.
+The output code follows the instance's wired directions, and the input
+code indexes that output's allowed inputs. The NI stores each MoE
+packet's assigned CS attachment and configuration version in its
+transfer descriptor. Unassigned MoE packets use the M-plane Mesh.
 
 \begin{table}[!t]
-  \caption{Configuration packet and command fields.}
+  \caption{CS configuration command fields.}
   \label{tab:noc-command-fields}
-  \centering
-  \small
+  \centering\small
   \begin{tabularx}{\columnwidth}{@{}p{0.25\columnwidth}>{\raggedright\arraybackslash}X@{}}
     \hline
     Field & Meaning \\
     \hline
-    Type & Distinguishes configuration commands, responses, and data. \\
-    Destination & Mesh destination NI assigned to the target. \\
-    TransactionID & Matches a request to its response. \\
-    ConfigVersion & Identifies the CS image and matching NI assignments. \\
-    Target & CS index $c$, or transfer identifier for NI descriptor installation. \\
-    Operation & CS write, NI descriptor installation, pause, status, or resume. \\
-    State & CS tuple $q_c$, or NI packet-to-CS assignments indexed by byte offset. \\
-    Status & Completion or failure reported in a response. \\
+    Type & Message class and operation code. \\
+    Destination & NI responsible for the target CS. \\
+    TransactionID & Command--response matching identifier. \\
+    ConfigVersion & CS configuration and matching packet assignments. \\
+    Target & CS index or NI transfer descriptor. \\
+    Operation & Write, install descriptor, pause, status, or resume. \\
+    State & CS input/output selection and enable, or packet assignments. \\
+    Status & Success or failure of the requested operation. \\
     \hline
   \end{tabularx}
 \end{table}
 
-The response echoes \texttt{TransactionID}, \texttt{Target}, and
-\texttt{ConfigVersion};
-an upper-CS write is acknowledged after the upper register accepts it.
-The NI handles its own pause, status, and resume commands locally.
-They control transfer admission and completion reporting, while
-CS-targeted commands go to the CS-side configurator.
-NI descriptor-installation commands associate a transfer identifier
-with its packet-to-CS assignments and configuration version.
-Each assigned packet is identified by its byte offset; its source-CS
-attachment is stored as a route tag in the transmit queue. Packets
-without such an assignment use the Mesh.
-The transfer controller acknowledges installation after storing the
-descriptor and confirming the required receive context. Its version
-must match the applied configuration before CS admission.
-
-To change the network, the host first pauses admission of new CS
-transfers at all NIs. Previously admitted transfers finish transmission,
-reassembly, and SRAM write-back. The host collects their drain responses
-over the Mesh, writes the new CS states, and waits for every target's
-write response. It then installs the matching NI descriptors and waits
-for their acknowledgements before resuming admission.
-A failed or incomplete update
-keeps CS transmission paused. This sequence prevents data from
-traversing a partially updated circuit.
+The NI acknowledges a pause after holding the selected unbound MoE
+descriptors and stopping new CS admissions. Admitted transfers retain
+their routes. After the final check, \textsc{ApplyCS} drains these
+transfers, writes and confirms the CS states, installs matching NI
+assignments and versions, and resumes transmission. A rejected final check
+releases the holds and resumes $S_0$. A write or installation error
+is reported with CS admissions paused until matching CS and NI
+configurations are restored. Plane C continues forwarding throughout.
 
 \subsection{Thermal-Aware Execution}
 \label{sec:thermal-design}
@@ -635,12 +533,12 @@ We vary system scale and input scale separately. The system-scale sweep starts a
 
 \subsection{Hardware Cost and Runtime Overhead}
 
-Table~\ref{tab:eval-cost} compares a fixed $4\times4$ mesh with 256-bit links against the same mesh augmented by 13 circuit switches (CSs). The NoC prototypes use simplified network interfaces and exclude SRAM bank control, thermal control, and physical cross-tier links. Each pair uses the same tools and constraints. The 1\,GHz NoC clock in Table~\ref{tab:eval-platform} is a system simulation parameter.
+Table~\ref{tab:eval-cost} reports the MoE-plane prototypes: a fixed $4\times4$ mesh with 256-bit links and the same mesh augmented by 13 CSs. The NoC prototypes use simplified network interfaces and exclude SRAM bank control, thermal control, and physical cross-tier links. Each pair uses the same tools and constraints. The 1\,GHz NoC clock in Table~\ref{tab:eval-platform} is a system simulation parameter.
 
 Directed RTL tests cover all 256 mesh source--destination pairs, 108 lower-tier CS paths, and 24 directed upper-tier routes. The tests also check that the controller rejects cyclic configurations and waits for circuits to drain under backpressure before committing a new configuration.
 
 \begin{table}[t]
-\caption{Hardware implementation cost of the two NoC prototypes.}
+\caption{Hardware implementation cost of the MoE-plane prototypes.}
 \label{tab:eval-cost}
 \centering\small
 \begin{tabular}{@{}lrr@{}}
