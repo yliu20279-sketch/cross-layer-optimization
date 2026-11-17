@@ -1,0 +1,59 @@
+{
+  "status": "PASS_NATIVE_MOE_ONLY_PAIR",
+  "host": "113",
+  "remote_dir": "/mnt/sda1/h3240101068/qwen15_cc_dense_20261117.ziUl7q/moe_only_20261117.2nmpWu",
+  "gets": 0,
+  "thermal_enabled": false,
+  "opp": 1.0,
+  "matrices": 25,
+  "serialized": true,
+  "sources": {
+    "coupled_backend": "f14731695b53741fbf779a46b52f9d37355aa35db46e5bb6514ac625801ca136",
+    "run.py": "f03c42a3d0ff2586aa5bc6ff0ae2a3342443508bbb60f53883f3ae9de6cc2352",
+    "CONTRACT.json": "cd1a69c3fe88f1e1fc3f95ee68b96bbf8d988084c7c479801eb1df1c8270d999",
+    "NATIVE_TIMED_SERVICES.json": "8aac2c147bf23900dbb8fb4ff6b74dc708fa0a5fd22bacb8877eef1e32a8ae8c",
+    "Vunified_tb": "f67dfc4784bcba6d9a0cc9bcb52cd4b982bcef44dc5bf6ff9d123efc862b8116",
+    "ramulator32.yaml": "ce8be2e59bd624d9fe57a8362b4efab600c23c166ee0278c17ee78932f806f6d"
+  },
+  "rtl_pairs": 6,
+  "rtl_candidates": 10,
+  "rtl_candidate_gain_cycles_range": [
+    -43,
+    -39
+  ],
+  "arms": {
+    "hiband_reference": {
+      "moe_transport_ns": 41426,
+      "moe_suffix_ns": 208245056,
+      "target_complete": 259374894,
+      "selected": "FULL_LOCAL",
+      "origin_ns": 51129838,
+      "moe_messages": 15,
+      "full_layer_packets": 72,
+      "result_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18"
+    },
+    "project_noc": {
+      "moe_transport_ns": 41426,
+      "moe_suffix_ns": 208245056,
+      "target_complete": 259374894,
+      "selected": "mesh",
+      "origin_ns": 51129838,
+      "moe_messages": 15,
+      "full_layer_packets": 72,
+      "result_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18"
+    }
+  },
+  "difference_project_minus_hiband_ns": {
+    "moe_transport_ns": 0,
+    "moe_suffix_ns": 0,
+    "target_complete": 0
+  },
+  "matrix_trace_equal": true,
+  "transport_trace_equal": true,
+  "timing": {
+    "moe_transport_ns": "Sum of native send-to-destination-commit intervals for 15 MoE messages",
+    "moe_suffix_ns": "First MoE dispatch release to layer result",
+    "target_complete": "Layer entry to layer result"
+  },
+  "scope": "Common native PopNet Mesh and endpoint services. Project selection uses the reactive single-transfer RTL screen; HiBand is the local bandwidth reference."
+}

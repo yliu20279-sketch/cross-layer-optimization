@@ -22,7 +22,7 @@ def save(path, obj):
 
 
 def main(root, binary, frozen_services, out, opp, arrivals_path=None, calibration=None, policy_path=None,
-         paired_policy=None):
+         paired_policy=None, moe_only_contract=None):
     from core.artifacts import TargetArtifactStore
     from core.coupled_backend import LiveBackend, CoupledPayload, CoupledTransport, MAGIC
     from core.coupled_layer import CoupledLayer
@@ -46,7 +46,17 @@ def main(root, binary, frozen_services, out, opp, arrivals_path=None, calibratio
     thermal = None
     assert paired_policy in (None,'project_noc','hiband_reference')
     if paired_policy:
-        assert arrivals_path and opp == 4 and policy_path
+        assert (arrivals_path or moe_only_contract) and opp == 4
+    if moe_only_contract:
+        assert not arrivals_path and paired_policy
+        selection = 'FULL_LOCAL'
+        if paired_policy == 'project_noc':
+            screening = load(policy_path)
+            assert screening['contract_sha256'] == sha(moe_only_contract.read_bytes())
+            assert screening['selected'] == 'mesh', 'An active native CS requires a bound circuit transport'
+            selection = screening['selected']
+        save(out/'NETWORK_POLICY.json',dict(selected=selection,paired_policy=paired_policy,
+                                          gets=0,thermal_enabled=False))
     if arrivals_path:
         assert opp in (0,4), 'Mixed runs use online thermal or fixed 1.0×'
         arrivals = load(arrivals_path)
@@ -72,7 +82,7 @@ def main(root, binary, frozen_services, out, opp, arrivals_path=None, calibratio
                                   binary_sha256=sha(binary.read_bytes()), opp_quarters=opp,
                                   thermal_enabled=bool(thermal)))
     backend = LiveBackend(str(binary), sha(binary.read_bytes()), out / 'backend', str(root/'ramulator32.yaml'),
-                          controls='off' if arrivals_path else 'project_dynamic',timeout=3600)
+                          controls='off' if arrivals_path or moe_only_contract else 'project_dynamic',timeout=3600)
     try:
         native = CoupledPayload(backend, codec['payload_library'], codec['payload_sha256'])
         transport = CoupledTransport(native)
@@ -94,10 +104,10 @@ def main(root, binary, frozen_services, out, opp, arrivals_path=None, calibratio
             return reply
 
         if paired_policy:
-            reference = load(calibration.parent.parent/case/'CONTRACT.json')
+            reference = load(moe_only_contract or calibration.parent.parent/case/'CONTRACT.json')
             transport_work = [(row['src'],row['dst'],row['bytes']) for row in reference['transport']]
             gets_work = [(row['src'],row['dst'],row['request_bytes']+row['reply_bytes'])
-                         for row in arrivals['transactions']]
+                         for row in arrivals['transactions']] if arrivals_path else []
             assert all(0 <= src < 4 and 0 <= dst < 4 for src,dst,_ in transport_work+gets_work)
             command(16,int(paired_policy=='hiband_reference'),sum(size for _,_,size in transport_work+gets_work),0)
             assert backend.clock==0
@@ -201,13 +211,28 @@ def main(root, binary, frozen_services, out, opp, arrivals_path=None, calibratio
                 result['thermal'] = thermal.finish(int(summary['clock_ns']))
             else:
                 assert all(r['opp_quarters']==4 and r['rpc_ready']==r['actual_start'] for r in timing)
-            if paired_policy:
-                execution_policy=load(out/'backend/PAIRED_POLICY.json')
-                assert execution_policy['policy']==paired_policy
-                assert execution_policy['admitted_packets']==summary['packets']
-                assert execution_policy['global_bytes']==0
-                result.update(status='PASS_NATIVE_PAIRED_NOC_DIAGNOSTIC',paired_policy=execution_policy)
-                save(out/'TRANSPORT.json',transport.events)
+        if paired_policy:
+            execution_policy=load(out/'backend/PAIRED_POLICY.json')
+            assert execution_policy['policy']==paired_policy
+            assert execution_policy['admitted_packets']==summary['packets']
+            assert execution_policy['global_bytes']==0
+            result.update(status='PASS_NATIVE_PAIRED_NOC_DIAGNOSTIC',paired_policy=execution_policy)
+            save(out/'TRANSPORT.json',transport.events)
+        if moe_only_contract:
+            work = [(e['stage'],e['src'],e['dst'],e['bytes']) for e in transport.events]
+            expected_work = [(e['stage'],e['src'],e['dst'],e['bytes']) for e in reference['transport']]
+            first = next(i for i,e in enumerate(transport.events) if e['stage']=='dispatch')
+            assert work[first:] == expected_work
+            assert all(e['target_noc'] and e['start'] < e['complete'] for e in transport.events[first:])
+            assert not (out/'backend/GETS.csv').exists()
+            assert all(r['opp_quarters']==4 and r['rpc_ready']==r['actual_start'] for r in timing)
+            assert summary['transactions']==summary['callbacks'] and summary['packets']==summary['packet_callbacks']
+            origin = transport.events[first]['start']
+            result.update(status='PASS_NATIVE_MOE_ONLY_PAIR_ARM',gets=0,thermal_enabled=False,selection=selection,
+                          frozen_contract_sha256=sha(moe_only_contract.read_bytes()),moe_origin_ns=origin,
+                          moe_suffix_ns=result['target_complete']-origin,
+                          moe_transport_ns=sum(e['complete']-e['start'] for e in transport.events[first:]),
+                          moe_messages=len(expected_work))
         save(out/'RESULT.json',result)
         print(json.dumps({k:v for k,v in result.items() if k!='timing'}),flush=True)
     except BaseException:
@@ -221,4 +246,9 @@ if __name__=='__main__':
     _, root, binary, frozen, out, setting, *joint = sys.argv
     root, binary, frozen, out = (Path(p).resolve() for p in (root,binary,frozen,out))
     sys.path.insert(0,str(root))
-    main(root,binary,frozen,out,int(setting),*(Path(p).resolve() for p in joint[:3]),*joint[3:])
+    if joint and joint[0]=='--moe-only':
+        _, arm, contract, *audit = joint
+        main(root,binary,frozen,out,int(setting),paired_policy=arm,moe_only_contract=Path(contract).resolve(),
+             policy_path=Path(audit[0]).resolve() if audit else None)
+    else:
+        main(root,binary,frozen,out,int(setting),*(Path(p).resolve() for p in joint[:3]),*joint[3:])

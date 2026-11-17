@@ -20,7 +20,8 @@ def main(root, runs):
     freeze_path = root/'NATIVE_TIMED_SERVICES.json'
     audit_path = root/'noc_only_results/RTL_INGRESS.json'
     assert manifest['NATIVE_TIMED_SERVICES.json'] == digest(freeze_path)
-    assert manifest['run_pair.py'] == digest(root/'run_native_opp.py')
+    paired_runner = runs/'run_pair.py'
+    assert manifest['run_pair.py'] == digest(paired_runner if paired_runner.exists() else root/'run_native_opp.py')
     assert manifest['RTL_INGRESS.json'] == digest(audit_path)
     rtl = {row['case']:row['selected'] for row in read(audit_path)['cases']}
     calibration = read(root/'native_opp_results/opp4/RESULT.json')
