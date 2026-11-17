@@ -1,0 +1,69 @@
+{
+  "status": "PASS_PAIRED_DIAGNOSTIC_NOT_FORMAL_PERFORMANCE",
+  "calibration": [
+    {
+      "opp": 1.0,
+      "full_layer_ns": 259378504,
+      "matrix_ns": 130337228,
+      "compute_ns": 8722464,
+      "sram_bank_ns": 80304980
+    },
+    {
+      "opp": 0.75,
+      "full_layer_ns": 289304335,
+      "matrix_ns": 160264010,
+      "compute_ns": 11629952,
+      "sram_bank_ns": 107321780
+    },
+    {
+      "opp": 0.5,
+      "full_layer_ns": 348385624,
+      "matrix_ns": 219344862,
+      "compute_ns": 17444928,
+      "sram_bank_ns": 160609960
+    }
+  ],
+  "matrix_count": 25,
+  "cases": [
+    {
+      "case": "combined_overload",
+      "gets": 256,
+      "network_policy": "mesh",
+      "hiband_last_reply": 1570.0,
+      "joint_last_reply": 1632,
+      "hiband_moe_suffix": 208211880.0,
+      "joint_moe_suffix": 238181671,
+      "hiband_join": 208211880.0,
+      "joint_join": 238181671,
+      "selected_opp_counts": {
+        "0.75": 24,
+        "0.5": 1
+      },
+      "delayed_starts": 0,
+      "deferred_ns": 0,
+      "max_profile_duration_error_ns": 795
+    },
+    {
+      "case": "matched",
+      "gets": 512,
+      "network_policy": "mesh",
+      "hiband_last_reply": 2650.0,
+      "joint_last_reply": 3276,
+      "hiband_moe_suffix": 208213243.0,
+      "joint_moe_suffix": 238181672,
+      "hiband_join": 208213243.0,
+      "joint_join": 238181672,
+      "selected_opp_counts": {
+        "0.75": 24,
+        "0.5": 1
+      },
+      "delayed_starts": 0,
+      "deferred_ns": 0,
+      "max_profile_duration_error_ns": 795
+    }
+  ],
+  "limitations": [
+    "Thermal uses the published RC/activity coefficients, with current native timings.",
+    "HiBand reference and native backend have different network and endpoint implementations."
+  ]
+}

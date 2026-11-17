@@ -1,0 +1,129 @@
+{
+  "status": "PASS_NATIVE_PAIRED_REFERENCE_DIAGNOSTIC",
+  "host": "113",
+  "remote_dir": "/mnt/sda1/h3240101068/qwen15_cc_dense_20261117.ziUl7q/paired_native_20261117.qJGFY1",
+  "layer": "Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4 layer 5 prefill one token",
+  "thermal_enabled": false,
+  "opp": 1.0,
+  "gets_drams_per_request": 2,
+  "gets_dram_bytes_per_read": 32,
+  "gets_completion_gate": "Two read acknowledgements before reply, enforced in the common native backend",
+  "time_origin": "First offered GetS arrival; join = max(MoE layer result, last GetS reply)",
+  "sources": {
+    "coupled_backend": "f14731695b53741fbf779a46b52f9d37355aa35db46e5bb6514ac625801ca136",
+    "run_pair.py": "e4536a107fa755e651602e55024e2a70108a3b1bda7a9eac96686611644eb47b",
+    "combined_overload.json": "1fc8d8bc30b7c2654173644d7b6a9fb8b11be696673453a25eccc50c45423d05",
+    "matched.json": "6ce9d584185d30e76097c5e977872bed1da3b0d30f441c93cb2d38e45f2b1f40",
+    "NATIVE_TIMED_SERVICES.json": "8aac2c147bf23900dbb8fb4ff6b74dc708fa0a5fd22bacb8877eef1e32a8ae8c",
+    "RTL_INGRESS.json": "eede021b4810158b7b170a78b63823163e05e14c086b06e6a79cbe09865956c6",
+    "ramulator32.yaml": "ce8be2e59bd624d9fe57a8362b4efab600c23c166ee0278c17ee78932f806f6d"
+  },
+  "output_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18",
+  "cases": [
+    {
+      "case": "combined_overload",
+      "gets": 256,
+      "frozen_arrivals_sha256": "1fc8d8bc30b7c2654173644d7b6a9fb8b11be696673453a25eccc50c45423d05",
+      "arms": {
+        "hiband_reference": {
+          "selected": "FULL_LOCAL",
+          "gets_last_reply_ns": 1632,
+          "gets_max_latency_ns": 1122,
+          "slowest_gets_id": 255,
+          "slowest_gets_service_ns": 1111,
+          "moe_suffix_ns": 208245060,
+          "join_ns": 208245060,
+          "full_layer_ns": 259374898,
+          "origin_ns": 51129838,
+          "admitted_packets": 584,
+          "local_admitted_bytes": 98304,
+          "budget_wait_events": 54,
+          "gets_trace_sha256": "f61ff7e3a85249a563c17cae5ee0968280033e0476aaa7cf8cc4a1e7e4e7e6e8",
+          "matrix_trace_sha256": "5a2a4951bdca05f4bd9646bfaa3cf6a27498d057e276dbc1ee9f6649c184e802",
+          "transport_trace_sha256": "2e5c67636d0f7d361d5169841d121a8ff937cd72c0bb137bde0195222554cfda",
+          "transport_events": 18
+        },
+        "project_noc": {
+          "selected": "mesh",
+          "gets_last_reply_ns": 1632,
+          "gets_max_latency_ns": 1122,
+          "slowest_gets_id": 255,
+          "slowest_gets_service_ns": 1111,
+          "moe_suffix_ns": 208245060,
+          "join_ns": 208245060,
+          "full_layer_ns": 259374898,
+          "origin_ns": 51129838,
+          "admitted_packets": 584,
+          "local_admitted_bytes": 98304,
+          "budget_wait_events": 54,
+          "gets_trace_sha256": "f61ff7e3a85249a563c17cae5ee0968280033e0476aaa7cf8cc4a1e7e4e7e6e8",
+          "matrix_trace_sha256": "5a2a4951bdca05f4bd9646bfaa3cf6a27498d057e276dbc1ee9f6649c184e802",
+          "transport_trace_sha256": "2e5c67636d0f7d361d5169841d121a8ff937cd72c0bb137bde0195222554cfda",
+          "transport_events": 18
+        }
+      },
+      "project_minus_hiband_ns": {
+        "gets_last_reply_ns": 0,
+        "gets_max_latency_ns": 0,
+        "moe_suffix_ns": 0,
+        "join_ns": 0
+      },
+      "gets_trace_equal": true,
+      "matrix_trace_equal": true,
+      "transport_trace_equal": true
+    },
+    {
+      "case": "matched",
+      "gets": 512,
+      "frozen_arrivals_sha256": "6ce9d584185d30e76097c5e977872bed1da3b0d30f441c93cb2d38e45f2b1f40",
+      "arms": {
+        "hiband_reference": {
+          "selected": "FULL_LOCAL",
+          "gets_last_reply_ns": 3276,
+          "gets_max_latency_ns": 2765,
+          "slowest_gets_id": 511,
+          "slowest_gets_service_ns": 2497,
+          "moe_suffix_ns": 208248963,
+          "join_ns": 208248963,
+          "full_layer_ns": 259378801,
+          "origin_ns": 51129838,
+          "admitted_packets": 1096,
+          "local_admitted_bytes": 122880,
+          "budget_wait_events": 54,
+          "gets_trace_sha256": "b923ed272538a9719fbd7d311835f407aea00ebc05b070762f5fb2084b9702f9",
+          "matrix_trace_sha256": "e7e42e0445add92e15614bd0de87076811b703cb2b072467096abb3b5fadcece",
+          "transport_trace_sha256": "40efa6445816f8b6655248f89a18f5791ebca8883236fac3d7713fb85ddf9359",
+          "transport_events": 18
+        },
+        "project_noc": {
+          "selected": "mesh",
+          "gets_last_reply_ns": 3276,
+          "gets_max_latency_ns": 2765,
+          "slowest_gets_id": 511,
+          "slowest_gets_service_ns": 2497,
+          "moe_suffix_ns": 208248963,
+          "join_ns": 208248963,
+          "full_layer_ns": 259378801,
+          "origin_ns": 51129838,
+          "admitted_packets": 1096,
+          "local_admitted_bytes": 122880,
+          "budget_wait_events": 54,
+          "gets_trace_sha256": "b923ed272538a9719fbd7d311835f407aea00ebc05b070762f5fb2084b9702f9",
+          "matrix_trace_sha256": "e7e42e0445add92e15614bd0de87076811b703cb2b072467096abb3b5fadcece",
+          "transport_trace_sha256": "40efa6445816f8b6655248f89a18f5791ebca8883236fac3d7713fb85ddf9359",
+          "transport_events": 18
+        }
+      },
+      "project_minus_hiband_ns": {
+        "gets_last_reply_ns": 0,
+        "gets_max_latency_ns": 0,
+        "moe_suffix_ns": 0,
+        "join_ns": 0
+      },
+      "gets_trace_equal": true,
+      "matrix_trace_equal": true,
+      "transport_trace_equal": true
+    }
+  ],
+  "scope": "Native single-layer diagnostic. Both use PopNet Mesh; the HiBand arm is the project four-mode bandwidth reference, not physical split-Benes. Only local traffic and FULL_LOCAL were covered. The project arm used the retained Mesh decision from the first-dispatch RTL audit."
+}

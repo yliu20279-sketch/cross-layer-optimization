@@ -1,0 +1,689 @@
+{
+  "status": "BOUND_NATIVE_SERIAL_SERVICE_TIMELINE",
+  "source_hashes": {
+    "NUMERIC_CALLS.json": "72b34eed5a2d7518a64b7d033730f6c46a162c7ba289d2b18b4ce6fb8e320f9b",
+    "RPC_EVENTS.json": "19c098ba0c27c1a669b83443b697ebd00035ca99f078f6e0f90adcbd8d322c31",
+    "CONTRACT.json": "d51aaee568991b0da432531af478ab182e654515851fc2290b6c193fe95d2e99"
+  },
+  "thermal_profile_hash": "40949990c1cb889301a768d4534574bdd3630957313f2cdb9f64dc79fd86c958",
+  "matrices": 25,
+  "shape_counts": [
+    {
+      "mkn": [
+        1,
+        1408,
+        2048
+      ],
+      "calls": 8
+    },
+    {
+      "mkn": [
+        1,
+        2048,
+        1
+      ],
+      "calls": 1
+    },
+    {
+      "mkn": [
+        1,
+        2048,
+        1408
+      ],
+      "calls": 16
+    }
+  ],
+  "matrices_with_same_profile_shape": 24,
+  "segments": [
+    {
+      "before_transport": 0,
+      "start": 51129838,
+      "done": 51129838,
+      "events": []
+    },
+    {
+      "before_transport": 1,
+      "start": 51132406,
+      "done": 77140025,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 51132406,
+          "done": 54368954
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 54368954,
+          "done": 59798770,
+          "rpc_sequence": 2162,
+          "output_handle": 597,
+          "partition": 1,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.25.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 59798770,
+          "done": 63036933
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 63036933,
+          "done": 68466851,
+          "rpc_sequence": 2183,
+          "output_handle": 603,
+          "partition": 1,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.25.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 68466851,
+          "done": 71706633
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 71706633,
+          "done": 77137638,
+          "rpc_sequence": 2216,
+          "output_handle": 612,
+          "partition": 1,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.experts.25.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 77137638,
+          "done": 77140025
+        }
+      ]
+    },
+    {
+      "before_transport": 2,
+      "start": 77142901,
+      "done": 77152213,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 77142901,
+          "done": 77152213
+        }
+      ]
+    },
+    {
+      "before_transport": 3,
+      "start": 77155076,
+      "done": 103162710,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 77155076,
+          "done": 80391533
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 80391533,
+          "done": 85821445,
+          "rpc_sequence": 2265,
+          "output_handle": 626,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.34.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 85821445,
+          "done": 89059580
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 89059580,
+          "done": 94489498,
+          "rpc_sequence": 2286,
+          "output_handle": 632,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.34.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 94489498,
+          "done": 97729326
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 97729326,
+          "done": 103160016,
+          "rpc_sequence": 2319,
+          "output_handle": 641,
+          "partition": 2,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.experts.34.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 103160016,
+          "done": 103162710
+        }
+      ]
+    },
+    {
+      "before_transport": 4,
+      "start": 103165496,
+      "done": 129191248,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 103165496,
+          "done": 106411360
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 106411360,
+          "done": 111840871,
+          "rpc_sequence": 2361,
+          "output_handle": 653,
+          "partition": 0,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.40.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 111840871,
+          "done": 115078976
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 115078976,
+          "done": 120508945,
+          "rpc_sequence": 2382,
+          "output_handle": 659,
+          "partition": 0,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.40.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 120508945,
+          "done": 123748765
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 123748765,
+          "done": 129179216,
+          "rpc_sequence": 2415,
+          "output_handle": 668,
+          "partition": 0,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.experts.40.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 129179216,
+          "done": 129191248
+        }
+      ]
+    },
+    {
+      "before_transport": 5,
+      "start": 129194110,
+      "done": 155201610,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 129194110,
+          "done": 132430605
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 132430605,
+          "done": 137860508,
+          "rpc_sequence": 2457,
+          "output_handle": 680,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.2.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 137860508,
+          "done": 141098643
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 141098643,
+          "done": 146528561,
+          "rpc_sequence": 2478,
+          "output_handle": 686,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.experts.2.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 146528561,
+          "done": 149768353
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 149768353,
+          "done": 155198930,
+          "rpc_sequence": 2511,
+          "output_handle": 695,
+          "partition": 2,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.experts.2.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 155198930,
+          "done": 155201610
+        }
+      ]
+    },
+    {
+      "before_transport": 6,
+      "start": 155204493,
+      "done": 181259354,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 155204493,
+          "done": 158487728
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 158487728,
+          "done": 163918305,
+          "rpc_sequence": 2609,
+          "output_handle": 723,
+          "partition": 0,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 163918305,
+          "done": 167156200
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 167156200,
+          "done": 172586694,
+          "rpc_sequence": 2630,
+          "output_handle": 729,
+          "partition": 0,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 172586694,
+          "done": 175826541
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 175826541,
+          "done": 181256713,
+          "rpc_sequence": 2663,
+          "output_handle": 738,
+          "partition": 0,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.shared_expert.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 181256713,
+          "done": 181259354
+        }
+      ]
+    },
+    {
+      "before_transport": 7,
+      "start": 181262214,
+      "done": 207270608,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 181262214,
+          "done": 184498505
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 184498505,
+          "done": 189928486,
+          "rpc_sequence": 2691,
+          "output_handle": 746,
+          "partition": 1,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 189928486,
+          "done": 193166635
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 193166635,
+          "done": 198596921,
+          "rpc_sequence": 2712,
+          "output_handle": 752,
+          "partition": 1,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 198596921,
+          "done": 201836986
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 201836986,
+          "done": 207267926,
+          "rpc_sequence": 2745,
+          "output_handle": 761,
+          "partition": 1,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.shared_expert.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 207267926,
+          "done": 207270608
+        }
+      ]
+    },
+    {
+      "before_transport": 8,
+      "start": 207273190,
+      "done": 207273190,
+      "events": []
+    },
+    {
+      "before_transport": 9,
+      "start": 207276043,
+      "done": 233283035,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 207276043,
+          "done": 210512471
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 210512471,
+          "done": 215942214,
+          "rpc_sequence": 2780,
+          "output_handle": 771,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 215942214,
+          "done": 219180335
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 219180335,
+          "done": 224610279,
+          "rpc_sequence": 2801,
+          "output_handle": 777,
+          "partition": 2,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 224610279,
+          "done": 227849995
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 227849995,
+          "done": 233280391,
+          "rpc_sequence": 2834,
+          "output_handle": 786,
+          "partition": 2,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.shared_expert.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 233280391,
+          "done": 233283035
+        }
+      ]
+    },
+    {
+      "before_transport": 10,
+      "start": 233285896,
+      "done": 233285896,
+      "events": []
+    },
+    {
+      "before_transport": 11,
+      "start": 233288454,
+      "done": 259295174,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 233288454,
+          "done": 236524578
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 236524578,
+          "done": 241954370,
+          "rpc_sequence": 2869,
+          "output_handle": 796,
+          "partition": 3,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.gate_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 241954370,
+          "done": 245192548
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 245192548,
+          "done": 250622108,
+          "rpc_sequence": 2890,
+          "output_handle": 802,
+          "partition": 3,
+          "mkn": [
+            1,
+            2048,
+            1408
+          ],
+          "label": "model.layers.5.mlp.shared_expert.up_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 250622108,
+          "done": 253861868
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 253861868,
+          "done": 259292498,
+          "rpc_sequence": 2923,
+          "output_handle": 811,
+          "partition": 3,
+          "mkn": [
+            1,
+            1408,
+            2048
+          ],
+          "label": "model.layers.5.mlp.shared_expert.down_proj",
+          "profile_shape_present": true
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 259292498,
+          "done": 259295174
+        }
+      ]
+    },
+    {
+      "before_transport": 12,
+      "start": 259298064,
+      "done": 259370260,
+      "events": [
+        {
+          "kind": "other_serial_service",
+          "start": 259298064,
+          "done": 259328945
+        },
+        {
+          "kind": "native_matrix_rpc",
+          "start": 259328945,
+          "done": 259342070,
+          "rpc_sequence": 2985,
+          "output_handle": 829,
+          "partition": 0,
+          "mkn": [
+            1,
+            2048,
+            1
+          ],
+          "label": "model.layers.5.mlp.shared_expert_gate",
+          "profile_shape_present": false
+        },
+        {
+          "kind": "other_serial_service",
+          "start": 259342070,
+          "done": 259370260
+        }
+      ]
+    },
+    {
+      "before_transport": 13,
+      "start": 259373060,
+      "done": 259373060,
+      "events": []
+    },
+    {
+      "before_transport": 14,
+      "start": 259375909,
+      "done": 259375909,
+      "events": []
+    }
+  ]
+}

@@ -1,0 +1,3823 @@
+{
+  "scope": "Qwen1.5 layer 5 MoE suffix replay from recorded router completion",
+  "source": "/mnt/sda1/h3240101068/qwen15_step4_tx32_W0VFwG/runs/qwen15_pp56rmsfixed",
+  "source_sha256": {
+    "RESULT.json": "9ab689102758bc84e03b048015c4cfaef55ebf61dca1afaaf1de3f3601a06806",
+    "TRANSPORT.json": "69e2e832fe55b1cf344353455f03654205e6b4078676b2995f34e8be6822c4ab",
+    "PROTOCOL.json": "0c388c09470729fd2cdcbb83e568de1f19b1e745e4fdbef83680ab74e9e309a3",
+    "prefill_L5_input.bin": "7332979d2094656e001fa59e5b800149b6a51ad2ddacd9f08b024f8cc1b4ff91",
+    "prefill_L5_output.bin": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18"
+  },
+  "route": {
+    "token": 0,
+    "layer": 5,
+    "decision": {
+      "request_id": "diagnostic_layer",
+      "position": 0,
+      "layer": 5,
+      "rank": 0,
+      "unknown_token": false,
+      "available_at": 0,
+      "decision_at": 0,
+      "input_sha256": "6cc9fcab25214b38a92af6774a83a3a72fc960a8d4ba863455fa73ffdc68a4f1",
+      "input": {
+        "request_id": "diagnostic_layer",
+        "position": 0,
+        "token_id": 17,
+        "layer": 5,
+        "available_at": 0,
+        "decision_at": 0
+      },
+      "placement_sha256": "f95768547578592241cab7dccb78b32d71868fd24ca46cc3824fe669f734a93d",
+      "method": "diagnostic-static-profile-table-not-author-2gram"
+    },
+    "router_done": 51129838,
+    "selected": [
+      25,
+      34,
+      40,
+      2
+    ],
+    "weights": [
+      0.03350830078125,
+      0.030487060546875,
+      0.027862548828125,
+      0.0274658203125
+    ],
+    "normalized": false
+  },
+  "transport": [
+    {
+      "src": 0,
+      "dst": 1,
+      "token": 0,
+      "stage": "dispatch",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 51129838,
+      "complete": 51132406,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 1,
+      "dst": 0,
+      "token": 0,
+      "stage": "combine",
+      "bytes": 4096,
+      "payload_sha256": "85f30e71f9c9339ba1d835ce5d7cc26aaec5680ab09bca47217b01d2d156f1ec",
+      "start": 77140025,
+      "complete": 77142901,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "token": 0,
+      "stage": "dispatch",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 77152213,
+      "complete": 77155076,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 2,
+      "dst": 0,
+      "token": 0,
+      "stage": "combine",
+      "bytes": 4096,
+      "payload_sha256": "1249ec617346f33035e88662f01edf89c90dc98f00ba53771968537b241b6a86",
+      "start": 103162710,
+      "complete": 103165496,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "token": 0,
+      "stage": "dispatch",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 129191248,
+      "complete": 129194110,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 2,
+      "dst": 0,
+      "token": 0,
+      "stage": "combine",
+      "bytes": 4096,
+      "payload_sha256": "d7f08f4cc2ae49a6aa45334bb150921f39b5a91f9bbf8546cba3c5529c941799",
+      "start": 155201610,
+      "complete": 155204493,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 1,
+      "token": 0,
+      "stage": "shared_input",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 181259354,
+      "complete": 181262214,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 1,
+      "dst": 0,
+      "token": 0,
+      "stage": "shared_reduce",
+      "bytes": 4096,
+      "payload_sha256": "4cab2d5b909f645bca886c7f7c10bdbe0b639cb58665a86c956c0867271f806c",
+      "start": 207270608,
+      "complete": 207273190,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "token": 0,
+      "stage": "shared_input",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 207273190,
+      "complete": 207276043,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 2,
+      "dst": 0,
+      "token": 0,
+      "stage": "shared_reduce",
+      "bytes": 4096,
+      "payload_sha256": "22f37d2f7ff9af1fe10aa977560b8a3e6123efcb034f76aabd6f7f145f7d10e2",
+      "start": 233283035,
+      "complete": 233285896,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 3,
+      "token": 0,
+      "stage": "shared_input",
+      "bytes": 4096,
+      "payload_sha256": "b1f93cd102e7a059ddbf578c5fbd7f612d6e802da9c986cef7ccb714344bc277",
+      "start": 233285896,
+      "complete": 233288454,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 3,
+      "dst": 0,
+      "token": 0,
+      "stage": "shared_reduce",
+      "bytes": 4096,
+      "payload_sha256": "5f81dd2e1823cfadc340198f23b05e033183c204bfc1159fdee9f8d6fb8e0a09",
+      "start": 259295174,
+      "complete": 259298064,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 1,
+      "token": 0,
+      "stage": "SAG",
+      "bytes": 4096,
+      "payload_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18",
+      "start": 259370260,
+      "complete": 259373060,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 2,
+      "token": 0,
+      "stage": "SAG",
+      "bytes": 4096,
+      "payload_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18",
+      "start": 259373060,
+      "complete": 259375909,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    },
+    {
+      "src": 0,
+      "dst": 3,
+      "token": 0,
+      "stage": "SAG",
+      "bytes": 4096,
+      "payload_sha256": "2603fa6b01bda7d58b428b78dc77f641374dd56b43636626dd9a319b8ab91a18",
+      "start": 259375909,
+      "complete": 259378504,
+      "backend": "live PopNet + destination DRAM commit",
+      "target_noc": true
+    }
+  ],
+  "precision": "F16 with K64 FP32 partials in source",
+  "role": "local HiBand reference density run, modeled GetS with a DRAM completion dependency",
+  "common_arrival": 0,
+  "gets": [
+    {
+      "release": 41,
+      "request": 42,
+      "bank": 43,
+      "response": 44,
+      "arrival": 0
+    },
+    {
+      "release": 45,
+      "request": 46,
+      "bank": 47,
+      "response": 48,
+      "arrival": 1
+    },
+    {
+      "release": 49,
+      "request": 50,
+      "bank": 51,
+      "response": 52,
+      "arrival": 2
+    },
+    {
+      "release": 53,
+      "request": 54,
+      "bank": 55,
+      "response": 56,
+      "arrival": 3
+    },
+    {
+      "release": 57,
+      "request": 58,
+      "bank": 59,
+      "response": 60,
+      "arrival": 4
+    },
+    {
+      "release": 61,
+      "request": 62,
+      "bank": 63,
+      "response": 64,
+      "arrival": 5
+    },
+    {
+      "release": 65,
+      "request": 66,
+      "bank": 67,
+      "response": 68,
+      "arrival": 6
+    },
+    {
+      "release": 69,
+      "request": 70,
+      "bank": 71,
+      "response": 72,
+      "arrival": 7
+    },
+    {
+      "release": 73,
+      "request": 74,
+      "bank": 75,
+      "response": 76,
+      "arrival": 8
+    },
+    {
+      "release": 77,
+      "request": 78,
+      "bank": 79,
+      "response": 80,
+      "arrival": 9
+    },
+    {
+      "release": 81,
+      "request": 82,
+      "bank": 83,
+      "response": 84,
+      "arrival": 10
+    },
+    {
+      "release": 85,
+      "request": 86,
+      "bank": 87,
+      "response": 88,
+      "arrival": 11
+    },
+    {
+      "release": 89,
+      "request": 90,
+      "bank": 91,
+      "response": 92,
+      "arrival": 12
+    },
+    {
+      "release": 93,
+      "request": 94,
+      "bank": 95,
+      "response": 96,
+      "arrival": 13
+    },
+    {
+      "release": 97,
+      "request": 98,
+      "bank": 99,
+      "response": 100,
+      "arrival": 14
+    },
+    {
+      "release": 101,
+      "request": 102,
+      "bank": 103,
+      "response": 104,
+      "arrival": 15
+    },
+    {
+      "release": 105,
+      "request": 106,
+      "bank": 107,
+      "response": 108,
+      "arrival": 16
+    },
+    {
+      "release": 109,
+      "request": 110,
+      "bank": 111,
+      "response": 112,
+      "arrival": 17
+    },
+    {
+      "release": 113,
+      "request": 114,
+      "bank": 115,
+      "response": 116,
+      "arrival": 18
+    },
+    {
+      "release": 117,
+      "request": 118,
+      "bank": 119,
+      "response": 120,
+      "arrival": 19
+    },
+    {
+      "release": 121,
+      "request": 122,
+      "bank": 123,
+      "response": 124,
+      "arrival": 20
+    },
+    {
+      "release": 125,
+      "request": 126,
+      "bank": 127,
+      "response": 128,
+      "arrival": 21
+    },
+    {
+      "release": 129,
+      "request": 130,
+      "bank": 131,
+      "response": 132,
+      "arrival": 22
+    },
+    {
+      "release": 133,
+      "request": 134,
+      "bank": 135,
+      "response": 136,
+      "arrival": 23
+    },
+    {
+      "release": 137,
+      "request": 138,
+      "bank": 139,
+      "response": 140,
+      "arrival": 24
+    },
+    {
+      "release": 141,
+      "request": 142,
+      "bank": 143,
+      "response": 144,
+      "arrival": 25
+    },
+    {
+      "release": 145,
+      "request": 146,
+      "bank": 147,
+      "response": 148,
+      "arrival": 26
+    },
+    {
+      "release": 149,
+      "request": 150,
+      "bank": 151,
+      "response": 152,
+      "arrival": 27
+    },
+    {
+      "release": 153,
+      "request": 154,
+      "bank": 155,
+      "response": 156,
+      "arrival": 28
+    },
+    {
+      "release": 157,
+      "request": 158,
+      "bank": 159,
+      "response": 160,
+      "arrival": 29
+    },
+    {
+      "release": 161,
+      "request": 162,
+      "bank": 163,
+      "response": 164,
+      "arrival": 30
+    },
+    {
+      "release": 165,
+      "request": 166,
+      "bank": 167,
+      "response": 168,
+      "arrival": 31
+    },
+    {
+      "release": 169,
+      "request": 170,
+      "bank": 171,
+      "response": 172,
+      "arrival": 32
+    },
+    {
+      "release": 173,
+      "request": 174,
+      "bank": 175,
+      "response": 176,
+      "arrival": 33
+    },
+    {
+      "release": 177,
+      "request": 178,
+      "bank": 179,
+      "response": 180,
+      "arrival": 34
+    },
+    {
+      "release": 181,
+      "request": 182,
+      "bank": 183,
+      "response": 184,
+      "arrival": 35
+    },
+    {
+      "release": 185,
+      "request": 186,
+      "bank": 187,
+      "response": 188,
+      "arrival": 36
+    },
+    {
+      "release": 189,
+      "request": 190,
+      "bank": 191,
+      "response": 192,
+      "arrival": 37
+    },
+    {
+      "release": 193,
+      "request": 194,
+      "bank": 195,
+      "response": 196,
+      "arrival": 38
+    },
+    {
+      "release": 197,
+      "request": 198,
+      "bank": 199,
+      "response": 200,
+      "arrival": 39
+    },
+    {
+      "release": 201,
+      "request": 202,
+      "bank": 203,
+      "response": 204,
+      "arrival": 40
+    },
+    {
+      "release": 205,
+      "request": 206,
+      "bank": 207,
+      "response": 208,
+      "arrival": 41
+    },
+    {
+      "release": 209,
+      "request": 210,
+      "bank": 211,
+      "response": 212,
+      "arrival": 42
+    },
+    {
+      "release": 213,
+      "request": 214,
+      "bank": 215,
+      "response": 216,
+      "arrival": 43
+    },
+    {
+      "release": 217,
+      "request": 218,
+      "bank": 219,
+      "response": 220,
+      "arrival": 44
+    },
+    {
+      "release": 221,
+      "request": 222,
+      "bank": 223,
+      "response": 224,
+      "arrival": 45
+    },
+    {
+      "release": 225,
+      "request": 226,
+      "bank": 227,
+      "response": 228,
+      "arrival": 46
+    },
+    {
+      "release": 229,
+      "request": 230,
+      "bank": 231,
+      "response": 232,
+      "arrival": 47
+    },
+    {
+      "release": 233,
+      "request": 234,
+      "bank": 235,
+      "response": 236,
+      "arrival": 48
+    },
+    {
+      "release": 237,
+      "request": 238,
+      "bank": 239,
+      "response": 240,
+      "arrival": 49
+    },
+    {
+      "release": 241,
+      "request": 242,
+      "bank": 243,
+      "response": 244,
+      "arrival": 50
+    },
+    {
+      "release": 245,
+      "request": 246,
+      "bank": 247,
+      "response": 248,
+      "arrival": 51
+    },
+    {
+      "release": 249,
+      "request": 250,
+      "bank": 251,
+      "response": 252,
+      "arrival": 52
+    },
+    {
+      "release": 253,
+      "request": 254,
+      "bank": 255,
+      "response": 256,
+      "arrival": 53
+    },
+    {
+      "release": 257,
+      "request": 258,
+      "bank": 259,
+      "response": 260,
+      "arrival": 54
+    },
+    {
+      "release": 261,
+      "request": 262,
+      "bank": 263,
+      "response": 264,
+      "arrival": 55
+    },
+    {
+      "release": 265,
+      "request": 266,
+      "bank": 267,
+      "response": 268,
+      "arrival": 56
+    },
+    {
+      "release": 269,
+      "request": 270,
+      "bank": 271,
+      "response": 272,
+      "arrival": 57
+    },
+    {
+      "release": 273,
+      "request": 274,
+      "bank": 275,
+      "response": 276,
+      "arrival": 58
+    },
+    {
+      "release": 277,
+      "request": 278,
+      "bank": 279,
+      "response": 280,
+      "arrival": 59
+    },
+    {
+      "release": 281,
+      "request": 282,
+      "bank": 283,
+      "response": 284,
+      "arrival": 60
+    },
+    {
+      "release": 285,
+      "request": 286,
+      "bank": 287,
+      "response": 288,
+      "arrival": 61
+    },
+    {
+      "release": 289,
+      "request": 290,
+      "bank": 291,
+      "response": 292,
+      "arrival": 62
+    },
+    {
+      "release": 293,
+      "request": 294,
+      "bank": 295,
+      "response": 296,
+      "arrival": 63
+    },
+    {
+      "release": 297,
+      "request": 298,
+      "bank": 299,
+      "response": 300,
+      "arrival": 64
+    },
+    {
+      "release": 301,
+      "request": 302,
+      "bank": 303,
+      "response": 304,
+      "arrival": 65
+    },
+    {
+      "release": 305,
+      "request": 306,
+      "bank": 307,
+      "response": 308,
+      "arrival": 66
+    },
+    {
+      "release": 309,
+      "request": 310,
+      "bank": 311,
+      "response": 312,
+      "arrival": 67
+    },
+    {
+      "release": 313,
+      "request": 314,
+      "bank": 315,
+      "response": 316,
+      "arrival": 68
+    },
+    {
+      "release": 317,
+      "request": 318,
+      "bank": 319,
+      "response": 320,
+      "arrival": 69
+    },
+    {
+      "release": 321,
+      "request": 322,
+      "bank": 323,
+      "response": 324,
+      "arrival": 70
+    },
+    {
+      "release": 325,
+      "request": 326,
+      "bank": 327,
+      "response": 328,
+      "arrival": 71
+    },
+    {
+      "release": 329,
+      "request": 330,
+      "bank": 331,
+      "response": 332,
+      "arrival": 72
+    },
+    {
+      "release": 333,
+      "request": 334,
+      "bank": 335,
+      "response": 336,
+      "arrival": 73
+    },
+    {
+      "release": 337,
+      "request": 338,
+      "bank": 339,
+      "response": 340,
+      "arrival": 74
+    },
+    {
+      "release": 341,
+      "request": 342,
+      "bank": 343,
+      "response": 344,
+      "arrival": 75
+    },
+    {
+      "release": 345,
+      "request": 346,
+      "bank": 347,
+      "response": 348,
+      "arrival": 76
+    },
+    {
+      "release": 349,
+      "request": 350,
+      "bank": 351,
+      "response": 352,
+      "arrival": 77
+    },
+    {
+      "release": 353,
+      "request": 354,
+      "bank": 355,
+      "response": 356,
+      "arrival": 78
+    },
+    {
+      "release": 357,
+      "request": 358,
+      "bank": 359,
+      "response": 360,
+      "arrival": 79
+    },
+    {
+      "release": 361,
+      "request": 362,
+      "bank": 363,
+      "response": 364,
+      "arrival": 80
+    },
+    {
+      "release": 365,
+      "request": 366,
+      "bank": 367,
+      "response": 368,
+      "arrival": 81
+    },
+    {
+      "release": 369,
+      "request": 370,
+      "bank": 371,
+      "response": 372,
+      "arrival": 82
+    },
+    {
+      "release": 373,
+      "request": 374,
+      "bank": 375,
+      "response": 376,
+      "arrival": 83
+    },
+    {
+      "release": 377,
+      "request": 378,
+      "bank": 379,
+      "response": 380,
+      "arrival": 84
+    },
+    {
+      "release": 381,
+      "request": 382,
+      "bank": 383,
+      "response": 384,
+      "arrival": 85
+    },
+    {
+      "release": 385,
+      "request": 386,
+      "bank": 387,
+      "response": 388,
+      "arrival": 86
+    },
+    {
+      "release": 389,
+      "request": 390,
+      "bank": 391,
+      "response": 392,
+      "arrival": 87
+    },
+    {
+      "release": 393,
+      "request": 394,
+      "bank": 395,
+      "response": 396,
+      "arrival": 88
+    },
+    {
+      "release": 397,
+      "request": 398,
+      "bank": 399,
+      "response": 400,
+      "arrival": 89
+    },
+    {
+      "release": 401,
+      "request": 402,
+      "bank": 403,
+      "response": 404,
+      "arrival": 90
+    },
+    {
+      "release": 405,
+      "request": 406,
+      "bank": 407,
+      "response": 408,
+      "arrival": 91
+    },
+    {
+      "release": 409,
+      "request": 410,
+      "bank": 411,
+      "response": 412,
+      "arrival": 92
+    },
+    {
+      "release": 413,
+      "request": 414,
+      "bank": 415,
+      "response": 416,
+      "arrival": 93
+    },
+    {
+      "release": 417,
+      "request": 418,
+      "bank": 419,
+      "response": 420,
+      "arrival": 94
+    },
+    {
+      "release": 421,
+      "request": 422,
+      "bank": 423,
+      "response": 424,
+      "arrival": 95
+    },
+    {
+      "release": 425,
+      "request": 426,
+      "bank": 427,
+      "response": 428,
+      "arrival": 96
+    },
+    {
+      "release": 429,
+      "request": 430,
+      "bank": 431,
+      "response": 432,
+      "arrival": 97
+    },
+    {
+      "release": 433,
+      "request": 434,
+      "bank": 435,
+      "response": 436,
+      "arrival": 98
+    },
+    {
+      "release": 437,
+      "request": 438,
+      "bank": 439,
+      "response": 440,
+      "arrival": 99
+    },
+    {
+      "release": 441,
+      "request": 442,
+      "bank": 443,
+      "response": 444,
+      "arrival": 100
+    },
+    {
+      "release": 445,
+      "request": 446,
+      "bank": 447,
+      "response": 448,
+      "arrival": 101
+    },
+    {
+      "release": 449,
+      "request": 450,
+      "bank": 451,
+      "response": 452,
+      "arrival": 102
+    },
+    {
+      "release": 453,
+      "request": 454,
+      "bank": 455,
+      "response": 456,
+      "arrival": 103
+    },
+    {
+      "release": 457,
+      "request": 458,
+      "bank": 459,
+      "response": 460,
+      "arrival": 104
+    },
+    {
+      "release": 461,
+      "request": 462,
+      "bank": 463,
+      "response": 464,
+      "arrival": 105
+    },
+    {
+      "release": 465,
+      "request": 466,
+      "bank": 467,
+      "response": 468,
+      "arrival": 106
+    },
+    {
+      "release": 469,
+      "request": 470,
+      "bank": 471,
+      "response": 472,
+      "arrival": 107
+    },
+    {
+      "release": 473,
+      "request": 474,
+      "bank": 475,
+      "response": 476,
+      "arrival": 108
+    },
+    {
+      "release": 477,
+      "request": 478,
+      "bank": 479,
+      "response": 480,
+      "arrival": 109
+    },
+    {
+      "release": 481,
+      "request": 482,
+      "bank": 483,
+      "response": 484,
+      "arrival": 110
+    },
+    {
+      "release": 485,
+      "request": 486,
+      "bank": 487,
+      "response": 488,
+      "arrival": 111
+    },
+    {
+      "release": 489,
+      "request": 490,
+      "bank": 491,
+      "response": 492,
+      "arrival": 112
+    },
+    {
+      "release": 493,
+      "request": 494,
+      "bank": 495,
+      "response": 496,
+      "arrival": 113
+    },
+    {
+      "release": 497,
+      "request": 498,
+      "bank": 499,
+      "response": 500,
+      "arrival": 114
+    },
+    {
+      "release": 501,
+      "request": 502,
+      "bank": 503,
+      "response": 504,
+      "arrival": 115
+    },
+    {
+      "release": 505,
+      "request": 506,
+      "bank": 507,
+      "response": 508,
+      "arrival": 116
+    },
+    {
+      "release": 509,
+      "request": 510,
+      "bank": 511,
+      "response": 512,
+      "arrival": 117
+    },
+    {
+      "release": 513,
+      "request": 514,
+      "bank": 515,
+      "response": 516,
+      "arrival": 118
+    },
+    {
+      "release": 517,
+      "request": 518,
+      "bank": 519,
+      "response": 520,
+      "arrival": 119
+    },
+    {
+      "release": 521,
+      "request": 522,
+      "bank": 523,
+      "response": 524,
+      "arrival": 120
+    },
+    {
+      "release": 525,
+      "request": 526,
+      "bank": 527,
+      "response": 528,
+      "arrival": 121
+    },
+    {
+      "release": 529,
+      "request": 530,
+      "bank": 531,
+      "response": 532,
+      "arrival": 122
+    },
+    {
+      "release": 533,
+      "request": 534,
+      "bank": 535,
+      "response": 536,
+      "arrival": 123
+    },
+    {
+      "release": 537,
+      "request": 538,
+      "bank": 539,
+      "response": 540,
+      "arrival": 124
+    },
+    {
+      "release": 541,
+      "request": 542,
+      "bank": 543,
+      "response": 544,
+      "arrival": 125
+    },
+    {
+      "release": 545,
+      "request": 546,
+      "bank": 547,
+      "response": 548,
+      "arrival": 126
+    },
+    {
+      "release": 549,
+      "request": 550,
+      "bank": 551,
+      "response": 552,
+      "arrival": 127
+    },
+    {
+      "release": 553,
+      "request": 554,
+      "bank": 555,
+      "response": 556,
+      "arrival": 128
+    },
+    {
+      "release": 557,
+      "request": 558,
+      "bank": 559,
+      "response": 560,
+      "arrival": 129
+    },
+    {
+      "release": 561,
+      "request": 562,
+      "bank": 563,
+      "response": 564,
+      "arrival": 130
+    },
+    {
+      "release": 565,
+      "request": 566,
+      "bank": 567,
+      "response": 568,
+      "arrival": 131
+    },
+    {
+      "release": 569,
+      "request": 570,
+      "bank": 571,
+      "response": 572,
+      "arrival": 132
+    },
+    {
+      "release": 573,
+      "request": 574,
+      "bank": 575,
+      "response": 576,
+      "arrival": 133
+    },
+    {
+      "release": 577,
+      "request": 578,
+      "bank": 579,
+      "response": 580,
+      "arrival": 134
+    },
+    {
+      "release": 581,
+      "request": 582,
+      "bank": 583,
+      "response": 584,
+      "arrival": 135
+    },
+    {
+      "release": 585,
+      "request": 586,
+      "bank": 587,
+      "response": 588,
+      "arrival": 136
+    },
+    {
+      "release": 589,
+      "request": 590,
+      "bank": 591,
+      "response": 592,
+      "arrival": 137
+    },
+    {
+      "release": 593,
+      "request": 594,
+      "bank": 595,
+      "response": 596,
+      "arrival": 138
+    },
+    {
+      "release": 597,
+      "request": 598,
+      "bank": 599,
+      "response": 600,
+      "arrival": 139
+    },
+    {
+      "release": 601,
+      "request": 602,
+      "bank": 603,
+      "response": 604,
+      "arrival": 140
+    },
+    {
+      "release": 605,
+      "request": 606,
+      "bank": 607,
+      "response": 608,
+      "arrival": 141
+    },
+    {
+      "release": 609,
+      "request": 610,
+      "bank": 611,
+      "response": 612,
+      "arrival": 142
+    },
+    {
+      "release": 613,
+      "request": 614,
+      "bank": 615,
+      "response": 616,
+      "arrival": 143
+    },
+    {
+      "release": 617,
+      "request": 618,
+      "bank": 619,
+      "response": 620,
+      "arrival": 144
+    },
+    {
+      "release": 621,
+      "request": 622,
+      "bank": 623,
+      "response": 624,
+      "arrival": 145
+    },
+    {
+      "release": 625,
+      "request": 626,
+      "bank": 627,
+      "response": 628,
+      "arrival": 146
+    },
+    {
+      "release": 629,
+      "request": 630,
+      "bank": 631,
+      "response": 632,
+      "arrival": 147
+    },
+    {
+      "release": 633,
+      "request": 634,
+      "bank": 635,
+      "response": 636,
+      "arrival": 148
+    },
+    {
+      "release": 637,
+      "request": 638,
+      "bank": 639,
+      "response": 640,
+      "arrival": 149
+    },
+    {
+      "release": 641,
+      "request": 642,
+      "bank": 643,
+      "response": 644,
+      "arrival": 150
+    },
+    {
+      "release": 645,
+      "request": 646,
+      "bank": 647,
+      "response": 648,
+      "arrival": 151
+    },
+    {
+      "release": 649,
+      "request": 650,
+      "bank": 651,
+      "response": 652,
+      "arrival": 152
+    },
+    {
+      "release": 653,
+      "request": 654,
+      "bank": 655,
+      "response": 656,
+      "arrival": 153
+    },
+    {
+      "release": 657,
+      "request": 658,
+      "bank": 659,
+      "response": 660,
+      "arrival": 154
+    },
+    {
+      "release": 661,
+      "request": 662,
+      "bank": 663,
+      "response": 664,
+      "arrival": 155
+    },
+    {
+      "release": 665,
+      "request": 666,
+      "bank": 667,
+      "response": 668,
+      "arrival": 156
+    },
+    {
+      "release": 669,
+      "request": 670,
+      "bank": 671,
+      "response": 672,
+      "arrival": 157
+    },
+    {
+      "release": 673,
+      "request": 674,
+      "bank": 675,
+      "response": 676,
+      "arrival": 158
+    },
+    {
+      "release": 677,
+      "request": 678,
+      "bank": 679,
+      "response": 680,
+      "arrival": 159
+    },
+    {
+      "release": 681,
+      "request": 682,
+      "bank": 683,
+      "response": 684,
+      "arrival": 160
+    },
+    {
+      "release": 685,
+      "request": 686,
+      "bank": 687,
+      "response": 688,
+      "arrival": 161
+    },
+    {
+      "release": 689,
+      "request": 690,
+      "bank": 691,
+      "response": 692,
+      "arrival": 162
+    },
+    {
+      "release": 693,
+      "request": 694,
+      "bank": 695,
+      "response": 696,
+      "arrival": 163
+    },
+    {
+      "release": 697,
+      "request": 698,
+      "bank": 699,
+      "response": 700,
+      "arrival": 164
+    },
+    {
+      "release": 701,
+      "request": 702,
+      "bank": 703,
+      "response": 704,
+      "arrival": 165
+    },
+    {
+      "release": 705,
+      "request": 706,
+      "bank": 707,
+      "response": 708,
+      "arrival": 166
+    },
+    {
+      "release": 709,
+      "request": 710,
+      "bank": 711,
+      "response": 712,
+      "arrival": 167
+    },
+    {
+      "release": 713,
+      "request": 714,
+      "bank": 715,
+      "response": 716,
+      "arrival": 168
+    },
+    {
+      "release": 717,
+      "request": 718,
+      "bank": 719,
+      "response": 720,
+      "arrival": 169
+    },
+    {
+      "release": 721,
+      "request": 722,
+      "bank": 723,
+      "response": 724,
+      "arrival": 170
+    },
+    {
+      "release": 725,
+      "request": 726,
+      "bank": 727,
+      "response": 728,
+      "arrival": 171
+    },
+    {
+      "release": 729,
+      "request": 730,
+      "bank": 731,
+      "response": 732,
+      "arrival": 172
+    },
+    {
+      "release": 733,
+      "request": 734,
+      "bank": 735,
+      "response": 736,
+      "arrival": 173
+    },
+    {
+      "release": 737,
+      "request": 738,
+      "bank": 739,
+      "response": 740,
+      "arrival": 174
+    },
+    {
+      "release": 741,
+      "request": 742,
+      "bank": 743,
+      "response": 744,
+      "arrival": 175
+    },
+    {
+      "release": 745,
+      "request": 746,
+      "bank": 747,
+      "response": 748,
+      "arrival": 176
+    },
+    {
+      "release": 749,
+      "request": 750,
+      "bank": 751,
+      "response": 752,
+      "arrival": 177
+    },
+    {
+      "release": 753,
+      "request": 754,
+      "bank": 755,
+      "response": 756,
+      "arrival": 178
+    },
+    {
+      "release": 757,
+      "request": 758,
+      "bank": 759,
+      "response": 760,
+      "arrival": 179
+    },
+    {
+      "release": 761,
+      "request": 762,
+      "bank": 763,
+      "response": 764,
+      "arrival": 180
+    },
+    {
+      "release": 765,
+      "request": 766,
+      "bank": 767,
+      "response": 768,
+      "arrival": 181
+    },
+    {
+      "release": 769,
+      "request": 770,
+      "bank": 771,
+      "response": 772,
+      "arrival": 182
+    },
+    {
+      "release": 773,
+      "request": 774,
+      "bank": 775,
+      "response": 776,
+      "arrival": 183
+    },
+    {
+      "release": 777,
+      "request": 778,
+      "bank": 779,
+      "response": 780,
+      "arrival": 184
+    },
+    {
+      "release": 781,
+      "request": 782,
+      "bank": 783,
+      "response": 784,
+      "arrival": 185
+    },
+    {
+      "release": 785,
+      "request": 786,
+      "bank": 787,
+      "response": 788,
+      "arrival": 186
+    },
+    {
+      "release": 789,
+      "request": 790,
+      "bank": 791,
+      "response": 792,
+      "arrival": 187
+    },
+    {
+      "release": 793,
+      "request": 794,
+      "bank": 795,
+      "response": 796,
+      "arrival": 188
+    },
+    {
+      "release": 797,
+      "request": 798,
+      "bank": 799,
+      "response": 800,
+      "arrival": 189
+    },
+    {
+      "release": 801,
+      "request": 802,
+      "bank": 803,
+      "response": 804,
+      "arrival": 190
+    },
+    {
+      "release": 805,
+      "request": 806,
+      "bank": 807,
+      "response": 808,
+      "arrival": 191
+    },
+    {
+      "release": 809,
+      "request": 810,
+      "bank": 811,
+      "response": 812,
+      "arrival": 192
+    },
+    {
+      "release": 813,
+      "request": 814,
+      "bank": 815,
+      "response": 816,
+      "arrival": 193
+    },
+    {
+      "release": 817,
+      "request": 818,
+      "bank": 819,
+      "response": 820,
+      "arrival": 194
+    },
+    {
+      "release": 821,
+      "request": 822,
+      "bank": 823,
+      "response": 824,
+      "arrival": 195
+    },
+    {
+      "release": 825,
+      "request": 826,
+      "bank": 827,
+      "response": 828,
+      "arrival": 196
+    },
+    {
+      "release": 829,
+      "request": 830,
+      "bank": 831,
+      "response": 832,
+      "arrival": 197
+    },
+    {
+      "release": 833,
+      "request": 834,
+      "bank": 835,
+      "response": 836,
+      "arrival": 198
+    },
+    {
+      "release": 837,
+      "request": 838,
+      "bank": 839,
+      "response": 840,
+      "arrival": 199
+    },
+    {
+      "release": 841,
+      "request": 842,
+      "bank": 843,
+      "response": 844,
+      "arrival": 200
+    },
+    {
+      "release": 845,
+      "request": 846,
+      "bank": 847,
+      "response": 848,
+      "arrival": 201
+    },
+    {
+      "release": 849,
+      "request": 850,
+      "bank": 851,
+      "response": 852,
+      "arrival": 202
+    },
+    {
+      "release": 853,
+      "request": 854,
+      "bank": 855,
+      "response": 856,
+      "arrival": 203
+    },
+    {
+      "release": 857,
+      "request": 858,
+      "bank": 859,
+      "response": 860,
+      "arrival": 204
+    },
+    {
+      "release": 861,
+      "request": 862,
+      "bank": 863,
+      "response": 864,
+      "arrival": 205
+    },
+    {
+      "release": 865,
+      "request": 866,
+      "bank": 867,
+      "response": 868,
+      "arrival": 206
+    },
+    {
+      "release": 869,
+      "request": 870,
+      "bank": 871,
+      "response": 872,
+      "arrival": 207
+    },
+    {
+      "release": 873,
+      "request": 874,
+      "bank": 875,
+      "response": 876,
+      "arrival": 208
+    },
+    {
+      "release": 877,
+      "request": 878,
+      "bank": 879,
+      "response": 880,
+      "arrival": 209
+    },
+    {
+      "release": 881,
+      "request": 882,
+      "bank": 883,
+      "response": 884,
+      "arrival": 210
+    },
+    {
+      "release": 885,
+      "request": 886,
+      "bank": 887,
+      "response": 888,
+      "arrival": 211
+    },
+    {
+      "release": 889,
+      "request": 890,
+      "bank": 891,
+      "response": 892,
+      "arrival": 212
+    },
+    {
+      "release": 893,
+      "request": 894,
+      "bank": 895,
+      "response": 896,
+      "arrival": 213
+    },
+    {
+      "release": 897,
+      "request": 898,
+      "bank": 899,
+      "response": 900,
+      "arrival": 214
+    },
+    {
+      "release": 901,
+      "request": 902,
+      "bank": 903,
+      "response": 904,
+      "arrival": 215
+    },
+    {
+      "release": 905,
+      "request": 906,
+      "bank": 907,
+      "response": 908,
+      "arrival": 216
+    },
+    {
+      "release": 909,
+      "request": 910,
+      "bank": 911,
+      "response": 912,
+      "arrival": 217
+    },
+    {
+      "release": 913,
+      "request": 914,
+      "bank": 915,
+      "response": 916,
+      "arrival": 218
+    },
+    {
+      "release": 917,
+      "request": 918,
+      "bank": 919,
+      "response": 920,
+      "arrival": 219
+    },
+    {
+      "release": 921,
+      "request": 922,
+      "bank": 923,
+      "response": 924,
+      "arrival": 220
+    },
+    {
+      "release": 925,
+      "request": 926,
+      "bank": 927,
+      "response": 928,
+      "arrival": 221
+    },
+    {
+      "release": 929,
+      "request": 930,
+      "bank": 931,
+      "response": 932,
+      "arrival": 222
+    },
+    {
+      "release": 933,
+      "request": 934,
+      "bank": 935,
+      "response": 936,
+      "arrival": 223
+    },
+    {
+      "release": 937,
+      "request": 938,
+      "bank": 939,
+      "response": 940,
+      "arrival": 224
+    },
+    {
+      "release": 941,
+      "request": 942,
+      "bank": 943,
+      "response": 944,
+      "arrival": 225
+    },
+    {
+      "release": 945,
+      "request": 946,
+      "bank": 947,
+      "response": 948,
+      "arrival": 226
+    },
+    {
+      "release": 949,
+      "request": 950,
+      "bank": 951,
+      "response": 952,
+      "arrival": 227
+    },
+    {
+      "release": 953,
+      "request": 954,
+      "bank": 955,
+      "response": 956,
+      "arrival": 228
+    },
+    {
+      "release": 957,
+      "request": 958,
+      "bank": 959,
+      "response": 960,
+      "arrival": 229
+    },
+    {
+      "release": 961,
+      "request": 962,
+      "bank": 963,
+      "response": 964,
+      "arrival": 230
+    },
+    {
+      "release": 965,
+      "request": 966,
+      "bank": 967,
+      "response": 968,
+      "arrival": 231
+    },
+    {
+      "release": 969,
+      "request": 970,
+      "bank": 971,
+      "response": 972,
+      "arrival": 232
+    },
+    {
+      "release": 973,
+      "request": 974,
+      "bank": 975,
+      "response": 976,
+      "arrival": 233
+    },
+    {
+      "release": 977,
+      "request": 978,
+      "bank": 979,
+      "response": 980,
+      "arrival": 234
+    },
+    {
+      "release": 981,
+      "request": 982,
+      "bank": 983,
+      "response": 984,
+      "arrival": 235
+    },
+    {
+      "release": 985,
+      "request": 986,
+      "bank": 987,
+      "response": 988,
+      "arrival": 236
+    },
+    {
+      "release": 989,
+      "request": 990,
+      "bank": 991,
+      "response": 992,
+      "arrival": 237
+    },
+    {
+      "release": 993,
+      "request": 994,
+      "bank": 995,
+      "response": 996,
+      "arrival": 238
+    },
+    {
+      "release": 997,
+      "request": 998,
+      "bank": 999,
+      "response": 1000,
+      "arrival": 239
+    },
+    {
+      "release": 1001,
+      "request": 1002,
+      "bank": 1003,
+      "response": 1004,
+      "arrival": 240
+    },
+    {
+      "release": 1005,
+      "request": 1006,
+      "bank": 1007,
+      "response": 1008,
+      "arrival": 241
+    },
+    {
+      "release": 1009,
+      "request": 1010,
+      "bank": 1011,
+      "response": 1012,
+      "arrival": 242
+    },
+    {
+      "release": 1013,
+      "request": 1014,
+      "bank": 1015,
+      "response": 1016,
+      "arrival": 243
+    },
+    {
+      "release": 1017,
+      "request": 1018,
+      "bank": 1019,
+      "response": 1020,
+      "arrival": 244
+    },
+    {
+      "release": 1021,
+      "request": 1022,
+      "bank": 1023,
+      "response": 1024,
+      "arrival": 245
+    },
+    {
+      "release": 1025,
+      "request": 1026,
+      "bank": 1027,
+      "response": 1028,
+      "arrival": 246
+    },
+    {
+      "release": 1029,
+      "request": 1030,
+      "bank": 1031,
+      "response": 1032,
+      "arrival": 247
+    },
+    {
+      "release": 1033,
+      "request": 1034,
+      "bank": 1035,
+      "response": 1036,
+      "arrival": 248
+    },
+    {
+      "release": 1037,
+      "request": 1038,
+      "bank": 1039,
+      "response": 1040,
+      "arrival": 249
+    },
+    {
+      "release": 1041,
+      "request": 1042,
+      "bank": 1043,
+      "response": 1044,
+      "arrival": 250
+    },
+    {
+      "release": 1045,
+      "request": 1046,
+      "bank": 1047,
+      "response": 1048,
+      "arrival": 251
+    },
+    {
+      "release": 1049,
+      "request": 1050,
+      "bank": 1051,
+      "response": 1052,
+      "arrival": 252
+    },
+    {
+      "release": 1053,
+      "request": 1054,
+      "bank": 1055,
+      "response": 1056,
+      "arrival": 253
+    },
+    {
+      "release": 1057,
+      "request": 1058,
+      "bank": 1059,
+      "response": 1060,
+      "arrival": 254
+    },
+    {
+      "release": 1061,
+      "request": 1062,
+      "bank": 1063,
+      "response": 1064,
+      "arrival": 255
+    },
+    {
+      "release": 1065,
+      "request": 1066,
+      "bank": 1067,
+      "response": 1068,
+      "arrival": 256
+    },
+    {
+      "release": 1069,
+      "request": 1070,
+      "bank": 1071,
+      "response": 1072,
+      "arrival": 257
+    },
+    {
+      "release": 1073,
+      "request": 1074,
+      "bank": 1075,
+      "response": 1076,
+      "arrival": 258
+    },
+    {
+      "release": 1077,
+      "request": 1078,
+      "bank": 1079,
+      "response": 1080,
+      "arrival": 259
+    },
+    {
+      "release": 1081,
+      "request": 1082,
+      "bank": 1083,
+      "response": 1084,
+      "arrival": 260
+    },
+    {
+      "release": 1085,
+      "request": 1086,
+      "bank": 1087,
+      "response": 1088,
+      "arrival": 261
+    },
+    {
+      "release": 1089,
+      "request": 1090,
+      "bank": 1091,
+      "response": 1092,
+      "arrival": 262
+    },
+    {
+      "release": 1093,
+      "request": 1094,
+      "bank": 1095,
+      "response": 1096,
+      "arrival": 263
+    },
+    {
+      "release": 1097,
+      "request": 1098,
+      "bank": 1099,
+      "response": 1100,
+      "arrival": 264
+    },
+    {
+      "release": 1101,
+      "request": 1102,
+      "bank": 1103,
+      "response": 1104,
+      "arrival": 265
+    },
+    {
+      "release": 1105,
+      "request": 1106,
+      "bank": 1107,
+      "response": 1108,
+      "arrival": 266
+    },
+    {
+      "release": 1109,
+      "request": 1110,
+      "bank": 1111,
+      "response": 1112,
+      "arrival": 267
+    },
+    {
+      "release": 1113,
+      "request": 1114,
+      "bank": 1115,
+      "response": 1116,
+      "arrival": 268
+    },
+    {
+      "release": 1117,
+      "request": 1118,
+      "bank": 1119,
+      "response": 1120,
+      "arrival": 269
+    },
+    {
+      "release": 1121,
+      "request": 1122,
+      "bank": 1123,
+      "response": 1124,
+      "arrival": 270
+    },
+    {
+      "release": 1125,
+      "request": 1126,
+      "bank": 1127,
+      "response": 1128,
+      "arrival": 271
+    },
+    {
+      "release": 1129,
+      "request": 1130,
+      "bank": 1131,
+      "response": 1132,
+      "arrival": 272
+    },
+    {
+      "release": 1133,
+      "request": 1134,
+      "bank": 1135,
+      "response": 1136,
+      "arrival": 273
+    },
+    {
+      "release": 1137,
+      "request": 1138,
+      "bank": 1139,
+      "response": 1140,
+      "arrival": 274
+    },
+    {
+      "release": 1141,
+      "request": 1142,
+      "bank": 1143,
+      "response": 1144,
+      "arrival": 275
+    },
+    {
+      "release": 1145,
+      "request": 1146,
+      "bank": 1147,
+      "response": 1148,
+      "arrival": 276
+    },
+    {
+      "release": 1149,
+      "request": 1150,
+      "bank": 1151,
+      "response": 1152,
+      "arrival": 277
+    },
+    {
+      "release": 1153,
+      "request": 1154,
+      "bank": 1155,
+      "response": 1156,
+      "arrival": 278
+    },
+    {
+      "release": 1157,
+      "request": 1158,
+      "bank": 1159,
+      "response": 1160,
+      "arrival": 279
+    },
+    {
+      "release": 1161,
+      "request": 1162,
+      "bank": 1163,
+      "response": 1164,
+      "arrival": 280
+    },
+    {
+      "release": 1165,
+      "request": 1166,
+      "bank": 1167,
+      "response": 1168,
+      "arrival": 281
+    },
+    {
+      "release": 1169,
+      "request": 1170,
+      "bank": 1171,
+      "response": 1172,
+      "arrival": 282
+    },
+    {
+      "release": 1173,
+      "request": 1174,
+      "bank": 1175,
+      "response": 1176,
+      "arrival": 283
+    },
+    {
+      "release": 1177,
+      "request": 1178,
+      "bank": 1179,
+      "response": 1180,
+      "arrival": 284
+    },
+    {
+      "release": 1181,
+      "request": 1182,
+      "bank": 1183,
+      "response": 1184,
+      "arrival": 285
+    },
+    {
+      "release": 1185,
+      "request": 1186,
+      "bank": 1187,
+      "response": 1188,
+      "arrival": 286
+    },
+    {
+      "release": 1189,
+      "request": 1190,
+      "bank": 1191,
+      "response": 1192,
+      "arrival": 287
+    },
+    {
+      "release": 1193,
+      "request": 1194,
+      "bank": 1195,
+      "response": 1196,
+      "arrival": 288
+    },
+    {
+      "release": 1197,
+      "request": 1198,
+      "bank": 1199,
+      "response": 1200,
+      "arrival": 289
+    },
+    {
+      "release": 1201,
+      "request": 1202,
+      "bank": 1203,
+      "response": 1204,
+      "arrival": 290
+    },
+    {
+      "release": 1205,
+      "request": 1206,
+      "bank": 1207,
+      "response": 1208,
+      "arrival": 291
+    },
+    {
+      "release": 1209,
+      "request": 1210,
+      "bank": 1211,
+      "response": 1212,
+      "arrival": 292
+    },
+    {
+      "release": 1213,
+      "request": 1214,
+      "bank": 1215,
+      "response": 1216,
+      "arrival": 293
+    },
+    {
+      "release": 1217,
+      "request": 1218,
+      "bank": 1219,
+      "response": 1220,
+      "arrival": 294
+    },
+    {
+      "release": 1221,
+      "request": 1222,
+      "bank": 1223,
+      "response": 1224,
+      "arrival": 295
+    },
+    {
+      "release": 1225,
+      "request": 1226,
+      "bank": 1227,
+      "response": 1228,
+      "arrival": 296
+    },
+    {
+      "release": 1229,
+      "request": 1230,
+      "bank": 1231,
+      "response": 1232,
+      "arrival": 297
+    },
+    {
+      "release": 1233,
+      "request": 1234,
+      "bank": 1235,
+      "response": 1236,
+      "arrival": 298
+    },
+    {
+      "release": 1237,
+      "request": 1238,
+      "bank": 1239,
+      "response": 1240,
+      "arrival": 299
+    },
+    {
+      "release": 1241,
+      "request": 1242,
+      "bank": 1243,
+      "response": 1244,
+      "arrival": 300
+    },
+    {
+      "release": 1245,
+      "request": 1246,
+      "bank": 1247,
+      "response": 1248,
+      "arrival": 301
+    },
+    {
+      "release": 1249,
+      "request": 1250,
+      "bank": 1251,
+      "response": 1252,
+      "arrival": 302
+    },
+    {
+      "release": 1253,
+      "request": 1254,
+      "bank": 1255,
+      "response": 1256,
+      "arrival": 303
+    },
+    {
+      "release": 1257,
+      "request": 1258,
+      "bank": 1259,
+      "response": 1260,
+      "arrival": 304
+    },
+    {
+      "release": 1261,
+      "request": 1262,
+      "bank": 1263,
+      "response": 1264,
+      "arrival": 305
+    },
+    {
+      "release": 1265,
+      "request": 1266,
+      "bank": 1267,
+      "response": 1268,
+      "arrival": 306
+    },
+    {
+      "release": 1269,
+      "request": 1270,
+      "bank": 1271,
+      "response": 1272,
+      "arrival": 307
+    },
+    {
+      "release": 1273,
+      "request": 1274,
+      "bank": 1275,
+      "response": 1276,
+      "arrival": 308
+    },
+    {
+      "release": 1277,
+      "request": 1278,
+      "bank": 1279,
+      "response": 1280,
+      "arrival": 309
+    },
+    {
+      "release": 1281,
+      "request": 1282,
+      "bank": 1283,
+      "response": 1284,
+      "arrival": 310
+    },
+    {
+      "release": 1285,
+      "request": 1286,
+      "bank": 1287,
+      "response": 1288,
+      "arrival": 311
+    },
+    {
+      "release": 1289,
+      "request": 1290,
+      "bank": 1291,
+      "response": 1292,
+      "arrival": 312
+    },
+    {
+      "release": 1293,
+      "request": 1294,
+      "bank": 1295,
+      "response": 1296,
+      "arrival": 313
+    },
+    {
+      "release": 1297,
+      "request": 1298,
+      "bank": 1299,
+      "response": 1300,
+      "arrival": 314
+    },
+    {
+      "release": 1301,
+      "request": 1302,
+      "bank": 1303,
+      "response": 1304,
+      "arrival": 315
+    },
+    {
+      "release": 1305,
+      "request": 1306,
+      "bank": 1307,
+      "response": 1308,
+      "arrival": 316
+    },
+    {
+      "release": 1309,
+      "request": 1310,
+      "bank": 1311,
+      "response": 1312,
+      "arrival": 317
+    },
+    {
+      "release": 1313,
+      "request": 1314,
+      "bank": 1315,
+      "response": 1316,
+      "arrival": 318
+    },
+    {
+      "release": 1317,
+      "request": 1318,
+      "bank": 1319,
+      "response": 1320,
+      "arrival": 319
+    },
+    {
+      "release": 1321,
+      "request": 1322,
+      "bank": 1323,
+      "response": 1324,
+      "arrival": 320
+    },
+    {
+      "release": 1325,
+      "request": 1326,
+      "bank": 1327,
+      "response": 1328,
+      "arrival": 321
+    },
+    {
+      "release": 1329,
+      "request": 1330,
+      "bank": 1331,
+      "response": 1332,
+      "arrival": 322
+    },
+    {
+      "release": 1333,
+      "request": 1334,
+      "bank": 1335,
+      "response": 1336,
+      "arrival": 323
+    },
+    {
+      "release": 1337,
+      "request": 1338,
+      "bank": 1339,
+      "response": 1340,
+      "arrival": 324
+    },
+    {
+      "release": 1341,
+      "request": 1342,
+      "bank": 1343,
+      "response": 1344,
+      "arrival": 325
+    },
+    {
+      "release": 1345,
+      "request": 1346,
+      "bank": 1347,
+      "response": 1348,
+      "arrival": 326
+    },
+    {
+      "release": 1349,
+      "request": 1350,
+      "bank": 1351,
+      "response": 1352,
+      "arrival": 327
+    },
+    {
+      "release": 1353,
+      "request": 1354,
+      "bank": 1355,
+      "response": 1356,
+      "arrival": 328
+    },
+    {
+      "release": 1357,
+      "request": 1358,
+      "bank": 1359,
+      "response": 1360,
+      "arrival": 329
+    },
+    {
+      "release": 1361,
+      "request": 1362,
+      "bank": 1363,
+      "response": 1364,
+      "arrival": 330
+    },
+    {
+      "release": 1365,
+      "request": 1366,
+      "bank": 1367,
+      "response": 1368,
+      "arrival": 331
+    },
+    {
+      "release": 1369,
+      "request": 1370,
+      "bank": 1371,
+      "response": 1372,
+      "arrival": 332
+    },
+    {
+      "release": 1373,
+      "request": 1374,
+      "bank": 1375,
+      "response": 1376,
+      "arrival": 333
+    },
+    {
+      "release": 1377,
+      "request": 1378,
+      "bank": 1379,
+      "response": 1380,
+      "arrival": 334
+    },
+    {
+      "release": 1381,
+      "request": 1382,
+      "bank": 1383,
+      "response": 1384,
+      "arrival": 335
+    },
+    {
+      "release": 1385,
+      "request": 1386,
+      "bank": 1387,
+      "response": 1388,
+      "arrival": 336
+    },
+    {
+      "release": 1389,
+      "request": 1390,
+      "bank": 1391,
+      "response": 1392,
+      "arrival": 337
+    },
+    {
+      "release": 1393,
+      "request": 1394,
+      "bank": 1395,
+      "response": 1396,
+      "arrival": 338
+    },
+    {
+      "release": 1397,
+      "request": 1398,
+      "bank": 1399,
+      "response": 1400,
+      "arrival": 339
+    },
+    {
+      "release": 1401,
+      "request": 1402,
+      "bank": 1403,
+      "response": 1404,
+      "arrival": 340
+    },
+    {
+      "release": 1405,
+      "request": 1406,
+      "bank": 1407,
+      "response": 1408,
+      "arrival": 341
+    },
+    {
+      "release": 1409,
+      "request": 1410,
+      "bank": 1411,
+      "response": 1412,
+      "arrival": 342
+    },
+    {
+      "release": 1413,
+      "request": 1414,
+      "bank": 1415,
+      "response": 1416,
+      "arrival": 343
+    },
+    {
+      "release": 1417,
+      "request": 1418,
+      "bank": 1419,
+      "response": 1420,
+      "arrival": 344
+    },
+    {
+      "release": 1421,
+      "request": 1422,
+      "bank": 1423,
+      "response": 1424,
+      "arrival": 345
+    },
+    {
+      "release": 1425,
+      "request": 1426,
+      "bank": 1427,
+      "response": 1428,
+      "arrival": 346
+    },
+    {
+      "release": 1429,
+      "request": 1430,
+      "bank": 1431,
+      "response": 1432,
+      "arrival": 347
+    },
+    {
+      "release": 1433,
+      "request": 1434,
+      "bank": 1435,
+      "response": 1436,
+      "arrival": 348
+    },
+    {
+      "release": 1437,
+      "request": 1438,
+      "bank": 1439,
+      "response": 1440,
+      "arrival": 349
+    },
+    {
+      "release": 1441,
+      "request": 1442,
+      "bank": 1443,
+      "response": 1444,
+      "arrival": 350
+    },
+    {
+      "release": 1445,
+      "request": 1446,
+      "bank": 1447,
+      "response": 1448,
+      "arrival": 351
+    },
+    {
+      "release": 1449,
+      "request": 1450,
+      "bank": 1451,
+      "response": 1452,
+      "arrival": 352
+    },
+    {
+      "release": 1453,
+      "request": 1454,
+      "bank": 1455,
+      "response": 1456,
+      "arrival": 353
+    },
+    {
+      "release": 1457,
+      "request": 1458,
+      "bank": 1459,
+      "response": 1460,
+      "arrival": 354
+    },
+    {
+      "release": 1461,
+      "request": 1462,
+      "bank": 1463,
+      "response": 1464,
+      "arrival": 355
+    },
+    {
+      "release": 1465,
+      "request": 1466,
+      "bank": 1467,
+      "response": 1468,
+      "arrival": 356
+    },
+    {
+      "release": 1469,
+      "request": 1470,
+      "bank": 1471,
+      "response": 1472,
+      "arrival": 357
+    },
+    {
+      "release": 1473,
+      "request": 1474,
+      "bank": 1475,
+      "response": 1476,
+      "arrival": 358
+    },
+    {
+      "release": 1477,
+      "request": 1478,
+      "bank": 1479,
+      "response": 1480,
+      "arrival": 359
+    },
+    {
+      "release": 1481,
+      "request": 1482,
+      "bank": 1483,
+      "response": 1484,
+      "arrival": 360
+    },
+    {
+      "release": 1485,
+      "request": 1486,
+      "bank": 1487,
+      "response": 1488,
+      "arrival": 361
+    },
+    {
+      "release": 1489,
+      "request": 1490,
+      "bank": 1491,
+      "response": 1492,
+      "arrival": 362
+    },
+    {
+      "release": 1493,
+      "request": 1494,
+      "bank": 1495,
+      "response": 1496,
+      "arrival": 363
+    },
+    {
+      "release": 1497,
+      "request": 1498,
+      "bank": 1499,
+      "response": 1500,
+      "arrival": 364
+    },
+    {
+      "release": 1501,
+      "request": 1502,
+      "bank": 1503,
+      "response": 1504,
+      "arrival": 365
+    },
+    {
+      "release": 1505,
+      "request": 1506,
+      "bank": 1507,
+      "response": 1508,
+      "arrival": 366
+    },
+    {
+      "release": 1509,
+      "request": 1510,
+      "bank": 1511,
+      "response": 1512,
+      "arrival": 367
+    },
+    {
+      "release": 1513,
+      "request": 1514,
+      "bank": 1515,
+      "response": 1516,
+      "arrival": 368
+    },
+    {
+      "release": 1517,
+      "request": 1518,
+      "bank": 1519,
+      "response": 1520,
+      "arrival": 369
+    },
+    {
+      "release": 1521,
+      "request": 1522,
+      "bank": 1523,
+      "response": 1524,
+      "arrival": 370
+    },
+    {
+      "release": 1525,
+      "request": 1526,
+      "bank": 1527,
+      "response": 1528,
+      "arrival": 371
+    },
+    {
+      "release": 1529,
+      "request": 1530,
+      "bank": 1531,
+      "response": 1532,
+      "arrival": 372
+    },
+    {
+      "release": 1533,
+      "request": 1534,
+      "bank": 1535,
+      "response": 1536,
+      "arrival": 373
+    },
+    {
+      "release": 1537,
+      "request": 1538,
+      "bank": 1539,
+      "response": 1540,
+      "arrival": 374
+    },
+    {
+      "release": 1541,
+      "request": 1542,
+      "bank": 1543,
+      "response": 1544,
+      "arrival": 375
+    },
+    {
+      "release": 1545,
+      "request": 1546,
+      "bank": 1547,
+      "response": 1548,
+      "arrival": 376
+    },
+    {
+      "release": 1549,
+      "request": 1550,
+      "bank": 1551,
+      "response": 1552,
+      "arrival": 377
+    },
+    {
+      "release": 1553,
+      "request": 1554,
+      "bank": 1555,
+      "response": 1556,
+      "arrival": 378
+    },
+    {
+      "release": 1557,
+      "request": 1558,
+      "bank": 1559,
+      "response": 1560,
+      "arrival": 379
+    },
+    {
+      "release": 1561,
+      "request": 1562,
+      "bank": 1563,
+      "response": 1564,
+      "arrival": 380
+    },
+    {
+      "release": 1565,
+      "request": 1566,
+      "bank": 1567,
+      "response": 1568,
+      "arrival": 381
+    },
+    {
+      "release": 1569,
+      "request": 1570,
+      "bank": 1571,
+      "response": 1572,
+      "arrival": 382
+    },
+    {
+      "release": 1573,
+      "request": 1574,
+      "bank": 1575,
+      "response": 1576,
+      "arrival": 383
+    },
+    {
+      "release": 1577,
+      "request": 1578,
+      "bank": 1579,
+      "response": 1580,
+      "arrival": 384
+    },
+    {
+      "release": 1581,
+      "request": 1582,
+      "bank": 1583,
+      "response": 1584,
+      "arrival": 385
+    },
+    {
+      "release": 1585,
+      "request": 1586,
+      "bank": 1587,
+      "response": 1588,
+      "arrival": 386
+    },
+    {
+      "release": 1589,
+      "request": 1590,
+      "bank": 1591,
+      "response": 1592,
+      "arrival": 387
+    },
+    {
+      "release": 1593,
+      "request": 1594,
+      "bank": 1595,
+      "response": 1596,
+      "arrival": 388
+    },
+    {
+      "release": 1597,
+      "request": 1598,
+      "bank": 1599,
+      "response": 1600,
+      "arrival": 389
+    },
+    {
+      "release": 1601,
+      "request": 1602,
+      "bank": 1603,
+      "response": 1604,
+      "arrival": 390
+    },
+    {
+      "release": 1605,
+      "request": 1606,
+      "bank": 1607,
+      "response": 1608,
+      "arrival": 391
+    },
+    {
+      "release": 1609,
+      "request": 1610,
+      "bank": 1611,
+      "response": 1612,
+      "arrival": 392
+    },
+    {
+      "release": 1613,
+      "request": 1614,
+      "bank": 1615,
+      "response": 1616,
+      "arrival": 393
+    },
+    {
+      "release": 1617,
+      "request": 1618,
+      "bank": 1619,
+      "response": 1620,
+      "arrival": 394
+    },
+    {
+      "release": 1621,
+      "request": 1622,
+      "bank": 1623,
+      "response": 1624,
+      "arrival": 395
+    },
+    {
+      "release": 1625,
+      "request": 1626,
+      "bank": 1627,
+      "response": 1628,
+      "arrival": 396
+    },
+    {
+      "release": 1629,
+      "request": 1630,
+      "bank": 1631,
+      "response": 1632,
+      "arrival": 397
+    },
+    {
+      "release": 1633,
+      "request": 1634,
+      "bank": 1635,
+      "response": 1636,
+      "arrival": 398
+    },
+    {
+      "release": 1637,
+      "request": 1638,
+      "bank": 1639,
+      "response": 1640,
+      "arrival": 399
+    },
+    {
+      "release": 1641,
+      "request": 1642,
+      "bank": 1643,
+      "response": 1644,
+      "arrival": 400
+    },
+    {
+      "release": 1645,
+      "request": 1646,
+      "bank": 1647,
+      "response": 1648,
+      "arrival": 401
+    },
+    {
+      "release": 1649,
+      "request": 1650,
+      "bank": 1651,
+      "response": 1652,
+      "arrival": 402
+    },
+    {
+      "release": 1653,
+      "request": 1654,
+      "bank": 1655,
+      "response": 1656,
+      "arrival": 403
+    },
+    {
+      "release": 1657,
+      "request": 1658,
+      "bank": 1659,
+      "response": 1660,
+      "arrival": 404
+    },
+    {
+      "release": 1661,
+      "request": 1662,
+      "bank": 1663,
+      "response": 1664,
+      "arrival": 405
+    },
+    {
+      "release": 1665,
+      "request": 1666,
+      "bank": 1667,
+      "response": 1668,
+      "arrival": 406
+    },
+    {
+      "release": 1669,
+      "request": 1670,
+      "bank": 1671,
+      "response": 1672,
+      "arrival": 407
+    },
+    {
+      "release": 1673,
+      "request": 1674,
+      "bank": 1675,
+      "response": 1676,
+      "arrival": 408
+    },
+    {
+      "release": 1677,
+      "request": 1678,
+      "bank": 1679,
+      "response": 1680,
+      "arrival": 409
+    },
+    {
+      "release": 1681,
+      "request": 1682,
+      "bank": 1683,
+      "response": 1684,
+      "arrival": 410
+    },
+    {
+      "release": 1685,
+      "request": 1686,
+      "bank": 1687,
+      "response": 1688,
+      "arrival": 411
+    },
+    {
+      "release": 1689,
+      "request": 1690,
+      "bank": 1691,
+      "response": 1692,
+      "arrival": 412
+    },
+    {
+      "release": 1693,
+      "request": 1694,
+      "bank": 1695,
+      "response": 1696,
+      "arrival": 413
+    },
+    {
+      "release": 1697,
+      "request": 1698,
+      "bank": 1699,
+      "response": 1700,
+      "arrival": 414
+    },
+    {
+      "release": 1701,
+      "request": 1702,
+      "bank": 1703,
+      "response": 1704,
+      "arrival": 415
+    },
+    {
+      "release": 1705,
+      "request": 1706,
+      "bank": 1707,
+      "response": 1708,
+      "arrival": 416
+    },
+    {
+      "release": 1709,
+      "request": 1710,
+      "bank": 1711,
+      "response": 1712,
+      "arrival": 417
+    },
+    {
+      "release": 1713,
+      "request": 1714,
+      "bank": 1715,
+      "response": 1716,
+      "arrival": 418
+    },
+    {
+      "release": 1717,
+      "request": 1718,
+      "bank": 1719,
+      "response": 1720,
+      "arrival": 419
+    },
+    {
+      "release": 1721,
+      "request": 1722,
+      "bank": 1723,
+      "response": 1724,
+      "arrival": 420
+    },
+    {
+      "release": 1725,
+      "request": 1726,
+      "bank": 1727,
+      "response": 1728,
+      "arrival": 421
+    },
+    {
+      "release": 1729,
+      "request": 1730,
+      "bank": 1731,
+      "response": 1732,
+      "arrival": 422
+    },
+    {
+      "release": 1733,
+      "request": 1734,
+      "bank": 1735,
+      "response": 1736,
+      "arrival": 423
+    },
+    {
+      "release": 1737,
+      "request": 1738,
+      "bank": 1739,
+      "response": 1740,
+      "arrival": 424
+    },
+    {
+      "release": 1741,
+      "request": 1742,
+      "bank": 1743,
+      "response": 1744,
+      "arrival": 425
+    },
+    {
+      "release": 1745,
+      "request": 1746,
+      "bank": 1747,
+      "response": 1748,
+      "arrival": 426
+    },
+    {
+      "release": 1749,
+      "request": 1750,
+      "bank": 1751,
+      "response": 1752,
+      "arrival": 427
+    },
+    {
+      "release": 1753,
+      "request": 1754,
+      "bank": 1755,
+      "response": 1756,
+      "arrival": 428
+    },
+    {
+      "release": 1757,
+      "request": 1758,
+      "bank": 1759,
+      "response": 1760,
+      "arrival": 429
+    },
+    {
+      "release": 1761,
+      "request": 1762,
+      "bank": 1763,
+      "response": 1764,
+      "arrival": 430
+    },
+    {
+      "release": 1765,
+      "request": 1766,
+      "bank": 1767,
+      "response": 1768,
+      "arrival": 431
+    },
+    {
+      "release": 1769,
+      "request": 1770,
+      "bank": 1771,
+      "response": 1772,
+      "arrival": 432
+    },
+    {
+      "release": 1773,
+      "request": 1774,
+      "bank": 1775,
+      "response": 1776,
+      "arrival": 433
+    },
+    {
+      "release": 1777,
+      "request": 1778,
+      "bank": 1779,
+      "response": 1780,
+      "arrival": 434
+    },
+    {
+      "release": 1781,
+      "request": 1782,
+      "bank": 1783,
+      "response": 1784,
+      "arrival": 435
+    },
+    {
+      "release": 1785,
+      "request": 1786,
+      "bank": 1787,
+      "response": 1788,
+      "arrival": 436
+    },
+    {
+      "release": 1789,
+      "request": 1790,
+      "bank": 1791,
+      "response": 1792,
+      "arrival": 437
+    },
+    {
+      "release": 1793,
+      "request": 1794,
+      "bank": 1795,
+      "response": 1796,
+      "arrival": 438
+    },
+    {
+      "release": 1797,
+      "request": 1798,
+      "bank": 1799,
+      "response": 1800,
+      "arrival": 439
+    },
+    {
+      "release": 1801,
+      "request": 1802,
+      "bank": 1803,
+      "response": 1804,
+      "arrival": 440
+    },
+    {
+      "release": 1805,
+      "request": 1806,
+      "bank": 1807,
+      "response": 1808,
+      "arrival": 441
+    },
+    {
+      "release": 1809,
+      "request": 1810,
+      "bank": 1811,
+      "response": 1812,
+      "arrival": 442
+    },
+    {
+      "release": 1813,
+      "request": 1814,
+      "bank": 1815,
+      "response": 1816,
+      "arrival": 443
+    },
+    {
+      "release": 1817,
+      "request": 1818,
+      "bank": 1819,
+      "response": 1820,
+      "arrival": 444
+    },
+    {
+      "release": 1821,
+      "request": 1822,
+      "bank": 1823,
+      "response": 1824,
+      "arrival": 445
+    },
+    {
+      "release": 1825,
+      "request": 1826,
+      "bank": 1827,
+      "response": 1828,
+      "arrival": 446
+    },
+    {
+      "release": 1829,
+      "request": 1830,
+      "bank": 1831,
+      "response": 1832,
+      "arrival": 447
+    },
+    {
+      "release": 1833,
+      "request": 1834,
+      "bank": 1835,
+      "response": 1836,
+      "arrival": 448
+    },
+    {
+      "release": 1837,
+      "request": 1838,
+      "bank": 1839,
+      "response": 1840,
+      "arrival": 449
+    },
+    {
+      "release": 1841,
+      "request": 1842,
+      "bank": 1843,
+      "response": 1844,
+      "arrival": 450
+    },
+    {
+      "release": 1845,
+      "request": 1846,
+      "bank": 1847,
+      "response": 1848,
+      "arrival": 451
+    },
+    {
+      "release": 1849,
+      "request": 1850,
+      "bank": 1851,
+      "response": 1852,
+      "arrival": 452
+    },
+    {
+      "release": 1853,
+      "request": 1854,
+      "bank": 1855,
+      "response": 1856,
+      "arrival": 453
+    },
+    {
+      "release": 1857,
+      "request": 1858,
+      "bank": 1859,
+      "response": 1860,
+      "arrival": 454
+    },
+    {
+      "release": 1861,
+      "request": 1862,
+      "bank": 1863,
+      "response": 1864,
+      "arrival": 455
+    },
+    {
+      "release": 1865,
+      "request": 1866,
+      "bank": 1867,
+      "response": 1868,
+      "arrival": 456
+    },
+    {
+      "release": 1869,
+      "request": 1870,
+      "bank": 1871,
+      "response": 1872,
+      "arrival": 457
+    },
+    {
+      "release": 1873,
+      "request": 1874,
+      "bank": 1875,
+      "response": 1876,
+      "arrival": 458
+    },
+    {
+      "release": 1877,
+      "request": 1878,
+      "bank": 1879,
+      "response": 1880,
+      "arrival": 459
+    },
+    {
+      "release": 1881,
+      "request": 1882,
+      "bank": 1883,
+      "response": 1884,
+      "arrival": 460
+    },
+    {
+      "release": 1885,
+      "request": 1886,
+      "bank": 1887,
+      "response": 1888,
+      "arrival": 461
+    },
+    {
+      "release": 1889,
+      "request": 1890,
+      "bank": 1891,
+      "response": 1892,
+      "arrival": 462
+    },
+    {
+      "release": 1893,
+      "request": 1894,
+      "bank": 1895,
+      "response": 1896,
+      "arrival": 463
+    },
+    {
+      "release": 1897,
+      "request": 1898,
+      "bank": 1899,
+      "response": 1900,
+      "arrival": 464
+    },
+    {
+      "release": 1901,
+      "request": 1902,
+      "bank": 1903,
+      "response": 1904,
+      "arrival": 465
+    },
+    {
+      "release": 1905,
+      "request": 1906,
+      "bank": 1907,
+      "response": 1908,
+      "arrival": 466
+    },
+    {
+      "release": 1909,
+      "request": 1910,
+      "bank": 1911,
+      "response": 1912,
+      "arrival": 467
+    },
+    {
+      "release": 1913,
+      "request": 1914,
+      "bank": 1915,
+      "response": 1916,
+      "arrival": 468
+    },
+    {
+      "release": 1917,
+      "request": 1918,
+      "bank": 1919,
+      "response": 1920,
+      "arrival": 469
+    },
+    {
+      "release": 1921,
+      "request": 1922,
+      "bank": 1923,
+      "response": 1924,
+      "arrival": 470
+    },
+    {
+      "release": 1925,
+      "request": 1926,
+      "bank": 1927,
+      "response": 1928,
+      "arrival": 471
+    },
+    {
+      "release": 1929,
+      "request": 1930,
+      "bank": 1931,
+      "response": 1932,
+      "arrival": 472
+    },
+    {
+      "release": 1933,
+      "request": 1934,
+      "bank": 1935,
+      "response": 1936,
+      "arrival": 473
+    },
+    {
+      "release": 1937,
+      "request": 1938,
+      "bank": 1939,
+      "response": 1940,
+      "arrival": 474
+    },
+    {
+      "release": 1941,
+      "request": 1942,
+      "bank": 1943,
+      "response": 1944,
+      "arrival": 475
+    },
+    {
+      "release": 1945,
+      "request": 1946,
+      "bank": 1947,
+      "response": 1948,
+      "arrival": 476
+    },
+    {
+      "release": 1949,
+      "request": 1950,
+      "bank": 1951,
+      "response": 1952,
+      "arrival": 477
+    },
+    {
+      "release": 1953,
+      "request": 1954,
+      "bank": 1955,
+      "response": 1956,
+      "arrival": 478
+    },
+    {
+      "release": 1957,
+      "request": 1958,
+      "bank": 1959,
+      "response": 1960,
+      "arrival": 479
+    },
+    {
+      "release": 1961,
+      "request": 1962,
+      "bank": 1963,
+      "response": 1964,
+      "arrival": 480
+    },
+    {
+      "release": 1965,
+      "request": 1966,
+      "bank": 1967,
+      "response": 1968,
+      "arrival": 481
+    },
+    {
+      "release": 1969,
+      "request": 1970,
+      "bank": 1971,
+      "response": 1972,
+      "arrival": 482
+    },
+    {
+      "release": 1973,
+      "request": 1974,
+      "bank": 1975,
+      "response": 1976,
+      "arrival": 483
+    },
+    {
+      "release": 1977,
+      "request": 1978,
+      "bank": 1979,
+      "response": 1980,
+      "arrival": 484
+    },
+    {
+      "release": 1981,
+      "request": 1982,
+      "bank": 1983,
+      "response": 1984,
+      "arrival": 485
+    },
+    {
+      "release": 1985,
+      "request": 1986,
+      "bank": 1987,
+      "response": 1988,
+      "arrival": 486
+    },
+    {
+      "release": 1989,
+      "request": 1990,
+      "bank": 1991,
+      "response": 1992,
+      "arrival": 487
+    },
+    {
+      "release": 1993,
+      "request": 1994,
+      "bank": 1995,
+      "response": 1996,
+      "arrival": 488
+    },
+    {
+      "release": 1997,
+      "request": 1998,
+      "bank": 1999,
+      "response": 2000,
+      "arrival": 489
+    },
+    {
+      "release": 2001,
+      "request": 2002,
+      "bank": 2003,
+      "response": 2004,
+      "arrival": 490
+    },
+    {
+      "release": 2005,
+      "request": 2006,
+      "bank": 2007,
+      "response": 2008,
+      "arrival": 491
+    },
+    {
+      "release": 2009,
+      "request": 2010,
+      "bank": 2011,
+      "response": 2012,
+      "arrival": 492
+    },
+    {
+      "release": 2013,
+      "request": 2014,
+      "bank": 2015,
+      "response": 2016,
+      "arrival": 493
+    },
+    {
+      "release": 2017,
+      "request": 2018,
+      "bank": 2019,
+      "response": 2020,
+      "arrival": 494
+    },
+    {
+      "release": 2021,
+      "request": 2022,
+      "bank": 2023,
+      "response": 2024,
+      "arrival": 495
+    },
+    {
+      "release": 2025,
+      "request": 2026,
+      "bank": 2027,
+      "response": 2028,
+      "arrival": 496
+    },
+    {
+      "release": 2029,
+      "request": 2030,
+      "bank": 2031,
+      "response": 2032,
+      "arrival": 497
+    },
+    {
+      "release": 2033,
+      "request": 2034,
+      "bank": 2035,
+      "response": 2036,
+      "arrival": 498
+    },
+    {
+      "release": 2037,
+      "request": 2038,
+      "bank": 2039,
+      "response": 2040,
+      "arrival": 499
+    },
+    {
+      "release": 2041,
+      "request": 2042,
+      "bank": 2043,
+      "response": 2044,
+      "arrival": 500
+    },
+    {
+      "release": 2045,
+      "request": 2046,
+      "bank": 2047,
+      "response": 2048,
+      "arrival": 501
+    },
+    {
+      "release": 2049,
+      "request": 2050,
+      "bank": 2051,
+      "response": 2052,
+      "arrival": 502
+    },
+    {
+      "release": 2053,
+      "request": 2054,
+      "bank": 2055,
+      "response": 2056,
+      "arrival": 503
+    },
+    {
+      "release": 2057,
+      "request": 2058,
+      "bank": 2059,
+      "response": 2060,
+      "arrival": 504
+    },
+    {
+      "release": 2061,
+      "request": 2062,
+      "bank": 2063,
+      "response": 2064,
+      "arrival": 505
+    },
+    {
+      "release": 2065,
+      "request": 2066,
+      "bank": 2067,
+      "response": 2068,
+      "arrival": 506
+    },
+    {
+      "release": 2069,
+      "request": 2070,
+      "bank": 2071,
+      "response": 2072,
+      "arrival": 507
+    },
+    {
+      "release": 2073,
+      "request": 2074,
+      "bank": 2075,
+      "response": 2076,
+      "arrival": 508
+    },
+    {
+      "release": 2077,
+      "request": 2078,
+      "bank": 2079,
+      "response": 2080,
+      "arrival": 509
+    },
+    {
+      "release": 2081,
+      "request": 2082,
+      "bank": 2083,
+      "response": 2084,
+      "arrival": 510
+    },
+    {
+      "release": 2085,
+      "request": 2086,
+      "bank": 2087,
+      "response": 2088,
+      "arrival": 511
+    }
+  ],
+  "first_dispatch": 1,
+  "moe_done": 40,
+  "join": 2089
+}
