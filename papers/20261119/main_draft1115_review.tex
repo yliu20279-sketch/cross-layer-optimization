@@ -4,6 +4,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{tabularx}
+\usepackage{booktabs}
 \usepackage{placeins}
 \usepackage{balance}
 \usepackage{algorithm}
@@ -391,8 +392,8 @@ forwarding throughout.
 \subsection{Thermal-Aware Execution}
 \label{sec:thermal-design}
 
-Thermal-aware execution complements bank placement and
-NoC reconfiguration by adjusting operator frequencies and
+Thermal-aware execution complements NoC reconfiguration
+by adjusting operator frequencies and
 task start times to reduce latency under thermal constraints.
 Let $s_j$ and $r_j$ denote the start time and frequency
 ratio of task $j$. The execution objective is
@@ -459,6 +460,7 @@ end-to-end estimates have different completion boundaries.
 \end{figure}
 
 \subsection{Ablation and Implementation Overhead}
+\subsubsection{Ablation}
 Figure~\ref{fig:eval-breakdown} separates traffic-plane, arbitration, and circuit
 effects using the common RTL/endpoint testbench. Five frozen Qwen1.5-MoE
 transport inputs comprise one each at 4 and 8 tokens and three 16-token seeds.
@@ -493,20 +495,7 @@ interactions make these effects non-additive. Recorded configuration
 intervals are 845--925 simulated cycles, distinct from the separate
 architecture model's 40-cycle aggregate installation parameter.
 
-\paragraph{Controller timing}
-The two-path runtime reference charges 256 NoC cycles for planning and
-again for post-pause validation while $S_0$ forwards. Configuration requests
-and acknowledgements traverse the RTL network. The timing reference uses
-known arrivals and $\eta=0$. With a 32-cycle per-GetS delay allowance,
-the 16/32/64-token runs retain $S_0$. Hardware planning and prediction
-latencies remain uncalibrated.
-
-\paragraph{Sensitivity}
-Stage-join changes by token count, GetS placement, and release interval:
-xxx. Configuration-cost and decision-lead sweeps (ranges and results):
-xxx.
-
-\noindent\textbf{Thermal ablation.}
+\paragraph{Thermal ablation}
 In the modeled 24-layer Qwen1.5-MoE run (four requests, 512 prefill and
 one decode token each), both arms use fixed XY Mesh, a common warm state
 (63.501~$^{\circ}$C peak), and no bank-conflict optimization. Enabling DVFS
@@ -515,6 +504,32 @@ and thermal scheduling reduces peak temperature from 64.985 to
 Completion time increases from 6.658 to 7.771~s (+16.72\%) and energy
 from 49.491 to 51.544~J (+4.15\%).
 
+\subsubsection{Sensitivity}
+Stage-join changes by token count, GetS placement, and release interval:
+xxx. Configuration-cost and decision-lead sweeps (ranges and results):
+xxx.
+
+\subsubsection{Implementation overhead}
+We report controller timing, host software measurements, and hardware costs.
+
+\paragraph{Controller timing}
+The two-path runtime reference charges 256 NoC cycles for planning and
+again for post-pause validation while $S_0$ forwards. Configuration requests
+and acknowledgements traverse the RTL network. The timing reference uses
+known arrivals and $\eta=0$. With a 32-cycle per-GetS delay allowance,
+the 16/32/64-token runs retain $S_0$. Hardware planning and prediction
+latencies remain uncalibrated.
+
+\paragraph{Online policy and software overhead}
+We profile the host-side reconfiguration software on a single logical CPU
+of an Intel Xeon Platinum 8160 using two 16-token cases. Across the six
+communication phases, candidate construction takes 1.85--5.65~ms in the
+first case and 1.84--5.29~ms in the second. Including baseline and candidate
+timing evaluations, pre-pause planning takes 26.52--31.52~s and
+4.55--10.27~s, respectively. Exact RTL timing evaluation accounts for most
+of the planning time.
+
+\paragraph{Hardware and configuration costs}
 Table~\ref{tab:eval-cost} compares simplified shared-Mesh and C/M network
 cores, excluding full endpoints, SRAM/banks, distributed configuration,
 thermal, and cross-tier hardware. FPGA: Vivado 2017.4, XCKU5P, 200~MHz
@@ -525,26 +540,28 @@ metric is $100(T_{\mathrm{cfg}}-T_{\mathrm{pre}})/T_{\mathrm{cfg}}$, using the
 six-phase join sums with timed configuration ($T_{\mathrm{cfg}}$) and with
 preinstallation ($T_{\mathrm{pre}}$). The control preserves the CS image,
 packet assignments, and input releases and omits timed configuration
-traffic and selected-packet holds.
+traffic and selected-packet holds. Software timings use the same case order.
+Ranges cover six phases; construction uses three-sample medians per phase.
 
 \begin{table}[!ht]
 \caption{Network-core and runtime costs (simplified NIs).}
 \label{tab:eval-cost}
 \centering\scriptsize
-\renewcommand{\arraystretch}{0.85}
+\renewcommand{\arraystretch}{1.20}
 \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
-\hline
+\toprule
 Metric & Shared Mesh & Dual plane + CS \\
-\hline
+\midrule
 FPGA LUTs / flip-flops & 31,995 / 38,286 & 117,625 / 92,783 \\
 FPGA BRAM / DSP & 0 / 0 & 0 / 0 \\
 FPGA setup WNS (ns), 200\,MHz & $+0.339$ & $+0.043$ \\
 ASIC synthesis area (mm$^2$) & 0.332176 & 0.869972 \\
 ASIC area increase (\%) & --- & 161.90 \\
-\hline
-Exposed decision overhead (\%) & xxx & xxx \\
+\midrule
+Candidate construction time (ms) & --- & 1.85--5.65 / 1.84--5.29 \\
+Pre-pause planning time (s) & --- & 26.52--31.52 / 4.55--10.27 \\
 Exposed configuration delay (\%) & --- & 0.51 / 0.49 \\
-\hline
+\bottomrule
 \end{tabularx}
 \end{table}
 
@@ -600,7 +617,6 @@ thermal-aware scheduling manage execution under temperature constraints.
 The evaluation quantifies communication-stage gains and the trade-off
 between peak temperature, latency, and energy under thermal control.
 
-\clearpage
 \balance
 \bibliographystyle{IEEEtran}
 \bibliography{references,thermal_references}
