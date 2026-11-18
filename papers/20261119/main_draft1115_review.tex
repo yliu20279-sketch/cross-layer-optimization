@@ -140,11 +140,13 @@ from a concurrent general-purpose branch.
 They enter through the modeled NIs and share router outputs with MoE
 Dispatch/Combine packets. Figure~\ref{fig:noc-phenomenon}(a) compares
 isolated execution, shared-Mesh co-execution, and dual-plane co-execution
-with CSs disabled. Across 30 paired cases, the geometric-mean completion
-ratios relative to each branch's isolated execution are 1.164/1.379 for
-coherence/MoE on the shared Mesh and 1.135/1.365 on separate planes.
-The geometric mean of the dual/shared ratios of summed stage-join
-times is 0.977. Both configurations use the same traffic and NI/SRAM
+with CSs disabled. Across 30 paired cases, geometric-mean normalized
+completion times show increases of 16.4\% and 37.9\% for coherence and
+MoE, respectively, on the shared Mesh relative to isolated execution.
+With separate planes, these increases fall to 13.5\% and 36.5\%,
+respectively. The summed stage-join time is reduced by approximately
+2.3\% relative to the shared Mesh, based on the geometric mean of
+paired completion-time ratios. Both configurations use the same traffic and NI/SRAM
 service settings, with round-robin arbitration and CSs disabled.
 Figure~\ref{fig:noc-phenomenon}(a) motivates separating coherence and MoE
 traffic to reduce their mutual interference on shared Mesh resources.
@@ -204,7 +206,8 @@ both local bandwidth demand and long-distance forwarding.
   \caption{(a) Branch completion times normalized to separate isolated
 runs. Bars show geometric means across 30 paired cases, each summing
 six independent communication phases. Dual-plane CSs are disabled.
-The geometric-mean dual/shared join-time ratio is 0.977.
+The summed stage-join time is reduced by approximately 2.3\% relative
+to shared Mesh, based on the geometric mean of paired ratios.
 (b) XY-path router demand across MoE layers, using a shared color scale.}
 \Description{Normalized coherence and MoE completion times and
 layer-dependent router demand.}
@@ -375,12 +378,15 @@ transfer descriptor. Unassigned MoE packets use the M-plane Mesh.
 
 The NI acknowledges a pause after holding the selected unbound MoE
 descriptors and stopping new CS admissions. Admitted transfers retain
-their routes. After the final check, \textsc{ApplyCS} drains these
-transfers, writes and confirms the CS states, installs matching NI
-assignments and versions, and resumes transmission. A rejected final check
-releases the holds and resumes $S_0$. A write or installation error
-is reported with CS admissions paused until matching CS and NI
-configurations are restored. Plane C continues forwarding throughout.
+their routes and drain before the final check. After validation,
+\textsc{ApplyCS} enters the configuration sequencer at its write phase.
+This entry checks pause acknowledgements, CS idle state, and the next
+configuration version. The sequencer writes and confirms CS states,
+installs matching NI assignments and versions, and resumes transmission
+without repeating the pause. A rejected final check releases holds and
+resumes $S_0$. A write or installation error leaves CS admissions paused
+until matching CS and NI configurations are restored. Plane C continues
+forwarding throughout.
 
 \subsection{Thermal-Aware Execution}
 \label{sec:thermal-design}
@@ -487,13 +493,13 @@ interactions make these effects non-additive. Recorded configuration
 intervals are 845--925 simulated cycles, distinct from the separate
 architecture model's 40-cycle aggregate installation parameter.
 
-\paragraph{Online-policy boundary}
-The charged-host-time runtime prototype commits no updates in the 180
-main-matrix phases: each phase completes during candidate construction.
-Its completion times equal those of CS-off and are not plotted again.
-Forced-CS results characterize the routing mechanism rather than established
-online-policy gains. The ablation does not establish dual-plane type-priority
-performance or real adjacent-layer prediction accuracy.
+\paragraph{Controller timing}
+The two-path runtime reference charges 256 NoC cycles for planning and
+again for post-pause validation while $S_0$ forwards. Configuration requests
+and acknowledgements traverse the RTL network. The timing reference uses
+known arrivals and $\eta=0$. With a 32-cycle per-GetS delay allowance,
+the 16/32/64-token runs retain $S_0$. Hardware planning and prediction
+latencies remain uncalibrated.
 
 \paragraph{Sensitivity}
 Stage-join changes by token count, GetS placement, and release interval:

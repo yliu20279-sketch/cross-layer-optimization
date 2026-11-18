@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{placeins}
+\usepackage{balance}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[hidelinks]{hyperref}
@@ -14,7 +15,7 @@
 \setlength{\emergencystretch}{1em}
 
 
-\title{Thermal-Aware NoC Reconfiguration for Co-Running MoE and Coherence Traffic in 3D-Stacked Accelerators}
+\title{Thermal-Aware NoC Reconfiguration for Concurrent General-Purpose Computing and MoE Inference in 3D-Stacked Systems}
 \author{Anonymous Author(s)}
 
 \begin{document}
@@ -23,7 +24,7 @@
 \maketitle
 
 \begin{abstract}
-An asynchronous agent can run general-purpose tasks alongside AI inference. We focus on AI inference with mixture-of-experts (MoE) models. In a 3D DRAM-stacked system, MoE dispatch traffic can contend with general-purpose memory requests at shared network-on-chip (NoC) outputs, delaying a step that needs both results. Our traffic-aware NoC reconfiguration predicts demand from expert activation and memory accesses and diverts selected MoE packets through configurable switches. Before updating routes, the controller estimates completion time, accounting for network interface delays, memory bank access, and reconfiguration overhead. Operator-level dynamic voltage and frequency scaling and thermal-aware task scheduling manage execution under peak-temperature constraints.
+An asynchronous agent can run general-purpose tasks alongside AI inference. We focus on AI inference with mixture-of-experts (MoE) models. In a 3D DRAM-stacked system, MoE dispatch traffic can contend with general-purpose memory requests at shared network-on-chip (NoC) outputs, delaying a step that needs both results. We place coherence traffic on a separate Mesh and reconfigure MoE paths using predicted demand. Configurable switches provide additional MoE channels and bypass intermediate routers. Before updating routes, the controller estimates completion time, accounting for network interface delays, memory bank access, and reconfiguration overhead. Operator-level dynamic voltage and frequency scaling and thermal-aware task scheduling manage execution under peak-temperature constraints.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -52,14 +53,16 @@ inputs, model layers, and the dispatch and combine phases. Thermal coupling
 between the stacked logic and DRAM tiers can also trigger throttling and
 prolong inference.
 
-RHT\_NoC dynamically combines horizontal and vertical torus loops according
-to aggregate inter-ring traffic~\cite{xu2025rhtnoc}. Flows on the same combined
-loop share its capacity. As heavily loaded node pairs change, finer-grained
-connections can add bandwidth between neighboring nodes and bypass
-intermediate routers for distant transfers.
+HiBand selects among four local/global bandwidth modes~\cite{wang2026hiband},
+but mode selection alone does not choose dedicated connections for
+individual heavy source--destination pairs. Flows with similar locality
+can therefore remain on the same contended resources.
 
-We add a configurable-switch fabric alongside the existing NoC and
-reconfigure it as communication demand changes. A predictor estimates
+To address these problems, we propose a framework that combines
+traffic-aware NoC reconfiguration with thermal-aware execution.
+We separate coherence traffic onto a dedicated Mesh and add configurable
+switches to the MoE Mesh. The switch connections change with communication
+demand. A predictor estimates
 per-phase demand, and a configuration algorithm assigns packets to compatible
 circuits under switch-conflict and network interface and memory bank capacity
 constraints. The controller checks estimated completion time and
@@ -70,7 +73,8 @@ peak-temperature constraints.
 This work makes three contributions:
 \begin{enumerate}
   \item We design a reconfigurable NoC for concurrent general-purpose
-  workloads and MoE inference in 3D DRAM-stacked systems. The switch fabric
+  workloads and MoE inference in 3D DRAM-stacked systems. Separate Mesh
+  planes carry coherence and MoE traffic. The switch fabric
   provides local channels and cross-region paths that can be reassigned to
   individual node pairs between communication phases.
 
@@ -80,8 +84,8 @@ This work makes three contributions:
   reconfiguration overhead.
 
   \item We evaluate how the design affects the modeled readiness of a step
-  that waits for both the general-purpose and MoE branches. The reduction in
-  time to readiness relative to the baseline is XX\%.
+  that waits for both the general-purpose and MoE branches. While keeping peak temperature below the specified threshold,
+  the modeled time to readiness is reduced by up to 9.01\% relative to HiBand.
 \end{enumerate}
 
 \setlength{\textfloatsep}{12pt}
@@ -95,7 +99,7 @@ This work makes three contributions:
 
 \begin{figure}[!tbp]
   \centering
-  \includegraphics[width=\columnwidth]{figures/target_architecture.pdf}
+  \includegraphics[width=\columnwidth]{figures/target_architecture_uniform_titles.pdf}
   \caption{Target 3D system. (a) Host and HB-DRAM organization. (b) Face-to-face
   integration of the $4\times4$ Logic-tier NPU mesh and the aligned DRAM
   channels. (c) Microarchitecture of an NPU--memory pair.}
@@ -105,10 +109,10 @@ This work makes three contributions:
   \label{fig:target-architecture}
 \end{figure}
 
-Figure~\ref{fig:target-architecture} shows a 3D accelerator in which the
+Figure~\ref{fig:target-architecture} shows a 3D system in which the
 logic and memory tiers are integrated by face-to-face hybrid bonding.
 Each NPU cluster in the logic tier is vertically aligned with a DRAM
-partition and accesses it through a local hybrid-bond link. A baseline
+partition and accesses it through a local hybrid-bond link. A
 horizontal $4\times4$ Mesh NoC connects the NPU clusters and carries
 inter-cluster transfers, including MoE Dispatch and Combine traffic.
 Local memory accesses and inter-cluster transfers therefore use distinct
@@ -117,376 +121,272 @@ imposing a peak-temperature constraint on execution.
 
 To study co-execution, we replay an MoE dispatch trace alongside synthetic
 cache-coherence read requests that represent general-purpose memory traffic.
-The requests and their responses traverse the same horizontal mesh as the
+On the baseline, requests and responses share the horizontal Mesh with
 MoE traffic.
 
 The main MoE evaluation covers Qwen3-30B-A3B~\cite{qwen3report} and
 Qwen1.5-MoE-A2.7B~\cite{qwen15moe} for language-model inference,
 mini-SWE-agent~\cite{minisweagent} with a Qwen3-30B-A3B backend for
 SWE-bench Lite tasks~\cite{swebench}, and LingBot TI2V~\cite{lingbotvideo}
-for video generation. The auxiliary thermal scenario combines
-WHISPER~\cite{whisper}, an ORB-SLAM3-derived SLAM workload~\cite{orbslam3},
-and $\pi_{0.5}$~\cite{pi05}.
+for video generation.
 
 
-\subsection{Phase-Dependent Congestion in MoE Communication}
+\subsection{Cross-Workload Interference and MoE Hotspots}
 
 \noindent\textbf{Problem.}
-HiBand adapts communication locality by switching among four topologies---
-Full-Local, Local-Biased, Global-Biased, and Full-Global---that repartition
-bandwidth according to broad communication locality~\cite{wang2026hiband}.
-MoE communication can concentrate transfers around a small set of busy NPU
-nodes and links. When several messages need the same link or router output,
-they must wait even if other parts of the network have spare capacity.
-As hotspot locations change, the four predefined topologies may still leave
-concentrated flows competing for the same links and router outputs, causing
-persistent queueing despite spare capacity elsewhere.
-
-Figure~\ref{fig:noc-phenomenon}(a) shows the communication latency of
-Qwen3-30B-A3B prefill. As input length increases
-from 128 to 1024 tokens per request, the queueing share of mean network
-round-trip latency rises from 57.2\% to 88.8\%, while mean zero-load latency
-increases by 17.3\%. Zero-load latency includes serialization and traversal
-without competing traffic; queueing is the additional delay under concurrent
-traffic. Thus, queueing at shared network resources dominates the growth in
-communication latency as input length increases.
+In the mesh, synthetic GetS (shared-read) requests and DataS
+(data responses to shared-read requests) represent memory communication
+from a concurrent general-purpose branch.
+They enter through the modeled NIs and share router outputs with MoE
+Dispatch/Combine packets. Figure~\ref{fig:noc-phenomenon}(a) compares
+isolated execution, shared-Mesh co-execution, and dual-plane co-execution
+with CSs disabled. Across 30 paired cases, geometric-mean normalized
+completion times show increases of 16.4\% and 37.9\% for coherence and
+MoE, respectively, on the shared Mesh relative to isolated execution.
+With separate planes, these increases fall to 13.5\% and 36.5\%,
+respectively. The summed stage-join time is reduced by approximately
+2.3\% relative to the shared Mesh, based on the geometric mean of
+paired completion-time ratios. Both configurations use the same traffic and NI/SRAM
+service settings, with round-robin arbitration and CSs disabled.
+Figure~\ref{fig:noc-phenomenon}(a) motivates separating coherence and MoE
+traffic to reduce their mutual interference on shared Mesh resources.
 
 \noindent\textbf{Root Cause.}
-The gating network (Gate) selects a small set of experts for each token.
-During Dispatch, token activations are sent to the NPU nodes holding those
-experts; Combine returns the corresponding expert outputs. We define a flow
-as the messages from one source NPU to one destination NPU within a single
-communication phase. During Dispatch, when many tokens select the same experts, or several
-frequently selected experts reside on the same NPU, transfers concentrate at
-a small set of destinations. Flows whose routes overlap then compete for
-shared links and router outputs, creating queueing hotspots. Thus, hotspot
-formation depends on both the distribution of Gate selections and expert placement.
-Our controlled Qwen3 decoding test also shows that concentrated accesses
-can serialize requests at shared DRAM banks. Spreading those accesses across
-banks addresses memory-side waiting, while overlapping NoC routes still
-require path-level control.
+Packets requesting the same router output compete for finite link service.
+Priority can redistribute waiting between branches. 
+For parallel branches, stage readiness depends on the later completion,
+$T_{\mathrm{join}}=\max(T_{\mathrm{coh}},T_{\mathrm{MoE}})$, measured
+from a common time origin.
+A response can therefore arrive earlier without advancing the stage if
+MoE remains the last predecessor. Likewise, improving coherence service
+by postponing MoE can increase the final join time. The relevant decision
+must follow the dependency that releases the next step and account for
+the completion of both branches.
 
-Figure~\ref{fig:noc-phenomenon}(b) maps these messages onto deterministic XY paths.
-Across MoE model layers 1, 24, and 48, the largest path-derived router demand
-occurs at R9, R5, and R10, respectively. This spatial concentration can force multiple flows to share a
-router output or link. Different concentrations can require different local
-connections even when their total volume and aggregate communication locality
-are similar. The design requirement is therefore to provide selectable local
-paths around the contested resources, with explicit capacity at their
-injection and receiving interfaces.
+Virtual channels, wider shared links, and temporal scheduling provide
+other ways to manage concurrent traffic. Virtual channels can reduce
+head-of-line blocking, while additional bandwidth can raise service
+capacity and scheduling can change when traffic overlaps. Their benefit
+depends on the resource budget and traffic pattern. The present
+comparison motivates evaluating physical separation together with these
+shared-resource constraints.
 
-Even short cache-coherence read requests can add substantial load when
-they arrive frequently. When they share a router output with an MoE
-dispatch burst, queueing can delay their responses. In our replay,
-staggering the two streams restores the latency of the step waiting for
-coherence responses to the coherence-only level.
+Within MoE communication, expert selection and placement concentrate
+transfers on particular node pairs. Overlapping XY routes create hotspots
+whose locations change across layers and communication phases.
+Figure~\ref{fig:noc-phenomenon}(b) shows peak path-derived router demand
+moving from R9 to R5 to R10 across layers 1, 24, and 48.
+The heatmaps aggregate messages along their deterministic paths.
+They identify spatial demand concentration, while measured queueing
+and completion times establish its timing effect. Two phases with
+similar total bytes can load different directed links because their
+source--destination pairs differ. A configuration suitable for one
+phase can consequently provide little benefit in the next.
+Short routes can saturate at nearby destinations, while distant transfers
+occupy several routers. Configurable paths should therefore accommodate
+both local bandwidth demand and long-distance forwarding.
 
-\begin{figure*}[!t]
+
+\begin{figure}[!t]
   \centering
-  \begin{minipage}[t]{0.36\textwidth}
+  \begin{minipage}[t]{0.49\columnwidth}
     \vspace{0pt}\centering
-    {\small (a) Prefill latency\par}
-    \includegraphics[width=\linewidth]{figures/noc_phenomenon_narrow_bars.png}
+    \parbox[c][7mm][c]{\linewidth}{\centering\fontsize{7}{8}\selectfont
+    (a) Cross-workload\\Interference}\par
+    \parbox[c][31mm][c]{\linewidth}{\centering
+    \includegraphics[width=\linewidth]{figures/fig2a_interference_compact.pdf}}
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.62\textwidth}
+  \begin{minipage}[t]{0.49\columnwidth}
     \vspace{0pt}\centering
-    {\small (b) Router demand across MoE layers\par}
-    \includegraphics[width=\linewidth,trim=0bp 0bp 0bp 24bp,clip]{figures/noc_cause_router_hotspots_revised.png}
+    \parbox[c][7mm][c]{\linewidth}{\centering\fontsize{7}{8}\selectfont
+    (b) Router demand\\across MoE layers}\par
+    \parbox[c][31mm][c]{\linewidth}{\centering
+    \includegraphics[width=\linewidth,trim=18bp 14bp 5bp 24bp,clip]{figures/noc_cause_router_hotspots_revised.png}}
   \end{minipage}
-  \caption{Communication latency and router demand for Qwen3-30B-A3B.
-  (a) Activation-weighted mean NoC round-trip latency on the fixed Mesh.
-  The queueing share rises from 57.2\% to 88.8\% as prefill input grows
-  from 128 to 1024 tokens.
-  (b) Router demand along deterministic XY paths on a shared color scale.
-  The peak moves from R9 to R5 to R10 across MoE layers 1, 24, and 48.}
-  \Description{Four stacked bars show the growth in queueing delay with
-  input length. Three heatmaps show the change in peak router demand
-  across MoE layers.}
-  \label{fig:noc-phenomenon}
-\end{figure*}
+  \caption{(a) Branch completion times normalized to separate isolated
+runs. Bars show geometric means across 30 paired cases, each summing
+six independent communication phases. Dual-plane CSs are disabled.
+The summed stage-join time is reduced by approximately 2.3\% relative
+to shared Mesh, based on the geometric mean of paired ratios.
+(b) XY-path router demand across MoE layers, using a shared color scale.}
+\Description{Normalized coherence and MoE completion times and
+layer-dependent router demand.}
+\label{fig:noc-phenomenon}
+\end{figure}
 
-\noindent\textbf{Opportunity: Configurable Connections.}
-Configurable paths can provide additional channels for heavy transfers and
-reduce intermediate-router forwarding. Figures~\ref{fig:noc-opportunity}(a) and (b)
-illustrate these opportunities using three transfers. For neighboring
-nodes, the $\mathrm{NI}_5$--$\mathrm{CS}_1$--$\mathrm{NI}_6$ circuit adds
-a channel alongside the existing Mesh link. A separate
-$\mathrm{NI}_5$--$\mathrm{CS}_3$--$\mathrm{NI}_9$ circuit allows the same
-source to communicate with another peer without sending both transfers
-through its local Mesh router. For the distant $N_0$-to-$N_{15}$ transfer,
-interconnected lower and upper CSs form an NI-to-NI path that bypasses
-intermediate Mesh routers. These connections can be reassigned between
-communication phases to serve changing peers and heavy source--destination
-pairs. Thus, the same physical network supports additional neighboring-node
-bandwidth, communication with multiple peers, and router bypass for distant
-transfers, subject to the shared service capacities of the NIs, DMA engines,
-and SRAM banks.
+\noindent\textbf{Opportunity.}
+Separate physical planes reduce cross-class contention at inter-router
+links and outputs. 
+NI and SRAM service remain shared, and the added network resources
+must be included in hardware-cost comparisons.
+Within the MoE plane, configurable circuits provide local channels and
+bypass intermediate routers as busy node pairs change. An update is
+useful when its completion-time benefit covers configuration and
+remaining shared-resource costs.
+A selected circuit can relieve a congested Mesh path while increasing
+demand at its source NI, destination NI, or SRAM interface. Candidate
+evaluation must propagate these waits through packet completion and
+consumer readiness. The decision also includes the time required to
+pause admissions, drain old transfers, install a configuration, and resume
+injection. Retaining the active configuration remains appropriate when
+the available communication window cannot recover these costs.
 
-Arbitration allocates transmission opportunities on the shared output.
-Round-robin and priority arbitration cannot prevent queue buildup when
-aggregate demand persistently exceeds the output's service capacity.
-In Fig.~\ref{fig:noc-opportunity}(c), routing the selected MoE packet
-through CS3 from NI4 to NI8 removes its contention with coherence reads
-at the N4-to-N8 mesh output. We assess the benefit by when the step that
-requires both branches becomes ready.
-
-\begin{figure*}[!t]
-  \centering
-  \begin{minipage}[t]{0.49\textwidth}
-    \vspace{0pt}\centering
-    {\small (a) Ordinary Mesh paths\par}
-    \includegraphics[width=\linewidth,trim=0bp 201bp 950bp 214bp,clip]{figures/noc_opportunity_current.pdf}\par
-    \vspace{3pt}
-    {\small (c) Co-execution timing\par}
-    \includegraphics[width=\linewidth]{figures/figure3_contention.pdf}\par
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.49\textwidth}
-    \vspace{0pt}\centering
-    {\small (b) Configured NI-to-NI paths\par}
-    \includegraphics[width=\linewidth,trim=950bp 145bp 0bp 62bp,clip]{figures/noc_opportunity_current.pdf}\par
-    \vspace{2pt}
-    \includegraphics[width=\linewidth,trim=0bp 0bp 680bp 686bp,clip]{figures/noc_opportunity_current.pdf}
-  \end{minipage}
-  \caption{Configurable paths for co-execution. (a) Ordinary Mesh routes.
-  (b) Local and cross-region circuits. (c) Illustrative timing of CS3
-  diversion around the shared $N_4$-to-$N_8$ Mesh output.}
-  \Description{Three panels show the ordinary Mesh paths, three circuits
-  through the configurable-switch network, and timing diagrams comparing
-  queueing on the fixed Mesh with CS3 diversion.}
-  \label{fig:noc-opportunity}
-\end{figure*}
-
-
-\noindent\textbf{Thermal Management.}
-Concentrated activity in the stacked Logic and DRAM tiers raises temperatures in both tiers, increasing the risk of thermal throttling, which can increase inference latency. While task migration has been widely studied for thermal management, its effectiveness in DRAM-stacked NPUs is limited by the strong dependence of computation on locally stored model weights. Migrating tasks may require weight replication or remote memory accesses, introducing additional DRAM and NoC overhead. Our experiments show that these costs largely offset the performance benefits of task migration. Therefore, instead of relocating tasks, we reduce heat generation through operator-level energy-aware DVFS and improve execution efficiency through thermal-aware task scheduling.
+\noindent\textbf{Thermal Constraints.}
+Contention and routing choices affect when computation and memory
+operations proceed and may change the spatial and temporal distribution
+of activity. Thermal coupling between logic and DRAM tiers makes peak
+temperature a constraint on the resulting execution. We therefore combine
+the NoC mechanisms with operator-level energy-aware DVFS and thermal-aware
+task scheduling. These controls adjust frequency and task start times
+under the temperature limit. Their thermal and execution-time effects are
+evaluated through matched on/off comparisons.
+A shorter communication phase can change the overlap of subsequent
+operators, and activity on a different path can change where power is
+dissipated. The resulting temperature trajectory depends on both the
+power distribution and thermal history. We therefore evaluate temperature,
+completion time, and energy together when assessing thermal control.
 
 \section{Design}
 \label{sec:design}
 
-\subsection{Reconfigurable Network}
+\subsection{Dual-Plane NoC}
 \label{sec:noc-design}
 
-Figure~\ref{fig:noc-physical-design}(a) shows the reconfigurable network
-alongside the basic $4\times4$ Mesh. The logic tier contains sixteen NPU
-nodes, nine lower-level configurable switches (CSs), and four upper-level
-CSs. Nodes $N_0$--$N_{15}$ and lower CSs $\mathrm{CS}_0$--$\mathrm{CS}_8$
-are indexed in row-major order. Each lower CS physically connects to
-the NIs of the four corner nodes of a $2\times2$ group. A corner, edge, or interior node
-therefore connects to one, two, or four lower CSs, respectively.
-The upper CSs form a $2\times2$ network:
-$\mathrm{CS}_9$, $\mathrm{CS}_{10}$, $\mathrm{CS}_{11}$, and
-$\mathrm{CS}_{12}$ connect down to $\mathrm{CS}_0$, $\mathrm{CS}_2$,
-$\mathrm{CS}_6$, and $\mathrm{CS}_8$, respectively.
-Each upper CS connects to its corresponding lower CS and two upper
-neighbors. For a local transfer, a lower CS selects one node-facing
-input and a different node-facing output. A connection between a node
-and the upper network instead selects one node-facing direction and U.
-The upper network provides additional paths between the four lower
-CSs attached to it. Upper CSs reach NPU nodes through these lower CSs.
-The two CS levels are connectivity levels within the same logic die.
-Their MUXes, configuration registers, and control gates are implemented
-as logic cells, with the connections routed in the die's metal stack.
-The separated planes in the figure depict this connectivity hierarchy.
+Figure~\ref{fig:noc-physical-design} shows two physically separate
+$4\times4$ networks on the logic tier. Plane M carries MoE data and
+control messages through the original Mesh and configurable switches
+(CSs). Plane C carries GetS shared-read requests and their DataS
+responses. Each node $N_i$ connects directly to its corresponding
+coherence router $C_i$. The interconnects are routed in the logic die's
+metal layers.
 
-Figure~\ref{fig:noc-physical-design}(b) shows the two CS circuits.
-A lower CS has four corner directions, northwest (NW), northeast (NE),
-southwest (SW), and southeast (SE), and an upper direction U.
-Only the four lower CSs listed above have a physical U attachment.
-In the other five instances, the U input data and valid signals are
-tied to zero, the U output enable is hardwired to zero, and the
-U-side ready input is tied to zero. These constant connections are
-fixed at implementation time and cannot be changed by configuration
-writes. Figure~\ref{fig:noc-physical-design}(b) depicts the lower-CS
-circuit with a connected U direction. An upper CS has two in-plane
-directions and a downward direction D. The lower and upper circuits
-use five 4:1 multiplexers (MUXes) and three 2:1 MUXes, respectively.
-Each output MUX is wired to the other directions' inputs, excluding
-a return to its own direction. The configuration register supplies
-an output-direction code, an input-selection code, and a connection
-enable (EN). Direction decoding enables at most one output, so each
-CS establishes at most one directed input--output connection.
+The M plane retains nine lower CSs and four upper CSs. Each lower CS
+connects to the four corner nodes of a $2\times2$ group. Corner, edge,
+and interior nodes thus have one, two, and four CS attachments.
+Upper switches $\mathrm{CS}_9$--$\mathrm{CS}_{12}$ form a $2\times2$
+network and connect down to $\mathrm{CS}_0$, $\mathrm{CS}_2$,
+$\mathrm{CS}_6$, and $\mathrm{CS}_8$, respectively. A local circuit
+connects two NIs through one lower CS; a longer circuit uses the upper
+network to bypass intermediate Mesh routers. MoE packets use an
+assigned circuit or the M-plane Mesh. Coherence requests and responses
+use C-plane links independently of these route choices.
 
-A short transfer between two nodes attached to the same lower CS can
-use that CS directly between its source and destination NIs.
-This circuit provides an additional data channel alongside the Mesh,
-increasing the available path bandwidth and moving part of the traffic
-away from contended Mesh links and router outputs. Circuits through the
-upper network connect nodes attached to different U-connected lower
-CSs, bypassing intermediate Mesh routers.
-Multiple CS attachments allow a node to participate in separate circuits.
-A heavily communicating neighboring pair can use an additional CS path
-alongside its Mesh connection. These connections can be reassigned as the
-busy endpoints and node pairs change between communication phases.
-Traffic without an assigned circuit uses the ordinary Mesh.
-The aggregate transfer rate is also limited by NI service and SRAM
-bank bandwidth.
-
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \includegraphics[width=\textwidth]{figures/noc_topology_cs.pdf}
-  \caption{Reconfigurable network and switch circuits.
-  (a) Nine lower CSs and four interconnected upper CSs, with the basic
-  Mesh shown for comparison. The separated planes denote connectivity
-  levels on one logic die. (b) A U-connected lower CS and an upper CS.
-  Each MUX excludes its own direction's input; output decoding enables
-  one connection.}
-  \Description{The left panel shows the two levels of configurable switches
-  and a basic Mesh. Only four lower switches attach to upper switches.
-  The right panel expands the five-direction lower switch and
-  three-direction upper switch, including configuration registers,
-  direction decoding, input MUXes, and output enable gates.}
+  \includegraphics[width=\columnwidth]{figures/noc_dual_plane_uniform_titles.pdf}
+  \caption{Dual-plane NoC. (a) MoE Mesh/CS plane M and coherence Mesh
+  plane C, with one local connection per node.
+  (b) Node, packet-type decoder, and five-port coherence router.
+  (c) CS circuit with input selection and output enable.}
+  \Description{The upper-left panel shows the two networks and sixteen
+  node-to-coherence-router connections. The upper-right panel shows a
+  five-direction configurable switch. The lower panel shows packet-type
+  classification, separate MoE and coherence queues, packet formation,
+  receive processing, shared SRAM arbitration, and the coherence router.}
   \label{fig:noc-physical-design}
-\end{figure*}
+\end{figure}
 
 \subsection{Node and Network Interface}
 \label{sec:noc-node-design}
 
-Figure~\ref{fig:noc-node}(a) expands an NPU node. Its NPU cluster contains
-a multiply--accumulate (MAC) array and a vector unit. A banked SRAM
-scratchpad holds local weights and activations. The SRAM access controller
-arbitrates bank requests from the NPU and the network interface (NI).
-The Mesh router retains its four directional connections and a local
-NI connection. The NI also has separate transmit and receive connections
-to each adjacent lower CS. NW, NE, SW, and SE beneath the CSs in this
-figure identify their positions relative to the node; a CS northwest
-of the node uses its own SE direction to reach that node.
+Figure~\ref{fig:noc-physical-design}(b) shows an NPU node with banked
+SRAM, a network interface (NI), and an M-plane Mesh router. The NI
+decodes the message class and opcode before packet formation. Its type
+map directs GetS and DataS to plane C and MoE messages to plane M.
+A short MoE control message uses M, while a DataS response carrying a
+cache line uses C. Separate queues and packetizers feed the two planes;
+each packet keeps its selected plane throughout transmission.
+Source reads, receive writes, and NPU accesses share the SRAM arbiter.
 
-\begin{figure*}[!t]
-  \centering
-  \includegraphics[width=\textwidth]{figures/noc_node_ni.pdf}
-  \caption{Node and NI organization.
-  (a) NPU, scratchpad, NI, Mesh router, and adjacent lower-CS data
-  connections. (b) NI transmit, receive, and reassembly paths, together
-  with the configuration interface of one assigned CS.
-  Each lower CS is configured by its northwest node's NI.}
-  \Description{A node contains an NPU cluster, local SRAM, shared bank
-  arbitration, a network interface, and a Mesh router. The NI has separate
-  adjacent-CS data streams. The expanded NI shows transfer control,
-  packet formation, finite receive queues, offset-based reassembly,
-  SRAM write-back, and a separate configuration queue. A CS-side decoder
-  writes the configuration register and relays commands to an attached
-  upper CS where present.}
-  \label{fig:noc-node}
-\end{figure*}
+Each $C_i$ has four neighbor ports and one local NI port, with separate
+input queues for requests and responses. These queues form two virtual
+networks with independent credits. A $5\times5$ crossbar connects the
+input banks to output registers. XY routing selects the next direction,
+and round-robin arbitration selects an eligible input. Output registers
+hold data until the receiver accepts it. The NI allocates response
+storage before issuing GetS; the service endpoint reserves a response
+transmit slot before starting the memory operation. Request and response
+queues therefore have separate storage and flow-control state.
 
-Figure~\ref{fig:noc-node}(b) shows the NI data path. The transfer controller
-receives descriptors specifying the source and destination nodes, SRAM
-addresses, transfer length, packet-to-CS assignments, and the
-configuration version under which those attachments are usable.
-A direct memory access (DMA) read engine
-fetches source data and forms packets using the NI's configured payload
-size. The final packet carries the remaining bytes. The sending and
-receiving NIs use the same payload-size setting for a transfer.
-Transmit queues select the Mesh or an assigned CS circuit for each complete packet.
-A transfer may use several paths across its packets; the flits within
-one packet follow the same path.
-Each incoming data connection has a finite receive queue. Receive
-arbitration feeds the reassembly buffer, while packet-type decoding
-separates configuration commands from data.
-CS streams carry data and a valid indication forward, with a ready
-indication returning along the selected path. A transfer occurs when
-valid and ready are both asserted.
+On plane M, the NI selects the Mesh or a configured CS attachment for
+each complete packet. Packets carry a transfer identifier, byte offset,
+and transfer length. Receive descriptors supply the destination SRAM
+address. The receive arbiter and depacketizer check the packet and
+write its payload at that address plus the offset. A receipt bitmap
+records accepted writes, and completion is reported when all expected
+packet writes finish. Finite receive queues buffer concurrent Mesh
+and CS arrivals. The C-plane receive path matches responses to their
+request identifiers and shares the endpoint's SRAM write service.
 
-Each data packet identifies its transfer by \texttt{TransferID}, formed
-from the source NI and a source-local sequence number.
-\texttt{Offset} gives its byte position within the transfer, and
-\texttt{Length} gives the total transfer size. Receive descriptors
-associate a transfer with its destination SRAM base address.
-The NI derives each packet's index and expected payload length from
-its offset, the transfer length, and the agreed payload size. It checks
-the transfer identifier, offset alignment, and payload length before
-writing the payload to the base address plus \texttt{Offset}.
-A receipt bitmap has one bit per expected packet, updated after the
-SRAM accepts that packet's payload write; already-received packets are
-identified by their set bits. Transfers are admitted after allocating
-their receive descriptors and bitmap storage.
-Payloads can be written in arrival order while their offsets restore
-the destination data layout.
-The NI reports completion after all expected packet writes have completed;
-the NPU then consumes the assembled data. This permits bounded
-receive staging without holding later fragments until earlier ones
-arrive. Reassembly writes and NPU accesses share the SRAM bank arbiter.
+\subsection{Configurable Switches}
+\label{sec:noc-switches}
+
+Figure~\ref{fig:noc-physical-design}(c) shows a lower CS with directions
+NW, NE, SW, SE, and U. Five four-input multiplexers select among the
+other directions' inputs. The configuration fields $s$, $b$, and EN
+select the input, output, and connection enable. Output decoding
+activates one directed input--output pair. Data and valid propagate
+forward, and ready propagates back along the selected connection.
+The output register retains its data under backpressure.
+
+Only $\mathrm{CS}_0$, $\mathrm{CS}_2$, $\mathrm{CS}_6$, and
+$\mathrm{CS}_8$ have U links. The remaining lower CSs have their U
+interfaces disabled. Each upper CS has two neighbor directions and
+one downward direction, implemented with three two-input multiplexers.
+Separate NI attachments permit concurrent MoE circuits, subject to
+shared NI service, direct memory access (DMA) engines, and SRAM bandwidth.
 
 \input{noc_prediction_configuration.tex}
 
 \subsection{Configuration Interface}
 \label{sec:noc-config-interface}
 
-The host CPU sends configuration packets over the ordinary Mesh to the
-NI assigned to the target CS. Each lower CS is assigned to the NI of
-its northwest corner node. This fixes one configuration writer per CS,
-independently of its four neighboring data connections.
-The NI places commands in a separate configuration queue and sends them
-through a local command/response interface to the CS-side configurator.
-The NI serializes writes to each assigned CS and rejects obsolete
-configuration versions before forwarding commands.
-The CS-side command decoder acts as the configurator: it decodes the
-target and operation, writes the CS configuration register, and returns
-a response.
-For an upper CS, the corresponding lower CS relays the command and
-response over a fixed inter-level control interface.
-These local control interfaces operate independently of the CS data
-MUX settings. Responses return through the NI and ordinary Mesh.
+The host sends CS configuration commands over the M-plane Mesh.
+Each lower CS is configured by its northwest node's NI; that CS relays
+commands to its attached upper CS where present. A separate NI
+configuration queue feeds the CS command decoder, which writes the
+configuration register and returns an acknowledgement. This control
+interface is independent of the selected CS data connection.
 
-Table~\ref{tab:noc-command-fields} defines the packet and command fields.
-A CS state is $q_c=(s_c^{\mathrm{out}},s_c^{\mathrm{in}},e_c)$, where
-$c\in\{0,\ldots,12\}$ identifies the target CS,
-$s_c^{\mathrm{out}}$ selects its output direction,
-$s_c^{\mathrm{in}}$ selects an allowed input at that output's MUX,
-and $e_c$ enables the connection.
-The lower CS uses three output bits, two input bits, and one enable bit;
-the upper CS uses two output bits, one input bit, and one enable bit.
-Lower output codes 000--100 select NW, NE, SW, SE, and U, respectively.
-Upper codes 00, 01, and 10 select the instance's horizontal direction,
-vertical in-plane direction, and D. Input codes follow the remaining
-input order shown at each MUX. A cleared enable or an unused output
-code disables the connection.
+Table~\ref{tab:noc-command-fields} summarizes the command fields.
+A lower CS uses three output-selection bits, two input-selection bits,
+and one enable bit; an upper CS uses two, one, and one, respectively.
+The output code follows the instance's wired directions, and the input
+code indexes that output's allowed inputs. The NI stores each MoE
+packet's assigned CS attachment and configuration version in its
+transfer descriptor. Unassigned MoE packets use the M-plane Mesh.
 
 \begin{table}[!t]
-  \caption{Configuration packet and command fields.}
+  \caption{CS configuration command fields.}
   \label{tab:noc-command-fields}
-  \centering
-  \small
+  \centering\small
   \begin{tabularx}{\columnwidth}{@{}p{0.25\columnwidth}>{\raggedright\arraybackslash}X@{}}
     \hline
     Field & Meaning \\
     \hline
-    Type & Distinguishes configuration commands, responses, and data. \\
-    Destination & Mesh destination NI assigned to the target. \\
-    TransactionID & Matches a request to its response. \\
-    ConfigVersion & Identifies the CS image and matching NI assignments. \\
-    Target & CS index $c$, or transfer identifier for NI descriptor installation. \\
-    Operation & CS write, NI descriptor installation, pause, status, or resume. \\
-    State & CS tuple $q_c$, or NI packet-to-CS assignments indexed by byte offset. \\
-    Status & Completion or failure reported in a response. \\
+    Type & Message class and operation code. \\
+    Destination & NI responsible for the target CS. \\
+    TransactionID & Command--response matching identifier. \\
+    ConfigVersion & CS configuration and matching packet assignments. \\
+    Target & CS index or NI transfer descriptor. \\
+    Operation & Write, install descriptor, pause, status, or resume. \\
+    State & CS input/output selection and enable, or packet assignments. \\
+    Status & Success or failure of the requested operation. \\
     \hline
   \end{tabularx}
 \end{table}
 
-The response echoes \texttt{TransactionID}, \texttt{Target}, and
-\texttt{ConfigVersion};
-an upper-CS write is acknowledged after the upper register accepts it.
-The NI handles its own pause, status, and resume commands locally.
-They control transfer admission and completion reporting, while
-CS-targeted commands go to the CS-side configurator.
-NI descriptor-installation commands associate a transfer identifier
-with its packet-to-CS assignments and configuration version.
-Each assigned packet is identified by its byte offset; its source-CS
-attachment is stored as a route tag in the transmit queue. Packets
-without such an assignment use the Mesh.
-The transfer controller acknowledges installation after storing the
-descriptor and confirming the required receive context. Its version
-must match the applied configuration before CS admission.
-
-To change the network, the host first pauses admission of new CS
-transfers at all NIs. Previously admitted transfers finish transmission,
-reassembly, and SRAM write-back. The host collects their drain responses
-over the Mesh, writes the new CS states, and waits for every target's
-write response. It then installs the matching NI descriptors and waits
-for their acknowledgements before resuming admission.
-A failed or incomplete update
-keeps CS transmission paused. This sequence prevents data from
-traversing a partially updated circuit.
+The NI acknowledges a pause after holding the selected unbound MoE
+descriptors and stopping new CS admissions. Admitted transfers retain
+their routes and drain before the final check. After validation,
+\textsc{ApplyCS} enters the configuration sequencer at its write phase.
+This entry checks pause acknowledgements, CS idle state, and the next
+configuration version. The sequencer writes and confirms CS states,
+installs matching NI assignments and versions, and resumes transmission
+without repeating the pause. A rejected final check releases holds and
+resumes $S_0$. A write or installation error leaves CS admissions paused
+until matching CS and NI configurations are restored. Plane C continues
+forwarding throughout.
 
 \subsection{Thermal-Aware Execution}
 \label{sec:thermal-design}
@@ -523,182 +423,185 @@ We use a HotSpot-based RC thermal model~\cite{hotspot_tool} to capture delayed h
 \label{sec:experiment}
 
 \subsection{Experimental Setup}
+We model 16 hybrid-bonded NPU clusters, each with 4096 MACs, a 16-lane
+vector unit, and 4~MiB SRAM, alongside 32~GiB HB-DRAM. The $4\times4$
+Mesh uses 256-bit links at 1~GHz; each vertical link provides 25.6~GB/s.
+The workloads are Qwen3-30B-A3B and Qwen1.5-MoE-A2.7B (prefill/decode),
+mini-SWE-agent with Qwen3 (model calls and Agent tasks), and LingBot TI2V
+(video generation). Paired runs match input, precision, arrivals, and
+initial state. For concurrent tasks, stage join waits for both compute
+and coherence responses.
 
-We evaluate the proposed design on a face-to-face hybrid-bonded 3D accelerator. Table~\ref{tab:eval-platform} lists the common platform parameters. The evaluation uses 32~GiB of HB-DRAM. Each comparison starts from the same input and initial system state and uses the same precision, resource budget, and workload completion criteria. We account for each method's additional hardware and runtime costs separately.
+\subsection{Performance Comparison}
+Figure~\ref{fig:eval-overall} shows stage-join reductions of
+5.74\%, 9.01\%, 7.15\%, and 8.17\% relative to HiBand~\cite{wang2026hiband}
+for Qwen3, mini-SWE-agent, LingBot TI2V, and Qwen1.5, respectively.
+Latency reduction is $1-T_{\mathrm{design}}/T_{\mathrm{HiBand}}$.
+The comparison covers modeled communication stages. Layer measurements and
+end-to-end estimates have different completion boundaries.
 
-\begin{table}[t]
-\caption{Common hardware and simulation settings.}
-\label{tab:eval-platform}
-\centering\small
-\begin{tabular}{@{}lp{0.59\columnwidth}@{}}
-\hline
-Component & Configuration \\
-\hline
-Logic tier & 16 NPU clusters at 1~GHz \\
-NPU cluster & 4096 MACs, 16-lane vector unit, 4~MiB SRAM \\
-Base NoC & $4\times4$ mesh, 256-bit links at 1~GHz \\
-HB-DRAM & 32~GiB, 16 partitions of 2~GiB each, 16 logical banks per partition \\
-Vertical link & 25.6~GB/s per NPU--memory pair \\
-Host & Four CPU cores, PCIe 5.0, host memory xxx \\
-Simulation & Compute, memory, and NoC models xxx \\
-Thermal model & Ambient and initial temperatures xxx, temperature limit xxx \\
-\hline
-\end{tabular}
-\end{table}
+\begin{figure}[!t]
+\centering
+\begin{minipage}[t]{0.49\columnwidth}
+\centering\vspace{0pt}
+\includegraphics[width=\linewidth]{figures/fig5_performance_halfcolumn.pdf}
+\caption{Stage-join time relative to HiBand (100\%).}
+\Description{Grouped bars compare normalized stage-join time for four workloads.}
+\label{fig:eval-overall}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\columnwidth}
+\centering\vspace{0pt}
+\includegraphics[width=\linewidth]{figures/fig6a_ablation.pdf}
+\caption{Communication ablation relative to shared-Mesh RR.}
+\Description{Twelve bars compare three normalized metrics for P, D, W, and C.}
+\label{fig:eval-breakdown}
+\end{minipage}
+\end{figure}
 
-Table~\ref{tab:eval-workloads} lists four main MoE workloads and one auxiliary thermal scenario. We freeze the input manifests, arrival order, seeds, and stopping rules before collecting performance results. In each run of the main co-execution evaluation, we release a batch of synthetic coherence requests representing a general-purpose task before starting the MoE workload, so that the two traffic streams overlap. We use the same release schedule for HiBand and the proposed design.
+\subsection{Ablation and Implementation Overhead}
+Figure~\ref{fig:eval-breakdown} separates traffic-plane, arbitration, and circuit
+effects using the common RTL/endpoint testbench. Five frozen Qwen1.5-MoE
+transport inputs comprise one each at 4 and 8 tokens and three 16-token seeds.
+Hotspot/distributed GetS placement and aggregate release intervals of 1, 3,
+and 6 cycles give 30 development conditions. Bank waiting is fixed at eight
+cycles; payloads, arrival plans, queues, and shared NI/SRAM service budgets
+are matched. Each communication phase starts from a fresh network, so their
+completion-time sum is not end-to-end inference latency. Ratios are computed
+per condition before geometric averaging; these conditions reuse five inputs
+and are not independent replicate samples.
 
-\begin{table*}[t]
-\caption{Workloads, input manifests, and measurement boundaries.}
-\label{tab:eval-workloads}
-\centering\small
-\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}Xp{0.29\textwidth}@{}}
+\paragraph{Traffic separation and arbitration}
+Under RR, the dual plane with CS disabled reduces the join-time sum by
+2.32\% relative to shared Mesh, with 20 conditions improving and ten tying.
+This benefit includes the additional C-plane resources; it is not an
+equal-area comparison. On shared Mesh, fixed type priority reduces the
+worst-phase GetS P99 by 56.43\%, but increases the MoE and join-time sums by
+13.06\% and 4.44\%, respectively. Earlier responses therefore need not
+advance joint completion. Priority uses a separately built, reviewed RTL
+revision; the driver, inputs, and service budgets are unchanged. It is an
+alternative arbitration control, not a step in the CS configuration chain.
+
+\paragraph{Circuit paths and configuration waiting}
+Forced CS increases join time by 0.79\% relative to the CS-off dual plane.
+To isolate its path effect, a control applies the same configuration commands
+and holds the same selected packets, but keeps their payloads on Mesh.
+Configuration counts and start/end times match in all 180 phases. This
+matched-wait control increases join time by 1.31\% over CS-off, while forced
+CS shortens time by 0.52\% relative to that control. Thus, a small path benefit
+can be offset by configuration and selected-packet waiting. Injection-order
+interactions make these effects non-additive. Recorded configuration
+intervals are 845--925 simulated cycles, distinct from the separate
+architecture model's 40-cycle aggregate installation parameter.
+
+\paragraph{Controller timing}
+The two-path runtime reference charges 256 NoC cycles for planning and
+again for post-pause validation while $S_0$ forwards. Configuration requests
+and acknowledgements traverse the RTL network. The timing reference uses
+known arrivals and $\eta=0$. With a 32-cycle per-GetS delay allowance,
+the 16/32/64-token runs retain $S_0$. Hardware planning and prediction
+latencies remain uncalibrated.
+
+\paragraph{Sensitivity}
+Stage-join changes by token count, GetS placement, and release interval:
+xxx. Configuration-cost and decision-lead sweeps (ranges and results):
+xxx.
+
+\noindent\textbf{Thermal ablation.}
+In the modeled 24-layer Qwen1.5-MoE run (four requests, 512 prefill and
+one decode token each), both arms use fixed XY Mesh, a common warm state
+(63.501~$^{\circ}$C peak), and no bank-conflict optimization. Enabling DVFS
+and thermal scheduling reduces peak temperature from 64.985 to
+63.968~$^{\circ}$C; both satisfy the 65~$^{\circ}$C cap for this batch.
+Completion time increases from 6.658 to 7.771~s (+16.72\%) and energy
+from 49.491 to 51.544~J (+4.15\%).
+
+Table~\ref{tab:eval-cost} compares simplified shared-Mesh and C/M network
+cores, excluding full endpoints, SRAM/banks, distributed configuration,
+thermal, and cross-tier hardware. FPGA: Vivado 2017.4, XCKU5P, 200~MHz
+OOC post-route timing. ASIC: Yosys 0.23, Nangate45 TT, 1~ns constraint,
+synthesis area. We report configuration delay for the 16-token hotspot and
+distributed cases, in that order (seed 641103, one GetS per cycle). The
+metric is $100(T_{\mathrm{cfg}}-T_{\mathrm{pre}})/T_{\mathrm{cfg}}$, using the
+six-phase join sums with timed configuration ($T_{\mathrm{cfg}}$) and with
+preinstallation ($T_{\mathrm{pre}}$). The control preserves the CS image,
+packet assignments, and input releases and omits timed configuration
+traffic and selected-packet holds.
+
+\begin{table}[!ht]
+\caption{Network-core and runtime costs (simplified NIs).}
+\label{tab:eval-cost}
+\centering\scriptsize
+\renewcommand{\arraystretch}{0.85}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
 \hline
-Workload & Inputs and configuration & Measurement boundary \\
+Metric & Shared Mesh & Dual plane + CS \\
 \hline
-Qwen3-30B-A3B & Prompt source and IDs xxx, input/output lengths xxx, concurrency xxx & Prefill, decode, and complete request \\
-Qwen1.5-MoE-A2.7B & Prompt source and IDs xxx, lengths xxx, TP/PP mapping xxx & Prefill, decode, and complete request \\
-mini-SWE-agent + Qwen3 & SWE-bench Lite instance IDs and split xxx, tool and stopping rules xxx & Model calls, full agent task, and task outcome \\
-LingBot TI2V & Text/image IDs xxx, resolution xxx, frames xxx, steps and seeds xxx & Encoding, denoising, scheduler, and VAE decoding \\
-WHISPER + SLAM + $\pi_{0.5}$ & WHISPER version xxx, SLAM and $\pi_{0.5}$ traces xxx, request schedule xxx & Joint thermal scenario, execution coverage xxx \\
+FPGA LUTs / flip-flops & 31,995 / 38,286 & 117,625 / 92,783 \\
+FPGA BRAM / DSP & 0 / 0 & 0 / 0 \\
+FPGA setup WNS (ns), 200\,MHz & $+0.339$ & $+0.043$ \\
+ASIC synthesis area (mm$^2$) & 0.332176 & 0.869972 \\
+ASIC area increase (\%) & --- & 161.90 \\
+\hline
+Exposed decision overhead (\%) & xxx & xxx \\
+Exposed configuration delay (\%) & --- & 0.51 / 0.49 \\
 \hline
 \end{tabularx}
-\end{table*}
-
-For each experimental line, we first run the complete workload under both configurations and record stage latencies and the end-to-end critical path. Subsequent paired points measure the same one or two MoE layers with identical input and routing samples. We extrapolate both arms using the same layer selection, weights, and dependency model, including non-MoE stages and control costs. Recomputing the critical path preserves overlap among compute, memory, and communication. We validate the estimates against the complete runs and report measured layer latency, estimated end-to-end latency, and estimated speedup separately. The corresponding estimation errors are xxx. All reported execution times refer to the modeled target system.
-
-\subsection{End-to-End Performance Comparison}
-
-The primary comparison pairs the common platform baseline B with B plus the full design. We separately compare with prior methods that pass the same workload and timing checks under matched resource constraints. The HiBand reference implementation and other candidate NoCs enter this comparison after qualification. Table~\ref{tab:eval-comparisons} records the scope of each comparison.
-
-\begin{table}[t]
-\caption{Configurations and scope of the performance comparisons.}
-\label{tab:eval-comparisons}
-\centering\small
-\begin{tabular}{@{}lp{0.53\columnwidth}@{}}
-\hline
-Configuration & Comparison scope \\
-\hline
-B & Common platform baseline, frozen configuration xxx \\
-B + full design & Paired end-to-end comparison with B \\
-HiBand reference & External comparison, qualification pending \\
-Other NoC candidates & Configurations and qualification results xxx \\
-\hline
-\end{tabular}
 \end{table}
 
-Figure~\ref{fig:eval-overall} compares completion times for each main workload. For each pair, we compute the latency reduction as $1-T_{\mathrm{design}}/T_{\mathrm{ref}}$, where $T_{\mathrm{ref}}$ is the completion time of B or the named external comparator. We also report time to first token and time per output token for the language-model workloads. For mini-SWE-agent, we report model-call latency and task latency separately and record task outcomes. For LingBot, we report the latency of a complete generation. The measured end-to-end latencies, paired reductions, and workload-level exceptions are xxx.
-
-\begin{figure*}[t]
-\centering
-\fbox{\rule{0pt}{18mm}\rule{0.92\textwidth}{0pt}}
-\caption{End-to-end latency by workload for B, B plus the full design, and qualified external comparators. Each panel uses identical inputs and completion criteria. Labels distinguish complete-run measurements from estimates based on sampled MoE layers.}
-\Description{Reserved space for the end-to-end latency comparison.}
-\label{fig:eval-overall}
-\end{figure*}
-
-\subsection{Supporting Results and Thermal Ablation}
-
-\paragraph{Phase-dependent congestion and bank waiting.}
-To explain the latency differences in Figure~\ref{fig:eval-overall}, we trace matched MoE communication phases from memory requests through consumer readiness. We measure bank queueing before data becomes available, injection and router queueing, unloaded traversal, and synchronization at the slowest endpoint. We record configuration delay on the same timeline and attribute only exposed delays to the critical path. Comparing packet tails and router activity across phases tests whether a change in hotspot location translates into earlier consumer readiness. A comparison with fixed network policy and a bank-policy toggle can isolate the incremental effect of bank conflict mitigation. The paired changes in exposed waiting and packet tail latency are xxx.
-
-\begin{figure*}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.92\textwidth}{0pt}}
-\caption{Critical-path latency breakdown for matched MoE communication phases. The timeline shows bank service, data readiness, NoC injection and queueing, configuration, and consumer synchronization. Companion panels show packet tail latency and router activity using common scales across configurations.}
-\Description{Reserved space for the critical-path breakdown and congestion panels.}
-\label{fig:eval-breakdown}
-\end{figure*}
-
-\paragraph{Incremental effect of thermal management.}
-We compare NoC with bank conflict mitigation and thermal management against the same NoC and bank mechanisms with thermal management disabled. Both arms start with identical temperatures, inputs, and thermal constraints. We track temperatures over the complete execution timeline and account for DVFS adjustments and thermal-aware task scheduling. We report natural and thermally stressed scenarios separately. Peak temperature, time above the threshold, and completion time are xxx.
-
-\begin{figure}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.90\columnwidth}{0pt}}
-\caption{Temperature and workload progress under different thermal management strategies. All configurations use the same NoC and DRAM-bank policies. }
-\Description{Reserved space for temperature and workload progress curves.}
-\label{fig:eval-thermal}
-\end{figure}
-
-\subsection{Scalability and Sensitivity Analysis}
-
-We vary system scale and input scale separately. The system-scale sweep starts at 16 NPU clusters and holds workload fixed. At each scale, we report the topology, mapping, capacity, and bandwidth. The input-scale sweep fixes the platform and varies request concurrency or input size. We report absolute completion time and paired latency reduction at each point. To examine design sensitivity, we vary the local connection budget and reconfiguration interval one at a time and record completion time, packet tail latency, and exposed configuration cost. The tested ranges and observed trends are xxx.
-
-\begin{figure}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.90\columnwidth}{0pt}}
-\caption{Scalability and sensitivity. Panels show (a) system scale at fixed workload, (b) input scale at fixed system size, and (c) sensitivity to the local connection budget and reconfiguration interval. Markers indicate the default configuration and whether overall latency is measured or estimated.}
-\Description{Reserved space for the scalability and parameter sweeps.}
-\label{fig:eval-scale}
-\end{figure}
-
-\subsection{Hardware Cost and Runtime Overhead}
-
-Table~\ref{tab:eval-cost} compares a fixed $4\times4$ mesh with 256-bit links against the same mesh augmented by 13 circuit switches (CSs). The NoC prototypes use simplified network interfaces and exclude SRAM bank control, thermal control, and physical cross-tier links. Each pair uses the same tools and constraints. The 1\,GHz NoC clock in Table~\ref{tab:eval-platform} is a system simulation parameter.
-
-Directed RTL tests cover all 256 mesh source--destination pairs, 108 lower-tier CS paths, and 24 directed upper-tier routes. The tests also check that the controller rejects cyclic configurations and waits for circuits to drain under backpressure before committing a new configuration.
-
-\begin{table}[t]
-\caption{Hardware implementation cost of the two NoC prototypes.}
-\label{tab:eval-cost}
-\centering\small
-\begin{tabular}{@{}lrr@{}}
-\hline
-Metric & Fixed mesh & Mesh + 13 CSs \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{FPGA post-route (200\,MHz constraint)}} \\
-LUTs & 26,893 & 37,441 \\
-Flip-flops & 21,025 & 24,451 \\
-BRAM / DSP & 0 / 0 & 0 / 0 \\
-Setup WNS (ns) & $+0.528$ & $+0.290$ \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{ASIC synthesis}} \\
-Std. cell area ($\mathrm{mm}^{2}$) & 0.205446 & 0.250919 \\
-Total power (W) & 1.46 & 1.65 \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{ASIC post-route}} \\
-Std. cell area ($\mathrm{mm}^{2}$) & 0.359453 & 0.458480 \\
-Dynamic power (W) & 0.661 & 0.721 \\
-Leakage power (mW) & 11.7 & 15.2 \\
-\hline
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\columnwidth}
-\footnotesize
-FPGA results use Vivado 2017.4 on \texttt{xcku5p-ffva676-2-e}.
-Setup WNS is from out-of-context post-route static timing analysis with a 5\,ns clock constraint.
-ASIC results use Nangate45 TT (1.10\,V, $25\,^{\circ}\mathrm{C}$).
-ASIC power estimates use a 1\,ns clock constraint, vectorless activity 0.10, and duty cycle 0.50. Post-route power estimates include OpenRCX SPEF parasitics.
-\end{minipage}
-\end{table}
-
-Relative to the fixed mesh, the enhanced prototype uses 39.2\% more LUTs and 16.3\% more flip-flops after FPGA routing. The routed ASIC uses 27.5\% more standard-cell area and 9.1\% more estimated dynamic power under the same power assumptions.
-
-Table~\ref{tab:eval-runtime} reports algorithm execution separately from the delay of applying its decisions. For each algorithm, we measure per-call time and call count, then report the fraction of total application latency exposed on the critical path. Configuration transfer, hardware reconfiguration, and thermal scheduling overhead are accounted for as separate events.
-
-\begin{table}[t]
-\caption{Runtime overhead of online decision algorithms.}
-\label{tab:eval-runtime}
-\centering\small
-\begin{tabular}{@{}lccc@{}}
-\hline
-Algorithm & Time/call & Calls & Exposed share \\
-\hline
-Hotspot prediction & xxx & xxx & xxx \\
-Connection selection & xxx & xxx & xxx \\
-Bank policy & xxx & xxx & xxx \\
-Thermal control & xxx & xxx & xxx \\
-\hline
-\end{tabular}
-\end{table}
+\FloatBarrier
 
 \section{Related Works}
 \label{sec:related-works}
 
+\paragraph{Reconfigurable NoCs and traffic management}
+SMART~\cite{krishna2013smart} enables packets to bypass multiple routers
+within a cycle, reducing traversal latency. HiBand~\cite{wang2026hiband}
+reallocates local and global bandwidth through four NoC modes for
+HB-DRAM inference. Application-aware prioritization~\cite{das2009priority}
+ranks packets according to their applications' stall-time criticality.
+These studies address traversal cost, bandwidth allocation, and
+shared-resource arbitration. Our design combines separate coherence and
+MoE planes with configurable MoE circuits, selecting connections according
+to communication demand and checking their effect on consumer completion time.
+
+\paragraph{MoE communication and memory optimization}
+ExpertFlow~\cite{he2026expertflow} combines routing prediction, token
+scheduling, and expert caching to reduce parameter transfers during
+memory-constrained inference. MixNet~\cite{liao2025mixnet} adapts an
+optical-electrical fabric to changing expert communication demands in
+distributed MoE training. HBSpec~\cite{wang2026hbspec} uses
+communication-aware mapping and operator scheduling for hybrid-bonded
+speculative decoding. Together, these studies demonstrate the importance
+of coordinating computation and data movement. Our work applies demand
+prediction to on-chip circuit allocation and accounts for network interface
+capacity, memory bank access, and reconfiguration overhead when evaluating
+concurrent general-purpose tasks and MoE inference.
+
+\paragraph{Thermal management in 3D systems}
+Tasa~\cite{he2025tasa} addresses thermal constraints in 3D-stacked LLM
+systems through cross-stack thermal optimization and bandwidth sharing.
+Thermal-aware scheduling has also been studied for controlling runtime
+temperature in 3D multicore processors~\cite{tsai2016thermal}.
+Our thermal mechanism combines operator-level energy-aware DVFS with
+scheduling based on predicted temperature responses. It accounts for
+delayed heat propagation between logic and DRAM tiers. The thermal
+ablation uses common NoC and endpoint-service settings in both runs.
+
+\par\addvspace{5pt}
 \section{Conclusion}
 \label{sec:conclusion}
 
+We presented thermal-aware NoC reconfiguration for concurrent
+general-purpose computing and MoE inference in 3D-stacked systems.
+Separate traffic planes and configurable MoE circuits adapt communication
+paths to changing demand. A completion-time check accounts for memory
+access and reconfiguration costs, while operator-level DVFS and
+thermal-aware scheduling manage execution under temperature constraints.
+The evaluation quantifies communication-stage gains and the trade-off
+between peak temperature, latency, and energy under thermal control.
+
+\clearpage
+\balance
 \bibliographystyle{IEEEtran}
 \bibliography{references,thermal_references}
 
