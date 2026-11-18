@@ -1,5 +1,17 @@
 # Dual-plane NoC RTL experiments
 
+The published package contains **312 audited RTL runs / 1,872 communication phases**. Start with [EXPERIMENT_STATUS.md](EXPERIMENT_STATUS.md), [the Chinese results report](evidence/results/REPORT_CN.md), and [the collaboration plan](EXPERIMENT_PLAN_CN.md). Functional regression and result accounting passed. Structural synthesis has exit-code-137 records and is not signed off; its captured state is in `evidence/SYNTHESIS_SNAPSHOT.json`.
+
+A clone can verify and re-audit the archived results without the cluster, Docker or input traces:
+
+```sh
+python3 verify_package.py
+python3 analyze.py --evidence evidence --output analysis_review
+```
+
+`PACKAGE_MANIFEST.json` binds the published files. The verification checks artifact integrity and the identity of tested RTL and driver sources; it does not upgrade the synthesis status. Raw traces and build binaries remain outside this package.
+
+
 This directory implements the 16-node design: MoE traffic uses the original 4×4 M Mesh and 13 circuit switches; GetS requests and DataS responses use a second 4×4 C Mesh. Each NI connects to the router with the same node index on both planes. Classification uses the packet opcode before serialization. Payload length does not choose the plane.
 
 The comparison is a **NoC adaptation of HiBand**, implemented from Fig. 6 and §§4–5 of DOI [10.1145/3770743.3803944](https://doi.org/10.1145/3770743.3803944). No author code was available. The earlier C++ screening in `../dual_plane_hiband_20261118` is separate evidence; the experiments here execute SystemVerilog through Verilator.
@@ -24,7 +36,9 @@ Both planes have 256-bit links. Each NI shares one 256-bit injection service and
 
 Each simulated endpoint has a 4 MiB SRAM image and a shared 32-byte-per-cycle service for MoE reads/writes, bank reads, and CPU response writes. MoE messages have persistent source and destination regions and are checked again after drain. Bank latency defaults to eight cycles; the two SRAM reads needed for a 64-byte response are additional service. This is an endpoint service model, not CPU or SRAM-macro RTL.
 
-The controller runs in C++ as software. Its exact timing backend forks the current RTL and endpoint state and executes the candidate against the frozen arrival schedule. Future arrivals are available to this experimental verification backend; it is not a deployable forecasting model. Planning starts at each communication-phase boundary; overlap with a preceding compute layer is not modeled. Measured CPU construction and modeling time is charged while the unchanged network continues to run. This backend verifies the decision rules; it does not demonstrate that the software can make useful decisions within a short NoC phase. `forced_cs` independently checks the CS mechanism using a preselected path and real installation traffic.
+`run_delay_control.py` compiles a separate benchmark entry point against the already tested RTL library and unchanged endpoint code. Its source and binary hashes are attached to the extended matrix receipt.
+
+The controller runs in C++ as software. Its exact timing backend forks the current RTL and endpoint state and executes the candidate against the frozen arrival schedule. Future arrivals are available to this experimental verification backend; it is not a deployable forecasting model. Planning starts at each communication-phase boundary; overlap with a preceding compute layer is not modeled. Measured host wall time for construction and modeling is charged while the unchanged network continues to run. Host scheduling and the container CPU quota affect this diagnostic cost; it is not a calibrated controller-cycle model. This backend verifies the decision rules; it does not demonstrate that the software can make useful decisions within a short NoC phase. `forced_cs` independently checks the CS mechanism using a preselected path and real installation traffic.
 
 ## HiBand adaptation
 
@@ -38,7 +52,7 @@ Five transport metadata files are recovered from commit `073d3176733835eeafb4d5f
 
 Every arm uses the same arrival schedule, addresses and deterministic data. Source completion timestamps from the earlier run are not reused as injection times. The candidate admission window is an explicit assumption of `tokens × 4096` cycles, not a measured inter-phase gap. Each phase has a fresh NoC and a barrier; reported phase sums are not complete model-inference latency. Successful packet delivery includes actual SRAM read and write checks. The trace does not provide numerical MoE computation, a complete cache-coherence protocol, or paired adjacent-layer expert labels. The predictor regression consequently establishes numerical implementation only.
 
-The main matrix has 270 runs: 30 cases × shared Mesh, dual plane without CS, runtime controller, forced CS, three HiBand allocations, GetS alone and MoE alone. Ten bank-service sensitivity runs and two controller-clock sensitivity runs bring the total to 282. The default one-nanosecond cycle is a simulation parameter; no physical timing closure is implied.
+The main matrix has 270 runs: 30 cases × shared Mesh, dual plane without CS, runtime controller, forced CS, three HiBand allocations, GetS alone and MoE alone. Ten bank-service sensitivity runs and two controller-clock sensitivity runs bring the base total to 282. Thirty additional `delay_control` runs send the same configuration messages and hold the same packets as `forced_cs`, but release the selected packets onto M Mesh. Setup timings must match before the control receipts can be merged, yielding 312 runs in total. The default one-nanosecond cycle is a simulation parameter; no physical timing closure is implied.
 
 ## Reproduce on Linux
 
@@ -47,6 +61,8 @@ Use a Docker-capable host and Python 3. Fetching tools and Git input objects req
 ```sh
 docker build -t noc-experiment-tools:20261118-clean .
 python3 fetch_tools.py
+# Fetch the input branch if its pinned object is absent from a shallow/single-branch clone.
+git -C /path/to/cross-layer-optimization fetch origin codex/qwen15-moe-dense-gets-20261117
 python3 fetch_inputs.py --repo /path/to/cross-layer-optimization
 python3 prepare.py
 python3 build.py
@@ -55,12 +71,14 @@ docker run --rm --network none -v "$PWD:/work" -w /work \
   noc-experiment-tools:20261118-clean python3 predictor.py --selftest
 python3 run_matrix.py --pilot
 python3 run_matrix.py
+python3 run_delay_control.py
 python3 analyze.py
+python3 report.py
 ```
 
-Builds use at most four CPUs; the matrix uses four workers, each limited to one CPU and 3 GiB. The structural check uses two CPUs and 12 GiB. Source snapshots and output receipts are isolated under hash-named directories. `NOC_TOOL_IMAGE` may select another tool image, whose ID becomes part of the build identity.
+Builds use at most four CPUs; the matrix uses up to eight workers (`--workers 1..8`), each limited to one CPU and 3 GiB. Each structural-check container is limited to two CPUs and 12 GiB, with two variants scheduled concurrently. Two recorded attempts exited with code 137; resource usage and the RTL expansion need review before this check can be signed off. Source snapshots and output receipts are isolated under hash-named directories. `NOC_TOOL_IMAGE` may select another tool image, whose ID becomes part of the build identity.
 
-`CURRENT_BUILD.json`, `SYNTHESIS.json`, `MATRIX.json` and `results/*/AUDIT.json` are the run receipts. `SUMMARY.csv` contains every run, and `RESULTS.md` gives paired comparisons. Published receipts are stored in `evidence/`; reruns create fresh local files. Large build objects, raw traces, netlists, executable tools and binaries are intentionally excluded from Git.
+`CURRENT_BUILD.json`, `SYNTHESIS.json`, `MATRIX.json` and `results/*/AUDIT.json` are the run receipts. `SUMMARY.csv` contains every run, `INTERFERENCE.csv` reports paired mixed-versus-alone phase measurements, and `RESULTS.md` gives paired comparisons. Published receipts are stored in `evidence/`; reruns create fresh local files. Large build objects, raw traces, netlists, executable tools and binaries are intentionally excluded from Git.
 
 Structural synthesis checks for undriven/conflicting nets, inferred latches and combinational cycles. sv2v 0.0.13 emits unpacked arrays in explicit combinational sensitivity lists that Yosys 0.23 cannot parse; `synth_check.py` converts those lists to equivalent `@*` and records both hashes. Edge-triggered blocks are unchanged. For each variant the converted top-level `DUAL` default is set before deferred elaboration, avoiding a Yosys 0.23 parameter-renaming bug. Node identifiers are constant-wired inputs to shared router/NI cores; this does not add runtime configuration. These checks do not establish standard-cell area, placed wiring, timing closure or power.
 

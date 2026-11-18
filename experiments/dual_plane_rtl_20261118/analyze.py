@@ -1,12 +1,17 @@
 """Audit RTL receipts against frozen inputs, then report paired comparisons."""
-import collections,csv,hashlib,json,math
+import argparse,collections,csv,hashlib,json,math
 from pathlib import Path
 R=Path(__file__).resolve().parent
 FULL=['mesh','dual','runtime','forced_cs','hiband_FG','hiband_GB','hiband_LB']
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
-    manifest=json.loads((R/'MATRIX.json').read_text());assert manifest['status']=='PASS'
-    out=Path(manifest['result_path']);cases={c['name']:c for c in json.loads((R/'CASES.json').read_text())}
+    ap=argparse.ArgumentParser();ap.add_argument('--pilot',action='store_true');ap.add_argument('--evidence',type=Path);ap.add_argument('--output',type=Path);args=ap.parse_args()
+    manifest=json.loads(((args.evidence or R)/('PILOT.json' if args.pilot else 'MATRIX.json')).read_text());assert manifest['status']=='PASS'
+    out=(args.evidence/('pilot' if args.pilot else 'results')) if args.evidence else Path(manifest['result_path'])
+    reportout=args.output or (R/'analysis_review' if args.evidence else out);reportout.mkdir(parents=True,exist_ok=True)
+    cases={c['name']:c for c in json.loads((R/'CASES.json').read_text())}
+    names={t['case'] for t in manifest['tasks']};cases={k:v for k,v in cases.items() if k in names}
+    has_control=any(t['arm']=='delay_control' for t in manifest['tasks']);full_arms=FULL+(['delay_control'] if has_control else [])
     rows=[];results={};reason=collections.Counter();installed=0;checks=0
     for task in manifest['tasks']:
         name=task['case']+'_'+task['arm']+'_b'+str(task['bank'])+('_clk'+str(task['clock']) if task['clock']!=1 else '')
@@ -38,13 +43,25 @@ def main():
     fg_differences=[]
     for name in cases:
         base=results[name,'mesh',8,1]
-        for arm in FULL:
+        for arm in full_arms:
             d=results[name,arm,8,1]
             assert [w['canonical_payload_hash'] for w in d['waves']]==[w['canonical_payload_hash'] for w in base['waves']],(name,arm,'cross-arm payload equality')
         fg=results[name,'hiband_FG',8,1]
         if [(w['finish'],w['moe'],w['gets'],w['gets_p99']) for w in fg['waves']]!=[(w['finish'],w['moe'],w['gets'],w['gets_p99']) for w in base['waves']]:fg_differences.append(name)
-    with (out/'SUMMARY.csv').open('w',newline='') as f:
+    with (reportout/'SUMMARY.csv').open('w',newline='') as f:
         w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator="\n");w.writeheader();w.writerows(rows)
+    interference=[]
+    for name in cases:
+        getsonly=results[name,'gets_only',8,1]['waves'];moeonly=results[name,'moe_only',8,1]['waves']
+        for arm in full_arms:
+            for w,g,m in zip(results[name,arm,8,1]['waves'],getsonly,moeonly):
+                interference.append(dict(case=name,stage=w['stage'],arm=arm,pattern=cases[name]['pattern'],interval=cases[name]['interval'],
+                    gets_finish=w['gets'],gets_alone_finish=g['gets'],gets_p99=w['gets_p99'],gets_alone_p99=g['gets_p99'],
+                    gets_p99_slowdown=w['gets_p99']/g['gets_p99'],moe_finish=w['moe'],moe_alone_finish=m['moe'],
+                    moe_slowdown=w['moe']/m['moe'],joint_finish=w['finish'],isolated_max=max(g['gets'],m['moe']),
+                    mean_request_admission_wait=w['gets_injection_wait_sum']/w['gets_count']))
+    with (reportout/'INTERFERENCE.csv').open('w',newline='') as f:
+        w=csv.DictWriter(f,fieldnames=list(interference[0]),lineterminator='\n');w.writeheader();w.writerows(interference)
     # Strong comparison bound: choose the fastest legal HiBand allocation
     # separately for every phase, granting free, perfectly informed switching.
     # This is derived from measured RTL runs, not another executed policy.
@@ -55,7 +72,7 @@ def main():
         results[name,'hiband_phase_best',8,1]={'waves':[options[j][i] for i,j in enumerate(choice)]}
         phase_best[name]=choice
     comparisons=[]
-    for baseline in ['mesh','hiband_FG','hiband_GB','hiband_LB','hiband_phase_best','dual']:
+    for baseline in ['mesh','hiband_FG','hiband_GB','hiband_LB','hiband_phase_best','dual']+(['delay_control'] if has_control else []):
         for arm in ['dual','runtime','forced_cs']:
             if arm==baseline:continue
             values=[];p99=[];moe=[]
@@ -68,11 +85,11 @@ def main():
               min_speedup=min(values),max_speedup=max(values),wins=sum(v>1+1e-12 for v in values),losses=sum(v<1-1e-12 for v in values),
               geomean_moe_speedup=math.exp(sum(map(math.log,moe))/len(moe)),geomean_max_phase_p99_ratio=math.exp(sum(map(math.log,p99))/len(p99))))
     audit=dict(status='PASS_INPUT_PAYLOAD_PLANE_WIRE_AND_SRAM_ACCOUNTING',runs=len(rows),phase_checks=checks,
-      input_cases=len(cases),cross_arm_payload_comparisons=len(cases)*len(FULL),
+      input_cases=len(cases),cross_arm_payload_comparisons=len(cases)*len(full_arms),
       hiband_FG_timing_differences=fg_differences,runtime_installed_phases=installed,runtime_reasons=dict(reason),
-      comparisons=comparisons,hiband_phase_best_mode_indices=phase_best,summary_sha256=sha(out/'SUMMARY.csv'),
+      comparisons=comparisons,interference_sha256=sha(reportout/'INTERFERENCE.csv'),hiband_phase_best_mode_indices=phase_best,summary_sha256=sha(reportout/'SUMMARY.csv'),
       scope='Six separately initialized communication phases; deterministic synthetic payload with trace-derived endpoints and byte counts. No numerical MoE inference or complete CPU coherence protocol.')
-    (out/'AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
+    (reportout/'AUDIT.json').write_text(json.dumps(audit,indent=2)+'\n')
     text=['# RTL experiment results','',f"{len(rows)} runs / {checks} communication phases passed packet, payload, plane, wire and SRAM checks.",'',
       '| Arm | Baseline | Geometric mean speedup | Range | Wins / losses |','|---|---|---:|---:|---:|']
     for c in comparisons:text.append(f"| {c['arm']} | {c['baseline']} | {c['geomean_speedup']:.3f} | {c['min_speedup']:.3f}–{c['max_speedup']:.3f} | {c['wins']} / {c['losses']} |")
@@ -85,6 +102,6 @@ def main():
       'The HiBand implementation is a target-platform unicast NoC adaptation. Three legal static modes are reported separately; no result is attributed to author RTL.',
       'The runtime prototype charges measured host construction/model time at the selected target clock period. Host scheduling and contention affect these costs; a repeated run need not reproduce planner nanoseconds.',
       'The predictor unit test uses synthetic paired expert counts. The supplied transport metadata cannot establish prediction accuracy or full application performance.','']
-    (out/'RESULTS.md').write_text('\n'.join(text))
+    (reportout/'RESULTS.md').write_text('\n'.join(text))
     print(json.dumps({k:v for k,v in audit.items() if k not in ['comparisons','hiband_phase_best_mode_indices']},indent=2))
 if __name__=='__main__':main()
