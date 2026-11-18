@@ -61,65 +61,62 @@ by 0, with $x_{m,0}=1-\sum_{p\in\mathcal P_m}x_{m,p}$. Thus,
   u_{m,p,r}x_{m,p}\leq C_r,\qquad r\in\mathcal R.
   \label{eq:noc-resource-capacity}
 \end{equation}
+At most two paths are selected, $\sum_{p\in\mathcal P}z_p\leq2$;
+a path may traverse multiple CSs.
 Path $p$ specifies the input, output, and enable fields of each CS;
 $x_{m,p}$ determines the source NI's route tag for packet $m$.
 
 \subsection{Configuration Algorithm}
 \label{sec:noc-algorithm}
 
-Offline enumeration supplies local and upper-CS paths. At runtime,
-flows are sorted by decreasing $D_f$, and packets follow release order.
-Each round examines up to $K_f$ largest remaining flows and $K_p$ paths per flow.
-An extension adds one or two paths compatible with the selected set
-and with each other.
-\textsc{Assign} reallocates packets jointly across the full proposed set,
-choosing paths by unloaded latency and then identifier. Feasible extensions
-enter the candidate pool; the best positive increase in $V$ advances
-the search. Ties favor fewer CS changes from the active configuration
-$S_0$, then fixed path identifiers. Each successful round occupies a new
-CS, giving at most thirteen rounds.
+Offline enumeration supplies local and upper-CS paths. We target the two
+M-plane links with the largest pending MoE flit counts. For each link
+still unrelieved, flows are visited in decreasing $D_f$, with endpoint
+identifiers breaking ties. Up to $K_p=2$ paths per flow are tried by length
+and then identifier. We retain the first CS-disjoint extension that passes
+joint \textsc{Assign} and increases $V$. Construction ends after two paths,
+both links, or budget exhaustion. At most two configurations are retained;
+the one-path configuration remains available when a second path is added.
 
-Candidates $S=(\mathbf z,\mathbf x)$ are checked in decreasing $V$.
-A timing model propagates
-source reads, finite queues, credits, receive writes, and task dependencies.
-C responses follow their request's memory service. Both estimates use
-the same time origin; $S_0$ continues forwarding during host computation.
-For the current phase's required consumers, an update must satisfy
+Candidates are checked in decreasing $V$. A timing model propagates
+source reads, finite queues, credits, receive writes, and dependencies;
+DataS follows its request's memory service. While $S_0$ forwards, an update
+must satisfy, using the same time origin,
 \begin{equation}
-  \widehat T(S)+\eta(S)<\widehat T(S_0),
+  \widehat T(S)+\eta(S)<\widehat T(S_0).
   \label{eq:noc-switching-check}
 \end{equation}
-where $\eta(S)\geq0$ is calibrated from paired errors on held-out requests.
-Protected completion points $k$ additionally satisfy
-$\widehat T_k(S)-\widehat T_k(S_0)+\eta_k(S)\leq\epsilon_k$;
-they include coherence transactions with specified delay budgets.
-Estimates include computation, pause, drain, writes, and NI installation.
-After the NI pause acknowledgement, the host refreshes versions and
-eligibility and repeats feasibility, timing, and budget checks. Configuration
-follows Section~\ref{sec:noc-config-interface}.
+Here $\eta(S)\geq0$ is calibrated from paired errors on held-out requests.
+Protected consumers satisfy
+$\widehat T_k(S)-\widehat T_k(S_0)+\eta_k(S)\leq\epsilon_k$,
+including MoE with $\epsilon_k=0$ and coherence transactions with their
+specified allowances. Estimates include controller execution, pause,
+drain, writes, and NI installation. After pause acknowledgement and drain, versions and eligibility are refreshed and feasibility, timing, and budgets are
+rechecked before Section~\ref{sec:noc-config-interface}'s update protocol.
 
 \begin{algorithm}[H]
-  \caption{MoE-plane CS configuration}
+  \caption{CS configuration for at most two hotspots}
   \label{alg:noc-configuration}
   \small
   \begin{algorithmic}[1]
     \Require MoE packets $\mathcal M$, paths $\mathcal P$, budgets $C_r$, active $S_0$
     \Ensure $S_0$, an acknowledged update, or an update error
-    \State Sort flows by $D_f$ and packets by release order
+    \State $\mathcal H\gets$ up to two M-plane links with largest demand
     \State $S\gets$ Mesh allocation; $\mathcal C\gets\varnothing$
-    \While{construction budget remains}
-      \State Generate compatible one- and two-path extensions
-      \State $\mathcal E\gets$ jointly assigned feasible extensions
-      \State $\mathcal C\gets\mathcal C\cup\mathcal E$
-      \State \textbf{if} no positive added $V$ \textbf{then break}
-      \State $S\gets$ extension with largest added $V$
-    \EndWhile
+    \For{$e\in\mathcal H$ while construction budget remains}
+      \State \textbf{if} $S$ already relieves $e$ \textbf{then continue}
+      \State $S'\gets$ first feasible extension for $e$ increasing $V$, or $S$
+      \If{$V(S')>V(S)$}
+        \State $S\gets S'$; $\mathcal C\gets\mathcal C\cup\{S\}$
+      \EndIf
+      \State \textbf{if} two paths are selected \textbf{then break}
+    \EndFor
     \For{$S'\in\mathcal C$ in decreasing $V$}
       \State \textbf{if} budget expired \textbf{then return} $S_0$
       \State Estimate completion and update overhead
       \If{timing checks pass within the decision budget}
         \State Request packet holds and pause new CS admissions
-        \If{pause acknowledged within the decision budget}
+        \If{pause and drain complete within budget}
           \State Refresh state; recheck feasibility and timing
           \State \textbf{if} final checks pass \textbf{then return} $\Call{ApplyCS}{S'}$
         \EndIf
