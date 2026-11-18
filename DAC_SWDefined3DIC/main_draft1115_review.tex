@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{tabularx}
 \usepackage{placeins}
+\usepackage{balance}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[hidelinks]{hyperref}
@@ -14,7 +15,7 @@
 \setlength{\emergencystretch}{1em}
 
 
-\title{Thermal-Aware NoC Reconfiguration for Co-Running MoE and Coherence Traffic in 3D-Stacked Accelerators}
+\title{Thermal-Aware NoC Reconfiguration for Concurrent General-Purpose Computing and MoE Inference in 3D-Stacked Systems}
 \author{Anonymous Author(s)}
 
 \begin{document}
@@ -97,7 +98,7 @@ This work makes three contributions:
 
 \begin{figure}[!tbp]
   \centering
-  \includegraphics[width=\columnwidth]{figures/target_architecture.pdf}
+  \includegraphics[width=\columnwidth]{figures/target_architecture_uniform_titles.pdf}
   \caption{Target 3D system. (a) Host and HB-DRAM organization. (b) Face-to-face
   integration of the $4\times4$ Logic-tier NPU mesh and the aligned DRAM
   channels. (c) Microarchitecture of an NPU--memory pair.}
@@ -126,9 +127,7 @@ The main MoE evaluation covers Qwen3-30B-A3B~\cite{qwen3report} and
 Qwen1.5-MoE-A2.7B~\cite{qwen15moe} for language-model inference,
 mini-SWE-agent~\cite{minisweagent} with a Qwen3-30B-A3B backend for
 SWE-bench Lite tasks~\cite{swebench}, and LingBot TI2V~\cite{lingbotvideo}
-for video generation. The auxiliary thermal scenario combines
-WHISPER~\cite{whisper}, an ORB-SLAM3-derived SLAM workload~\cite{orbslam3},
-and $\pi_{0.5}$~\cite{pi05}.
+for video generation.
 
 
 \subsection{Phase-Dependent Congestion in MoE Communication}
@@ -183,16 +182,16 @@ dispatch burst, queueing can delay their responses. In our replay,
 staggering the two streams restores the latency of the step waiting for
 coherence responses to the coherence-only level.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \begin{minipage}[t]{0.36\textwidth}
+  \begin{minipage}[t]{0.36\columnwidth}
     \vspace{0pt}\centering
-    {\small (a) Prefill latency\par}
+    {\fontsize{7}{8}\selectfont\rmfamily\mdseries\upshape (a) Prefill latency\par}
     \includegraphics[width=\linewidth]{figures/noc_phenomenon_narrow_bars.png}
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.62\textwidth}
+  \begin{minipage}[t]{0.62\columnwidth}
     \vspace{0pt}\centering
-    {\small (b) Router demand across MoE layers\par}
+    {\fontsize{7}{8}\selectfont\rmfamily\mdseries\upshape (b) Router demand across MoE layers\par}
     \includegraphics[width=\linewidth,trim=0bp 0bp 0bp 24bp,clip]{figures/noc_cause_router_hotspots_revised.png}
   \end{minipage}
   \caption{Communication latency and router demand for Qwen3-30B-A3B.
@@ -205,7 +204,7 @@ coherence responses to the coherence-only level.
   input length. Three heatmaps show the change in peak router demand
   across MoE layers.}
   \label{fig:noc-phenomenon}
-\end{figure*}
+\end{figure}
 
 \noindent\textbf{Opportunity: Separate Paths for Coherence and MoE.}
 Figure~\ref{fig:noc-opportunity}(a) shows a GetS request from $N_0$
@@ -228,9 +227,9 @@ connections can be reassigned between communication phases as the
 busy node pairs change. The circuits share NI service and SRAM-bank
 bandwidth.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \includegraphics[width=\textwidth]{figures/noc_opportunity_dual_plane.pdf}
+  \includegraphics[width=\columnwidth]{figures/noc_opportunity_dual_plane_titles_spaced.pdf}
   \caption{Separate paths for coherence and MoE traffic.
   (a) Two inputs compete for one baseline Mesh output.
   (b) Complete dual-plane topology with GetS/DataS routes and the
@@ -242,7 +241,7 @@ bandwidth.
   Requests and responses traverse C0, C4, and C8; MoE packets use the
   Mesh route or the NI5-CS3-NI8 circuit on plane M.}
   \label{fig:noc-opportunity}
-\end{figure*}
+\end{figure}
 
 \noindent\textbf{Thermal Management.}
 Concentrated activity in the stacked Logic and DRAM tiers raises temperatures in both tiers, increasing the risk of thermal throttling, which can increase inference latency. While task migration has been widely studied for thermal management, its effectiveness in DRAM-stacked NPUs is limited by the strong dependence of computation on locally stored model weights. Migrating tasks may require weight replication or remote memory accesses, introducing additional DRAM and NoC overhead. Our experiments show that these costs largely offset the performance benefits of task migration. Therefore, instead of relocating tasks, we reduce heat generation through operator-level energy-aware DVFS and improve execution efficiency through thermal-aware task scheduling.
@@ -272,9 +271,9 @@ network to bypass intermediate Mesh routers. MoE packets use an
 assigned circuit or the M-plane Mesh. Coherence requests and responses
 use C-plane links independently of these route choices.
 
-\begin{figure*}[!t]
+\begin{figure}[!t]
   \centering
-  \includegraphics[width=\textwidth]{figures/noc_dual_plane.pdf}
+  \includegraphics[width=\columnwidth]{figures/noc_dual_plane_uniform_titles.pdf}
   \caption{Dual-plane NoC. (a) MoE Mesh/CS plane M and coherence Mesh
   plane C, with one local connection per node.
   (b) Node, packet-type decoder, and five-port coherence router.
@@ -285,7 +284,7 @@ use C-plane links independently of these route choices.
   classification, separate MoE and coherence queues, packet formation,
   receive processing, shared SRAM arbitration, and the coherence router.}
   \label{fig:noc-physical-design}
-\end{figure*}
+\end{figure}
 
 \subsection{Node and Network Interface}
 \label{sec:noc-node-design}
@@ -421,182 +420,179 @@ We use a HotSpot-based RC thermal model~\cite{hotspot_tool} to capture delayed h
 \label{sec:experiment}
 
 \subsection{Experimental Setup}
+We model 16 hybrid-bonded NPU clusters, each with 4096 MACs, a 16-lane
+vector unit, and 4~MiB SRAM, alongside 32~GiB HB-DRAM. The $4\times4$
+Mesh uses 256-bit links at 1~GHz; each vertical link provides 25.6~GB/s.
+The workloads are Qwen3-30B-A3B and Qwen1.5-MoE-A2.7B (prefill/decode),
+mini-SWE-agent with Qwen3 (model calls and Agent tasks), and LingBot TI2V
+(video generation). Paired runs match input, precision, arrivals, and
+initial state. For concurrent tasks, stage join waits for both compute
+and coherence responses.
 
-We evaluate the proposed design on a face-to-face hybrid-bonded 3D accelerator. Table~\ref{tab:eval-platform} lists the common platform parameters. The evaluation uses 32~GiB of HB-DRAM. Each comparison starts from the same input and initial system state and uses the same precision, resource budget, and workload completion criteria. We account for each method's additional hardware and runtime costs separately.
+\subsection{Performance Comparison}
+Figure~\ref{fig:eval-overall} shows stage-join reductions of
+5.74\%, 9.01\%, 7.15\%, and 8.17\% relative to HiBand~\cite{wang2026hiband}
+for Qwen3, mini-SWE-agent, LingBot TI2V, and Qwen1.5, respectively.
+Latency reduction is $1-T_{\mathrm{design}}/T_{\mathrm{HiBand}}$.
+The comparison covers modeled communication stages. Layer measurements and
+end-to-end estimates have different completion boundaries.
 
-\begin{table}[t]
-\caption{Common hardware and simulation settings.}
-\label{tab:eval-platform}
-\centering\small
-\begin{tabular}{@{}lp{0.59\columnwidth}@{}}
-\hline
-Component & Configuration \\
-\hline
-Logic tier & 16 NPU clusters at 1~GHz \\
-NPU cluster & 4096 MACs, 16-lane vector unit, 4~MiB SRAM \\
-Base NoC & $4\times4$ mesh, 256-bit links at 1~GHz \\
-HB-DRAM & 32~GiB, 16 partitions of 2~GiB each, 16 logical banks per partition \\
-Vertical link & 25.6~GB/s per NPU--memory pair \\
-Host & Four CPU cores, PCIe 5.0, host memory xxx \\
-Simulation & Compute, memory, and NoC models xxx \\
-Thermal model & Ambient and initial temperatures xxx, temperature limit xxx \\
-\hline
-\end{tabular}
-\end{table}
+\begin{figure}[!t]
+\centering
+\begin{minipage}[t]{0.49\columnwidth}
+\centering\vspace{0pt}
+\includegraphics[width=\linewidth]{figures/fig5_performance_halfcolumn.pdf}
+\caption{Stage-join time relative to HiBand (100\%).}
+\Description{Grouped bars compare normalized stage-join time for four workloads.}
+\label{fig:eval-overall}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.49\columnwidth}
+\centering\vspace{0pt}
+\includegraphics[width=\linewidth]{figures/fig6a_ablation.pdf}
+\caption{Communication ablation relative to shared-Mesh RR.}
+\Description{Twelve bars compare three normalized metrics for P, D, W, and C.}
+\label{fig:eval-breakdown}
+\end{minipage}
+\end{figure}
 
-Table~\ref{tab:eval-workloads} lists four main MoE workloads and one auxiliary thermal scenario. We freeze the input manifests, arrival order, seeds, and stopping rules before collecting performance results. In each run of the main co-execution evaluation, we release a batch of synthetic coherence requests representing a general-purpose task before starting the MoE workload, so that the two traffic streams overlap. We use the same release schedule for HiBand and the proposed design.
+\subsection{Ablation and Implementation Overhead}
+Figure~\ref{fig:eval-breakdown} separates traffic-plane, arbitration, and circuit
+effects using the common RTL/endpoint testbench. Five frozen Qwen1.5-MoE
+transport inputs comprise one each at 4 and 8 tokens and three 16-token seeds.
+Hotspot/distributed GetS placement and aggregate release intervals of 1, 3,
+and 6 cycles give 30 development conditions. Bank waiting is fixed at eight
+cycles; payloads, arrival plans, queues, and shared NI/SRAM service budgets
+are matched. Each communication phase starts from a fresh network, so their
+completion-time sum is not end-to-end inference latency. Ratios are computed
+per condition before geometric averaging; these conditions reuse five inputs
+and are not independent replicate samples.
 
-\begin{table*}[t]
-\caption{Workloads, input manifests, and measurement boundaries.}
-\label{tab:eval-workloads}
-\centering\small
-\begin{tabularx}{\textwidth}{@{}p{0.25\textwidth}Xp{0.29\textwidth}@{}}
+\paragraph{Traffic separation and arbitration}
+Under RR, the dual plane with CS disabled reduces the join-time sum by
+2.32\% relative to shared Mesh, with 20 conditions improving and ten tying.
+This benefit includes the additional C-plane resources; it is not an
+equal-area comparison. On shared Mesh, fixed type priority reduces the
+worst-phase GetS P99 by 56.43\%, but increases the MoE and join-time sums by
+13.06\% and 4.44\%, respectively. Earlier responses therefore need not
+advance joint completion. Priority uses a separately built, reviewed RTL
+revision; the driver, inputs, and service budgets are unchanged. It is an
+alternative arbitration control, not a step in the CS configuration chain.
+
+\paragraph{Circuit paths and configuration waiting}
+Forced CS increases join time by 0.79\% relative to the CS-off dual plane.
+To isolate its path effect, a control applies the same configuration commands
+and holds the same selected packets, but keeps their payloads on Mesh.
+Configuration counts and start/end times match in all 180 phases. This
+matched-wait control increases join time by 1.31\% over CS-off, while forced
+CS shortens time by 0.52\% relative to that control. Thus, a small path benefit
+can be offset by configuration and selected-packet waiting. Injection-order
+interactions make these effects non-additive. Recorded configuration
+intervals are 845--925 simulated cycles, distinct from the separate
+architecture model's 40-cycle aggregate installation parameter.
+
+\paragraph{Online-policy boundary}
+The charged-host-time runtime prototype commits no updates in the 180
+main-matrix phases: each phase completes during candidate construction.
+Its completion times equal those of CS-off and are not plotted again.
+Forced-CS results characterize the routing mechanism rather than established
+online-policy gains. The ablation does not establish dual-plane type-priority
+performance or real adjacent-layer prediction accuracy.
+
+\paragraph{Sensitivity}
+Stage-join changes by token count, GetS placement, and release interval:
+xxx. Configuration-cost and decision-lead sweeps (ranges and results):
+xxx.
+
+\noindent\textbf{Thermal ablation.}
+In the modeled 24-layer Qwen1.5-MoE run (four requests, 512 prefill and
+one decode token each), both arms use fixed XY Mesh, a common warm state
+(63.501~$^{\circ}$C peak), and no bank-conflict optimization. Enabling DVFS
+and thermal scheduling reduces peak temperature from 64.985 to
+63.968~$^{\circ}$C; both satisfy the 65~$^{\circ}$C cap for this batch.
+Completion time increases from 6.658 to 7.771~s (+16.72\%) and energy
+from 49.491 to 51.544~J (+4.15\%).
+
+Table~\ref{tab:eval-cost} compares simplified shared-Mesh and C/M network
+cores, excluding full endpoints, SRAM/banks, distributed configuration,
+thermal, and cross-tier hardware. FPGA: Vivado 2017.4, XCKU5P, 200~MHz
+OOC post-route timing. ASIC: Yosys 0.23, Nangate45 TT, 1~ns constraint,
+synthesis area. Runtime rows reserve space for the exposed critical-path measurements.
+
+\begin{table}[!ht]
+\caption{Network-core and runtime costs (simplified NIs).}
+\label{tab:eval-cost}
+\centering\scriptsize
+\renewcommand{\arraystretch}{0.85}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
 \hline
-Workload & Inputs and configuration & Measurement boundary \\
+Metric & Shared Mesh & Dual plane + CS \\
 \hline
-Qwen3-30B-A3B & Prompt source and IDs xxx, input/output lengths xxx, concurrency xxx & Prefill, decode, and complete request \\
-Qwen1.5-MoE-A2.7B & Prompt source and IDs xxx, lengths xxx, TP/PP mapping xxx & Prefill, decode, and complete request \\
-mini-SWE-agent + Qwen3 & SWE-bench Lite instance IDs and split xxx, tool and stopping rules xxx & Model calls, full agent task, and task outcome \\
-LingBot TI2V & Text/image IDs xxx, resolution xxx, frames xxx, steps and seeds xxx & Encoding, denoising, scheduler, and VAE decoding \\
-WHISPER + SLAM + $\pi_{0.5}$ & WHISPER version xxx, SLAM and $\pi_{0.5}$ traces xxx, request schedule xxx & Joint thermal scenario, execution coverage xxx \\
+FPGA LUTs / flip-flops & 31,995 / 38,286 & 117,625 / 92,783 \\
+FPGA BRAM / DSP & 0 / 0 & 0 / 0 \\
+FPGA setup WNS (ns), 200\,MHz & $+0.339$ & $+0.043$ \\
+ASIC synthesis area (mm$^2$) & 0.332176 & 0.869972 \\
+ASIC area increase (\%) & --- & 161.90 \\
+\hline
+Exposed decision overhead (\%) & xxx & xxx \\
+Exposed configuration delay (\%) & xxx & xxx \\
 \hline
 \end{tabularx}
-\end{table*}
-
-For each experimental line, we first run the complete workload under both configurations and record stage latencies and the end-to-end critical path. Subsequent paired points measure the same one or two MoE layers with identical input and routing samples. We extrapolate both arms using the same layer selection, weights, and dependency model, including non-MoE stages and control costs. Recomputing the critical path preserves overlap among compute, memory, and communication. We validate the estimates against the complete runs and report measured layer latency, estimated end-to-end latency, and estimated speedup separately. The corresponding estimation errors are xxx. All reported execution times refer to the modeled target system.
-
-\subsection{End-to-End Performance Comparison}
-
-The primary comparison pairs the common platform baseline B with B plus the full design. We separately compare with prior methods that pass the same workload and timing checks under matched resource constraints. The HiBand reference implementation and other candidate NoCs enter this comparison after qualification. Table~\ref{tab:eval-comparisons} records the scope of each comparison.
-
-\begin{table}[t]
-\caption{Configurations and scope of the performance comparisons.}
-\label{tab:eval-comparisons}
-\centering\small
-\begin{tabular}{@{}lp{0.53\columnwidth}@{}}
-\hline
-Configuration & Comparison scope \\
-\hline
-B & Common platform baseline, frozen configuration xxx \\
-B + full design & Paired end-to-end comparison with B \\
-HiBand reference & External comparison, qualification pending \\
-Other NoC candidates & Configurations and qualification results xxx \\
-\hline
-\end{tabular}
 \end{table}
 
-Figure~\ref{fig:eval-overall} compares completion times for each main workload. For each pair, we compute the latency reduction as $1-T_{\mathrm{design}}/T_{\mathrm{ref}}$, where $T_{\mathrm{ref}}$ is the completion time of B or the named external comparator. We also report time to first token and time per output token for the language-model workloads. For mini-SWE-agent, we report model-call latency and task latency separately and record task outcomes. For LingBot, we report the latency of a complete generation. The measured end-to-end latencies, paired reductions, and workload-level exceptions are xxx.
-
-\begin{figure*}[t]
-\centering
-\fbox{\rule{0pt}{18mm}\rule{0.92\textwidth}{0pt}}
-\caption{End-to-end latency by workload for B, B plus the full design, and qualified external comparators. Each panel uses identical inputs and completion criteria. Labels distinguish complete-run measurements from estimates based on sampled MoE layers.}
-\Description{Reserved space for the end-to-end latency comparison.}
-\label{fig:eval-overall}
-\end{figure*}
-
-\subsection{Supporting Results and Thermal Ablation}
-
-\paragraph{Phase-dependent congestion and bank waiting.}
-To explain the latency differences in Figure~\ref{fig:eval-overall}, we trace matched MoE communication phases from memory requests through consumer readiness. We measure bank queueing before data becomes available, injection and router queueing, unloaded traversal, and synchronization at the slowest endpoint. We record configuration delay on the same timeline and attribute only exposed delays to the critical path. Comparing packet tails and router activity across phases tests whether a change in hotspot location translates into earlier consumer readiness. A comparison with fixed network policy and a bank-policy toggle can isolate the incremental effect of bank conflict mitigation. The paired changes in exposed waiting and packet tail latency are xxx.
-
-\begin{figure*}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.92\textwidth}{0pt}}
-\caption{Critical-path latency breakdown for matched MoE communication phases. The timeline shows bank service, data readiness, NoC injection and queueing, configuration, and consumer synchronization. Companion panels show packet tail latency and router activity using common scales across configurations.}
-\Description{Reserved space for the critical-path breakdown and congestion panels.}
-\label{fig:eval-breakdown}
-\end{figure*}
-
-\paragraph{Incremental effect of thermal management.}
-We compare NoC with bank conflict mitigation and thermal management against the same NoC and bank mechanisms with thermal management disabled. Both arms start with identical temperatures, inputs, and thermal constraints. We track temperatures over the complete execution timeline and account for DVFS adjustments and thermal-aware task scheduling. We report natural and thermally stressed scenarios separately. Peak temperature, time above the threshold, and completion time are xxx.
-
-\begin{figure}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.90\columnwidth}{0pt}}
-\caption{Temperature and workload progress under different thermal management strategies. All configurations use the same NoC and DRAM-bank policies. }
-\Description{Reserved space for temperature and workload progress curves.}
-\label{fig:eval-thermal}
-\end{figure}
-
-\subsection{Scalability and Sensitivity Analysis}
-
-We vary system scale and input scale separately. The system-scale sweep starts at 16 NPU clusters and holds workload fixed. At each scale, we report the topology, mapping, capacity, and bandwidth. The input-scale sweep fixes the platform and varies request concurrency or input size. We report absolute completion time and paired latency reduction at each point. To examine design sensitivity, we vary the local connection budget and reconfiguration interval one at a time and record completion time, packet tail latency, and exposed configuration cost. The tested ranges and observed trends are xxx.
-
-\begin{figure}[t]
-\centering
-\fbox{\rule{0pt}{17mm}\rule{0.90\columnwidth}{0pt}}
-\caption{Scalability and sensitivity. Panels show (a) system scale at fixed workload, (b) input scale at fixed system size, and (c) sensitivity to the local connection budget and reconfiguration interval. Markers indicate the default configuration and whether overall latency is measured or estimated.}
-\Description{Reserved space for the scalability and parameter sweeps.}
-\label{fig:eval-scale}
-\end{figure}
-
-\subsection{Hardware Cost and Runtime Overhead}
-
-Table~\ref{tab:eval-cost} reports the MoE-plane prototypes: a fixed $4\times4$ mesh with 256-bit links and the same mesh augmented by 13 CSs. The NoC prototypes use simplified network interfaces and exclude SRAM bank control, thermal control, and physical cross-tier links. Each pair uses the same tools and constraints. The 1\,GHz NoC clock in Table~\ref{tab:eval-platform} is a system simulation parameter.
-
-Directed RTL tests cover all 256 mesh source--destination pairs, 108 lower-tier CS paths, and 24 directed upper-tier routes. The tests also check that the controller rejects cyclic configurations and waits for circuits to drain under backpressure before committing a new configuration.
-
-\begin{table}[t]
-\caption{Hardware implementation cost of the MoE-plane prototypes.}
-\label{tab:eval-cost}
-\centering\small
-\begin{tabular}{@{}lrr@{}}
-\hline
-Metric & Fixed mesh & Mesh + 13 CSs \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{FPGA post-route (200\,MHz constraint)}} \\
-LUTs & 26,893 & 37,441 \\
-Flip-flops & 21,025 & 24,451 \\
-BRAM / DSP & 0 / 0 & 0 / 0 \\
-Setup WNS (ns) & $+0.528$ & $+0.290$ \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{ASIC synthesis}} \\
-Std. cell area ($\mathrm{mm}^{2}$) & 0.205446 & 0.250919 \\
-Total power (W) & 1.46 & 1.65 \\
-\hline
-\multicolumn{3}{@{}l@{}}{\textit{ASIC post-route}} \\
-Std. cell area ($\mathrm{mm}^{2}$) & 0.359453 & 0.458480 \\
-Dynamic power (W) & 0.661 & 0.721 \\
-Leakage power (mW) & 11.7 & 15.2 \\
-\hline
-\end{tabular}
-\par\smallskip
-\begin{minipage}{\columnwidth}
-\footnotesize
-FPGA results use Vivado 2017.4 on \texttt{xcku5p-ffva676-2-e}.
-Setup WNS is from out-of-context post-route static timing analysis with a 5\,ns clock constraint.
-ASIC results use Nangate45 TT (1.10\,V, $25\,^{\circ}\mathrm{C}$).
-ASIC power estimates use a 1\,ns clock constraint, vectorless activity 0.10, and duty cycle 0.50. Post-route power estimates include OpenRCX SPEF parasitics.
-\end{minipage}
-\end{table}
-
-Relative to the fixed mesh, the enhanced prototype uses 39.2\% more LUTs and 16.3\% more flip-flops after FPGA routing. The routed ASIC uses 27.5\% more standard-cell area and 9.1\% more estimated dynamic power under the same power assumptions.
-
-Table~\ref{tab:eval-runtime} reports algorithm execution separately from the delay of applying its decisions. For each algorithm, we measure per-call time and call count, then report the fraction of total application latency exposed on the critical path. Configuration transfer, hardware reconfiguration, and thermal scheduling overhead are accounted for as separate events.
-
-\begin{table}[t]
-\caption{Runtime overhead of online decision algorithms.}
-\label{tab:eval-runtime}
-\centering\small
-\begin{tabular}{@{}lccc@{}}
-\hline
-Algorithm & Time/call & Calls & Exposed share \\
-\hline
-Hotspot prediction & xxx & xxx & xxx \\
-Connection selection & xxx & xxx & xxx \\
-Bank policy & xxx & xxx & xxx \\
-Thermal control & xxx & xxx & xxx \\
-\hline
-\end{tabular}
-\end{table}
+\FloatBarrier
 
 \section{Related Works}
 \label{sec:related-works}
 
+\paragraph{Reconfigurable NoCs and traffic management}
+SMART~\cite{krishna2013smart} enables packets to bypass multiple routers
+within a cycle, reducing traversal latency. HiBand~\cite{wang2026hiband}
+reallocates local and global bandwidth through four NoC modes for
+HB-DRAM inference. Application-aware prioritization~\cite{das2009priority}
+ranks packets according to their applications' stall-time criticality.
+These studies address traversal cost, bandwidth allocation, and
+shared-resource arbitration. Our design combines separate coherence and
+MoE planes with configurable MoE circuits, selecting connections according
+to communication demand and checking their effect on consumer completion time.
+
+\paragraph{MoE communication and memory optimization}
+ExpertFlow~\cite{he2026expertflow} combines routing prediction, token
+scheduling, and expert caching to reduce parameter transfers during
+memory-constrained inference. MixNet~\cite{liao2025mixnet} adapts an
+optical-electrical fabric to changing expert communication demands in
+distributed MoE training. HBSpec~\cite{wang2026hbspec} uses
+communication-aware mapping and operator scheduling for hybrid-bonded
+speculative decoding. Together, these studies demonstrate the importance
+of coordinating computation and data movement. Our work applies demand
+prediction to on-chip circuit allocation and accounts for network interface
+capacity, memory bank access, and reconfiguration overhead when evaluating
+concurrent general-purpose tasks and MoE inference.
+
+\paragraph{Thermal management in 3D systems}
+Tasa~\cite{he2025tasa} addresses thermal constraints in 3D-stacked LLM
+systems through cross-stack thermal optimization and bandwidth sharing.
+Thermal-aware scheduling has also been studied for controlling runtime
+temperature in 3D multicore processors~\cite{tsai2016thermal}.
+Our thermal mechanism combines operator-level energy-aware DVFS with
+scheduling based on predicted temperature responses. It accounts for
+delayed heat propagation between logic and DRAM tiers. The thermal
+ablation uses common NoC and endpoint-service settings in both runs.
+
+\par\addvspace{5pt}
 \section{Conclusion}
 \label{sec:conclusion}
 
+We presented thermal-aware NoC reconfiguration for concurrent
+general-purpose computing and MoE inference in 3D-stacked systems.
+Separate traffic planes and configurable MoE circuits adapt communication
+paths to changing demand. A completion-time check accounts for memory
+access and reconfiguration costs, while operator-level DVFS and
+thermal-aware scheduling manage execution under temperature constraints.
+The evaluation quantifies communication-stage gains and the trade-off
+between peak temperature, latency, and energy under thermal control.
+
+\clearpage
+\balance
 \bibliographystyle{IEEEtran}
 \bibliography{references,thermal_references}
 
