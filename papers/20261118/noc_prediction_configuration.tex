@@ -1,0 +1,131 @@
+\subsection{Traffic Prediction}
+\label{sec:traffic-prediction}
+
+GetS requests and DataS responses use XY routing on plane C. The host
+optimizes MoE routes on plane M. For Dispatch, we adapt MixNet's
+adjacent-layer predictor~\cite{liao2025mixnet}:
+\begin{equation}
+  \widehat{\mathbf y}_{\ell,s}=P_\ell\mathbf x_{\ell-1,s},
+  \quad P_\ell\geq0,\quad
+  \mathbf1^{\mathsf T}P_\ell=\mathbf1^{\mathsf T}.
+  \label{eq:noc-load-prediction}
+\end{equation}
+Here $\mathbf x_{\ell-1,s}$ is the preceding layer's normalized expert distribution
+for tokens with known source NI $s$. Weighted least squares fits $P_\ell$
+from paired token groups, weighting their size and recency. Prefill and
+decode use separate models, with a historical-mean fallback.
+Expert placement and packing map forecasts to source--destination
+demand. Final allocation uses actual Top-K and packing metadata.
+Combine uses confirmed assignments, output shapes, and estimated
+expert completion times to derive return packets and release times.
+
+\subsection{Reconfiguration Problem}
+\label{sec:noc-problem}
+
+Within a fixed $H$-cycle planning interval, $\mathcal M_f$ contains
+the unbound packets of MoE source--destination flow $f$.
+Their payloads $b_m$ give $D_f=\sum_{m\in\mathcal M_f}b_m$ and
+$\mathcal M=\bigcup_f\mathcal M_f$. Legal CS paths for packet $m$
+form $\mathcal P_m$, with $\mathcal P=\bigcup_m\mathcal P_m$.
+Each simple path connects the source and destination NI through wired
+CS ports. Binary $z_p$ selects path $p$;
+binary $x_{m,p}$ assigns packet $m$ to it. We maximize useful payload
+assigned to the CS network:
+\begin{equation}
+  \max_{\mathbf z,\mathbf x}\quad
+  V=\sum_{m\in\mathcal M}b_m\sum_{p\in\mathcal P_m}x_{m,p}.
+  \label{eq:noc-volume-objective}
+\end{equation}
+Readiness flag $g_m$ equals one when source data and receive storage
+are ready, and zero otherwise. Each packet uses at most one enabled path:
+\begin{equation}
+  \sum_{p\in\mathcal P_m}x_{m,p}\leq1,
+  \qquad x_{m,p}\leq z_p,\quad x_{m,p}\leq g_m.
+  \label{eq:noc-packet-assignment}
+\end{equation}
+Selected paths are CS-disjoint. With $A_{c,p}=1$ when $p$ uses CS $c$,
+\begin{equation}
+  \sum_{p\in\mathcal P}A_{c,p}z_p\leq1,
+  \qquad c=0,\ldots,12.
+  \label{eq:noc-cs-exclusion}
+\end{equation}
+
+Resource $r\in\mathcal R$ is an M-plane link or NI, DMA, or SRAM service.
+Its remaining budget $C_r$ within $H$ deducts work outside $\mathcal M$:
+existing transfers, configuration messages, and C-plane use of shared endpoints.
+Cost $u_{m,p,r}$ includes framing and expresses service in NoC cycles.
+Unassigned packets use the M-plane Mesh, denoted
+by 0, with $x_{m,0}=1-\sum_{p\in\mathcal P_m}x_{m,p}$. Thus,
+\begin{equation}
+  \sum_{m\in\mathcal M}\sum_{p\in\mathcal P_m\cup\{0\}}
+  u_{m,p,r}x_{m,p}\leq C_r,\qquad r\in\mathcal R.
+  \label{eq:noc-resource-capacity}
+\end{equation}
+Path $p$ specifies the input, output, and enable fields of each CS;
+$x_{m,p}$ determines the source NI's route tag for packet $m$.
+
+\subsection{Configuration Algorithm}
+\label{sec:noc-algorithm}
+
+Offline enumeration supplies local and upper-CS paths. At runtime,
+flows are sorted by decreasing $D_f$, and packets follow release order.
+Each round examines up to $K_f$ largest remaining flows and $K_p$ paths per flow.
+An extension adds one or two paths compatible with the selected set
+and with each other.
+\textsc{Assign} reallocates packets jointly across the full proposed set,
+choosing paths by unloaded latency and then identifier. Feasible extensions
+enter the candidate pool; the best positive increase in $V$ advances
+the search. Ties favor fewer CS changes from the active configuration
+$S_0$, then fixed path identifiers. Each successful round occupies a new
+CS, giving at most thirteen rounds.
+
+Candidates $S=(\mathbf z,\mathbf x)$ are checked in decreasing $V$.
+A timing model propagates
+source reads, finite queues, credits, receive writes, and task dependencies.
+C responses follow their request's memory service. Both estimates use
+the same time origin; $S_0$ continues forwarding during host computation.
+For the current phase's required consumers, an update must satisfy
+\begin{equation}
+  \widehat T(S)+\eta(S)<\widehat T(S_0),
+  \label{eq:noc-switching-check}
+\end{equation}
+where $\eta(S)\geq0$ is calibrated from paired errors on held-out requests.
+Protected completion points $k$ additionally satisfy
+$\widehat T_k(S)-\widehat T_k(S_0)+\eta_k(S)\leq\epsilon_k$;
+they include coherence transactions with specified delay budgets.
+Estimates include computation, pause, drain, writes, and NI installation.
+After the NI pause acknowledgement, the host refreshes versions and
+eligibility and repeats feasibility, timing, and budget checks. Configuration
+follows Section~\ref{sec:noc-config-interface}.
+
+\begin{algorithm}[H]
+  \caption{MoE-plane CS configuration}
+  \label{alg:noc-configuration}
+  \small
+  \begin{algorithmic}[1]
+    \Require MoE packets $\mathcal M$, paths $\mathcal P$, budgets $C_r$, active $S_0$
+    \Ensure $S_0$, an acknowledged update, or an update error
+    \State Sort flows by $D_f$ and packets by release order
+    \State $S\gets$ Mesh allocation; $\mathcal C\gets\varnothing$
+    \While{construction budget remains}
+      \State Generate compatible one- and two-path extensions
+      \State $\mathcal E\gets$ jointly assigned feasible extensions
+      \State $\mathcal C\gets\mathcal C\cup\mathcal E$
+      \State \textbf{if} no positive added $V$ \textbf{then break}
+      \State $S\gets$ extension with largest added $V$
+    \EndWhile
+    \For{$S'\in\mathcal C$ in decreasing $V$}
+      \State \textbf{if} budget expired \textbf{then return} $S_0$
+      \State Estimate completion and update overhead
+      \If{timing checks pass within the decision budget}
+        \State Request packet holds and pause new CS admissions
+        \If{pause acknowledged within the decision budget}
+          \State Refresh state; recheck feasibility and timing
+          \State \textbf{if} final checks pass \textbf{then return} $\Call{ApplyCS}{S'}$
+        \EndIf
+        \State Release holds and resume $S_0$; \Return $S_0$
+      \EndIf
+    \EndFor
+    \State \Return $S_0$
+  \end{algorithmic}
+\end{algorithm}
