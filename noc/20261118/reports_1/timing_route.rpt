@@ -1,0 +1,298 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version      : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date              : Wed Nov 18 09:33:42 2026
+| Host              : ranranzhishang running 64-bit major release  (build 9200)
+| Command           : report_timing_summary -file C:/Users/21747/AppData/Local/Temp/noc_dual_plane_hw_20261118/reports_1/timing_route.rpt
+| Design            : dual_plane_noc
+| Device            : xcku5p-ffva676
+| Speed File        : -2  PRODUCTION 1.17 11-09-2017
+| Temperature Grade : E
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  false
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 4432 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 4179 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+      0.043        0.000                      0               172875        0.025        0.000                      0               172875        2.225        0.000                       0                 92783  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)         Period(ns)      Frequency(MHz)
+-----    ------------         ----------      --------------
+noc_clk  {0.000 2.500}        5.000           200.000         
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+noc_clk             0.043        0.000                      0               172875        0.025        0.000                      0               172875        2.225        0.000                       0                 92783  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  noc_clk
+  To Clock:  noc_clk
+
+Setup :            0  Failing Endpoints,  Worst Slack        0.043ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.025ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        2.225ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.043ns  (required time - arrival time)
+  Source:                 ni[6].prefer_c_reg/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            ni[6].receive_slot/out_data_reg[186]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             noc_clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            5.000ns  (noc_clk rise@5.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        4.947ns  (logic 0.222ns (4.488%)  route 4.725ns (95.512%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=92782, unset)        0.000     0.000    clk
+    SLICE_X67Y158        FDRE                                         r  ni[6].prefer_c_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X67Y158        FDRE (Prop_EFF_SLICEM_C_Q)
+                                                      0.076     0.076 r  ni[6].prefer_c_reg/Q
+                         net (fo=265, routed)         4.676     4.752    dual_plane.coherence/routers[6].router/ni[6].prefer_c
+    SLICE_X87Y35         LUT5 (Prop_D6LUT_SLICEL_I1_O)
+                                                      0.146     4.898 r  dual_plane.coherence/routers[6].router/out_data[186]_i_1__66/O
+                         net (fo=1, routed)           0.049     4.947    ni[6].receive_slot/D[186]
+    SLICE_X87Y35         FDRE                                         r  ni[6].receive_slot/out_data_reg[186]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)    5.000     5.000 r  
+                                                      0.000     5.000 r  clk (IN)
+                         net (fo=92782, unset)        0.000     5.000    ni[6].receive_slot/clk
+    SLICE_X87Y35         FDRE                                         r  ni[6].receive_slot/out_data_reg[186]/C
+                         clock pessimism              0.000     5.000    
+                         clock uncertainty           -0.035     4.965    
+    SLICE_X87Y35         FDRE (Setup_DFF_SLICEL_C_D)
+                                                      0.025     4.990    ni[6].receive_slot/out_data_reg[186]
+  -------------------------------------------------------------------
+                         required time                          4.990    
+                         arrival time                          -4.947    
+  -------------------------------------------------------------------
+                         slack                                  0.043    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.025ns  (arrival time - required time)
+  Source:                 dual_plane.coherence/routers[2].router/outputs[0].output_data_reg[0][247]/C
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Destination:            dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/out_data_reg[247]/D
+                            (rising edge-triggered cell FDRE clocked by noc_clk  {rise@0.000ns fall@2.500ns period=5.000ns})
+  Path Group:             noc_clk
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (noc_clk rise@0.000ns - noc_clk rise@0.000ns)
+  Data Path Delay:        0.072ns  (logic 0.039ns (54.167%)  route 0.033ns (45.833%))
+  Logic Levels:           0  
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock noc_clk rise edge)    0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=92782, unset)        0.000     0.000    dual_plane.coherence/routers[2].router/clk
+    SLICE_X27Y53         FDRE                                         r  dual_plane.coherence/routers[2].router/outputs[0].output_data_reg[0][247]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X27Y53         FDRE (Prop_DFF_SLICEL_C_Q)
+                                                      0.039     0.039 r  dual_plane.coherence/routers[2].router/outputs[0].output_data_reg[0][247]/Q
+                         net (fo=2, routed)           0.033     0.072    dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/D[247]
+    SLICE_X27Y53         FDRE                                         r  dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/out_data_reg[247]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock noc_clk rise edge)    0.000     0.000 r  
+                                                      0.000     0.000 r  clk (IN)
+                         net (fo=92782, unset)        0.000     0.000    dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/clk
+    SLICE_X27Y53         FDRE                                         r  dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/out_data_reg[247]/C
+                         clock pessimism              0.000     0.000    
+    SLICE_X27Y53         FDRE (Hold_CFF2_SLICEL_C_D)
+                                                      0.047     0.047    dual_plane.coherence/routers[3].router/inputs[1].virtual_network[1].queue/out_data_reg[247]
+  -------------------------------------------------------------------
+                         required time                         -0.047    
+                         arrival time                           0.072    
+  -------------------------------------------------------------------
+                         slack                                  0.025    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         noc_clk
+Waveform(ns):       { 0.000 2.500 }
+Period(ns):         5.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location        Pin
+Min Period        n/a     FDRE/C   n/a            0.550         5.000       4.450      SLICE_X111Y185  dual_plane.coherence/routers[0].router/inputs[0].virtual_network[0].queue/out_data_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.275         2.500       2.225      SLICE_X111Y185  dual_plane.coherence/routers[0].router/inputs[0].virtual_network[0].queue/out_data_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.275         2.500       2.225      SLICE_X111Y185  dual_plane.coherence/routers[0].router/inputs[0].virtual_network[0].queue/out_data_reg[0]/C
+
+
+

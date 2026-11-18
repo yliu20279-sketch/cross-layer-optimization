@@ -533,26 +533,24 @@ Both thermal configurations retain the same NoC and bank policies.}
 \label{fig:eval-thermal}
 \end{figure}
 
-Table~\ref{tab:eval-cost} summarizes the hardware and runtime costs.
-The paired MoE-plane RTL prototypes exclude coherence-plane logic,
-SRAM bank control, thermal control, and physical cross-tier links.
-Full-system hardware cost is xxx. FPGA implementation uses Vivado
-2017.4 and \texttt{xcku5p-ffva676-2-e}; ASIC implementation uses
-Nangate45 TT. Power estimation uses common activity assumptions.
-Decision time and configuration delay are charged only where exposed
-on the application critical path.
+Table~\ref{tab:eval-cost} compares a shared $4\times4$ Mesh with a 256-bit C/M dual-plane core comprising two Meshes and 13 CSs. Both include simplified NIs with external reservation signals and centralized configuration. Full request/response management, DMA, SRAM/bank control, distributed configuration, thermal control, and physical cross-tier links are excluded. This differs from the communication-replay RTL; the measurements do not form a matched performance--area comparison. Full-system cost remains unmeasured. FPGA results use Vivado 2017.4 on \texttt{xcku5p-}\allowbreak\texttt{ffva676-2-e}, with 200\,MHz out-of-context post-route static timing. ASIC areas use Yosys 0.23 and Nangate45 TT (1.10\,V, $25\,^{\circ}\mathrm{C}$), with common 1\,ns and I/O constraints. Power and ASIC post-route results are omitted. Runtime overhead counts only exposed critical-path time.
 
 \begin{table}[!t]
-\caption{Implementation and exposed runtime overhead.}
+\caption{Dual-plane network core cost with simplified NIs and exposed runtime overhead.}
 \label{tab:eval-cost}
 \centering\footnotesize
 \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
 \hline
-Metric & Fixed Mesh & Full design \\
+Metric & Shared Mesh & Dual plane + CS \\
 \hline
-FPGA LUTs / flip-flops & xxx / xxx & xxx / xxx \\
-ASIC routed area (mm$^2$) & xxx & xxx \\
-Estimated dynamic power (W) & xxx & xxx \\
+\multicolumn{3}{@{}l@{}}{\textit{Network core with simplified NIs}} \\
+FPGA LUTs / flip-flops & 31,995 / 38,286 & 117,625 / 92,783 \\
+FPGA BRAM / DSP & 0 / 0 & 0 / 0 \\
+FPGA setup WNS (ns), 200\,MHz & $+0.339$ & $+0.043$ \\
+ASIC synthesis area (mm$^2$) & 0.332176 & 0.869972 \\
+ASIC area increase (\%) & --- & 161.90 \\
+\hline
+\multicolumn{3}{@{}l@{}}{\textit{System-level exposed runtime overhead (not measured)}} \\
 Exposed decision overhead (\%) & xxx & xxx \\
 Exposed configuration delay (\%) & xxx & xxx \\
 \hline
