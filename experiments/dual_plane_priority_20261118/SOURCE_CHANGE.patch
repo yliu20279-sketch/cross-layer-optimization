@@ -1,0 +1,304 @@
+From 76dbaa8d966b1fee2d8102ba9bca47bef42d3e0a Mon Sep 17 00:00:00 2001
+From: Codex <codex@openai.com>
+Date: Wed, 18 Nov 2026 14:23:20 +0800
+Subject: [PATCH] Add optional fixed type priority and explicit physical NI-CS
+ receive wiring
+
+---
+ rtl/cs_fabric.sv             |  8 +++++++-
+ rtl/experiment_top.sv        | 10 ++++-----
+ rtl/hiband_fabric.sv         |  4 ++--
+ rtl/mesh.sv                  |  4 ++--
+ rtl/typed_ni.sv              | 10 ++++-----
+ rtl/xy_router.sv             | 25 ++++++++++++++++++++---
+ sim/priority_router_main.cpp | 29 +++++++++++++++++++++++++++
+ tests/priority_unit_tb.sv    | 39 ++++++++++++++++++++++++++++++++++++
+ 8 files changed, 111 insertions(+), 18 deletions(-)
+ create mode 100644 sim/priority_router_main.cpp
+ create mode 100644 tests/priority_unit_tb.sv
+
+diff --git a/rtl/cs_fabric.sv b/rtl/cs_fabric.sv
+index d358c09..f6a190a 100644
+--- a/rtl/cs_fabric.sv
++++ b/rtl/cs_fabric.sv
+@@ -21,9 +21,15 @@ module cs_fabric(
+  logic [2:0] input_port[13],output_port[13],candidate_input[13],candidate_output[13];
+  logic [12:0] enabled,valid_state;logic [12:0] reach[14];
+  flit_t data[13],din[13];logic push[13],pop[13],full[13],empty[13];logic [1:0] count[13];
++ flit_t ni_receive_data[16][9];
+  flit_t port_data[13][5];wire [4:0] port_valid[13],port_ready[13];
+  logic [15:0][3:0] arb_first,arb_owner;logic [15:0] arb_lock;
+  logic [15:0][3:0] winner;
++ for(genvar n=0;n<16;n++)for(genvar c=0;c<9;c++)begin:physical_ni_receive
++  localparam bit CONNECTED=n==peer(c,0)||n==peer(c,1)||n==peer(c,2)||n==peer(c,3);
++  if(CONNECTED)assign ni_receive_data[n][c]=data[c];
++  else assign ni_receive_data[n][c]='0;
++ end
+  assign busy=|occupied;assign ready=!busy;
+  assign reach[0]='0;assign legal=&valid_state;
+  for(genvar s=0;s<13;s++)begin:cs
+@@ -79,7 +85,7 @@ module cs_fabric(
+     automatic int c=arb_lock[n]?arb_owner[n]:(arb_first[n]+ct)%9;
+     for(int p=0;p<4;p++)if(peer(c,p)==n)begin
+      if(!rx_valid[n]&&enabled[c]&&output_port[c]==p&&!empty[c])begin
+-      rx_valid[n]=!reset;rx_flit[n]=data[c];winner[n]=4'(c);
++      rx_valid[n]=!reset;rx_flit[n]=ni_receive_data[n][c];winner[n]=4'(c);
+      end
+     end
+    end
+diff --git a/rtl/experiment_top.sv b/rtl/experiment_top.sv
+index 411c874..c31294e 100644
+--- a/rtl/experiment_top.sv
++++ b/rtl/experiment_top.sv
+@@ -1,4 +1,4 @@
+-module experiment_top #(parameter int DUAL=1,DEPTH=2)(
++module experiment_top #(parameter int DUAL=1,DEPTH=2,TYPE_PRIORITY=0)(
+  input logic clk,reset,input logic [1:0] hiband_mode,output logic hiband_mode_ready,
+  input logic [2:0] client_valid[16],client_first[16],client_circuit[16],
+  input logic [3:0] client_op[16][3],client_dst[16][3],client_cs[16][3],
+@@ -145,16 +145,16 @@ module experiment_top #(parameter int DUAL=1,DEPTH=2)(
+    assign hf[0][n]=mesh_tx[n];assign hf[1][n]=local_tx[n];assign mrf[n]=hrf[0][n];assign crf[n]=hrf[1][n];
+    assign global_credit[n]=hc[0][n];assign local_credit[n]=hc[1][n];assign hrc[0][n]=mrc[n];assign hrc[1][n]=crc[n];
+   end
+-  hiband_fabric #(.DEPTH(DEPTH)) fabric(clk,reset,global_lanes,hv,hf,hc,hrv,hrf,hrc,mesh_busy);
++  hiband_fabric #(.DEPTH(DEPTH),.TYPE_PRIORITY(TYPE_PRIORITY)) fabric(clk,reset,global_lanes,hv,hf,hc,hrv,hrf,hrc,mesh_busy);
+   for(genvar n=0;n<16;n++)for(genvar v=0;v<4;v++)begin:credit
+    assign mc[n][v]=near(n,pending_dst[n][v])&&local_lanes!=0?local_credit[n][v]:global_credit[n][v];
+    assign ccc[n][v]=mc[n][v];
+   end
+  end else begin:normal_m
+-  typed_mesh #(.DEPTH(DEPTH),.ACTIVE_VN(DUAL==1?9:15)) m(clk,reset,mesh_valid,mesh_tx,mc,mrv,mrf,mrc,mesh_busy,3'd4);
++  typed_mesh #(.DEPTH(DEPTH),.ACTIVE_VN(DUAL==1?9:15),.TYPE_PRIORITY(TYPE_PRIORITY)) m(clk,reset,mesh_valid,mesh_tx,mc,mrv,mrf,mrc,mesh_busy,3'd4);
+  end
+  if(DUAL==1)begin:c_plane
+-  typed_mesh #(.DEPTH(DEPTH),.ACTIVE_VN(6)) c(clk,reset,cvnet,cfl,ccc,crv,crf,crc,cmesh_busy,3'd4);
++  typed_mesh #(.DEPTH(DEPTH),.ACTIVE_VN(6),.TYPE_PRIORITY(TYPE_PRIORITY)) c(clk,reset,cvnet,cfl,ccc,crv,crf,crc,cmesh_busy,3'd4);
+  end else begin:shared
+   if(DUAL==0)begin
+    assign crv=0;assign cmesh_busy=0;
+@@ -177,7 +177,7 @@ module experiment_top #(parameter int DUAL=1,DEPTH=2)(
+   assign mesh_tx[n]=mv[n]?mf[n]:cfl[n];assign local_tx[n]=mesh_tx[n];
+   assign niv[n]={srv[n],crv[n],mrv[n]};assign nif[n][0]=mrf[n];assign nif[n][1]=crf[n];assign nif[n][2]=srf[n];
+   assign mrc[n]=nirc[n][0];assign crc[n]=nirc[n][1];assign srr[n]=nirc[n][2][0];
+-  typed_ni #(.ID(n),.DEPTH(DEPTH),.DUAL_MODE(DUAL)) ni(clk,reset,cv[n],cf[n],op[n],dst[n],attachment[n],pid[n],txn[n],bytes[n],vers[n],data[n],cc[n],cr[n],
++  typed_ni #(.ID(n),.DEPTH(DEPTH),.DUAL_MODE(DUAL),.TYPE_PRIORITY(TYPE_PRIORITY)) ni(clk,reset,cv[n],cf[n],op[n],dst[n],attachment[n],pid[n],txn[n],bytes[n],vers[n],data[n],cc[n],cr[n],
+    paused[n],installed_version[n],retire_valid[n],retire_txn[n],pause_ack[n],sbusyNI[n],mbusyNI[n],ni_errors[n],
+    mv[n],cvnet[n],sv[n],mf[n],cfl[n],sf[n],sc[n],mc[n],ccc[n],sr[n],niv[n],nif[n],nirc[n],
+    rx_valid[n],rx_flit[n],rx_ready[n],ctl_valid[n],ctl_flit[n],ctl_ready[n],pending_dst[n]);
+diff --git a/rtl/hiband_fabric.sv b/rtl/hiband_fabric.sv
+index 1fca468..e9a1f1f 100644
+--- a/rtl/hiband_fabric.sv
++++ b/rtl/hiband_fabric.sv
+@@ -1,4 +1,4 @@
+-module hiband_fabric #(parameter int DEPTH=2)(
++module hiband_fabric #(parameter int DEPTH=2,TYPE_PRIORITY=0)(
+  input logic clk,reset,input logic [2:0] global_lanes,
+  input logic [15:0] tx_valid[2],input noc_pkg::flit_t tx_flit[2][16],output logic [3:0] tx_credit[2][16],
+  output logic [15:0] rx_valid[2],output noc_pkg::flit_t rx_flit[2][16],input logic [3:0] rx_credit[2][16],output logic busy
+@@ -29,7 +29,7 @@ module hiband_fabric #(parameter int DEPTH=2)(
+   for(genvar d=0;d<2;d++)begin:domain
+    assign iv[d][n][4]=tx_valid[d][n];assign din[d][n][4]=tx_flit[d][n];assign tx_credit[d][n]=ic[d][n][4];
+    assign rx_valid[d][n]=ov[d][n][4];assign rx_flit[d][n]=dout[d][n][4];assign oc[d][n][4]=rx_credit[d][n];
+-   xy_router #(.ID(n),.DEPTH(DEPTH),.BENES(1)) r(clk,reset,iv[d][n],din[d][n],ic[d][n],ov[d][n],dout[d][n],oc[d][n],used[d][n]);
++   xy_router #(.ID(n),.DEPTH(DEPTH),.BENES(1),.TYPE_PRIORITY(TYPE_PRIORITY)) r(clk,reset,iv[d][n],din[d][n],ic[d][n],ov[d][n],dout[d][n],oc[d][n],used[d][n]);
+   end
+  end
+ endmodule
+diff --git a/rtl/mesh.sv b/rtl/mesh.sv
+index d8745e3..e0e39c8 100644
+--- a/rtl/mesh.sv
++++ b/rtl/mesh.sv
+@@ -1,4 +1,4 @@
+-module typed_mesh #(parameter int DEPTH=2,BENES=0,SERIAL=0,ACTIVE_VN=15)(
++module typed_mesh #(parameter int DEPTH=2,BENES=0,SERIAL=0,ACTIVE_VN=15,TYPE_PRIORITY=0)(
+  input logic clk,reset,input logic [15:0] tx_valid,input noc_pkg::flit_t tx_flit[16],
+  output logic [3:0] tx_credit[16],output logic [15:0] rx_valid,
+  output noc_pkg::flit_t rx_flit[16],input logic [3:0] rx_credit[16],output logic busy,input logic [2:0] link_lanes
+@@ -23,6 +23,6 @@ module typed_mesh #(parameter int DEPTH=2,BENES=0,SERIAL=0,ACTIVE_VN=15)(
+   end
+   assign iv[n][4]=tx_valid[n];assign data_in[n][4]=tx_flit[n];assign tx_credit[n]=credit_in[n][4];
+   assign rx_valid[n]=ov[n][4];assign rx_flit[n]=data_out[n][4];assign credit_out[n][4]=rx_credit[n];
+-  xy_router #(.ID(n),.DEPTH(DEPTH),.BENES(BENES),.ACTIVE_VN(ACTIVE_VN)) r(clk,reset,iv[n],data_in[n],credit_in[n],ov[n],data_out[n],credit_out[n],used[n]);
++  xy_router #(.ID(n),.DEPTH(DEPTH),.BENES(BENES),.ACTIVE_VN(ACTIVE_VN),.TYPE_PRIORITY(TYPE_PRIORITY)) r(clk,reset,iv[n],data_in[n],credit_in[n],ov[n],data_out[n],credit_out[n],used[n]);
+  end
+ endmodule
+diff --git a/rtl/typed_ni.sv b/rtl/typed_ni.sv
+index 56e0a42..7d57949 100644
+--- a/rtl/typed_ni.sv
++++ b/rtl/typed_ni.sv
+@@ -1,4 +1,4 @@
+-module typed_ni #(parameter int ID=0,DEPTH=2,CLIENTS=4,DUAL_MODE=1)(
++module typed_ni #(parameter int ID=0,DEPTH=2,CLIENTS=4,DUAL_MODE=1,TYPE_PRIORITY=0)(
+  input logic clk,reset,
+  input logic [CLIENTS-1:0] client_valid,client_first,
+  input logic [3:0] client_op[CLIENTS],client_dst[CLIENTS],client_cs[CLIENTS],
+@@ -19,10 +19,10 @@ module typed_ni #(parameter int ID=0,DEPTH=2,CLIENTS=4,DUAL_MODE=1)(
+  output logic [3:0] pending_dst[4]
+ );
+  // Node coordinates are fixed wires; share one core implementation across tiles.
+- typed_ni_core #(.DEPTH(DEPTH),.CLIENTS(CLIENTS),.DUAL_MODE(DUAL_MODE)) impl(.node_id(4'(ID)),.*);
++ typed_ni_core #(.DEPTH(DEPTH),.CLIENTS(CLIENTS),.DUAL_MODE(DUAL_MODE),.TYPE_PRIORITY(TYPE_PRIORITY)) impl(.node_id(4'(ID)),.*);
+ endmodule
+ 
+-module typed_ni_core #(parameter int DEPTH=2,CLIENTS=4,DUAL_MODE=1)(
++module typed_ni_core #(parameter int DEPTH=2,CLIENTS=4,DUAL_MODE=1,TYPE_PRIORITY=0)(
+  input logic [3:0] node_id,
+  input logic clk,reset,
+  input logic [CLIENTS-1:0] client_valid,client_first,
+@@ -119,7 +119,7 @@ module typed_ni_core #(parameter int DEPTH=2,CLIENTS=4,DUAL_MODE=1)(
+   m_valid=0;c_valid=0;cs_valid=0;m_flit='0;c_flit='0;cs_flit='0;tx_selected=-1;
+   for(int v=0;v<4;v++)spop[v]=0;
+   for(int vt=0;vt<4;vt++)begin
+-   automatic int v=(tx_first+vt)%4;
++   automatic int v=TYPE_PRIORITY?3-vt:(tx_first+vt)%4;
+    automatic logic circuit=sf[v][FW+4];
+    automatic logic ready=circuit?cs_ready:((v==0||v==3)?m_credit[v]:c_credit[v]);
+    if(!se[v]&&ready&&tx_selected<0&&!reset)begin
+@@ -132,7 +132,7 @@ module typed_ni_core #(parameter int DEPTH=2,CLIENTS=4,DUAL_MODE=1)(
+   ep_valid=0;ep_flit='0;ctl_valid=0;ctl_flit='0;rx_selected=-1;rx_selected_v=-1;reply_slot=-1;reply_bad=0;
+   for(int p=0;p<3;p++)for(int v=0;v<4;v++)rpop[p][v]=0;
+   for(int vt=0;vt<4;vt++)begin
+-   automatic int v=(rx_first+vt)%4;
++   automatic int v=TYPE_PRIORITY?3-vt:(rx_first+vt)%4;
+    for(int pt=0;pt<3;pt++)begin
+     automatic int p=rx_locked[v]?rx_owner[v]:(rx_path_first[v]+pt)%3;
+     automatic logic control=rf[p][v][257]&&(rf[p][v][255:252]==CONFIG||rf[p][v][255:252]==CONFIG_ACK);
+diff --git a/rtl/xy_router.sv b/rtl/xy_router.sv
+index 7b4f962..8f68f3f 100644
+--- a/rtl/xy_router.sv
++++ b/rtl/xy_router.sv
+@@ -1,4 +1,4 @@
+-module xy_router #(parameter int ID=0,DEPTH=2,BENES=0,ACTIVE_VN=15)(
++module xy_router #(parameter int ID=0,DEPTH=2,BENES=0,ACTIVE_VN=15,TYPE_PRIORITY=0)(
+  input logic clk,reset,
+  input logic [4:0] in_valid,input noc_pkg::flit_t in_flit[5],
+  output logic [3:0] in_credit[5],
+@@ -7,10 +7,10 @@ module xy_router #(parameter int ID=0,DEPTH=2,BENES=0,ACTIVE_VN=15)(
+  output logic busy
+ );
+  // Node coordinates are fixed wires; share one core implementation across tiles.
+- xy_router_core #(.DEPTH(DEPTH),.BENES(BENES),.ACTIVE_VN(ACTIVE_VN)) impl(.node_id(4'(ID)),.*);
++ xy_router_core #(.DEPTH(DEPTH),.BENES(BENES),.ACTIVE_VN(ACTIVE_VN),.TYPE_PRIORITY(TYPE_PRIORITY)) impl(.node_id(4'(ID)),.*);
+ endmodule
+ 
+-module xy_router_core #(parameter int DEPTH=2,BENES=0,ACTIVE_VN=15)(
++module xy_router_core #(parameter int DEPTH=2,BENES=0,ACTIVE_VN=15,TYPE_PRIORITY=0)(
+  input logic [3:0] node_id,
+  input logic clk,reset,
+  input logic [4:0] in_valid,input noc_pkg::flit_t in_flit[5],
+@@ -49,6 +49,24 @@ module xy_router_core #(parameter int DEPTH=2,BENES=0,ACTIVE_VN=15)(
+    selected_input[p]=0;selected_vn[p]=0;
+    for(int v=0;v<4;v++)begin pop[p][v]=0;busy|=!empty[p][v];end
+   end
++  if(TYPE_PRIORITY)begin
++  // Fixed class order across all outputs: CONFIG, DataS, GetS, MoE.
++  // Output and same-VN input arbitration retain their original round robin.
++  for(int vt=0;vt<4;vt++)begin
++   automatic int v=3-vt;
++   for(int ot=0;ot<5;ot++)begin
++    automatic int o=(out_first+ot)%5;
++    for(int it=0;it<5;it++)begin
++     automatic int i=locked[o][v]?owner[o][v]:(first[o][v]+it)%5;
++     automatic logic [2:0] route=front[i][v][257]?xy(front[i][v][251:248]):body_route[i][v];
++     if(!out_valid[o]&&!used[i]&&!empty[i][v]&&route==o&&out_credit[o][v])begin
++      out_valid[o]=1;selected_input[o]=3'(i);selected_vn[o]=2'(v);
++      pop[i][v]=1;used[i]=1;
++     end
++    end
++   end
++  end
++  end else begin
+   // Rotate output priority to resolve different VNs sharing an input port.
+   for(int ot=0;ot<5;ot++)begin
+    automatic int o=(out_first+ot)%5;
+@@ -64,6 +82,7 @@ module xy_router_core #(parameter int DEPTH=2,BENES=0,ACTIVE_VN=15)(
+     end
+    end
+   end
++  end
+  end
+  // Select wide payloads once, after the narrow arbitration decision.
+  for(genvar o=0;o<5;o++)assign chosen_data[o]=out_valid[o]?front[selected_input[o]][selected_vn[o]]:'0;
+diff --git a/sim/priority_router_main.cpp b/sim/priority_router_main.cpp
+new file mode 100644
+index 0000000..a5baa02
+--- /dev/null
++++ b/sim/priority_router_main.cpp
+@@ -0,0 +1,29 @@
++#include "Vxy_router.h"
++#include "verilated.h"
++#include <iostream>
++#include <stdexcept>
++static void step(Vxy_router& d){d.clk=0;d.eval();d.clk=1;d.eval();d.clk=0;d.eval();}
++static void reset(Vxy_router& d){
++ d.clk=0;d.reset=1;d.in_valid=0;
++ for(int i=0;i<5;i++){d.out_credit[i]=0;for(int k=0;k<9;k++)d.in_flit[i][k]=0;}
++ step(d);step(d);d.reset=0;d.eval();
++}
++static void enqueue(Vxy_router& d,int vn,int dst){
++ d.in_valid=1;for(int k=0;k<9;k++)d.in_flit[0][k]=0;
++ const int opcode=vn==3?5:vn==2?2:vn==1?1:3;
++ d.in_flit[0][7]=(unsigned(opcode)<<28)|(unsigned(dst)<<24);d.in_flit[0][8]=(vn<<2)|3;
++ d.eval();if(!(d.in_credit[0]&(1<<vn)))throw std::runtime_error("input blocked");step(d);
++}
++int main(int argc,char**argv){
++ Verilated::commandArgs(argc,argv);Vxy_router d;reset(d);
++ for(int vn=0;vn<4;vn++)enqueue(d,vn,0);
++ d.in_valid=0;d.out_credit[4]=15;d.eval();
++ for(int vn=3;vn>=0;vn--){
++  std::cout<<"expected VN "<<vn<<" output valid "<<unsigned(d.out_valid)<<" actual VN "<<(d.out_flit[4][8]>>2)<<std::endl;
++  if(!(d.out_valid&16)||((d.out_flit[4][8]>>2)&3)!=unsigned(vn))throw std::runtime_error("fixed class order violated");step(d);
++ }
++ reset(d);enqueue(d,0,1);enqueue(d,3,0);d.in_valid=0;d.out_credit[0]=15;d.out_credit[4]=15;d.eval();
++ if(!(d.out_valid&16)||(d.out_valid&1))throw std::runtime_error("cross-output input priority violated");
++ step(d);if(!(d.out_valid&1)||((d.out_flit[0][8]>>2)&3)!=0)throw std::runtime_error("low class failed to resume");
++ std::cout<<"PASS fixed class priority and cross-output input conflict"<<std::endl;
++}
+diff --git a/tests/priority_unit_tb.sv b/tests/priority_unit_tb.sv
+new file mode 100644
+index 0000000..0de8176
+--- /dev/null
++++ b/tests/priority_unit_tb.sv
+@@ -0,0 +1,39 @@
++module priority_unit_tb;
++ import noc_pkg::*;
++ logic clk=0,reset=1;
++ always #5 clk=~clk;
++ logic [4:0] in_valid,out_valid;
++ flit_t in_flit[5],out_flit[5];
++ logic [3:0] in_credit[5],out_credit[5];logic busy;
++ xy_router #(.ID(0),.TYPE_PRIORITY(1)) dut(.*);
++ task automatic enqueue(input int v,input int dst);
++  @(negedge clk);
++  in_valid=1;in_flit[0]=frame(header(v==3?CONFIG:v==2?DATAS:v==1?GETS:MOE_DATA,4'd0,4'(dst),32'(v+1),0,0),v,1,1);
++  #1;assert(in_credit[0][v])else $fatal(1,"input blocked");
++  @(posedge clk);#1;
++ endtask
++ task automatic reset_dut;
++  @(negedge clk);reset=1;in_valid=0;
++  for(int p=0;p<5;p++)begin in_flit[p]='0;out_credit[p]=0;end
++  repeat(2)@(posedge clk);
++  @(negedge clk);reset=0;
++ endtask
++ initial begin
++  in_valid=0;for(int p=0;p<5;p++)begin in_flit[p]='0;out_credit[p]=0;end
++  reset_dut();
++  for(int v=0;v<4;v++)enqueue(v,0);
++  @(negedge clk);in_valid=0;out_credit[4]=15;
++  for(int v=3;v>=0;v--)begin
++   #1;assert(out_valid[4]&&out_flit[4][259:258]==v)else $fatal(1,"fixed VN priority violated");
++   @(posedge clk);@(negedge clk);
++  end
++  reset_dut();
++  enqueue(0,1);enqueue(3,0);
++  @(negedge clk);in_valid=0;out_credit[0]=15;out_credit[4]=15;
++  #1;assert(out_valid[4]&&!out_valid[0]&&out_flit[4][259:258]==3)else $fatal(1,"cross-output input conflict violated priority");
++  @(posedge clk);@(negedge clk);
++  #1;assert(out_valid[0]&&out_flit[0][259:258]==0)else $fatal(1,"low class failed to resume");
++  $display("PASS fixed class order and cross-output input conflict; no added queue or link");$finish;
++ end
++ initial begin #10000;$fatal(1,"priority unit timeout");end
++endmodule
+-- 
+2.49.0.windows.1
+

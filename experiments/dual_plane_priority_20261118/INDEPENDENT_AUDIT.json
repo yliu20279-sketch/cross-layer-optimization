@@ -1,0 +1,55 @@
+{
+  "status": "PASS_COMPLETE_24",
+  "observed_at": "2026-11-18T14:33:22.429193+08:00",
+  "source_digest": "ba05961d5de61bdf",
+  "checks": 1091,
+  "failures": [],
+  "completed": 24,
+  "runs_checked": 24,
+  "phase_checks": 144,
+  "matrix_status": "PASS",
+  "summary": [
+    {
+      "arm": "mesh",
+      "n": 6,
+      "join_geomean_speedup": 0.9585072736279203,
+      "moe_geomean_speedup": 0.8815956058552016,
+      "max_phase_p99_geomean_ratio": 2.2693362257554246,
+      "wins": 1,
+      "losses": 3
+    },
+    {
+      "arm": "hiband_FG",
+      "n": 6,
+      "join_geomean_speedup": 0.9585072736279203,
+      "moe_geomean_speedup": 0.8815956058552016,
+      "max_phase_p99_geomean_ratio": 2.2693362257554246,
+      "wins": 1,
+      "losses": 3
+    },
+    {
+      "arm": "hiband_GB",
+      "n": 6,
+      "join_geomean_speedup": 0.998529357674213,
+      "moe_geomean_speedup": 1.0026030800635257,
+      "max_phase_p99_geomean_ratio": 1.001537765705526,
+      "wins": 3,
+      "losses": 2
+    },
+    {
+      "arm": "hiband_LB",
+      "n": 6,
+      "join_geomean_speedup": 1.0062250712149938,
+      "moe_geomean_speedup": 1.0031448888848877,
+      "max_phase_p99_geomean_ratio": 1.031680769107975,
+      "wins": 4,
+      "losses": 2
+    }
+  ],
+  "old_dual_rr_vs_priority_mesh_geomean_speedup": 1.0691436261100649,
+  "scope": "Six development cases, communication phase sums only. Static priority can hurt MoE. Old dual-RR vs priority-Mesh changes arbitration as well as planes; diagnostic only. No synthesis, end-to-end or held-out claim.",
+  "retained_failures": [
+    "Bootstrap missing include path, no matrix started",
+    "SV timing probe priority assertion failed; root not confirmed. Independent C++ probe and new common C++ regressions passed."
+  ]
+}

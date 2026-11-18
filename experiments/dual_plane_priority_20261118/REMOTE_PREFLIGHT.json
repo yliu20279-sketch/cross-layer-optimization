@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-11-18T14:12:30.808142+08:00",
+  "relevant_processes": [
+    " 284639       1 h4567       1720 python3 -u /mnt/sdb1/h4567/agent_cpu_npu_noc_20261113/formal_noc_20261118/synth_check.py",
+    " 325489  284639 h4567        427 docker run --rm --network none --cpus 2 --memory 12g --mount type=bind,src=/mnt/sdb1/h4567/agent_cpu_npu_noc_20261113/formal_noc_20261118,dst=/work -w /work sha256:1b0d9532209adf5c7a7b55770167571ab7c109931d53cbbeed74cc8b0fc1dcfe yosys -Q -T -s /work/synthesis/57a5a3a629cdcf68_1b0d9532209a_4c3f7d6f/check_2.ys",
+    "3627702 3627698 h324010+   19462 docker run --rm --network none --cpus 12 --memory 50g --user 1024:1025 -e NOC_ARM -e HOME=/tmp -v /mnt/sdb1/h3240101068/noc_dual_plane_hw_20261118:/experiment -w /experiment noc-dual-plane-tools:20261118 -no_init -exit -threads 12 physical.tcl",
+    "3627740 3627721 h324010+   19462 /opt/noc-openroad/usr/bin/openroad -no_init -exit -threads 12 physical.tcl",
+    "3651073 3651069 h324010+   18469 docker run --rm --network none --cpus 12 --memory 50g --user 1024:1025 -e NOC_ARM -e HOME=/tmp -v /mnt/sdb1/h3240101068/noc_dual_plane_hw_20261118:/experiment -w /experiment noc-dual-plane-tools:20261118 -no_init -exit -threads 12 physical.tcl",
+    "3651114 3651094 h324010+   18469 /opt/noc-openroad/usr/bin/openroad -no_init -exit -threads 12 physical.tcl"
+  ],
+  "directories": {
+    "/mnt/sdb1/h4567/agent_cpu_npu_noc_20261113/formal_noc_20261118": [
+      ".gitattributes",
+      "BUILD_RECEIPT.json",
+      "results",
+      ".gitignore"
+    ],
+    "/mnt/sdb1/h4567/agent_cpu_npu_noc_20261113": [
+      "arbiter_case_cpu_priority_s19",
+      "tool_audit.md",
+      "arbiter_audit_bundle_01.zip",
+      "audit_shared_cpu_npu.py",
+      "audit_arbiter_case.py",
+      "audit_arbiter_matrix.py",
+      "arbiter_case_cpu_priority_s7",
+      "results.md",
+      "audit",
+      "audit_cpu_noc.py",
+      "arbiter_case_cpu_priority_s1",
+      "audit_coherence.py"
+    ],
+    "/mnt/sdb1/h3240101068": [
+      ".gitconfig",
+      "qwen_q1_q3_full_archive_20261024_v2",
+      "qwen_q1_q3_archive_20261024_v2.log",
+      "qwen_full_archive_remote_20261022.py",
+      "qwen_q1_q3_full_archive_20261024_v1",
+      "qwen_q1_q3_reference_archive_20261024_v1",
+      "qwen_q1_q3_archive_20261024.log",
+      "qwen_q1_q3_reference_archive_20261024.log",
+      "bmk_audit_20261018_newshare",
+      "qwen_hotter_full_archive_20261022_v1"
+    ]
+  },
+  "git_roots": {
+    "/mnt/sdb1/h4567/agent_cpu_npu_noc_20261113/formal_noc_20261118": "",
+    "/mnt/sdb1/h4567/agent_cpu_npu_noc_20261113": ""
+  },
+  "free": "              total        used        free      shared  buff/cache   available\nMem:         257568       90304       52383       65848      114879       99558\nSwap:          2047        2047           0\n",
+  "cpus": "96",
+  "docker": "pedantic_rubin 1b0d9532209a Up 7 minutes\nfriendly_khayyam pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nvigorous_haibt pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nvigilant_chaplygin pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nboring_bassi pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nboring_morse pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nstrange_banach pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nangry_solomon pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nmagical_northcutt pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\ngifted_chaum pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nupbeat_dewdney pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\npeaceful_haslett pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\nangry_goodall pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\ntrusting_galileo pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\ngallant_gates pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 3 hours\ntender_mendeleev pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 4 hours\namazing_spence pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime Up 4 hours\nelated_fermat noc-dual-plane-tools:20261118 Up 5 hours\necstatic_panini noc-dual-plane-tools:20261118 Up 5 hours\nlegosim-matmul-monitor-6082 legosim-qt-novnc Up 2 weeks\nlegosim-manual-qt-fit-live-6112 legosim-qt-novnc:visualization-repair Up 2 weeks\nlegosim-manual-final6-qt-6111 legosim-qt-novnc:visualization-repair Up 2 weeks\nlegosim-final6-qt-6101 legosim-qt-novnc:visualization-repair Up 2 weeks\nlegosim-final6-qt-6100 legosim-qt-novnc:visualization-repair Up 2 weeks\nlegosim-rev6-manual-runtime-6094 legosim-qt-novnc:visualization-repair Up 2 weeks\nlegosim-rev6-manual-app-6095 legosim-qt-novnc:visualization-repair Up 2 weeks\nqwen-v3-gate-q4_1536_4_balanced_4slots qwen-thermal-runtime:20261019 Up 3 weeks (Paused)\nlego lego-env:portable Up 3 weeks\nmr_work t2d-mr:4.6.0 Up 5 weeks\nlegosim-matmul-monitor-6081 c69f720abc1f Up 5 weeks\ncerium cerium:aligned-cu13.3 Up 6 weeks\nlegosim-matmul-monitor-6080 64180eccd1cf Up 2 months\nnew-api calciumion/new-api:latest Up 3 months (healthy)\npostgres postgres:15 Up 3 months\nredis redis:latest Up 3 months\nanythingllm mintplexlabs/anythingllm:latest Up 3 months (healthy)\n"
+}

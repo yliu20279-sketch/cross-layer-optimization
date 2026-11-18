@@ -1,0 +1,9 @@
+﻿item,paper_or_design,implementation,assumption_or_limit,status
+共享物理通道,Fig.6/§4：同一链路划分global/local，原图四条512-bit,split_width_link：4条64-bit lane由global_lanes分配，两域和恒为4,缩放到256-bit是平台假设；没有复制两组256-bit链路,source_checked
+192-bit连续打包,local-biased为3/1通道比例,按64-bit单位跨flit队列推进moved计数，不对每个256-bit flit单独向上取整,序列化及重组缓存DEPTH8单列；原RR split自测回执复用,source_checked_existing_regression
+NA与local路径,§4：NA内相邻阵列一跳直达,near()：同一行连续4rank且Manhattan距离<=1；其余global XY,TP4/行分组是本平台映射，非作者32阵列完整布局,explicit_mapping_assumption
+Beneš数据通路,Fig.6：8x8 split-Beneš,五级、每级4个2x2；本实现每域5个有效端口，5..7置零,120种5端口排列已独立逐级检查；不声称完整作者split-Beneš,120_permutations_checked
+NI-CS物理连接,项目9下层+4上层CS几何,36条NI-下层CS附着；16条有向CS-CS附着互反；上层仅端口0..2,旧动态宽索引有综合结构疑虑；本版静态屏蔽非邻接宽输入，未综合验证面积,static_connectivity_checked
+配置与版本,项目暂停/排空/安装协议,active commit断言ready&&legal；top要求pause/ack、CS idle、全部stage版本；NI校验installed_version,新优先版本共用回归排空/失败保持，等待BUILD回执,source_and_common_cpp_regression_passed
+DRAM直连,Fig.6黄色DRAM Direct Link与NoC不同,未加为第二条邻接NoC，端点Bank/SRAM由共同服务模型提供,没有复现原HB-DRAM执行器及其专用直接带宽,scope_difference
+动态模式与广播,§5按阶段/计算步骤选择模式,主表静态4/0、2/2、1/3；仅unicast,phase-best免费事后择优是分析界；原作者动态策略/广播不在复现范围,scope_difference
